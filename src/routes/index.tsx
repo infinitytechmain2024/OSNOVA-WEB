@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Check, Phone, Send, MapPin } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
+import { OtherServices } from "@/components/other-services";
 import cpetImg from "@/assets/cpet-test.jpg";
 import ecgImg from "@/assets/ecg-review.jpg";
 import ergoImg from "@/assets/ergometer.jpg";
@@ -446,6 +447,9 @@ function Index() {
             Детальніше
           </button>
         </section>
+
+        {/* 10 — Інші послуги */}
+        <OtherServices />
       </main>
     </div>
   );
