@@ -151,7 +151,39 @@ function Index() {
           </div>
         </section>
 
+        {/* 1.5 — Що таке кардіодіагностика */}
+        <section className="mx-auto max-w-[1600px] px-6 pt-16 lg:px-10">
+          <div className="section-shell grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <h2 className="text-4xl leading-tight font-extrabold tracking-wide text-navy md:text-5xl">
+                ЩО ТАКЕ
+                <br />
+                КАРДІОДІАГНОСТИКА?
+              </h2>
+              <div className="mt-6 h-1 w-24 rounded-full bg-primary/60" />
+              <p className="mt-8 text-lg leading-relaxed text-navy/90">
+                Кардіодіагностика — це комплексне обстеження серцево-судинної системи, яке дозволяє
+                оцінити роботу серця, судин, артеріального тиску, серцевого ритму, фізичної
+                витривалості та реакції організму на навантаження. Вона включає консультацію лікаря,
+                інструментальні дослідження, функціональні тести та лабораторні аналізи.
+              </p>
+              <button className="mt-10 inline-flex items-center gap-6 rounded-xl bg-secondary px-8 py-5 text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent">
+                ДЕТАЛЬНІШЕ <ArrowRight className="size-5" />
+              </button>
+            </div>
+            <img
+              src={cpetImg}
+              alt="Кардіодіагностика: навантажувальний тест під наглядом лікаря"
+              width={1200}
+              height={800}
+              loading="lazy"
+              className="h-full max-h-[460px] w-full rounded-xl object-cover"
+            />
+          </div>
+        </section>
+
         {/* 2 — Коли рекомендовано */}
+
         <section className="mx-auto max-w-[1600px] px-6 py-16 lg:px-10">
           <div className="section-shell grid items-center gap-12 lg:grid-cols-2">
             <div>
