@@ -40,6 +40,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { NEWS_ARTICLES } from "@/data/news";
+import { useConsultationModal } from "@/components/consultation-form";
 
 // Images
 import rehabImg from "@/assets/service-rehab.jpg";
@@ -585,6 +586,7 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
 }
 
 function Index() {
+  const { openModal } = useConsultationModal();
   const [heroApi, setHeroApi] = React.useState<CarouselApi>();
   const [currentHeroSlide, setCurrentHeroSlide] = React.useState(0);
   const [heroSlideCount, setHeroSlideCount] = React.useState(0);
@@ -733,13 +735,14 @@ function Index() {
                           {slide.text}
                         </p>
                         <div className="flex flex-wrap gap-3 md:gap-4">
-                          <AppLink
-                            to="/kontakty"
-                            className="group relative inline-flex max-w-full items-center justify-center overflow-hidden rounded-xl bg-brand-green px-5 py-3.5 text-center text-sm font-bold leading-tight tracking-wide text-brand-green-foreground transition-all hover:scale-105 hover:bg-brand-green/90 hover:shadow-[0_0_36px_rgba(62,190,110,0.4)] md:px-7 md:py-4 md:text-base"
+                          <button
+                            type="button"
+                            onClick={() => openModal(slide.ctaLabel)}
+                            className="group relative inline-flex max-w-full items-center justify-center overflow-hidden rounded-xl bg-brand-green px-5 py-3.5 text-center text-sm font-bold leading-tight tracking-wide text-brand-green-foreground transition-all hover:scale-105 hover:bg-brand-green/90 hover:shadow-[0_0_36px_rgba(62,190,110,0.4)] md:px-7 md:py-4 md:text-base cursor-pointer"
                           >
                             <span className="relative z-10">{slide.ctaLabel}</span>
                             <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
-                          </AppLink>
+                          </button>
                           <AppLink
                             to="/poslugy"
                             className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-white backdrop-blur-sm transition-all hover:bg-white/10"
@@ -1222,13 +1225,14 @@ function Index() {
               підбору оптимальної програми відновлення.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <AppLink
-                to="/kontakty"
-                className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 md:py-5 text-base md:text-lg font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto"
+              <button
+                type="button"
+                onClick={() => openModal("Отримати консультацію")}
+                className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 md:py-5 text-base md:text-lg font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto cursor-pointer"
               >
                 <span className="relative z-10">ОТРИМАТИ КОНСУЛЬТАЦІЮ</span>
                 <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
-              </AppLink>
+              </button>
               <a
                 href="tel:+380674702788"
                 className="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-navy bg-transparent px-10 py-4 md:py-5 text-base md:text-lg font-bold text-navy transition-all hover:bg-navy hover:text-white sm:w-auto"
