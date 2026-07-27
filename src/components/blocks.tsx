@@ -104,19 +104,19 @@ export function PageHero({
             height={800}
             className="absolute inset-0 size-full object-cover object-right"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/90 to-navy-deep/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/90 to-navy-deep/10" />
         </>
       )}
-      <div className="relative mx-auto max-w-[1600px] px-6 py-20 lg:px-10 lg:py-24">
+      <div className="relative mx-auto max-w-[1600px] px-6 py-24 lg:px-10 lg:py-32">
         {eyebrow && (
           <p className="text-sm font-semibold tracking-[0.28em] text-primary-foreground/70">
             {eyebrow}
           </p>
         )}
-        <h1 className="mt-6 max-w-3xl text-4xl leading-[1.08] font-extrabold text-background md:text-6xl">
+        <h1 className="mt-6 max-w-2xl text-5xl leading-[1.05] font-extrabold text-background md:text-7xl">
           {title}
         </h1>
-        {text && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-background/85">{text}</p>}
+        {text && <p className="mt-8 max-w-xl text-lg leading-relaxed text-background/85">{text}</p>}
 
         {facts && facts.length > 0 && (
           <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4">

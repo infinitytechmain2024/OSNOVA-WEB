@@ -143,21 +143,29 @@ function NodePage() {
 
         {node.fullDescription && (
           <PageContainer className="py-16">
-            <div className="grid gap-8 rounded-3xl bg-soft p-8 md:grid-cols-2 md:p-12 lg:items-center">
+            <div className="section-shell grid items-center gap-12 lg:grid-cols-2">
               <div>
-                <SectionTitle>Як часто проходити обстеження?</SectionTitle>
+                <h2 className="text-4xl leading-tight font-extrabold tracking-wide text-navy md:text-5xl uppercase">
+                  ЩО ТАКЕ <br /> {node.title}?
+                </h2>
+                <div className="mt-6 h-1 w-24 rounded-full bg-primary/60" />
                 <p className="mt-8 text-lg leading-relaxed text-navy/90">{node.fullDescription}</p>
                 <AppLink
                   to="/kontakty"
-                  className="mt-8 inline-flex items-center gap-2 rounded-md bg-blue-200/50 px-6 py-3 text-sm font-bold text-navy hover:bg-blue-300/50 transition-colors"
+                  className="mt-10 inline-flex items-center gap-6 rounded-xl bg-secondary px-8 py-5 text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
                 >
-                  ДЕТАЛЬНІШЕ <ArrowRight className="size-4" />
+                  ДЕТАЛЬНІШЕ <ArrowRight className="size-5" />
                 </AppLink>
               </div>
-              {node.image && (
-                <div className="overflow-hidden rounded-2xl">
-                  <img src={node.image} alt="Опис" className="h-[300px] w-full object-cover" />
-                </div>
+              {node.image ? (
+                <img
+                  src={node.image}
+                  alt="Опис"
+                  loading="lazy"
+                  className="h-full max-h-[460px] w-full rounded-xl object-cover"
+                />
+              ) : (
+                <div className="h-[460px] w-full rounded-xl bg-soft" />
               )}
             </div>
           </PageContainer>
@@ -181,29 +189,45 @@ function NodePage() {
         )}
 
         {node.methods?.length ? (
-          <PageContainer className="pb-16">
-            <SectionTitle>Що входить у напрям</SectionTitle>
-            <BulletList items={node.methods} />
-          </PageContainer>
+          <section className="mb-16 bg-soft-blue py-20">
+            <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+              <h2 className="text-center text-3xl leading-tight font-bold text-navy md:text-4xl">
+                Що входить у напрям
+              </h2>
+              <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {node.methods.map((m) => (
+                  <article key={m} className="rounded-xl bg-card p-8 shadow-sm">
+                    <p className="text-lg font-bold text-primary">{m}</p>
+                    <div className="mt-4 h-0.5 w-10 bg-primary/60" />
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
         ) : null}
 
         {node.indications?.length ? (
-          <PageContainer className="pb-16 pt-8">
-            <div className="grid gap-8 rounded-3xl bg-soft p-8 md:grid-cols-2 md:p-12 lg:items-center">
+          <PageContainer className="py-16">
+            <div className="section-shell grid items-center gap-12 lg:grid-cols-2">
               <div>
                 <SectionTitle>Коли рекомендовано пройти {node.title.toLowerCase()}</SectionTitle>
                 <BulletList items={node.indications} />
                 <AppLink
                   to="/kontakty"
-                  className="mt-8 inline-flex items-center gap-2 rounded-md bg-blue-200/50 px-6 py-3 text-sm font-bold text-navy hover:bg-blue-300/50 transition-colors"
+                  className="mt-10 inline-flex items-center gap-6 rounded-xl bg-secondary px-8 py-5 text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
                 >
-                  ДЕТАЛЬНІШЕ <ArrowRight className="size-4" />
+                  ДЕТАЛЬНІШЕ <ArrowRight className="size-5" />
                 </AppLink>
               </div>
-              {node.image && (
-                <div className="overflow-hidden rounded-2xl">
-                  <img src={node.image} alt={node.title} className="h-[350px] w-full object-cover" />
-                </div>
+              {node.image ? (
+                <img
+                  src={node.image}
+                  alt={node.title}
+                  loading="lazy"
+                  className="h-full max-h-[440px] w-full rounded-xl object-cover"
+                />
+              ) : (
+                <div className="h-[440px] w-full rounded-xl bg-soft" />
               )}
             </div>
           </PageContainer>
@@ -211,14 +235,19 @@ function NodePage() {
 
         {node.contraindications?.length ? (
           <PageContainer className="pb-16">
-            <div className="rounded-3xl border border-border bg-soft/50 p-8 md:p-12">
+            <div className="rounded-3xl border border-border p-8 md:p-12">
               <SectionTitle>Коли планову послугу потрібно відкласти?</SectionTitle>
-              <div className="mt-6 md:columns-2 gap-8">
-                <BulletList items={node.contraindications} />
+              <div className="mt-6 grid gap-x-16 gap-y-4 md:grid-cols-2">
+                {node.contraindications.map((item) => (
+                  <p key={item} className="text-navy/90">
+                    <span className="mr-2 text-muted-foreground">–</span>
+                    {item}
+                  </p>
+                ))}
               </div>
-              <div className="mt-10 rounded-xl bg-red-50/50 border border-red-100 p-6 text-red-900">
-                <p className="font-bold">Коли потрібна невідкладна медична допомога</p>
-                <p className="mt-2 text-sm text-red-800">
+              <div className="mt-10 rounded-xl border border-destructive/25 bg-destructive/8 p-6">
+                <p className="font-bold text-navy">Коли потрібна невідкладна медична допомога</p>
+                <p className="mt-2 text-navy/90">
                   При гострому болю, раптовій задишці, втраті свідомості або різкому погіршенні
                   самопочуття необхідно звернутися по невідкладну медичну допомогу.
                 </p>
@@ -252,15 +281,22 @@ function NodePage() {
 
         {node.results?.length ? (
           <PageContainer className="pb-16">
-            <div className="grid gap-8 rounded-3xl bg-soft p-8 md:grid-cols-2 md:p-12 lg:items-center">
+            <div className="section-shell grid items-center gap-12 lg:grid-cols-2">
               <div>
-                <SectionTitle>Результати {node.title.toLowerCase()}</SectionTitle>
+                <h2 className="text-3xl leading-tight font-bold text-navy md:text-4xl">
+                  Результати {node.title.toLowerCase()}
+                </h2>
                 <CheckList items={node.results} />
               </div>
-              {node.image && (
-                <div className="overflow-hidden rounded-2xl">
-                  <img src={node.image} alt="Результати" className="h-[350px] w-full object-cover" />
-                </div>
+              {node.image ? (
+                <img
+                  src={node.image}
+                  alt="Результати"
+                  loading="lazy"
+                  className="h-full max-h-[640px] w-full rounded-xl object-cover"
+                />
+              ) : (
+                <div className="h-[640px] w-full rounded-xl bg-soft" />
               )}
             </div>
           </PageContainer>
