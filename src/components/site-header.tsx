@@ -7,8 +7,6 @@ import {
   Facebook,
   MapPin,
   Phone,
-  ChevronDown,
-  ChevronRight,
   Music2,
   Menu,
   X,
@@ -16,103 +14,27 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteTree, CONTACTS } from "@/data/site-tree";
-import type { SiteNode } from "@/data/types";
 
 const services = siteTree.find((n) => n.id === "services")!;
-const education = siteTree.find((n) => n.id === "education")!;
-const partnership = siteTree.find((n) => n.id === "partnership")!;
-const about = siteTree.find((n) => n.id === "about")!;
+const rehab = services.children!.find((n) => n.id === "rehab")!;
+const diag = services.children!.find((n) => n.id === "diag")!;
+const checkup = services.children!.find((n) => n.id === "checkup")!;
+const recovery = services.children!.find((n) => n.id === "recovery")!;
+const fitnesZal = recovery.children!.find((n) => n.slug === "fitnes-zal")!;
+
+const HEADER_NAV = [
+  { label: "ГОЛОВНА", to: "/" },
+  { label: "РЕАБІЛІТАЦІЯ", to: rehab.route },
+  { label: "ДІАГНОСТИКА", to: diag.route },
+  { label: "ЧЕКАПИ", to: checkup.route },
+  { label: "СПОРТИВНА МЕДИЦИНА", to: recovery.route },
+  { label: "ФІТНЕС ТА ТРЕНАЖЕРНИЙ ЗАЛ", to: fitnesZal.route },
+  { label: "ЦІНИ ТА ПОСЛУГИ", to: services.route },
+  { label: "КОНТАКТИ", to: "/kontakty" },
+] as const;
 
 const SOCIALS = [Instagram, Music2, Youtube, Facebook];
 const LANGS = ["УКР", "RU", "EN"];
-
-function MegaMenu({ node }: { node: SiteNode }) {
-  return (
-    <div className="invisible absolute top-full left-0 z-50 w-full opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-      <div className="mx-auto max-w-[1600px] px-6 pt-2 lg:px-10">
-        <div className="grid gap-8 rounded-2xl border border-border bg-card p-8 shadow-lg md:grid-cols-3">
-          {(node.children ?? []).map((cat) => (
-            <div key={cat.id}>
-              <AppLink
-                to={cat.route}
-                className="text-sm font-bold tracking-[0.06em] text-primary hover:underline"
-              >
-                {cat.title.toUpperCase()}
-              </AppLink>
-              <ul className="mt-4 space-y-2">
-                {(cat.children ?? []).slice(0, 6).map((child) => (
-                  <li key={child.id}>
-                    <AppLink
-                      to={child.route}
-                      className="text-sm text-navy/80 transition-colors hover:text-primary"
-                    >
-                      {child.title}
-                    </AppLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-          <div>
-            <AppLink
-              to={node.route}
-              className="inline-flex items-center gap-2 rounded-lg bg-secondary px-6 py-4 text-sm font-bold text-navy transition-colors hover:bg-accent"
-            >
-              Усі послуги <ChevronRight className="size-4" />
-            </AppLink>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function MobileBranch({
-  node,
-  depth,
-  onNavigate,
-}: {
-  node: SiteNode;
-  depth: number;
-  onNavigate: () => void;
-}) {
-  const [open, setOpen] = React.useState(false);
-  const hasChildren = !!node.children?.length;
-
-  return (
-    <li>
-      <div className="flex items-center gap-2 border-b border-border/60">
-        <AppLink
-          to={node.route}
-          onClick={onNavigate}
-          style={{ paddingLeft: depth * 14 }}
-          className="min-h-12 flex-1 py-3 text-[15px] font-medium text-navy"
-          activeProps={{ className: "text-primary font-bold" }}
-        >
-          {node.title}
-        </AppLink>
-        {hasChildren && (
-          <button
-            type="button"
-            aria-label={open ? `Згорнути ${node.title}` : `Розгорнути ${node.title}`}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className="flex size-11 shrink-0 items-center justify-center rounded-full text-navy/70"
-          >
-            <ChevronDown className={cn("size-5 transition-transform", open && "rotate-180")} />
-          </button>
-        )}
-      </div>
-      {hasChildren && open && (
-        <ul>
-          {node.children!.map((child) => (
-            <MobileBranch key={child.id} node={child} depth={depth + 1} onNavigate={onNavigate} />
-          ))}
-        </ul>
-      )}
-    </li>
-  );
-}
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -121,8 +43,6 @@ export function SiteHeader() {
   React.useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
-
-  const topNav = [services, education, partnership, about];
 
   return (
     <header className="w-full">
@@ -189,61 +109,37 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <nav className="relative hidden bg-navy lg:block">
-        <ul className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-x-8 gap-y-3 px-6 py-5 lg:px-10">
-          {topNav.map((item) => (
-            <li key={item.id} className={item.id === "services" ? "group static" : undefined}>
+      <nav className="hidden bg-navy lg:block">
+        <ul className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-x-8 gap-y-3 px-6 py-5 lg:px-10">
+          {HEADER_NAV.map((item) => (
+            <li key={item.label}>
               <AppLink
-                to={item.route}
-                className="flex items-center gap-1 text-[13px] font-medium tracking-[0.06em] text-background/90 transition-colors hover:text-background"
+                to={item.to}
+                className="text-[13px] font-medium tracking-[0.06em] text-background/90 transition-colors hover:text-background"
                 activeProps={{ className: "text-background font-bold" }}
               >
-                {item.title.toUpperCase()}
-                {item.children?.length ? <ChevronDown className="size-3.5" /> : null}
+                {item.label}
               </AppLink>
-              {item.id === "services" && <MegaMenu node={item} />}
             </li>
           ))}
-          <li>
-            <AppLink
-              to="/faq"
-              className="text-[13px] font-medium tracking-[0.06em] text-background/90 hover:text-background"
-            >
-              ПИТАННЯ ТА ВІДПОВІДІ
-            </AppLink>
-          </li>
-          <li>
-            <AppLink
-              to="/kontakty"
-              className="text-[13px] font-medium tracking-[0.06em] text-background/90 hover:text-background"
-            >
-              КОНТАКТИ
-            </AppLink>
-          </li>
         </ul>
       </nav>
 
       {menuOpen && (
         <div className="border-b border-border bg-card lg:hidden">
           <ul className="mx-auto max-w-[1600px] px-4 py-2">
-            {topNav.map((item) => (
-              <MobileBranch
-                key={item.id}
-                node={item}
-                depth={0}
-                onNavigate={() => setMenuOpen(false)}
-              />
+            {HEADER_NAV.map((item) => (
+              <li key={item.label}>
+                <AppLink
+                  to={item.to}
+                  onClick={() => setMenuOpen(false)}
+                  className="block border-b border-border/60 py-3 font-medium text-navy"
+                  activeProps={{ className: "text-primary font-bold" }}
+                >
+                  {item.label}
+                </AppLink>
+              </li>
             ))}
-            <li>
-              <AppLink to="/faq" className="block border-b border-border/60 py-3 font-medium text-navy">
-                Питання та відповіді
-              </AppLink>
-            </li>
-            <li>
-              <AppLink to="/kontakty" className="block py-3 font-medium text-navy">
-                Контакти
-              </AppLink>
-            </li>
             <li className="py-4">
               <AppLink
                 to="/kontakty"
