@@ -149,63 +149,63 @@ const DIRECTIONS = [
 const METHODS = [
   {
     title: "КОМПЛЕКСНА РЕАБІЛІТАЦІЯ",
+    description: "Індивідуальні програми відновлення після травм, операцій та захворювань під наглядом лікарів і фізичних терапевтів.",
     image: rehabImg,
     href: "/poslugy/reabilitatsiia",
-    icon: Activity,
   },
   {
     title: "ДІАГНОСТИКА",
+    description: "Високоточне обстеження серцево-судинної системи, ЕКГ, УЗД та кардіопульмональне тестування.",
     image: cpetImg,
     href: "/poslugy/diagnostyka",
-    icon: Stethoscope,
   },
   {
     title: "КОНСУЛЬТАЦІЯ ФАХІВЦІВ",
+    description: "Персоналізовані прийоми та медичний супровід провідних реабілітологів і профільних лікарів.",
     image: ecgImg,
     href: "/kontakty",
-    icon: UserCheck,
   },
   {
     title: "ФІЗІОТЕРАПІЯ",
+    description: "Сучасні апаратні методики відновлення, електротерапія, лазеротерапія та магнітотерапія.",
     image: ergoImg,
     href: "/poslugy/reabilitatsiia",
-    icon: Zap,
   },
   {
     title: "ГІДРОКІНЕЗІОТЕРАПІЯ",
+    description: "Водні процедури та відновлювальна гімнастика у басейні для м'якої розвантаження суглобів.",
     image: sportsImg,
     href: "/poslugy/vidnovlennia",
-    icon: Droplets,
   },
   {
     title: "ФІТНЕС ТА ТРЕНАЖЕРНИЙ ЗАЛ",
+    description: "Спеціалізовані реабілітаційні тренажери та дозована лікувальна фізкультура.",
     image: rehabImg,
     href: "/poslugy/vidnovlennia/fitnes-zal",
-    icon: Dumbbell,
   },
   {
     title: "ОЗДОРОВЧИЙ БЮВЕТ",
+    description: "Вживання цілющих мінеральних вод для оздоровлення та нормалізації обміну речовин.",
     image: checkupImg,
     href: "/pro-nas/infrastruktura",
-    icon: Trees,
   },
   {
     title: "ЧЕК-АПИ ЗДОРОВ’Я",
+    description: "Комплексні експрес-обстеження організму для виявлення прихованих ризиків на ранніх стадіях.",
     image: checkupImg,
     href: "/poslugy/check-up",
-    icon: Heart,
   },
   {
     title: "СПОРТИВНА АДАПТАЦІЯ",
+    description: "Підвищення фізичної витривалості, безпечний супровід тренувань та швидке відновлення.",
     image: sportsImg,
     href: "/poslugy/vidnovlennia",
-    icon: Trophy,
   },
   {
     title: "ЕРГОТЕРАПІЯ ТА МЕХАНОТЕРАПІЯ",
+    description: "Відновлення дрібної моторики, побутових навичок та біомеханіки суглобів.",
     image: ergoImg,
     href: "/poslugy/reabilitatsiia",
-    icon: Brain,
   },
 ];
 
@@ -470,7 +470,7 @@ function Index() {
         </section>
 
         {/* 3. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
-        <section className="bg-secondary/40 py-24 md:py-32">
+        <section className="bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader
               centered
@@ -478,89 +478,97 @@ function Index() {
               title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ"
             />
             
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-12">
+            <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-12">
               {DIRECTIONS.map((dir, i) => (
-                <Link key={i} href={dir.href} className="group relative flex h-[420px] flex-col justify-end overflow-hidden rounded-3xl shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-black/5">
-                  <div className="absolute inset-0">
-                    <img src={dir.image} alt={dir.title} className="size-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/85 via-50% to-transparent transition-opacity duration-500 group-hover:opacity-95" />
+                <div
+                  key={i}
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
+                >
+                  <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
+                    <img
+                      src={dir.image}
+                      alt={dir.title}
+                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
                   
-                  <div className="relative z-10 p-7">
-                    <h3 className="mb-3 text-xl font-extrabold text-white leading-tight">{dir.title}</h3>
-                    <p className="mb-5 text-sm text-white/80 line-clamp-3 leading-relaxed">
-                      {dir.text}
-                    </p>
-                    <div className="flex items-center gap-2 text-xs font-bold tracking-wider text-primary uppercase transition-transform group-hover:translate-x-1">
-                      Детальніше <ArrowRight className="size-4" />
+                  <div className="flex flex-col justify-between flex-1 p-6 md:p-7 bg-white">
+                    <div>
+                      <h3 className="mb-3 text-xl font-bold text-navy leading-snug">
+                        {dir.title}
+                      </h3>
+                      <p className="mb-6 text-sm text-slate-600 leading-relaxed line-clamp-3 font-normal">
+                        {dir.text}
+                      </p>
+                    </div>
+
+                    <div>
+                      <Link
+                        href={dir.href}
+                        className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
+                      >
+                        Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* 4. МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ (Слайдером в 1 строчку) */}
-        <section className="bg-secondary/40 py-24 md:py-32 overflow-hidden border-y border-border/40">
+        <section className="bg-white py-24 md:py-32 overflow-hidden">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-              <div>
-                <span className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-primary uppercase">
-                  МЕТОДИКИ
-                </span>
-                <h2 className="text-3xl font-extrabold text-navy md:text-5xl lg:text-6xl">
-                  МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ
-                </h2>
-                <div className="mt-6 h-1.5 w-24 rounded-full bg-primary" />
-              </div>
-              <p className="text-navy/70 max-w-md text-base">
-                Сучасний інструментарій відновної медицини у поєднанні з лікувальними факторами природного середовища.
-              </p>
-            </div>
+            <SectionHeader
+              centered
+              subtitle="МЕТОДИКИ"
+              title="МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ"
+            />
 
             <Carousel
               plugins={[Autoplay({ delay: 4500, stopOnInteraction: true })]}
               opts={{ align: "start", loop: true }}
-              className="w-full"
+              className="w-full mt-12"
             >
               <CarouselContent className="-ml-4">
                 {METHODS.map((item, idx) => (
                   <CarouselItem key={idx} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                    <Link
-                      href={item.href}
-                      className="group relative flex h-[380px] flex-col justify-between overflow-hidden rounded-3xl border border-black/5 bg-card shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
-                    >
-                      <div className="absolute inset-0">
+                    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-slate-50/60 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:bg-white">
+                      <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
                         <img
                           src={item.image}
                           alt={item.title}
                           className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/60 via-45% to-transparent transition-opacity duration-500 group-hover:opacity-95" />
                       </div>
 
-                      <div className="relative z-10 flex flex-col justify-between h-full p-7">
-                        <div className="flex size-12 items-center justify-center rounded-2xl bg-white/90 text-primary shadow-md backdrop-blur-md ring-1 ring-black/5 transition-transform duration-300 group-hover:scale-110">
-                          <item.icon className="size-6" />
+                      <div className="flex flex-col justify-between flex-1 p-6 md:p-7">
+                        <div>
+                          <h3 className="mb-3 text-xl font-bold text-navy leading-snug">
+                            {item.title}
+                          </h3>
+                          <p className="mb-6 text-sm text-slate-600 leading-relaxed line-clamp-3 font-normal">
+                            {item.description}
+                          </p>
                         </div>
 
                         <div>
-                          <h3 className="mb-3 text-xl font-bold text-white leading-tight drop-shadow-sm">
-                            {item.title}
-                          </h3>
-                          <div className="flex items-center gap-2 text-xs font-bold tracking-wider text-primary uppercase transition-transform group-hover:translate-x-1">
-                            Детальніше <ArrowRight className="size-4" />
-                          </div>
+                          <Link
+                            href={item.href}
+                            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
+                          >
+                            Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                          </Link>
                         </div>
                       </div>
-                    </Link>
+                    </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <div className="mt-8 flex justify-end gap-3">
-                <CarouselPrevious className="static size-11 translate-y-0 border-border bg-white text-navy shadow-md hover:bg-primary hover:text-white hover:border-primary" />
-                <CarouselNext className="static size-11 translate-y-0 border-border bg-white text-navy shadow-md hover:bg-primary hover:text-white hover:border-primary" />
+              <div className="mt-10 flex justify-center gap-3">
+                <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
+                <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
               </div>
             </Carousel>
           </div>
