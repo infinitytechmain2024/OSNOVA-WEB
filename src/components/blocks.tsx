@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronDown, Check, Phone, Send, MapPin, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { FAQItem, SiteNode } from "@/data/types";
@@ -57,7 +56,7 @@ export function Breadcrumbs({ items }: { items: { title: string; route: string }
             {i === items.length - 1 ? (
               <span className="font-semibold text-navy">{item.title}</span>
             ) : (
-              <Link to={item.route} className="hover:text-primary">
+              <AppLink to={item.route} className="hover:text-primary">
                 {i === 0 ? (
                   <span className="inline-flex items-center gap-1">
                     <Home className="size-3.5" /> {item.title}
@@ -65,7 +64,7 @@ export function Breadcrumbs({ items }: { items: { title: string; route: string }
                 ) : (
                   item.title
                 )}
-              </Link>
+              </AppLink>
             )}
           </li>
         ))}
@@ -130,19 +129,19 @@ export function PageHero({
         )}
 
         <div className="mt-10 flex flex-wrap gap-4">
-          <Link
+          <AppLink
             to="/kontakty"
             className="rounded-lg bg-brand-green px-9 py-5 text-base font-bold tracking-wide text-brand-green-foreground transition-opacity hover:opacity-90"
           >
             {primaryLabel}
-          </Link>
+          </AppLink>
           {secondaryTo && secondaryLabel && (
-            <Link
+            <AppLink
               to={secondaryTo}
               className="inline-flex items-center gap-3 rounded-lg border border-background/40 px-9 py-5 text-base font-bold tracking-wide text-background transition-colors hover:bg-background/10"
             >
               {secondaryLabel} <ArrowRight className="size-5" />
-            </Link>
+            </AppLink>
           )}
         </div>
       </div>
@@ -266,9 +265,9 @@ export function ServiceCard({ node }: { node: SiteNode }) {
       )}
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg font-bold text-navy">
-          <Link to={node.route} className="hover:text-primary">
+          <AppLink to={node.route} className="hover:text-primary">
             {node.title}
-          </Link>
+          </AppLink>
         </h3>
         {node.shortDescription && (
           <p className="mt-3 line-clamp-3 text-navy/75">{node.shortDescription}</p>
@@ -278,12 +277,12 @@ export function ServiceCard({ node }: { node: SiteNode }) {
           {node.duration && (node.priceLabel || node.priceFrom) ? " · " : null}
           {node.priceLabel ?? (node.priceFrom ? `від ${node.priceFrom} грн` : null)}
         </p>
-        <Link
+        <AppLink
           to={node.route}
           className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
         >
           Детальніше <ArrowRight className="size-4" />
-        </Link>
+        </AppLink>
       </div>
     </article>
   );
@@ -304,12 +303,12 @@ export function CTASection({
         <h2 className="text-3xl font-extrabold tracking-wide text-navy md:text-5xl">{title}</h2>
         <div className="mx-auto mt-8 h-0.5 w-20 bg-primary/50" />
         <p className="mx-auto mt-8 max-w-3xl text-lg text-navy/85">{text}</p>
-        <Link
+        <AppLink
           to="/kontakty"
           className="mt-12 inline-block rounded-full bg-primary px-14 py-6 text-lg font-semibold text-primary-foreground shadow-lg transition-opacity hover:opacity-90"
         >
           {buttonLabel}
-        </Link>
+        </AppLink>
         <div className="mx-auto mt-12 h-px w-full max-w-2xl bg-border" />
         <a
           href={CONTACTS.phoneHref}

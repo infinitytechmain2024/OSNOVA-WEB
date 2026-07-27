@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { useRouterState } from "@tanstack/react-router";
 import {
   Instagram,
   Youtube,
@@ -32,33 +32,33 @@ function MegaMenu({ node }: { node: SiteNode }) {
         <div className="grid gap-8 rounded-2xl border border-border bg-card p-8 shadow-lg md:grid-cols-3">
           {(node.children ?? []).map((cat) => (
             <div key={cat.id}>
-              <Link
+              <AppLink
                 to={cat.route}
                 className="text-sm font-bold tracking-[0.06em] text-primary hover:underline"
               >
                 {cat.title.toUpperCase()}
-              </Link>
+              </AppLink>
               <ul className="mt-4 space-y-2">
                 {(cat.children ?? []).slice(0, 6).map((child) => (
                   <li key={child.id}>
-                    <Link
+                    <AppLink
                       to={child.route}
                       className="text-sm text-navy/80 transition-colors hover:text-primary"
                     >
                       {child.title}
-                    </Link>
+                    </AppLink>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
           <div>
-            <Link
+            <AppLink
               to={node.route}
               className="inline-flex items-center gap-2 rounded-lg bg-secondary px-6 py-4 text-sm font-bold text-navy transition-colors hover:bg-accent"
             >
               Усі послуги <ChevronRight className="size-4" />
-            </Link>
+            </AppLink>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ function MobileBranch({
   return (
     <li>
       <div className="flex items-center gap-2 border-b border-border/60">
-        <Link
+        <AppLink
           to={node.route}
           onClick={onNavigate}
           style={{ paddingLeft: depth * 14 }}
@@ -89,7 +89,7 @@ function MobileBranch({
           activeProps={{ className: "text-primary font-bold" }}
         >
           {node.title}
-        </Link>
+        </AppLink>
         {hasChildren && (
           <button
             type="button"
@@ -127,12 +127,12 @@ export function SiteHeader() {
     <header className="w-full">
       <div className="bg-navy-deep">
         <div className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-6 px-6 py-4 lg:px-10">
-          <Link to="/" className="flex flex-col leading-none text-background">
+          <AppLink to="/" className="flex flex-col leading-none text-background">
             <span className="text-2xl font-bold tracking-[0.28em]">ŎSNOVA</span>
             <span className="mt-1 text-[10px] tracking-[0.42em] text-background/70">
               РЕАБІЛІТАЦІЯ
             </span>
-          </Link>
+          </AppLink>
 
           <div className="hidden items-center gap-3 lg:ml-8 lg:flex">
             {SOCIALS.map((Icon, i) => (
@@ -155,19 +155,19 @@ export function SiteHeader() {
             >
               <Phone className="size-4" /> {CONTACTS.phone}
             </a>
-            <Link
+            <AppLink
               to="/kontakty"
               className="hidden rounded-md bg-brand-green px-6 py-3 text-sm font-bold tracking-wide text-brand-green-foreground transition-opacity hover:opacity-90 md:inline-block"
             >
               ЗАПИСАТИСЯ
-            </Link>
-            <Link
+            </AppLink>
+            <AppLink
               to="/poshuk"
               aria-label="Пошук по сайту"
               className="flex size-9 items-center justify-center rounded-full border border-background/40 text-background"
             >
               <Search className="size-4" />
-            </Link>
+            </AppLink>
             <div className="hidden items-center gap-2 text-sm font-semibold text-background lg:flex">
               {LANGS.map((l, i) => (
                 <span key={l} className={cn(i === 0 ? "text-background" : "text-background/50")}>
@@ -192,32 +192,32 @@ export function SiteHeader() {
         <ul className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-x-8 gap-y-3 px-6 py-5 lg:px-10">
           {topNav.map((item) => (
             <li key={item.id} className={item.id === "services" ? "group static" : undefined}>
-              <Link
+              <AppLink
                 to={item.route}
                 className="flex items-center gap-1 text-[13px] font-medium tracking-[0.06em] text-background/90 transition-colors hover:text-background"
                 activeProps={{ className: "text-background font-bold" }}
               >
                 {item.title.toUpperCase()}
                 {item.children?.length ? <ChevronDown className="size-3.5" /> : null}
-              </Link>
+              </AppLink>
               {item.id === "services" && <MegaMenu node={item} />}
             </li>
           ))}
           <li>
-            <Link
+            <AppLink
               to="/faq"
               className="text-[13px] font-medium tracking-[0.06em] text-background/90 hover:text-background"
             >
               ПИТАННЯ ТА ВІДПОВІДІ
-            </Link>
+            </AppLink>
           </li>
           <li>
-            <Link
+            <AppLink
               to="/kontakty"
               className="text-[13px] font-medium tracking-[0.06em] text-background/90 hover:text-background"
             >
               КОНТАКТИ
-            </Link>
+            </AppLink>
           </li>
         </ul>
       </nav>
@@ -234,22 +234,22 @@ export function SiteHeader() {
               />
             ))}
             <li>
-              <Link to="/faq" className="block border-b border-border/60 py-3 font-medium text-navy">
+              <AppLink to="/faq" className="block border-b border-border/60 py-3 font-medium text-navy">
                 Питання та відповіді
-              </Link>
+              </AppLink>
             </li>
             <li>
-              <Link to="/kontakty" className="block py-3 font-medium text-navy">
+              <AppLink to="/kontakty" className="block py-3 font-medium text-navy">
                 Контакти
-              </Link>
+              </AppLink>
             </li>
             <li className="py-4">
-              <Link
+              <AppLink
                 to="/kontakty"
                 className="block rounded-md bg-brand-green px-6 py-4 text-center text-sm font-bold text-brand-green-foreground"
               >
                 ЗАПИСАТИСЯ
-              </Link>
+              </AppLink>
             </li>
           </ul>
         </div>

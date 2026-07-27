@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { Instagram, Youtube, Facebook, Music2, Phone, MapPin } from "lucide-react";
 import { siteTree, CONTACTS } from "@/data/site-tree";
 
@@ -16,9 +15,9 @@ function Column({ title, items }: { title: string; items: { title: string; route
       <ul className="mt-5 space-y-2">
         {items.map((i) => (
           <li key={i.route}>
-            <Link to={i.route} className="text-sm text-background/70 hover:text-background">
+            <AppLink to={i.route} className="text-sm text-background/70 hover:text-background">
               {i.title}
-            </Link>
+            </AppLink>
           </li>
         ))}
       </ul>
@@ -32,12 +31,12 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link to="/" className="flex flex-col leading-none text-background">
+            <AppLink to="/" className="flex flex-col leading-none text-background">
               <span className="text-2xl font-bold tracking-[0.28em]">ŎSNOVA</span>
               <span className="mt-1 text-[10px] tracking-[0.42em] text-background/70">
                 РЕАБІЛІТАЦІЯ
               </span>
-            </Link>
+            </AppLink>
             <p className="mt-6 max-w-md text-sm leading-relaxed text-background/70">
               Медичний та реабілітаційний центр: діагностика, програми відновлення після
               захворювань, травм і операцій, підтримка фізичної активності.
@@ -81,14 +80,14 @@ export function SiteFooter() {
                 </a>
               </li>
               <li>
-                <Link to={about.route} className="hover:text-background">
+                <AppLink to={about.route} className="hover:text-background">
                   {about.title}
-                </Link>
+                </AppLink>
               </li>
               <li>
-                <Link to="/kontakty" className="hover:text-background">
+                <AppLink to="/kontakty" className="hover:text-background">
                   Контакти
-                </Link>
+                </AppLink>
               </li>
             </ul>
           </div>
@@ -97,15 +96,15 @@ export function SiteFooter() {
         <div className="mt-12 flex flex-col gap-4 border-t border-background/15 pt-6 text-xs text-background/60 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} ОСНОВА Реабілітація</p>
           <div className="flex flex-wrap gap-6">
-            <Link to="/polityka-konfidentsiinosti" className="hover:text-background">
+            <AppLink to="/polityka-konfidentsiinosti" className="hover:text-background">
               Політика конфіденційності
-            </Link>
-            <Link to="/cookies" className="hover:text-background">
+            </AppLink>
+            <AppLink to="/cookies" className="hover:text-background">
               Політика cookies
-            </Link>
-            <Link to="/zhoda-na-obrobku-danykh" className="hover:text-background">
+            </AppLink>
+            <AppLink to="/zhoda-na-obrobku-danykh" className="hover:text-background">
               Згода на обробку даних
-            </Link>
+            </AppLink>
           </div>
         </div>
       </div>

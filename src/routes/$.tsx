@@ -246,9 +246,9 @@ function NodePage() {
         />
 
         <PageContainer className="pb-16">
-          <Link to="/poslugy" className="text-sm font-semibold text-primary hover:underline">
+          <AppLink to="/poslugy" className="text-sm font-semibold text-primary hover:underline">
             ← Усі послуги
-          </Link>
+          </AppLink>
         </PageContainer>
       </main>
       <SiteFooter />
