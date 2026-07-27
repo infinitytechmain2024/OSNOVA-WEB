@@ -57,22 +57,10 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
   const [selectedCategoryFilter, setSelectedCategoryFilter] = React.useState<string>("all");
 
   // Track open state of Level 1 Categories
-  const [openCategories, setOpenCategories] = React.useState<Record<string, boolean>>(() => {
-    return { rehab: true, diag: true, checkup: true, recovery: true, "mobile-rehab": true, rental: true };
-  });
+  const [openCategories, setOpenCategories] = React.useState<Record<string, boolean>>(() => ({}));
 
   // Track open state of Level 2 Subcategories
-  const [openSubcategories, setOpenSubcategories] = React.useState<Record<string, boolean>>(() => {
-    return {
-      "rehab-cardio": true,
-      "rehab-ortho": true,
-      "rehab-vert": true,
-      "diag-cardio": true,
-      "diag-msk": true,
-      checkup: true,
-      recovery: true,
-    };
-  });
+  const [openSubcategories, setOpenSubcategories] = React.useState<Record<string, boolean>>(() => ({}));
 
   const isSearchActive = searchQuery.trim().length > 0;
 
@@ -330,7 +318,7 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
                   {isOpen && (
                     <div className="p-3 sm:p-6 bg-background/40 space-y-4 sm:space-y-5">
                       {cat.subcategories.map((sub) => {
-                        const isSubOpen = isSearchActive || openSubcategories[sub.id] !== false;
+                        const isSubOpen = isSearchActive || Boolean(openSubcategories[sub.id]);
 
                         return (
                           <div

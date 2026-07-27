@@ -94,11 +94,11 @@ export function ContactsPage({ node }: { node: SiteNode }) {
           <SectionHeader
             eyebrow="КОНТАКТИ ТА ЗВ'ЯЗОК"
             title="Як з нами зв'язатися"
-            description="Оберіть найзручніший спосіб зв'язку — зателефонуйте, напишіть у месенджер або заповніть форму зворотного зв'язку. Ми завжди раді надати підтримку."
+            text="Оберіть найзручніший спосіб зв'язку — зателефонуйте, напишіть у месенджер або заповніть форму зворотного зв'язку. Ми завжди раді надати підтримку."
           />
 
           {/* Quick Contact Cards Grid */}
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {/* Phone Card */}
             <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40 hover:shadow-md">
               <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
@@ -109,63 +109,29 @@ export function ContactsPage({ node }: { node: SiteNode }) {
               </p>
               <a
                 href={CONTACTS.phoneHref}
-                className="mt-2 block text-xl font-bold text-navy hover:text-primary transition-colors"
+                className="mt-2 block text-base font-bold text-navy hover:text-primary transition-colors truncate"
               >
                 {CONTACTS.phone}
               </a>
               <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
                 <span className="inline-block size-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>{CONTACTS.workingHours}</span>
+                <span>Дзвінки безкоштовні</span>
               </div>
             </div>
 
-            {/* Messengers Card */}
-            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-sky-500/40 hover:shadow-md">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-sky-500/10 text-sky-600 transition-transform group-hover:scale-110">
-                <MessageCircle className="size-6" />
+            {/* Working Hours Card */}
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-amber-500/40 hover:shadow-md">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 transition-transform group-hover:scale-110">
+                <Clock className="size-6" />
               </div>
               <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
-                Швидкі Месенджери
+                Графік роботи
               </p>
-              <p className="mt-2 text-sm font-semibold text-navy">
-                Telegram, WhatsApp, Viber
+              <p className="mt-2 text-base font-bold text-navy">
+                {CONTACTS.workingHours}
               </p>
-              <div className="mt-4 flex items-center gap-3">
-                <a
-                  href={CONTACTS.messengers.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-lg bg-[#229ED9]/10 px-2.5 py-1.5 text-xs font-medium text-[#229ED9] hover:bg-[#229ED9] hover:text-white transition-colors"
-                >
-                  <TelegramIcon className="size-3.5" /> Telegram
-                </a>
-                <a
-                  href={CONTACTS.messengers.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-lg bg-[#25D366]/10 px-2.5 py-1.5 text-xs font-medium text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors"
-                >
-                  <WhatsAppIcon className="size-3.5" /> WhatsApp
-                </a>
-              </div>
-            </div>
-
-            {/* Email Card */}
-            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-indigo-500/40 hover:shadow-md">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-600 transition-transform group-hover:scale-110">
-                <Mail className="size-6" />
-              </div>
-              <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
-                Електронна пошта
-              </p>
-              <a
-                href={CONTACTS.emailHref}
-                className="mt-2 block text-sm font-bold text-navy hover:text-primary transition-colors truncate"
-              >
-                {CONTACTS.email}
-              </a>
               <p className="mt-4 text-xs text-muted-foreground">
-                Для офіційних звернень та партнерства
+                Прийом за записом
               </p>
             </div>
 
@@ -182,6 +148,56 @@ export function ContactsPage({ node }: { node: SiteNode }) {
               </p>
               <p className="mt-2 text-xs text-muted-foreground line-clamp-1">
                 {CONTACTS.addressFull}
+              </p>
+            </div>
+
+            {/* Messengers Card */}
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-sky-500/40 hover:shadow-md">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-sky-500/10 text-sky-600 transition-transform group-hover:scale-110">
+                <MessageCircle className="size-6" />
+              </div>
+              <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
+                Швидкі Месенджери
+              </p>
+              <p className="mt-2 text-xs font-semibold text-navy">
+                Telegram, WhatsApp, Viber
+              </p>
+              <div className="mt-3 flex items-center gap-2">
+                <a
+                  href={CONTACTS.messengers.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 rounded-lg bg-[#229ED9]/10 px-2 py-1 text-[11px] font-medium text-[#229ED9] hover:bg-[#229ED9] hover:text-white transition-colors"
+                >
+                  <TelegramIcon className="size-3" /> Telegram
+                </a>
+                <a
+                  href={CONTACTS.messengers.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 rounded-lg bg-[#25D366]/10 px-2 py-1 text-[11px] font-medium text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors"
+                >
+                  <WhatsAppIcon className="size-3" /> WhatsApp
+                </a>
+              </div>
+            </div>
+
+            {/* Email Card */}
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-indigo-500/40 hover:shadow-md">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-600 transition-transform group-hover:scale-110">
+                <Mail className="size-6" />
+              </div>
+              <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
+                Електронна пошта
+              </p>
+              <a
+                href={CONTACTS.emailHref}
+                className="mt-2 block text-xs font-bold text-navy hover:text-primary transition-colors truncate"
+              >
+                {CONTACTS.email}
+              </a>
+              <p className="mt-4 text-xs text-muted-foreground">
+                Для офіційних звернень
               </p>
             </div>
           </div>
@@ -202,13 +218,14 @@ export function ContactsPage({ node }: { node: SiteNode }) {
               </p>
             </div>
 
-            <div className="mt-12 grid gap-10 lg:grid-cols-12">
+            <div className="mt-12 grid gap-8 lg:gap-10 lg:grid-cols-12 items-stretch">
               {/* Left Column: Form (7 cols) */}
-              <div className="lg:col-span-7">
+              <div className="lg:col-span-7 flex flex-col">
                 <ConsultationForm
                   title="Записатися на консультацію"
                   subtitle="Заповніть форму нижче, і наш адміністратор зв'яжеться з вами для уточнення всіх деталей."
-                  className="bg-white p-6 sm:p-10 shadow-sm border border-border"
+                  className="bg-white p-6 sm:p-10 shadow-sm border border-border h-full flex flex-col justify-between rounded-3xl"
+                  showPrivacyConsent
                 />
               </div>
 
@@ -366,21 +383,6 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                         <p className="text-[10px] text-muted-foreground">@osnova_rehab</p>
                       </div>
                     </a>
-                  </div>
-                </div>
-
-                {/* Working hours banner */}
-                <div className="rounded-3xl bg-navy p-6 text-white shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-brand-green">
-                      <Clock className="size-5" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold">Графік прийому та роботи</h4>
-                      <p className="mt-1 text-xs text-white/70 leading-relaxed">
-                        Центр працює щодня з 08:00 до 20:00. Прийом фахівців здійснюється за попереднім записом.
-                      </p>
-                    </div>
                   </div>
                 </div>
               </div>

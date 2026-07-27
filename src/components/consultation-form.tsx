@@ -1,5 +1,6 @@
 import * as React from "react";
-import { CheckCircle2, Loader2, Send, PhoneCall, Sparkles, User, Phone, MessageSquare } from "lucide-react";
+import { CheckCircle2, Loader2, Send, PhoneCall, Sparkles, User, Phone, MessageSquare, ShieldCheck, Clock } from "lucide-react";
+import { AppLink } from "@/components/app-link";
 import { cn } from "@/lib/utils";
 import {
   Dialog,
@@ -16,6 +17,7 @@ export interface ConsultationFormProps {
   onSuccess?: () => void;
   compact?: boolean;
   tone?: "light" | "dark";
+  showPrivacyConsent?: boolean;
 }
 
 export function ConsultationForm({
@@ -25,6 +27,7 @@ export function ConsultationForm({
   onSuccess,
   compact = false,
   tone = "light",
+  showPrivacyConsent = false,
 }: ConsultationFormProps) {
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");
@@ -75,7 +78,7 @@ export function ConsultationForm({
       />
 
       {isSubmitted ? (
-        <div className="flex flex-col items-center justify-center py-6 text-center animate-in fade-in zoom-in-95 duration-500">
+        <div className="flex flex-col items-center justify-center py-6 text-center animate-in fade-in zoom-in-95 duration-500 h-full">
           <div className="relative mb-6 flex size-20 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 ring-8 ring-emerald-500/10 dark:text-emerald-400 dark:ring-emerald-500/20">
             <CheckCircle2 className="size-10 animate-in zoom-in duration-300" />
             <span className="absolute -right-1 -top-1 flex size-5 items-center justify-center rounded-full bg-emerald-500 text-white shadow-md">
@@ -105,148 +108,187 @@ export function ConsultationForm({
           </button>
         </div>
       ) : (
-        <div className="animate-in fade-in duration-300">
-          <div className="mb-6">
-            <h3
-              className={cn(
-                "text-xl sm:text-2xl font-extrabold tracking-tight",
-                isDark ? "text-white" : "text-navy"
+        <div className="animate-in fade-in duration-300 flex-1 flex flex-col justify-between">
+          <div>
+            <div className="mb-6">
+              <h3
+                className={cn(
+                  "text-xl sm:text-2xl font-extrabold tracking-tight",
+                  isDark ? "text-white" : "text-navy"
+                )}
+              >
+                {title}
+              </h3>
+              {subtitle && (
+                <p
+                  className={cn(
+                    "mt-2 text-xs sm:text-sm leading-relaxed",
+                    isDark ? "text-background/80" : "text-muted-foreground"
+                  )}
+                >
+                  {subtitle}
+                </p>
               )}
-            >
-              {title}
-            </h3>
-            {subtitle && (
-              <p
-                className={cn(
-                  "mt-2 text-xs sm:text-sm leading-relaxed",
-                  isDark ? "text-background/80" : "text-muted-foreground"
-                )}
-              >
-                {subtitle}
-              </p>
-            )}
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-            {/* Name Field */}
-            <div>
-              <label
-                htmlFor="consultation-name"
-                className={cn(
-                  "block text-xs font-bold uppercase tracking-wider mb-1.5",
-                  isDark ? "text-background/90" : "text-navy/90"
-                )}
-              >
-                Ім'я <span className="text-destructive">*</span>
-              </label>
-              <div className="relative">
-                <User className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground/70 pointer-events-none" />
-                <input
-                  id="consultation-name"
-                  type="text"
-                  required
-                  placeholder="Введіть ваше ім'я"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className={cn(
-                    "w-full rounded-xl border px-3.5 py-3 pl-10 text-sm font-medium transition-all focus:outline-none focus:ring-2",
-                    isDark
-                      ? "border-background/20 bg-background/10 text-white placeholder:text-background/50 focus:border-brand-green focus:ring-brand-green/30"
-                      : "border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-primary/20"
-                  )}
-                />
-              </div>
             </div>
 
-            {/* Phone Field */}
-            <div>
-              <label
-                htmlFor="consultation-phone"
-                className={cn(
-                  "block text-xs font-bold uppercase tracking-wider mb-1.5",
-                  isDark ? "text-background/90" : "text-navy/90"
-                )}
-              >
-                Номер телефону <span className="text-destructive">*</span>
-              </label>
-              <div className="relative">
-                <Phone className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground/70 pointer-events-none" />
-                <input
-                  id="consultation-phone"
-                  type="tel"
-                  required
-                  placeholder="+380 (__) ___-__-__"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className={cn(
-                    "w-full rounded-xl border px-3.5 py-3 pl-10 text-sm font-medium transition-all focus:outline-none focus:ring-2",
-                    isDark
-                      ? "border-background/20 bg-background/10 text-white placeholder:text-background/50 focus:border-brand-green focus:ring-brand-green/30"
-                      : "border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-primary/20"
-                  )}
-                />
-              </div>
-            </div>
-
-            {/* Comment Field (Optional) */}
-            <div>
-              <div className="flex items-center justify-between mb-1.5">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+              {/* Name Field */}
+              <div>
                 <label
-                  htmlFor="consultation-comment"
+                  htmlFor="consultation-name"
                   className={cn(
-                    "block text-xs font-bold uppercase tracking-wider",
+                    "block text-xs font-bold uppercase tracking-wider mb-1.5",
                     isDark ? "text-background/90" : "text-navy/90"
                   )}
                 >
-                  Коментар
+                  Ім'я <span className="text-destructive">*</span>
                 </label>
-                <span className="rounded-full bg-secondary/80 px-2 py-0.5 text-[10px] font-semibold text-muted-foreground border border-border/50">
-                  не обов'язково
+                <div className="relative">
+                  <User className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-emerald-700/60 dark:text-emerald-400/60 pointer-events-none" />
+                  <input
+                    id="consultation-name"
+                    type="text"
+                    required
+                    placeholder="Введіть ваше ім'я"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className={cn(
+                      "w-full rounded-xl border px-3.5 py-3 pl-10 text-sm font-medium transition-all focus:outline-none focus:ring-2",
+                      isDark
+                        ? "border-emerald-500/35 bg-background/10 text-white placeholder:text-background/50 focus:border-brand-green focus:ring-brand-green/30 hover:border-emerald-500/55"
+                        : "border-emerald-600/30 bg-emerald-50/20 text-foreground placeholder:text-muted-foreground/60 focus:border-brand-green focus:ring-brand-green/30 hover:border-emerald-600/50"
+                    )}
+                  />
+                </div>
+              </div>
+
+              {/* Phone Field */}
+              <div>
+                <label
+                  htmlFor="consultation-phone"
+                  className={cn(
+                    "block text-xs font-bold uppercase tracking-wider mb-1.5",
+                    isDark ? "text-background/90" : "text-navy/90"
+                  )}
+                >
+                  Номер телефону <span className="text-destructive">*</span>
+                </label>
+                <div className="relative">
+                  <Phone className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-emerald-700/60 dark:text-emerald-400/60 pointer-events-none" />
+                  <input
+                    id="consultation-phone"
+                    type="tel"
+                    required
+                    placeholder="+380 (__) ___-__-__"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className={cn(
+                      "w-full rounded-xl border px-3.5 py-3 pl-10 text-sm font-medium transition-all focus:outline-none focus:ring-2",
+                      isDark
+                        ? "border-emerald-500/35 bg-background/10 text-white placeholder:text-background/50 focus:border-brand-green focus:ring-brand-green/30 hover:border-emerald-500/55"
+                        : "border-emerald-600/30 bg-emerald-50/20 text-foreground placeholder:text-muted-foreground/60 focus:border-brand-green focus:ring-brand-green/30 hover:border-emerald-600/50"
+                    )}
+                  />
+                </div>
+              </div>
+
+              {/* Comment Field (Optional) */}
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label
+                    htmlFor="consultation-comment"
+                    className={cn(
+                      "block text-xs font-bold uppercase tracking-wider",
+                      isDark ? "text-background/90" : "text-navy/90"
+                    )}
+                  >
+                    Коментар
+                  </label>
+                  <span className="rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
+                    не обов'язково
+                  </span>
+                </div>
+                <div className="relative">
+                  <MessageSquare className="absolute left-3.5 top-3.5 size-4 text-emerald-700/60 dark:text-emerald-400/60 pointer-events-none" />
+                  <textarea
+                    id="consultation-comment"
+                    rows={compact ? 2 : 3}
+                    placeholder="Ваші побажання, симптоми або зручний час для дзвінка..."
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    className={cn(
+                      "w-full rounded-xl border px-3.5 py-3 pl-10 text-sm font-medium transition-all focus:outline-none focus:ring-2 resize-none",
+                      isDark
+                        ? "border-emerald-500/35 bg-background/10 text-white placeholder:text-background/50 focus:border-brand-green focus:ring-brand-green/30 hover:border-emerald-500/55"
+                        : "border-emerald-600/30 bg-emerald-50/20 text-foreground placeholder:text-muted-foreground/60 focus:border-brand-green focus:ring-brand-green/30 hover:border-emerald-600/50"
+                    )}
+                  />
+                </div>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={cn(
+                  "group relative flex w-full items-center justify-center gap-2.5 rounded-xl py-3.5 px-6 text-sm font-bold tracking-wide transition-all shadow-md active:scale-[0.98] bg-brand-green text-brand-green-foreground hover:bg-brand-green/90 shadow-brand-green/20 cursor-pointer",
+                  isSubmitting && "opacity-80 cursor-wait"
+                )}
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="size-4 animate-spin" />
+                    <span>Надіслати запит...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="size-4 transition-transform group-hover:translate-x-0.5" />
+                    <span>Надіслати запит</span>
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+
+          {/* Privacy Policy & Consent disclaimer notice */}
+          {showPrivacyConsent && (
+            <div className="mt-5 pt-4 border-t border-border/60 text-center space-y-2.5">
+              <p className={cn("text-xs leading-relaxed", isDark ? "text-background/80" : "text-muted-foreground")}>
+                Надсилаючи заявку, ви погоджуєтесь з нашою{" "}
+                <AppLink
+                  to="/polityka-konfidentsiinosti"
+                  className={cn(
+                    "font-semibold underline underline-offset-2 transition-colors",
+                    isDark
+                      ? "text-brand-green hover:text-white"
+                      : "text-emerald-700 dark:text-emerald-400 hover:text-emerald-800"
+                  )}
+                >
+                  політикою конфіденційності
+                </AppLink>{" "}
+                та{" "}
+                <AppLink
+                  to="/zhoda-na-obrobku-danykh"
+                  className={cn(
+                    "font-semibold underline underline-offset-2 transition-colors",
+                    isDark
+                      ? "text-brand-green hover:text-white"
+                      : "text-emerald-700 dark:text-emerald-400 hover:text-emerald-800"
+                  )}
+                >
+                  обробкою персональних даних
+                </AppLink>.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] font-medium text-muted-foreground/80">
+                <span className="inline-flex items-center gap-1.5">
+                  <ShieldCheck className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" /> Конфіденційність гарантовано
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" /> Відповідь протягом 15 хв
                 </span>
               </div>
-              <div className="relative">
-                <MessageSquare className="absolute left-3.5 top-3.5 size-4 text-muted-foreground/70 pointer-events-none" />
-                <textarea
-                  id="consultation-comment"
-                  rows={compact ? 2 : 3}
-                  placeholder="Ваші побажання, симптоми або зручний час для дзвінка..."
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  className={cn(
-                    "w-full rounded-xl border px-3.5 py-3 pl-10 text-sm font-medium transition-all focus:outline-none focus:ring-2 resize-none",
-                    isDark
-                      ? "border-background/20 bg-background/10 text-white placeholder:text-background/50 focus:border-brand-green focus:ring-brand-green/30"
-                      : "border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-primary/20"
-                  )}
-                />
-              </div>
             </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={cn(
-                "group relative flex w-full items-center justify-center gap-2.5 rounded-xl py-3.5 px-6 text-sm font-bold tracking-wide transition-all shadow-md active:scale-[0.98]",
-                isDark
-                  ? "bg-brand-green text-brand-green-foreground hover:bg-brand-green/90 shadow-brand-green/20"
-                  : "bg-primary text-primary-foreground hover:bg-primary/90 shadow-primary/20",
-                isSubmitting && "opacity-80 cursor-wait"
-              )}
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="size-4 animate-spin" />
-                  <span>Відправка...</span>
-                </>
-              ) : (
-                <>
-                  <Send className="size-4 transition-transform group-hover:translate-x-0.5" />
-                  <span>Відправити заявку</span>
-                </>
-              )}
-            </button>
-          </form>
+          )}
         </div>
       )}
     </div>
