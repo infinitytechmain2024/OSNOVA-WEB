@@ -3,15 +3,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AppLink } from "@/components/app-link";
 import {
   ArrowRight,
-  Activity,
   Heart,
-  Stethoscope,
   Dumbbell,
   MapPin,
   Phone,
   Users,
-  Shield,
-  Clock,
   ChevronRight,
   Brain,
   Sparkles,
@@ -22,10 +18,6 @@ import {
   Handshake,
   BookOpen,
   Calendar,
-  Award,
-  Droplets,
-  Trees,
-  FileText,
   UserCheck,
   Flame,
   Zap,
@@ -43,6 +35,12 @@ import sportsImg from "@/assets/service-sports.jpg";
 import cpetImg from "@/assets/cpet-test.jpg";
 import ecgImg from "@/assets/ecg-review.jpg";
 import ergoImg from "@/assets/ergometer.jpg";
+import partnerAsmuLogo from "@/assets/partners/partner-asmu.png";
+import partnerChnuLogo from "@/assets/partners/partner-chnu.png";
+import partnerHeartLogo from "@/assets/partners/partner-heart.svg";
+import partnerIfnmuLogo from "@/assets/partners/partner-ifnmu.png";
+import partnerKarpatskaAkademiiaLogo from "@/assets/partners/partner-karpatska-akademiia.png";
+import partnerSytenkoLogo from "@/assets/partners/partner-sytenko.svg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -214,52 +212,52 @@ const METHODS = [
 // 10 Переваг
 const ADVANTAGES = [
   {
-    icon: UserCheck,
+    image: rehabImg,
     title: "ІНДИВІДУАЛЬНІ ПРОГРАМИ",
     text: "Розробка персоналізованого графіку та інтенсивності процедур з урахуванням діагнозу.",
   },
   {
-    icon: Activity,
+    image: cpetImg,
     title: "КОМПЛЕКСНИЙ ПІДХІД",
     text: "Мультидисциплінарна взаємодія лікарів для досягнення швидкого та тривалого результату.",
   },
   {
-    icon: Award,
+    image: sportsImg,
     title: "ДОСВІДЧЕНІ ФАХІВЦІ ТА СЕРТИФІКОВАНА КОМАНДА",
     text: "Лікарі вищої категорії та фізичні терапевти з міжнародною акредитацією.",
   },
   {
-    icon: Stethoscope,
+    image: ecgImg,
     title: "ПРОФЕСІЙНА ДІАГНОСТИКА",
     text: "Інноваційні методи виявлення ризиків та оцінка функціональних резервів до появи симптомів.",
   },
   {
-    icon: ShieldCheck,
+    image: ergoImg,
     title: "СУЧАСНІ МЕТОДИКИ ТА ОБЛАДНАННЯ",
     text: "Використання передових медичних технологій та обладнання провідних світових брендів.",
   },
   {
-    icon: GraduationCap,
+    image: checkupImg,
     title: "НАУКОВО-ОСВІТНЯ БАЗА ДЛЯ ВИЩИХ НАВЧАЛЬНИХ ЗАКЛАДІВ",
     text: "Платформа для підготовки фахівців, вдосконалення протоколів та клінічних досліджень.",
   },
   {
-    icon: Shield,
+    image: rehabImg,
     title: "ВИСОКА ЯКІСТЬ І МІЖНАРОДНІ СТАНДАРТИ",
     text: "Суворе дотримання європейських медичних протоколів лікування та реабілітації.",
   },
   {
-    icon: Clock,
+    image: sportsImg,
     title: "КОМФОРТ І КОНФІДЕНЦІЙНІСТЬ",
     text: "Преміальні умови перебування, повна анонімність та індивідуальна турбота про кожного.",
   },
   {
-    icon: Droplets,
+    image: checkupImg,
     title: "БЮВЕТ З ЛІКУВАЛЬНИМИ ВОДАМИ",
     text: "Природне оздоровлення організму цілющими джерельними мінеральними водами.",
   },
   {
-    icon: Trees,
+    image: ergoImg,
     title: "ПРИРОДА КАРПАТ, ЩО СПРИЯЄ ВІДНОВЛЕННЮ",
     text: "Унікальний гірський клімат Буковеля підсилює ефект кліматотерапії та реабілітації.",
   },
@@ -267,12 +265,42 @@ const ADVANTAGES = [
 
 // Партнери
 const PARTNERS = [
-  { name: "Львівський медичний университет ім. Данила Галицького", role: "Академічний партнер" },
-  { name: "Івано-Франківський національний медичний університет", role: "Наукова база" },
-  { name: "European Rehabilitation Academy", role: "Міжнародна співпраця" },
-  { name: "Schiller Medical Switzerland", role: "Технологічне обладнання" },
-  { name: "Enraf-Nonius Medical", role: "Фізіотерапевтичні системи" },
-  { name: "Bukovel Health & Wellness Resort", role: "Кліматичний курорт" },
+  {
+    name: "Карпатська Академія",
+    role: "Освітня платформа",
+    href: "https://osnovahub.com/",
+    logo: partnerKarpatskaAkademiiaLogo,
+  },
+  {
+    name: "Черкаський національний університет імені Богдана Хмельницького",
+    role: "Університетський партнер",
+    href: "https://cdu.edu.ua/",
+    logo: partnerChnuLogo,
+  },
+  {
+    name: "Асоціація спортивної медицини України",
+    role: "Професійна асоціація",
+    href: "https://asmu.com.ua/",
+    logo: partnerAsmuLogo,
+  },
+  {
+    name: "Інститут ім. проф. М. І. Ситенка, Харків",
+    role: "Науково-медичний інститут",
+    href: "https://sytenko.org.ua/",
+    logo: partnerSytenkoLogo,
+  },
+  {
+    name: "Інститут серця МОЗ України",
+    role: "Кардіохірургічний центр",
+    href: "https://heart.kyiv.ua/",
+    logo: partnerHeartLogo,
+  },
+  {
+    name: "Івано-Франківський національний медичний університет",
+    role: "Медичний університет",
+    href: "https://www.ifnmu.edu.ua/",
+    logo: partnerIfnmuLogo,
+  },
 ];
 
 // Співпраця
@@ -312,6 +340,25 @@ const COOPERATION_ITEMS = [
     text: "Благодійні та реабілітаційні ініціативи, допомога громаді та соціальні програми.",
     href: "/sotsialni-proiekty",
     icon: Heart,
+  },
+];
+
+const EDUCATION_CARDS = [
+  {
+    title: "НАВЧАННЯ",
+    text: "Курси є важливими для вдосконалення хірургічної техніки, вивчення анатомії та освоєння нових медичних технологій і методик.",
+    href: "/kursy",
+    image: rehabImg,
+    label: "Практичні курси",
+    icon: GraduationCap,
+  },
+  {
+    title: "КОНФЕРЕНЦІЇ",
+    text: "Професійні зустрічі для обміну досвідом, презентації нових методик і обговорення актуальних питань реабілітаційної медицини.",
+    href: "/konferentsii",
+    image: checkupImg,
+    label: "Фахові події",
+    icon: BookOpen,
   },
 ];
 
@@ -363,6 +410,74 @@ function SectionHeader({ subtitle, title, centered = false }: { subtitle?: strin
   );
 }
 
+function DirectionCard({ direction }: { direction: (typeof DIRECTIONS)[number] }) {
+  return (
+    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+      <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
+        <img
+          src={direction.image}
+          alt={direction.title}
+          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
+
+      <div className="flex flex-1 flex-col justify-between bg-white p-6 md:p-7">
+        <div>
+          <h3 className="mb-3 text-xl font-bold leading-snug text-navy">
+            {direction.title}
+          </h3>
+          <p className="mb-6 line-clamp-3 text-sm font-normal leading-relaxed text-slate-600">
+            {direction.text}
+          </p>
+        </div>
+
+        <div>
+          <AppLink
+            to={direction.href}
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-md"
+          >
+            Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          </AppLink>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PartnerCard({ partner }: { partner: (typeof PARTNERS)[number] }) {
+  return (
+    <article className="group flex h-full min-h-[310px] flex-col rounded-[24px] border border-slate-200/80 bg-white p-7 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/35 hover:shadow-xl">
+      <div className="flex h-32 items-center justify-center rounded-2xl bg-slate-50 p-5 ring-1 ring-slate-100 transition-colors duration-300 group-hover:bg-white">
+        <img
+          src={partner.logo}
+          alt={partner.name}
+          loading="lazy"
+          className="max-h-24 w-full object-contain"
+        />
+      </div>
+
+      <div className="mt-6 flex flex-1 flex-col">
+        <span className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+          {partner.role}
+        </span>
+        <h3 className="text-lg font-extrabold leading-snug text-navy md:text-xl">
+          {partner.name}
+        </h3>
+      </div>
+
+      <a
+        href={partner.href}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-md"
+        aria-label={`Детальніше про ${partner.name}`}
+      >
+        Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+      </a>
+    </article>
+  );
+}
+
 function Index() {
   const [directionsApi, setDirectionsApi] = React.useState<CarouselApi>();
   const [currentDirectionsSlide, setCurrentDirectionsSlide] = React.useState(0);
@@ -370,6 +485,9 @@ function Index() {
   const [methodsApi, setMethodsApi] = React.useState<CarouselApi>();
   const [currentMethodsSlide, setCurrentMethodsSlide] = React.useState(0);
   const [methodsSlideCount, setMethodsSlideCount] = React.useState(0);
+  const [cooperationApi, setCooperationApi] = React.useState<CarouselApi>();
+  const [currentCooperationSlide, setCurrentCooperationSlide] = React.useState(0);
+  const [cooperationSlideCount, setCooperationSlideCount] = React.useState(0);
 
   React.useEffect(() => {
     if (!directionsApi) return;
@@ -406,6 +524,24 @@ function Index() {
       methodsApi.off("reInit", updateState);
     };
   }, [methodsApi]);
+
+  React.useEffect(() => {
+    if (!cooperationApi) return;
+
+    const updateState = () => {
+      setCooperationSlideCount(cooperationApi.scrollSnapList().length);
+      setCurrentCooperationSlide(cooperationApi.selectedScrollSnap());
+    };
+
+    updateState();
+    cooperationApi.on("select", updateState);
+    cooperationApi.on("reInit", updateState);
+
+    return () => {
+      cooperationApi.off("select", updateState);
+      cooperationApi.off("reInit", updateState);
+    };
+  }, [cooperationApi]);
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
@@ -529,49 +665,27 @@ function Index() {
               title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ"
             />
             
+            <div className="mt-12 hidden gap-7 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {DIRECTIONS.map((direction, index) => (
+                <DirectionCard key={index} direction={direction} />
+              ))}
+            </div>
+
             <Carousel
               setApi={setDirectionsApi}
               plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
               opts={{ align: "start", loop: true }}
-              className="w-full mt-12"
+              className="mt-12 w-full sm:hidden"
             >
               <CarouselContent className="-ml-4">
-                {DIRECTIONS.map((dir, i) => (
-                  <CarouselItem key={i} className="pl-4 basis-[84%] sm:basis-[47%] lg:basis-[31%] xl:basis-[23.8%]">
-                    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
-                      <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
-                        <img
-                          src={dir.image}
-                          alt={dir.title}
-                          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-
-                      <div className="flex flex-col justify-between flex-1 p-6 md:p-7 bg-white">
-                        <div>
-                          <h3 className="mb-3 text-xl font-bold text-navy leading-snug">
-                            {dir.title}
-                          </h3>
-                          <p className="mb-6 text-sm text-slate-600 leading-relaxed line-clamp-3 font-normal">
-                            {dir.text}
-                          </p>
-                        </div>
-
-                        <div>
-                          <AppLink
-                            to={dir.href}
-                            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
-                          >
-                            Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                          </AppLink>
-                        </div>
-                      </div>
-                    </div>
+                {DIRECTIONS.map((direction, index) => (
+                  <CarouselItem key={index} className="basis-[84%] pl-4">
+                    <DirectionCard direction={direction} />
                   </CarouselItem>
                 ))}
               </CarouselContent>
 
-              <div className="mt-10 flex flex-col items-center gap-6">
+              <div className="mt-10 flex flex-col items-center gap-6 sm:hidden">
                 {directionsSlideCount > 0 && (
                   <div className="flex items-center justify-center gap-2.5">
                     {Array.from({ length: directionsSlideCount }).map((_, index) => (
@@ -692,17 +806,20 @@ function Index() {
               {ADVANTAGES.map((adv, i) => (
                 <div
                   key={i}
-                  className="group relative overflow-hidden rounded-3xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-2 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 flex flex-col justify-between"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl"
                 >
-                  <div className="absolute -right-8 -top-8 size-28 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-150" />
-                  <div>
-                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                      <adv.icon className="size-6" />
-                    </div>
+                  <div className="h-32 w-full overflow-hidden bg-slate-100 sm:h-36 lg:h-32 xl:h-28">
+                    <img
+                      src={adv.image}
+                      alt={adv.title}
+                      loading="lazy"
+                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
                     <h3 className="mb-3 text-base font-extrabold text-navy leading-snug">{adv.title}</h3>
                     <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{adv.text}</p>
                   </div>
-                  <div className="mt-6 h-1 w-12 rounded-full bg-primary/20 group-hover:bg-primary transition-colors" />
                 </div>
               ))}
             </div>
@@ -738,38 +855,49 @@ function Index() {
               title="НАВЧАННЯ ТА КОНФЕРЕНЦІЇ"
             />
             
-            <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto mt-12">
-              <div className="rounded-3xl border border-border bg-card p-8 md:p-10 shadow-xl transition-all hover:border-primary/40 hover:shadow-2xl">
-                <div className="mb-6 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <GraduationCap className="size-7" />
-                </div>
-                <h3 className="mb-4 text-2xl font-extrabold text-navy">НАВЧАННЯ</h3>
-                <p className="mb-8 text-muted-foreground leading-relaxed text-base md:text-lg">
-                  Курси є важливими для вдосконалення хірургічної техніки, вивчення анатомії та освоєння нових медичних технологій і методик.
-                </p>
-                <AppLink
-                  to="/navchannia"
-                  className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors"
-                >
-                  ДІЗНАТИСЯ БІЛЬШЕ <ArrowRight className="size-4" />
-                </AppLink>
-              </div>
+            <div className="mx-auto mt-12 grid max-w-6xl gap-8 md:grid-cols-2">
+              {EDUCATION_CARDS.map((item) => {
+                const Icon = item.icon;
 
-              <div className="rounded-3xl border border-border bg-card p-8 md:p-10 shadow-xl transition-all hover:border-primary/40 hover:shadow-2xl">
-                <div className="mb-6 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <BookOpen className="size-7" />
-                </div>
-                <h3 className="mb-4 text-2xl font-extrabold text-navy">КОНФЕРЕНЦІЇ</h3>
-                <p className="mb-8 text-muted-foreground leading-relaxed text-base md:text-lg">
-                  Збори, нарада груп осіб, окремих осіб, організації для обговорення певної проблематики, яка визначена заздалегідь.
-                </p>
-                <AppLink
-                  to="/navchannia"
-                  className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors"
-                >
-                  ПЕРЕГЛЯНУТИ ЗАХОДИ <ArrowRight className="size-4" />
-                </AppLink>
-              </div>
+                return (
+                  <AppLink
+                    key={item.title}
+                    to={item.href}
+                    className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl"
+                  >
+                    <div className="relative h-60 w-full overflow-hidden bg-slate-100 sm:h-72">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        loading="lazy"
+                        className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/70 via-navy-deep/10 to-transparent" />
+                      <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-xs font-bold tracking-[0.16em] text-white uppercase backdrop-blur-md">
+                        <Icon className="size-4" />
+                        {item.label}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-1 flex-col justify-between p-7 md:p-8">
+                      <div>
+                        <h3 className="mb-4 text-2xl font-extrabold leading-tight text-navy transition-colors group-hover:text-primary md:text-3xl">
+                          {item.title}
+                        </h3>
+                        <p className="text-base leading-relaxed text-slate-600 md:text-lg">
+                          {item.text}
+                        </p>
+                      </div>
+
+                      <div className="mt-8">
+                        <span className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 group-hover:bg-primary/90 group-hover:shadow-md">
+                          Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                        </span>
+                      </div>
+                    </div>
+                  </AppLink>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -783,26 +911,58 @@ function Index() {
               title="СПІВПРАЦЯ"
             />
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 mt-12">
-              {COOPERATION_ITEMS.map((item, idx) => (
-                <AppLink
-                  key={idx}
-                  to={item.href}
-                  className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl"
-                >
-                  <div>
-                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                      <item.icon className="size-6" />
-                    </div>
-                    <h3 className="mb-3 text-lg font-bold text-navy leading-tight">{item.title}</h3>
-                    <p className="text-xs md:text-sm text-slate-600 leading-relaxed">{item.text}</p>
+            <Carousel
+              setApi={setCooperationApi}
+              plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
+              opts={{ align: "start", loop: true, slidesToScroll: 1 }}
+              className="mt-12 w-full"
+            >
+              <CarouselContent className="-ml-6">
+                {COOPERATION_ITEMS.map((item, idx) => (
+                  <CarouselItem key={idx} className="basis-[88%] pl-6 sm:basis-[48%] lg:basis-1/3">
+                    <AppLink
+                      to={item.href}
+                      className="group relative flex min-h-[280px] flex-col justify-between rounded-[24px] border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl md:min-h-[300px] md:p-8 lg:min-h-[320px] lg:p-9"
+                    >
+                      <div>
+                        <div className="mb-7 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                          <item.icon className="size-7" />
+                        </div>
+                        <h3 className="mb-4 text-xl font-bold leading-tight text-navy md:text-2xl">{item.title}</h3>
+                        <p className="text-sm leading-relaxed text-slate-600 md:text-base">{item.text}</p>
+                      </div>
+                      <div className="mt-8 flex items-center gap-2 text-xs font-bold uppercase text-primary md:text-sm">
+                        Деталі <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                      </div>
+                    </AppLink>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+
+              <div className="mt-10 flex flex-col items-center gap-6">
+                {cooperationSlideCount > 0 && (
+                  <div className="flex items-center justify-center gap-2.5">
+                    {Array.from({ length: cooperationSlideCount }).map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => cooperationApi?.scrollTo(index)}
+                        className={`h-2.5 rounded-full transition-all duration-300 ${
+                          currentCooperationSlide === index
+                            ? "w-8 bg-primary shadow-sm"
+                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                        }`}
+                        aria-label={`Перейти до слайду співпраці ${index + 1}`}
+                      />
+                    ))}
                   </div>
-                  <div className="mt-6 flex items-center gap-2 text-xs font-bold text-primary uppercase">
-                    Деталі <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </AppLink>
-              ))}
-            </div>
+                )}
+
+                <div className="flex items-center justify-center gap-3">
+                  <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
+                  <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
+                </div>
+              </div>
+            </Carousel>
           </div>
         </section>
 
