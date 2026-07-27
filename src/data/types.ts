@@ -18,6 +18,7 @@ export type FAQItem = {
 export type ServiceMethodCard = {
   title: string;
   text: string;
+  to?: string;
 };
 
 export type ServicePriceRow = {

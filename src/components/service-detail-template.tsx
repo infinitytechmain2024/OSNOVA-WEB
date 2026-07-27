@@ -3,6 +3,7 @@ import { AppLink } from "@/components/app-link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { OtherServices } from "@/components/other-services";
+import { FAQAccordion } from "@/components/blocks";
 import { getServicePageData } from "@/data/service-content-generator";
 import type { SiteNode } from "@/data/types";
 import { ArrowRight, Check, MapPin, Phone, Send } from "lucide-react";
@@ -181,10 +182,22 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
             </h2>
             <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
               {data.methodCards.map((m) => (
-                <article key={m.title} className="rounded-xl bg-card p-5 sm:p-8 shadow-sm transition-shadow hover:shadow-md">
+                <article
+                  key={m.title}
+                  className="flex flex-col rounded-xl bg-card p-5 sm:p-8 shadow-sm transition-shadow hover:shadow-md"
+                >
                   <h3 className="text-base sm:text-lg font-bold text-primary">{m.title}</h3>
                   <div className="mt-3 sm:mt-4 h-0.5 w-10 bg-primary/60" />
                   <p className="mt-3 sm:mt-5 text-xs sm:text-sm text-navy/85">{m.text}</p>
+                  {m.to && (
+                    <AppLink
+                      to={m.to}
+                      aria-label={`Детальніше про ${m.title}`}
+                      className="mt-5 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:mt-6 sm:px-5 sm:text-sm"
+                    >
+                      Детальніше <ArrowRight className="size-4" />
+                    </AppLink>
+                  )}
                 </article>
               ))}
             </div>
@@ -349,7 +362,15 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
           </button>
         </section>
 
-        {/* 10 — Інші послуги */}
+        {/* 10 — FAQ */}
+        {node.faq && node.faq.length > 0 && (
+          <section className="mx-auto max-w-[1400px] px-4 sm:px-6 pb-16 sm:pb-24 lg:px-10">
+            <SectionTitle>Поширені питання</SectionTitle>
+            <FAQAccordion items={node.faq} />
+          </section>
+        )}
+
+        {/* 11 — Інші послуги */}
         <OtherServices />
       </main>
 

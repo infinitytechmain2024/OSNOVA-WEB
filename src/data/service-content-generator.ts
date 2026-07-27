@@ -1,4 +1,4 @@
-import type { ServicePageContent, SiteNode } from "./types";
+import type { ServiceMethodCard, ServicePageContent, SiteNode } from "./types";
 import cpetImg from "@/assets/cpet-test.jpg";
 import ecgImg from "@/assets/ecg-review.jpg";
 import ergoImg from "@/assets/ergometer.jpg";
@@ -34,7 +34,7 @@ export type ResolvedServicePageData = {
   frequencyImage: string;
 
   methodSectionTitle: string;
-  methodCards: { title: string; text: string }[];
+  methodCards: ServiceMethodCard[];
   methodNote: string;
 
   resultsTitle: string;
@@ -154,6 +154,7 @@ export function getServicePageData(node: SiteNode): ResolvedServicePageData {
     ? node.children.map((c) => ({
         title: c.title,
         text: c.shortDescription || "Сучасний метод обстеження та відновлення здоров’я.",
+        to: c.route,
       }))
     : node.methods?.length
     ? node.methods.map((m) => ({

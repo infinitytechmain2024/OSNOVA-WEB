@@ -13,17 +13,18 @@ import {
   Search,
   ChevronDown,
   ChevronRight,
+  Languages,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteTree, CONTACTS } from "@/data/site-tree";
 import type { SiteNode } from "@/data/types";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const services = siteTree.find((n) => n.id === "services")!;
 const rehab = services.children!.find((n) => n.id === "rehab")!;
@@ -51,38 +52,83 @@ export const HEADER_NAV: NavNodeItem[] = [
 
 const SOCIALS = [Instagram, Music2, Youtube, Facebook];
 const LANGS = [
-  { value: "uk", label: "УКР" },
-  { value: "ru", label: "RU" },
-  { value: "en", label: "EN" },
-];
+  { value: "uk", shortLabel: "УКР", label: "Українська" },
+  { value: "ru", shortLabel: "RU", label: "Русский" },
+  { value: "en", shortLabel: "EN", label: "English" },
+] as const;
 
-function LanguageSelect({ className }: { className?: string }) {
+type LanguageValue = (typeof LANGS)[number]["value"];
+
+function LanguageSelect({
+  value,
+  onValueChange,
+  className,
+  tone = "dark",
+}: {
+  value: LanguageValue;
+  onValueChange: (value: LanguageValue) => void;
+  className?: string;
+  tone?: "dark" | "light";
+}) {
+  const currentLang = LANGS.find((lang) => lang.value === value) ?? LANGS[0];
+  const isDark = tone === "dark";
+
+  const handleValueChange = (nextValue: string) => {
+    const nextLang = LANGS.find((lang) => lang.value === nextValue);
+    if (nextLang) onValueChange(nextLang.value);
+  };
+
   return (
-    <Select defaultValue="uk">
-      <SelectTrigger
-        aria-label="Вибір мови"
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button
+          type="button"
+          aria-label={`Вибір мови: ${currentLang.label}`}
+          className={cn(
+            "inline-flex h-9 min-w-[96px] items-center justify-between gap-1.5 rounded-md px-3 text-xs font-bold transition-colors focus-visible:outline-none focus-visible:ring-1",
+            isDark
+              ? "border border-background/40 bg-transparent text-background hover:bg-background/10 focus-visible:ring-background/35"
+              : "border border-navy/20 bg-secondary/60 text-navy hover:bg-secondary focus-visible:ring-primary/35",
+            className,
+          )}
+        >
+          <Languages className="size-4 opacity-85" />
+          <span>{currentLang.shortLabel}</span>
+          <ChevronDown className="size-3.5 opacity-80" />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align={isDark ? "end" : "center"}
+        side="bottom"
+        sideOffset={8}
         className={cn(
-          "h-9 w-[86px] rounded-md border-background/40 bg-transparent px-3 text-xs font-bold text-background shadow-none hover:bg-background/10 focus:ring-background/35 [&>svg]:text-background [&>svg]:opacity-80",
-          className,
+          "z-[60] min-w-[154px] rounded-lg p-1.5 shadow-2xl backdrop-blur-none",
+          isDark
+            ? "border-background/15 bg-navy-deep text-background ring-1 ring-background/10"
+            : "border-navy/10 bg-white text-navy ring-1 ring-navy/10",
         )}
       >
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent
-        align="end"
-        className="min-w-[86px] border-border/40 bg-navy-deep text-background"
-      >
-        {LANGS.map((lang) => (
-          <SelectItem
-            key={lang.value}
-            value={lang.value}
-            className="cursor-pointer text-xs font-semibold text-background focus:bg-primary/25 focus:text-white"
-          >
-            {lang.label}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+        <DropdownMenuRadioGroup value={value} onValueChange={handleValueChange}>
+          {LANGS.map((lang) => (
+            <DropdownMenuRadioItem
+              key={lang.value}
+              value={lang.value}
+              className={cn(
+                "cursor-pointer rounded-md py-2 pl-8 pr-3 text-xs font-semibold",
+                isDark
+                  ? "text-background/90 focus:bg-primary/25 focus:text-white data-[state=checked]:text-white"
+                  : "text-navy/85 focus:bg-secondary focus:text-navy data-[state=checked]:text-primary",
+              )}
+            >
+              <span className="flex w-full items-center justify-between gap-3">
+                <span>{lang.label}</span>
+                <span className="text-[10px] uppercase opacity-60">{lang.shortLabel}</span>
+              </span>
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
@@ -277,6 +323,7 @@ function MobileNavItem({ item, onClose }: { item: NavNodeItem; onClose: () => vo
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [language, setLanguage] = React.useState<LanguageValue>("uk");
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   React.useEffect(() => {
@@ -330,7 +377,11 @@ export function SiteHeader() {
             >
               <Search className="size-4" />
             </AppLink>
-            <LanguageSelect className="hidden lg:flex" />
+            <LanguageSelect
+              value={language}
+              onValueChange={setLanguage}
+              className="hidden lg:inline-flex"
+            />
             <button
               type="button"
               aria-label={menuOpen ? "Закрити меню" : "Відкрити меню"}
@@ -355,6 +406,15 @@ export function SiteHeader() {
       {menuOpen && (
         <div className="border-b border-border bg-card shadow-2xl lg:hidden max-h-[calc(100vh-70px)] overflow-y-auto animate-in slide-in-from-top-2 duration-200">
           <ul className="mx-auto max-w-[1600px] px-5 py-3 space-y-1">
+            <li className="flex justify-end border-b border-border/60 pb-3">
+              <LanguageSelect
+                value={language}
+                onValueChange={setLanguage}
+                tone="light"
+                className="min-w-[154px]"
+              />
+            </li>
+
             {HEADER_NAV.map((item) => (
               <MobileNavItem key={item.label} item={item} onClose={() => setMenuOpen(false)} />
             ))}

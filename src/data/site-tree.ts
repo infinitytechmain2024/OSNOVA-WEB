@@ -428,6 +428,7 @@ const cardioDiag: SiteNode = {
   seoTitle: "Кардіологічна діагностика — OSNOVA Реабілітація, Буковель",
   seoDescription:
     "Комплексна оцінка роботи серця: ЕКГ, Холтер, ДМАТ, кардіопульмональний тест, спірографія. Медичний висновок і персональні рекомендації.",
+  faq: BASE_FAQ,
   children: [
     method("diag-cardio", CARDIO_DIAG_ROUTE, "ekg", "ЕКГ", "Базова оцінка електричної активності серця, ритму та провідності.", "15 хв", "600 грн"),
     method("diag-cardio", CARDIO_DIAG_ROUTE, "kholter-ekg", "Холтер ЕКГ", "Добове моніторування серцевого ритму в умовах звичайної активності.", "1 доба", "1200 грн"),
@@ -455,6 +456,7 @@ const mskDiag: SiteNode = {
   priceLabel: "від 900 грн",
   image: rehabImg,
   published: true,
+  faq: BASE_FAQ,
   children: [
     method("diag-msk", MSK_ROUTE, "laboratoriia-khodby", "Лабораторія ходьби", "Апаратний аналіз ходи, кроку та розподілу навантаження.", "45 хв", "1500 грн", rehabImg),
     method("diag-msk", MSK_ROUTE, "neiromiazove-testuvannia", "Нейром’язове тестування", "Оцінка сили та роботи м’язових груп.", "40 хв", "1200 грн", rehabImg),

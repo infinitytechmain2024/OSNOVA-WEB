@@ -706,7 +706,7 @@ function Index() {
               {HERO_SLIDES.map((slide, index) => (
                 <CarouselItem
                   key={index}
-                  className="relative h-[500px] min-w-full basis-full !pl-0 md:h-[560px] lg:h-[600px]"
+                  className="relative h-[500px] min-w-full basis-full overflow-hidden !pl-0 md:h-[560px] lg:h-[600px]"
                 >
                   <div className="absolute inset-0 size-full">
                     <img
