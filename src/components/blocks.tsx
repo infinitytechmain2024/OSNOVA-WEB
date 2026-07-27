@@ -13,15 +13,15 @@ export function PageContainer({
   className?: string;
 }) {
   return (
-    <section className={cn("mx-auto max-w-[1600px] px-6 lg:px-10", className)}>{children}</section>
+    <section className={cn("mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10", className)}>{children}</section>
   );
 }
 
 export function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <h2 className="text-3xl leading-tight font-bold text-navy md:text-4xl">{children}</h2>
-      <div className="mt-6 h-1 w-16 rounded-full bg-primary" />
+      <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">{children}</h2>
+      <div className="mt-4 sm:mt-6 h-1 w-16 rounded-full bg-primary" />
     </>
   );
 }
@@ -38,26 +38,26 @@ export function SectionHeader({
   return (
     <div>
       {eyebrow && (
-        <p className="text-sm font-semibold tracking-[0.28em] text-primary">{eyebrow}</p>
+        <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.28em] text-primary">{eyebrow}</p>
       )}
-      <h2 className="mt-4 text-3xl leading-tight font-bold text-navy md:text-4xl">{title}</h2>
-      <div className="mt-6 h-1 w-16 rounded-full bg-primary" />
-      {text && <p className="mt-6 max-w-3xl text-lg text-navy/85">{text}</p>}
+      <h2 className="mt-2 sm:mt-4 text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">{title}</h2>
+      <div className="mt-4 sm:mt-6 h-1 w-16 rounded-full bg-primary" />
+      {text && <p className="mt-4 sm:mt-6 max-w-3xl text-base sm:text-lg text-navy/85">{text}</p>}
     </div>
   );
 }
 
-export function Breadcrumbs({ items }: { items: { title: string; route: string }[] }) {
+export function Breadcrumbs({ items, className }: { items: { title: string; route: string }[]; className?: string }) {
   return (
-    <nav aria-label="Навігаційний ланцюжок" className="pt-8">
-      <ol className="flex flex-wrap items-center gap-2 text-sm text-navy/60">
+    <nav aria-label="Навігаційний ланцюжок" className={cn("pt-4 sm:pt-8 overflow-x-auto scrollbar-none", className)}>
+      <ol className="flex items-center gap-2 text-xs sm:text-sm text-navy/60 whitespace-nowrap">
         {items.map((item, i) => (
           <li key={item.route + i} className="flex items-center gap-2">
             {i > 0 && <span aria-hidden>/</span>}
             {i === items.length - 1 ? (
               <span className="font-semibold text-navy">{item.title}</span>
             ) : (
-              <AppLink to={item.route} className="hover:text-primary">
+              <AppLink to={item.route} className="hover:text-primary transition-colors">
                 {i === 0 ? (
                   <span className="inline-flex items-center gap-1">
                     <Home className="size-3.5" /> {item.title}
@@ -102,46 +102,46 @@ export function PageHero({
             alt={title}
             width={1200}
             height={800}
-            className="absolute inset-0 size-full object-cover object-right"
+            className="absolute inset-0 size-full object-cover object-right opacity-40 lg:opacity-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/90 to-navy-deep/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/90 to-navy-deep/20" />
         </>
       )}
-      <div className="relative mx-auto max-w-[1600px] px-6 py-24 lg:px-10 lg:py-32">
+      <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 py-14 sm:py-20 lg:px-10 lg:py-32">
         {eyebrow && (
-          <p className="text-sm font-semibold tracking-[0.28em] text-primary-foreground/70">
+          <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.28em] text-primary-foreground/70 uppercase">
             {eyebrow}
           </p>
         )}
-        <h1 className="mt-6 max-w-2xl text-5xl leading-[1.05] font-extrabold text-background md:text-7xl">
+        <h1 className="mt-4 sm:mt-6 max-w-3xl text-3xl leading-[1.1] font-extrabold text-background sm:text-5xl md:text-6xl lg:text-7xl">
           {title}
         </h1>
-        {text && <p className="mt-8 max-w-xl text-lg leading-relaxed text-background/85">{text}</p>}
+        {text && <p className="mt-4 sm:mt-8 max-w-xl text-base sm:text-lg leading-relaxed text-background/85">{text}</p>}
 
         {facts && facts.length > 0 && (
-          <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
+          <dl className="mt-6 sm:mt-8 flex flex-wrap gap-x-6 sm:gap-x-10 gap-y-4">
             {facts.map((f) => (
               <div key={f.label}>
-                <dt className="text-xs tracking-[0.16em] text-background/60">{f.label}</dt>
-                <dd className="mt-1 font-bold text-background">{f.value}</dd>
+                <dt className="text-[10px] sm:text-xs tracking-[0.16em] text-background/60 uppercase">{f.label}</dt>
+                <dd className="mt-1 text-sm sm:text-base font-bold text-background">{f.value}</dd>
               </div>
             ))}
           </dl>
         )}
 
-        <div className="mt-10 flex flex-wrap gap-4">
+        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
           <AppLink
             to="/kontakty"
-            className="rounded-lg bg-brand-green px-9 py-5 text-base font-bold tracking-wide text-brand-green-foreground transition-opacity hover:opacity-90"
+            className="w-full sm:w-auto text-center rounded-lg bg-brand-green px-6 sm:px-9 py-4 sm:py-5 text-sm sm:text-base font-bold tracking-wide text-brand-green-foreground transition-opacity hover:opacity-90 shadow-md"
           >
             {primaryLabel}
           </AppLink>
           {secondaryTo && secondaryLabel && (
             <AppLink
               to={secondaryTo}
-              className="inline-flex items-center gap-3 rounded-lg border border-background/40 px-9 py-5 text-base font-bold tracking-wide text-background transition-colors hover:bg-background/10"
+              className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 sm:gap-3 rounded-lg border border-background/40 px-6 sm:px-9 py-4 sm:py-5 text-sm sm:text-base font-bold tracking-wide text-background transition-colors hover:bg-background/10"
             >
-              {secondaryLabel} <ArrowRight className="size-5" />
+              {secondaryLabel} <ArrowRight className="size-4 sm:size-5" />
             </AppLink>
           )}
         </div>

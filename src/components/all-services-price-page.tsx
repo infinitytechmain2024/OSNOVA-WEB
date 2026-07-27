@@ -162,7 +162,7 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
         <section className="relative overflow-hidden bg-navy-deep text-background py-14 lg:py-18">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/20 via-navy-deep to-navy-deep opacity-80" />
           <PageContainer className="relative z-10">
-            <Breadcrumbs items={getBreadcrumbs(node)} className="text-white/70" />
+            <Breadcrumbs items={getBreadcrumbs(node)} />
             <div className="mt-6 max-w-3xl">
               <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3.5 py-1 text-xs font-semibold tracking-wider text-primary-foreground border border-primary/30 uppercase">
                 <Layers className="size-3.5" /> Прейскурант медичних послуг
@@ -179,8 +179,8 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
 
         {/* Filter and Controls Bar */}
         <section className="sticky top-0 z-30 border-b border-border/80 bg-background/95 backdrop-blur-md shadow-xs">
-          <PageContainer className="py-4">
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <PageContainer className="py-3 sm:py-4">
+            <div className="flex flex-col gap-3 sm:gap-4 md:flex-row md:items-center md:justify-between">
               {/* Live Search Input */}
               <div className="relative flex-1 max-w-xl">
                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
@@ -188,8 +188,8 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Пошук за назвою послуги (напр. ЕКГ, інфаркт, масаж...)"
-                  className="w-full rounded-xl border border-input bg-card pl-10 pr-10 py-2.5 text-sm text-foreground shadow-xs placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  placeholder="Пошук послуги (напр. ЕКГ, інфаркт, масаж...)"
+                  className="w-full rounded-xl border border-input bg-card pl-10 pr-10 py-2.5 text-xs sm:text-sm text-foreground shadow-xs placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
                 {searchQuery && (
                   <button
@@ -203,18 +203,18 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
               </div>
 
               {/* Action buttons */}
-              <div className="flex items-center gap-2 self-start md:self-auto">
+              <div className="flex items-center gap-2 w-full sm:w-auto">
                 <button
                   type="button"
                   onClick={expandAll}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-2 text-xs font-semibold text-navy hover:bg-secondary transition-colors"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-card px-3 py-2 text-xs font-semibold text-navy hover:bg-secondary transition-colors"
                 >
                   <ChevronDown className="size-3.5" /> Розгорнути все
                 </button>
                 <button
                   type="button"
                   onClick={collapseAll}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-2 text-xs font-semibold text-navy hover:bg-secondary transition-colors"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 rounded-lg border border-border bg-card px-3 py-2 text-xs font-semibold text-navy hover:bg-secondary transition-colors"
                 >
                   <ChevronUp className="size-3.5" /> Згорнути все
                 </button>
@@ -222,11 +222,11 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
             </div>
 
             {/* Category Filter Pills */}
-            <div className="mt-4 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+            <div className="mt-3 sm:mt-4 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
               <button
                 type="button"
                 onClick={() => setSelectedCategoryFilter("all")}
-                className={`whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-semibold transition-all ${
+                className={`whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all ${
                   selectedCategoryFilter === "all"
                     ? "bg-navy text-white shadow-xs"
                     : "bg-secondary/70 text-navy hover:bg-secondary"
@@ -239,7 +239,7 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
                   key={cat.id}
                   type="button"
                   onClick={() => setSelectedCategoryFilter(cat.id)}
-                  className={`whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-semibold transition-all ${
+                  className={`whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all ${
                     selectedCategoryFilter === cat.id
                       ? "bg-navy text-white shadow-xs"
                       : "bg-secondary/70 text-navy hover:bg-secondary"
@@ -252,7 +252,7 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
 
             {/* Match Counter when searching */}
             {isSearchActive && (
-              <div className="mt-3 text-xs font-medium text-navy/70">
+              <div className="mt-2.5 text-xs font-medium text-navy/70">
                 Знайдено послуг за запитом «<span className="font-bold text-navy">{searchQuery}</span>»: {totalMatchingItems}
               </div>
             )}
@@ -260,11 +260,11 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
         </section>
 
         {/* Main Price Directory Accordion Hierarchy */}
-        <PageContainer className="mt-8 space-y-6">
+        <PageContainer className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
           {filteredCategories.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-border p-12 text-center">
-              <p className="text-lg font-bold text-navy">За вашим запитом послуг не знайдено</p>
-              <p className="mt-2 text-sm text-muted-foreground">
+            <div className="rounded-2xl border border-dashed border-border p-8 sm:p-12 text-center">
+              <p className="text-base sm:text-lg font-bold text-navy">За вашим запитом послуг не знайдено</p>
+              <p className="mt-2 text-xs sm:text-sm text-muted-foreground">
                 Спробуйте змінити формулювання або зателефонуйте адміністратору за номером{" "}
                 <a href={CONTACTS.phoneHref} className="font-bold text-primary">
                   {CONTACTS.phone}
@@ -276,7 +276,7 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
                   setSearchQuery("");
                   setSelectedCategoryFilter("all");
                 }}
-                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground"
+                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs sm:text-sm font-bold text-primary-foreground"
               >
                 Скинути фільтри
               </button>
@@ -295,40 +295,40 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
                   <button
                     type="button"
                     onClick={() => toggleCategory(cat.id)}
-                    className="w-full flex items-center justify-between p-5 sm:p-6 bg-card hover:bg-secondary/30 transition-colors text-left border-b border-border/40"
+                    className="w-full flex items-center justify-between p-4 sm:p-6 bg-card hover:bg-secondary/30 transition-colors text-left border-b border-border/40"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
-                        <Icon className="size-6" />
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="flex size-10 sm:size-12 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
+                        <Icon className="size-5 sm:size-6" />
                       </div>
                       <div>
-                        <div className="flex flex-wrap items-center gap-2.5">
-                          <h2 className="text-xl sm:text-2xl font-bold text-navy">{cat.title}</h2>
-                          <span className="rounded-full bg-secondary px-3 py-0.5 text-xs font-semibold text-navy/80">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h2 className="text-lg sm:text-2xl font-bold text-navy">{cat.title}</h2>
+                          <span className="rounded-full bg-secondary px-2.5 py-0.5 text-[11px] sm:text-xs font-semibold text-navy/80">
                             {cat.subcategories.reduce((acc, sub) => acc + sub.items.length, 0)} послуг
                           </span>
                         </div>
                         {cat.shortDescription && (
-                          <p className="mt-1 text-xs sm:text-sm text-muted-foreground line-clamp-1">
+                          <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-muted-foreground line-clamp-1">
                             {cat.shortDescription}
                           </p>
                         )}
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 shrink-0 ml-2">
+                    <div className="flex items-center gap-2 shrink-0 ml-2">
                       <span className="hidden sm:inline-block text-xs font-bold uppercase tracking-wider text-primary">
                         {isOpen ? "Сховати" : "Розгорнути"}
                       </span>
-                      <div className="flex size-9 items-center justify-center rounded-full bg-secondary text-navy">
-                        {isOpen ? <ChevronUp className="size-5" /> : <ChevronDown className="size-5" />}
+                      <div className="flex size-8 sm:size-9 items-center justify-center rounded-full bg-secondary text-navy">
+                        {isOpen ? <ChevronUp className="size-4 sm:size-5" /> : <ChevronDown className="size-4 sm:size-5" />}
                       </div>
                     </div>
                   </button>
 
                   {/* Level 1 Content */}
                   {isOpen && (
-                    <div className="p-4 sm:p-6 bg-background/40 space-y-5">
+                    <div className="p-3 sm:p-6 bg-background/40 space-y-4 sm:space-y-5">
                       {cat.subcategories.map((sub) => {
                         const isSubOpen = isSearchActive || openSubcategories[sub.id] !== false;
 
@@ -341,92 +341,136 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
                             <button
                               type="button"
                               onClick={() => toggleSubcategory(sub.id)}
-                              className="w-full flex items-center justify-between p-4 sm:px-6 bg-secondary/30 hover:bg-secondary/60 transition-colors text-left border-b border-border/60"
+                              className="w-full flex items-center justify-between p-3.5 sm:px-6 bg-secondary/30 hover:bg-secondary/60 transition-colors text-left border-b border-border/60"
                             >
-                              <div className="flex items-center gap-3">
-                                <div className="size-2.5 rounded-full bg-primary shrink-0" />
+                              <div className="flex items-center gap-2.5 sm:gap-3">
+                                <div className="size-2 sm:size-2.5 rounded-full bg-primary shrink-0" />
                                 <div>
-                                  <h3 className="text-base sm:text-lg font-bold text-navy">{sub.title}</h3>
+                                  <h3 className="text-sm sm:text-lg font-bold text-navy">{sub.title}</h3>
                                   {sub.shortDescription && (
-                                    <p className="text-xs text-muted-foreground line-clamp-1 font-normal">
+                                    <p className="text-[11px] sm:text-xs text-muted-foreground line-clamp-1 font-normal">
                                       {sub.shortDescription}
                                     </p>
                                   )}
                                 </div>
                               </div>
                               <div className="flex items-center gap-2 text-xs font-semibold text-navy/70 shrink-0 ml-2">
-                                <span className="hidden sm:inline text-muted-foreground font-normal">
-                                  ({sub.items.length} {sub.items.length === 1 ? "послуга" : "послуг"})
+                                <span className="text-muted-foreground text-[11px] sm:text-xs font-normal">
+                                  ({sub.items.length})
                                 </span>
                                 {isSubOpen ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}
                               </div>
                             </button>
 
-                            {/* Level 3 Table of Services */}
+                            {/* Level 3 Table of Services (Desktop) & Card List (Mobile) */}
                             {isSubOpen && (
-                              <div className="overflow-x-auto">
-                                <table className="w-full text-left text-sm border-collapse">
-                                  <thead>
-                                    <tr className="border-b border-border bg-secondary/15 text-xs uppercase tracking-wider font-semibold text-navy/70">
-                                      <th className="py-3 px-4 sm:px-6">Назва послуги</th>
-                                      <th className="py-3 px-4 text-center sm:w-44">Тривалість / Формат</th>
-                                      <th className="py-3 px-4 text-right sm:w-44">Вартість</th>
-                                      <th className="py-3 px-4 sm:px-6 text-right w-28">Дія</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody className="divide-y divide-border/50">
-                                    {sub.items.map((item) => (
-                                      <tr
-                                        key={item.id}
-                                        className="hover:bg-primary/5 transition-colors group"
-                                      >
-                                        {/* Clickable Title (Embedded Link in Title) */}
-                                        <td className="py-4 px-4 sm:px-6 font-medium">
-                                          <AppLink
-                                            to={item.route}
-                                            className="font-bold text-navy group-hover:text-primary transition-colors inline-flex items-center gap-1.5 hover:underline"
-                                          >
-                                            <span>{item.title}</span>
-                                            <ExternalLink className="size-3.5 text-primary opacity-60 group-hover:opacity-100 transition-opacity shrink-0" />
-                                          </AppLink>
-                                          {item.shortDescription && (
-                                            <p className="mt-0.5 text-xs text-muted-foreground font-normal line-clamp-1">
-                                              {item.shortDescription}
-                                            </p>
-                                          )}
-                                        </td>
+                              <div>
+                                {/* Desktop Table View */}
+                                <div className="hidden sm:block overflow-x-auto">
+                                  <table className="w-full text-left text-sm border-collapse">
+                                    <thead>
+                                      <tr className="border-b border-border bg-secondary/15 text-xs uppercase tracking-wider font-semibold text-navy/70">
+                                        <th className="py-3 px-4 sm:px-6">Назва послуги</th>
+                                        <th className="py-3 px-4 text-center sm:w-44">Тривалість / Формат</th>
+                                        <th className="py-3 px-4 text-right sm:w-44">Вартість</th>
+                                        <th className="py-3 px-4 sm:px-6 text-right w-28">Дія</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-border/50">
+                                      {sub.items.map((item) => (
+                                        <tr
+                                          key={item.id}
+                                          className="hover:bg-primary/5 transition-colors group"
+                                        >
+                                          {/* Clickable Title */}
+                                          <td className="py-4 px-4 sm:px-6 font-medium">
+                                            <AppLink
+                                              to={item.route}
+                                              className="font-bold text-navy group-hover:text-primary transition-colors inline-flex items-center gap-1.5 hover:underline"
+                                            >
+                                              <span>{item.title}</span>
+                                              <ExternalLink className="size-3.5 text-primary opacity-60 group-hover:opacity-100 transition-opacity shrink-0" />
+                                            </AppLink>
+                                            {item.shortDescription && (
+                                              <p className="mt-0.5 text-xs text-muted-foreground font-normal line-clamp-1">
+                                                {item.shortDescription}
+                                              </p>
+                                            )}
+                                          </td>
 
-                                        {/* Duration */}
-                                        <td className="py-4 px-4 text-center text-xs text-navy/80 whitespace-nowrap">
-                                          {item.duration ? (
-                                            <span className="inline-block rounded-md bg-secondary/80 px-2.5 py-1 font-medium">
+                                          {/* Duration */}
+                                          <td className="py-4 px-4 text-center text-xs text-navy/80 whitespace-nowrap">
+                                            {item.duration ? (
+                                              <span className="inline-block rounded-md bg-secondary/80 px-2.5 py-1 font-medium">
+                                                {item.duration}
+                                              </span>
+                                            ) : (
+                                              <span className="text-muted-foreground">—</span>
+                                            )}
+                                          </td>
+
+                                          {/* Price */}
+                                          <td className="py-4 px-4 text-right font-extrabold text-navy whitespace-nowrap">
+                                            <span className="text-base text-primary">
+                                              {item.priceLabel || "За запитом"}
+                                            </span>
+                                          </td>
+
+                                          {/* Action Link Button */}
+                                          <td className="py-4 px-4 sm:px-6 text-right whitespace-nowrap">
+                                            <AppLink
+                                              to={item.route}
+                                              className="inline-flex items-center gap-1 text-xs font-bold text-navy hover:text-primary bg-secondary/80 hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-all"
+                                            >
+                                              Перейти <ArrowRight className="size-3.5" />
+                                            </AppLink>
+                                          </td>
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </table>
+                                </div>
+
+                                {/* Mobile Stacked Card View */}
+                                <div className="block sm:hidden divide-y divide-border/50">
+                                  {sub.items.map((item) => (
+                                    <div key={item.id} className="p-3.5 space-y-2 hover:bg-primary/5 transition-colors">
+                                      <AppLink
+                                        to={item.route}
+                                        className="font-bold text-navy text-sm hover:text-primary transition-colors flex items-start justify-between gap-2"
+                                      >
+                                        <span>{item.title}</span>
+                                        <ExternalLink className="size-3.5 text-primary shrink-0 mt-0.5" />
+                                      </AppLink>
+
+                                      {item.shortDescription && (
+                                        <p className="text-xs text-muted-foreground line-clamp-2">
+                                          {item.shortDescription}
+                                        </p>
+                                      )}
+
+                                      <div className="flex items-center justify-between pt-1 gap-2">
+                                        <div className="flex items-center gap-2">
+                                          {item.duration && (
+                                            <span className="text-[10px] font-medium bg-secondary px-2 py-0.5 rounded text-navy/80">
                                               {item.duration}
                                             </span>
-                                          ) : (
-                                            <span className="text-muted-foreground">—</span>
                                           )}
-                                        </td>
-
-                                        {/* Price */}
-                                        <td className="py-4 px-4 text-right font-extrabold text-navy whitespace-nowrap">
-                                          <span className="text-base text-primary">
+                                          <span className="text-sm font-extrabold text-primary">
                                             {item.priceLabel || "За запитом"}
                                           </span>
-                                        </td>
+                                        </div>
 
-                                        {/* Action Link Button */}
-                                        <td className="py-4 px-4 sm:px-6 text-right whitespace-nowrap">
-                                          <AppLink
-                                            to={item.route}
-                                            className="inline-flex items-center gap-1 text-xs font-bold text-navy hover:text-primary bg-secondary/80 hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-all"
-                                          >
-                                            Перейти <ArrowRight className="size-3.5" />
-                                          </AppLink>
-                                        </td>
-                                      </tr>
-                                    ))}
-                                  </tbody>
-                                </table>
+                                        <AppLink
+                                          to={item.route}
+                                          className="inline-flex items-center gap-1 text-xs font-bold text-navy bg-secondary px-2.5 py-1 rounded-md"
+                                        >
+                                          Перейти <ArrowRight className="size-3" />
+                                        </AppLink>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
                               </div>
                             )}
                           </div>

@@ -114,5 +114,13 @@
 @utility section-shell {
   border-radius: 1.25rem;
   background-color: var(--color-soft);
-  padding: 3rem;
+  padding: 1.25rem;
+
+  @media (min-width: 640px) {
+    padding: 2rem;
+  }
+  @media (min-width: 1024px) {
+    padding: 3rem;
+  }
 }
+

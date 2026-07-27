@@ -242,10 +242,10 @@ export function SiteHeader() {
   return (
     <header className="w-full relative z-40">
       <div className="bg-navy-deep">
-        <div className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-6 px-6 py-4 lg:px-10">
-          <AppLink to="/" className="flex flex-col leading-none text-background">
-            <span className="text-2xl font-bold tracking-[0.28em]">ŎSNOVA</span>
-            <span className="mt-1 text-[10px] tracking-[0.42em] text-background/70">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-4 py-3.5 sm:px-6 lg:px-10">
+          <AppLink to="/" className="flex flex-col leading-none text-background shrink-0">
+            <span className="text-xl sm:text-2xl font-bold tracking-[0.22em] sm:tracking-[0.28em]">ŎSNOVA</span>
+            <span className="mt-0.5 sm:mt-1 text-[9px] sm:text-[10px] tracking-[0.35em] sm:tracking-[0.42em] text-background/70">
               РЕАБІЛІТАЦІЯ
             </span>
           </AppLink>
@@ -261,7 +261,7 @@ export function SiteHeader() {
             ))}
           </div>
 
-          <div className="ml-auto flex flex-wrap items-center gap-4 lg:gap-6">
+          <div className="flex items-center gap-2 sm:gap-4 lg:gap-6">
             <span className="hidden items-center gap-2 text-sm font-medium text-background/90 xl:flex">
               <MapPin className="size-4" /> {CONTACTS.address}
             </span>
@@ -273,7 +273,7 @@ export function SiteHeader() {
             </a>
             <AppLink
               to="/kontakty"
-              className="hidden rounded-md bg-brand-green px-6 py-3 text-sm font-bold tracking-wide text-brand-green-foreground transition-all hover:bg-brand-green/90 md:inline-block"
+              className="hidden rounded-md bg-brand-green px-5 py-2.5 text-xs sm:text-sm font-bold tracking-wide text-brand-green-foreground transition-all hover:bg-brand-green/90 md:inline-block"
             >
               ЗАПИСАТИСЯ
             </AppLink>
@@ -296,7 +296,7 @@ export function SiteHeader() {
               aria-label={menuOpen ? "Закрити меню" : "Відкрити меню"}
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((v) => !v)}
-              className="flex size-10 items-center justify-center rounded-md border border-background/40 text-background lg:hidden"
+              className="flex size-9 sm:size-10 items-center justify-center rounded-md border border-background/40 text-background lg:hidden hover:bg-background/10 transition-colors"
             >
               {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
             </button>
@@ -313,18 +313,29 @@ export function SiteHeader() {
       </nav>
 
       {menuOpen && (
-        <div className="border-b border-border bg-card lg:hidden">
-          <ul className="mx-auto max-w-[1600px] px-4 py-2">
+        <div className="border-b border-border bg-card shadow-2xl lg:hidden max-h-[calc(100vh-70px)] overflow-y-auto animate-in slide-in-from-top-2 duration-200">
+          <ul className="mx-auto max-w-[1600px] px-5 py-3 space-y-1">
             {HEADER_NAV.map((item) => (
               <MobileNavItem key={item.label} item={item} onClose={() => setMenuOpen(false)} />
             ))}
-            <li className="py-4">
+            
+            <li className="pt-4 pb-2 space-y-3 border-t border-border/60 mt-2">
+              <a
+                href={CONTACTS.phoneHref}
+                className="flex items-center justify-center gap-2 rounded-xl border border-navy/20 bg-secondary/60 py-3 text-sm font-bold text-navy"
+              >
+                <Phone className="size-4 text-primary" /> {CONTACTS.phone}
+              </a>
               <AppLink
                 to="/kontakty"
-                className="block rounded-md bg-brand-green px-6 py-4 text-center text-sm font-bold text-brand-green-foreground"
+                className="block rounded-xl bg-brand-green px-6 py-3.5 text-center text-sm font-bold text-brand-green-foreground shadow-md"
               >
                 ЗАПИСАТИСЯ
               </AppLink>
+              <div className="flex items-center justify-center gap-2 pt-2 text-xs text-navy/70">
+                <MapPin className="size-3.5 text-primary shrink-0" />
+                <span className="truncate">{CONTACTS.address}</span>
+              </div>
             </li>
           </ul>
         </div>

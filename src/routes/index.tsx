@@ -1,4 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import * as React from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { AppLink } from "@/components/app-link";
 import {
   ArrowRight,
   Activity,
@@ -31,7 +33,7 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 // Images
@@ -265,7 +267,7 @@ const ADVANTAGES = [
 
 // Партнери
 const PARTNERS = [
-  { name: "Львівський медичний університет ім. Данила Галицького", role: "Академічний партнер" },
+  { name: "Львівський медичний университет ім. Данила Галицького", role: "Академічний партнер" },
   { name: "Івано-Франківський національний медичний університет", role: "Наукова база" },
   { name: "European Rehabilitation Academy", role: "Міжнародна співпраця" },
   { name: "Schiller Medical Switzerland", role: "Технологічне обладнання" },
@@ -284,26 +286,32 @@ const COOPERATION_ITEMS = [
   {
     title: "ДЛЯ ЛІКАРІВ",
     text: "Програми обміну досвідом, підвищення кваліфікації, стажування та спільна практична робота.",
-    href: "/partnerstvo/dlia-likariv",
+    href: "/partnerstvo/likariam",
     icon: UserCheck,
   },
   {
     title: "ДЛЯ ІНСТИТУТІВ",
     text: "Спільні наукові дослідження, розробка медичних протоколів та клінічні бази для студентів ЗВО.",
-    href: "/partnerstvo/naukovi-proekty",
+    href: "/partnerstvo/naukove",
     icon: GraduationCap,
   },
   {
-    title: "ОРЕНДА РЕАБІЛІТАЦІЙНОГО ОБЛАДНАННЯ",
+    title: "ОРЕНДА ОБЛАДНАННЯ",
     text: "Надання високотехнологічних пристроїв та тренажерів для медичних установ та центрів.",
     href: "/poslugy/orenda-obladnannia",
     icon: Building2,
   },
   {
-    title: "ІВЕНТИ / Соціальні проєкти",
-    text: "Організація медичних форумів, конференцій, виставок, благодійних та реабілітаційних ініціатив.",
-    href: "/pro-nas/sotsialni-proekty",
+    title: "ІВЕНТИ",
+    text: "Організація медичних форумів, конференцій, виставок та професійних заходів.",
+    href: "/iventy",
     icon: Calendar,
+  },
+  {
+    title: "СОЦІАЛЬНІ ПРОЄКТИ",
+    text: "Благодійні та реабілітаційні ініціативи, допомога громаді та соціальні програми.",
+    href: "/sotsialni-proiekty",
+    icon: Heart,
   },
 ];
 
@@ -356,6 +364,27 @@ function SectionHeader({ subtitle, title, centered = false }: { subtitle?: strin
 }
 
 function Index() {
+  const [methodsApi, setMethodsApi] = React.useState<CarouselApi>();
+  const [currentMethodsSlide, setCurrentMethodsSlide] = React.useState(0);
+  const [methodsSlideCount, setMethodsSlideCount] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!methodsApi) return;
+
+    const updateState = () => {
+      setMethodsSlideCount(methodsApi.scrollSnapList().length);
+      setCurrentMethodsSlide(methodsApi.selectedScrollSnap());
+    };
+
+    updateState();
+    methodsApi.on("select", updateState);
+    methodsApi.on("reInit", updateState);
+
+    return () => {
+      methodsApi.off("select", updateState);
+    };
+  }, [methodsApi]);
+
   return (
     <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
       <SiteHeader />
@@ -390,11 +419,11 @@ function Index() {
                           {slide.text}
                         </p>
                         <div className="flex flex-wrap gap-3 md:gap-4">
-                          <Link href="/kontakty" className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-primary px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-primary-foreground transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)]">
+                          <Link to="/kontakty" className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-primary px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-primary-foreground transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)]">
                             <span className="relative z-10">ЗАПИСАТИСЯ</span>
                             <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
                           </Link>
-                          <Link href="/poslugy" className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-white backdrop-blur-sm transition-all hover:bg-white/10">
+                          <Link to="/poslugy" className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-white backdrop-blur-sm transition-all hover:bg-white/10">
                             НАШІ ПОСЛУГИ <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                           </Link>
                         </div>
@@ -441,7 +470,7 @@ function Index() {
 
                 <div className="mt-10">
                   <Link
-                    href="/pro-nas"
+                    to="/pro-nas"
                     className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105"
                   >
                     ДЕТАЛЬНІШЕ <ChevronRight className="size-5" />
@@ -453,9 +482,9 @@ function Index() {
                 <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
                   <img src={rehabImg} alt="Реабілітація" className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700" />
                 </div>
-                <div className="flex flex-col justify-center rounded-3xl bg-navy-deep p-8 text-white shadow-2xl lg:p-10">
-                  <h3 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-brand-green mb-3">10+</h3>
-                  <p className="text-base font-medium text-white/80">Років досвіду медичної команди</p>
+                <div className="flex flex-col justify-center rounded-3xl bg-primary/10 border border-primary/20 p-8 shadow-xl lg:p-10">
+                  <h3 className="text-5xl font-black text-primary mb-3">10+</h3>
+                  <p className="text-base font-medium text-navy/80">Років досвіду медичної команди</p>
                 </div>
                 <div className="flex flex-col justify-center rounded-3xl bg-secondary p-8 shadow-xl lg:p-10 border border-primary/10">
                   <h3 className="text-5xl font-black text-navy mb-3">100%</h3>
@@ -466,6 +495,135 @@ function Index() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* 3. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
+        <section className="bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60">
+          <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
+            <SectionHeader
+              centered
+              subtitle="НАПРЯМИ"
+              title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ"
+            />
+            
+            <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-12">
+              {DIRECTIONS.map((dir, i) => (
+                <div
+                  key={i}
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
+                >
+                  <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
+                    <img
+                      src={dir.image}
+                      alt={dir.title}
+                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  
+                  <div className="flex flex-col justify-between flex-1 p-6 md:p-7 bg-white">
+                    <div>
+                      <h3 className="mb-3 text-xl font-bold text-navy leading-snug">
+                        {dir.title}
+                      </h3>
+                      <p className="mb-6 text-sm text-slate-600 leading-relaxed line-clamp-3 font-normal">
+                        {dir.text}
+                      </p>
+                    </div>
+
+                    <div>
+                      <Link
+                        to={dir.href}
+                        className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
+                      >
+                        Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ (Слайдером в 1 строчку) */}
+        <section className="bg-white py-24 md:py-32 overflow-hidden">
+          <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
+            <SectionHeader
+              centered
+              subtitle="МЕТОДИКИ"
+              title="МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ"
+            />
+
+            <Carousel
+              setApi={setMethodsApi}
+              plugins={[Autoplay({ delay: 4500, stopOnInteraction: true })]}
+              opts={{ align: "start", loop: true }}
+              className="w-full mt-12"
+            >
+              <CarouselContent className="-ml-4">
+                {METHODS.map((item, idx) => (
+                  <CarouselItem key={idx} className="pl-4 basis-[84%] sm:basis-[47%] lg:basis-[31%] xl:basis-[23.8%]">
+                    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-slate-50/60 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:bg-white">
+                      <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
+
+                      <div className="flex flex-col justify-between flex-1 p-6 md:p-7">
+                        <div>
+                          <h3 className="mb-3 text-xl font-bold text-navy leading-snug">
+                            {item.title}
+                          </h3>
+                          <p className="mb-6 text-sm text-slate-600 leading-relaxed line-clamp-3 font-normal">
+                            {item.description}
+                          </p>
+                        </div>
+
+                        <div>
+                          <Link
+                            to={item.href}
+                            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
+                          >
+                            Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+
+              {/* Controls and Pagination Dots */}
+              <div className="mt-10 flex flex-col items-center gap-6">
+                {/* Dots Pagination */}
+                {methodsSlideCount > 0 && (
+                  <div className="flex items-center justify-center gap-2.5">
+                    {Array.from({ length: methodsSlideCount }).map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => methodsApi?.scrollTo(index)}
+                        className={`h-2.5 rounded-full transition-all duration-300 ${
+                          currentMethodsSlide === index
+                            ? "w-8 bg-primary shadow-sm"
+                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                        }`}
+                        aria-label={`Перейти до слайду ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                {/* Prev / Next Arrows */}
+                <div className="flex items-center justify-center gap-3">
+                  <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
+                  <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
+                </div>
+              </div>
+            </Carousel>
           </div>
         </section>
 
@@ -643,7 +801,7 @@ function Index() {
                   Курси є важливими для вдосконалення хірургічної техніки, вивчення анатомії та освоєння нових медичних технологій і методик.
                 </p>
                 <Link
-                  href="/navchannia-ta-konferentsii"
+                  to="/navchannia"
                   className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors"
                 >
                   ДІЗНАТИСЯ БІЛЬШЕ <ArrowRight className="size-4" />
@@ -659,7 +817,7 @@ function Index() {
                   Збори, нарада груп осіб, окремих осіб, організації для обговорення певної проблематики, яка визначена заздалегідь.
                 </p>
                 <Link
-                  href="/navchannia-ta-konferentsii"
+                  to="/navchannia"
                   className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors"
                 >
                   ПЕРЕГЛЯНУТИ ЗАХОДИ <ArrowRight className="size-4" />
@@ -670,27 +828,27 @@ function Index() {
         </section>
 
         {/* 8. СПІВПРАЦЯ */}
-        <section className="bg-navy-deep py-24 md:py-32 text-white">
+        <section className="bg-slate-50/90 py-24 md:py-32 border-y border-slate-200/80">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader
               centered
               subtitle="ПАРТНЕРСЬКА ПЛАТФОРМА"
-              title={<span className="text-white">СПІВПРАЦЯ</span>}
+              title="СПІВПРАЦЯ"
             />
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 mt-12">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 mt-12">
               {COOPERATION_ITEMS.map((item, idx) => (
                 <Link
                   key={idx}
-                  href={item.href}
-                  className="group relative flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-white/10 hover:shadow-2xl"
+                  to={item.href}
+                  className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl"
                 >
                   <div>
-                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-primary/20 text-primary">
+                    <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                       <item.icon className="size-6" />
                     </div>
-                    <h3 className="mb-3 text-lg font-bold text-white leading-tight">{item.title}</h3>
-                    <p className="text-xs md:text-sm text-white/70 leading-relaxed">{item.text}</p>
+                    <h3 className="mb-3 text-lg font-bold text-navy leading-tight">{item.title}</h3>
+                    <p className="text-xs md:text-sm text-slate-600 leading-relaxed">{item.text}</p>
                   </div>
                   <div className="mt-6 flex items-center gap-2 text-xs font-bold text-primary uppercase">
                     Деталі <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
@@ -707,7 +865,7 @@ function Index() {
             <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <SectionHeader subtitle="НОВИНИ ТА СТАТТІ" title="БЛОГ" />
               <Link
-                href="/pro-nas"
+                to="/pro-nas"
                 className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-bold text-navy shadow-sm transition-all hover:bg-primary hover:text-white hover:border-primary"
               >
                 ВСІ НОВИНИ <ArrowRight className="size-4" />
@@ -729,7 +887,7 @@ function Index() {
                   <p className="mb-6 text-muted-foreground leading-relaxed text-sm md:text-base">
                     Біль у серці часто викликає тривогу та непокоїть багато людей. Але чому болить серце, коли це дійсно серйозна проблема, а коли потрібна профілактична діагностика...
                   </p>
-                  <Link href="/poslugy/diagnostyka/kardiolohichna-diahnostyka" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
+                  <Link to="/poslugy/diagnostyka/kardiolohichna-diahnostyka" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
                     ЧИТАТИ ДАЛІ <ArrowRight className="size-4" />
                   </Link>
                 </div>
@@ -749,7 +907,7 @@ function Index() {
                   <p className="mb-6 text-muted-foreground leading-relaxed text-sm md:text-base">
                     Артрит — це запалення суглобів, яке може суттєво знижувати якість життя через біль, обмеження рухливості та розвиток дегенеративних змін. Тому своєчасна реабілітація вкрай важлива...
                   </p>
-                  <Link href="/poslugy/reabilitatsiia/ortopedichna-reabilitatsiia" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
+                  <Link to="/poslugy/reabilitatsiia/ortopedichna-reabilitatsiia" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
                     ЧИТАТИ ДАЛІ <ArrowRight className="size-4" />
                   </Link>
                 </div>
@@ -759,23 +917,17 @@ function Index() {
         </section>
 
         {/* 10. ПИТАННЯ ТА ВІДПОВІДІ (FAQ) */}
-        <section className="bg-navy-deep py-24 md:py-32 text-white">
+        <section className="bg-slate-50/70 py-24 md:py-32 border-t border-slate-200/60">
           <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
-            <div className="mb-16 text-center">
-              <span className="mb-4 inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-white backdrop-blur-md uppercase">
-                ВІДПОВІДІ
-              </span>
-              <h2 className="text-3xl font-extrabold leading-[1.15] md:text-5xl lg:text-6xl">ПИТАННЯ ТА ВІДПОВІДІ</h2>
-              <div className="mx-auto mt-8 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
+            <SectionHeader centered subtitle="ВІДПОВІДІ" title="ПИТАННЯ ТА ВІДПОВІДІ" />
             
-            <Accordion type="single" collapsible className="w-full space-y-6">
+            <Accordion type="single" collapsible className="w-full space-y-5 mt-12">
               {FAQS.map((faq, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="rounded-2xl border border-white/10 bg-white/5 px-6 md:px-8 py-2 backdrop-blur-sm transition-colors hover:bg-white/10">
-                  <AccordionTrigger className="text-left text-base md:text-lg font-bold text-white hover:text-primary hover:no-underline [&[data-state=open]]:text-primary">
+                <AccordionItem key={i} value={`item-${i}`} className="rounded-2xl border border-slate-200 bg-white px-6 md:px-8 py-2 shadow-sm transition-all hover:shadow-md hover:border-primary/30">
+                  <AccordionTrigger className="text-left text-base md:text-lg font-bold text-navy hover:text-primary hover:no-underline [&[data-state=open]]:text-primary">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm md:text-base leading-relaxed text-white/80 pb-6">
+                  <AccordionContent className="text-sm md:text-base leading-relaxed text-slate-600 pb-6">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -795,7 +947,7 @@ function Index() {
               Залиште заявку, і наші спеціалісти зв'яжуться з вами для детальної консультації та підбору оптимальної програми відновлення.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link href="/kontakty" className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 md:py-5 text-base md:text-lg font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto">
+              <Link to="/kontakty" className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 md:py-5 text-base md:text-lg font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto">
                 <span className="relative z-10">ОТРИМАТИ КОНСУЛЬТАЦІЮ</span>
                 <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
               </Link>
