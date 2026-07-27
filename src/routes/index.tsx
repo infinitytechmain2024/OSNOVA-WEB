@@ -327,6 +327,13 @@ const PARTNERS = [
   },
 ];
 
+const PARTNERS_PER_SLIDE = 3;
+const PARTNER_GROUPS = Array.from(
+  { length: Math.ceil(PARTNERS.length / PARTNERS_PER_SLIDE) },
+  (_, index) =>
+    PARTNERS.slice(index * PARTNERS_PER_SLIDE, index * PARTNERS_PER_SLIDE + PARTNERS_PER_SLIDE),
+);
+
 // Співпраця
 const COOPERATION_ITEMS = [
   {
@@ -487,28 +494,30 @@ function DirectionCard({ direction }: { direction: (typeof DIRECTIONS)[number] }
 
 function PartnerCard({ partner }: { partner: (typeof PARTNERS)[number] }) {
   return (
-    <article className="group flex h-full min-h-[310px] flex-col rounded-[24px] border border-slate-200/80 bg-white p-7 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/35 hover:shadow-xl">
-      <div className="flex h-32 items-center justify-center rounded-2xl bg-slate-50 p-5 ring-1 ring-slate-100 transition-colors duration-300 group-hover:bg-white">
+    <article className="group flex h-full min-h-[360px] flex-col rounded-[28px] border border-slate-200/80 bg-white p-8 text-center shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/35 hover:shadow-xl">
+      <div className="flex h-40 items-center justify-center rounded-[22px] bg-slate-50 p-6 ring-1 ring-slate-100 transition-colors duration-300 group-hover:bg-white">
         <img
           src={partner.logo}
           alt={partner.name}
           loading="lazy"
-          className="max-h-24 w-full object-contain"
+          className="max-h-28 w-full object-contain"
         />
       </div>
 
-      <div className="mt-6 flex flex-1 flex-col">
+      <div className="mt-7 flex flex-1 flex-col items-center">
         <span className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
           {partner.role}
         </span>
-        <h3 className="text-lg font-extrabold leading-snug text-navy md:text-xl">{partner.name}</h3>
+        <h3 className="max-w-sm text-xl font-extrabold leading-snug text-navy md:text-2xl">
+          {partner.name}
+        </h3>
       </div>
 
       <a
         href={partner.href}
         target="_blank"
         rel="noreferrer"
-        className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-md"
+        className="mx-auto mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-md"
         aria-label={`Детальніше про ${partner.name}`}
       >
         Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -586,6 +595,9 @@ function Index() {
   const [cooperationApi, setCooperationApi] = React.useState<CarouselApi>();
   const [currentCooperationSlide, setCurrentCooperationSlide] = React.useState(0);
   const [cooperationSlideCount, setCooperationSlideCount] = React.useState(0);
+  const [partnersApi, setPartnersApi] = React.useState<CarouselApi>();
+  const [currentPartnersSlide, setCurrentPartnersSlide] = React.useState(0);
+  const [partnersSlideCount, setPartnersSlideCount] = React.useState(0);
 
   React.useEffect(() => {
     if (!heroApi) return;
@@ -659,24 +671,42 @@ function Index() {
     };
   }, [cooperationApi]);
 
+  React.useEffect(() => {
+    if (!partnersApi) return;
+
+    const updateState = () => {
+      setPartnersSlideCount(partnersApi.scrollSnapList().length);
+      setCurrentPartnersSlide(partnersApi.selectedScrollSnap());
+    };
+
+    updateState();
+    partnersApi.on("select", updateState);
+    partnersApi.on("reInit", updateState);
+
+    return () => {
+      partnersApi.off("select", updateState);
+      partnersApi.off("reInit", updateState);
+    };
+  }, [partnersApi]);
+
   return (
     <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
       <SiteHeader />
 
       <main>
         {/* 1. HERO CAROUSEL */}
-        <section className="relative h-[500px] md:h-[560px] lg:h-[600px] w-full overflow-hidden bg-navy-deep">
+        <section className="relative h-[500px] w-screen max-w-none overflow-hidden bg-navy-deep md:h-[560px] lg:h-[600px]">
           <Carousel
             setApi={setHeroApi}
             plugins={[Autoplay({ delay: 6000, stopOnInteraction: true })]}
             opts={{ loop: true, watchDrag: false }}
             className="size-full"
           >
-            <CarouselContent className="ml-0 h-full">
+            <CarouselContent className="!ml-0 h-full w-full">
               {HERO_SLIDES.map((slide, index) => (
                 <CarouselItem
                   key={index}
-                  className="relative h-[500px] md:h-[560px] lg:h-[600px] w-full basis-full pl-0"
+                  className="relative h-[500px] min-w-full basis-full !pl-0 md:h-[560px] lg:h-[600px]"
                 >
                   <div className="absolute inset-0 size-full">
                     <img
@@ -880,7 +910,7 @@ function Index() {
         </section>
 
         {/* 4. МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ (Слайдером в 1 строчку) */}
-        <section className="bg-white py-24 md:py-32 overflow-hidden">
+        <section className="bg-white pt-24 pb-12 md:pt-32 md:pb-16 overflow-hidden">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader centered subtitle="МЕТОДИКИ" title="МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ" />
 
@@ -961,7 +991,7 @@ function Index() {
         </section>
 
         {/* 5. НАШІ ПЕРЕВАГИ (10 карт) */}
-        <section className="relative py-24 md:py-32 overflow-hidden bg-background">
+        <section className="relative pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden bg-background">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader centered subtitle="ПЕРЕВАГИ" title="НАШІ ПЕРЕВАГИ" />
 
@@ -994,24 +1024,52 @@ function Index() {
         </section>
 
         {/* 6. НАШІ ПАРТНЕРИ */}
-        <section className="bg-secondary/40 py-20">
+        <section className="overflow-hidden bg-secondary/40 py-20 md:py-24">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader centered subtitle="ПАРТНЕРСТВО" title="НАШІ ПАРТНЕРИ" />
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 mt-10">
-              {PARTNERS.map((partner, idx) => (
-                <div
-                  key={idx}
-                  className="flex flex-col items-center justify-center rounded-2xl border border-border/60 bg-card p-6 text-center shadow-sm backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-md"
-                >
-                  <Building2 className="mb-3 size-8 text-primary/80" />
-                  <h4 className="text-xs font-bold text-navy leading-tight">{partner.name}</h4>
-                  <span className="mt-2 text-[10px] uppercase font-semibold text-primary tracking-wider">
-                    {partner.role}
-                  </span>
+            <Carousel
+              setApi={setPartnersApi}
+              plugins={[Autoplay({ delay: 5200, stopOnInteraction: true })]}
+              opts={{ align: "start", loop: true }}
+              className="mt-12 w-full"
+            >
+              <CarouselContent className="-ml-5">
+                {PARTNER_GROUPS.map((group, index) => (
+                  <CarouselItem key={index} className="basis-full pl-5">
+                    <div className="grid gap-6 md:grid-cols-3">
+                      {group.map((partner) => (
+                        <PartnerCard key={partner.name} partner={partner} />
+                      ))}
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+
+              <div className="mt-10 flex flex-col items-center gap-6">
+                {partnersSlideCount > 0 && (
+                  <div className="flex items-center justify-center gap-2.5">
+                    {Array.from({ length: partnersSlideCount }).map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => partnersApi?.scrollTo(index)}
+                        className={`h-2.5 rounded-full transition-all duration-300 ${
+                          currentPartnersSlide === index
+                            ? "w-8 bg-primary shadow-sm"
+                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                        }`}
+                        aria-label={`Перейти до блоку партнерів ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                <div className="flex items-center justify-center gap-3">
+                  <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-white text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
+                  <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-white text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
                 </div>
-              ))}
-            </div>
+              </div>
+            </Carousel>
           </div>
         </section>
 
@@ -1039,15 +1097,15 @@ function Index() {
               opts={{ align: "start", loop: true, slidesToScroll: 1 }}
               className="mt-12 w-full"
             >
-              <CarouselContent className="-ml-4 md:-ml-5">
+              <CarouselContent className="-ml-4 items-stretch md:-ml-5">
                 {COOPERATION_ITEMS.map((item, idx) => (
                   <CarouselItem
                     key={idx}
-                    className="basis-[88%] pl-4 sm:basis-[56%] md:basis-[48%] md:pl-5 lg:basis-1/3"
+                    className="flex basis-[88%] pl-4 sm:basis-[56%] md:basis-[48%] md:pl-5 lg:basis-1/3"
                   >
                     <AppLink
                       to={item.href}
-                      className="group relative flex min-h-[260px] flex-col justify-between rounded-[24px] border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl md:min-h-[280px] md:p-8 lg:min-h-[300px] xl:min-h-[280px]"
+                      className="group relative flex h-full min-h-[260px] w-full flex-col justify-between rounded-[24px] border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl md:min-h-[280px] md:p-8 lg:min-h-[300px] xl:min-h-[280px]"
                     >
                       <div>
                         <div className="mb-7 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">

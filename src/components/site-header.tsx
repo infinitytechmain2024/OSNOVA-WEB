@@ -17,6 +17,13 @@ import {
 import { cn } from "@/lib/utils";
 import { siteTree, CONTACTS } from "@/data/site-tree";
 import type { SiteNode } from "@/data/types";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const services = siteTree.find((n) => n.id === "services")!;
 const rehab = services.children!.find((n) => n.id === "rehab")!;
@@ -43,7 +50,41 @@ export const HEADER_NAV: NavNodeItem[] = [
 ];
 
 const SOCIALS = [Instagram, Music2, Youtube, Facebook];
-const LANGS = ["УКР", "RU", "EN"];
+const LANGS = [
+  { value: "uk", label: "УКР" },
+  { value: "ru", label: "RU" },
+  { value: "en", label: "EN" },
+];
+
+function LanguageSelect({ className }: { className?: string }) {
+  return (
+    <Select defaultValue="uk">
+      <SelectTrigger
+        aria-label="Вибір мови"
+        className={cn(
+          "h-9 w-[86px] rounded-md border-background/40 bg-transparent px-3 text-xs font-bold text-background shadow-none hover:bg-background/10 focus:ring-background/35 [&>svg]:text-background [&>svg]:opacity-80",
+          className,
+        )}
+      >
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent
+        align="end"
+        className="min-w-[86px] border-border/40 bg-navy-deep text-background"
+      >
+        {LANGS.map((lang) => (
+          <SelectItem
+            key={lang.value}
+            value={lang.value}
+            className="cursor-pointer text-xs font-semibold text-background focus:bg-primary/25 focus:text-white"
+          >
+            {lang.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
+}
 
 function DesktopNavItem({ item }: { item: NavNodeItem }) {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -106,7 +147,7 @@ function DesktopNavItem({ item }: { item: NavNodeItem }) {
                       onClick={() => setIsOpen(false)}
                       className={cn(
                         "flex items-center justify-between gap-3 px-3.5 py-2.5 text-xs font-semibold rounded-lg transition-colors text-background/90 hover:text-white hover:bg-primary/25",
-                        isHovered && "bg-primary/25 text-white font-bold"
+                        isHovered && "bg-primary/25 text-white font-bold",
                       )}
                     >
                       <span className="truncate">{child.title}</span>
@@ -201,7 +242,10 @@ function MobileNavItem({ item, onClose }: { item: NavNodeItem; onClose: () => vo
                       className="p-1 text-navy/60"
                     >
                       <ChevronDown
-                        className={cn("size-3.5 transition-transform", isChildExpanded && "rotate-180")}
+                        className={cn(
+                          "size-3.5 transition-transform",
+                          isChildExpanded && "rotate-180",
+                        )}
                       />
                     </button>
                   )}
@@ -244,7 +288,9 @@ export function SiteHeader() {
       <div className="bg-navy-deep">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-4 py-3.5 sm:px-6 lg:px-10">
           <AppLink to="/" className="flex flex-col leading-none text-background shrink-0">
-            <span className="text-xl sm:text-2xl font-bold tracking-[0.22em] sm:tracking-[0.28em]">ŎSNOVA</span>
+            <span className="text-xl sm:text-2xl font-bold tracking-[0.22em] sm:tracking-[0.28em]">
+              ŎSNOVA
+            </span>
             <span className="mt-0.5 sm:mt-1 text-[9px] sm:text-[10px] tracking-[0.35em] sm:tracking-[0.42em] text-background/70">
               РЕАБІЛІТАЦІЯ
             </span>
@@ -284,13 +330,7 @@ export function SiteHeader() {
             >
               <Search className="size-4" />
             </AppLink>
-            <div className="hidden items-center gap-2 text-sm font-semibold text-background lg:flex">
-              {LANGS.map((l, i) => (
-                <span key={l} className={cn(i === 0 ? "text-background" : "text-background/50")}>
-                  {l}
-                </span>
-              ))}
-            </div>
+            <LanguageSelect className="hidden lg:flex" />
             <button
               type="button"
               aria-label={menuOpen ? "Закрити меню" : "Відкрити меню"}
@@ -318,7 +358,7 @@ export function SiteHeader() {
             {HEADER_NAV.map((item) => (
               <MobileNavItem key={item.label} item={item} onClose={() => setMenuOpen(false)} />
             ))}
-            
+
             <li className="pt-4 pb-2 space-y-3 border-t border-border/60 mt-2">
               <a
                 href={CONTACTS.phoneHref}
