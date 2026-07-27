@@ -188,12 +188,12 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                 >
                   <h3 className="text-base sm:text-lg font-bold text-primary">{m.title}</h3>
                   <div className="mt-3 sm:mt-4 h-0.5 w-10 bg-primary/60" />
-                  <p className="mt-3 sm:mt-5 text-xs sm:text-sm text-navy/85">{m.text}</p>
+                  <p className="mt-3 mb-5 sm:mt-5 sm:mb-6 text-xs sm:text-sm text-navy/85">{m.text}</p>
                   {m.to && (
                     <AppLink
                       to={m.to}
                       aria-label={`Детальніше про ${m.title}`}
-                      className="mt-5 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:mt-6 sm:px-5 sm:text-sm"
+                      className="mt-auto inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:px-5 sm:text-sm"
                     >
                       Детальніше <ArrowRight className="size-4" />
                     </AppLink>
