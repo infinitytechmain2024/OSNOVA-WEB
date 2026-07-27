@@ -275,8 +275,6 @@ export function ServiceCard({ node }: { node: SiteNode }) {
         )}
         <p className="mt-4 text-sm text-muted-foreground">
           {node.duration ? `Тривалість: ${node.duration}` : null}
-          {node.duration && (node.priceLabel || node.priceFrom) ? " · " : null}
-          {node.priceLabel ?? (node.priceFrom ? `від ${node.priceFrom} грн` : null)}
         </p>
         <AppLink
           to={node.route}

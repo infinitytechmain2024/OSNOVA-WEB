@@ -1,456 +1,326 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Check, Phone, Send, MapPin } from "lucide-react";
+import { ArrowRight, Activity, Heart, Stethoscope, Dumbbell, MapPin, Phone, Users, Shield, Clock } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
-import { OtherServices } from "@/components/other-services";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+
+// Images
+import rehabImg from "@/assets/service-rehab.jpg";
+import checkupImg from "@/assets/service-checkup.jpg";
+import sportsImg from "@/assets/service-sports.jpg";
 import cpetImg from "@/assets/cpet-test.jpg";
 import ecgImg from "@/assets/ecg-review.jpg";
-import ergoImg from "@/assets/ergometer.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Кардіологічна діагностика — OSNOVA Реабілітація, Буковель" },
+      { title: "ОСНОВА Реабілітація — Оздоровчий центр у Буковелі" },
       {
         name: "description",
         content:
-          "Комплексна оцінка роботи серця: ЕКГ, Холтер, ДМАТ, кардіопульмональний тест, спірографія. Медичний висновок і персональні рекомендації.",
+          "Реабілітаційний центр у Буковелі — сучасний медичний центр відновлення здоров'я. Реабілітація після травм, кардіореабілітація, спортивна медицина.",
       },
-      { property: "og:title", content: "Кардіологічна діагностика — OSNOVA Реабілітація" },
-      {
-        property: "og:description",
-        content:
-          "Оцінка серця, ритму, тиску та переносимості навантажень. Ціни, методи та запис на діагностику в Буковелі.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
 });
 
-const AFTER_EVENTS = [
-  "Після інфаркту міокарда",
-  "Після стентування коронарних артерій",
-  "Після аортокоронарного шунтування",
-  "Після операцій на клапанах серця",
-  "Після встановлення кардіостимулятора",
-  "Після перенесених порушень серцевого ритму",
-];
-
-const POSTPONE_LEFT = [
-  "При гострому або раптовому болю у грудній клітці",
-  "При підозрі на гострий коронарний синдром",
-  "Після нещодавнього інфаркту або інсульту без дозволу лікаря",
-  "При неконтрольованій артеріальній гіпертензії",
-  "При неконтрольованих порушеннях серцевого ритму",
-];
-
-const POSTPONE_RIGHT = [
-  "При гострому інфекційному захворюванні",
-  "При підвищеній температурі тіла",
-  "При декомпенсованій серцевій недостатності",
-  "При загостренні тяжких супутніх захворювань",
-];
-
-const METHODS = [
-  { title: "ЕКГ", text: "Базова оцінка електричної активності серця, ритму та провідності." },
+const HERO_SLIDES = [
   {
-    title: "Холтер ЕКГ",
-    text: "Добове або триваліше моніторування серцевого ритму в умовах звичайної активності.",
+    image: rehabImg,
+    title: "Відновлення руху без болю",
+    subtitle: "Сучасний реабілітаційний центр",
+    text: "Повертаємо радість активного життя завдяки індивідуальним програмам реабілітації після травм, операцій та захворювань.",
   },
-  { title: "ДМАТ", text: "Добове моніторування артеріального тиску протягом дня і ночі." },
   {
-    title: "Кардіопульмональний тест (CPET)",
-    text: "Оцінка роботи серця, легень і витривалості під час фізичного навантаження.",
+    image: cpetImg,
+    title: "Кардіологічна діагностика",
+    subtitle: "Перевірте своє серце",
+    text: "Комплексна оцінка роботи серцево-судинної системи. Від ЕКГ до кардіопульмонального тестування в умовах гірського клімату.",
   },
-  { title: "Спірографія", text: "Оцінка функції дихання та стану серцево-легеневої системи." },
   {
-    title: "Лабораторно-інструментальна діагностика",
-    text: "Додаткові обстеження за показаннями: аналізи, ЕхоКГ, УЗД судин та інші методи.",
+    image: sportsImg,
+    title: "Спортивна медицина",
+    subtitle: "Для любителів та професіоналів",
+    text: "Підвищуйте витривалість, тренуйтеся безпечно. Спортивні чекапи та супровід для найкращих результатів.",
   },
 ];
 
-const RESULTS = [
-  "Оцінка реального стану серця та судин",
-  "Виявлення прихованих порушень серцевого ритму",
-  "Виявлення підвищеного або нестабільного артеріального тиску",
-  "Оцінка фізичної витривалості та переносимості навантажень",
-  "Визначення безпечної пульсової зони для тренувань",
-  "Контроль стану після серцево-судинних захворювань або втручань",
-  "Підбір подальшої тактики профілактики, лікування або реабілітації",
-  "Персональні рекомендації щодо способу життя, харчування та фізичної активності",
+const ADVANTAGES = [
+  {
+    icon: MapPin,
+    title: "Розташування в Буковелі",
+    text: "Цілющий гірський клімат сприяє швидшому відновленню та покращує загальне самопочуття.",
+  },
+  {
+    icon: Shield,
+    title: "Сучасне обладнання",
+    text: "Використовуємо інноваційні технології та апарати для точної діагностики та ефективної реабілітації.",
+  },
+  {
+    icon: Users,
+    title: "Команда професіоналів",
+    text: "Досвідчені лікарі, реабілітологи та фізіотерапевти працюють для досягнення ваших цілей.",
+  },
+  {
+    icon: Clock,
+    title: "Індивідуальний підхід",
+    text: "Кожна програма створюється з урахуванням ваших особистих потреб та стану здоров'я.",
+  },
 ];
 
-const PRICES = [
-  { name: "ЕКГ (електрокардіограма)", time: "15 хв", price: "600 грн" },
-  { name: "Кардіопульмональний тест (CPET)", time: "90 хв", price: "2000 грн" },
-  { name: "Велоергометрія / Тредміл-тест", time: "60 хв", price: "1200 грн" },
-  { name: "Добове моніторування ЕКГ (по Холтеру)", time: "1 доба", price: "1200 грн" },
-  { name: "ДМАТ (добове моніторування АТ)", time: "1 доба", price: "600 грн" },
-  { name: "Спірографія", time: "20 хв", price: "500 грн" },
-  { name: "ЕхоКГ (ехокардіографія)", time: "30 хв", price: "800 грн" },
-  { name: "Лабораторні аналізи", time: "—", price: "За запитом" },
+const DIRECTIONS = [
+  {
+    icon: Activity,
+    title: "Травматологічна реабілітація",
+    text: "Відновлення після переломів, операцій на суглобах та спортивних травм.",
+    image: rehabImg,
+  },
+  {
+    icon: Heart,
+    title: "Кардіологічна реабілітація",
+    text: "Програми для пацієнтів після інфаркту, операцій на серці та судинах.",
+    image: ecgImg,
+  },
+  {
+    icon: Dumbbell,
+    title: "Спортивна медицина",
+    text: "Підвищення показників та безпечне відновлення для спортсменів.",
+    image: sportsImg,
+  },
+  {
+    icon: Stethoscope,
+    title: "Поліклініка",
+    text: "Консультації вузьких спеціалістів та діагностичні послуги на сучасному обладнанні.",
+    image: checkupImg,
+  },
 ];
 
-const OTHER_PRICES = [
-  "УЗД судин",
-  "МРТ серця",
-  "Розширені лабораторні панелі",
-  "Консультація кардіолога",
-  "Аналіз результатів попередніх обстежень",
+const FAQS = [
+  {
+    question: "Що включає первинна консультація?",
+    answer: "Первинна консультація включає огляд лікарем-спеціалістом, збір анамнезу, оцінку вашого поточного стану та складання індивідуального плану обстежень або реабілітації.",
+  },
+  {
+    question: "Чи потрібне направлення для проходження реабілітації?",
+    answer: "Ні, направлення не є обов'язковим. Ви можете звернутися до нас самостійно, і наші фахівці підберуть необхідну програму.",
+  },
+  {
+    question: "Скільки триває курс реабілітації?",
+    answer: "Тривалість курсу визначається індивідуально і залежить від вашого стану. Зазвичай програми тривають від 10 до 21 дня.",
+  },
+  {
+    question: "Чи можна суміщати реабілітацію з відпочинком?",
+    answer: "Так! Наше розташування в Буковелі дозволяє ідеально поєднувати лікувальні процедури з відпочинком, прогулянками та релаксом.",
+  },
 ];
 
-const SIGNS = [
-  "болю або дискомфорті у грудях",
-  "задишці при звичному навантаженні",
-  "перебоях у роботі серця або прискореному серцебитті",
-  "запамороченні та епізодах втрати свідомості",
-  "підвищеному або нестабільному артеріальному тиску",
-  "швидкій втомлюваності та зниженні витривалості",
-];
-
-function SectionTitle({ children }: { children: React.ReactNode }) {
+function SectionTitle({ subtitle, title, centered = false }: { subtitle?: string; title: React.ReactNode; centered?: boolean }) {
   return (
-    <>
-      <h2 className="text-3xl leading-tight font-bold text-navy md:text-4xl">{children}</h2>
-      <div className="mt-6 h-1 w-16 rounded-full bg-primary" />
-    </>
+    <div className={`mb-12 ${centered ? "text-center" : ""}`}>
+      {subtitle && <p className="mb-3 text-sm font-bold tracking-[0.2em] text-primary">{subtitle.toUpperCase()}</p>}
+      <h2 className="text-3xl font-extrabold leading-tight text-navy md:text-5xl">{title}</h2>
+      <div className={`mt-6 h-1 w-20 rounded-full bg-primary ${centered ? "mx-auto" : ""}`} />
+    </div>
   );
 }
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
       <SiteHeader />
 
       <main>
-        {/* 1 — Hero */}
-        <section className="relative overflow-hidden bg-navy-deep">
-          <img
-            src={cpetImg}
-            alt="Кардіологічна діагностика: пацієнт на велоергометрі під наглядом лікаря"
-            width={1200}
-            height={800}
-            className="absolute inset-0 size-full object-cover object-right"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/90 to-navy-deep/10" />
-          <div className="relative mx-auto max-w-[1600px] px-6 py-24 lg:px-10 lg:py-32">
-            <p className="text-sm font-semibold tracking-[0.28em] text-primary-foreground/70">
-              КОМПЛЕКСНА ОЦІНКА РОБОТИ СЕРЦЯ
-            </p>
-            <h1 className="mt-6 max-w-2xl text-5xl leading-[1.05] font-extrabold text-background md:text-7xl">
-              Кардіологічна діагностика
-            </h1>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-background/85">
-              Оцініть роботу <strong className="font-bold">серця</strong>, ритм, артеріальний тиск і
-              переносимість фізичних навантажень. Отримайте медичний висновок, оцінку ризиків і
-              персональні рекомендації щодо подальших дій.
-            </p>
-            <button className="mt-10 rounded-lg bg-brand-green px-9 py-5 text-base font-bold tracking-wide text-brand-green-foreground transition-opacity hover:opacity-90">
-              ЗАПИСАТИСЯ НА ДІАГНОСТИКУ
-            </button>
-          </div>
-        </section>
-
-        {/* 1.5 — Що таке кардіодіагностика */}
-        <section className="mx-auto max-w-[1600px] px-6 pt-16 lg:px-10">
-          <div className="section-shell grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="text-4xl leading-tight font-extrabold tracking-wide text-navy md:text-5xl">
-                ЩО ТАКЕ
-                <br />
-                КАРДІОДІАГНОСТИКА?
-              </h2>
-              <div className="mt-6 h-1 w-24 rounded-full bg-primary/60" />
-              <p className="mt-8 text-lg leading-relaxed text-navy/90">
-                Кардіодіагностика — це комплексне обстеження серцево-судинної системи, яке дозволяє
-                оцінити роботу серця, судин, артеріального тиску, серцевого ритму, фізичної
-                витривалості та реакції організму на навантаження. Вона включає консультацію лікаря,
-                інструментальні дослідження, функціональні тести та лабораторні аналізи.
-              </p>
-              <button className="mt-10 inline-flex items-center gap-6 rounded-xl bg-secondary px-8 py-5 text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent">
-                ДЕТАЛЬНІШЕ <ArrowRight className="size-5" />
-              </button>
+        {/* 1. HERO CAROUSEL */}
+        <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-navy-deep">
+          <Carousel
+            plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
+            opts={{ loop: true }}
+            className="size-full"
+          >
+            <CarouselContent className="h-full">
+              {HERO_SLIDES.map((slide, index) => (
+                <CarouselItem key={index} className="relative h-screen min-h-[600px] w-full basis-full">
+                  <div className="absolute inset-0 size-full">
+                    <img src={slide.image} alt={slide.title} className="size-full object-cover object-center" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/80 to-transparent" />
+                  </div>
+                  <div className="relative flex h-full items-center">
+                    <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10">
+                      <div className="max-w-2xl animate-in slide-in-from-bottom-8 fade-in duration-1000 fill-mode-both">
+                        <span className="mb-4 inline-block rounded-full border border-primary/50 bg-primary/10 px-4 py-1.5 text-sm font-semibold tracking-wider text-primary">
+                          {slide.subtitle}
+                        </span>
+                        <h1 className="mb-6 text-5xl font-extrabold leading-[1.1] text-white md:text-7xl">
+                          {slide.title}
+                        </h1>
+                        <p className="mb-10 text-lg leading-relaxed text-white/80 md:text-xl">
+                          {slide.text}
+                        </p>
+                        <div className="flex flex-wrap gap-4">
+                          <button className="rounded-xl bg-primary px-8 py-4 font-bold tracking-wide text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/40">
+                            ДІЗНАТИСЯ БІЛЬШЕ
+                          </button>
+                          <button className="rounded-xl border border-white/20 bg-white/5 px-8 py-4 font-bold tracking-wide text-white backdrop-blur-sm transition-all hover:bg-white/10">
+                            НАШІ ПОСЛУГИ
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="absolute bottom-10 right-10 hidden gap-4 md:flex">
+              <CarouselPrevious className="static translate-y-0 translate-x-0 border-white/20 bg-white/10 text-white hover:bg-white hover:text-navy" />
+              <CarouselNext className="static translate-y-0 translate-x-0 border-white/20 bg-white/10 text-white hover:bg-white hover:text-navy" />
             </div>
-            <img
-              src={cpetImg}
-              alt="Кардіодіагностика: навантажувальний тест під наглядом лікаря"
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[460px] w-full rounded-xl object-cover"
-            />
-          </div>
+          </Carousel>
         </section>
 
-        {/* 2 — Коли рекомендовано */}
-
-        <section className="mx-auto max-w-[1600px] px-6 py-16 lg:px-10">
-          <div className="section-shell grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <SectionTitle>Коли рекомендовано пройти кардіодіагностику</SectionTitle>
-              <p className="mt-10 text-lg font-bold text-navy">
-                Після серцево-судинних подій, операцій і втручань
-              </p>
-              <ul className="mt-6 space-y-3">
-                {AFTER_EVENTS.map((item) => (
-                  <li key={item} className="flex gap-3 text-navy/90">
-                    <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <button className="mt-10 inline-flex items-center gap-6 rounded-xl bg-secondary px-8 py-5 text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent">
-                ДЕТАЛЬНІШЕ <ArrowRight className="size-5" />
-              </button>
-            </div>
-            <img
-              src={cpetImg}
-              alt="Навантажувальний тест на велоергометрі"
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[440px] w-full rounded-xl object-cover"
-            />
-          </div>
-        </section>
-
-        {/* 3 — Коли відкласти */}
-        <section className="mx-auto max-w-[1600px] px-6 pb-16 lg:px-10">
-          <div className="rounded-3xl border border-border p-8 md:p-12">
-            <SectionTitle>
-              Коли планову діагностику або навантажувальні тести потрібно відкласти?
-            </SectionTitle>
-            <p className="mt-10 text-lg font-bold text-navy">
-              Планову кардіодіагностику або навантажувальні тести слід відкласти:
-            </p>
-            <div className="mt-6 grid gap-x-16 gap-y-4 md:grid-cols-2">
-              {[...POSTPONE_LEFT, ...POSTPONE_RIGHT].map((item) => (
-                <p key={item} className="text-navy/90">
-                  <span className="mr-2 text-muted-foreground">–</span>
-                  {item}
+        {/* 2. ABOUT OSNOVA */}
+        <section className="relative overflow-hidden py-24">
+          <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
+            <div className="grid items-center gap-16 lg:grid-cols-2">
+              <div className="relative">
+                <div className="absolute -left-4 -top-4 size-24 rounded-tl-3xl border-l-4 border-t-4 border-primary/30" />
+                <div className="absolute -bottom-4 -right-4 size-24 rounded-br-3xl border-b-4 border-r-4 border-primary/30" />
+                <img
+                  src={rehabImg}
+                  alt="Реабілітаційний центр"
+                  className="relative z-10 rounded-2xl object-cover shadow-2xl"
+                />
+              </div>
+              <div>
+                <SectionTitle subtitle="Про центр" title={<>ОСНОВА <br className="hidden md:block" />Реабілітація</>} />
+                <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
+                  Сучасний медичний центр відновлення здоров'я, розташований у самому серці Карпат — на курорті Буковель. Ми поєднуємо передові медичні технології, доказову медицину та цілющий гірський клімат для вашого найшвидшого відновлення.
                 </p>
-              ))}
-            </div>
-            <div className="mt-10 rounded-xl border border-destructive/25 bg-destructive/8 p-6">
-              <p className="font-bold text-navy">Коли потрібна невідкладна медична допомога</p>
-              <p className="mt-2 text-navy/90">
-                При гострому болю у грудях, раптовій вираженій задишці, втраті свідомості або
-                різкому погіршенні самопочуття необхідно звернутися по невідкладну медичну допомогу.
-              </p>
+                <p className="mb-10 text-lg leading-relaxed text-muted-foreground">
+                  Наша місія — не просто лікувати симптоми, а повертати якість життя, радість руху та впевненість у власному тілі.
+                </p>
+                <div className="grid grid-cols-2 gap-8 border-t border-border pt-8">
+                  <div>
+                    <p className="text-4xl font-extrabold text-primary">10+</p>
+                    <p className="mt-2 text-sm font-medium text-muted-foreground">Років сумарного досвіду лікарів</p>
+                  </div>
+                  <div>
+                    <p className="text-4xl font-extrabold text-primary">500+</p>
+                    <p className="mt-2 text-sm font-medium text-muted-foreground">Успішних програм реабілітації</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* 4 — Як часто */}
-        <section className="mx-auto max-w-[1600px] px-6 pb-16 lg:px-10">
-          <div className="section-shell grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <SectionTitle>Як часто проходити кардіодіагностику?</SectionTitle>
-              <p className="mt-10 text-navy/90">
-                Періодичність обстежень визначає лікар з урахуванням віку, скарг, факторів ризику,
-                наявних захворювань і результатів попередньої діагностики.
-              </p>
-              <p className="mt-6 text-navy/90">
-                Після інфаркту, стентування, операцій на серці або перед початком реабілітації
-                графік контрольних обстежень формується індивідуально.
-              </p>
-              <button className="mt-10 inline-flex items-center gap-6 rounded-xl bg-secondary px-8 py-5 text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent">
-                ДЕТАЛЬНІШЕ <ArrowRight className="size-5" />
-              </button>
-            </div>
-            <img
-              src={ecgImg}
-              alt="Лікар аналізує результати ЕКГ"
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[440px] w-full rounded-xl object-cover"
+        {/* 3. DIRECTIONS */}
+        <section className="bg-secondary/30 py-24">
+          <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
+            <SectionTitle
+              centered
+              subtitle="Наші напрямки"
+              title="Напрямки реабілітації та лікування"
             />
-          </div>
-        </section>
-
-        {/* 5 — Методи */}
-        <section className="bg-soft-blue py-20">
-          <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-            <h2 className="text-center text-3xl leading-tight font-bold text-navy md:text-4xl">
-              Які методи кардіодіагностики
-              <br />
-              ми використовуємо
-            </h2>
-            <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {METHODS.map((m) => (
-                <article key={m.title} className="rounded-xl bg-card p-8 shadow-sm">
-                  <h3 className="text-lg font-bold text-primary">{m.title}</h3>
-                  <div className="mt-4 h-0.5 w-10 bg-primary/60" />
-                  <p className="mt-5 text-navy/85">{m.text}</p>
-                </article>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+              {DIRECTIONS.map((dir, i) => (
+                <div key={i} className="group relative overflow-hidden rounded-2xl bg-card shadow-sm transition-all hover:-translate-y-2 hover:shadow-xl">
+                  <div className="aspect-[4/3] w-full overflow-hidden">
+                    <img src={dir.image} alt={dir.title} className="size-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  </div>
+                  <div className="p-8">
+                    <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                      <dir.icon className="size-6" />
+                    </div>
+                    <h3 className="mb-3 text-xl font-bold text-navy">{dir.title}</h3>
+                    <p className="mb-6 text-muted-foreground">{dir.text}</p>
+                    <button className="flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-navy">
+                      ДЕТАЛЬНІШЕ <ArrowRight className="size-4" />
+                    </button>
+                  </div>
+                </div>
               ))}
             </div>
-            <div className="mt-10 rounded-xl bg-secondary/60 p-6 pl-8 [border-left:4px_solid_var(--color-primary)]">
-              <p className="font-semibold text-navy">
-                Програму кардіодіагностики лікар формує індивідуально з урахуванням скарг, факторів
-                ризику та цілей обстеження.
-              </p>
-            </div>
           </div>
         </section>
 
-        {/* 6 — Результати */}
-        <section className="mx-auto max-w-[1600px] px-6 py-16 lg:px-10">
-          <div className="section-shell grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="text-3xl leading-tight font-bold text-navy md:text-4xl">
-                Результати кардіодіагностики
-              </h2>
-              <ul className="mt-10">
-                {RESULTS.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-4 border-b border-border py-4 last:border-0"
-                  >
-                    <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-green">
-                      <Check className="size-4 text-brand-green-foreground" />
-                    </span>
-                    <span className="text-navy/90">{item}</span>
-                  </li>
+        {/* 4. WHY CHOOSE US */}
+        <section className="py-24">
+          <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
+            <div className="grid gap-16 lg:grid-cols-5">
+              <div className="lg:col-span-2">
+                <SectionTitle subtitle="Переваги" title="Чому обирають ОСНОВУ?" />
+                <p className="mb-8 text-lg text-muted-foreground">
+                  Ми створили унікальний простір, де інноваційна медицина зустрічається з комфортом преміум-класу та турботою про кожного пацієнта.
+                </p>
+                <button className="rounded-xl bg-navy px-8 py-4 font-bold tracking-wide text-white transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-navy/25">
+                  ЗАПИСАТИСЯ НА ПРИЙОМ
+                </button>
+              </div>
+              <div className="grid gap-6 sm:grid-cols-2 lg:col-span-3">
+                {ADVANTAGES.map((adv, i) => (
+                  <div key={i} className="rounded-2xl border border-border bg-card p-8 transition-colors hover:border-primary/50">
+                    <adv.icon className="mb-6 size-10 text-primary" />
+                    <h3 className="mb-3 text-lg font-bold text-navy">{adv.title}</h3>
+                    <p className="text-muted-foreground">{adv.text}</p>
+                  </div>
                 ))}
-              </ul>
-            </div>
-            <img
-              src={ergoImg}
-              alt="Рука на кермі велоергометра"
-              width={1200}
-              height={1000}
-              loading="lazy"
-              className="h-full max-h-[640px] w-full rounded-xl object-cover"
-            />
-          </div>
-        </section>
-
-        {/* 7 — Ціни */}
-        <section className="mx-auto max-w-[1600px] px-6 pb-16 lg:px-10">
-          <div className="section-shell">
-            <h2 className="text-center text-4xl font-extrabold text-navy md:text-5xl">
-              Ціни та послуги
-            </h2>
-            <div className="mt-12 grid gap-8 lg:grid-cols-2">
-              <div className="rounded-xl border border-border bg-card p-8">
-                <h3 className="text-sm font-bold tracking-[0.08em] text-primary">
-                  ДІАГНОСТИКА В OSNOVA
-                </h3>
-                <ul className="mt-6">
-                  {PRICES.map((p) => (
-                    <li
-                      key={p.name}
-                      className="flex items-center gap-4 border-b border-border py-4 last:border-0"
-                    >
-                      <span className="flex-1 text-navy">{p.name}</span>
-                      <span className="text-sm text-muted-foreground">{p.time}</span>
-                      <span className="w-28 text-right font-bold text-navy">{p.price}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-              <div className="rounded-xl border border-border bg-card p-8">
-                <h3 className="text-sm font-bold tracking-[0.08em] text-primary">
-                  ІНШІ ДІАГНОСТИЧНІ ПОСЛУГИ
-                </h3>
-                <ul className="mt-6">
-                  {OTHER_PRICES.map((p) => (
-                    <li
-                      key={p}
-                      className="flex items-center justify-between gap-4 border-b border-border py-6 last:border-0"
-                    >
-                      <span className="text-navy">{p}</span>
-                      <span className="font-semibold text-navy">За запитом</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="mt-10 flex flex-col items-center gap-8 rounded-xl bg-secondary/50 p-8 lg:flex-row">
-              <p className="flex-1 pl-6 text-navy/90 [border-left:4px_solid_var(--color-primary)]">
-                Програма кардіодіагностики та перелік обстежень формуються індивідуально з
-                урахуванням скарг, фізичного стану, факторів ризику, супутніх захворювань і цілей
-                пацієнта.
-              </p>
-              <button className="rounded-lg bg-primary px-12 py-5 text-base font-bold tracking-wide text-primary-foreground transition-opacity hover:opacity-90">
-                ЗАМОВИТИ ПОСЛУГУ
-              </button>
             </div>
           </div>
         </section>
 
-        {/* 8 — CTA */}
-        <section className="relative mx-auto max-w-[1600px] px-6 pb-16 lg:px-10">
-          <div className="relative overflow-hidden rounded-2xl bg-soft-blue px-6 py-24 text-center">
-            <h2 className="text-4xl font-extrabold tracking-wide text-navy md:text-5xl">
-              ПЕРЕВІРТЕ СЕРЦЕ
-              <br />
-              ВЖЕ ЗАРАЗ
-            </h2>
-            <div className="mx-auto mt-8 h-0.5 w-20 bg-primary/50" />
-            <p className="mx-auto mt-8 max-w-3xl text-lg text-navy/85">
-              Не відкладайте кардіодіагностику — своєчасне обстеження допомагає виявити ризики,
-              оцінити роботу серця та підібрати правильну тактику лікування або профілактики. Чим
-              раніше пройти діагностику — тим більше можливостей попередити ускладнення.
-            </p>
-            <button className="mt-12 rounded-full bg-primary px-14 py-6 text-lg font-semibold text-primary-foreground shadow-lg transition-opacity hover:opacity-90">
-              Записатися на консультацію
-            </button>
-            <div className="mx-auto mt-12 h-px w-full max-w-2xl bg-border" />
-            <a
-              href="tel:+380674702788"
-              className="mt-10 inline-flex items-center gap-3 text-2xl font-bold text-primary"
-            >
-              <Phone className="size-6" /> +380 674 702 788
-            </a>
-
-            <div className="absolute top-1/2 right-6 hidden -translate-y-1/2 flex-col gap-4 md:flex">
-              {[Phone, Send, MapPin].map((Icon, i) => (
-                <span
-                  key={i}
-                  className="flex size-12 items-center justify-center rounded-full bg-primary/25 text-primary"
-                >
-                  <Icon className="size-5" />
-                </span>
+        {/* 5. FAQ */}
+        <section className="bg-soft-blue py-24">
+          <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
+            <SectionTitle centered subtitle="Відповіді" title="Часті запитання" />
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {FAQS.map((faq, i) => (
+                <AccordionItem key={i} value={`item-${i}`} className="rounded-xl border border-border bg-card px-6">
+                  <AccordionTrigger className="text-left text-lg font-bold text-navy hover:text-primary hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-base text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </div>
+            </Accordion>
           </div>
         </section>
 
-        {/* 9 — Коли варто пройти обстеження серця */}
-        <section className="mx-auto max-w-[1400px] px-6 pb-24 lg:px-10">
-          <h2 className="text-4xl font-extrabold text-navy md:text-5xl">
-            Коли варто пройти обстеження серця
-          </h2>
-          <p className="mt-8 text-lg leading-relaxed text-navy/85">
-            Серцево-судинні захворювання часто розвиваються поступово та тривалий час можуть не
-            проявлятися вираженими симптомами. Саме тому важливо вчасно реагувати навіть на незначні
-            зміни самопочуття та регулярно проходити обстеження серця. Своєчасне звернення до
-            спеціаліста і повне обстеження серця допомагає виявити порушення на ранніх стадіях та
-            запобігти розвитку серйозних ускладнень.
-          </p>
-          <p className="mt-8 font-bold text-navy">
-            Звернутися до лікаря та провести обстеження серця варто при:
-          </p>
-          <ul className="mt-6 space-y-3">
-            {SIGNS.map((s) => (
-              <li key={s} className="flex gap-3 text-navy/90">
-                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-muted-foreground" />
-                {s};
-              </li>
-            ))}
-          </ul>
-          <button className="mt-10 rounded-lg bg-primary px-10 py-4 text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90">
-            Детальніше
-          </button>
+        {/* 6. CTA */}
+        <section className="relative py-32">
+          <div className="absolute inset-0 bg-navy-deep">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          </div>
+          <div className="relative mx-auto max-w-[1000px] px-6 text-center lg:px-10">
+            <h2 className="mb-8 text-4xl font-extrabold text-white md:text-6xl">
+              Зробіть перший крок до здорового життя
+            </h2>
+            <p className="mb-12 text-xl text-white/70">
+              Залиште заявку, і наші спеціалісти зв'яжуться з вами для детальної консультації та підбору оптимальної програми.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
+              <button className="w-full rounded-xl bg-primary px-10 py-5 text-lg font-bold tracking-wide text-primary-foreground transition-all hover:bg-primary/90 sm:w-auto">
+                ОТРИМАТИ КОНСУЛЬТАЦІЮ
+              </button>
+              <a
+                href="tel:+380674702788"
+                className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/20 bg-white/5 px-10 py-5 text-lg font-bold text-white backdrop-blur-sm transition-all hover:bg-white/10 sm:w-auto"
+              >
+                <Phone className="size-5" />
+                +380 674 702 788
+              </a>
+            </div>
+          </div>
         </section>
-
-        {/* 10 — Інші послуги */}
-        <OtherServices />
       </main>
+      
+      <footer className="bg-background py-10 text-center border-t border-border">
+          <p className="text-muted-foreground">&copy; 2024 OSNOVA Реабілітація. Всі права захищені.</p>
+      </footer>
     </div>
   );
 }

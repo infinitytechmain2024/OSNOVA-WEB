@@ -59,7 +59,7 @@ function ChildrenGrid({ node }: { node: SiteNode }) {
   return (
     <PageContainer className="py-16">
       <SectionTitle>
-        {node.type === "category" ? "Усі напрями" : "Доступні програми та послуги"}
+        {node.type === "category" ? "Усі напрями" : `Які програми та методи ми використовуємо`}
       </SectionTitle>
       <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {children.map((c) => (
@@ -143,9 +143,22 @@ function NodePage() {
 
         {node.fullDescription && (
           <PageContainer className="py-16">
-            <div className="section-shell max-w-4xl">
-              <SectionTitle>Коротко про напрям</SectionTitle>
-              <p className="mt-8 text-lg leading-relaxed text-navy/90">{node.fullDescription}</p>
+            <div className="grid gap-8 rounded-3xl bg-soft p-8 md:grid-cols-2 md:p-12 lg:items-center">
+              <div>
+                <SectionTitle>Як часто проходити обстеження?</SectionTitle>
+                <p className="mt-8 text-lg leading-relaxed text-navy/90">{node.fullDescription}</p>
+                <AppLink
+                  to="/kontakty"
+                  className="mt-8 inline-flex items-center gap-2 rounded-md bg-blue-200/50 px-6 py-3 text-sm font-bold text-navy hover:bg-blue-300/50 transition-colors"
+                >
+                  ДЕТАЛЬНІШЕ <ArrowRight className="size-4" />
+                </AppLink>
+              </div>
+              {node.image && (
+                <div className="overflow-hidden rounded-2xl">
+                  <img src={node.image} alt="Опис" className="h-[300px] w-full object-cover" />
+                </div>
+              )}
             </div>
           </PageContainer>
         )}
@@ -175,17 +188,41 @@ function NodePage() {
         ) : null}
 
         {node.indications?.length ? (
-          <PageContainer className="pb-16">
-            <SectionTitle>Коли потрібна ця послуга</SectionTitle>
-            <BulletList items={node.indications} />
+          <PageContainer className="pb-16 pt-8">
+            <div className="grid gap-8 rounded-3xl bg-soft p-8 md:grid-cols-2 md:p-12 lg:items-center">
+              <div>
+                <SectionTitle>Коли рекомендовано пройти {node.title.toLowerCase()}</SectionTitle>
+                <BulletList items={node.indications} />
+                <AppLink
+                  to="/kontakty"
+                  className="mt-8 inline-flex items-center gap-2 rounded-md bg-blue-200/50 px-6 py-3 text-sm font-bold text-navy hover:bg-blue-300/50 transition-colors"
+                >
+                  ДЕТАЛЬНІШЕ <ArrowRight className="size-4" />
+                </AppLink>
+              </div>
+              {node.image && (
+                <div className="overflow-hidden rounded-2xl">
+                  <img src={node.image} alt={node.title} className="h-[350px] w-full object-cover" />
+                </div>
+              )}
+            </div>
           </PageContainer>
         ) : null}
 
         {node.contraindications?.length ? (
           <PageContainer className="pb-16">
-            <div className="rounded-3xl border border-border p-8 md:p-12">
-              <SectionTitle>Коли послугу потрібно відкласти</SectionTitle>
-              <BulletList items={node.contraindications} />
+            <div className="rounded-3xl border border-border bg-soft/50 p-8 md:p-12">
+              <SectionTitle>Коли планову послугу потрібно відкласти?</SectionTitle>
+              <div className="mt-6 md:columns-2 gap-8">
+                <BulletList items={node.contraindications} />
+              </div>
+              <div className="mt-10 rounded-xl bg-red-50/50 border border-red-100 p-6 text-red-900">
+                <p className="font-bold">Коли потрібна невідкладна медична допомога</p>
+                <p className="mt-2 text-sm text-red-800">
+                  При гострому болю, раптовій задишці, втраті свідомості або різкому погіршенні
+                  самопочуття необхідно звернутися по невідкладну медичну допомогу.
+                </p>
+              </div>
             </div>
           </PageContainer>
         ) : null}
@@ -215,9 +252,16 @@ function NodePage() {
 
         {node.results?.length ? (
           <PageContainer className="pb-16">
-            <div className="section-shell">
-              <SectionTitle>Які результати може отримати пацієнт</SectionTitle>
-              <CheckList items={node.results} />
+            <div className="grid gap-8 rounded-3xl bg-soft p-8 md:grid-cols-2 md:p-12 lg:items-center">
+              <div>
+                <SectionTitle>Результати {node.title.toLowerCase()}</SectionTitle>
+                <CheckList items={node.results} />
+              </div>
+              {node.image && (
+                <div className="overflow-hidden rounded-2xl">
+                  <img src={node.image} alt="Результати" className="h-[350px] w-full object-cover" />
+                </div>
+              )}
             </div>
           </PageContainer>
         ) : null}

@@ -15,6 +15,53 @@ export type FAQItem = {
   answer: string;
 };
 
+export type ServiceMethodCard = {
+  title: string;
+  text: string;
+};
+
+export type ServicePriceRow = {
+  name: string;
+  time?: string;
+  price: string;
+};
+
+/** Додатковий контент для шаблону сторінки послуги (перекриває автогенерацію). */
+export type ServicePageContent = {
+  heroPrimaryLabel?: string;
+  introBody?: string;
+  recommendedTitle?: string;
+  recommendedSubtitle?: string;
+  recommendedItems?: string[];
+  postponeTitle?: string;
+  postponeIntro?: string;
+  postponeLeft?: string[];
+  postponeRight?: string[];
+  emergencyTitle?: string;
+  emergencyBody?: string;
+  frequencyParagraphs?: string[];
+  methodCards?: ServiceMethodCard[];
+  methodSectionTitle?: string;
+  methodNote?: string;
+  resultsTitle?: string;
+  priceSectionTitle?: string;
+  pricePrimaryTitle?: string;
+  priceSecondaryTitle?: string;
+  pricePrimary?: ServicePriceRow[];
+  priceSecondary?: { name: string; price?: string }[];
+  priceFooterText?: string;
+  priceFooterButton?: string;
+  ctaTitle?: string;
+  ctaBody?: string;
+  ctaButton?: string;
+  signsTitle?: string;
+  signsIntro?: string;
+  signsListIntro?: string;
+  signsItems?: string[];
+  secondaryImage?: string;
+  tertiaryImage?: string;
+};
+
 export type SiteNode = {
   id: string;
   slug: string;
@@ -55,6 +102,7 @@ export type SiteNode = {
   /** Custom page renderer key for hand-built pages (e.g. кардіодіагностика) */
   customPage?: "cardio-diagnostics" | "all-services" | "faq" | "contacts" | "legal" | "success";
   legalBody?: string[];
+  pageContent?: ServicePageContent;
 
   children?: SiteNode[];
 };
