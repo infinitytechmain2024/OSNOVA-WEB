@@ -4,8 +4,10 @@ import { siteTree, CONTACTS } from "@/data/site-tree";
 
 const services = siteTree.find((n) => n.id === "services")!;
 const education = siteTree.find((n) => n.id === "education")!;
+const events = siteTree.find((n) => n.id === "events")!;
 const partnership = siteTree.find((n) => n.id === "partnership")!;
 const about = siteTree.find((n) => n.id === "about")!;
+const socialProjects = about.children!.find((n) => n.id === "social")!;
 
 const SOCIALS = [Instagram, Music2, Youtube, Facebook];
 
@@ -63,7 +65,9 @@ export function SiteFooter() {
             items={[
               { title: education.title, route: education.route },
               ...(education.children ?? []).map((c) => ({ title: c.title, route: c.route })),
+              { title: events.title, route: events.route },
               { title: partnership.title, route: partnership.route },
+              { title: socialProjects.title, route: socialProjects.route },
             ]}
           />
           <div>

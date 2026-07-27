@@ -6,6 +6,11 @@ import { getBreadcrumbs, getNodeByRoute } from "@/lib/tree";
 import { CONTACTS } from "@/data/site-tree";
 import { ServiceDetailTemplate } from "@/components/service-detail-template";
 import { AllServicesPricePage } from "@/components/all-services-price-page";
+import { DoctorPartnershipPage } from "@/components/doctor-partnership-page";
+import { InstitutePartnershipPage } from "@/components/institute-partnership-page";
+import { MobileRehabPage } from "@/components/mobile-rehab-page";
+import { RentalEquipmentPage } from "@/components/rental-equipment-page";
+import { SocialProjectsPage } from "@/components/social-projects-page";
 
 export const Route = createFileRoute("/$")({
   loader: ({ params }) => {
@@ -17,11 +22,15 @@ export const Route = createFileRoute("/$")({
   head: ({ loaderData }) => {
     const node = loaderData ? getNodeByRoute(loaderData.route) : undefined;
     if (!node) {
-      return { meta: [{ title: "Сторінку не знайдено — ОСНОВА" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Сторінку не знайдено — ОСНОВА" }, { name: "robots", content: "noindex" }],
+      };
     }
     const title = node.seoTitle ?? `${node.title} — ОСНОВА Реабілітація`;
     const description =
-      node.seoDescription ?? node.shortDescription ?? "ОСНОВА Реабілітація — діагностика та відновлення.";
+      node.seoDescription ??
+      node.shortDescription ??
+      "ОСНОВА Реабілітація — діагностика та відновлення.";
     return {
       meta: [
         { title },
@@ -45,6 +54,26 @@ function NodePage() {
 
   if (node.customPage === "all-services" || node.id === "services") {
     return <AllServicesPricePage node={node} />;
+  }
+
+  if (node.id === "partnership-doctors") {
+    return <DoctorPartnershipPage node={node} />;
+  }
+
+  if (node.id === "social") {
+    return <SocialProjectsPage node={node} />;
+  }
+
+  if (node.customPage === "institute-partnership") {
+    return <InstitutePartnershipPage node={node} />;
+  }
+
+  if (node.customPage === "mobile-rehab") {
+    return <MobileRehabPage node={node} />;
+  }
+
+  if (node.customPage === "rental-equipment") {
+    return <RentalEquipmentPage node={node} />;
   }
 
   if (node.customPage === "legal" && node.legalBody) {

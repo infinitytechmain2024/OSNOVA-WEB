@@ -71,7 +71,15 @@ export function searchNodes(query: string): SiteNode[] {
   if (!q) return [];
   const words = q.split(/\s+/);
   return allNodes
-    .filter((n) => !n.customPage || n.customPage === "cardio-diagnostics" || n.customPage === "all-services")
+    .filter(
+      (n) =>
+        !n.customPage ||
+        n.customPage === "cardio-diagnostics" ||
+        n.customPage === "all-services" ||
+        n.customPage === "institute-partnership" ||
+        n.customPage === "mobile-rehab" ||
+        n.customPage === "rental-equipment",
+    )
     .filter((n) => {
       const haystack = `${n.title} ${n.shortDescription ?? ""} ${n.eyebrow ?? ""}`.toLowerCase();
       return words.every((w) => haystack.includes(w));

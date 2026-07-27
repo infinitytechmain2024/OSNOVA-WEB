@@ -101,7 +101,16 @@ export type SiteNode = {
   seoDescription?: string;
 
   /** Custom page renderer key for hand-built pages (e.g. кардіодіагностика) */
-  customPage?: "cardio-diagnostics" | "all-services" | "faq" | "contacts" | "legal" | "success";
+  customPage?:
+    | "cardio-diagnostics"
+    | "all-services"
+    | "institute-partnership"
+    | "mobile-rehab"
+    | "rental-equipment"
+    | "faq"
+    | "contacts"
+    | "legal"
+    | "success";
   legalBody?: string[];
   pageContent?: ServicePageContent;
 

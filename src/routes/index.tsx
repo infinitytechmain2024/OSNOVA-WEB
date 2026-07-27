@@ -14,15 +14,16 @@ import {
   ShieldCheck,
   Building2,
   GraduationCap,
-  Handshake,
   BookOpen,
   Calendar,
   UserCheck,
   Flame,
   Zap,
+  Ambulance,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { NewsCard } from "@/components/news-card";
 import {
   Accordion,
   AccordionContent,
@@ -38,6 +39,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { NEWS_ARTICLES } from "@/data/news";
 
 // Images
 import rehabImg from "@/assets/service-rehab.jpg";
@@ -337,10 +339,10 @@ const PARTNER_GROUPS = Array.from(
 // Співпраця
 const COOPERATION_ITEMS = [
   {
-    title: "ФРАНШИЗА",
-    text: "Готова модель масштабування ефективного реабілітаційного бізнесу з підтримкою команди ОСНОВА.",
-    href: "/partnerstvo",
-    icon: Handshake,
+    title: "ВИЇЗНА РЕАБІЛІТАЦІЯ",
+    text: "Команда ОСНОВА приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
+    href: "/vyizna-reabilitatsiia",
+    icon: Ambulance,
   },
   {
     title: "ДЛЯ ЛІКАРІВ",
@@ -357,7 +359,7 @@ const COOPERATION_ITEMS = [
   {
     title: "ОРЕНДА ОБЛАДНАННЯ",
     text: "Надання високотехнологічних пристроїв та тренажерів для медичних установ та центрів.",
-    href: "/poslugy/orenda-obladnannia",
+    href: "/orenda-obladnannia",
     icon: Building2,
   },
   {
@@ -810,8 +812,8 @@ function Index() {
                   <p>
                     ОСНОВА Реабілітація також є науково-освітньою платформою, що розробляє та
                     вдосконалює протоколи лікування, співпрацює з провідними медичними
-                    університетами світу, впроваджує інноваційні технології та пропонує франшизу для
-                    масштабування ефективної реабілітаційної моделі.
+                    університетами світу, впроваджує інноваційні технології та розвиває виїзні
+                    формати реабілітаційної допомоги для пацієнтів поза центром.
                   </p>
                 </div>
 
@@ -1166,7 +1168,7 @@ function Index() {
                   БЛОГ
                 </h2>
                 <AppLink
-                  to="/pro-nas"
+                  to="/novyny"
                   className="inline-flex w-fit shrink-0 items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-bold text-navy shadow-sm transition-all hover:bg-primary hover:text-white hover:border-primary"
                 >
                   ВСІ НОВИНИ <ArrowRight className="size-4" />
@@ -1176,63 +1178,9 @@ function Index() {
             </div>
 
             <div className="grid gap-8 md:grid-cols-2">
-              <article className="group rounded-3xl border border-border bg-card overflow-hidden shadow-lg transition-all hover:border-primary/40 hover:shadow-2xl">
-                <div className="h-64 overflow-hidden relative">
-                  <img
-                    src={ecgImg}
-                    alt="Серце"
-                    className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <span className="absolute top-4 left-4 rounded-full bg-navy/80 backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-white">
-                    11.07.2026
-                  </span>
-                </div>
-                <div className="p-8">
-                  <h3 className="mb-4 text-xl md:text-2xl font-bold text-navy leading-snug group-hover:text-primary transition-colors">
-                    Перші симптоми проблем із серцем: коли звертатися до кардіолога
-                  </h3>
-                  <p className="mb-6 text-muted-foreground leading-relaxed text-sm md:text-base">
-                    Біль у серці часто викликає тривогу та непокоїть багато людей. Але чому болить
-                    серце, коли це дійсно серйозна проблема, а коли потрібна профілактична
-                    діагностика...
-                  </p>
-                  <AppLink
-                    to="/poslugy/diagnostyka/kardiolohichna-diahnostyka"
-                    className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors"
-                  >
-                    ЧИТАТИ ДАЛІ <ArrowRight className="size-4" />
-                  </AppLink>
-                </div>
-              </article>
-
-              <article className="group rounded-3xl border border-border bg-card overflow-hidden shadow-lg transition-all hover:border-primary/40 hover:shadow-2xl">
-                <div className="h-64 overflow-hidden relative">
-                  <img
-                    src={rehabImg}
-                    alt="Артрит"
-                    className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <span className="absolute top-4 left-4 rounded-full bg-navy/80 backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-white">
-                    11.07.2026
-                  </span>
-                </div>
-                <div className="p-8">
-                  <h3 className="mb-4 text-xl md:text-2xl font-bold text-navy leading-snug group-hover:text-primary transition-colors">
-                    Артрит: причини, симптоми та найефективніші методи лікування
-                  </h3>
-                  <p className="mb-6 text-muted-foreground leading-relaxed text-sm md:text-base">
-                    Артрит — це запалення суглобів, яке може суттєво знижувати якість життя через
-                    біль, обмеження рухливості та розвиток дегенеративних змін. Тому своєчасна
-                    реабілітація вкрай важлива...
-                  </p>
-                  <AppLink
-                    to="/poslugy/reabilitatsiia/ortopedichna-reabilitatsiia"
-                    className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors"
-                  >
-                    ЧИТАТИ ДАЛІ <ArrowRight className="size-4" />
-                  </AppLink>
-                </div>
-              </article>
+              {NEWS_ARTICLES.slice(0, 2).map((article) => (
+                <NewsCard key={article.id} article={article} />
+              ))}
             </div>
           </div>
         </section>

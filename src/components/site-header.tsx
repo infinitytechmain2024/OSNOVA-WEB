@@ -31,6 +31,10 @@ const diag = services.children!.find((n) => n.id === "diag")!;
 const checkup = services.children!.find((n) => n.id === "checkup")!;
 const recovery = services.children!.find((n) => n.id === "recovery")!;
 const fitnesZal = recovery.children!.find((n) => n.slug === "fitnes-zal")!;
+const education = siteTree.find((n) => n.id === "education")!;
+const events = siteTree.find((n) => n.id === "events")!;
+const about = siteTree.find((n) => n.id === "about")!;
+const socialProjects = about.children!.find((n) => n.id === "social")!;
 
 export type NavNodeItem = {
   label: string;
@@ -38,13 +42,16 @@ export type NavNodeItem = {
   children?: SiteNode[];
 };
 
-export const HEADER_NAV: NavNodeItem[] = [
+const HEADER_NAV: NavNodeItem[] = [
   { label: "ГОЛОВНА", to: "/" },
   { label: "РЕАБІЛІТАЦІЯ", to: rehab.route, children: rehab.children },
   { label: "ДІАГНОСТИКА", to: diag.route, children: diag.children },
   { label: "ЧЕКАПИ", to: checkup.route, children: checkup.children },
   { label: "СПОРТИВНА МЕДИЦИНА", to: recovery.route, children: recovery.children },
   { label: "ФІТНЕС ТА ТРЕНАЖЕРНИЙ ЗАЛ", to: fitnesZal.route },
+  { label: "НАВЧАННЯ", to: education.route, children: education.children },
+  { label: "ІВЕНТИ", to: events.route },
+  { label: "СОЦІАЛЬНІ ПРОЄКТИ", to: socialProjects.route },
   { label: "ЦІНИ ТА ПОСЛУГИ", to: services.route },
   { label: "КОНТАКТИ", to: "/kontakty" },
 ];
