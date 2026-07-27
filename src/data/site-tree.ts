@@ -655,8 +655,9 @@ const mobileRehab: SiteNode = {
   priceLabel: "Вартість уточнюється",
   image: rehabImg,
   published: true,
-  formats: ["Реабілітація вдома", "Виїзд спеціаліста", "Виїзд з обладнанням"],
   ...rehabDefaults,
+  formats: ["Реабілітація вдома", "Виїзд спеціаліста", "Виїзд з обладнанням"],
+
   children: [
     {
       id: "mobile-rehab--vdoma",
