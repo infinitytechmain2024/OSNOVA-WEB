@@ -1105,7 +1105,13 @@ export const CONTACTS = {
   emailHref: "mailto:info@osnova-rehab.com.ua",
   address: "ТРК Буковель, Україна",
   addressFull: "Івано-Франківська обл., с. Поляниця, ТРК Буковель",
-  workingHours: "Пн-Нд: 08:00 – 20:00",
+  workingHours: "Тренажерний зал: 07:00 – 21:00 | Реабілітаційне відділення: 09:00 – 19:00",
+  gymHours: "07:00 – 21:00",
+  rehabHours: "09:00 – 19:00",
+  schedules: [
+    { title: "Тренажерний зал", hours: "07:00 – 21:00", days: "Щодня (Пн–Нд)", tag: "Спорт та фітнес" },
+    { title: "Реабілітаційне відділення", hours: "09:00 – 19:00", days: "Щодня (Пн–Нд)", tag: "Медичні послуги" },
+  ],
   messengers: {
     telegram: "https://t.me/osnova_rehab",
     telegramHandle: "@osnova_rehab",

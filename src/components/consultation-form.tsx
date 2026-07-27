@@ -27,7 +27,7 @@ export function ConsultationForm({
   onSuccess,
   compact = false,
   tone = "light",
-  showPrivacyConsent = false,
+  showPrivacyConsent = true,
 }: ConsultationFormProps) {
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");

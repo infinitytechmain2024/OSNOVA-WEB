@@ -127,11 +127,18 @@ export function ContactsPage({ node }: { node: SiteNode }) {
               <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
                 Графік роботи
               </p>
-              <p className="mt-2 text-base font-bold text-navy">
-                {CONTACTS.workingHours}
-              </p>
-              <p className="mt-4 text-xs text-muted-foreground">
-                Прийом за записом
+              <div className="mt-3 space-y-2 text-xs font-bold text-navy">
+                <div className="flex items-center justify-between border-b border-border/50 pb-1.5">
+                  <span className="text-muted-foreground font-semibold">Тренажерний зал:</span>
+                  <span className="text-primary font-extrabold">{CONTACTS.gymHours}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-muted-foreground font-semibold">Реабілітація:</span>
+                  <span className="text-emerald-600 font-extrabold">{CONTACTS.rehabHours}</span>
+                </div>
+              </div>
+              <p className="mt-3 text-[11px] text-muted-foreground">
+                Прийом за попереднім записом
               </p>
             </div>
 
@@ -141,12 +148,12 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                 <MapPin className="size-6" />
               </div>
               <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
-                Наша локація
+                Де ми знаходимось
               </p>
               <p className="mt-2 text-sm font-bold text-navy">
                 {CONTACTS.address}
               </p>
-              <p className="mt-2 text-xs text-muted-foreground line-clamp-1">
+              <p className="mt-2 text-xs text-muted-foreground line-clamp-2">
                 {CONTACTS.addressFull}
               </p>
             </div>
@@ -390,43 +397,78 @@ export function ContactsPage({ node }: { node: SiteNode }) {
           </PageContainer>
         </section>
 
-        {/* Location & Map Block */}
-        <section className="py-16">
+        {/* Location & Map Block - "Де ми знаходимось" */}
+        <section id="de-my-znakhodymos" className="py-16">
           <PageContainer>
             <div className="rounded-3xl border border-border bg-card overflow-hidden shadow-sm">
               <div className="grid lg:grid-cols-12">
+                {/* Left Side Details */}
                 <div className="p-8 lg:p-12 lg:col-span-5 flex flex-col justify-between">
                   <div>
                     <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-700 uppercase">
-                      <Navigation className="size-3.5" /> Локація Центру
+                      <Navigation className="size-3.5" /> ДЕ МИ ЗНАХОДИМОСЬ
                     </span>
                     <h3 className="mt-4 text-2xl font-extrabold text-navy sm:text-3xl">
-                      Як дістатися до нас
+                      Де ми знаходимось
                     </h3>
                     <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                      Наш медичний та реабілітаційний центр розташований у курортній зоні ТРК Буковель. Чисте гірське повітря та сучасне обладнання створюють ідеальні умови для відновлення.
+                      Наш єдиний медичний та реабілітаційний центр розташований у серці курорту Буковель. Для вашої зручності у центрі функціонують два відділення з власними графіками прийому.
                     </p>
 
-                    <div className="mt-8 space-y-4 text-sm">
-                      <div className="flex items-start gap-3">
-                        <MapPin className="size-5 text-primary shrink-0 mt-0.5" />
+                    <div className="mt-8 space-y-5 text-sm">
+                      {/* Address item */}
+                      <div className="flex items-start gap-3.5 rounded-2xl bg-slate-50/80 p-4 border border-border/60">
+                        <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                          <MapPin className="size-5" />
+                        </div>
                         <div>
-                          <strong className="block text-navy font-bold">Точна адреса:</strong>
-                          <span className="text-muted-foreground">{CONTACTS.addressFull}</span>
+                          <strong className="block text-navy font-bold text-xs uppercase tracking-wider text-muted-foreground">Точна адреса:</strong>
+                          <span className="text-navy font-bold text-sm block mt-0.5">{CONTACTS.addressFull}</span>
+                          <span className="text-xs text-muted-foreground block mt-0.5">Курортний комплекс ТРК Буковель</span>
                         </div>
                       </div>
 
-                      <div className="flex items-start gap-3">
-                        <Clock className="size-5 text-primary shrink-0 mt-0.5" />
-                        <div>
-                          <strong className="block text-navy font-bold">Години роботи:</strong>
-                          <span className="text-muted-foreground">{CONTACTS.workingHours}</span>
+                      {/* Working Hours split item */}
+                      <div className="rounded-2xl bg-slate-50/80 p-4 border border-border/60 space-y-3">
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                          <Clock className="size-4 text-amber-600" />
+                          <span>Графік роботи (2 відділення):</span>
+                        </div>
+                        
+                        <div className="space-y-2 pt-1 text-xs">
+                          {/* Gym schedule */}
+                          <div className="flex items-center justify-between rounded-xl bg-white p-3 border border-border/50 shadow-2xs">
+                            <div className="flex items-center gap-2.5">
+                              <span className="inline-block size-2.5 rounded-full bg-amber-500 animate-pulse" />
+                              <div>
+                                <span className="font-bold text-navy block leading-tight">Тренажерний зал</span>
+                                <span className="text-[10px] text-muted-foreground">Щодня (Пн – Нд)</span>
+                              </div>
+                            </div>
+                            <span className="font-extrabold text-primary bg-primary/10 px-3 py-1 rounded-lg text-xs">
+                              {CONTACTS.gymHours}
+                            </span>
+                          </div>
+
+                          {/* Rehab schedule */}
+                          <div className="flex items-center justify-between rounded-xl bg-white p-3 border border-border/50 shadow-2xs">
+                            <div className="flex items-center gap-2.5">
+                              <span className="inline-block size-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                              <div>
+                                <span className="font-bold text-navy block leading-tight">Реабілітаційне відділення</span>
+                                <span className="text-[10px] text-muted-foreground">Щодня (Пн – Нд)</span>
+                              </div>
+                            </div>
+                            <span className="font-extrabold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-lg text-xs">
+                              {CONTACTS.rehabHours}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-10 pt-6 border-t border-border/80 flex flex-wrap gap-3">
+                  <div className="mt-8 pt-6 border-t border-border/80 flex flex-wrap gap-3">
                     <a
                       href="https://maps.google.com/?q=Bukovel"
                       target="_blank"
@@ -439,35 +481,56 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                       href="https://waze.com/ul?q=Bukovel"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-border bg-slate-50 px-5 py-2.5 text-xs font-bold text-navy hover:bg-slate-100 transition-colors"
+                      className="inline-flex items-center gap-2 rounded-xl border border-border bg-slate-50 px-5 py-2.5 text-xs font-bold text-navy hover:bg-slate-100 transition-colors shadow-2xs"
                     >
-                      <ExternalLink className="size-4" /> Waze Навігатор
+                      <ExternalLink className="size-4 text-sky-600" /> Waze Навігатор
                     </a>
                   </div>
                 </div>
 
-                {/* Map Visual Box */}
-                <div className="lg:col-span-7 bg-slate-900 relative min-h-[360px] flex items-center justify-center p-8 overflow-hidden">
-                  <div
-                    className="absolute inset-0 opacity-40 bg-cover bg-center"
-                    style={{
-                      backgroundImage:
-                        "url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80')",
-                    }}
+                {/* Right Side Map Visual Box */}
+                <div className="lg:col-span-7 bg-slate-900 relative min-h-[420px] flex items-center justify-center p-6 lg:p-10 overflow-hidden">
+                  <iframe
+                    title="Карта локації ОСНОВА Реабілітація Буковель"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10565.410940562477!2d24.4077876!3d48.3540845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47373fefbc3a7d57%3A0x6b71f9cf74092b3a!2sBukovel!5e0!3m2!1suk!2sua!4v1700000000000!5m2!1suk!2sua"
+                    className="absolute inset-0 size-full border-0 opacity-80 filter contrast-[1.05]"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/30 to-transparent pointer-events-none" />
 
-                  <div className="relative z-10 text-center max-w-md p-6 rounded-2xl bg-white/95 backdrop-blur-md shadow-2xl border border-white/40">
-                    <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/30 mb-4">
+                  {/* Location Pin & Hours Overlay Card */}
+                  <div className="relative z-10 text-center max-w-md w-full p-6 rounded-2xl bg-white/95 backdrop-blur-md shadow-2xl border border-white/50">
+                    <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/30 mb-3">
                       <MapPin className="size-7" />
                     </div>
+                    <span className="inline-block rounded-full bg-emerald-100 px-3 py-0.5 text-[11px] font-bold text-emerald-800 uppercase tracking-wider mb-1">
+                      📍 ДЕ МИ ЗНАХОДИМОСЬ
+                    </span>
                     <h4 className="text-lg font-extrabold text-navy">Центр «ŎSNOVA» у Буковелі</h4>
-                    <p className="mt-1.5 text-xs text-muted-foreground">
-                      ТРК Буковель, с. Поляниця, Івано-Франківська обл.
+                    <p className="mt-1 text-xs text-muted-foreground font-medium">
+                      {CONTACTS.addressFull}
                     </p>
-                    <p className="mt-3 text-xs text-navy/80 font-medium bg-slate-100 rounded-lg py-2 px-3">
-                      Зручний під'їзд автотранспортом, власна зона паркування та безбар'єрний доступ.
-                    </p>
+                    
+                    <div className="mt-4 grid grid-cols-2 gap-2 text-left pt-3 border-t border-border/60">
+                      <div className="bg-slate-50 p-2.5 rounded-xl border border-border/40">
+                        <p className="text-[10px] font-bold text-muted-foreground uppercase">Тренажерний зал</p>
+                        <p className="text-xs font-extrabold text-navy mt-0.5">{CONTACTS.gymHours}</p>
+                      </div>
+                      <div className="bg-slate-50 p-2.5 rounded-xl border border-border/40">
+                        <p className="text-[10px] font-bold text-muted-foreground uppercase">Реабілітація</p>
+                        <p className="text-xs font-extrabold text-navy mt-0.5">{CONTACTS.rehabHours}</p>
+                      </div>
+                    </div>
+
+                    <a
+                      href="https://maps.google.com/?q=Bukovel"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 flex items-center justify-center gap-2 w-full rounded-xl bg-navy py-2.5 text-xs font-bold text-white hover:bg-navy-deep transition-colors shadow-sm"
+                    >
+                      <Navigation className="size-3.5" /> Побудувати маршрут
+                    </a>
                   </div>
                 </div>
               </div>
