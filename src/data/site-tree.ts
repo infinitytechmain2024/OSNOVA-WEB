@@ -1133,5 +1133,21 @@ export const siteTree: SiteNode[] = [
 export const CONTACTS = {
   phone: "+380 674 702 788",
   phoneHref: "tel:+380674702788",
+  email: "info@osnova-rehab.com.ua",
+  emailHref: "mailto:info@osnova-rehab.com.ua",
   address: "ТРК Буковель, Україна",
+  addressFull: "Івано-Франківська обл., с. Поляниця, ТРК Буковель",
+  workingHours: "Пн-Нд: 08:00 – 20:00",
+  messengers: {
+    telegram: "https://t.me/osnova_rehab",
+    telegramHandle: "@osnova_rehab",
+    whatsapp: "https://wa.me/380674702788",
+    viber: "viber://chat?number=%2B380674702788",
+  },
+  socials: {
+    instagram: "https://instagram.com/osnova_rehab",
+    facebook: "https://facebook.com/osnova.rehab",
+    youtube: "https://youtube.com/@osnova_rehab",
+    tiktok: "https://tiktok.com/@osnova_rehab",
+  },
 };

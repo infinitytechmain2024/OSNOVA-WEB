@@ -11,6 +11,7 @@ import { InstitutePartnershipPage } from "@/components/institute-partnership-pag
 import { MobileRehabPage } from "@/components/mobile-rehab-page";
 import { RentalEquipmentPage } from "@/components/rental-equipment-page";
 import { SocialProjectsPage } from "@/components/social-projects-page";
+import { ContactsPage } from "@/components/contacts-page";
 
 export const Route = createFileRoute("/$")({
   loader: ({ params }) => {
@@ -101,38 +102,7 @@ function NodePage() {
   }
 
   if (node.customPage === "contacts") {
-    return (
-      <div className="min-h-screen bg-background">
-        <SiteHeader />
-        <PageContainer className="py-8">
-          <Breadcrumbs items={getBreadcrumbs(node)} />
-        </PageContainer>
-        <main>
-          <PageContainer className="pb-16">
-            <SectionHeader eyebrow="КОНТАКТИ" title="Як з нами звʼязатися" />
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              <div className="rounded-2xl border border-border bg-card p-8">
-                <p className="text-sm tracking-[0.16em] text-muted-foreground">АДРЕСА</p>
-                <p className="mt-3 font-bold text-navy">{CONTACTS.address}</p>
-              </div>
-              <div className="rounded-2xl border border-border bg-card p-8">
-                <p className="text-sm tracking-[0.16em] text-muted-foreground">ТЕЛЕФОН</p>
-                <a href={CONTACTS.phoneHref} className="mt-3 block font-bold text-primary">
-                  {CONTACTS.phone}
-                </a>
-              </div>
-              <div className="rounded-2xl border border-border bg-card p-8">
-                <p className="text-sm tracking-[0.16em] text-muted-foreground">ЗАПИС</p>
-                <p className="mt-3 text-navy/85">
-                  Зателефонуйте нам — адміністратор підбере зручний час і пояснить наступні кроки.
-                </p>
-              </div>
-            </div>
-          </PageContainer>
-        </main>
-        <SiteFooter />
-      </div>
-    );
+    return <ContactsPage node={node} />;
   }
 
   return <ServiceDetailTemplate node={node} />;

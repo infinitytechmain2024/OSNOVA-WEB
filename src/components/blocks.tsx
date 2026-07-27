@@ -2,6 +2,7 @@ import { AppLink } from "@/components/app-link";
 import * as React from "react";
 import { ArrowRight, ChevronDown, Check, Phone, Send, MapPin, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useConsultationModal } from "@/components/consultation-form";
 import type { FAQItem, SiteNode } from "@/data/types";
 import { CONTACTS } from "@/data/site-tree";
 
@@ -93,6 +94,8 @@ export function PageHero({
   secondaryTo?: string;
   secondaryLabel?: string;
 }) {
+  const { openModal } = useConsultationModal();
+
   return (
     <section className="relative overflow-hidden bg-navy-deep">
       {image && (
@@ -130,12 +133,13 @@ export function PageHero({
         )}
 
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-          <AppLink
-            to="/kontakty"
-            className="w-full sm:w-auto text-center rounded-lg bg-brand-green px-6 sm:px-9 py-4 sm:py-5 text-sm sm:text-base font-bold tracking-wide text-brand-green-foreground transition-opacity hover:opacity-90 shadow-md"
+          <button
+            type="button"
+            onClick={() => openModal(primaryLabel)}
+            className="w-full sm:w-auto text-center rounded-lg bg-brand-green px-6 sm:px-9 py-4 sm:py-5 text-sm sm:text-base font-bold tracking-wide text-brand-green-foreground transition-opacity hover:opacity-90 shadow-md cursor-pointer"
           >
             {primaryLabel}
-          </AppLink>
+          </button>
           {secondaryTo && secondaryLabel && (
             <AppLink
               to={secondaryTo}
@@ -296,18 +300,21 @@ export function CTASection({
   text: string;
   buttonLabel?: string;
 }) {
+  const { openModal } = useConsultationModal();
+
   return (
     <PageContainer className="pb-16">
       <div className="relative overflow-hidden rounded-2xl bg-soft-blue px-6 py-20 text-center">
         <h2 className="text-3xl font-extrabold tracking-wide text-navy md:text-5xl">{title}</h2>
         <div className="mx-auto mt-8 h-0.5 w-20 bg-primary/50" />
         <p className="mx-auto mt-8 max-w-3xl text-lg text-navy/85">{text}</p>
-        <AppLink
-          to="/kontakty"
-          className="mt-12 inline-block rounded-full bg-primary px-14 py-6 text-lg font-semibold text-primary-foreground shadow-lg transition-opacity hover:opacity-90"
+        <button
+          type="button"
+          onClick={() => openModal(buttonLabel)}
+          className="mt-12 inline-block rounded-full bg-primary px-14 py-6 text-lg font-semibold text-primary-foreground shadow-lg transition-opacity hover:opacity-90 cursor-pointer"
         >
           {buttonLabel}
-        </AppLink>
+        </button>
         <div className="mx-auto mt-12 h-px w-full max-w-2xl bg-border" />
         <a
           href={CONTACTS.phoneHref}

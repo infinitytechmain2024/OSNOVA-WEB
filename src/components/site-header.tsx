@@ -17,6 +17,7 @@ import {
 import { cn } from "@/lib/utils";
 import { siteTree, CONTACTS } from "@/data/site-tree";
 import type { SiteNode } from "@/data/types";
+import { useConsultationModal } from "@/components/consultation-form";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,10 +32,6 @@ const diag = services.children!.find((n) => n.id === "diag")!;
 const checkup = services.children!.find((n) => n.id === "checkup")!;
 const recovery = services.children!.find((n) => n.id === "recovery")!;
 const fitnesZal = recovery.children!.find((n) => n.slug === "fitnes-zal")!;
-const education = siteTree.find((n) => n.id === "education")!;
-const events = siteTree.find((n) => n.id === "events")!;
-const about = siteTree.find((n) => n.id === "about")!;
-const socialProjects = about.children!.find((n) => n.id === "social")!;
 
 export type NavNodeItem = {
   label: string;
@@ -49,9 +46,6 @@ const HEADER_NAV: NavNodeItem[] = [
   { label: "ЧЕКАПИ", to: checkup.route, children: checkup.children },
   { label: "СПОРТИВНА МЕДИЦИНА", to: recovery.route, children: recovery.children },
   { label: "ФІТНЕС ТА ТРЕНАЖЕРНИЙ ЗАЛ", to: fitnesZal.route },
-  { label: "НАВЧАННЯ", to: education.route, children: education.children },
-  { label: "ІВЕНТИ", to: events.route },
-  { label: "СОЦІАЛЬНІ ПРОЄКТИ", to: socialProjects.route },
   { label: "ЦІНИ ТА ПОСЛУГИ", to: services.route },
   { label: "КОНТАКТИ", to: "/kontakty" },
 ];
@@ -331,6 +325,7 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [language, setLanguage] = React.useState<LanguageValue>("uk");
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { openModal } = useConsultationModal();
 
   React.useEffect(() => {
     setMenuOpen(false);
@@ -370,12 +365,13 @@ export function SiteHeader() {
             >
               <Phone className="size-4" /> {CONTACTS.phone}
             </a>
-            <AppLink
-              to="/kontakty"
-              className="hidden rounded-md bg-brand-green px-5 py-2.5 text-xs sm:text-sm font-bold tracking-wide text-brand-green-foreground transition-all hover:bg-brand-green/90 md:inline-block"
+            <button
+              type="button"
+              onClick={() => openModal("Записатися на консультацію")}
+              className="hidden rounded-md bg-brand-green px-5 py-2.5 text-xs sm:text-sm font-bold tracking-wide text-brand-green-foreground transition-all hover:bg-brand-green/90 md:inline-block cursor-pointer"
             >
               ЗАПИСАТИСЯ
-            </AppLink>
+            </button>
             <LanguageSelect
               value={language}
               onValueChange={setLanguage}
@@ -425,12 +421,16 @@ export function SiteHeader() {
               >
                 <Phone className="size-4 text-primary" /> {CONTACTS.phone}
               </a>
-              <AppLink
-                to="/kontakty"
-                className="block rounded-xl bg-brand-green px-6 py-3.5 text-center text-sm font-bold text-brand-green-foreground shadow-md"
+              <button
+                type="button"
+                onClick={() => {
+                  setMenuOpen(false);
+                  openModal("Записатися на консультацію");
+                }}
+                className="w-full rounded-xl bg-brand-green px-6 py-3.5 text-center text-sm font-bold text-brand-green-foreground shadow-md cursor-pointer"
               >
                 ЗАПИСАТИСЯ
-              </AppLink>
+              </button>
               <div className="flex items-center justify-center gap-2 pt-2 text-xs text-navy/70">
                 <MapPin className="size-3.5 text-primary shrink-0" />
                 <span className="truncate">{CONTACTS.address}</span>
