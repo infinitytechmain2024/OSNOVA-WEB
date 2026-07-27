@@ -364,9 +364,30 @@ function SectionHeader({ subtitle, title, centered = false }: { subtitle?: strin
 }
 
 function Index() {
+  const [directionsApi, setDirectionsApi] = React.useState<CarouselApi>();
+  const [currentDirectionsSlide, setCurrentDirectionsSlide] = React.useState(0);
+  const [directionsSlideCount, setDirectionsSlideCount] = React.useState(0);
   const [methodsApi, setMethodsApi] = React.useState<CarouselApi>();
   const [currentMethodsSlide, setCurrentMethodsSlide] = React.useState(0);
   const [methodsSlideCount, setMethodsSlideCount] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!directionsApi) return;
+
+    const updateState = () => {
+      setDirectionsSlideCount(directionsApi.scrollSnapList().length);
+      setCurrentDirectionsSlide(directionsApi.selectedScrollSnap());
+    };
+
+    updateState();
+    directionsApi.on("select", updateState);
+    directionsApi.on("reInit", updateState);
+
+    return () => {
+      directionsApi.off("select", updateState);
+      directionsApi.off("reInit", updateState);
+    };
+  }, [directionsApi]);
 
   React.useEffect(() => {
     if (!methodsApi) return;
@@ -382,6 +403,7 @@ function Index() {
 
     return () => {
       methodsApi.off("select", updateState);
+      methodsApi.off("reInit", updateState);
     };
   }, [methodsApi]);
 
@@ -507,42 +529,72 @@ function Index() {
               title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ"
             />
             
-            <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-12">
-              {DIRECTIONS.map((dir, i) => (
-                <div
-                  key={i}
-                  className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
-                >
-                  <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
-                    <img
-                      src={dir.image}
-                      alt={dir.title}
-                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  
-                  <div className="flex flex-col justify-between flex-1 p-6 md:p-7 bg-white">
-                    <div>
-                      <h3 className="mb-3 text-xl font-bold text-navy leading-snug">
-                        {dir.title}
-                      </h3>
-                      <p className="mb-6 text-sm text-slate-600 leading-relaxed line-clamp-3 font-normal">
-                        {dir.text}
-                      </p>
-                    </div>
+            <Carousel
+              setApi={setDirectionsApi}
+              plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
+              opts={{ align: "start", loop: true }}
+              className="w-full mt-12"
+            >
+              <CarouselContent className="-ml-4">
+                {DIRECTIONS.map((dir, i) => (
+                  <CarouselItem key={i} className="pl-4 basis-[84%] sm:basis-[47%] lg:basis-[31%] xl:basis-[23.8%]">
+                    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+                      <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
+                        <img
+                          src={dir.image}
+                          alt={dir.title}
+                          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
 
-                    <div>
-                      <AppLink
-                        to={dir.href}
-                        className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
-                      >
-                        Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                      </AppLink>
+                      <div className="flex flex-col justify-between flex-1 p-6 md:p-7 bg-white">
+                        <div>
+                          <h3 className="mb-3 text-xl font-bold text-navy leading-snug">
+                            {dir.title}
+                          </h3>
+                          <p className="mb-6 text-sm text-slate-600 leading-relaxed line-clamp-3 font-normal">
+                            {dir.text}
+                          </p>
+                        </div>
+
+                        <div>
+                          <AppLink
+                            to={dir.href}
+                            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
+                          >
+                            Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                          </AppLink>
+                        </div>
+                      </div>
                     </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+
+              <div className="mt-10 flex flex-col items-center gap-6">
+                {directionsSlideCount > 0 && (
+                  <div className="flex items-center justify-center gap-2.5">
+                    {Array.from({ length: directionsSlideCount }).map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => directionsApi?.scrollTo(index)}
+                        className={`h-2.5 rounded-full transition-all duration-300 ${
+                          currentDirectionsSlide === index
+                            ? "w-8 bg-primary shadow-sm"
+                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                        }`}
+                        aria-label={`Перейти до слайду ${index + 1}`}
+                      />
+                    ))}
                   </div>
+                )}
+
+                <div className="flex items-center justify-center gap-3">
+                  <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
+                  <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
                 </div>
-              ))}
-            </div>
+              </div>
+            </Carousel>
           </div>
         </section>
 
@@ -622,111 +674,6 @@ function Index() {
                   <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
                   <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
                 </div>
-              </div>
-            </Carousel>
-          </div>
-        </section>
-
-        {/* 3. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
-        <section className="bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60">
-          <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader
-              centered
-              subtitle="НАПРЯМИ"
-              title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ"
-            />
-            
-            <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-12">
-              {DIRECTIONS.map((dir, i) => (
-                <div
-                  key={i}
-                  className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
-                >
-                  <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
-                    <img
-                      src={dir.image}
-                      alt={dir.title}
-                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  
-                  <div className="flex flex-col justify-between flex-1 p-6 md:p-7 bg-white">
-                    <div>
-                      <h3 className="mb-3 text-xl font-bold text-navy leading-snug">
-                        {dir.title}
-                      </h3>
-                      <p className="mb-6 text-sm text-slate-600 leading-relaxed line-clamp-3 font-normal">
-                        {dir.text}
-                      </p>
-                    </div>
-
-                    <div>
-                      <AppLink
-                        to={dir.href}
-                        className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
-                      >
-                        Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                      </AppLink>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 4. МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ (Слайдером в 1 строчку) */}
-        <section className="bg-white py-24 md:py-32 overflow-hidden">
-          <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader
-              centered
-              subtitle="МЕТОДИКИ"
-              title="МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ"
-            />
-
-            <Carousel
-              plugins={[Autoplay({ delay: 4500, stopOnInteraction: true })]}
-              opts={{ align: "start", loop: true }}
-              className="w-full mt-12"
-            >
-              <CarouselContent className="-ml-4">
-                {METHODS.map((item, idx) => (
-                  <CarouselItem key={idx} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-slate-50/60 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:bg-white">
-                      <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-
-                      <div className="flex flex-col justify-between flex-1 p-6 md:p-7">
-                        <div>
-                          <h3 className="mb-3 text-xl font-bold text-navy leading-snug">
-                            {item.title}
-                          </h3>
-                          <p className="mb-6 text-sm text-slate-600 leading-relaxed line-clamp-3 font-normal">
-                            {item.description}
-                          </p>
-                        </div>
-
-                        <div>
-                          <AppLink
-                            to={item.href}
-                            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
-                          >
-                            Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                          </AppLink>
-                        </div>
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="mt-10 flex justify-center gap-3">
-                <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
-                <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
               </div>
             </Carousel>
           </div>
