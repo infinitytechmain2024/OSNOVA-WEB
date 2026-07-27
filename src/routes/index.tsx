@@ -419,13 +419,13 @@ function Index() {
                           {slide.text}
                         </p>
                         <div className="flex flex-wrap gap-3 md:gap-4">
-                          <Link to="/kontakty" className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-primary px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-primary-foreground transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)]">
+                          <AppLink to="/kontakty" className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-primary px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-primary-foreground transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)]">
                             <span className="relative z-10">ЗАПИСАТИСЯ</span>
                             <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
-                          </Link>
-                          <Link to="/poslugy" className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-white backdrop-blur-sm transition-all hover:bg-white/10">
+                          </AppLink>
+                          <AppLink to="/poslugy" className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-white backdrop-blur-sm transition-all hover:bg-white/10">
                             НАШІ ПОСЛУГИ <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                          </Link>
+                          </AppLink>
                         </div>
                       </div>
                     </div>
@@ -469,12 +469,12 @@ function Index() {
                 </div>
 
                 <div className="mt-10">
-                  <Link
+                  <AppLink
                     to="/pro-nas"
                     className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105"
                   >
                     ДЕТАЛЬНІШЕ <ChevronRight className="size-5" />
-                  </Link>
+                  </AppLink>
                 </div>
               </div>
               
@@ -532,12 +532,12 @@ function Index() {
                     </div>
 
                     <div>
-                      <Link
+                      <AppLink
                         to={dir.href}
                         className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
                       >
                         Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                      </Link>
+                      </AppLink>
                     </div>
                   </div>
                 </div>
@@ -584,12 +584,12 @@ function Index() {
                         </div>
 
                         <div>
-                          <Link
+                          <AppLink
                             to={item.href}
                             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
                           >
                             Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                          </Link>
+                          </AppLink>
                         </div>
                       </div>
                     </div>
@@ -661,12 +661,12 @@ function Index() {
                     </div>
 
                     <div>
-                      <Link
-                        href={dir.href}
+                      <AppLink
+                        to={dir.href}
                         className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
                       >
                         Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                      </Link>
+                      </AppLink>
                     </div>
                   </div>
                 </div>
@@ -712,12 +712,12 @@ function Index() {
                         </div>
 
                         <div>
-                          <Link
-                            href={item.href}
+                          <AppLink
+                            to={item.href}
                             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
                           >
                             Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                          </Link>
+                          </AppLink>
                         </div>
                       </div>
                     </div>
@@ -800,12 +800,12 @@ function Index() {
                 <p className="mb-8 text-muted-foreground leading-relaxed text-base md:text-lg">
                   Курси є важливими для вдосконалення хірургічної техніки, вивчення анатомії та освоєння нових медичних технологій і методик.
                 </p>
-                <Link
+                <AppLink
                   to="/navchannia"
                   className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors"
                 >
                   ДІЗНАТИСЯ БІЛЬШЕ <ArrowRight className="size-4" />
-                </Link>
+                </AppLink>
               </div>
 
               <div className="rounded-3xl border border-border bg-card p-8 md:p-10 shadow-xl transition-all hover:border-primary/40 hover:shadow-2xl">
@@ -816,12 +816,12 @@ function Index() {
                 <p className="mb-8 text-muted-foreground leading-relaxed text-base md:text-lg">
                   Збори, нарада груп осіб, окремих осіб, організації для обговорення певної проблематики, яка визначена заздалегідь.
                 </p>
-                <Link
+                <AppLink
                   to="/navchannia"
                   className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors"
                 >
                   ПЕРЕГЛЯНУТИ ЗАХОДИ <ArrowRight className="size-4" />
-                </Link>
+                </AppLink>
               </div>
             </div>
           </div>
@@ -838,7 +838,7 @@ function Index() {
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 mt-12">
               {COOPERATION_ITEMS.map((item, idx) => (
-                <Link
+                <AppLink
                   key={idx}
                   to={item.href}
                   className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl"
@@ -853,7 +853,7 @@ function Index() {
                   <div className="mt-6 flex items-center gap-2 text-xs font-bold text-primary uppercase">
                     Деталі <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
                   </div>
-                </Link>
+                </AppLink>
               ))}
             </div>
           </div>
@@ -864,12 +864,12 @@ function Index() {
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <SectionHeader subtitle="НОВИНИ ТА СТАТТІ" title="БЛОГ" />
-              <Link
+              <AppLink
                 to="/pro-nas"
                 className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-bold text-navy shadow-sm transition-all hover:bg-primary hover:text-white hover:border-primary"
               >
                 ВСІ НОВИНИ <ArrowRight className="size-4" />
-              </Link>
+              </AppLink>
             </div>
 
             <div className="grid gap-8 md:grid-cols-2">
@@ -887,9 +887,9 @@ function Index() {
                   <p className="mb-6 text-muted-foreground leading-relaxed text-sm md:text-base">
                     Біль у серці часто викликає тривогу та непокоїть багато людей. Але чому болить серце, коли це дійсно серйозна проблема, а коли потрібна профілактична діагностика...
                   </p>
-                  <Link to="/poslugy/diagnostyka/kardiolohichna-diahnostyka" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
+                  <AppLink to="/poslugy/diagnostyka/kardiolohichna-diahnostyka" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
                     ЧИТАТИ ДАЛІ <ArrowRight className="size-4" />
-                  </Link>
+                  </AppLink>
                 </div>
               </article>
 
@@ -907,9 +907,9 @@ function Index() {
                   <p className="mb-6 text-muted-foreground leading-relaxed text-sm md:text-base">
                     Артрит — це запалення суглобів, яке може суттєво знижувати якість життя через біль, обмеження рухливості та розвиток дегенеративних змін. Тому своєчасна реабілітація вкрай важлива...
                   </p>
-                  <Link to="/poslugy/reabilitatsiia/ortopedichna-reabilitatsiia" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
+                  <AppLink to="/poslugy/reabilitatsiia/ortopedichna-reabilitatsiia" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
                     ЧИТАТИ ДАЛІ <ArrowRight className="size-4" />
-                  </Link>
+                  </AppLink>
                 </div>
               </article>
             </div>
@@ -947,10 +947,10 @@ function Index() {
               Залиште заявку, і наші спеціалісти зв'яжуться з вами для детальної консультації та підбору оптимальної програми відновлення.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link to="/kontakty" className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 md:py-5 text-base md:text-lg font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto">
+              <AppLink to="/kontakty" className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 md:py-5 text-base md:text-lg font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto">
                 <span className="relative z-10">ОТРИМАТИ КОНСУЛЬТАЦІЮ</span>
                 <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
-              </Link>
+              </AppLink>
               <a
                 href="tel:+380674702788"
                 className="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-navy bg-transparent px-10 py-4 md:py-5 text-base md:text-lg font-bold text-navy transition-all hover:bg-navy hover:text-white sm:w-auto"
@@ -967,4 +967,3 @@ function Index() {
     </div>
   );
 }
-
