@@ -5,6 +5,7 @@ import { Breadcrumbs, PageContainer, SectionHeader } from "@/components/blocks";
 import { getBreadcrumbs, getNodeByRoute } from "@/lib/tree";
 import { CONTACTS } from "@/data/site-tree";
 import { ServiceDetailTemplate } from "@/components/service-detail-template";
+import { AllServicesPricePage } from "@/components/all-services-price-page";
 
 export const Route = createFileRoute("/$")({
   loader: ({ params }) => {
@@ -41,6 +42,10 @@ function NodePage() {
   const { route } = Route.useLoaderData();
   const node = getNodeByRoute(route);
   if (!node) return null;
+
+  if (node.customPage === "all-services" || node.id === "services") {
+    return <AllServicesPricePage node={node} />;
+  }
 
   if (node.customPage === "legal" && node.legalBody) {
     return (

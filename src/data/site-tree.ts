@@ -87,6 +87,7 @@ function program(
   title: string,
   shortDescription: string,
   duration = "7–21 день",
+  priceLabel = "від 1 600 грн / день",
   image = rehabImg,
 ): SiteNode {
   return {
@@ -98,7 +99,7 @@ function program(
     route: `${parentRoute}/${slug}`,
     shortDescription,
     duration,
-    priceLabel: "Вартість уточнюється",
+    priceLabel,
     image,
     published: true,
     ...rehabDefaults,
@@ -341,6 +342,7 @@ const simpleRehabDirection = (
   slug: string,
   title: string,
   shortDescription: string,
+  priceLabel = "від 1 600 грн / день",
 ): SiteNode => ({
   id: `rehab-${slug}`,
   slug,
@@ -351,7 +353,7 @@ const simpleRehabDirection = (
   route: `/reabilitatsiia/${slug}`,
   shortDescription,
   duration: "Визначається лікарем",
-  priceLabel: "Вартість уточнюється",
+  priceLabel,
   image: rehabImg,
   published: true,
   ...rehabDefaults,
@@ -380,21 +382,25 @@ const rehab: SiteNode = {
       "nevrolohichna",
       "Неврологічна реабілітація",
       "Відновлення рухів, координації та повсякденних навичок після неврологічних станів.",
+      "2 400 грн / день",
     ),
     simpleRehabDirection(
       "revmatolohichna",
       "Ревматологічна реабілітація",
       "Підтримка рухливості суглобів і функціональності при ревматологічних захворюваннях.",
+      "1 700 грн / день",
     ),
     simpleRehabDirection(
       "psykholohichna",
       "Психологічна реабілітація",
       "Психологічний супровід під час відновлення та адаптації до змін.",
+      "1 200 грн / сеанс",
     ),
     simpleRehabDirection(
       "profilaktychna",
       "Профілактична реабілітація",
       "Програми для збереження здоров’я, рухливості та витривалості.",
+      "1 400 грн / день",
     ),
   ],
 };
@@ -431,7 +437,7 @@ const cardioDiag: SiteNode = {
     method("diag-cardio", CARDIO_DIAG_ROUTE, "tredmil-test", "Тредміл-тест", "Навантажувальний тест на біговій доріжці.", "60 хв", "1200 грн", ergoImg),
     method("diag-cardio", CARDIO_DIAG_ROUTE, "cpet", "Кардіопульмональний тест CPET", "Оцінка роботи серця, легень і витривалості під навантаженням.", "90 хв", "2000 грн", cpetImg),
     method("diag-cardio", CARDIO_DIAG_ROUTE, "spirohrafiia", "Спірографія", "Оцінка функції дихання та стану серцево-легеневої системи.", "20 хв", "500 грн"),
-    method("diag-cardio", CARDIO_DIAG_ROUTE, "shestykhvylynnyi-test", "Тест із шестихвилинною ходьбою", "Проста оцінка переносимості навантаження та витривалості.", "20 хв"),
+    method("diag-cardio", CARDIO_DIAG_ROUTE, "shestykhvylynnyi-test", "Тест із шестихвилинною ходьбою", "Проста оцінка переносимості навантаження та витривалості.", "20 хв", "400 грн"),
   ],
 };
 
@@ -446,13 +452,13 @@ const mskDiag: SiteNode = {
   route: MSK_ROUTE,
   shortDescription: "Оцінка ходьби, м’язової роботи та стану хребта перед програмою відновлення.",
   duration: "від 30 хв",
-  priceLabel: "Вартість уточнюється",
+  priceLabel: "від 900 грн",
   image: rehabImg,
   published: true,
   children: [
-    method("diag-msk", MSK_ROUTE, "laboratoriia-khodby", "Лабораторія ходьби", "Апаратний аналіз ходи, кроку та розподілу навантаження.", "45 хв", "Вартість уточнюється", rehabImg),
-    method("diag-msk", MSK_ROUTE, "neiromiazove-testuvannia", "Нейром’язове тестування", "Оцінка сили та роботи м’язових груп.", "40 хв", "Вартість уточнюється", rehabImg),
-    method("diag-msk", MSK_ROUTE, "diahnostyka-khrebta", "Діагностика хребта", "Оцінка постави, рухливості та функції відділів хребта.", "30 хв", "Вартість уточнюється", rehabImg),
+    method("diag-msk", MSK_ROUTE, "laboratoriia-khodby", "Лабораторія ходьби", "Апаратний аналіз ходи, кроку та розподілу навантаження.", "45 хв", "1500 грн", rehabImg),
+    method("diag-msk", MSK_ROUTE, "neiromiazove-testuvannia", "Нейром’язове тестування", "Оцінка сили та роботи м’язових груп.", "40 хв", "1200 грн", rehabImg),
+    method("diag-msk", MSK_ROUTE, "diahnostyka-khrebta", "Діагностика хребта", "Оцінка постави, рухливості та функції відділів хребта.", "30 хв", "900 грн", rehabImg),
   ],
 };
 
@@ -483,7 +489,7 @@ const diag: SiteNode = {
       route: "/diagnostyka/laboratorna",
       shortDescription: "Аналізи та лабораторні панелі для оцінки стану організму й контролю динаміки.",
       duration: "від 1 дня",
-      priceLabel: "Вартість уточнюється",
+      priceLabel: "від 450 грн",
       image: checkupImg,
       published: true,
       faq: BASE_FAQ,
@@ -505,7 +511,7 @@ const edc: SiteNode = {
   fullDescription:
     "Пацієнту встановлюють Холтер ЕКГ або ДМАТ. Дані передаються до діагностичного центру, лікар функціональної діагностики проводить розшифровку, а готовий висновок повертається лікарю, який веде пацієнта.",
   duration: "1–2 доби",
-  priceLabel: "Вартість уточнюється",
+  priceLabel: "від 1 200 грн",
   image: ecgImg,
   published: true,
   stages: [
@@ -543,7 +549,7 @@ const checkupBase = {
   faq: BASE_FAQ,
 };
 
-const checkupItem = (slug: string, title: string, shortDescription: string): SiteNode => ({
+const checkupItem = (slug: string, title: string, shortDescription: string, priceLabel = "від 4 500 грн"): SiteNode => ({
   id: `checkup-${slug}`,
   slug,
   parentId: "checkup",
@@ -553,7 +559,7 @@ const checkupItem = (slug: string, title: string, shortDescription: string): Sit
   route: `/check-up/${slug}`,
   shortDescription,
   duration: "1–2 дні",
-  priceLabel: "Вартість уточнюється",
+  priceLabel,
   image: checkupImg,
   published: true,
   ...checkupBase,
@@ -574,25 +580,27 @@ const checkup: SiteNode = {
   featured: true,
   faq: BASE_FAQ,
   children: [
-    checkupItem("kardiolohichnyi", "Кардіологічний чек-ап", "Комплексна оцінка роботи серця та судин."),
+    checkupItem("kardiolohichnyi", "Кардіологічний чек-ап", "Комплексна оцінка роботи серця та судин.", "4 500 грн"),
     checkupItem(
       "ortopedo-travmatolohichnyi",
       "Ортопедо-травматологічний чек-ап",
       "Оцінка стану суглобів, хребта та наслідків травм.",
+      "4 800 грн",
     ),
-    checkupItem("sportyvnyi", "Спортивний чек-ап", "Оцінка функціонального стану та переносимості навантажень."),
+    checkupItem("sportyvnyi", "Спортивний чек-ап", "Оцінка функціонального стану та переносимості навантажень.", "5 200 грн"),
     checkupItem(
       "zdorovia-kistok-ta-suhlobiv",
       "Чек-ап «Здоров’я кісток та суглобів»",
       "Обстеження стану кісткової тканини та суглобів.",
+      "3 900 грн",
     ),
-    checkupItem("55-plus", "Чек-ап 55+", "Програма обстеження для людей старшого віку."),
+    checkupItem("55-plus", "Чек-ап 55+", "Програма обстеження для людей старшого віку.", "5 500 грн"),
   ],
 };
 
 // ─────────────────────── ВІДНОВЛЕННЯ ТА АКТИВНІСТЬ ───────────────────────
 
-const recoveryItem = (slug: string, title: string, shortDescription: string): SiteNode => ({
+const recoveryItem = (slug: string, title: string, shortDescription: string, priceLabel = "600 грн / сеанс"): SiteNode => ({
   id: `recovery-${slug}`,
   slug,
   parentId: "recovery",
@@ -602,7 +610,7 @@ const recoveryItem = (slug: string, title: string, shortDescription: string): Si
   route: `/vidnovlennia/${slug}`,
   shortDescription,
   duration: "від 30 хв",
-  priceLabel: "Вартість уточнюється",
+  priceLabel,
   image: sportsImg,
   published: true,
   formats: ["Разові заняття", "Курс занять"],
@@ -626,16 +634,16 @@ const recovery: SiteNode = {
   featured: true,
   faq: BASE_FAQ,
   children: [
-    recoveryItem("fizioterapiia", "Фізіотерапія", "Апаратні процедури для зменшення болю та відновлення тканин."),
-    recoveryItem("hidrokinezioterapiia", "Гідрокінезіотерапія", "Лікувальні вправи у воді з мінімальним навантаженням на суглоби."),
-    recoveryItem("likuvalnyi-basein", "Лікувальний басейн", "Заняття у басейні під наглядом спеціаліста."),
-    recoveryItem("likuvalnyi-masazh", "Лікувальний масаж", "Робота з м’язовим напруженням і больовими зонами."),
-    recoveryItem("pilates", "Пілатес", "Контрольовані вправи для сили, балансу та постави."),
-    recoveryItem("hur", "Тренування на обладнанні HUR", "Силові тренування з точним дозуванням навантаження."),
-    recoveryItem("funktsionalne-trenuvannia", "Функціональне тренування", "Вправи для повсякденних рухів і витривалості."),
-    recoveryItem("fitnes-zal", "Фітнес-зал", "Самостійні або супроводжувані тренування у залі."),
-    recoveryItem("balneolohiia", "Бальнеологія", "Водні та бальнеологічні процедури."),
-    recoveryItem("spa", "SPA та релакс", "Процедури для відновлення після навантажень."),
+    recoveryItem("fizioterapiia", "Фізіотерапія", "Апаратні процедури для зменшення болю та відновлення тканин.", "500 грн / сеанс"),
+    recoveryItem("hidrokinezioterapiia", "Гідрокінезіотерапія", "Лікувальні вправи у воді з мінімальним навантаженням на суглоби.", "800 грн / сеанс"),
+    recoveryItem("likuvalnyi-basein", "Лікувальний басейн", "Заняття у басейні під наглядом спеціаліста.", "600 грн / сеанс"),
+    recoveryItem("likuvalnyi-masazh", "Лікувальний масаж", "Робота з м’язовим напруженням і больовими зонами.", "900 грн / сеанс"),
+    recoveryItem("pilates", "Пілатес", "Контрольовані вправи для сили, балансу та постави.", "500 грн / сеанс"),
+    recoveryItem("hur", "Тренування на обладнанні HUR", "Силові тренування з точним дозуванням навантаження.", "700 грн / сеанс"),
+    recoveryItem("funktsionalne-trenuvannia", "Функціональне тренування", "Вправи для повсякденних рухів і витривалості.", "600 грн / сеанс"),
+    recoveryItem("fitnes-zal", "Фітнес-зал", "Самостійні або супроводжувані тренування у залі.", "400 грн / день"),
+    recoveryItem("balneolohiia", "Бальнеологія", "Водні та бальнеологічні процедури.", "750 грн / процедура"),
+    recoveryItem("spa", "SPA та релакс", "Процедури для відновлення після навантажень.", "1 200 грн / сеанс"),
   ],
 };
 
@@ -652,7 +660,7 @@ const mobileRehab: SiteNode = {
   shortDescription:
     "Замість відвідування центру спеціалісти можуть приїхати до пацієнта з необхідним обладнанням.",
   duration: "За програмою",
-  priceLabel: "Вартість уточнюється",
+  priceLabel: "від 1 500 грн",
   image: rehabImg,
   published: true,
   ...rehabDefaults,
@@ -668,7 +676,7 @@ const mobileRehab: SiteNode = {
       route: "/vyizna-reabilitatsiia/vdoma",
       shortDescription: "Курс занять і процедур за місцем перебування пацієнта.",
       duration: "За програмою",
-      priceLabel: "Вартість уточнюється",
+      priceLabel: "від 2 500 грн / день",
       image: rehabImg,
       published: true,
       ...rehabDefaults,
@@ -682,7 +690,7 @@ const mobileRehab: SiteNode = {
       route: "/vyizna-reabilitatsiia/vyizd-spetsialista",
       shortDescription: "Окремі заняття з фізичним терапевтом або консультація лікаря вдома.",
       duration: "60 хв",
-      priceLabel: "Вартість уточнюється",
+      priceLabel: "1 500 грн / візит",
       image: rehabImg,
       published: true,
       ...rehabDefaults,
@@ -696,7 +704,7 @@ const mobileRehab: SiteNode = {
       route: "/vyizna-reabilitatsiia/z-obladnanniam",
       shortDescription: "Заняття вдома з використанням реабілітаційного обладнання центру.",
       duration: "За програмою",
-      priceLabel: "Вартість уточнюється",
+      priceLabel: "3 000 грн / день",
       image: rehabImg,
       published: true,
       ...rehabDefaults,
@@ -713,7 +721,7 @@ const rental: SiteNode = {
   eyebrow: "ПОСЛУГИ ОСНОВИ",
   route: "/orenda-obladnannia",
   shortDescription: "Реабілітаційне обладнання в оренду для продовження занять удома.",
-  priceLabel: "Вартість уточнюється",
+  priceLabel: "від 800 грн / доба",
   image: rehabImg,
   published: true,
   faq: BASE_FAQ,
@@ -727,7 +735,7 @@ const rental: SiteNode = {
       route: "/orenda-obladnannia/aktyvna-pasyvna-mekhanoterapiia",
       shortDescription: "Апарат для розробки суглобів в активному та пасивному режимах.",
       duration: "Від тижня",
-      priceLabel: "Вартість уточнюється",
+      priceLabel: "800 грн / доба",
       image: rehabImg,
       published: true,
       faq: BASE_FAQ,
