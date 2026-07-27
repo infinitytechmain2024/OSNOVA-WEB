@@ -46,7 +46,7 @@ export const HEADER_NAV: NavNodeItem[] = [
   { label: "ЧЕКАПИ", to: checkup.route, children: checkup.children },
   { label: "СПОРТИВНА МЕДИЦИНА", to: recovery.route, children: recovery.children },
   { label: "ФІТНЕС ТА ТРЕНАЖЕРНИЙ ЗАЛ", to: fitnesZal.route },
-  { label: "ЦІНИ ТА ПОСЛУГИ", to: services.route, children: services.children },
+  { label: "ЦІНИ ТА ПОСЛУГИ", to: services.route },
   { label: "КОНТАКТИ", to: "/kontakty" },
 ];
 
