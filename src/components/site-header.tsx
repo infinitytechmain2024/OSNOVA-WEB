@@ -10,7 +10,6 @@ import {
   Music2,
   Menu,
   X,
-  Search,
   ChevronDown,
   ChevronRight,
   Languages,
@@ -369,13 +368,6 @@ export function SiteHeader() {
               className="hidden rounded-md bg-brand-green px-5 py-2.5 text-xs sm:text-sm font-bold tracking-wide text-brand-green-foreground transition-all hover:bg-brand-green/90 md:inline-block"
             >
               ЗАПИСАТИСЯ
-            </AppLink>
-            <AppLink
-              to="/poshuk"
-              aria-label="Пошук по сайту"
-              className="flex size-9 items-center justify-center rounded-full border border-background/40 text-background hover:bg-background/10 transition-colors"
-            >
-              <Search className="size-4" />
             </AppLink>
             <LanguageSelect
               value={language}
