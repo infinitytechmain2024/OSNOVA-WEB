@@ -5,7 +5,6 @@ import {
   ArrowRight,
   Heart,
   Dumbbell,
-  MapPin,
   Phone,
   Users,
   ChevronRight,
@@ -24,8 +23,20 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 // Images
@@ -35,6 +46,8 @@ import sportsImg from "@/assets/service-sports.jpg";
 import cpetImg from "@/assets/cpet-test.jpg";
 import ecgImg from "@/assets/ecg-review.jpg";
 import ergoImg from "@/assets/ergometer.jpg";
+import educationTrainingImg from "@/assets/education-training.png";
+import educationConferenceImg from "@/assets/education-conference.png";
 import partnerAsmuLogo from "@/assets/partners/partner-asmu.png";
 import partnerChnuLogo from "@/assets/partners/partner-chnu.png";
 import partnerHeartLogo from "@/assets/partners/partner-heart.svg";
@@ -62,18 +75,21 @@ const HERO_SLIDES = [
     title: "Відновлення руху без болю",
     subtitle: "Сучасний реабілітаційний центр",
     text: "Повертаємо радість активного життя завдяки індивідуальним програмам реабілітації після травм, операцій та захворювань.",
+    ctaLabel: "Записатися на реабілітацію",
   },
   {
     image: cpetImg,
     title: "Кардіологічна діагностика",
     subtitle: "Перевірте своє серце",
     text: "Комплексна оцінка роботи серцево-судинної системи. Від ЕКГ до кардіопульмонального тестування в умовах гірського клімату.",
+    ctaLabel: "Записатися на діагностику",
   },
   {
     image: sportsImg,
     title: "Спортивна медицина",
     subtitle: "Для любителів та професіоналів",
     text: "Підвищуйте витривалість, тренуйтеся безпечно. Спортивні чекапи та супровід для найкращих результатів.",
+    ctaLabel: "Записатися на консультацію",
   },
 ];
 
@@ -149,31 +165,36 @@ const DIRECTIONS = [
 const METHODS = [
   {
     title: "КОМПЛЕКСНА РЕАБІЛІТАЦІЯ",
-    description: "Індивідуальні програми відновлення після травм, операцій та захворювань під наглядом лікарів і фізичних терапевтів.",
+    description:
+      "Індивідуальні програми відновлення після травм, операцій та захворювань під наглядом лікарів і фізичних терапевтів.",
     image: rehabImg,
     href: "/poslugy/reabilitatsiia",
   },
   {
     title: "ДІАГНОСТИКА",
-    description: "Високоточне обстеження серцево-судинної системи, ЕКГ, УЗД та кардіопульмональне тестування.",
+    description:
+      "Високоточне обстеження серцево-судинної системи, ЕКГ, УЗД та кардіопульмональне тестування.",
     image: cpetImg,
     href: "/poslugy/diagnostyka",
   },
   {
     title: "КОНСУЛЬТАЦІЯ ФАХІВЦІВ",
-    description: "Персоналізовані прийоми та медичний супровід провідних реабілітологів і профільних лікарів.",
+    description:
+      "Персоналізовані прийоми та медичний супровід провідних реабілітологів і профільних лікарів.",
     image: ecgImg,
     href: "/kontakty",
   },
   {
     title: "ФІЗІОТЕРАПІЯ",
-    description: "Сучасні апаратні методики відновлення, електротерапія, лазеротерапія та магнітотерапія.",
+    description:
+      "Сучасні апаратні методики відновлення, електротерапія, лазеротерапія та магнітотерапія.",
     image: ergoImg,
     href: "/poslugy/reabilitatsiia",
   },
   {
     title: "ГІДРОКІНЕЗІОТЕРАПІЯ",
-    description: "Водні процедури та відновлювальна гімнастика у басейні для м'якої розвантаження суглобів.",
+    description:
+      "Водні процедури та відновлювальна гімнастика у басейні для м'якої розвантаження суглобів.",
     image: sportsImg,
     href: "/poslugy/vidnovlennia",
   },
@@ -185,19 +206,22 @@ const METHODS = [
   },
   {
     title: "ОЗДОРОВЧИЙ БЮВЕТ",
-    description: "Вживання цілющих мінеральних вод для оздоровлення та нормалізації обміну речовин.",
+    description:
+      "Вживання цілющих мінеральних вод для оздоровлення та нормалізації обміну речовин.",
     image: checkupImg,
     href: "/pro-nas/infrastruktura",
   },
   {
     title: "ЧЕК-АПИ ЗДОРОВ’Я",
-    description: "Комплексні експрес-обстеження організму для виявлення прихованих ризиків на ранніх стадіях.",
+    description:
+      "Комплексні експрес-обстеження організму для виявлення прихованих ризиків на ранніх стадіях.",
     image: checkupImg,
     href: "/poslugy/check-up",
   },
   {
     title: "СПОРТИВНА АДАПТАЦІЯ",
-    description: "Підвищення фізичної витривалості, безпечний супровід тренувань та швидке відновлення.",
+    description:
+      "Підвищення фізичної витривалості, безпечний супровід тренувань та швидке відновлення.",
     image: sportsImg,
     href: "/poslugy/vidnovlennia",
   },
@@ -348,16 +372,22 @@ const EDUCATION_CARDS = [
     title: "НАВЧАННЯ",
     text: "Курси є важливими для вдосконалення хірургічної техніки, вивчення анатомії та освоєння нових медичних технологій і методик.",
     href: "/kursy",
-    image: rehabImg,
+    image: educationTrainingImg,
     label: "Практичні курси",
+    kicker: "Hands-on формат",
+    audience: "Для лікарів та фахівців",
+    format: "Практичні модулі",
     icon: GraduationCap,
   },
   {
     title: "КОНФЕРЕНЦІЇ",
     text: "Професійні зустрічі для обміну досвідом, презентації нових методик і обговорення актуальних питань реабілітаційної медицини.",
     href: "/konferentsii",
-    image: checkupImg,
+    image: educationConferenceImg,
     label: "Фахові події",
+    kicker: "Наукова платформа",
+    audience: "Для медичної спільноти",
+    format: "Лекції та дискусії",
     icon: BookOpen,
   },
 ];
@@ -396,7 +426,15 @@ const FAQS = [
   },
 ];
 
-function SectionHeader({ subtitle, title, centered = false }: { subtitle?: string; title: React.ReactNode; centered?: boolean }) {
+function SectionHeader({
+  subtitle,
+  title,
+  centered = false,
+}: {
+  subtitle?: string;
+  title: React.ReactNode;
+  centered?: boolean;
+}) {
   return (
     <div className={`mb-12 md:mb-16 ${centered ? "text-center" : ""}`}>
       {subtitle && (
@@ -404,8 +442,12 @@ function SectionHeader({ subtitle, title, centered = false }: { subtitle?: strin
           {subtitle}
         </span>
       )}
-      <h2 className="text-3xl font-extrabold leading-[1.15] text-navy md:text-5xl lg:text-6xl">{title}</h2>
-      <div className={`mt-6 h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green ${centered ? "mx-auto" : ""}`} />
+      <h2 className="text-3xl font-extrabold leading-[1.15] text-navy md:text-5xl lg:text-6xl">
+        {title}
+      </h2>
+      <div
+        className={`mt-6 h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green ${centered ? "mx-auto" : ""}`}
+      />
     </div>
   );
 }
@@ -423,9 +465,7 @@ function DirectionCard({ direction }: { direction: (typeof DIRECTIONS)[number] }
 
       <div className="flex flex-1 flex-col justify-between bg-white p-6 md:p-7">
         <div>
-          <h3 className="mb-3 text-xl font-bold leading-snug text-navy">
-            {direction.title}
-          </h3>
+          <h3 className="mb-3 text-xl font-bold leading-snug text-navy">{direction.title}</h3>
           <p className="mb-6 line-clamp-3 text-sm font-normal leading-relaxed text-slate-600">
             {direction.text}
           </p>
@@ -436,7 +476,8 @@ function DirectionCard({ direction }: { direction: (typeof DIRECTIONS)[number] }
             to={direction.href}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-md"
           >
-            Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            Детальніше{" "}
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </AppLink>
         </div>
       </div>
@@ -460,9 +501,7 @@ function PartnerCard({ partner }: { partner: (typeof PARTNERS)[number] }) {
         <span className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
           {partner.role}
         </span>
-        <h3 className="text-lg font-extrabold leading-snug text-navy md:text-xl">
-          {partner.name}
-        </h3>
+        <h3 className="text-lg font-extrabold leading-snug text-navy md:text-xl">{partner.name}</h3>
       </div>
 
       <a
@@ -478,7 +517,66 @@ function PartnerCard({ partner }: { partner: (typeof PARTNERS)[number] }) {
   );
 }
 
+function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
+  const Icon = item.icon;
+
+  return (
+    <AppLink
+      to={item.href}
+      aria-label={`Детальніше про ${item.title}`}
+      className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-slate-200/80 bg-card shadow-lg shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/35 hover:shadow-2xl hover:shadow-slate-900/10"
+    >
+      <div className="relative h-56 w-full overflow-hidden bg-slate-100 sm:h-64 lg:h-72">
+        <img
+          src={item.image}
+          alt={item.title}
+          loading="lazy"
+          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-navy-deep/20 to-transparent" />
+        <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md">
+            <Icon className="size-4" />
+            {item.label}
+          </span>
+          <span className="hidden rounded-full border border-white/20 bg-white/15 px-3 py-1 text-[11px] font-semibold text-white/90 backdrop-blur-md sm:inline-flex">
+            {item.kicker}
+          </span>
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col p-6 sm:p-7 lg:p-8">
+        <div className="mb-5 flex flex-wrap gap-2.5 text-[11px] font-semibold text-navy/70">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/7 px-3 py-1.5 text-primary">
+            <Users className="size-3.5" />
+            {item.audience}
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-green/10 px-3 py-1.5 text-navy">
+            <Calendar className="size-3.5 text-brand-green" />
+            {item.format}
+          </span>
+        </div>
+
+        <div className="flex flex-1 flex-col">
+          <h3 className="text-2xl font-extrabold leading-tight text-navy transition-colors group-hover:text-primary md:text-3xl">
+            {item.title}
+          </h3>
+          <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">{item.text}</p>
+        </div>
+
+        <span className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 group-hover:bg-primary/90 group-hover:shadow-md">
+          Детальніше{" "}
+          <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+        </span>
+      </div>
+    </AppLink>
+  );
+}
+
 function Index() {
+  const [heroApi, setHeroApi] = React.useState<CarouselApi>();
+  const [currentHeroSlide, setCurrentHeroSlide] = React.useState(0);
+  const [heroSlideCount, setHeroSlideCount] = React.useState(0);
   const [directionsApi, setDirectionsApi] = React.useState<CarouselApi>();
   const [currentDirectionsSlide, setCurrentDirectionsSlide] = React.useState(0);
   const [directionsSlideCount, setDirectionsSlideCount] = React.useState(0);
@@ -488,6 +586,24 @@ function Index() {
   const [cooperationApi, setCooperationApi] = React.useState<CarouselApi>();
   const [currentCooperationSlide, setCurrentCooperationSlide] = React.useState(0);
   const [cooperationSlideCount, setCooperationSlideCount] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!heroApi) return;
+
+    const updateState = () => {
+      setHeroSlideCount(heroApi.scrollSnapList().length);
+      setCurrentHeroSlide(heroApi.selectedScrollSnap());
+    };
+
+    updateState();
+    heroApi.on("select", updateState);
+    heroApi.on("reInit", updateState);
+
+    return () => {
+      heroApi.off("select", updateState);
+      heroApi.off("reInit", updateState);
+    };
+  }, [heroApi]);
 
   React.useEffect(() => {
     if (!directionsApi) return;
@@ -551,22 +667,30 @@ function Index() {
         {/* 1. HERO CAROUSEL */}
         <section className="relative h-[500px] md:h-[560px] lg:h-[600px] w-full overflow-hidden bg-navy-deep">
           <Carousel
+            setApi={setHeroApi}
             plugins={[Autoplay({ delay: 6000, stopOnInteraction: true })]}
             opts={{ loop: true, watchDrag: false }}
             className="size-full"
           >
-            <CarouselContent className="h-full">
+            <CarouselContent className="ml-0 h-full">
               {HERO_SLIDES.map((slide, index) => (
-                <CarouselItem key={index} className="relative h-[500px] md:h-[560px] lg:h-[600px] w-full basis-full">
+                <CarouselItem
+                  key={index}
+                  className="relative h-[500px] md:h-[560px] lg:h-[600px] w-full basis-full pl-0"
+                >
                   <div className="absolute inset-0 size-full">
-                    <img src={slide.image} alt={slide.title} className="size-full object-cover object-center scale-105 animate-[slow-pan_20s_ease-in-out_infinite_alternate]" />
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className="size-full object-cover object-center scale-105 animate-[slow-pan_20s_ease-in-out_infinite_alternate]"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/90 to-navy-deep/20" />
                   </div>
-                  
+
                   <div className="relative flex h-full items-center">
                     <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-10">
                       <div className="max-w-xl lg:max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 lg:p-10 backdrop-blur-xl animate-in slide-in-from-bottom-12 fade-in duration-1000 fill-mode-both shadow-2xl">
-                        <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/20 px-3.5 py-1 text-xs md:text-sm font-semibold tracking-wider text-primary ring-1 ring-primary/30">
+                        <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-sky-100/95 px-3.5 py-1 text-xs md:text-sm font-semibold tracking-wider text-navy ring-1 ring-white/50 shadow-sm">
                           <span className="size-2 rounded-full bg-primary animate-pulse" />
                           {slide.subtitle}
                         </span>
@@ -577,12 +701,19 @@ function Index() {
                           {slide.text}
                         </p>
                         <div className="flex flex-wrap gap-3 md:gap-4">
-                          <AppLink to="/kontakty" className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-primary px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-primary-foreground transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)]">
-                            <span className="relative z-10">ЗАПИСАТИСЯ</span>
+                          <AppLink
+                            to="/kontakty"
+                            className="group relative inline-flex max-w-full items-center justify-center overflow-hidden rounded-xl bg-brand-green px-5 py-3.5 text-center text-sm font-bold leading-tight tracking-wide text-brand-green-foreground transition-all hover:scale-105 hover:bg-brand-green/90 hover:shadow-[0_0_36px_rgba(62,190,110,0.4)] md:px-7 md:py-4 md:text-base"
+                          >
+                            <span className="relative z-10">{slide.ctaLabel}</span>
                             <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
                           </AppLink>
-                          <AppLink to="/poslugy" className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-white backdrop-blur-sm transition-all hover:bg-white/10">
-                            НАШІ ПОСЛУГИ <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                          <AppLink
+                            to="/poslugy"
+                            className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 md:px-8 md:py-4 text-sm md:text-base font-bold tracking-wide text-white backdrop-blur-sm transition-all hover:bg-white/10"
+                          >
+                            НАШІ ПОСЛУГИ{" "}
+                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                           </AppLink>
                         </div>
                       </div>
@@ -591,38 +722,66 @@ function Index() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            
+
             <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 hidden items-center gap-3 lg:flex">
               <CarouselPrevious className="static size-11 md:size-12 translate-y-0 translate-x-0 border-white/20 bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white hover:text-navy hover:scale-110" />
               <CarouselNext className="static size-11 md:size-12 translate-y-0 translate-x-0 border-white/20 bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white hover:text-navy hover:scale-110" />
             </div>
+
+            {heroSlideCount > 0 && (
+              <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center justify-center gap-2.5 md:bottom-8">
+                {Array.from({ length: heroSlideCount }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => heroApi?.scrollTo(index)}
+                    className={`h-2.5 rounded-full ring-1 ring-white/40 transition-all duration-300 ${
+                      currentHeroSlide === index
+                        ? "w-8 bg-white shadow-sm"
+                        : "w-2.5 bg-white/45 hover:bg-white/75"
+                    }`}
+                    aria-label={`Перейти до головного слайду ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
           </Carousel>
         </section>
 
         {/* 2. ПРО КОМПАНІЮ */}
         <section className="relative overflow-hidden bg-background py-24 md:py-32">
           <div className="absolute -left-[10%] top-[20%] size-[500px] rounded-full bg-primary/5 blur-[120px]" />
-          
+
           <div className="relative mx-auto max-w-[1600px] px-6 lg:px-10">
             <div className="grid items-center gap-16 lg:grid-cols-2">
               <div>
                 <SectionHeader
                   subtitle="ПРО КОМПАНІЮ"
-                  title={<>ОСНОВА <span className="text-primary">Реабілітація</span></>}
+                  title={
+                    <>
+                      ОСНОВА <span className="text-primary">Реабілітація</span>
+                    </>
+                  }
                 />
-                
+
                 <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
                   <p className="font-medium text-navy text-xl leading-relaxed">
-                    ОСНОВА Реабілітація — сучасна медична компанія, що спеціалізується на лікуванні та комплексній реабілітації пацієнтів у сферах кардіології, ортопедії, травматології, ревматології, вертебрології та психології.
+                    ОСНОВА Реабілітація — сучасна медична компанія, що спеціалізується на лікуванні
+                    та комплексній реабілітації пацієнтів у сферах кардіології, ортопедії,
+                    травматології, ревматології, вертебрології та психології.
                   </p>
                   <p>
-                    Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики ще до появи симптомів — завдяки сучасній діагностиці, точним обстеженням і персоналізованим профілактичним програмам.
+                    Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики ще до
+                    появи симптомів — завдяки сучасній діагностиці, точним обстеженням і
+                    персоналізованим профілактичним програмам.
                   </p>
                   <p className="font-semibold text-primary">
                     Наше завдання — допомогти вам відновити здоров’я, рухливість і якість життя.
                   </p>
                   <p>
-                    ОСНОВА Реабілітація також є науково-освітньою платформою, що розробляє та вдосконалює протоколи лікування, співпрацює з провідними медичними університетами світу, впроваджує інноваційні технології та пропонує франшизу для масштабування ефективної реабілітаційної моделі.
+                    ОСНОВА Реабілітація також є науково-освітньою платформою, що розробляє та
+                    вдосконалює протоколи лікування, співпрацює з провідними медичними
+                    університетами світу, впроваджує інноваційні технології та пропонує франшизу для
+                    масштабування ефективної реабілітаційної моделі.
                   </p>
                 </div>
 
@@ -635,21 +794,33 @@ function Index() {
                   </AppLink>
                 </div>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-6">
                 <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
-                  <img src={rehabImg} alt="Реабілітація" className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700" />
+                  <img
+                    src={rehabImg}
+                    alt="Реабілітація"
+                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
                 <div className="flex flex-col justify-center rounded-3xl bg-primary/10 border border-primary/20 p-8 shadow-xl lg:p-10">
                   <h3 className="text-5xl font-black text-primary mb-3">10+</h3>
-                  <p className="text-base font-medium text-navy/80">Років досвіду медичної команди</p>
+                  <p className="text-base font-medium text-navy/80">
+                    Років досвіду медичної команди
+                  </p>
                 </div>
                 <div className="flex flex-col justify-center rounded-3xl bg-secondary p-8 shadow-xl lg:p-10 border border-primary/10">
                   <h3 className="text-5xl font-black text-navy mb-3">100%</h3>
-                  <p className="text-base font-medium text-navy/80">Персоналізований підхід до кожного пацієнта</p>
+                  <p className="text-base font-medium text-navy/80">
+                    Персоналізований підхід до кожного пацієнта
+                  </p>
                 </div>
                 <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
-                  <img src={cpetImg} alt="Діагностика" className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700" />
+                  <img
+                    src={cpetImg}
+                    alt="Діагностика"
+                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
               </div>
             </div>
@@ -659,12 +830,8 @@ function Index() {
         {/* 3. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
         <section className="bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader
-              centered
-              subtitle="НАПРЯМИ"
-              title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ"
-            />
-            
+            <SectionHeader centered subtitle="НАПРЯМИ" title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ" />
+
             <div className="mt-12 hidden gap-7 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {DIRECTIONS.map((direction, index) => (
                 <DirectionCard key={index} direction={direction} />
@@ -715,11 +882,7 @@ function Index() {
         {/* 4. МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ (Слайдером в 1 строчку) */}
         <section className="bg-white py-24 md:py-32 overflow-hidden">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader
-              centered
-              subtitle="МЕТОДИКИ"
-              title="МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ"
-            />
+            <SectionHeader centered subtitle="МЕТОДИКИ" title="МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ" />
 
             <Carousel
               setApi={setMethodsApi}
@@ -729,7 +892,10 @@ function Index() {
             >
               <CarouselContent className="-ml-4">
                 {METHODS.map((item, idx) => (
-                  <CarouselItem key={idx} className="pl-4 basis-[84%] sm:basis-[47%] lg:basis-[31%] xl:basis-[23.8%]">
+                  <CarouselItem
+                    key={idx}
+                    className="pl-4 basis-[84%] sm:basis-[47%] lg:basis-[31%] xl:basis-[23.8%]"
+                  >
                     <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-slate-50/60 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:bg-white">
                       <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
                         <img
@@ -754,7 +920,8 @@ function Index() {
                             to={item.href}
                             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
                           >
-                            Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                            Детальніше{" "}
+                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                           </AppLink>
                         </div>
                       </div>
@@ -796,12 +963,8 @@ function Index() {
         {/* 5. НАШІ ПЕРЕВАГИ (10 карт) */}
         <section className="relative py-24 md:py-32 overflow-hidden bg-background">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader
-              centered
-              subtitle="ПЕРЕВАГИ"
-              title="НАШІ ПЕРЕВАГИ"
-            />
-            
+            <SectionHeader centered subtitle="ПЕРЕВАГИ" title="НАШІ ПЕРЕВАГИ" />
+
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               {ADVANTAGES.map((adv, i) => (
                 <div
@@ -817,8 +980,12 @@ function Index() {
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                    <h3 className="mb-3 text-base font-extrabold text-navy leading-snug">{adv.title}</h3>
-                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{adv.text}</p>
+                    <h3 className="mb-3 text-base font-extrabold text-navy leading-snug">
+                      {adv.title}
+                    </h3>
+                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                      {adv.text}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -830,7 +997,7 @@ function Index() {
         <section className="bg-secondary/40 py-20">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader centered subtitle="ПАРТНЕРСТВО" title="НАШІ ПАРТНЕРИ" />
-            
+
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 mt-10">
               {PARTNERS.map((partner, idx) => (
                 <div
@@ -839,7 +1006,9 @@ function Index() {
                 >
                   <Building2 className="mb-3 size-8 text-primary/80" />
                   <h4 className="text-xs font-bold text-navy leading-tight">{partner.name}</h4>
-                  <span className="mt-2 text-[10px] uppercase font-semibold text-primary tracking-wider">{partner.role}</span>
+                  <span className="mt-2 text-[10px] uppercase font-semibold text-primary tracking-wider">
+                    {partner.role}
+                  </span>
                 </div>
               ))}
             </div>
@@ -849,67 +1018,20 @@ function Index() {
         {/* 7. НАВЧАННЯ ТА КОНФЕРЕНЦІЇ */}
         <section className="py-24 md:py-32 bg-background">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader
-              centered
-              subtitle="ОСВІТА ТА НАУКА"
-              title="НАВЧАННЯ ТА КОНФЕРЕНЦІЇ"
-            />
-            
-            <div className="mx-auto mt-12 grid max-w-6xl gap-8 md:grid-cols-2">
-              {EDUCATION_CARDS.map((item) => {
-                const Icon = item.icon;
+            <SectionHeader centered subtitle="ОСВІТА ТА НАУКА" title="НАВЧАННЯ ТА КОНФЕРЕНЦІЇ" />
 
-                return (
-                  <AppLink
-                    key={item.title}
-                    to={item.href}
-                    className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl"
-                  >
-                    <div className="relative h-60 w-full overflow-hidden bg-slate-100 sm:h-72">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        loading="lazy"
-                        className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/70 via-navy-deep/10 to-transparent" />
-                      <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-xs font-bold tracking-[0.16em] text-white uppercase backdrop-blur-md">
-                        <Icon className="size-4" />
-                        {item.label}
-                      </span>
-                    </div>
-
-                    <div className="flex flex-1 flex-col justify-between p-7 md:p-8">
-                      <div>
-                        <h3 className="mb-4 text-2xl font-extrabold leading-tight text-navy transition-colors group-hover:text-primary md:text-3xl">
-                          {item.title}
-                        </h3>
-                        <p className="text-base leading-relaxed text-slate-600 md:text-lg">
-                          {item.text}
-                        </p>
-                      </div>
-
-                      <div className="mt-8">
-                        <span className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 group-hover:bg-primary/90 group-hover:shadow-md">
-                          Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                        </span>
-                      </div>
-                    </div>
-                  </AppLink>
-                );
-              })}
+            <div className="mx-auto mt-12 grid max-w-7xl gap-7 md:grid-cols-2 lg:gap-8">
+              {EDUCATION_CARDS.map((item) => (
+                <EducationCard key={item.title} item={item} />
+              ))}
             </div>
           </div>
         </section>
 
         {/* 8. СПІВПРАЦЯ */}
         <section className="bg-slate-50/90 py-24 md:py-32 border-y border-slate-200/80">
-          <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader
-              centered
-              subtitle="ПАРТНЕРСЬКА ПЛАТФОРМА"
-              title="СПІВПРАЦЯ"
-            />
+          <div className="mx-auto max-w-[1840px] px-4 sm:px-6 lg:px-8">
+            <SectionHeader centered subtitle="ПАРТНЕРСЬКА ПЛАТФОРМА" title="СПІВПРАЦЯ" />
 
             <Carousel
               setApi={setCooperationApi}
@@ -917,22 +1039,30 @@ function Index() {
               opts={{ align: "start", loop: true, slidesToScroll: 1 }}
               className="mt-12 w-full"
             >
-              <CarouselContent className="-ml-6">
+              <CarouselContent className="-ml-4 md:-ml-5">
                 {COOPERATION_ITEMS.map((item, idx) => (
-                  <CarouselItem key={idx} className="basis-[88%] pl-6 sm:basis-[48%] lg:basis-1/3">
+                  <CarouselItem
+                    key={idx}
+                    className="basis-[88%] pl-4 sm:basis-[56%] md:basis-[48%] md:pl-5 lg:basis-1/3"
+                  >
                     <AppLink
                       to={item.href}
-                      className="group relative flex min-h-[280px] flex-col justify-between rounded-[24px] border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl md:min-h-[300px] md:p-8 lg:min-h-[320px] lg:p-9"
+                      className="group relative flex min-h-[260px] flex-col justify-between rounded-[24px] border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl md:min-h-[280px] md:p-8 lg:min-h-[300px] xl:min-h-[280px]"
                     >
                       <div>
                         <div className="mb-7 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                           <item.icon className="size-7" />
                         </div>
-                        <h3 className="mb-4 text-xl font-bold leading-tight text-navy md:text-2xl">{item.title}</h3>
-                        <p className="text-sm leading-relaxed text-slate-600 md:text-base">{item.text}</p>
+                        <h3 className="mb-4 text-xl font-bold leading-tight text-navy md:text-2xl">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm leading-relaxed text-slate-600 md:text-base">
+                          {item.text}
+                        </p>
                       </div>
                       <div className="mt-8 flex items-center gap-2 text-xs font-bold uppercase text-primary md:text-sm">
-                        Деталі <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                        Деталі{" "}
+                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                       </div>
                     </AppLink>
                   </CarouselItem>
@@ -969,20 +1099,32 @@ function Index() {
         {/* 9. БЛОГ */}
         <section className="py-24 md:py-32 bg-background">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-              <SectionHeader subtitle="НОВИНИ ТА СТАТТІ" title="БЛОГ" />
-              <AppLink
-                to="/pro-nas"
-                className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-bold text-navy shadow-sm transition-all hover:bg-primary hover:text-white hover:border-primary"
-              >
-                ВСІ НОВИНИ <ArrowRight className="size-4" />
-              </AppLink>
+            <div className="mb-10 md:mb-12">
+              <span className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-primary backdrop-blur-md uppercase">
+                НОВИНИ ТА СТАТТІ
+              </span>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <h2 className="text-3xl font-extrabold leading-[1.15] text-navy md:text-5xl lg:text-6xl">
+                  БЛОГ
+                </h2>
+                <AppLink
+                  to="/pro-nas"
+                  className="inline-flex w-fit shrink-0 items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-bold text-navy shadow-sm transition-all hover:bg-primary hover:text-white hover:border-primary"
+                >
+                  ВСІ НОВИНИ <ArrowRight className="size-4" />
+                </AppLink>
+              </div>
+              <div className="mt-6 h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green" />
             </div>
 
             <div className="grid gap-8 md:grid-cols-2">
               <article className="group rounded-3xl border border-border bg-card overflow-hidden shadow-lg transition-all hover:border-primary/40 hover:shadow-2xl">
                 <div className="h-64 overflow-hidden relative">
-                  <img src={ecgImg} alt="Серце" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img
+                    src={ecgImg}
+                    alt="Серце"
+                    className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                   <span className="absolute top-4 left-4 rounded-full bg-navy/80 backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-white">
                     11.07.2026
                   </span>
@@ -992,9 +1134,14 @@ function Index() {
                     Перші симптоми проблем із серцем: коли звертатися до кардіолога
                   </h3>
                   <p className="mb-6 text-muted-foreground leading-relaxed text-sm md:text-base">
-                    Біль у серці часто викликає тривогу та непокоїть багато людей. Але чому болить серце, коли це дійсно серйозна проблема, а коли потрібна профілактична діагностика...
+                    Біль у серці часто викликає тривогу та непокоїть багато людей. Але чому болить
+                    серце, коли це дійсно серйозна проблема, а коли потрібна профілактична
+                    діагностика...
                   </p>
-                  <AppLink to="/poslugy/diagnostyka/kardiolohichna-diahnostyka" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
+                  <AppLink
+                    to="/poslugy/diagnostyka/kardiolohichna-diahnostyka"
+                    className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors"
+                  >
                     ЧИТАТИ ДАЛІ <ArrowRight className="size-4" />
                   </AppLink>
                 </div>
@@ -1002,7 +1149,11 @@ function Index() {
 
               <article className="group rounded-3xl border border-border bg-card overflow-hidden shadow-lg transition-all hover:border-primary/40 hover:shadow-2xl">
                 <div className="h-64 overflow-hidden relative">
-                  <img src={rehabImg} alt="Артрит" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img
+                    src={rehabImg}
+                    alt="Артрит"
+                    className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                   <span className="absolute top-4 left-4 rounded-full bg-navy/80 backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-white">
                     11.07.2026
                   </span>
@@ -1012,9 +1163,14 @@ function Index() {
                     Артрит: причини, симптоми та найефективніші методи лікування
                   </h3>
                   <p className="mb-6 text-muted-foreground leading-relaxed text-sm md:text-base">
-                    Артрит — це запалення суглобів, яке може суттєво знижувати якість життя через біль, обмеження рухливості та розвиток дегенеративних змін. Тому своєчасна реабілітація вкрай важлива...
+                    Артрит — це запалення суглобів, яке може суттєво знижувати якість життя через
+                    біль, обмеження рухливості та розвиток дегенеративних змін. Тому своєчасна
+                    реабілітація вкрай важлива...
                   </p>
-                  <AppLink to="/poslugy/reabilitatsiia/ortopedichna-reabilitatsiia" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
+                  <AppLink
+                    to="/poslugy/reabilitatsiia/ortopedichna-reabilitatsiia"
+                    className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors"
+                  >
                     ЧИТАТИ ДАЛІ <ArrowRight className="size-4" />
                   </AppLink>
                 </div>
@@ -1027,10 +1183,14 @@ function Index() {
         <section className="bg-slate-50/70 py-24 md:py-32 border-t border-slate-200/60">
           <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
             <SectionHeader centered subtitle="ВІДПОВІДІ" title="ПИТАННЯ ТА ВІДПОВІДІ" />
-            
+
             <Accordion type="single" collapsible className="w-full space-y-5 mt-12">
               {FAQS.map((faq, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="rounded-2xl border border-slate-200 bg-white px-6 md:px-8 py-2 shadow-sm transition-all hover:shadow-md hover:border-primary/30">
+                <AccordionItem
+                  key={i}
+                  value={`item-${i}`}
+                  className="rounded-2xl border border-slate-200 bg-white px-6 md:px-8 py-2 shadow-sm transition-all hover:shadow-md hover:border-primary/30"
+                >
                   <AccordionTrigger className="text-left text-base md:text-lg font-bold text-navy hover:text-primary hover:no-underline [&[data-state=open]]:text-primary">
                     {faq.question}
                   </AccordionTrigger>
@@ -1044,17 +1204,22 @@ function Index() {
         </section>
 
         {/* 11. CTA BANNER */}
-        <section className="relative py-24 md:py-32 overflow-hidden bg-soft-blue">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-          <div className="relative mx-auto max-w-[1000px] px-6 text-center lg:px-10">
+        <section className="py-24 md:py-32 bg-soft-blue">
+          <div className="mx-auto max-w-[1000px] px-6 text-center lg:px-10">
             <h2 className="mb-6 text-3xl font-extrabold text-navy md:text-5xl lg:text-6xl">
-              Зробіть перший крок<br />до <span className="text-primary">здорового</span> життя
+              Зробіть перший крок
+              <br />
+              до <span className="text-primary">здорового</span> життя
             </h2>
             <p className="mb-10 text-lg md:text-xl text-navy/70 max-w-2xl mx-auto leading-relaxed">
-              Залиште заявку, і наші спеціалісти зв'яжуться з вами для детальної консультації та підбору оптимальної програми відновлення.
+              Залиште заявку, і наші спеціалісти зв'яжуться з вами для детальної консультації та
+              підбору оптимальної програми відновлення.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <AppLink to="/kontakty" className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 md:py-5 text-base md:text-lg font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto">
+              <AppLink
+                to="/kontakty"
+                className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 md:py-5 text-base md:text-lg font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto"
+              >
                 <span className="relative z-10">ОТРИМАТИ КОНСУЛЬТАЦІЮ</span>
                 <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
               </AppLink>
