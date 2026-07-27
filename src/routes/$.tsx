@@ -1,3 +1,4 @@
+import { AppLink } from "@/components/app-link";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";

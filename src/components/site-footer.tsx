@@ -1,3 +1,4 @@
+import { AppLink } from "@/components/app-link";
 import { Instagram, Youtube, Facebook, Music2, Phone, MapPin } from "lucide-react";
 import { siteTree, CONTACTS } from "@/data/site-tree";
 
