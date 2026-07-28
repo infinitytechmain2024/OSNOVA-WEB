@@ -114,6 +114,20 @@ export function SiteFooter() {
                 </AppLink>
               </li>
             </ul>
+            <div className="mt-6 flex items-center gap-3">
+              {SOCIALS.map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex size-9 items-center justify-center rounded-full border border-background/25 text-background transition-colors hover:bg-background/10"
+                >
+                  <Icon className="size-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
           <LinkColumn title="Реабілітація" items={rehabItems} allRoute={rehab?.route ?? services.route} />
@@ -156,7 +170,6 @@ export function SiteFooter() {
                   </span>
                 </li>
               </ul>
-              <div className="mt-6 h-px w-full bg-background/15" />
               <a
                 href={CONTACTS.messengers.telegram}
                 target="_blank"
@@ -165,6 +178,7 @@ export function SiteFooter() {
               >
                 <Send className="size-4 text-primary-foreground/80" /> {CONTACTS.messengers.telegramHandle}
               </a>
+              <div className="mt-6 h-px w-full bg-background/15" />
               <AppLink
                 to="/kontakty"
                 className="mt-auto inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 pt-3 text-xs font-bold uppercase tracking-[0.08em] text-primary-foreground transition-colors hover:bg-primary/90"
