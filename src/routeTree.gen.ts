@@ -9,30 +9,40 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as SplatRouteImport } from './routes/$'
-import { Route as IventyRouteImport } from './routes/iventy'
-import { Route as KardiolohichnaDiahnostykaRouteImport } from './routes/kardiolohichna-diahnostyka'
-import { Route as KonferentsiiRouteImport } from './routes/konferentsii'
-import { Route as KursyRouteImport } from './routes/kursy'
-import { Route as NavchanniaRouteImport } from './routes/navchannia'
-import { Route as NovynyRouteImport } from './routes/novyny'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as NovynyRouteImport } from './routes/novyny'
+import { Route as NavchanniaRouteImport } from './routes/navchannia'
+import { Route as KursyRouteImport } from './routes/kursy'
+import { Route as KonferentsiiRouteImport } from './routes/konferentsii'
+import { Route as KardiolohichnaDiahnostykaRouteImport } from './routes/kardiolohichna-diahnostyka'
+import { Route as IventyRouteImport } from './routes/iventy'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as StattiPershiSymptomyProblemIzSertsemRouteImport } from './routes/statti/pershi-symptomy-problem-iz-sertsem'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SplatRoute = SplatRouteImport.update({
-  id: '/$',
-  path: '/$',
+const NovynyRoute = NovynyRouteImport.update({
+  id: '/novyny',
+  path: '/novyny',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IventyRoute = IventyRouteImport.update({
-  id: '/iventy',
-  path: '/iventy',
+const NavchanniaRoute = NavchanniaRouteImport.update({
+  id: '/navchannia',
+  path: '/navchannia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KursyRoute = KursyRouteImport.update({
+  id: '/kursy',
+  path: '/kursy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KonferentsiiRoute = KonferentsiiRouteImport.update({
+  id: '/konferentsii',
+  path: '/konferentsii',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KardiolohichnaDiahnostykaRoute =
@@ -41,29 +51,19 @@ const KardiolohichnaDiahnostykaRoute =
     path: '/kardiolohichna-diahnostyka',
     getParentRoute: () => rootRouteImport,
   } as any)
-const KonferentsiiRoute = KonferentsiiRouteImport.update({
-  id: '/konferentsii',
-  path: '/konferentsii',
+const IventyRoute = IventyRouteImport.update({
+  id: '/iventy',
+  path: '/iventy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const KursyRoute = KursyRouteImport.update({
-  id: '/kursy',
-  path: '/kursy',
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NavchanniaRoute = NavchanniaRouteImport.update({
-  id: '/navchannia',
-  path: '/navchannia',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NovynyRoute = NovynyRouteImport.update({
-  id: '/novyny',
-  path: '/novyny',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StattiPershiSymptomyProblemIzSertsemRoute =
@@ -164,53 +164,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/$': {
-      id: '/$'
-      path: '/$'
-      fullPath: '/$'
-      preLoaderRoute: typeof SplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/iventy': {
-      id: '/iventy'
-      path: '/iventy'
-      fullPath: '/iventy'
-      preLoaderRoute: typeof IventyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kardiolohichna-diahnostyka': {
-      id: '/kardiolohichna-diahnostyka'
-      path: '/kardiolohichna-diahnostyka'
-      fullPath: '/kardiolohichna-diahnostyka'
-      preLoaderRoute: typeof KardiolohichnaDiahnostykaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/konferentsii': {
-      id: '/konferentsii'
-      path: '/konferentsii'
-      fullPath: '/konferentsii'
-      preLoaderRoute: typeof KonferentsiiRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kursy': {
-      id: '/kursy'
-      path: '/kursy'
-      fullPath: '/kursy'
-      preLoaderRoute: typeof KursyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/navchannia': {
-      id: '/navchannia'
-      path: '/navchannia'
-      fullPath: '/navchannia'
-      preLoaderRoute: typeof NavchanniaRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/novyny': {
@@ -220,11 +178,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NovynyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
+    '/navchannia': {
+      id: '/navchannia'
+      path: '/navchannia'
+      fullPath: '/navchannia'
+      preLoaderRoute: typeof NavchanniaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kursy': {
+      id: '/kursy'
+      path: '/kursy'
+      fullPath: '/kursy'
+      preLoaderRoute: typeof KursyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/konferentsii': {
+      id: '/konferentsii'
+      path: '/konferentsii'
+      fullPath: '/konferentsii'
+      preLoaderRoute: typeof KonferentsiiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kardiolohichna-diahnostyka': {
+      id: '/kardiolohichna-diahnostyka'
+      path: '/kardiolohichna-diahnostyka'
+      fullPath: '/kardiolohichna-diahnostyka'
+      preLoaderRoute: typeof KardiolohichnaDiahnostykaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/iventy': {
+      id: '/iventy'
+      path: '/iventy'
+      fullPath: '/iventy'
+      preLoaderRoute: typeof IventyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/statti/pershi-symptomy-problem-iz-sertsem': {
@@ -253,13 +253,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
