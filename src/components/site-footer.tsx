@@ -65,7 +65,7 @@ function LinkColumn({
       </ul>
       <AppLink
         to={allRoute}
-        className="mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold text-background transition-colors hover:text-brand-green"
+        className="inline-flex items-center gap-2 pt-6 text-sm font-semibold text-background transition-colors hover:text-brand-green"
       >
         {allLabel}
         <ArrowRight className="size-4" />
@@ -97,25 +97,7 @@ export function SiteFooter() {
               </span>
             </AppLink>
             <div className="mt-6 h-px w-full max-w-[15rem] bg-background/15" />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-background/70">
-              Медичний та реабілітаційний центр: діагностика, програми відновлення після
-              захворювань, травм і операцій, підтримка фізичної активності.
-            </p>
-            <div className="mt-6 flex items-center gap-3">
-              {SOCIALS.map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex size-9 items-center justify-center rounded-full border border-background/25 text-background transition-colors hover:bg-background/10"
-                >
-                  <Icon className="size-4" />
-                </a>
-              ))}
-            </div>
-            <ul className="mt-auto space-y-2 pt-8 text-sm text-background/70">
+            <ul className="mt-5 space-y-2 text-sm text-background/70">
               <li>
                 <AppLink to={about.route} className="transition-colors hover:text-background">
                   {about.title}
