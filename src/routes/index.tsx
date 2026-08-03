@@ -236,57 +236,65 @@ const METHODS = [
   },
 ];
 
-// 10 Переваг
+// 3 Переваги (груповані)
 const ADVANTAGES = [
   {
-    image: rehabImg,
-    title: "ІНДИВІДУАЛЬНІ ПРОГРАМИ",
-    text: "Розробка персоналізованого графіку та інтенсивності процедур з урахуванням діагнозу.",
+    number: "01",
+    title: "ПЕРСОНАЛІЗОВАНЕ\nВІДНОВЛЕННЯ",
+    items: [
+      {
+        heading: "Індивідуальна програма",
+        text: "План реабілітації формується відповідно до діагнозу та цілей пацієнта.",
+      },
+      {
+        heading: "Комплексний підхід",
+        text: "Фахівці різних напрямів працюють як єдина команда.",
+      },
+      {
+        heading: "Професійна діагностика",
+        text: "Оцінюємо стан організму та функціональні можливості.",
+      },
+    ],
   },
   {
-    image: cpetImg,
-    title: "КОМПЛЕКСНИЙ ПІДХІД",
-    text: "Мультидисциплінарна взаємодія лікарів для досягнення швидкого та тривалого результату.",
+    number: "02",
+    title: "МЕДИЧНА ЕКСПЕРТИЗА",
+    items: [
+      {
+        heading: "Досвідчена команда",
+        text: "Лікарі та терапевти з підтвердженою кваліфікацією.",
+      },
+      {
+        heading: "Сучасні методики",
+        text: "Доказові підходи та професійне обладнання.",
+      },
+      {
+        heading: "Високі стандарти",
+        text: "Безпека, контроль якості та клінічні протоколи.",
+      },
+      {
+        heading: "Науково-освітня база",
+        text: "Умови для практики, навчання та розвитку методик.",
+      },
+    ],
   },
   {
-    image: sportsImg,
-    title: "ДОСВІДЧЕНІ ФАХІВЦІ ТА СЕРТИФІКОВАНА КОМАНДА",
-    text: "Лікарі вищої категорії та фізичні терапевти з міжнародною акредитацією.",
-  },
-  {
-    image: ecgImg,
-    title: "ПРОФЕСІЙНА ДІАГНОСТИКА",
-    text: "Інноваційні методи виявлення ризиків та оцінка функціональних резервів до появи симптомів.",
-  },
-  {
-    image: ergoImg,
-    title: "СУЧАСНІ МЕТОДИКИ ТА ОБЛАДНАННЯ",
-    text: "Використання передових медичних технологій та обладнання провідних світових брендів.",
-  },
-  {
-    image: checkupImg,
-    title: "НАУКОВО-ОСВІТНЯ БАЗА ДЛЯ ВИЩИХ НАВЧАЛЬНИХ ЗАКЛАДІВ",
-    text: "Платформа для підготовки фахівців, вдосконалення протоколів та клінічних досліджень.",
-  },
-  {
-    image: rehabImg,
-    title: "ВИСОКА ЯКІСТЬ І МІЖНАРОДНІ СТАНДАРТИ",
-    text: "Суворе дотримання європейських медичних протоколів лікування та реабілітації.",
-  },
-  {
-    image: sportsImg,
-    title: "КОМФОРТ І КОНФІДЕНЦІЙНІСТЬ",
-    text: "Преміальні умови перебування, повна анонімність та індивідуальна турбота про кожного.",
-  },
-  {
-    image: checkupImg,
-    title: "БЮВЕТ З ЛІКУВАЛЬНИМИ ВОДАМИ",
-    text: "Природне оздоровлення організму цілющими джерельними мінеральними водами.",
-  },
-  {
-    image: ergoImg,
-    title: "ПРИРОДА КАРПАТ, ЩО СПРИЯЄ ВІДНОВЛЕННЮ",
-    text: "Унікальний гірський клімат Буковеля підсилює ефект кліматотерапії та реабілітації.",
+    number: "03",
+    title: "УМОВИ ДЛЯ\nВІДНОВЛЕННЯ",
+    items: [
+      {
+        heading: "Комфорт і конфіденційність",
+        text: "Спокійна атмосфера та індивідуальна увага.",
+      },
+      {
+        heading: "Мінеральні води",
+        text: "Природний ресурс, що доповнює програму оздоровлення.",
+      },
+      {
+        heading: "Природне середовище Карпат",
+        text: "Чисте повітря та сприятливі умови для відновлення.",
+      },
+    ],
   },
 ];
 
@@ -995,32 +1003,52 @@ function Index() {
           </div>
         </section>
 
-        {/* 5. НАШІ ПЕРЕВАГИ (10 карт) */}
+        {/* 5. ЧОМУ ОБИРАЮТЬ ОСНОВА РЕАБІЛІТАЦІЯ */}
         <section className="relative pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden bg-background">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader centered subtitle="ПЕРЕВАГИ" title="НАШІ ПЕРЕВАГИ" />
+            <div className="text-center mb-16">
+              <span className="inline-block rounded-full border border-primary/30 bg-primary/5 px-5 py-1.5 text-xs font-bold tracking-widest text-primary uppercase mb-6">
+                ПЕРЕВАГИ
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-navy tracking-tight leading-tight mb-4">
+                ЧОМУ ОБИРАЮТЬ ОСНОВА
+                <br />
+                <span className="text-navy">РЕАБІЛІТАЦІЯ</span>
+              </h2>
+              <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-emerald-400 to-primary" />
+              <p className="mx-auto max-w-2xl text-sm md:text-base text-muted-foreground leading-relaxed">
+                Поєднуємо персоналізовані програми, медичну експертизу
+                <br className="hidden md:block" />
+                та природні ресурси Карпат для безпечного й послідовного відновлення.
+              </p>
+            </div>
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {ADVANTAGES.map((adv, i) => (
                 <div
                   key={i}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl"
+                  className="group relative flex h-full flex-col rounded-3xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl p-8 lg:p-10"
                 >
-                  <div className="h-32 w-full overflow-hidden bg-slate-100 sm:h-36 lg:h-32 xl:h-28">
-                    <img
-                      src={adv.image}
-                      alt={adv.title}
-                      loading="lazy"
-                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <h3 className="mb-3 text-base font-extrabold text-navy leading-snug">
-                      {adv.title}
-                    </h3>
-                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                      {adv.text}
-                    </p>
+                  <span className="block text-6xl lg:text-7xl font-extrabold text-primary/10 leading-none mb-4 select-none">
+                    {adv.number}
+                  </span>
+                  <h3 className="text-lg lg:text-xl font-extrabold text-navy leading-tight mb-6 whitespace-pre-line">
+                    {adv.title}
+                  </h3>
+                  <div className="flex flex-col gap-5 mt-auto">
+                    {adv.items.map((item, j) => (
+                      <div key={j} className="flex flex-col gap-1.5">
+                        <span className="text-sm font-bold text-navy">
+                          {item.heading}
+                        </span>
+                        <span className="text-sm text-muted-foreground leading-relaxed">
+                          {item.text}
+                        </span>
+                        {j < adv.items.length - 1 && (
+                          <div className="mt-4 h-px bg-border/60" />
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
               ))}
