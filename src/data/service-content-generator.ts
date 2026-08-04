@@ -53,10 +53,18 @@ export type ResolvedServicePageData = {
   ctaBody: string;
   ctaButton: string;
 
-  signsTitle: string;
   signsIntro: string;
   signsListIntro: string;
   signsItems: string[];
+
+  priceCategories: {
+    name: string;
+    items: {
+      name: string;
+      duration?: string;
+      price: string;
+    }[];
+  }[];
 };
 
 export function getServicePageData(node: SiteNode): ResolvedServicePageData {
@@ -232,6 +240,56 @@ export function getServicePageData(node: SiteNode): ResolvedServicePageData {
         { name: "Аналіз результатів попередніх обстежень", price: "За запитом" },
       ];
 
+  const priceCategories = [];
+
+  // Main Category
+  const mainCategoryName = isDiag ? "Діагностика" : isRehab ? "Реабілітація" : isCheckup ? "Чек-апи здоров'я" : "Послуги";
+  priceCategories.push({
+    name: mainCategoryName,
+    items: defaultPricesPrimary.map(p => ({ ...p, price: p.price || "За запитом" })),
+  });
+
+  // Secondary Categories based on service type
+  if (isRehab || isCheckup || node.id === 'rehab-cardio') {
+    priceCategories.push({
+      name: "Діагностика",
+      items: [
+        { name: "Лабораторні аналізи та панелі", duration: "за призначенням", price: "за запитом" },
+        { name: "Функціональне тестування під навантаженням", duration: "60-90 хв", price: "за запитом" },
+        { name: "Розширені інструментальні дослідження", duration: "за призначенням", price: "за запитом" },
+        { name: "Аналіз результатів попередніх обстежень", duration: "30-45 хв", price: "за запитом" },
+      ]
+    });
+    priceCategories.push({
+      name: "Консультації",
+      items: [
+        { name: "Консультація суміжних спеціалістів", duration: "30-60 хв", price: "за запитом" },
+      ]
+    });
+    priceCategories.push({
+      name: "Інші послуги",
+      items: [
+        { name: `Індивідуальне формування програми ${isRehab ? 'реабілітації' : 'відновлення'}`, duration: "за потребою", price: "входить у програму" },
+      ]
+    });
+  } else if (isDiag) {
+    priceCategories.push({
+      name: "Консультації",
+      items: [
+        { name: "Консультація суміжних спеціалістів", duration: "30-60 хв", price: "за запитом" },
+      ]
+    });
+  } else if (node.parentId === "recovery") {
+    // Fitness / Recovery
+    priceCategories.push({
+      name: "Інші послуги",
+      items: [
+        { name: "Консультація спеціаліста", duration: "30 хв", price: "за запитом" },
+        { name: "Індивідуальна програма тренувань", duration: "за потребою", price: "за запитом" }
+      ]
+    });
+  }
+
   return {
     heroEyebrow: node.eyebrow || (isCardio ? "КОМПЛЕКСНА ОЦІНКА РОБОТИ СЕРЦЯ" : "ПОСЛУГИ ОСНОВИ"),
     heroTitle: node.title,
@@ -300,5 +358,7 @@ export function getServicePageData(node: SiteNode): ResolvedServicePageData {
       `Багато захворювань та порушень розвитку часто протікають приховано і тривалий час можуть не проявлятися вираженими симптомами. Саме тому важливо вчасно реагувати на найменші зміни самопочуття та регулярно проходити обстеження та профілактику.`,
     signsListIntro: custom.signsListIntro || `Звернутися до лікаря варто при:`,
     signsItems: custom.signsItems || defaultIndications,
+    
+    priceCategories,
   };
 }

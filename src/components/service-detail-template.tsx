@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { OtherServices } from "@/components/other-services";
 import { FAQAccordion } from "@/components/blocks";
+import { PricesAndServicesBlock } from "@/components/prices-and-services-block";
 import { getServicePageData } from "@/data/service-content-generator";
 import type { SiteNode } from "@/data/types";
 import { ArrowRight, Check, MapPin, Phone, Send } from "lucide-react";
@@ -241,60 +242,13 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 7 — Ціни */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
-          <div className="section-shell">
-            <h2 className="text-center text-2xl sm:text-4xl font-extrabold text-navy md:text-5xl">
-              {data.priceSectionTitle}
-            </h2>
-            <div className="mt-8 sm:mt-12 grid gap-6 sm:gap-8 lg:grid-cols-2">
-              <div className="rounded-xl border border-border bg-card p-5 sm:p-8 shadow-sm">
-                <h3 className="text-xs sm:text-sm font-bold tracking-[0.08em] text-primary uppercase">
-                  {data.pricePrimaryTitle}
-                </h3>
-                <ul className="mt-4 sm:mt-6">
-                  {data.pricePrimary.map((p) => (
-                    <li
-                      key={p.name}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 border-b border-border py-3.5 sm:py-4 last:border-0"
-                    >
-                      <span className="flex-1 text-xs sm:text-base text-navy font-medium">{p.name}</span>
-                      <div className="flex items-center justify-between sm:justify-end gap-3">
-                        {p.time && <span className="text-xs text-muted-foreground">{p.time}</span>}
-                        <span className="text-sm sm:text-base text-right font-extrabold text-primary">{p.price}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="rounded-xl border border-border bg-card p-5 sm:p-8 shadow-sm">
-                <h3 className="text-xs sm:text-sm font-bold tracking-[0.08em] text-primary uppercase">
-                  {data.priceSecondaryTitle}
-                </h3>
-                <ul className="mt-4 sm:mt-6">
-                  {data.priceSecondary.map((p) => (
-                    <li
-                      key={p.name}
-                      className="flex items-center justify-between gap-3 border-b border-border py-4 sm:py-6 last:border-0"
-                    >
-                      <span className="text-xs sm:text-base text-navy font-medium">{p.name}</span>
-                      <span className="text-xs sm:text-base font-extrabold text-primary shrink-0">{p.price || "За запитом"}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="mt-8 sm:mt-10 flex flex-col items-stretch sm:items-center gap-6 rounded-xl bg-secondary/50 p-5 sm:p-8 lg:flex-row shadow-sm">
-              <p className="flex-1 text-xs sm:text-base pl-4 sm:pl-6 text-navy/90 [border-left:4px_solid_var(--color-primary)]">
-                {data.priceFooterText}
-              </p>
-              <button
-                type="button"
-                onClick={scrollToContact}
-                className="w-full sm:w-auto rounded-lg bg-primary px-8 sm:px-12 py-4 sm:py-5 text-sm sm:text-base font-bold tracking-wide text-primary-foreground transition-opacity hover:opacity-90 shrink-0 text-center"
-              >
-                {data.priceFooterButton}
-              </button>
-            </div>
-          </div>
+          <PricesAndServicesBlock
+            title={data.priceSectionTitle}
+            categories={data.priceCategories}
+            footerText={data.priceFooterText}
+            footerButtonLabel={data.priceFooterButton}
+            onFooterButtonClick={scrollToContact}
+          />
         </section>
 
         {/* 8 — CTA */}
