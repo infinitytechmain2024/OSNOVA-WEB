@@ -149,6 +149,16 @@ function method(
 
 // ─────────────────────────── РЕАБІЛІТАЦІЯ ───────────────────────────
 
+const cardioMethods = [
+  "Електрокардіограма (ЕКГ)",
+  "Холтерівське моніторування ЕКГ",
+  "Кардіопульмональне тестування",
+  "6-хвилинний тест ходьби",
+  "Лабораторні діагностики",
+  "Функціональні діагностики",
+  "Інструментальна діагностика",
+];
+
 const CARDIO_REHAB_ROUTE = "/reabilitatsiia/kardiolohichna";
 const cardioRehab: SiteNode = {
   id: "rehab-cardio",
@@ -178,66 +188,84 @@ const cardioRehab: SiteNode = {
     ]
   },
   children: [
-    program(
-      "rehab-cardio",
-      CARDIO_REHAB_ROUTE,
-      "pislia-infarktu-miokarda",
-      "Реабілітація після інфаркту міокарда",
-      "Безпечне відновлення роботи серця після перенесеного інфаркту.",
-      "За програмою",
-      "від 3 000 грн",
-      cpetImg,
-    ),
-    program(
-      "rehab-cardio",
-      CARDIO_REHAB_ROUTE,
-      "pislia-stentuvannia",
-      "Після стентування коронарних артерій",
-      "Адаптація до навантажень та контроль стану після стентування.",
-      "За програмою",
-      "від 3 000 грн",
-      rehabImg,
-    ),
-    program(
-      "rehab-cardio",
-      CARDIO_REHAB_ROUTE,
-      "pislia-aksh",
-      "Після аортокоронарного шунтування",
-      "Поетапне збільшення активності після кардіохірургічного втручання.",
-      "За програмою",
-      "від 3 000 грн",
-      rehabImg,
-    ),
-    program(
-      "rehab-cardio",
-      CARDIO_REHAB_ROUTE,
-      "pislia-operatsii-na-klapanakh",
-      "Після операцій на клапанах серця",
-      "Відновлення витривалості та стабілізація гемодинаміки.",
-      "За програмою",
-      "від 3 000 грн",
-      cpetImg,
-    ),
-    program(
-      "rehab-cardio",
-      CARDIO_REHAB_ROUTE,
-      "pislia-vstanovlennia-kardiostymuliatora",
-      "Після встановлення кардіостимулятора",
-      "Контроль адаптації організму до заданого ритму.",
-      "За програмою",
-      "від 3 000 грн",
-      rehabImg,
-    ),
-    program(
-      "rehab-cardio",
-      CARDIO_REHAB_ROUTE,
-      "pislia-porushen-rytmu",
-      "Після порушень серцевого ритму",
-      "Формування безпечної зони пульсу та навантаження.",
-      "За програмою",
-      "від 3 000 грн",
-      ecgImg,
-    ),
+    {
+      ...program(
+        "rehab-cardio",
+        CARDIO_REHAB_ROUTE,
+        "pislia-infarktu-miokarda",
+        "Реабілітація після інфаркту міокарда",
+        "Безпечне відновлення роботи серця після перенесеного інфаркту.",
+        "За програмою",
+        "від 3 000 грн",
+        cpetImg,
+      ),
+      methods: cardioMethods,
+    },
+    {
+      ...program(
+        "rehab-cardio",
+        CARDIO_REHAB_ROUTE,
+        "pislia-stentuvannia",
+        "Після стентування коронарних артерій",
+        "Адаптація до навантажень та контроль стану після стентування.",
+        "За програмою",
+        "від 3 000 грн",
+        rehabImg,
+      ),
+      methods: cardioMethods,
+    },
+    {
+      ...program(
+        "rehab-cardio",
+        CARDIO_REHAB_ROUTE,
+        "pislia-aksh",
+        "Після аортокоронарного шунтування",
+        "Поетапне збільшення активності після кардіохірургічного втручання.",
+        "За програмою",
+        "від 3 000 грн",
+        rehabImg,
+      ),
+      methods: cardioMethods,
+    },
+    {
+      ...program(
+        "rehab-cardio",
+        CARDIO_REHAB_ROUTE,
+        "pislia-operatsii-na-klapanakh",
+        "Після операцій на клапанах серця",
+        "Відновлення витривалості та стабілізація гемодинаміки.",
+        "За програмою",
+        "від 3 000 грн",
+        cpetImg,
+      ),
+      methods: cardioMethods,
+    },
+    {
+      ...program(
+        "rehab-cardio",
+        CARDIO_REHAB_ROUTE,
+        "pislia-vstanovlennia-kardiostymuliatora",
+        "Після встановлення кардіостимулятора",
+        "Контроль адаптації організму до заданого ритму.",
+        "За програмою",
+        "від 3 000 грн",
+        rehabImg,
+      ),
+      methods: cardioMethods,
+    },
+    {
+      ...program(
+        "rehab-cardio",
+        CARDIO_REHAB_ROUTE,
+        "pislia-porushen-rytmu",
+        "Після порушень серцевого ритму",
+        "Формування безпечної зони пульсу та навантаження.",
+        "За програмою",
+        "від 3 000 грн",
+        ecgImg,
+      ),
+      methods: cardioMethods,
+    },
   ],
 };
 
