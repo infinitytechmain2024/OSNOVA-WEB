@@ -21,7 +21,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
   const data = getServicePageData(node);
   const [showAllMethods, setShowAllMethods] = React.useState(false);
-  const visibleMethods = showAllMethods ? data.methodCards : data.methodCards.slice(0, 4);
+  const visibleMethods = showAllMethods ? data.methodCards : data.methodCards.slice(0, 6);
 
   const scrollToContact = () => {
     const el = document.getElementById("cta-section") || document.getElementById("contacts-footer");
@@ -183,14 +183,14 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
             <h2 className="text-center text-2xl sm:text-3xl leading-tight font-extrabold uppercase text-navy md:text-4xl whitespace-pre-line">
               {data.methodSectionTitle}
             </h2>
-            <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-8 sm:mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {visibleMethods.map((m) => (
                 <article
                   key={m.title}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl bg-card shadow-sm transition-shadow hover:shadow-md"
+                  className="group relative flex flex-col overflow-hidden rounded-3xl bg-slate-50 shadow-sm transition-shadow hover:shadow-md"
                 >
                   {m.image && (
-                    <div className="h-40 sm:h-48 w-full overflow-hidden bg-muted">
+                    <div className="h-48 sm:h-56 w-full overflow-hidden bg-muted">
                       <img
                         src={m.image}
                         alt={m.title}
@@ -199,22 +199,20 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                       />
                     </div>
                   )}
-                  <div className="flex flex-1 flex-col p-5 sm:p-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="text-sm sm:text-base font-bold text-navy">
-                        {m.title}
-                      </h3>
-                    </div>
+                  <div className="flex flex-1 flex-col p-6 sm:p-8">
+                    <h3 className="text-lg sm:text-xl font-bold text-navy">
+                      {m.title}
+                    </h3>
                     {m.text && (
-                      <p className="mt-3 text-xs sm:text-sm text-navy/70 line-clamp-3">
+                      <p className="mt-4 text-sm sm:text-base text-navy/70 line-clamp-3">
                         {m.text}
                       </p>
                     )}
-                    {m.to && (
-                      <div className="mt-auto pt-4 flex items-center text-sm font-bold text-primary">
-                        Детальніше <ArrowRight className="ml-1 size-4 transition-transform group-hover:translate-x-1" />
+                    <div className="mt-auto pt-6">
+                      <div className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-opacity group-hover:opacity-90">
+                        Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                       </div>
-                    )}
+                    </div>
                   </div>
                   {m.to && (
                     <AppLink
@@ -227,7 +225,7 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
               ))}
             </div>
             
-            {data.methodCards.length > 4 && (
+            {data.methodCards.length > 6 && (
               <div className="mt-8 flex justify-center">
                 <button
                   type="button"
