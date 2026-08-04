@@ -200,18 +200,20 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                     </div>
                   )}
                   <div className="flex flex-1 flex-col p-5 sm:p-6">
-                    <div className="flex flex-1 items-start justify-between gap-4">
+                    <div className="flex items-start justify-between gap-4">
                       <h3 className="text-sm sm:text-base font-bold text-navy">
                         {m.title}
                       </h3>
-                      {m.to && (
-                        <ArrowRight className="mt-1 size-5 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
-                      )}
                     </div>
                     {m.text && (
                       <p className="mt-3 text-xs sm:text-sm text-navy/70 line-clamp-3">
                         {m.text}
                       </p>
+                    )}
+                    {m.to && (
+                      <div className="mt-auto pt-4 flex items-center text-sm font-bold text-primary">
+                        Детальніше <ArrowRight className="ml-1 size-4 transition-transform group-hover:translate-x-1" />
+                      </div>
                     )}
                   </div>
                   {m.to && (
@@ -232,7 +234,7 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                   onClick={() => setShowAllMethods(!showAllMethods)}
                   className="rounded-lg border-2 border-primary/20 px-8 py-3.5 text-sm font-semibold text-navy transition-colors hover:border-primary hover:text-primary"
                 >
-                  {showAllMethods ? "Згорнути" : "Детальніше"}
+                  {showAllMethods ? "Згорнути" : "Більше"}
                 </button>
               </div>
             )}
