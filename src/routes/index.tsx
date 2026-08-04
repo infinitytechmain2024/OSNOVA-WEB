@@ -1016,11 +1016,6 @@ function Index() {
                 <span className="text-navy">РЕАБІЛІТАЦІЯ</span>
               </h2>
               <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-emerald-400 to-primary" />
-              <p className="mx-auto max-w-2xl text-sm md:text-base text-muted-foreground leading-relaxed">
-                Поєднуємо персоналізовані програми, медичну експертизу
-                <br className="hidden md:block" />
-                та природні ресурси Карпат для безпечного й послідовного відновлення.
-              </p>
             </div>
 
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -1029,9 +1024,6 @@ function Index() {
                   key={i}
                   className="group relative flex h-full flex-col rounded-3xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl p-8 lg:p-10"
                 >
-                  <span className="block text-6xl lg:text-7xl font-extrabold text-slate-200 leading-none mb-4 select-none">
-                    {adv.number}
-                  </span>
                   <h3 className="text-lg lg:text-xl font-extrabold text-navy leading-tight mb-6 whitespace-pre-line">
                     {adv.title}
                   </h3>
