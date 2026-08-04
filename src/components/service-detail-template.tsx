@@ -7,7 +7,7 @@ import { FAQAccordion } from "@/components/blocks";
 import { PricesAndServicesBlock } from "@/components/prices-and-services-block";
 import { getServicePageData } from "@/data/service-content-generator";
 import type { SiteNode } from "@/data/types";
-import { ArrowRight, Check, MapPin, Phone, Send } from "lucide-react";
+import { ArrowRight, Check, MapPin, Phone, Send, MessageCircle } from "lucide-react";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -178,32 +178,65 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
         {/* 5 — Методи */}
         <section className="bg-soft-blue py-12 sm:py-20">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
-            <h2 className="text-center text-2xl sm:text-3xl leading-tight font-bold text-navy md:text-4xl whitespace-pre-line">
+            <h2 className="text-center text-2xl sm:text-3xl leading-tight font-extrabold uppercase text-navy md:text-4xl whitespace-pre-line">
               {data.methodSectionTitle}
             </h2>
-            <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
               {data.methodCards.map((m) => (
                 <article
                   key={m.title}
-                  className="flex flex-col rounded-xl bg-card p-5 sm:p-8 shadow-sm transition-shadow hover:shadow-md"
+                  className="group relative flex flex-col overflow-hidden rounded-2xl bg-card shadow-sm transition-shadow hover:shadow-md"
                 >
-                  <h3 className="text-base sm:text-lg font-bold text-primary">{m.title}</h3>
-                  <div className="mt-3 sm:mt-4 h-0.5 w-10 bg-primary/60" />
-                  <p className="mt-3 mb-5 sm:mt-5 sm:mb-6 text-xs sm:text-sm text-navy/85">{m.text}</p>
+                  {m.image && (
+                    <div className="h-40 sm:h-48 w-full overflow-hidden bg-muted">
+                      <img
+                        src={m.image}
+                        alt={m.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-5 sm:p-6">
+                    <div className="flex flex-1 items-start justify-between gap-4">
+                      <h3 className="text-sm sm:text-base font-bold text-navy">
+                        {m.title}
+                      </h3>
+                      {m.to && (
+                        <ArrowRight className="mt-1 size-5 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
+                      )}
+                    </div>
+                    {m.text && (
+                      <p className="mt-3 text-xs sm:text-sm text-navy/70 line-clamp-3">
+                        {m.text}
+                      </p>
+                    )}
+                  </div>
                   {m.to && (
                     <AppLink
                       to={m.to}
                       aria-label={`Детальніше про ${m.title}`}
-                      className="mt-auto inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:px-5 sm:text-sm"
-                    >
-                      Детальніше <ArrowRight className="size-4" />
-                    </AppLink>
+                      className="absolute inset-0 z-10"
+                    />
                   )}
                 </article>
               ))}
             </div>
-            <div className="mt-8 sm:mt-10 rounded-xl bg-secondary/60 p-4 sm:p-6 pl-6 sm:pl-8 [border-left:4px_solid_var(--color-primary)]">
-              <p className="text-xs sm:text-sm font-semibold text-navy">{data.methodNote}</p>
+            
+            <div className="mt-8 sm:mt-12 flex flex-col md:flex-row items-center gap-4 sm:gap-6 rounded-2xl bg-[#e2edf9] p-4 sm:p-6 md:p-8">
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                <MessageCircle className="size-6 text-primary" />
+              </div>
+              <p className="text-sm sm:text-base font-medium text-navy/90 flex-1 text-center md:text-left">
+                {data.methodNote}
+              </p>
+              <button
+                type="button"
+                onClick={scrollToContact}
+                className="w-full md:w-auto inline-flex items-center justify-center gap-3 rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                Уточнити можливість <ArrowRight className="size-4" />
+              </button>
             </div>
           </div>
         </section>

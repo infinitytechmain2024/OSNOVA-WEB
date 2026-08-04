@@ -19,6 +19,7 @@ export type ServiceMethodCard = {
   title: string;
   text: string;
   to?: string;
+  image?: string;
 };
 
 export type ServicePriceRow = {

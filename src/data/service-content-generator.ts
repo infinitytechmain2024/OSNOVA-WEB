@@ -155,36 +155,50 @@ export function getServicePageData(node: SiteNode): ResolvedServicePageData {
         "Після перенесених операцій, травм або перед початком комплексної програми відновлення графік контрольних етапів формується індивідуально.",
       ];
 
+  const getMethodImage = (c?: SiteNode) => {
+    if (c?.image) return c.image;
+    if (isCardio) return ecgImg;
+    if (isRehab) return rehabImg;
+    if (isCheckup) return checkupImg;
+    return sportsImg;
+  };
+
   // Methods
   const defaultMethods = custom.methodCards?.length
-    ? custom.methodCards
+    ? custom.methodCards.map(m => ({ ...m, image: m.image || getMethodImage() }))
     : node.children?.length
     ? node.children.map((c) => ({
         title: c.title,
         text: c.shortDescription || "Сучасний метод обстеження та відновлення здоров’я.",
         to: c.route,
+        image: getMethodImage(c),
       }))
     : node.methods?.length
     ? node.methods.map((m) => ({
         title: m,
         text: "Професійне виконання відповідно до сучасних медичних протоколів.",
+        image: getMethodImage(),
       }))
     : [
         {
           title: "Первинна оцінка та консультація",
           text: "Детальний огляд лікаря, аналіз скарг та збір анамнезу.",
+          image: getMethodImage(),
         },
         {
           title: "Функціональне тестування",
           text: "Апаратні та інструментальні методи оцінки стану організму.",
+          image: getMethodImage(),
         },
         {
           title: "Персоналізована програма",
           text: "Складання індивідуального плану занять та медичних процедур.",
+          image: getMethodImage(),
         },
         {
           title: "Моніторинг та контроль",
           text: "Відстеження динаміки відновлення на кожному етапі.",
+          image: getMethodImage(),
         },
       ];
 
