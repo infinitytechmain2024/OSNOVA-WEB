@@ -225,14 +225,14 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
               ))}
             </div>
             
-            {data.methodCards.length > 4 && !showAllMethods && (
+            {data.methodCards.length > 4 && (
               <div className="mt-8 flex justify-center">
                 <button
                   type="button"
-                  onClick={() => setShowAllMethods(true)}
+                  onClick={() => setShowAllMethods(!showAllMethods)}
                   className="rounded-lg border-2 border-primary/20 px-8 py-3.5 text-sm font-semibold text-navy transition-colors hover:border-primary hover:text-primary"
                 >
-                  Детальніше
+                  {showAllMethods ? "Згорнути" : "Детальніше"}
                 </button>
               </div>
             )}
