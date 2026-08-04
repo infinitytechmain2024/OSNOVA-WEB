@@ -168,6 +168,17 @@ const cardioRehab: SiteNode = {
   published: true,
   featured: true,
   ...rehabDefaults,
+  pageContent: {
+    methodSectionTitle: "З ЯКИМИ СТАНАМИ МИ ПРАЦЮЄМО",
+    methodCards: [
+      { title: "Реабілітація після інфаркту міокарда", text: "" },
+      { title: "Після стентування коронарних артерій", text: "" },
+      { title: "Після аортокоронарного шунтування (АКШ)", text: "" },
+      { title: "Після операцій на клапанах серця", text: "" },
+      { title: "Після встановлення кардіостимулятора", text: "" },
+      { title: "Після перенесених порушень серцевого ритму", text: "" },
+    ]
+  },
   children: [
     program(
       "rehab-cardio",

@@ -20,6 +20,8 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
   const data = getServicePageData(node);
+  const [showAllMethods, setShowAllMethods] = React.useState(false);
+  const visibleMethods = showAllMethods ? data.methodCards : data.methodCards.slice(0, 4);
 
   const scrollToContact = () => {
     const el = document.getElementById("cta-section") || document.getElementById("contacts-footer");
@@ -182,7 +184,7 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
               {data.methodSectionTitle}
             </h2>
             <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {data.methodCards.map((m) => (
+              {visibleMethods.map((m) => (
                 <article
                   key={m.title}
                   className="group relative flex flex-col overflow-hidden rounded-2xl bg-card shadow-sm transition-shadow hover:shadow-md"
@@ -222,6 +224,18 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                 </article>
               ))}
             </div>
+            
+            {data.methodCards.length > 4 && !showAllMethods && (
+              <div className="mt-8 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => setShowAllMethods(true)}
+                  className="rounded-lg border-2 border-primary/20 px-8 py-3.5 text-sm font-semibold text-navy transition-colors hover:border-primary hover:text-primary"
+                >
+                  Детальніше
+                </button>
+              </div>
+            )}
             
             <div className="mt-8 sm:mt-12 flex flex-col md:flex-row items-center gap-4 sm:gap-6 rounded-2xl bg-[#e2edf9] p-4 sm:p-6 md:p-8">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
