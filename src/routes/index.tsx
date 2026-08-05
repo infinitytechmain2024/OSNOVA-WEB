@@ -41,6 +41,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { NEWS_ARTICLES } from "@/data/news";
 import { useConsultationModal } from "@/components/consultation-form";
+import { RehabilitationMethodsSlider } from "@/components/rehabilitation-methods-slider";
 
 // Images
 import rehabImg from "@/assets/service-rehab.jpg";
@@ -161,78 +162,6 @@ const DIRECTIONS = [
     image: checkupImg,
     href: "/poslugy/check-up",
     badge: "Раннє виявлення ризиків",
-  },
-];
-
-// Методи реабілітації та лікування (для слайдера в 1 строчку)
-const METHODS = [
-  {
-    title: "КОМПЛЕКСНА РЕАБІЛІТАЦІЯ",
-    description:
-      "Індивідуальні програми відновлення після травм, операцій та захворювань під наглядом лікарів і фізичних терапевтів.",
-    image: rehabImg,
-    href: "/poslugy/reabilitatsiia",
-  },
-  {
-    title: "ДІАГНОСТИКА",
-    description:
-      "Високоточне обстеження серцево-судинної системи, ЕКГ, УЗД та кардіопульмональне тестування.",
-    image: cpetImg,
-    href: "/poslugy/diagnostyka",
-  },
-  {
-    title: "КОНСУЛЬТАЦІЯ ФАХІВЦІВ",
-    description:
-      "Персоналізовані прийоми та медичний супровід провідних реабілітологів і профільних лікарів.",
-    image: ecgImg,
-    href: "/kontakty",
-  },
-  {
-    title: "ФІЗІОТЕРАПІЯ",
-    description:
-      "Сучасні апаратні методики відновлення, електротерапія, лазеротерапія та магнітотерапія.",
-    image: ergoImg,
-    href: "/poslugy/reabilitatsiia",
-  },
-  {
-    title: "ГІДРОКІНЕЗІОТЕРАПІЯ",
-    description:
-      "Водні процедури та відновлювальна гімнастика у басейні для м'якої розвантаження суглобів.",
-    image: sportsImg,
-    href: "/poslugy/vidnovlennia",
-  },
-  {
-    title: "ФІТНЕС ТА ТРЕНАЖЕРНИЙ ЗАЛ",
-    description: "Спеціалізовані реабілітаційні тренажери та дозована лікувальна фізкультура.",
-    image: rehabImg,
-    href: "/poslugy/vidnovlennia/fitnes-zal",
-  },
-  {
-    title: "ОЗДОРОВЧИЙ БЮВЕТ",
-    description:
-      "Вживання цілющих мінеральних вод для оздоровлення та нормалізації обміну речовин.",
-    image: checkupImg,
-    href: "/pro-nas/infrastruktura",
-  },
-  {
-    title: "ЧЕК-АПИ ЗДОРОВ’Я",
-    description:
-      "Комплексні експрес-обстеження організму для виявлення прихованих ризиків на ранніх стадіях.",
-    image: checkupImg,
-    href: "/poslugy/check-up",
-  },
-  {
-    title: "СПОРТИВНА АДАПТАЦІЯ",
-    description:
-      "Підвищення фізичної витривалості, безпечний супровід тренувань та швидке відновлення.",
-    image: sportsImg,
-    href: "/poslugy/vidnovlennia",
-  },
-  {
-    title: "ЕРГОТЕРАПІЯ ТА МЕХАНОТЕРАПІЯ",
-    description: "Відновлення дрібної моторики, побутових навичок та біомеханіки суглобів.",
-    image: ergoImg,
-    href: "/poslugy/reabilitatsiia",
   },
 ];
 
@@ -601,9 +530,6 @@ function Index() {
   const [directionsApi, setDirectionsApi] = React.useState<CarouselApi>();
   const [currentDirectionsSlide, setCurrentDirectionsSlide] = React.useState(0);
   const [directionsSlideCount, setDirectionsSlideCount] = React.useState(0);
-  const [methodsApi, setMethodsApi] = React.useState<CarouselApi>();
-  const [currentMethodsSlide, setCurrentMethodsSlide] = React.useState(0);
-  const [methodsSlideCount, setMethodsSlideCount] = React.useState(0);
   const [cooperationApi, setCooperationApi] = React.useState<CarouselApi>();
   const [currentCooperationSlide, setCurrentCooperationSlide] = React.useState(0);
   const [cooperationSlideCount, setCooperationSlideCount] = React.useState(0);
@@ -646,24 +572,6 @@ function Index() {
       directionsApi.off("reInit", updateState);
     };
   }, [directionsApi]);
-
-  React.useEffect(() => {
-    if (!methodsApi) return;
-
-    const updateState = () => {
-      setMethodsSlideCount(methodsApi.scrollSnapList().length);
-      setCurrentMethodsSlide(methodsApi.selectedScrollSnap());
-    };
-
-    updateState();
-    methodsApi.on("select", updateState);
-    methodsApi.on("reInit", updateState);
-
-    return () => {
-      methodsApi.off("select", updateState);
-      methodsApi.off("reInit", updateState);
-    };
-  }, [methodsApi]);
 
   React.useEffect(() => {
     if (!cooperationApi) return;
@@ -923,85 +831,7 @@ function Index() {
         </section>
 
         {/* 4. МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ (Слайдером в 1 строчку) */}
-        <section className="bg-white pt-24 pb-12 md:pt-32 md:pb-16 overflow-hidden">
-          <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader centered subtitle="МЕТОДИКИ" title="МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ" />
-
-            <Carousel
-              setApi={setMethodsApi}
-              plugins={[Autoplay({ delay: 4500, stopOnInteraction: true })]}
-              opts={{ align: "start", loop: true }}
-              className="w-full mt-12"
-            >
-              <CarouselContent className="-ml-4">
-                {METHODS.map((item, idx) => (
-                  <CarouselItem
-                    key={idx}
-                    className="pl-4 basis-[84%] sm:basis-[47%] lg:basis-[31%] xl:basis-[23.8%]"
-                  >
-                    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-slate-50/60 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:bg-white">
-                      <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-
-                      <div className="flex flex-col justify-between flex-1 p-6 md:p-7">
-                        <div>
-                          <h3 className="mb-3 text-xl font-bold text-navy leading-snug">
-                            {item.title}
-                          </h3>
-                          <p className="mb-6 text-sm text-slate-600 leading-relaxed line-clamp-3 font-normal">
-                            {item.description}
-                          </p>
-                        </div>
-
-                        <div>
-                          <AppLink
-                            to={item.href}
-                            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md hover:scale-105"
-                          >
-                            Детальніше{" "}
-                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                          </AppLink>
-                        </div>
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-
-              {/* Controls and Pagination Dots */}
-              <div className="mt-10 flex flex-col items-center gap-6">
-                {/* Dots Pagination */}
-                {methodsSlideCount > 0 && (
-                  <div className="flex items-center justify-center gap-2.5">
-                    {Array.from({ length: methodsSlideCount }).map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => methodsApi?.scrollTo(index)}
-                        className={`h-2.5 rounded-full transition-all duration-300 ${
-                          currentMethodsSlide === index
-                            ? "w-8 bg-primary shadow-sm"
-                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
-                        }`}
-                        aria-label={`Перейти до слайду ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                {/* Prev / Next Arrows */}
-                <div className="flex items-center justify-center gap-3">
-                  <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
-                  <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
-                </div>
-              </div>
-            </Carousel>
-          </div>
-        </section>
+        <RehabilitationMethodsSlider />
 
         {/* 5. ЧОМУ ОБИРАЮТЬ ОСНОВА РЕАБІЛІТАЦІЯ */}
         <section className="relative pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden bg-background">
