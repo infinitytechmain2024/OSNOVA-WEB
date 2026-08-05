@@ -155,7 +155,7 @@ function SectionHeader() {
         Методи реабілітації
       </span>
       <h2 className="text-3xl font-extrabold leading-[1.15] text-navy md:text-5xl lg:text-6xl">
-        Як проходить відновлення
+        МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ
       </h2>
       <div className="mx-auto mt-6 h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green" />
       <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-base">
