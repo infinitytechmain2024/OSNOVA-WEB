@@ -153,7 +153,7 @@ function MethodCard({
         loading="lazy"
         className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/45 to-navy/5" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent" />
 
       {card.badge && (
         <span className="absolute top-4 left-4 z-10 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur-md md:top-6 md:left-6">
@@ -178,7 +178,7 @@ function MethodCard({
         >
           {card.description}
         </p>
-        <span className="inline-flex translate-y-4 items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white opacity-0 shadow-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 max-lg:translate-y-0 max-lg:opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100">
+        <span className="inline-flex translate-y-4 items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white opacity-0 shadow-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100">
           Детальніше
           <ArrowUpRightIcon className="size-4" />
         </span>
