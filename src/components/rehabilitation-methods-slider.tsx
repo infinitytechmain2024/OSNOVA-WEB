@@ -78,42 +78,6 @@ const REHABILITATION_METHODS: RehabilitationMethod[] = [
   },
 ];
 
-function ArrowUpRightIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M7 17 17 7" />
-      <path d="M8 7h9v9" />
-    </svg>
-  );
-}
-
-function ArrowLeftIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M19 12H5" />
-      <path d="m12 19-7-7 7-7" />
-    </svg>
-  );
-}
-
 function ArrowRightIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -134,37 +98,35 @@ function ArrowRightIcon({ className }: { className?: string }) {
 
 function MethodCard({ card }: { card: RehabilitationMethod }) {
   return (
-    <AppLink
-      to={card.href}
-      className="group relative flex h-full w-full flex-col justify-end overflow-hidden rounded-[20px] bg-navy focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/70"
-    >
-      <img
-        src={card.image}
-        alt={card.title}
-        loading="lazy"
-        className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-105"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent" />
-
-      {card.badge && (
-        <span className="absolute top-4 left-4 z-10 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur-md md:top-6 md:left-6">
-          {card.badge}
-        </span>
-      )}
-
-      <div className="relative z-10 p-5 md:p-6">
-        <h3 className="mb-2.5 text-lg font-extrabold leading-snug text-white md:text-xl">
-          {card.title}
-        </h3>
-        <p className="mb-5 text-sm leading-relaxed text-slate-200 line-clamp-3">
-          {card.description}
-        </p>
-        <span className="inline-flex translate-y-4 items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white opacity-0 shadow-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100">
-          Детальніше
-          <ArrowUpRightIcon className="size-4" />
-        </span>
+    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+      <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
+        <img
+          src={card.image}
+          alt={card.title}
+          loading="lazy"
+          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
       </div>
-    </AppLink>
+
+      <div className="flex flex-1 flex-col justify-between bg-white p-6 md:p-7">
+        <div>
+          <h3 className="mb-3 text-xl font-bold leading-snug text-navy">{card.title}</h3>
+          <p className="mb-6 line-clamp-3 text-sm font-normal leading-relaxed text-slate-600">
+            {card.description}
+          </p>
+        </div>
+
+        <div>
+          <AppLink
+            to={card.href}
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-md"
+          >
+            Детальніше{" "}
+            <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
+          </AppLink>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -221,9 +183,7 @@ export function RehabilitationMethodsSlider() {
                 key={card.id}
                 className="pl-4 basis-[85%] sm:basis-[48%] lg:basis-[32%] xl:basis-[24%]"
               >
-                <div className="h-[400px]">
-                  <MethodCard card={card} />
-                </div>
+                <MethodCard card={card} />
               </CarouselItem>
             ))}
           </CarouselContent>
