@@ -210,10 +210,11 @@ const rectsEqual = (a: DOMRect, b: DOMRect) =>
 function MethodGrid({ currentIndex }: { currentIndex: number }) {
   const total = REHABILITATION_METHODS.length;
   const featuredCard = REHABILITATION_METHODS[currentIndex];
-  const smallCards = Array.from(
-    { length: total - 1 },
-    (_, k) => REHABILITATION_METHODS[(currentIndex + 1 + k) % total],
-  );
+  const a1 = REHABILITATION_METHODS[(currentIndex + 1) % total];
+  const a2 = REHABILITATION_METHODS[(currentIndex + 2) % total];
+  const a3 = REHABILITATION_METHODS[(currentIndex + 3) % total];
+  const b1 = REHABILITATION_METHODS[(currentIndex + 5) % total];
+  const b2 = REHABILITATION_METHODS[(currentIndex + 4) % total];
 
   const slotRefs = React.useRef<Array<HTMLElement | null>>([]);
   const prevRectsRef = React.useRef<Map<string, DOMRect>>(new Map());
@@ -311,7 +312,7 @@ function MethodGrid({ currentIndex }: { currentIndex: number }) {
 
       <div className="col-span-8 row-span-2 grid grid-rows-2 gap-6">
         <div className="grid grid-cols-3 gap-6">
-          {smallCards.slice(0, 3).map((card, i) => (
+          {[a1, a2, a3].map((card, i) => (
             <div
               key={`a${i + 1}`}
               data-flip-id={card.id}
@@ -325,7 +326,7 @@ function MethodGrid({ currentIndex }: { currentIndex: number }) {
           ))}
         </div>
         <div className="grid grid-cols-2 gap-6">
-          {smallCards.slice(3, 5).map((card, i) => (
+          {[b1, b2].map((card, i) => (
             <div
               key={`b${i + 1}`}
               data-flip-id={card.id}
