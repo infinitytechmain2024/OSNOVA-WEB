@@ -24,7 +24,7 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
   const data = getServicePageData(node);
   const custom = node.pageContent || {};
   const [showAllMethods, setShowAllMethods] = React.useState(false);
-  const visibleMethods = showAllMethods ? data.methodCards : data.methodCards.slice(0, 6);
+  const visibleMethods = showAllMethods ? data.methodCards : data.methodCards.slice(0, 3);
   const { openModal } = useConsultationModal();
   const [introExpanded, setIntroExpanded] = React.useState(false);
   const [recommendedExpanded, setRecommendedExpanded] = React.useState(false);
@@ -123,42 +123,52 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 2 — Коли рекомендовано */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-          <div className="section-shell">
-            <SectionTitle>{data.recommendedTitle}</SectionTitle>
-            <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">{data.recommendedSubtitle}</p>
-            <ul className="mt-4 sm:mt-6 space-y-3">
-              {data.recommendedItems.map((item) => (
-                <li key={item} className="flex gap-3 text-sm sm:text-base text-navy/90">
-                  <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            {custom.recommendedExpandedText && (
-              <>
-                <div
-                  className={cn(
-                    "mt-4 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
-                    recommendedExpanded ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
-                  )}
-                >
-                  {custom.recommendedExpandedText}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setRecommendedExpanded(!recommendedExpanded)}
-                  className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
-                >
-                  {recommendedExpanded ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
-                  <ChevronDown
+          <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
+            <div>
+              <SectionTitle>{data.recommendedTitle}</SectionTitle>
+              <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">{data.recommendedSubtitle}</p>
+              <ul className="mt-4 sm:mt-6 space-y-3">
+                {data.recommendedItems.map((item) => (
+                  <li key={item} className="flex gap-3 text-sm sm:text-base text-navy/90">
+                    <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              {custom.recommendedExpandedText && (
+                <>
+                  <div
                     className={cn(
-                      "size-4 sm:size-5 transition-transform duration-200",
-                      recommendedExpanded && "rotate-180",
+                      "mt-4 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
+                      recommendedExpanded ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
                     )}
-                  />
-                </button>
-              </>
-            )}
+                  >
+                    {custom.recommendedExpandedText}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setRecommendedExpanded(!recommendedExpanded)}
+                    className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
+                  >
+                    {recommendedExpanded ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
+                    <ChevronDown
+                      className={cn(
+                        "size-4 sm:size-5 transition-transform duration-200",
+                        recommendedExpanded && "rotate-180",
+                      )}
+                    />
+                  </button>
+                </>
+              )}
+            </div>
+            <img
+              src={data.recommendedImage}
+              alt={data.recommendedTitle}
+              width={1200}
+              height={800}
+              loading="lazy"
+              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
+            />
           </div>
         </section>
 
@@ -184,38 +194,48 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 4 — Як часто */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
-          <div className="section-shell">
-            <SectionTitle>{data.frequencyTitle}</SectionTitle>
-            {data.frequencyParagraphs.map((p, i) => (
-              <p key={i} className="mt-4 sm:mt-6 text-sm sm:text-base text-navy/90 first:mt-6 sm:first:mt-10">
-                {p}
-              </p>
-            ))}
-            {custom.frequencyExpandedText && (
-              <>
-                <div
-                  className={cn(
-                    "mt-4 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
-                    frequencyExpanded ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
-                  )}
-                >
-                  {custom.frequencyExpandedText}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setFrequencyExpanded(!frequencyExpanded)}
-                  className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
-                >
-                  {frequencyExpanded ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
-                  <ChevronDown
+          <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
+            <div>
+              <SectionTitle>{data.frequencyTitle}</SectionTitle>
+              {data.frequencyParagraphs.map((p, i) => (
+                <p key={i} className="mt-4 sm:mt-6 text-sm sm:text-base text-navy/90 first:mt-6 sm:first:mt-10">
+                  {p}
+                </p>
+              ))}
+              {custom.frequencyExpandedText && (
+                <>
+                  <div
                     className={cn(
-                      "size-4 sm:size-5 transition-transform duration-200",
-                      frequencyExpanded && "rotate-180",
+                      "mt-4 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
+                      frequencyExpanded ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
                     )}
-                  />
-                </button>
-              </>
-            )}
+                  >
+                    {custom.frequencyExpandedText}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setFrequencyExpanded(!frequencyExpanded)}
+                    className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
+                  >
+                    {frequencyExpanded ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
+                    <ChevronDown
+                      className={cn(
+                        "size-4 sm:size-5 transition-transform duration-200",
+                        frequencyExpanded && "rotate-180",
+                      )}
+                    />
+                  </button>
+                </>
+              )}
+            </div>
+            <img
+              src={data.frequencyImage}
+              alt={data.frequencyTitle}
+              width={1200}
+              height={800}
+              loading="lazy"
+              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
+            />
           </div>
         </section>
 
@@ -250,9 +270,6 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                         {m.text}
                       </p>
                     )}
-                    {m.expandedText && (
-                      <ExpandableCardText visibleText={m.text} expandedText={m.expandedText} />
-                    )}
                     <div className="mt-auto pt-6">
                       {m.to ? (
                         <AppLink
@@ -279,7 +296,7 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
               ))}
             </div>
             
-            {data.methodCards.length > 6 && (
+            {data.methodCards.length > 3 && (
               <div className="mt-8 flex justify-center">
                 <button
                   type="button"
@@ -308,24 +325,6 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
             </div>
           </div>
         </section>
-
-        {/* 5.5 — Завдання (кастомні) */}
-        {custom.tasks && custom.tasks.length > 0 && (
-          <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-            <SectionTitle>{custom.tasksTitle || "Завдання"}</SectionTitle>
-            <div className="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2">
-              {custom.tasks.map((t, i) => (
-                <div key={t.title} className="rounded-2xl border border-border bg-card p-6 sm:p-8">
-                  <span className="inline-flex size-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
-                    {i + 1}
-                  </span>
-                  <h3 className="mt-4 text-lg sm:text-xl font-bold text-navy">{t.title}</h3>
-                  <p className="mt-3 text-sm sm:text-base text-navy/80">{t.text}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
 
         {/* 6 — Результати */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
@@ -383,9 +382,9 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 6.6 — CTA посередині (кастомний) */}
         {custom.ctaMiddleTitle && (
-          <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
-            <div className="relative overflow-hidden rounded-2xl bg-soft-blue px-4 sm:px-6 py-12 sm:py-20 text-center shadow-sm">
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-wide text-navy md:text-4xl">
+          <section id="cta-section" className="relative mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
+            <div className="relative overflow-hidden rounded-2xl bg-soft-blue px-4 sm:px-6 py-12 sm:py-24 text-center shadow-sm">
+              <h2 className="text-2xl sm:text-4xl font-extrabold tracking-wide text-navy md:text-5xl whitespace-pre-line uppercase">
                 {custom.ctaMiddleTitle}
               </h2>
               <div className="mx-auto mt-6 sm:mt-8 h-0.5 w-16 sm:w-20 bg-primary/50" />
@@ -401,6 +400,24 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
               >
                 {custom.ctaMiddleButton || "ЗАПИСАТИСЯ НА КОНСУЛЬТАЦІЮ"}
               </button>
+              <div className="mx-auto mt-8 sm:mt-12 h-px w-full max-w-2xl bg-border" />
+              <a
+                href="tel:+380674702788"
+                className="mt-6 sm:mt-10 inline-flex items-center justify-center gap-3 text-xl sm:text-2xl font-bold text-primary transition-colors hover:text-primary/80"
+              >
+                <Phone className="size-5 sm:size-6" /> +380 674 702 788
+              </a>
+
+              <div className="absolute top-1/2 right-6 hidden -translate-y-1/2 flex-col gap-4 md:flex">
+                {[Phone, Send, MapPin].map((Icon, i) => (
+                  <span
+                    key={i}
+                    className="flex size-12 items-center justify-center rounded-full bg-primary/25 text-primary shadow-sm"
+                  >
+                    <Icon className="size-5" />
+                  </span>
+                ))}
+              </div>
             </div>
           </section>
         )}
@@ -414,43 +431,6 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
             footerButtonLabel={data.priceFooterButton}
             onFooterButtonClick={scrollToContact}
           />
-        </section>
-
-        {/* 8 — CTA */}
-        <section id="cta-section" className="relative mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
-          <div className="relative overflow-hidden rounded-2xl bg-soft-blue px-4 sm:px-6 py-12 sm:py-24 text-center shadow-sm">
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-wide text-navy md:text-5xl whitespace-pre-line uppercase">
-              {data.ctaTitle}
-            </h2>
-            <div className="mx-auto mt-6 sm:mt-8 h-0.5 w-16 sm:w-20 bg-primary/50" />
-            <p className="mx-auto mt-6 sm:mt-8 max-w-3xl text-sm sm:text-lg text-navy/85">
-              {data.ctaBody}
-            </p>
-            <AppLink
-              to="/kontakty"
-              className="mt-8 sm:mt-12 inline-block w-full sm:w-auto rounded-full bg-primary px-8 sm:px-14 py-4 sm:py-6 text-base sm:text-lg font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105"
-            >
-              {data.ctaButton}
-            </AppLink>
-            <div className="mx-auto mt-8 sm:mt-12 h-px w-full max-w-2xl bg-border" />
-            <a
-              href="tel:+380674702788"
-              className="mt-6 sm:mt-10 inline-flex items-center justify-center gap-3 text-xl sm:text-2xl font-bold text-primary transition-colors hover:text-primary/80"
-            >
-              <Phone className="size-5 sm:size-6" /> +380 674 702 788
-            </a>
-
-            <div className="absolute top-1/2 right-6 hidden -translate-y-1/2 flex-col gap-4 md:flex">
-              {[Phone, Send, MapPin].map((Icon, i) => (
-                <span
-                  key={i}
-                  className="flex size-12 items-center justify-center rounded-full bg-primary/25 text-primary shadow-sm"
-                >
-                  <Icon className="size-5" />
-                </span>
-              ))}
-            </div>
-          </div>
         </section>
 
         {/* 9 — Коли варто пройти обстеження */}
@@ -534,51 +514,63 @@ function ExpandableSectionBlock({
   section,
   alwaysOpen = false,
 }: {
-  section: { title: string; visibleText: string; expandedText: string };
+  section: { title: string; visibleText: string; expandedText: string; image?: string };
   alwaysOpen?: boolean;
 }) {
   const [open, setOpen] = React.useState(alwaysOpen);
 
   return (
     <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-      <div className="section-shell">
-        {section.title && (
-          <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl">
-            {section.title}
-          </h2>
-        )}
-        {section.title && <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />}
-        {section.visibleText && (
-          <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
-            {section.visibleText}
-          </p>
-        )}
-        {section.expandedText && (
-          <>
-            <div
-              className={cn(
-                "mt-6 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
-                open ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
-              )}
-            >
-              {section.expandedText}
-            </div>
-            {!alwaysOpen && (
-              <button
-                type="button"
-                onClick={() => setOpen(!open)}
-                className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
+      <div className={cn("section-shell", section.image && "grid items-center gap-8 lg:gap-12 lg:grid-cols-2")}>
+        <div>
+          {section.title && (
+            <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl">
+              {section.title}
+            </h2>
+          )}
+          {section.title && <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />}
+          {section.visibleText && (
+            <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
+              {section.visibleText}
+            </p>
+          )}
+          {section.expandedText && (
+            <>
+              <div
+                className={cn(
+                  "mt-6 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
+                  open ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
+                )}
               >
-                {open ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
-                <ChevronDown
-                  className={cn(
-                    "size-4 sm:size-5 transition-transform duration-200",
-                    open && "rotate-180",
-                  )}
-                />
-              </button>
-            )}
-          </>
+                {section.expandedText}
+              </div>
+              {!alwaysOpen && (
+                <button
+                  type="button"
+                  onClick={() => setOpen(!open)}
+                  className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
+                >
+                  {open ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
+                  <ChevronDown
+                    className={cn(
+                      "size-4 sm:size-5 transition-transform duration-200",
+                      open && "rotate-180",
+                    )}
+                  />
+                </button>
+              )}
+            </>
+          )}
+        </div>
+        {section.image && (
+          <img
+            src={section.image}
+            alt={section.title}
+            width={1200}
+            height={800}
+            loading="lazy"
+            className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
+          />
         )}
       </div>
     </section>

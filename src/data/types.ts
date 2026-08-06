@@ -33,6 +33,7 @@ export type ExpandableSection = {
   title: string;
   visibleText: string;
   expandedText: string;
+  image?: string;
 };
 
 export type TaskItem = {
