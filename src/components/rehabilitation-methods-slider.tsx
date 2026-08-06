@@ -115,7 +115,7 @@ function ArrowLeftIcon({ className }: { className?: string }) {
 function MethodCard({ card }: { card: RehabilitationMethod }) {
   return (
     <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
-      <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
+      <div className="relative h-[210px] w-full shrink-0 overflow-hidden bg-slate-100">
         <img
           src={card.image}
           alt={card.title}
@@ -221,7 +221,7 @@ export function RehabilitationMethodsSlider() {
       <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
         <SectionHeader />
 
-        <div className="flex flex-col gap-6 lg:flex-row">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch">
           <StatsPanel />
 
           <div className="flex-1 overflow-hidden">
@@ -231,56 +231,56 @@ export function RehabilitationMethodsSlider() {
               opts={{ align: "start", loop: true }}
               className="w-full"
             >
-              <CarouselContent className="-ml-4">
+              <CarouselContent className="-ml-4 items-stretch">
                 {REHABILITATION_METHODS.map((card) => (
                   <CarouselItem
                     key={card.id}
-                    className="pl-4 basis-[85%] sm:basis-[48%] lg:basis-[45%] xl:basis-[32%]"
+                    className="pl-4 basis-[85%] sm:basis-[48%] lg:basis-[45%] xl:basis-[32%] !h-auto"
                   >
                     <MethodCard card={card} />
                   </CarouselItem>
                 ))}
               </CarouselContent>
             </Carousel>
+          </div>
+        </div>
 
-            <div className="mt-10 flex flex-col items-center gap-6">
-              <div className="flex items-center justify-center gap-2.5">
-                {REHABILITATION_METHODS.map((card, index) => (
-                  <button
-                    key={card.id}
-                    type="button"
-                    onClick={() => methodsApi?.scrollTo(index)}
-                    aria-label={`Перейти до методу ${card.title}`}
-                    aria-current={currentIndex === index ? "true" : undefined}
-                    className={cn(
-                      "h-2.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-                      currentIndex === index
-                        ? "w-8 bg-primary shadow-sm"
-                        : "w-2.5 bg-slate-300 hover:bg-slate-400",
-                    )}
-                  />
-                ))}
-              </div>
+        <div className="mt-10 flex flex-col items-center gap-6">
+          <div className="flex items-center justify-center gap-2.5">
+            {REHABILITATION_METHODS.map((card, index) => (
+              <button
+                key={card.id}
+                type="button"
+                onClick={() => methodsApi?.scrollTo(index)}
+                aria-label={`Перейти до методу ${card.title}`}
+                aria-current={currentIndex === index ? "true" : undefined}
+                className={cn(
+                  "h-2.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                  currentIndex === index
+                    ? "w-8 bg-primary shadow-sm"
+                    : "w-2.5 bg-slate-300 hover:bg-slate-400",
+                )}
+              />
+            ))}
+          </div>
 
-              <div className="flex items-center justify-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => methodsApi?.scrollPrev()}
-                  aria-label="Попередній слайд"
-                  className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                >
-                  <ArrowLeftIcon className="size-5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => methodsApi?.scrollNext()}
-                  aria-label="Наступний слайд"
-                  className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                >
-                  <ArrowRightIcon className="size-5" />
-                </button>
-              </div>
-            </div>
+          <div className="flex items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => methodsApi?.scrollPrev()}
+              aria-label="Попередній слайд"
+              className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <ArrowLeftIcon className="size-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => methodsApi?.scrollNext()}
+              aria-label="Наступний слайд"
+              className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <ArrowRightIcon className="size-5" />
+            </button>
           </div>
         </div>
       </div>
