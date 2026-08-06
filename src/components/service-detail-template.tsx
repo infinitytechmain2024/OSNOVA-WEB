@@ -48,9 +48,10 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/90 to-navy-deep/20" />
           <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 py-14 sm:py-20 lg:px-10 lg:py-32">
-            <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.28em] text-primary-foreground/70 uppercase">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-sky-100/95 px-3.5 py-1 text-xs md:text-sm font-semibold tracking-wider text-navy ring-1 ring-white/50 shadow-sm">
+              <span className="size-2 rounded-full bg-primary animate-pulse" />
               {data.heroEyebrow}
-            </p>
+            </span>
             <h1 className="mt-4 sm:mt-6 max-w-3xl text-3xl leading-[1.1] font-extrabold text-background sm:text-5xl md:text-6xl lg:text-7xl">
               {data.heroTitle}
             </h1>
