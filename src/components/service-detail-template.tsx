@@ -328,57 +328,37 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 6 — Результати */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-          <div className="section-shell">
-            <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">
-              {data.resultsTitle}
-            </h2>
-            <ul className="mt-6 sm:mt-10 space-y-1">
-              {data.resultsItems.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 sm:gap-4 border-b border-border py-3.5 sm:py-4 last:border-0"
-                >
-                  <span className="mt-0.5 flex size-5 sm:size-6 shrink-0 items-center justify-center rounded-full bg-brand-green">
-                    <Check className="size-3.5 sm:size-4 text-brand-green-foreground" />
-                  </span>
-                  <span className="text-xs sm:text-base text-navy/90">{item}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
+            <div>
+              <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">
+                {data.resultsTitle}
+              </h2>
+              <ul className="mt-6 sm:mt-10 space-y-1">
+                {data.resultsItems.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 sm:gap-4 border-b border-border py-3.5 sm:py-4 last:border-0"
+                  >
+                    <span className="mt-0.5 flex size-5 sm:size-6 shrink-0 items-center justify-center rounded-full bg-brand-green">
+                      <Check className="size-3.5 sm:size-4 text-brand-green-foreground" />
+                    </span>
+                    <span className="text-xs sm:text-base text-navy/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <img
+              src={data.resultsImage}
+              alt={data.resultsTitle}
+              width={1200}
+              height={800}
+              loading="lazy"
+              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
+            />
           </div>
         </section>
 
-        {/* 6.5 — Програми (кастомні) */}
-        {custom.programs && custom.programs.length > 0 && (
-          <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-            <SectionTitle>{custom.programsTitle || "Програми"}</SectionTitle>
-            {custom.programsIntro && (
-              <p className="mt-6 sm:mt-8 text-base sm:text-lg text-navy/85">{custom.programsIntro}</p>
-            )}
-            <div className="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2">
-              {custom.programs.map((p) => (
-                <div key={p.name} className="rounded-2xl border border-border bg-card p-6 sm:p-8">
-                  <h3 className="text-lg sm:text-xl font-bold text-navy">{p.name}</h3>
-                  <p className="mt-3 text-sm sm:text-base text-navy/80">{p.text}</p>
-                </div>
-              ))}
-            </div>
-            {custom.programsFooterText && (
-              <p className="mt-8 text-sm sm:text-base text-navy/80">{custom.programsFooterText}</p>
-            )}
-            {custom.programsFooterButton && (
-              <div className="mt-6">
-                <button
-                  type="button"
-                  onClick={() => openModal(custom.programsFooterButton!)}
-                  className="rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
-                >
-                  {custom.programsFooterButton}
-                </button>
-              </div>
-            )}
-          </section>
-        )}
+
 
         {/* 6.6 — CTA посередині (кастомний) */}
         {custom.ctaMiddleTitle && (
