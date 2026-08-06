@@ -77,52 +77,15 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 1.5 — Що таке [Назва] */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pt-10 sm:pt-16 lg:px-10">
-          <div className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2">
-            <div className="flex flex-col">
-              <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl whitespace-pre-line uppercase">
-                {data.introTitle}
-              </h2>
-              <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />
-              <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
-                {data.introBody}
-              </p>
-              {custom.introExpandedBody && (
-                <button
-                  type="button"
-                  onClick={() => setIntroExpanded(!introExpanded)}
-                  className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
-                >
-                  {introExpanded ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
-                  <ChevronDown
-                    className={cn(
-                      "size-4 sm:size-5 transition-transform duration-200",
-                      introExpanded && "rotate-180",
-                    )}
-                  />
-                </button>
-              )}
-            </div>
-            <img
-              src={data.introImage}
-              alt={data.heroTitle}
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
-            />
-          </div>
-          {custom.introExpandedBody && (
-            <div className="mt-8">
-              <div
-                className={cn(
-                  "text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
-                  introExpanded ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
-                )}
-              >
-                {custom.introExpandedBody}
-              </div>
-            </div>
-          )}
+          <ExpandableIntroSection
+            title={data.introTitle}
+            shortDescription={data.introBody}
+            expandedContent={custom.introExpandedBody}
+            image={data.introImage}
+            imageAlt={data.heroTitle}
+            isExpanded={introExpanded}
+            onToggle={() => setIntroExpanded(!introExpanded)}
+          />
         </section>
 
         {/* 2 — Коли рекомендовано */}
