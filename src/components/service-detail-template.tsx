@@ -7,6 +7,7 @@ import { FAQAccordion } from "@/components/blocks";
 import { PricesAndServicesBlock } from "@/components/prices-and-services-block";
 import { getServicePageData } from "@/data/service-content-generator";
 import { useConsultationModal } from "@/components/consultation-form";
+import { OnlineApplication } from "@/components/online-application";
 import type { SiteNode } from "@/data/types";
 import { ArrowRight, Check, ChevronDown, MapPin, Phone, Send, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -420,33 +421,8 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
           </button>
         </section>
 
-        {/* 10 — Етапи (кастомні) */}
-        {custom.stages && custom.stages.length > 0 && (
-          <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-            <SectionTitle>{custom.stagesTitle || "Як проходить програма"}</SectionTitle>
-            <div className="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {custom.stages.map((s, i) => (
-                <div key={s.title} className="rounded-xl border border-border bg-card p-5">
-                  <span className="inline-flex size-8 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
-                    {i + 1}
-                  </span>
-                  <h3 className="mt-3 text-base font-bold text-navy">{s.title}</h3>
-                  <p className="mt-2 text-sm text-navy/80">{s.text}</p>
-                </div>
-              ))}
-            </div>
-            {custom.stagesExpanded && (
-              <ExpandableSectionBlock
-                section={{
-                  title: "",
-                  visibleText: "",
-                  expandedText: custom.stagesExpanded,
-                }}
-                alwaysOpen
-              />
-            )}
-          </section>
-        )}
+        {/* Online Application Block */}
+        <OnlineApplication />
 
         {/* 11 — FAQ */}
         {node.faq && node.faq.length > 0 && (

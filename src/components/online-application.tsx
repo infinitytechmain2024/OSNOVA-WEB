@@ -1,6 +1,9 @@
 import * as React from "react";
 import {
-  FileText,
+  FilePen,
+  FolderUp,
+  Stethoscope,
+  CalendarCheck,
   UploadCloud,
   User,
   Phone,
@@ -8,7 +11,6 @@ import {
   MessageCircle,
   ShieldCheck,
   HelpCircle,
-  ArrowRight,
   X,
   CheckCircle2,
   AlertCircle,
@@ -23,7 +25,6 @@ interface UploadedFile {
   name: string;
   size: number;
   status: UploadStatus;
-  error?: string;
 }
 
 interface OnlineApplicationProps {
@@ -47,6 +48,15 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
   const [dragActive, setDragActive] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const dropZoneRef = React.useRef<HTMLDivElement>(null);
+  const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(false);
+
+  React.useEffect(() => {
+    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
 
   const MAX_FILE_SIZE = 10 * 1024 * 1024;
   const ALLOWED_TYPES = [
@@ -55,7 +65,6 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
     "image/png",
     "image/jpg",
   ];
-  const ALLOWED_EXTENSIONS = [".pdf", ".jpg", ".jpeg", ".png"];
 
   const validateFile = (file: File): string | null => {
     if (!ALLOWED_TYPES.includes(file.type)) {
@@ -192,7 +201,7 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
           phone: phone.trim(),
           files: files.map((f) => {
             const blob = new Blob([], { type: "application/octet-stream" });
-            return new File([blob], f.name, { size: f.size });
+            return new File([blob], f.name);
           }),
         });
       }
@@ -215,66 +224,64 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
   };
 
   return (
-    <section
-      className="relative mx-auto w-[calc(100%-48px)] max-w-[1440px] overflow-hidden rounded-[40px] border border-[#E3E9F1] bg-white px-16 py-18 shadow-[0_18px_50px_rgba(11,31,68,0.05)] sm:px-10 sm:py-14 lg:w-full lg:max-w-none"
-    >
+    <section className="relative mx-auto w-[calc(100%-48px)] max-w-[1440px] overflow-hidden rounded-[40px] border border-[#E3E9F1] bg-white px-16 py-[72px] shadow-[0_18px_50px_rgba(11,31,68,0.05)] sm:px-10 sm:py-14 lg:w-full lg:max-none max-lg:grid-cols-1 max-lg:gap-8 max-md:w-[calc(100%-24px)] max-md:rounded-[24px] max-md:px-4 max-md:py-10">
       <div className="mx-auto flex max-w-[1100px] flex-col items-center text-center">
         <span className="inline-flex h-[38px] items-center justify-center rounded-full border border-[rgba(23,99,232,0.35)] bg-white px-[22px] py-0 text-[13px] font-bold uppercase tracking-[0.12em] text-[#1763E8]">
           Онлайн-звернення
         </span>
 
-        <div className="mt-5 h-0 w-0" />
+        <div className="mt-5" />
 
-        <h2 className="text-[clamp(42px,4vw,64px)] w-full max-w-[1100px] text-center text-[#0B1F44] text-[800] leading-[1.05] tracking-[-0.02em]">
+        <h2 className="w-full max-w-[1100px] text-center text-[clamp(34px,5vw,64px)] text-[#0B1F44] font-extrabold leading-[1.05] tracking-[-0.02em] max-md:text-left max-md:text-[clamp(36px,6vw,44px)]">
           НАДІШЛІТЬ ДОКУМЕНТИ — МИ ОЦІНИМО ВАШ ЗАПИТ
         </h2>
 
-        <div className="mt-5 h-0 w-0" />
+        <div className="mt-5" />
 
-        <div className="h-[4px] w-[84px] rounded-full bg-[#1763E8]" />
+        <div className="h-[4px] w-[84px] rounded-full bg-[linear-gradient(to_right,#1763E8_75%,#20C7A6_75%)] max-md:mx-0" />
 
-        <div className="h-[4px] w-[84px] rounded-full bg-gradient-to-r from-[#1763E8] to-[#20C7A6]" style={{ width: '21px', marginLeft: '63px', marginTop: '-4px' }} />
+        <div className="mt-5" />
 
-        <div className="mt-5 h-0 w-0" />
-
-        <p className="max-w-[850px] text-center text-[18px] leading-[1.55] text-[#68758C]">
+        <p className="max-w-[850px] text-center text-[18px] leading-[1.55] text-[#68758C] max-md:text-left">
           Завантажте медичні документи онлайн — наші фахівці ознайомляться з ними та запропонують подальші кроки.
         </p>
       </div>
 
-      <div className="mt-12 grid gap-[30px] lg:grid-cols-[0.92fr_1.08fr]">
-        {/* Left column — 4 stages */}
-        <div className="grid grid-cols-2 gap-[18px]">
+      <div className="mt-12 grid gap-[30px] lg:grid-cols-[0.92fr_1.08fr] max-lg:grid-cols-1 max-lg:gap-6">
+        <div className="grid grid-cols-2 gap-[18px] max-md:grid-cols-1 max-md:gap-4">
           <StageCard
             number={1}
-            icon={FileText}
+            icon={FilePen}
             title="Залиште заявку"
             description="Вкажіть контактні дані та коротко опишіть свій запит."
+            reducedMotion={prefersReducedMotion}
           />
           <StageCard
             number={2}
-            icon={UploadCloud}
+            icon={FolderUp}
             title="Завантажте документи"
             description="Додайте виписки, результати обстежень та інші наявні матеріали."
+            reducedMotion={prefersReducedMotion}
           />
           <StageCard
             number={3}
-            icon={ShieldCheck}
+            icon={Stethoscope}
             title="Отримайте попередню оцінку"
             description="Фахівці ознайомляться з документами та визначать подальші кроки."
+            reducedMotion={prefersReducedMotion}
           />
           <StageCard
             number={4}
-            icon={MessageCircle}
+            icon={CalendarCheck}
             title="Узгодьте подальші дії"
             description="Адміністратор зв'яжеться з вами, щоб обговорити формат і дату початку."
+            reducedMotion={prefersReducedMotion}
           />
         </div>
 
-        {/* Right column — Form */}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col rounded-[24px] border border-[#E3E9F1] bg-white p-8 shadow-[0_14px_38px_rgba(11,31,68,0.07)]"
+          className="flex flex-col rounded-[24px] border border-[#E3E9F1] bg-white p-8 shadow-[0_14px_38px_rgba(11,31,68,0.07)] max-md:p-5"
           noValidate
         >
           <h3 className="text-center text-[26px] font-bold leading-[1.25] text-[#0B1F44]">
@@ -284,7 +291,6 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
             Приймаємо PDF, JPG і PNG — до 10 МБ кожен файл
           </p>
 
-          {/* Drop zone */}
           <div
             ref={dropZoneRef}
             role="button"
@@ -324,7 +330,6 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
             />
           </div>
 
-          {/* File list */}
           {files.length > 0 && (
             <div className="mt-4 space-y-2">
               {files.map((file) => (
@@ -332,7 +337,7 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
                   key={file.id}
                   className="flex items-center gap-3 rounded-lg border border-[#E3E9F1] bg-white px-3 py-2"
                 >
-                  <FileText className="size-5 shrink-0 text-[#1763E8]" />
+                  <FilePen className="size-5 shrink-0 text-[#1763E8]" />
                   <div className="flex min-w-0 flex-1 flex-col">
                     <span className="truncate text-[13px] font-medium text-[#0B1F44]">
                       {file.name}
@@ -360,8 +365,7 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
             </div>
           )}
 
-          {/* Contact fields */}
-          <div className="mt-4 grid grid-cols-2 gap-[14px]">
+          <div className="mt-4 grid grid-cols-2 gap-[14px] max-md:grid-cols-1 max-md:gap-3">
             <div className="relative">
               <User className="absolute left-4 top-1/2 size-[21px] -translate-y-1/2 text-[#8B98AC] pointer-events-none" />
               <input
@@ -388,7 +392,6 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
             </div>
           </div>
 
-          {/* Consent checkbox */}
           <label className="mt-4 flex items-start gap-2.5 text-[13px] leading-[1.5] text-[#68758C] cursor-pointer">
             <input
               type="checkbox"
@@ -398,15 +401,9 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
               required
               aria-label="Я погоджуюся з обробкою персональних даних"
             />
-            <span>
-              Я погоджуюся з{" "}
-              <a href="/politika-konfidentialnosti" className="text-[#1763E8] underline underline-offset-2">
-                обробкою персональних даних
-              </a>
-            </span>
+            <span>Я погоджуюся з обробкою персональних даних</span>
           </label>
 
-          {/* Submit button */}
           <button
             type="submit"
             disabled={submitting}
@@ -425,7 +422,6 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
             )}
           </button>
 
-          {/* Status messages */}
           {submitStatus === "success" && (
             <div
               className="mt-4 rounded-lg bg-[#F0FDF4] border border-[#20C7A6] p-3 text-[14px] text-[#0B1F44] text-center"
@@ -447,9 +443,7 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
         </form>
       </div>
 
-      {/* Bottom info panel */}
-      <div className="mt-[24px] grid grid-cols-2 gap-[28px] rounded-[20px] border border-[#E3E9F1] bg-white p-[22px] px-[26px] shadow-[0_8px_26px_rgba(11,31,68,0.04)] lg:grid-cols-[1fr_1fr_auto]">
-        {/* Left: Help */}
+      <div className="mt-[24px] grid grid-cols-2 gap-[28px] rounded-[20px] border border-[#E3E9F1] bg-white p-[22px] px-[26px] shadow-[0_8px_26px_rgba(11,31,68,0.04)] lg:grid-cols-[1fr_1fr_auto] max-md:grid-cols-1 max-md:gap-4 max-md:p-4">
         <div className="flex items-start gap-4">
           <div className="flex size-[58px] shrink-0 items-center justify-center rounded-full bg-[#F2F6FC]">
             <HelpCircle className="size-[30px] text-[#1763E8]" />
@@ -462,7 +456,6 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
           </div>
         </div>
 
-        {/* Center: No all docs */}
         <div className="flex items-start gap-4">
           <div className="flex size-[58px] shrink-0 items-center justify-center rounded-full bg-[#F2F6FC]">
             <ShieldCheck className="size-[30px] text-[#1763E8]" />
@@ -477,10 +470,9 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
           </div>
         </div>
 
-        {/* Right: Contact button */}
         <a
           href="tel:+380674702788"
-          className="inline-flex h-[52px] items-center justify-center gap-2.5 rounded-[14px] border border-[#1763E8] bg-white px-6 text-[15px] font-bold text-[#1763E8] transition-colors hover:bg-[#F2F6FC] whitespace-nowrap"
+          className="inline-flex h-[52px] w-full items-center justify-center gap-2.5 rounded-[14px] border border-[#1763E8] bg-white px-6 text-[15px] font-bold text-[#1763E8] transition-colors hover:bg-[#F2F6FC] whitespace-nowrap"
         >
           <MessageCircle className="size-5" />
           ЗВ'ЯЗАТИСЯ З НАМИ
@@ -495,20 +487,25 @@ function StageCard({
   icon: Icon,
   title,
   description,
+  reducedMotion,
 }: {
   number: number;
   icon: React.ElementType;
   title: string;
   description: string;
+  reducedMotion: boolean;
 }) {
   return (
-    <div className="relative min-h-[260px] flex flex-col rounded-[22px] border border-[#E3E9F1] bg-white p-[30px_26px_26px] shadow-[0_10px_30px_rgba(11,31,68,0.05)] transition-all duration-[220ms] hover:-translate-y-1 hover:shadow-lg">
+    <div
+      className="relative flex min-h-[260px] flex-col rounded-[22px] border border-[#E3E9F1] bg-white p-[30px_26px_26px] shadow-[0_10px_30px_rgba(11,31,68,0.05)] transition-all duration-[220ms] hover:-translate-y-1 hover:shadow-lg max-md:min-h-0 max-md:p-5 max-md:hover:translate-y-0 max-md:hover:shadow-md"
+      style={reducedMotion ? { transition: "none" } : undefined}
+    >
       <span className="absolute left-[18px] top-[18px] flex size-[38px] items-center justify-center rounded-full bg-[#1763E8] text-[16px] font-bold text-white z-[2]">
         {number}
       </span>
 
-      <div className="mx-auto mt-4 flex size-[86px] items-center justify-center rounded-full bg-[#F2F6FC]">
-        <Icon className="size-[46px] text-[#1763E8]" strokeWidth={1.8} />
+      <div className="mx-auto mt-4 flex size-[86px] items-center justify-center rounded-full bg-[#F2F6FC] max-md:size-[72px] max-md:mt-3">
+        <Icon className="size-[46px] text-[#1763E8] max-md:size-[38px]" strokeWidth={1.8} />
       </div>
 
       <div className="mt-[22px] flex-1">
