@@ -426,8 +426,11 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 11 — FAQ */}
         {node.faq && node.faq.length > 0 && (
-          <section className="mx-auto max-w-[1400px] px-4 sm:px-6 pb-16 sm:pb-24 lg:px-10">
-            <SectionTitle>Поширені питання</SectionTitle>
+          <section className="mx-auto max-w-[1400px] px-4 sm:px-6 pb-20 sm:pb-28 lg:px-10">
+            <h2 className="text-2xl sm:text-3xl leading-tight font-bold text-navy">
+              Поширені питання
+            </h2>
+            <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
             <FAQAccordion items={node.faq} />
           </section>
         )}
