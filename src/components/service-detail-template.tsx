@@ -144,25 +144,32 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
           )}
         </section>
 
-        {/* 3 — Коли відкласти */}
+        {/* 3 — Протипоказання до реабілітації */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
-          <div className="rounded-2xl sm:rounded-3xl border border-border p-5 sm:p-8 md:p-12 shadow-sm">
+          <div className="rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm">
             <SectionTitle>{data.postponeTitle}</SectionTitle>
             <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">
               {data.postponeIntro}
             </p>
-            <div className="mt-4 sm:mt-6 grid gap-x-16 gap-y-3 sm:gap-y-4 md:grid-cols-2">
+            <div className="mt-4 sm:mt-6 grid gap-x-16 gap-y-4 sm:gap-y-5 md:grid-cols-2">
               {[...data.postponeLeft, ...data.postponeRight].map((item, idx) => (
-                <p key={`${item}-${idx}`} className="text-sm sm:text-base text-navy/90">
-                  <span className="mr-2 text-muted-foreground">–</span>
+                <p
+                  key={`${item}-${idx}`}
+                  className="flex items-start text-sm sm:text-base text-navy/90"
+                >
+                  <span className="mt-0.5 mr-3 size-1.5 shrink-0 rounded-full bg-navy/25" />
                   {item}
                 </p>
               ))}
             </div>
-            <div className="mt-8 sm:mt-10 rounded-xl border border-destructive/25 bg-destructive/8 p-4 sm:p-6">
-              <p className="font-bold text-navy text-sm sm:text-base">{data.emergencyTitle}</p>
-              <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-navy/90">{data.emergencyBody}</p>
-            </div>
+          </div>
+
+          {/* 3.1 — Екстрений блок */}
+          <div className="mt-8 sm:mt-12 rounded-xl border-2 border-destructive/30 bg-destructive/10 p-5 sm:p-6 md:p-8">
+            <p className="font-bold text-navy text-base sm:text-lg md:text-xl">
+              {data.emergencyTitle}
+            </p>
+            <p className="mt-1 sm:mt-2 text-sm sm:text-base text-navy/85">{data.emergencyBody}</p>
           </div>
         </section>
 
