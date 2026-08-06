@@ -48,6 +48,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { NEWS_ARTICLES } from "@/data/news";
 import { useConsultationModal } from "@/components/consultation-form";
 import { RehabilitationMethodsSlider } from "@/components/rehabilitation-methods-slider";
+import { BodyPlacesSection } from "@/components/body-places-section";
 
 // Images
 import rehabImg from "@/assets/service-rehab.jpg";
@@ -784,7 +785,10 @@ function Index() {
           </div>
         </section>
 
-        {/* 3. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
+        {/* 3. ДЕ МИ ПРАЦЮЄМО (Проблемні зони) */}
+        <BodyPlacesSection />
+
+        {/* 4. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
         <section className="bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader centered subtitle="НАПРЯМИ" title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ" />
@@ -1000,26 +1004,26 @@ function Index() {
                   >
                     <AppLink
                       to={item.href}
-                      className="group relative flex h-full min-h-[320px] w-full flex-col justify-between overflow-hidden rounded-[24px] p-7 shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl md:min-h-[360px] md:p-8 lg:min-h-[400px]"
+                      className="group relative flex h-full min-h-[320px] w-full flex-col justify-between overflow-hidden rounded-[24px] border-2 border-transparent p-7 shadow-lg transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/60 hover:shadow-2xl md:min-h-[360px] md:p-8 lg:min-h-[400px]"
                     >
                       <div className="absolute inset-0 z-0">
                         <img
                           src={item.image}
                           alt={item.title}
                           loading="lazy"
-                          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="size-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
                         />
-                        <div className="absolute inset-0 bg-navy-deep/75 transition-colors duration-300 group-hover:bg-navy-deep/80" />
+                        <div className="absolute inset-0 bg-navy-deep/80 transition-all duration-500 group-hover:bg-navy-deep/50" />
                       </div>
 
                       <div className="relative z-10">
-                        <div className="mb-7 flex size-14 items-center justify-center rounded-2xl bg-white text-primary shadow-lg transition-transform duration-300 group-hover:scale-110">
+                        <div className="mb-7 flex size-14 items-center justify-center rounded-2xl bg-white text-primary shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
                           <item.icon className="size-7" />
                         </div>
                         <h3 className="mb-4 text-xl font-bold leading-tight text-white md:text-2xl">
                           {item.title}
                         </h3>
-                        <p className="text-sm leading-relaxed text-white/85 md:text-base">
+                        <p className="text-sm leading-relaxed text-white/90 md:text-base transition-colors duration-300 group-hover:text-white">
                           {item.text}
                         </p>
                       </div>
@@ -1063,22 +1067,16 @@ function Index() {
         {/* 9. БЛОГ */}
         <section className="py-24 md:py-32 bg-background">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <div className="mb-10 md:mb-12">
+            <div className="mb-10 md:mb-12 text-center">
               <span className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-primary backdrop-blur-md uppercase">
                 НОВИНИ ТА СТАТТІ
               </span>
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <h2 className="text-3xl font-extrabold leading-[1.15] text-navy md:text-5xl lg:text-6xl">
-                  БЛОГ
-                </h2>
-                <AppLink
-                  to="/novyny"
-                  className="inline-flex w-fit shrink-0 items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-bold text-navy shadow-sm transition-all hover:bg-primary hover:text-white hover:border-primary"
-                >
-                  ВСІ НОВИНИ <ArrowRight className="size-4" />
-                </AppLink>
+              <h2 className="text-3xl font-extrabold leading-[1.15] text-navy md:text-5xl lg:text-6xl">
+                БЛОГ
+              </h2>
+              <div className="mt-6 flex justify-center">
+                <div className="h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green" />
               </div>
-              <div className="mt-6 h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green" />
             </div>
 
             <div className="grid gap-8 md:grid-cols-2">
