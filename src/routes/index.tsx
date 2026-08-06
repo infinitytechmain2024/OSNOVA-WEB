@@ -20,6 +20,12 @@ import {
   Flame,
   Zap,
   Ambulance,
+  ClipboardList,
+  Network,
+  Microscope,
+  Droplets,
+  Stethoscope,
+  GraduationCap as AcademicCap,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -165,65 +171,59 @@ const DIRECTIONS = [
   },
 ];
 
-// 3 Переваги (груповані)
-const ADVANTAGES = [
+// Переваги — Featured (з зображеннями)
+const FEATURED_FEATURES = [
   {
-    number: "01",
-    title: "ПЕРСОНАЛІЗОВАНЕ\nВІДНОВЛЕННЯ",
-    items: [
-      {
-        heading: "Індивідуальна програма",
-        text: "План реабілітації формується відповідно до діагнозу та цілей пацієнта.",
-      },
-      {
-        heading: "Комплексний підхід",
-        text: "Фахівці різних напрямів працюють як єдина команда.",
-      },
-      {
-        heading: "Професійна діагностика",
-        text: "Оцінюємо стан організму та функціональні можливості.",
-      },
-    ],
+    icon: Stethoscope,
+    title: "Провідні методики",
+    text: "Починаємо фізичну терапію, апаратні методики, гідрокінезотерапію та інші підходи у персональній програмі відновлення.",
+    image: rehabImg,
   },
   {
-    number: "02",
-    title: "МЕДИЧНА ЕКСПЕРТИЗА",
-    items: [
-      {
-        heading: "Досвідчена команда",
-        text: "Лікарі та терапевти з підтвердженою кваліфікацією.",
-      },
-      {
-        heading: "Сучасні методики",
-        text: "Доказові підходи та професійне обладнання.",
-      },
-      {
-        heading: "Високі стандарти",
-        text: "Безпека, контроль якості та клінічні протоколи.",
-      },
-      {
-        heading: "Науково-освітня база",
-        text: "Умови для практики, навчання та розвитку методик.",
-      },
-    ],
+    icon: AcademicCap,
+    title: "Наукова база",
+    text: "Клінічна практика, навчання та розвиток методик на основі фахової медичної експертизи.",
+    image: ecgImg,
   },
   {
-    number: "03",
-    title: "УМОВИ ДЛЯ\nВІДНОВЛЕННЯ",
-    items: [
-      {
-        heading: "Комфорт і конфіденційність",
-        text: "Спокійна атмосфера та індивідуальна увага.",
-      },
-      {
-        heading: "Мінеральні води",
-        text: "Природний ресурс, що доповнює програму оздоровлення.",
-      },
-      {
-        heading: "Природне середовище Карпат",
-        text: "Чисте повітря та сприятливі умови для відновлення.",
-      },
-    ],
+    icon: Sparkles,
+    title: "Середовище Карпат",
+    text: "Чисте повітря, спокійна атмосфера та природне оточення, що підтримують процес відновлення.",
+    image: sportsImg,
+  },
+];
+
+// Переваги — Secondary (з іконками)
+const SECONDARY_FEATURES = [
+  {
+    icon: ClipboardList,
+    title: "Індивідуальні програми",
+    text: "Програма реабілітації формується під ваші потреби та стан.",
+  },
+  {
+    icon: Network,
+    title: "Комплексний підхід",
+    text: "Об'єднуємо різні напрямки роботи для максимального результату.",
+  },
+  {
+    icon: Users,
+    title: "Досвідчена команда",
+    text: "Лікарі та терапевти з підтвердженою кваліфікацією та практикою.",
+  },
+  {
+    icon: Microscope,
+    title: "Професійна діагностика",
+    text: "Сучасні методи оцінки для точного плану відновлення.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Комфорт і конфіденційність",
+    text: "Спокійна атмосфера, повага до вас і вашого особистого простору.",
+  },
+  {
+    icon: Droplets,
+    title: "Мінеральні води",
+    text: "Природний ресурс, що доповнює програму оздоровлення.",
   },
 ];
 
@@ -852,34 +852,68 @@ function Index() {
                 <span className="text-navy">РЕАБІЛІТАЦІЯ</span>
               </h2>
               <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-emerald-400 to-primary" />
+              <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+                Поєднання науки, досвіду та турботи для вашого стійкого відновлення.
+              </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {ADVANTAGES.map((adv, i) => (
-                <div
-                  key={i}
-                  className="group relative flex h-full flex-col rounded-3xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl p-8 lg:p-10"
-                >
-                  <h3 className="text-lg lg:text-xl font-extrabold text-navy leading-tight mb-6 whitespace-pre-line">
-                    {adv.title}
-                  </h3>
-                  <div className="flex flex-col gap-5 mt-auto">
-                    {adv.items.map((item, j) => (
-                      <div key={j} className="flex flex-col gap-1.5">
-                        <span className="text-sm font-bold text-navy">
-                          {item.heading}
-                        </span>
-                        <span className="text-sm text-muted-foreground leading-relaxed">
-                          {item.text}
-                        </span>
-                        {j < adv.items.length - 1 && (
-                          <div className="mt-4 h-px bg-border/60" />
-                        )}
+            {/* Featured cards with images */}
+            <div className="grid gap-6 md:grid-cols-3 mb-6">
+              {FEATURED_FEATURES.map((feature, i) => {
+                const Icon = feature.icon;
+                return (
+                  <div
+                    key={i}
+                    className="group relative flex flex-col rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden"
+                  >
+                    <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                      <img
+                        src={feature.image}
+                        alt={feature.title}
+                        className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-3 p-6">
+                      <div className="flex items-center gap-3">
+                        <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                          <Icon className="size-5" />
+                        </div>
+                        <h3 className="text-lg font-bold text-navy">
+                          {feature.title}
+                        </h3>
                       </div>
-                    ))}
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        {feature.text}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
+            </div>
+
+            {/* Secondary cards with icons only */}
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {SECONDARY_FEATURES.map((feature, i) => {
+                const Icon = feature.icon;
+                return (
+                  <div
+                    key={i}
+                    className="group relative flex items-start gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Icon className="size-5" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <h3 className="text-base font-bold text-navy">
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        {feature.text}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
