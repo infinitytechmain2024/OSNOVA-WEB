@@ -8,6 +8,7 @@ import {
   Phone,
   Users,
   ChevronRight,
+  ChevronLeft,
   Brain,
   Sparkles,
   Trophy,
@@ -48,7 +49,6 @@ import Autoplay from "embla-carousel-autoplay";
 import { NEWS_ARTICLES } from "@/data/news";
 import { useConsultationModal } from "@/components/consultation-form";
 import { RehabilitationMethodsSlider } from "@/components/rehabilitation-methods-slider";
-import { BodyPlacesSection } from "@/components/body-places-section";
 
 // Images
 import rehabImg from "@/assets/service-rehab.jpg";
@@ -529,6 +529,75 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
   );
 }
 
+function BlogCarousel() {
+  const articles = NEWS_ARTICLES;
+  const [current, setCurrent] = React.useState(0);
+  const perPage = 4;
+  const totalPages = Math.ceil(articles.length / perPage);
+
+  const next = () => setCurrent((p) => Math.min(p + 1, totalPages - 1));
+  const prev = () => setCurrent((p) => Math.max(p - 1, 0));
+
+  const visible = articles.slice(current * perPage, current * perPage + perPage);
+
+  return (
+    <div>
+      <div className="grid gap-5 md:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_4fr]">
+        <div className="flex flex-col items-start justify-center rounded-3xl bg-navy p-8 sm:p-10 lg:p-12 text-white">
+          <h3 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-4xl">
+            Наш блог —<br />ваш орієнтир
+          </h3>
+          <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-base">
+            Корисні поради, новини центру та експертні матеріали про реабілітацію, здоров'я та якість життя.
+          </p>
+          <div className="mt-6 h-1.5 w-16 rounded-full bg-gradient-to-r from-primary to-brand-green" />
+          <AppLink
+            to="/novyny"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition-all hover:bg-primary/90"
+          >
+            Усі статті <ArrowRight className="size-4" />
+          </AppLink>
+        </div>
+
+        {visible.map((article) => (
+          <NewsCard key={article.id} article={article} />
+        ))}
+      </div>
+
+      <div className="mt-10 flex flex-col items-center gap-6">
+        <div className="flex items-center gap-2">
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`size-2.5 rounded-full transition-colors ${i === current ? "bg-primary" : "bg-slate-300"}`}
+              aria-label={`Сторінка ${i + 1}`}
+            />
+          ))}
+        </div>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={prev}
+            disabled={current === 0}
+            className="flex size-12 items-center justify-center rounded-full border border-slate-300 bg-white text-navy transition-colors hover:bg-slate-50 disabled:opacity-40"
+            aria-label="Попередня"
+          >
+            <ChevronLeft className="size-5" />
+          </button>
+          <button
+            onClick={next}
+            disabled={current === totalPages - 1}
+            className="flex size-12 items-center justify-center rounded-full border border-slate-300 bg-white text-navy transition-colors hover:bg-slate-50 disabled:opacity-40"
+            aria-label="Наступна"
+          >
+            <ChevronRight className="size-5" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const { openModal } = useConsultationModal();
   const [heroApi, setHeroApi] = React.useState<CarouselApi>();
@@ -784,9 +853,6 @@ function Index() {
             </div>
           </div>
         </section>
-
-        {/* 3. ДЕ МИ ПРАЦЮЄМО (Проблемні зони) */}
-        <BodyPlacesSection />
 
         {/* 4. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
         <section className="bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60">
@@ -1079,11 +1145,7 @@ function Index() {
               </div>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2">
-              {NEWS_ARTICLES.slice(0, 2).map((article) => (
-                <NewsCard key={article.id} article={article} />
-              ))}
-            </div>
+            <BlogCarousel />
           </div>
         </section>
 
