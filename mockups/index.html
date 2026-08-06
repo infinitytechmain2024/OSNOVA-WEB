@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Макети redesign — ОСНОВА Реабілітація</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0f172a; color: white; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
+  h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 8px; }
+  h1 span { color: #3ecf8e; }
+  .subtitle { color: #94a3b8; margin-bottom: 48px; font-size: 1.1rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; width: 100%; }
+  .card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 24px;
+    padding: 32px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card:hover {
+    border-color: #3ecf8e;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(62, 207, 142, 0.15);
+  }
+  .card-letter {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #3ecf8e, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+  }
+  .card h2 { font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; }
+  .card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+  .card-tag {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    background: rgba(62, 207, 142, 0.1);
+    color: #3ecf8e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .footer { margin-top: 48px; color: #475569; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<h1>ОСНОВА <span>Реабілітація</span></h1>
+<p class="subtitle">4 варіанти redesign секцій "Напрями" та "Методи реабілітації"</p>
+
+<div class="cards">
+  <a href="variant-a.html" class="card">
+    <div class="card-letter">А</div>
+    <h2>Різний візуальний стиль</h2>
+    <p>Напрями — великі "геройські" картки з фоновим зображенням та тегами. Методи — компактні рядки/чіпи. Чітка візуальна різниця між рівнями інформації.</p>
+    <span class="card-tag">Візуальна диференціація</span>
+  </a>
+  <a href="variant-b.html" class="card">
+    <div class="card-letter">Б</div>
+    <h2>Таби з розкриттям</h2>
+    <p>Напрями як кнопки/таби зверху. При натисканні розкриваються методи саме цього напряму. Ієрархія: Напрям → Методи.</p>
+    <span class="card-tag">Інтерактивна навігація</span>
+  </a>
+  <a href="variant-c.html" class="card">
+    <div class="card-letter">В</div>
+    <h2>Іконки + Список</h2>
+    <p>Напрями — ряд іконок з короткими назвами. Методи — вертикальний нумерований список або кольорові картки з акцентними бордерами.</p>
+    <span class="card-tag">Мінімалізм + структура</span>
+  </a>
+  <a href="variant-d.html" class="card">
+    <div class="card-letter">Г</div>
+    <h2>Шлях пацієнта</h2>
+    <p>Timeline з 3 кроків: 1) Обрати напрям, 2) Обрати метод (акордеон), 3) Результат. Логічна послідовність для користувача.</p>
+    <span class="card-tag">UX-шлях</span>
+  </a>
+</div>
+
+<p class="footer">Натисніть на картку для перегляду макету</p>
+
+</body>
+</html>

@@ -281,36 +281,42 @@ const COOPERATION_ITEMS = [
     text: "Команда ОСНОВА приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
     href: "/vyizna-reabilitatsiia",
     icon: Ambulance,
+    image: rehabImg,
   },
   {
     title: "ДЛЯ ЛІКАРІВ",
     text: "Програми обміну досвідом, підвищення кваліфікації, стажування та спільна практична робота.",
     href: "/partnerstvo/likariam",
     icon: UserCheck,
+    image: cpetImg,
   },
   {
     title: "ДЛЯ ІНСТИТУТІВ",
     text: "Спільні наукові дослідження, розробка медичних протоколів та клінічні бази для студентів ЗВО.",
     href: "/partnerstvo/naukove",
     icon: GraduationCap,
+    image: educationTrainingImg,
   },
   {
     title: "ОРЕНДА ОБЛАДНАННЯ",
     text: "Надання високотехнологічних пристроїв та тренажерів для медичних установ та центрів.",
     href: "/orenda-obladnannia",
     icon: Building2,
+    image: ergoImg,
   },
   {
     title: "ІВЕНТИ",
     text: "Організація медичних форумів, конференцій, виставок та професійних заходів.",
     href: "/iventy",
     icon: Calendar,
+    image: educationConferenceImg,
   },
   {
     title: "СОЦІАЛЬНІ ПРОЄКТИ",
     text: "Благодійні та реабілітаційні ініціативи, допомога громаді та соціальні програми.",
     href: "/sotsialni-proiekty",
     icon: Heart,
+    image: sportsImg,
   },
 ];
 
@@ -960,20 +966,31 @@ function Index() {
                   >
                     <AppLink
                       to={item.href}
-                      className="group relative flex h-full min-h-[260px] w-full flex-col justify-between rounded-[24px] border border-slate-200/90 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl md:min-h-[280px] md:p-8 lg:min-h-[300px] xl:min-h-[280px]"
+                      className="group relative flex h-full min-h-[320px] w-full flex-col justify-between overflow-hidden rounded-[24px] p-7 shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl md:min-h-[360px] md:p-8 lg:min-h-[400px]"
                     >
-                      <div>
-                        <div className="mb-7 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                      <div className="absolute inset-0 z-0">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          loading="lazy"
+                          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-navy-deep/75 transition-colors duration-300 group-hover:bg-navy-deep/80" />
+                      </div>
+
+                      <div className="relative z-10">
+                        <div className="mb-7 flex size-14 items-center justify-center rounded-2xl bg-white text-primary shadow-lg transition-transform duration-300 group-hover:scale-110">
                           <item.icon className="size-7" />
                         </div>
-                        <h3 className="mb-4 text-xl font-bold leading-tight text-navy md:text-2xl">
+                        <h3 className="mb-4 text-xl font-bold leading-tight text-white md:text-2xl">
                           {item.title}
                         </h3>
-                        <p className="text-sm leading-relaxed text-slate-600 md:text-base">
+                        <p className="text-sm leading-relaxed text-white/85 md:text-base">
                           {item.text}
                         </p>
                       </div>
-                      <div className="mt-8 flex items-center gap-2 text-xs font-bold uppercase text-primary md:text-sm">
+
+                      <div className="relative z-10 mt-8 flex items-center gap-2 text-xs font-bold uppercase text-white md:text-sm">
                         Деталі{" "}
                         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                       </div>

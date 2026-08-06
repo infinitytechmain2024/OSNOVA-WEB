@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Варіант В: Іконки + Горизонтальний лист методів</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { font-family: 'Montserrat', sans-serif; }
+  .direction-icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 28px 20px;
+    border-radius: 24px;
+    background: white;
+    border: 2px solid #f1f5f9;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .direction-icon-card:hover {
+    border-color: #2563eb;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(37,99,235,0.15);
+  }
+  .direction-icon-card:hover .icon-circle {
+    background: #2563eb;
+    color: white;
+    transform: scale(1.1);
+  }
+  .icon-circle {
+    width: 72px; height: 72px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    background: #f8fafc;
+    transition: all 0.4s;
+    margin-bottom: 16px;
+  }
+  .method-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-radius: 14px;
+    background: white;
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s;
+  }
+  .method-row:hover {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+  }
+  .method-num {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+    margin: 48px 0;
+  }
+</style>
+</head>
+<body class="bg-slate-50">
+
+<header class="bg-white border-b border-gray-100 py-4 px-6">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <span class="text-xl font-black text-slate-900">ОСНОВА <span class="text-blue-600">Реабілітація</span></span>
+    <span class="text-xs text-gray-400 uppercase tracking-widest">Варіант В: Іконки + Список методів</span>
+  </div>
+</header>
+
+<section class="max-w-7xl mx-auto px-6 py-16">
+
+  <!-- ===================== -->
+  <!-- НАПРЯМИ = ІКОНКИ В РЯД -->
+  <!-- ===================== -->
+  <div class="mb-8">
+    <h2 class="text-3xl md:text-5xl font-black text-slate-900">НАПРЯМИ</h2>
+    <p class="mt-3 text-gray-400">Оберіть напрям для перегляду методів</p>
+  </div>
+
+  <div class="grid grid-cols-4 md:grid-cols-8 gap-4 mb-6">
+    <div class="direction-icon-card">
+      <div class="icon-circle">❤️</div>
+      <span class="font-bold text-xs text-slate-700 leading-tight">Кардіо</span>
+    </div>
+    <div class="direction-icon-card">
+      <div class="icon-circle">🦴</div>
+      <span class="font-bold text-xs text-slate-700 leading-tight">Ортопедія</span>
+    </div>
+    <div class="direction-icon-card">
+      <div class="icon-circle">🔥</div>
+      <span class="font-bold text-xs text-slate-700 leading-tight">Хребет</span>
+    </div>
+    <div class="direction-icon-card">
+      <div class="icon-circle">🧠</div>
+      <span class="font-bold text-xs text-slate-700 leading-tight">Невро</span>
+    </div>
+    <div class="direction-icon-card">
+      <div class="icon-circle">🛡️</div>
+      <span class="font-bold text-xs text-slate-700 leading-tight">Ревмо</span>
+    </div>
+    <div class="direction-icon-card">
+      <div class="icon-circle">🧘</div>
+      <span class="font-bold text-xs text-slate-700 leading-tight">Психо</span>
+    </div>
+    <div class="direction-icon-card">
+      <div class="icon-circle">🏆</div>
+      <span class="font-bold text-xs text-slate-700 leading-tight">Спорт</span>
+    </div>
+    <div class="direction-icon-card">
+      <div class="icon-circle">🔍</div>
+      <span class="font-bold text-xs text-slate-700 leading-tight">Профілактика</span>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ===================== -->
+  <!-- МЕТОДИ = ВЕРТИКАЛЬНИЙ СПИСОК -->
+  <!-- ===================== -->
+  <div class="mb-8">
+    <h2 class="text-3xl md:text-5xl font-black text-slate-900">МЕТОДИ РЕАБІЛІТАЦІЇ</h2>
+    <p class="mt-3 text-gray-400">Конкретні процедури та техніки відновлення</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="method-row">
+      <div class="method-num">01</div>
+      <div class="flex-1">
+        <h4 class="font-bold text-sm text-slate-900">Індивідуальний план реабілітації</h4>
+        <p class="text-xs text-gray-400 mt-1">Персональна програма відновлення, складена лікарем ФРМ</p>
+      </div>
+      <svg class="w-5 h-5 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+    <div class="method-row">
+      <div class="method-num">02</div>
+      <div class="flex-1">
+        <h4 class="font-bold text-sm text-slate-900">Фізична терапія</h4>
+        <p class="text-xs text-gray-400 mt-1">Відновлення рухових функцій під керівництвом терапевтів</p>
+      </div>
+      <svg class="w-5 h-5 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+    <div class="method-row">
+      <div class="method-num">03</div>
+      <div class="flex-1">
+        <h4 class="font-bold text-sm text-slate-900">Гідрокінезіотерапія</h4>
+        <p class="text-xs text-gray-400 mt-1">Водні процедури та гімнастика для розвантаження суглобів</p>
+      </div>
+      <svg class="w-5 h-5 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+    <div class="method-row">
+      <div class="method-num">04</div>
+      <div class="flex-1">
+        <h4 class="font-bold text-sm text-slate-900">Фізіотерапія</h4>
+        <p class="text-xs text-gray-400 mt-1">Апаратні методики: електро, лазер, магніт, ударно-хвильова</p>
+      </div>
+      <svg class="w-5 h-5 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+    <div class="method-row">
+      <div class="method-num">05</div>
+      <div class="flex-1">
+        <h4 class="font-bold text-sm text-slate-900">Лікувальний масаж</h4>
+        <p class="text-xs text-gray-400 mt-1">Класичний та апаратний масаж для зняття напруження</p>
+      </div>
+      <svg class="w-5 h-5 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+    <div class="method-row">
+      <div class="method-num">06</div>
+      <div class="flex-1">
+        <h4 class="font-bold text-sm text-slate-900">Оздоровчий бювет мінеральних вод</h4>
+        <p class="text-xs text-gray-400 mt-1">Цілюща мінеральна вода для комплексного оздоровлення</p>
+      </div>
+      <svg class="w-5 h-5 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Альтернатива: картки методів з кольоровими акцентами -->
+  <div class="mb-8">
+    <h3 class="text-xl font-bold text-slate-900">Або варіант з кольоровими картками:</h3>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="group relative rounded-3xl bg-white border-l-4 border-l-blue-500 p-6 shadow-sm hover:shadow-lg transition-all">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 shrink-0 rounded-2xl bg-blue-50 flex items-center justify-center text-xl group-hover:bg-blue-500 group-hover:text-white transition-colors">📋</div>
+        <div>
+          <h4 class="font-bold text-slate-900">Індивідуальний план</h4>
+          <p class="text-sm text-gray-400 mt-1">Персональна програма відновлення</p>
+          <span class="inline-block mt-3 text-xs font-bold text-blue-600 uppercase tracking-wider">Детальніше →</span>
+        </div>
+      </div>
+    </div>
+    <div class="group relative rounded-3xl bg-white border-l-4 border-l-green-500 p-6 shadow-sm hover:shadow-lg transition-all">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 shrink-0 rounded-2xl bg-green-50 flex items-center justify-center text-xl group-hover:bg-green-500 group-hover:text-white transition-colors">🏋️</div>
+        <div>
+          <h4 class="font-bold text-slate-900">Фізична терапія</h4>
+          <p class="text-sm text-gray-400 mt-1">Відновлення рухових функцій</p>
+          <span class="inline-block mt-3 text-xs font-bold text-green-600 uppercase tracking-wider">Детальніше →</span>
+        </div>
+      </div>
+    </div>
+    <div class="group relative rounded-3xl bg-white border-l-4 border-l-cyan-500 p-6 shadow-sm hover:shadow-lg transition-all">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 shrink-0 rounded-2xl bg-cyan-50 flex items-center justify-center text-xl group-hover:bg-cyan-500 group-hover:text-white transition-colors">💧</div>
+        <div>
+          <h4 class="font-bold text-slate-900">Гідрокінезіотерапія</h4>
+          <p class="text-sm text-gray-400 mt-1">Водні процедури та гімнастика</p>
+          <span class="inline-block mt-3 text-xs font-bold text-cyan-600 uppercase tracking-wider">Детальніше →</span>
+        </div>
+      </div>
+    </div>
+    <div class="group relative rounded-3xl bg-white border-l-4 border-l-pink-500 p-6 shadow-sm hover:shadow-lg transition-all">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 shrink-0 rounded-2xl bg-pink-50 flex items-center justify-center text-xl group-hover:bg-pink-500 group-hover:text-white transition-colors">⚡</div>
+        <div>
+          <h4 class="font-bold text-slate-900">Фізіотерапія</h4>
+          <p class="text-sm text-gray-400 mt-1">Апаратні методики</p>
+          <span class="inline-block mt-3 text-xs font-bold text-pink-600 uppercase tracking-wider">Детальніше →</span>
+        </div>
+      </div>
+    </div>
+    <div class="group relative rounded-3xl bg-white border-l-4 border-l-purple-500 p-6 shadow-sm hover:shadow-lg transition-all">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 shrink-0 rounded-2xl bg-purple-50 flex items-center justify-center text-xl group-hover:bg-purple-500 group-hover:text-white transition-colors">🤲</div>
+        <div>
+          <h4 class="font-bold text-slate-900">Лікувальний масаж</h4>
+          <p class="text-sm text-gray-400 mt-1">Класичний та апаратний масаж</p>
+          <span class="inline-block mt-3 text-xs font-bold text-purple-600 uppercase tracking-wider">Детальніше →</span>
+        </div>
+      </div>
+    </div>
+    <div class="group relative rounded-3xl bg-white border-l-4 border-l-amber-500 p-6 shadow-sm hover:shadow-lg transition-all">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 shrink-0 rounded-2xl bg-amber-50 flex items-center justify-center text-xl group-hover:bg-amber-500 group-hover:text-white transition-colors">⛲</div>
+        <div>
+          <h4 class="font-bold text-slate-900">Оздоровчий бювет</h4>
+          <p class="text-sm text-gray-400 mt-1">Цілюща мінеральна вода</p>
+          <span class="inline-block mt-3 text-xs font-bold text-amber-600 uppercase tracking-wider">Детальніше →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="bg-slate-900 text-white text-center py-8 text-xs uppercase tracking-widest">
+  ОСНОВА Реабілітація — Варіант В: Іконки + Список/Картки методів
+</div>
+
+</body>
+</html>

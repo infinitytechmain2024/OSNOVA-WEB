@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Варіант А: Різний візуальний стиль</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { font-family: 'Montserrat', sans-serif; }
+  :root {
+    --primary: #2563eb;
+    --green: #3ecf8e;
+    --navy: #0f172a;
+  }
+  .hero-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    min-height: 220px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+  }
+  .hero-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+  }
+  .hero-card .overlay {
+    position: relative;
+    z-index: 2;
+    padding: 32px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .method-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .method-chip:hover {
+    border-color: var(--primary);
+    background: #eff6ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37,99,235,0.15);
+  }
+  .method-chip .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    font-weight: 800;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Header -->
+<header class="bg-white border-b border-gray-100 py-4 px-6">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <span class="text-xl font-black text-slate-900">ОСНОВА <span class="text-blue-600">Реабілітація</span></span>
+    <span class="text-xs text-gray-400 uppercase tracking-widest">Варіант А — Різний візуальний стиль</span>
+  </div>
+</header>
+
+<section class="max-w-7xl mx-auto px-6 py-16">
+
+  <!-- ===================== -->
+  <!-- НАПРЯМИ = ВЕЛИКІ ГЕРОЙСЬКІ БЛОКИ -->
+  <!-- ===================== -->
+  <div class="mb-8">
+    <span class="inline-block rounded-full bg-blue-50 text-blue-600 text-xs font-bold px-4 py-1.5 uppercase tracking-widest mb-4">Крок 1: Оберіть напрям</span>
+    <h2 class="text-3xl md:text-5xl font-black text-slate-900">НАПРЯМИ РЕАБІЛІТАЦІЇ</h2>
+    <p class="mt-4 text-gray-500 max-w-2xl">Великі категорії, кожна з яких містить групу методів та програм відновлення.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-6">
+    <!-- Велика картка напряму -->
+    <div class="hero-card">
+      <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=400&fit=crop" alt="">
+      <div class="overlay">
+        <div>
+          <span class="step-badge">1</span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-extrabold text-white mb-2">КАРДІОЛОГІЯ</h3>
+          <p class="text-white/70 text-sm mb-4 max-w-md">Лікування захворювань серця, відновлення після інфаркту та операцій</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-white/15 backdrop-blur text-white text-xs px-3 py-1 rounded-full">ЕКГ</span>
+            <span class="bg-white/15 backdrop-blur text-white text-xs px-3 py-1 rounded-full">CPET</span>
+            <span class="bg-white/15 backdrop-blur text-white text-xs px-3 py-1 rounded-full">Реабілітація</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=400&fit=crop" alt="">
+      <div class="overlay">
+        <div>
+          <span class="step-badge">1</span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-extrabold text-white mb-2">ОРТОПЕДІЯ ТА ТРАВМАТОЛОГІЯ</h3>
+          <p class="text-white/70 text-sm mb-4 max-w-md">Відновлення після травм, переломів, хірургічних втручань</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-white/15 backdrop-blur text-white text-xs px-3 py-1 rounded-full">Суглоби</span>
+            <span class="bg-white/15 backdrop-blur text-white text-xs px-3 py-1 rounded-full">Ендопротезування</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=400&fit=crop" alt="">
+      <div class="overlay">
+        <div>
+          <span class="step-badge">1</span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-extrabold text-white mb-2">ВЕРТЕБРОЛОГІЯ</h3>
+          <p class="text-white/70 text-sm mb-4 max-w-md">Лікування захворювань хребта, гриж, остеохондрозу</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-white/15 backdrop-blur text-white text-xs px-3 py-1 rounded-full">Хребет</span>
+            <span class="bg-white/15 backdrop-blur text-white text-xs px-3 py-1 rounded-full">Біомеханіка</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=800&h=400&fit=crop" alt="">
+      <div class="overlay">
+        <div>
+          <span class="step-badge">1</span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-extrabold text-white mb-2">НЕВРОЛОГІЯ</h3>
+          <p class="text-white/70 text-sm mb-4 max-w-md">Відновлення після інсультів, нейропатій</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-white/15 backdrop-blur text-white text-xs px-3 py-1 rounded-full">Інсульт</span>
+            <span class="bg-white/15 backdrop-blur text-white text-xs px-3 py-1 rounded-full">Нервова система</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <!-- Компактні картки решти напрямів -->
+    <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer">
+      <div class="w-10 h-10 rounded-xl bg-pink-50 flex items-center justify-center mb-3">
+        <span class="text-xl">🛡️</span>
+      </div>
+      <h4 class="font-bold text-sm text-slate-900 mb-1">РЕВМАТОЛОГІЯ</h4>
+      <p class="text-xs text-gray-400 line-clamp-2">Артрит, артроз, системні захворювання</p>
+    </div>
+    <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer">
+      <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-3">
+        <span class="text-xl">🧠</span>
+      </div>
+      <h4 class="font-bold text-sm text-slate-900 mb-1">ПСИХОЛОГІЯ</h4>
+      <p class="text-xs text-gray-400 line-clamp-2">Ментальне здоров'я та адаптація</p>
+    </div>
+    <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer">
+      <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center mb-3">
+        <span class="text-xl">🏆</span>
+      </div>
+      <h4 class="font-bold text-sm text-slate-900 mb-1">СПОРТИВНА МЕДИЦИНА</h4>
+      <p class="text-xs text-gray-400 line-clamp-2">Адаптація та фізична форма</p>
+    </div>
+    <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer">
+      <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center mb-3">
+        <span class="text-xl">🔍</span>
+      </div>
+      <h4 class="font-bold text-sm text-slate-900 mb-1">ПРОФІЛАКТИКА</h4>
+      <p class="text-xs text-gray-400 line-clamp-2">Раннє виявлення ризиків</p>
+    </div>
+  </div>
+
+  <!-- ===================== -->
+  <!-- МЕТОДИ = КОМПАКТНІ ЧІПИ / ТЕГИ -->
+  <!-- ===================== -->
+  <div class="mt-20 mb-8">
+    <span class="inline-block rounded-full bg-green-50 text-green-600 text-xs font-bold px-4 py-1.5 uppercase tracking-widest mb-4">Крок 2: Методи та процедури</span>
+    <h2 class="text-3xl md:text-5xl font-black text-slate-900">МЕТОДИ РЕАБІЛІТАЦІЇ</h2>
+    <p class="mt-4 text-gray-500 max-w-2xl">Конкретні процедури та техніки, які застосовуються в кожному напрямі.</p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 mb-6">
+    <div class="method-chip">
+      <span class="dot"></span>
+      <span class="font-semibold text-sm text-slate-700">Індивідуальний план</span>
+    </div>
+    <div class="method-chip">
+      <span class="dot" style="background:#3ecf8e"></span>
+      <span class="font-semibold text-sm text-slate-700">Фізична терапія</span>
+    </div>
+    <div class="method-chip">
+      <span class="dot" style="background:#f59e0b"></span>
+      <span class="font-semibold text-sm text-slate-700">Гідрокінезіотерапія</span>
+    </div>
+    <div class="method-chip">
+      <span class="dot" style="background:#ec4899"></span>
+      <span class="font-semibold text-sm text-slate-700">Фізіотерапія</span>
+    </div>
+    <div class="method-chip">
+      <span class="dot" style="background:#8b5cf6"></span>
+      <span class="font-semibold text-sm text-slate-700">Лікувальний масаж</span>
+    </div>
+    <div class="method-chip">
+      <span class="dot" style="background:#06b6d4"></span>
+      <span class="font-semibold text-sm text-slate-700">Оздоровчий бювет</span>
+    </div>
+  </div>
+
+  <!-- Альтернатива: вертикальні компактні картки методів -->
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+    <div class="flex items-start gap-4 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all">
+      <div class="w-12 h-12 shrink-0 rounded-xl bg-blue-50 flex items-center justify-center text-xl">📋</div>
+      <div>
+        <h4 class="font-bold text-sm text-slate-900">Індивідуальний план реабілітації</h4>
+        <p class="text-xs text-gray-400 mt-1 line-clamp-2">Персональна програма відновлення після травм</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-4 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all">
+      <div class="w-12 h-12 shrink-0 rounded-xl bg-green-50 flex items-center justify-center text-xl">🏋️</div>
+      <div>
+        <h4 class="font-bold text-sm text-slate-900">Фізична терапія</h4>
+        <p class="text-xs text-gray-400 mt-1 line-clamp-2">Відновлення рухових функцій</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-4 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all">
+      <div class="w-12 h-12 shrink-0 rounded-xl bg-cyan-50 flex items-center justify-center text-xl">💧</div>
+      <div>
+        <h4 class="font-bold text-sm text-slate-900">Гідрокінезіотерапія</h4>
+        <p class="text-xs text-gray-400 mt-1 line-clamp-2">Водні процедури та гімнастика в басейні</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-4 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all">
+      <div class="w-12 h-12 shrink-0 rounded-xl bg-pink-50 flex items-center justify-center text-xl">⚡</div>
+      <div>
+        <h4 class="font-bold text-sm text-slate-900">Фізіотерапія</h4>
+        <p class="text-xs text-gray-400 mt-1 line-clamp-2">Апаратні методики: електро, лазер, магніт</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-4 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all">
+      <div class="w-12 h-12 shrink-0 rounded-xl bg-purple-50 flex items-center justify-center text-xl">🤲</div>
+      <div>
+        <h4 class="font-bold text-sm text-slate-900">Лікувальний масаж</h4>
+        <p class="text-xs text-gray-400 mt-1 line-clamp-2">Класичний і апаратний масаж</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-4 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-all">
+      <div class="w-12 h-12 shrink-0 rounded-xl bg-amber-50 flex items-center justify-center text-xl">⛲</div>
+      <div>
+        <h4 class="font-bold text-sm text-slate-900">Оздоровчий бювет</h4>
+        <p class="text-xs text-gray-400 mt-1 line-clamp-2">Цілюща мінеральна вода</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="bg-slate-900 text-white text-center py-8 text-xs uppercase tracking-widest">
+  ОСНОВА Реабілітація — Варіант А: Різний візуальний стиль для напрямів і методів
+</div>
+
+</body>
+</html>

@@ -23,7 +23,6 @@ type RehabilitationMethod = {
   description: string;
   image: string;
   href: string;
-  badge?: string;
 };
 
 const REHABILITATION_METHODS: RehabilitationMethod[] = [
@@ -31,10 +30,9 @@ const REHABILITATION_METHODS: RehabilitationMethod[] = [
     id: "individual-plan",
     title: "Індивідуальний план реабілітації",
     description:
-      "Персональна програма відновлення після травм, операцій і захворювань, складена лікарем ФРМ з урахуванням діагнозу, стану здоров'я та цілей пацієнта.",
+      "Персональна програма відновлення після травм, операцій і захворювань, складена лікарем ФРМ з урахуванням ваших цілей та стану здоров'я.",
     image: rehabImg,
     href: "/reabilitatsiia",
-    badge: "План відновлення",
   },
   {
     id: "physical-therapy",
@@ -148,6 +146,40 @@ function MethodCard({ card }: { card: RehabilitationMethod }) {
   );
 }
 
+function StatsPanel() {
+  return (
+    <div className="flex shrink-0 flex-col justify-center rounded-[24px] bg-navy px-8 py-10 text-white lg:min-w-[280px] lg:px-10">
+      <h3 className="mb-8 text-2xl font-bold leading-snug">
+        Наш підхід —
+        <br />
+        ваш результат
+      </h3>
+
+      <div className="space-y-8">
+        <div>
+          <span className="block text-5xl font-extrabold tracking-tight">5</span>
+          <span className="mt-1 block text-sm font-medium leading-snug text-white/70">
+            напрямків
+            <br />
+            реабілітації
+          </span>
+        </div>
+
+        <div className="h-px w-full bg-white/15" />
+
+        <div>
+          <span className="block text-5xl font-extrabold tracking-tight">30+</span>
+          <span className="mt-1 block text-sm font-medium leading-snug text-white/70">
+            ефективних
+            <br />
+            методик
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function SectionHeader() {
   return (
     <div className="mb-12 text-center md:mb-16">
@@ -189,60 +221,66 @@ export function RehabilitationMethodsSlider() {
       <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
         <SectionHeader />
 
-        <Carousel
-          setApi={setMethodsApi}
-          plugins={[Autoplay({ delay: AUTOPLAY_DELAY, stopOnInteraction: true })]}
-          opts={{ align: "start", loop: true }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4">
-            {REHABILITATION_METHODS.map((card) => (
-              <CarouselItem
-                key={card.id}
-                className="pl-4 basis-[85%] sm:basis-[48%] lg:basis-[32%] xl:basis-[24%]"
-              >
-                <MethodCard card={card} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+        <div className="flex flex-col gap-6 lg:flex-row">
+          <StatsPanel />
 
-        <div className="mt-10 flex flex-col items-center gap-6">
-          <div className="flex items-center justify-center gap-2.5">
-            {REHABILITATION_METHODS.map((card, index) => (
-              <button
-                key={card.id}
-                type="button"
-                onClick={() => methodsApi?.scrollTo(index)}
-                aria-label={`Перейти до методу ${card.title}`}
-                aria-current={currentIndex === index ? "true" : undefined}
-                className={cn(
-                  "h-2.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-                  currentIndex === index
-                    ? "w-8 bg-primary shadow-sm"
-                    : "w-2.5 bg-slate-300 hover:bg-slate-400",
-                )}
-              />
-            ))}
-          </div>
+          <div className="flex-1 overflow-hidden">
+            <Carousel
+              setApi={setMethodsApi}
+              plugins={[Autoplay({ delay: AUTOPLAY_DELAY, stopOnInteraction: true })]}
+              opts={{ align: "start", loop: true }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {REHABILITATION_METHODS.map((card) => (
+                  <CarouselItem
+                    key={card.id}
+                    className="pl-4 basis-[85%] sm:basis-[48%] lg:basis-[45%] xl:basis-[32%]"
+                  >
+                    <MethodCard card={card} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
 
-          <div className="flex items-center justify-center gap-3">
-            <button
-              type="button"
-              onClick={() => methodsApi?.scrollPrev()}
-              aria-label="Попередній слайд"
-              className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              <ArrowLeftIcon className="size-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => methodsApi?.scrollNext()}
-              aria-label="Наступний слайд"
-              className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              <ArrowRightIcon className="size-5" />
-            </button>
+            <div className="mt-10 flex flex-col items-center gap-6">
+              <div className="flex items-center justify-center gap-2.5">
+                {REHABILITATION_METHODS.map((card, index) => (
+                  <button
+                    key={card.id}
+                    type="button"
+                    onClick={() => methodsApi?.scrollTo(index)}
+                    aria-label={`Перейти до методу ${card.title}`}
+                    aria-current={currentIndex === index ? "true" : undefined}
+                    className={cn(
+                      "h-2.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                      currentIndex === index
+                        ? "w-8 bg-primary shadow-sm"
+                        : "w-2.5 bg-slate-300 hover:bg-slate-400",
+                    )}
+                  />
+                ))}
+              </div>
+
+              <div className="flex items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => methodsApi?.scrollPrev()}
+                  aria-label="Попередній слайд"
+                  className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <ArrowLeftIcon className="size-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => methodsApi?.scrollNext()}
+                  aria-label="Наступний слайд"
+                  className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <ArrowRightIcon className="size-5" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
