@@ -538,6 +538,121 @@ function ExpandableSectionBlock({
   );
 }
 
+function ExpandableIntroSection({
+  title,
+  shortDescription,
+  expandedContent,
+  image,
+  imageAlt,
+  isExpanded,
+  onToggle,
+}: {
+  title: string;
+  shortDescription: string;
+  expandedContent?: string;
+  image: string;
+  imageAlt: string;
+  isExpanded: boolean;
+  onToggle: () => void;
+}) {
+  const [contentHeight, setContentHeight] = React.useState(0);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+  const expandedRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (isExpanded && contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight);
+    } else {
+      setContentHeight(0);
+    }
+  }, [isExpanded]);
+
+  const handleToggle = () => {
+    onToggle();
+    if (!isExpanded) {
+      setTimeout(() => {
+        const el = document.getElementById("intro-section");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 350);
+    }
+  };
+
+  return (
+    <section
+      id="intro-section"
+      className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2 transition-all duration-300 ease-in-out"
+      style={{
+        transitionProperty: 'height, opacity',
+        transitionDuration: '300ms',
+        transitionTimingFunction: 'ease-in-out',
+      }}
+    >
+      <div className="flex flex-col">
+        <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl whitespace-pre-line uppercase">
+          {title}
+        </h2>
+        <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />
+        <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
+          {shortDescription}
+        </p>
+        {!isExpanded && expandedContent && (
+          <button
+            type="button"
+            onClick={handleToggle}
+            className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[44px] sm:h-[48px]"
+            aria-expanded="false"
+            aria-controls="intro-expanded-content"
+          >
+            ДЕТАЛЬНІШЕ
+            <ChevronDown className="size-4 sm:size-5 transition-transform duration-200 shrink-0" />
+          </button>
+        )}
+        {isExpanded && expandedContent && (
+          <button
+            type="button"
+            onClick={handleToggle}
+            className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[44px] sm:h-[48px]"
+            aria-expanded="true"
+            aria-controls="intro-expanded-content"
+          >
+            ЗГОРНУТИ
+            <ChevronDown className="size-4 sm:size-5 transition-transform duration-200 rotate-180 shrink-0" />
+          </button>
+        )}
+      </div>
+      <img
+        src={image}
+        alt={imageAlt}
+        width={1200}
+        height={800}
+        loading="lazy"
+        className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md shrink-0"
+        aria-hidden="true"
+      />
+      {expandedContent && (
+        <div
+          id="intro-expanded-content"
+          className="lg:col-span-2 mt-6 overflow-hidden transition-all duration-300 ease-in-out"
+          style={{
+            maxHeight: isExpanded ? contentHeight : 0,
+            opacity: isExpanded ? 1 : 0,
+            transitionProperty: 'max-height, opacity',
+            transitionDuration: '300ms',
+            transitionTimingFunction: 'ease-in-out',
+          }}
+          ref={expandedRef}
+        >
+          <div ref={contentRef} className="text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
+            {expandedContent}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
 function ExpandableCardText({
   visibleText,
   expandedText,
