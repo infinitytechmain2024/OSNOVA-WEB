@@ -77,7 +77,7 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 1.5 — Що таке [Назва] */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pt-10 sm:pt-16 lg:px-10">
-          <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
+          <div className={cn("section-shell gap-8 lg:gap-12", introExpanded ? "grid grid-cols-1 items-start" : "grid items-center lg:grid-cols-2")}>
             <div>
               <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl whitespace-pre-line uppercase">
                 {data.introTitle}
@@ -110,20 +110,22 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                 </>
               )}
             </div>
-            <img
-              src={data.introImage}
-              alt={data.heroTitle}
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
-            />
+            {!introExpanded && (
+              <img
+                src={data.introImage}
+                alt={data.heroTitle}
+                width={1200}
+                height={800}
+                loading="lazy"
+                className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
+              />
+            )}
           </div>
         </section>
 
         {/* 2 — Коли рекомендовано */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-          <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
+          <div className={cn("section-shell gap-8 lg:gap-12", recommendedExpanded ? "grid grid-cols-1 items-start" : "grid items-center lg:grid-cols-2")}>
             <div>
               <SectionTitle>{data.recommendedTitle}</SectionTitle>
               <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">{data.recommendedSubtitle}</p>
@@ -161,14 +163,16 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                 </>
               )}
             </div>
-            <img
-              src={data.recommendedImage}
-              alt={data.recommendedTitle}
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
-            />
+            {!recommendedExpanded && (
+              <img
+                src={data.recommendedImage}
+                alt={data.recommendedTitle}
+                width={1200}
+                height={800}
+                loading="lazy"
+                className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
+              />
+            )}
           </div>
         </section>
 
@@ -194,7 +198,7 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 4 — Як часто */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
-          <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
+          <div className={cn("section-shell gap-8 lg:gap-12", frequencyExpanded ? "grid grid-cols-1 items-start" : "grid items-center lg:grid-cols-2")}>
             <div>
               <SectionTitle>{data.frequencyTitle}</SectionTitle>
               {data.frequencyParagraphs.map((p, i) => (
@@ -228,14 +232,16 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                 </>
               )}
             </div>
-            <img
-              src={data.frequencyImage}
-              alt={data.frequencyTitle}
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
-            />
+            {!frequencyExpanded && (
+              <img
+                src={data.frequencyImage}
+                alt={data.frequencyTitle}
+                width={1200}
+                height={800}
+                loading="lazy"
+                className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
+              />
+            )}
           </div>
         </section>
 
@@ -462,6 +468,7 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                   title: "",
                   visibleText: "",
                   expandedText: custom.stagesExpanded,
+                  image: data.frequencyImage,
                 }}
                 alwaysOpen
               />
@@ -501,7 +508,7 @@ function ExpandableSectionBlock({
 
   return (
     <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-      <div className={cn("section-shell", section.image && "grid items-center gap-8 lg:gap-12 lg:grid-cols-2")}>
+      <div className={cn("section-shell gap-8 lg:gap-12", section.image && (open ? "grid grid-cols-1 items-start" : "grid items-center lg:grid-cols-2"))}>
         <div>
           {section.title && (
             <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl">
@@ -542,7 +549,7 @@ function ExpandableSectionBlock({
             </>
           )}
         </div>
-        {section.image && (
+        {section.image && !open && (
           <img
             src={section.image}
             alt={section.title}
