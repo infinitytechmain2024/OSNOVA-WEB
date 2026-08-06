@@ -532,7 +532,7 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
 function BlogCarousel() {
   const articles = NEWS_ARTICLES;
   const [current, setCurrent] = React.useState(0);
-  const perPage = 4;
+  const perPage = 2;
   const totalPages = Math.ceil(articles.length / perPage);
 
   const next = () => setCurrent((p) => Math.min(p + 1, totalPages - 1));
@@ -542,7 +542,7 @@ function BlogCarousel() {
 
   return (
     <div>
-      <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
+      <div className="grid gap-5 grid-cols-1 md:grid-cols-3">
         <div className="flex flex-col items-start justify-center rounded-3xl bg-navy p-8 sm:p-10 lg:p-12 text-white">
           <h3 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-4xl">
             Наш блог —<br />ваш орієнтир

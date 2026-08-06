@@ -23,7 +23,7 @@ export function NewsCard({
         to={article.href}
         className={cn(
           "relative block overflow-hidden",
-          isFeatured ? "min-h-[320px] lg:h-full" : "h-64",
+          isFeatured ? "min-h-[320px] lg:h-full" : "h-80",
         )}
         aria-label={article.title}
       >
