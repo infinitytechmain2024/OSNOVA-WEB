@@ -542,7 +542,7 @@ function BlogCarousel() {
 
   return (
     <div>
-      <div className="grid gap-5 md:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_4fr]">
+      <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
         <div className="flex flex-col items-start justify-center rounded-3xl bg-navy p-8 sm:p-10 lg:p-12 text-white">
           <h3 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-4xl">
             Наш блог —<br />ваш орієнтир
