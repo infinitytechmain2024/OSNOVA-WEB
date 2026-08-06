@@ -315,7 +315,7 @@ export function getServicePageData(node: SiteNode): ResolvedServicePageData {
     heroButtonLabel: custom.heroPrimaryLabel || (isDiag ? "ЗАПИСАТИСЯ НА ДІАГНОСТИКУ" : "ЗАПИСАТИСЯ НА КОНСУЛЬТАЦІЮ"),
     heroImage,
 
-    introTitle: `ЩО ТАКЕ\n${node.title.toUpperCase()}?`,
+    introTitle: custom.introTitle || `ЩО ТАКЕ\n${node.title.toUpperCase()}?`,
     introBody:
       custom.introBody ||
       node.fullDescription ||

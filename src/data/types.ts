@@ -48,6 +48,7 @@ export type ProgramItem = {
 /** Додатковий контент для шаблону сторінки послуги (перекриває автогенерацію). */
 export type ServicePageContent = {
   heroPrimaryLabel?: string;
+  introTitle?: string;
   introBody?: string;
   introExpandedBody?: string;
   recommendedTitle?: string;
