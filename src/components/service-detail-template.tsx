@@ -26,6 +26,9 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
   const [showAllMethods, setShowAllMethods] = React.useState(false);
   const visibleMethods = showAllMethods ? data.methodCards : data.methodCards.slice(0, 6);
   const { openModal } = useConsultationModal();
+  const [introExpanded, setIntroExpanded] = React.useState(false);
+  const [recommendedExpanded, setRecommendedExpanded] = React.useState(false);
+  const [frequencyExpanded, setFrequencyExpanded] = React.useState(false);
 
   const scrollToContact = () => {
     const el = document.getElementById("cta-section") || document.getElementById("contacts-footer");
@@ -74,67 +77,78 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 1.5 — Що таке [Назва] */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pt-10 sm:pt-16 lg:px-10">
-          <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl whitespace-pre-line uppercase">
-                {data.introTitle}
-              </h2>
-              <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />
-              <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90">{data.introBody}</p>
-              <button
-                type="button"
-                onClick={scrollToContact}
-                className="mt-6 sm:mt-10 w-full sm:w-auto inline-flex items-center justify-center gap-4 sm:gap-6 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
-              >
-                ДЕТАЛЬНІШЕ <ArrowRight className="size-4 sm:size-5" />
-              </button>
-            </div>
-            <img
-              src={data.introImage}
-              alt={data.heroTitle}
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
-            />
+          <div className="section-shell">
+            <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl whitespace-pre-line uppercase">
+              {data.introTitle}
+            </h2>
+            <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />
+            <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">{data.introBody}</p>
+            {custom.introExpandedBody && (
+              <>
+                <div
+                  className={cn(
+                    "mt-4 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
+                    introExpanded ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
+                  )}
+                >
+                  {custom.introExpandedBody}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIntroExpanded(!introExpanded)}
+                  className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
+                >
+                  {introExpanded ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
+                  <ChevronDown
+                    className={cn(
+                      "size-4 sm:size-5 transition-transform duration-200",
+                      introExpanded && "rotate-180",
+                    )}
+                  />
+                </button>
+              </>
+            )}
           </div>
         </section>
 
-        {/* 1.6 — Розкривні секції (кастомні) */}
-        {custom.expandableSections?.map((section) => (
-          <ExpandableSectionBlock key={section.title} section={section} />
-        ))}
-
         {/* 2 — Коли рекомендовано */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-          <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
-            <div>
-              <SectionTitle>{data.recommendedTitle}</SectionTitle>
-              <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">{data.recommendedSubtitle}</p>
-              <ul className="mt-4 sm:mt-6 space-y-3">
-                {data.recommendedItems.map((item) => (
-                  <li key={item} className="flex gap-3 text-sm sm:text-base text-navy/90">
-                    <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <button
-                type="button"
-                onClick={scrollToContact}
-                className="mt-6 sm:mt-10 w-full sm:w-auto inline-flex items-center justify-center gap-4 sm:gap-6 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
-              >
-                ДЕТАЛЬНІШЕ <ArrowRight className="size-4 sm:size-5" />
-              </button>
-            </div>
-            <img
-              src={data.recommendedImage}
-              alt={data.recommendedTitle}
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[280px] sm:max-h-[440px] w-full rounded-xl object-cover shadow-md"
-            />
+          <div className="section-shell">
+            <SectionTitle>{data.recommendedTitle}</SectionTitle>
+            <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">{data.recommendedSubtitle}</p>
+            <ul className="mt-4 sm:mt-6 space-y-3">
+              {data.recommendedItems.map((item) => (
+                <li key={item} className="flex gap-3 text-sm sm:text-base text-navy/90">
+                  <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            {custom.recommendedExpandedText && (
+              <>
+                <div
+                  className={cn(
+                    "mt-4 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
+                    recommendedExpanded ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
+                  )}
+                >
+                  {custom.recommendedExpandedText}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setRecommendedExpanded(!recommendedExpanded)}
+                  className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
+                >
+                  {recommendedExpanded ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
+                  <ChevronDown
+                    className={cn(
+                      "size-4 sm:size-5 transition-transform duration-200",
+                      recommendedExpanded && "rotate-180",
+                    )}
+                  />
+                </button>
+              </>
+            )}
           </div>
         </section>
 
@@ -160,30 +174,38 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 4 — Як часто */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
-          <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
-            <div>
-              <SectionTitle>{data.frequencyTitle}</SectionTitle>
-              {data.frequencyParagraphs.map((p, i) => (
-                <p key={i} className="mt-4 sm:mt-6 text-sm sm:text-base text-navy/90 first:mt-6 sm:first:mt-10">
-                  {p}
-                </p>
-              ))}
-              <button
-                type="button"
-                onClick={scrollToContact}
-                className="mt-6 sm:mt-10 w-full sm:w-auto inline-flex items-center justify-center gap-4 sm:gap-6 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
-              >
-                ДЕТАЛЬНІШЕ <ArrowRight className="size-4 sm:size-5" />
-              </button>
-            </div>
-            <img
-              src={data.frequencyImage}
-              alt={data.frequencyTitle}
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[280px] sm:max-h-[440px] w-full rounded-xl object-cover shadow-md"
-            />
+          <div className="section-shell">
+            <SectionTitle>{data.frequencyTitle}</SectionTitle>
+            {data.frequencyParagraphs.map((p, i) => (
+              <p key={i} className="mt-4 sm:mt-6 text-sm sm:text-base text-navy/90 first:mt-6 sm:first:mt-10">
+                {p}
+              </p>
+            ))}
+            {custom.frequencyExpandedText && (
+              <>
+                <div
+                  className={cn(
+                    "mt-4 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
+                    frequencyExpanded ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
+                  )}
+                >
+                  {custom.frequencyExpandedText}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setFrequencyExpanded(!frequencyExpanded)}
+                  className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
+                >
+                  {frequencyExpanded ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
+                  <ChevronDown
+                    className={cn(
+                      "size-4 sm:size-5 transition-transform duration-200",
+                      frequencyExpanded && "rotate-180",
+                    )}
+                  />
+                </button>
+              </>
+            )}
           </div>
         </section>
 
@@ -297,33 +319,23 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 6 — Результати */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-          <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">
-                {data.resultsTitle}
-              </h2>
-              <ul className="mt-6 sm:mt-10 space-y-1">
-                {data.resultsItems.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 sm:gap-4 border-b border-border py-3.5 sm:py-4 last:border-0"
-                  >
-                    <span className="mt-0.5 flex size-5 sm:size-6 shrink-0 items-center justify-center rounded-full bg-brand-green">
-                      <Check className="size-3.5 sm:size-4 text-brand-green-foreground" />
-                    </span>
-                    <span className="text-xs sm:text-base text-navy/90">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <img
-              src={data.resultsImage}
-              alt={data.resultsTitle}
-              width={1200}
-              height={1000}
-              loading="lazy"
-              className="h-full max-h-[300px] sm:max-h-[640px] w-full rounded-xl object-cover shadow-md"
-            />
+          <div className="section-shell">
+            <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">
+              {data.resultsTitle}
+            </h2>
+            <ul className="mt-6 sm:mt-10 space-y-1">
+              {data.resultsItems.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 sm:gap-4 border-b border-border py-3.5 sm:py-4 last:border-0"
+                >
+                  <span className="mt-0.5 flex size-5 sm:size-6 shrink-0 items-center justify-center rounded-full bg-brand-green">
+                    <Check className="size-3.5 sm:size-4 text-brand-green-foreground" />
+                  </span>
+                  <span className="text-xs sm:text-base text-navy/90">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

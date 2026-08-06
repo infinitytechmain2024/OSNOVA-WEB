@@ -49,9 +49,12 @@ export type ProgramItem = {
 export type ServicePageContent = {
   heroPrimaryLabel?: string;
   introBody?: string;
+  introExpandedBody?: string;
   recommendedTitle?: string;
   recommendedSubtitle?: string;
   recommendedItems?: string[];
+  recommendedExpandedItems?: string[];
+  recommendedExpandedText?: string;
   postponeTitle?: string;
   postponeIntro?: string;
   postponeLeft?: string[];
@@ -59,6 +62,7 @@ export type ServicePageContent = {
   emergencyTitle?: string;
   emergencyBody?: string;
   frequencyParagraphs?: string[];
+  frequencyExpandedText?: string;
   methodCards?: ServiceMethodCard[];
   methodSectionTitle?: string;
   methodNote?: string;
