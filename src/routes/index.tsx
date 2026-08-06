@@ -1175,6 +1175,86 @@ function Index() {
           </div>
         </section>
 
+        {/* 10.5. ПРО МЕТОДИКИ РЕАБІЛІТАЦІЇ */}
+        <section className="relative overflow-hidden bg-background py-24 md:py-32">
+          <div className="absolute -right-[10%] top-[30%] size-[500px] rounded-full bg-primary/5 blur-[120px]" />
+
+          <div className="relative mx-auto max-w-[1600px] px-6 lg:px-10">
+            <div className="grid items-center gap-16 lg:grid-cols-2">
+              <div>
+                <SectionHeader
+                  subtitle="ПРО КОМПАНІЮ"
+                  title={
+                    <>
+                      ОСНОВА <span className="text-primary">Реабілітація</span>
+                    </>
+                  }
+                />
+
+                <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+                  <p className="font-medium text-navy text-xl leading-relaxed">
+                    Наші методики реабілітації базуються на доказовій медицині та індивідуальному
+                    підході до кожного пацієнта. Ми поєднуємо сучасні технології з багаторічним
+                    досвідом наших спеціалістів.
+                  </p>
+                  <p>
+                    Кожна програма відновлення розробляється з урахуванням особливостей стану здоров'я,
+                    віку, рівня активності та цілей пацієнта. Ми використовуємо комплексний підхід,
+                    що охоплює фізичну терапію, ерготерапію та психологічну підтримку.
+                  </p>
+                  <p className="font-semibold text-primary">
+                    Наша мета — не лише відновити функції організму, а й покращити якість життя
+                    кожного пацієнта.
+                  </p>
+                  <p>
+                    Ми постійно вдосконалюємо наші протоколи, впроваджуємо інноваційні технології
+                    та співпрацюємо з провідними медичними установами для досягнення найкращих
+                    результатів лікування.
+                  </p>
+                </div>
+
+                <div className="mt-10">
+                  <AppLink
+                    to="/pro-nas"
+                    className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105"
+                  >
+                    ДЕТАЛЬНІШЕ <ChevronRight className="size-5" />
+                  </AppLink>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-6">
+                <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
+                  <img
+                    src={rehabImg}
+                    alt="Реабілітація"
+                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="flex flex-col justify-center rounded-3xl bg-primary/10 border border-primary/20 p-8 shadow-xl lg:p-10">
+                  <h3 className="text-5xl font-black text-primary mb-3">10+</h3>
+                  <p className="text-base font-medium text-navy/80">
+                    Років досвіду медичної команди
+                  </p>
+                </div>
+                <div className="flex flex-col justify-center rounded-3xl bg-secondary p-8 shadow-xl lg:p-10 border border-primary/10">
+                  <h3 className="text-5xl font-black text-navy mb-3">100%</h3>
+                  <p className="text-base font-medium text-navy/80">
+                    Персоналізований підхід до кожного пацієнта
+                  </p>
+                </div>
+                <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
+                  <img
+                    src={cpetImg}
+                    alt="Діагностика"
+                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 11. CTA BANNER */}
         <section className="py-24 md:py-32 bg-soft-blue">
           <div className="mx-auto max-w-[1000px] px-6 text-center lg:px-10">
