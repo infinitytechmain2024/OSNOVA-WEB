@@ -6,8 +6,10 @@ import { OtherServices } from "@/components/other-services";
 import { FAQAccordion } from "@/components/blocks";
 import { PricesAndServicesBlock } from "@/components/prices-and-services-block";
 import { getServicePageData } from "@/data/service-content-generator";
+import { useConsultationModal } from "@/components/consultation-form";
 import type { SiteNode } from "@/data/types";
-import { ArrowRight, Check, MapPin, Phone, Send, MessageCircle } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, MapPin, Phone, Send, MessageCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -20,8 +22,10 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
   const data = getServicePageData(node);
+  const custom = node.pageContent || {};
   const [showAllMethods, setShowAllMethods] = React.useState(false);
   const visibleMethods = showAllMethods ? data.methodCards : data.methodCards.slice(0, 6);
+  const { openModal } = useConsultationModal();
 
   const scrollToContact = () => {
     const el = document.getElementById("cta-section") || document.getElementById("contacts-footer");
@@ -95,6 +99,11 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
             />
           </div>
         </section>
+
+        {/* 1.6 — Розкривні секції (кастомні) */}
+        {custom.expandableSections?.map((section) => (
+          <ExpandableSectionBlock key={section.title} section={section} />
+        ))}
 
         {/* 2 — Коли рекомендовано */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
@@ -209,10 +218,22 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                         {m.text}
                       </p>
                     )}
+                    {m.expandedText && (
+                      <ExpandableCardText visibleText={m.text} expandedText={m.expandedText} />
+                    )}
                     <div className="mt-auto pt-6">
-                      <div className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-opacity group-hover:opacity-90">
-                        Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                      </div>
+                      {m.to ? (
+                        <AppLink
+                          to={m.to}
+                          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                        >
+                          Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                        </AppLink>
+                      ) : (
+                        <div className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-opacity group-hover:opacity-90">
+                          Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                        </div>
+                      )}
                     </div>
                   </div>
                   {m.to && (
@@ -256,6 +277,24 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
           </div>
         </section>
 
+        {/* 5.5 — Завдання (кастомні) */}
+        {custom.tasks && custom.tasks.length > 0 && (
+          <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
+            <SectionTitle>{custom.tasksTitle || "Завдання"}</SectionTitle>
+            <div className="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2">
+              {custom.tasks.map((t, i) => (
+                <div key={t.title} className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+                  <span className="inline-flex size-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+                    {i + 1}
+                  </span>
+                  <h3 className="mt-4 text-lg sm:text-xl font-bold text-navy">{t.title}</h3>
+                  <p className="mt-3 text-sm sm:text-base text-navy/80">{t.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* 6 — Результати */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
           <div className="section-shell grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
@@ -287,6 +326,62 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
             />
           </div>
         </section>
+
+        {/* 6.5 — Програми (кастомні) */}
+        {custom.programs && custom.programs.length > 0 && (
+          <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
+            <SectionTitle>{custom.programsTitle || "Програми"}</SectionTitle>
+            {custom.programsIntro && (
+              <p className="mt-6 sm:mt-8 text-base sm:text-lg text-navy/85">{custom.programsIntro}</p>
+            )}
+            <div className="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2">
+              {custom.programs.map((p) => (
+                <div key={p.name} className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+                  <h3 className="text-lg sm:text-xl font-bold text-navy">{p.name}</h3>
+                  <p className="mt-3 text-sm sm:text-base text-navy/80">{p.text}</p>
+                </div>
+              ))}
+            </div>
+            {custom.programsFooterText && (
+              <p className="mt-8 text-sm sm:text-base text-navy/80">{custom.programsFooterText}</p>
+            )}
+            {custom.programsFooterButton && (
+              <div className="mt-6">
+                <button
+                  type="button"
+                  onClick={() => openModal(custom.programsFooterButton!)}
+                  className="rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
+                >
+                  {custom.programsFooterButton}
+                </button>
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* 6.6 — CTA посередині (кастомний) */}
+        {custom.ctaMiddleTitle && (
+          <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
+            <div className="relative overflow-hidden rounded-2xl bg-soft-blue px-4 sm:px-6 py-12 sm:py-20 text-center shadow-sm">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-wide text-navy md:text-4xl">
+                {custom.ctaMiddleTitle}
+              </h2>
+              <div className="mx-auto mt-6 sm:mt-8 h-0.5 w-16 sm:w-20 bg-primary/50" />
+              {custom.ctaMiddleText && (
+                <p className="mx-auto mt-6 sm:mt-8 max-w-3xl text-sm sm:text-lg text-navy/85">
+                  {custom.ctaMiddleText}
+                </p>
+              )}
+              <button
+                type="button"
+                onClick={() => openModal(custom.ctaMiddleButton || "ЗАПИСАТИСЯ НА КОНСУЛЬТАЦІЮ")}
+                className="mt-8 sm:mt-12 inline-block w-full sm:w-auto rounded-full bg-primary px-8 sm:px-14 py-4 sm:py-6 text-base sm:text-lg font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105"
+              >
+                {custom.ctaMiddleButton || "ЗАПИСАТИСЯ НА КОНСУЛЬТАЦІЮ"}
+              </button>
+            </div>
+          </section>
+        )}
 
         {/* 7 — Ціни */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
@@ -364,7 +459,35 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
           </button>
         </section>
 
-        {/* 10 — FAQ */}
+        {/* 10 — Етапи (кастомні) */}
+        {custom.stages && custom.stages.length > 0 && (
+          <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
+            <SectionTitle>{custom.stagesTitle || "Як проходить програма"}</SectionTitle>
+            <div className="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {custom.stages.map((s, i) => (
+                <div key={s.title} className="rounded-xl border border-border bg-card p-5">
+                  <span className="inline-flex size-8 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
+                    {i + 1}
+                  </span>
+                  <h3 className="mt-3 text-base font-bold text-navy">{s.title}</h3>
+                  <p className="mt-2 text-sm text-navy/80">{s.text}</p>
+                </div>
+              ))}
+            </div>
+            {custom.stagesExpanded && (
+              <ExpandableSectionBlock
+                section={{
+                  title: "",
+                  visibleText: "",
+                  expandedText: custom.stagesExpanded,
+                }}
+                alwaysOpen
+              />
+            )}
+          </section>
+        )}
+
+        {/* 11 — FAQ */}
         {node.faq && node.faq.length > 0 && (
           <section className="mx-auto max-w-[1400px] px-4 sm:px-6 pb-16 sm:pb-24 lg:px-10">
             <SectionTitle>Поширені питання</SectionTitle>
@@ -378,5 +501,100 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
       <SiteFooter />
     </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Helper components                                                   */
+/* ------------------------------------------------------------------ */
+
+function ExpandableSectionBlock({
+  section,
+  alwaysOpen = false,
+}: {
+  section: { title: string; visibleText: string; expandedText: string };
+  alwaysOpen?: boolean;
+}) {
+  const [open, setOpen] = React.useState(alwaysOpen);
+
+  return (
+    <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
+      <div className="section-shell">
+        {section.title && (
+          <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl">
+            {section.title}
+          </h2>
+        )}
+        {section.title && <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />}
+        {section.visibleText && (
+          <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
+            {section.visibleText}
+          </p>
+        )}
+        {section.expandedText && (
+          <>
+            <div
+              className={cn(
+                "mt-6 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
+                open ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
+              )}
+            >
+              {section.expandedText}
+            </div>
+            {!alwaysOpen && (
+              <button
+                type="button"
+                onClick={() => setOpen(!open)}
+                className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
+              >
+                {open ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
+                <ChevronDown
+                  className={cn(
+                    "size-4 sm:size-5 transition-transform duration-200",
+                    open && "rotate-180",
+                  )}
+                />
+              </button>
+            )}
+          </>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function ExpandableCardText({
+  visibleText,
+  expandedText,
+}: {
+  visibleText?: string;
+  expandedText: string;
+}) {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <>
+      <div
+        className={cn(
+          "mt-4 text-sm sm:text-base text-navy/70 overflow-hidden transition-all duration-300",
+          open ? "max-h-[5000px] opacity-100" : "max-h-0 opacity-0",
+        )}
+      >
+        {expandedText}
+      </div>
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+      >
+        {open ? "Згорнути" : "Детальніше"}
+        <ChevronDown
+          className={cn(
+            "size-4 transition-transform duration-200",
+            open && "rotate-180",
+          )}
+        />
+      </button>
+    </>
   );
 }

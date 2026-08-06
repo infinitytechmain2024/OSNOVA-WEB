@@ -53,6 +53,7 @@ export type ResolvedServicePageData = {
   ctaBody: string;
   ctaButton: string;
 
+  signsTitle: string;
   signsIntro: string;
   signsListIntro: string;
   signsItems: string[];

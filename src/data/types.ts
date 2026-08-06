@@ -20,12 +20,29 @@ export type ServiceMethodCard = {
   text: string;
   to?: string;
   image?: string;
+  expandedText?: string;
 };
 
 export type ServicePriceRow = {
   name: string;
   time?: string;
   price: string;
+};
+
+export type ExpandableSection = {
+  title: string;
+  visibleText: string;
+  expandedText: string;
+};
+
+export type TaskItem = {
+  title: string;
+  text: string;
+};
+
+export type ProgramItem = {
+  name: string;
+  text: string;
 };
 
 /** Додатковий контент для шаблону сторінки послуги (перекриває автогенерацію). */
@@ -62,6 +79,23 @@ export type ServicePageContent = {
   signsItems?: string[];
   secondaryImage?: string;
   tertiaryImage?: string;
+
+  expandableSections?: ExpandableSection[];
+  conditionsQuestionButton?: string;
+  conditionsNote?: string;
+  tasksTitle?: string;
+  tasks?: TaskItem[];
+  programsTitle?: string;
+  programsIntro?: string;
+  programs?: ProgramItem[];
+  programsFooterText?: string;
+  programsFooterButton?: string;
+  ctaMiddleTitle?: string;
+  ctaMiddleText?: string;
+  ctaMiddleButton?: string;
+  stagesTitle?: string;
+  stages?: TaskItem[];
+  stagesExpanded?: string;
 };
 
 export type SiteNode = {
