@@ -543,17 +543,19 @@ function BlogCarousel() {
   return (
     <div>
       <div className="grid gap-5 grid-cols-1 md:grid-cols-3">
-        <div className="flex flex-col items-start justify-center rounded-3xl bg-navy p-8 sm:p-10 lg:p-12 text-white">
-          <h3 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-4xl">
-            Наш блог —<br />ваш орієнтир
-          </h3>
-          <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-base">
-            Корисні поради, новини центру та експертні матеріали про реабілітацію, здоров'я та якість життя.
-          </p>
-          <div className="mt-6 h-1.5 w-16 rounded-full bg-gradient-to-r from-primary to-brand-green" />
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 rounded-3xl bg-navy p-8 sm:p-10 lg:p-12 text-white">
+          <div>
+            <h3 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-4xl">
+              Наш блог —<br />ваш орієнтир
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-base">
+              Корисні поради, новини центру та експертні матеріали про реабілітацію, здоров'я та якість життя.
+            </p>
+            <div className="mt-6 h-1.5 w-16 rounded-full bg-gradient-to-r from-primary to-brand-green" />
+          </div>
           <AppLink
             to="/novyny"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition-all hover:bg-primary/90"
+            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition-all hover:bg-primary/90"
           >
             Усі статті <ArrowRight className="size-4" />
           </AppLink>
