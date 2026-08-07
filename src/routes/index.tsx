@@ -299,6 +299,30 @@ const EDUCATION_CARDS = [
   },
 ];
 
+// Інформаційні карточки "О компанії"
+const ABOUT_CARDS = [
+  {
+    icon: ClipboardList,
+    title: "Індивідуальний підхід",
+    text: "Персональна програма відновлення під стан та цілі пацієнта.",
+  },
+  {
+    icon: Network,
+    title: "Комплексна допомога",
+    text: "Діагностика, лікування та відновлення в одному центрі.",
+  },
+  {
+    icon: Users,
+    title: "Контроль спеціалістів",
+    text: "Супровід пацієнта на всіх етапах реабілітації.",
+  },
+  {
+    icon: Microscope,
+    title: "Сучасні методи",
+    text: "Використання актуальних медичних підходів.",
+  },
+];
+
 // FAQ
 const FAQS = [
   {
@@ -557,6 +581,7 @@ function Index() {
   const [partnersApi, setPartnersApi] = React.useState<CarouselApi>();
   const [currentPartnersSlide, setCurrentPartnersSlide] = React.useState(0);
   const [partnersSlideCount, setPartnersSlideCount] = React.useState(0);
+  const [aboutExpanded, setAboutExpanded] = React.useState(false);
 
   React.useEffect(() => {
     if (!heroApi) return;
@@ -730,62 +755,83 @@ function Index() {
                   subtitle="ПРО КОМПАНІЮ"
                   title={
                     <>
-                      Відновлення починається з правильной оцінки стану
+                      ОСНОВА <span className="text-primary">Реабілітація</span>
                     </>
                   }
                 />
 
-                <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
-                  <p className="font-medium text-navy text-xl leading-relaxed">
-                    «Снова реабілітація» — медичний центр, де діагностика, лікування та
-                    відновлення об'єднані в єдину систему.
+                <p className="mb-4 text-base md:text-lg font-medium text-navy text-xl leading-relaxed">
+                  Сучасна медична компанія, що спеціалізується на лікуванні
+                  та комплексній реабілітації пацієнтів.
+                </p>
+
+                <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+                  <p>
+                    ОСНОВА Реабілітація допомагає відновити здоров'я, рух та якість життя
+                    після захворювань, травм та операцій.
                   </p>
                   <p>
-                    Ми створюємо індивідуальні програми для пацієнтів після захворювань,
-                    операцій, травм та при зниженні фізичної активності.
-                  </p>
-                  <p className="font-semibold text-primary">
-                    Кожна програма починається з оцінки стану та будується навколо конкретних цілей пацієнта.
+                    Ми використовуємо сучасні методи діагностики, персональні програми
+                    відновлення та комплексний підхід під контролем спеціалістів.
                   </p>
                 </div>
 
                 <div className="mt-10">
-                  <AppLink
-                    to="/pro-nas"
-                    className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105"
+                  <button
+                    type="button"
+                    onClick={() => setAboutExpanded(!aboutExpanded)}
+                    className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105 cursor-pointer"
                   >
-                    ДЕТАЛЬНІШЕ <ChevronRight className="size-5" />
-                  </AppLink>
+                    ДЕТАЛЬНІШЕ <ChevronRight className={`size-5 transition-transform duration-300 ${aboutExpanded ? "rotate-90" : ""}`} />
+                  </button>
                 </div>
+
+                {aboutExpanded && (
+                  <div className="mt-6 space-y-4 text-base text-muted-foreground leading-relaxed animate-in slide-in-from-top-4 fade-in duration-300">
+                    <p>
+                      ОСНОВА Реабілітація працює в напрямках:
+                    </p>
+                    <ul className="list-disc list-inside space-y-1 text-navy font-medium">
+                      <li>кардіологія;</li>
+                      <li>ортопедія;</li>
+                      <li>травматологія;</li>
+                      <li>ревматологія;</li>
+                      <li>вертебрологія;</li>
+                      <li>психологічна підтримка.</li>
+                    </ul>
+                    <p>
+                      Ми не лише працюємо з наслідками захворювань, а й допомагаємо виявляти
+                      ризики завчасно завдяки сучасній діагностиці та профілактичним програмам.
+                    </p>
+                    <p>
+                      ОСНОВА Реабілітація розвиває науково-освітній напрям, вдосконалює
+                      протоколи відновлення, співпрацює з медичними закладами та впроваджує
+                      сучасні підходи в реабілітації.
+                    </p>
+                  </div>
+                )}
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
-                <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
-                  <img
-                    src={rehabImg}
-                    alt="Реабілітація"
-                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                <div className="flex flex-col justify-center rounded-3xl bg-primary/10 border border-primary/20 p-8 shadow-xl lg:p-10">
-                  <h3 className="text-5xl font-black text-primary mb-3">10+</h3>
-                  <p className="text-base font-medium text-navy/80">
-                    Років досвіду медичної команди
-                  </p>
-                </div>
-                <div className="flex flex-col justify-center rounded-3xl bg-secondary p-8 shadow-xl lg:p-10 border border-primary/10">
-                  <h3 className="text-5xl font-black text-navy mb-3">100%</h3>
-                  <p className="text-base font-medium text-navy/80">
-                    Персоналізований підхід до кожного пацієнта
-                  </p>
-                </div>
-                <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
-                  <img
-                    src={cpetImg}
-                    alt="Діагностика"
-                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
+              <div className="grid grid-cols-2 gap-4">
+                {ABOUT_CARDS.map((card, i) => {
+                  const Icon = card.icon;
+                  return (
+                    <div
+                      key={i}
+                      className="group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                    >
+                      <div className="mb-3 flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <Icon className="size-5" />
+                      </div>
+                      <h3 className="mb-2 text-base font-bold text-navy">
+                        {card.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        {card.text}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
