@@ -144,32 +144,35 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
           )}
         </section>
 
-        {/* 3 — Протипоказання до реабілітації */}
+        {/* 3 — Протипоказання до реабілітації + Екстрений блок */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
-          <div className="rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm">
-            <SectionTitle>{data.postponeTitle}</SectionTitle>
-            <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">
-              {data.postponeIntro}
-            </p>
-            <div className="mt-4 sm:mt-6 grid gap-x-16 gap-y-4 sm:gap-y-5 md:grid-cols-2">
-              {[...data.postponeLeft, ...data.postponeRight].map((item, idx) => (
-                <p
-                  key={`${item}-${idx}`}
-                  className="flex items-start text-sm sm:text-base text-navy/90"
-                >
-                  <span className="mt-0.5 mr-3 size-1.5 shrink-0 rounded-full bg-navy/25" />
-                  {item}
-                </p>
-              ))}
+          <div className="grid gap-8 lg:grid-cols-3">
+            {/* Основний блок протипоказань — 2 колонки */}
+            <div className="lg:col-span-2 rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm">
+              <SectionTitle>{data.postponeTitle}</SectionTitle>
+              <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">
+                {data.postponeIntro}
+              </p>
+              <div className="mt-4 sm:mt-6 grid gap-x-16 gap-y-4 sm:gap-y-5 md:grid-cols-2">
+                {[...data.postponeLeft, ...data.postponeRight].map((item, idx) => (
+                  <p
+                    key={`${item}-${idx}`}
+                    className="flex items-start text-sm sm:text-base text-navy/90"
+                  >
+                    <span className="mt-0.5 mr-3 size-1.5 shrink-0 rounded-full bg-navy/25" />
+                    {item}
+                  </p>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* 3.1 — Екстрений блок */}
-          <div className="mt-8 sm:mt-12 rounded-xl border-2 border-destructive/30 bg-destructive/10 p-5 sm:p-6 md:p-8">
-            <p className="font-bold text-navy text-base sm:text-lg md:text-xl">
-              {data.emergencyTitle}
-            </p>
-            <p className="mt-1 sm:mt-2 text-sm sm:text-base text-navy/85">{data.emergencyBody}</p>
+            {/* Червоний блок — 1 колонка, sticky */}
+            <div className="lg:col-span-1 rounded-xl border-2 border-destructive/30 bg-destructive/10 p-5 sm:p-6 md:p-8 lg:sticky lg:top-8 lg:self-start">
+              <p className="font-bold text-navy text-base sm:text-lg md:text-xl">
+                {data.emergencyTitle}
+              </p>
+              <p className="mt-1 sm:mt-2 text-sm sm:text-base text-navy/85">{data.emergencyBody}</p>
+            </div>
           </div>
         </section>
 
@@ -568,59 +571,56 @@ function ExpandableIntroSection({
   return (
     <section
       id="intro-section"
-      className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2 transition-all duration-300 ease-in-out"
-      style={{
-        transitionProperty: 'height, opacity',
-        transitionDuration: '300ms',
-        transitionTimingFunction: 'ease-in-out',
-      }}
+      className="rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm transition-all duration-300 ease-in-out"
     >
-      <div className="flex flex-col">
-        <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl whitespace-pre-line uppercase">
-          {title}
-        </h2>
-        <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />
-        <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
-          {shortDescription}
-        </p>
-        {!isExpanded && expandedContent && (
-          <button
-            type="button"
-            onClick={handleToggle}
-            className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[44px] sm:h-[48px]"
-            aria-expanded="false"
-            aria-controls="intro-expanded-content"
-          >
-            ДЕТАЛЬНІШЕ
-            <ChevronDown className="size-4 sm:size-5 transition-transform duration-200 shrink-0" />
-          </button>
-        )}
-        {isExpanded && expandedContent && (
-          <button
-            type="button"
-            onClick={handleToggle}
-            className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[44px] sm:h-[48px]"
-            aria-expanded="true"
-            aria-controls="intro-expanded-content"
-          >
-            ЗГОРНУТИ
-            <ChevronDown className="size-4 sm:size-5 transition-transform duration-200 rotate-180 shrink-0" />
-          </button>
-        )}
+      <div className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2">
+        <div className="flex flex-col">
+          <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl whitespace-pre-line uppercase">
+            {title}
+          </h2>
+          <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />
+          <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
+            {shortDescription}
+          </p>
+          {!isExpanded && expandedContent && (
+            <button
+              type="button"
+              onClick={handleToggle}
+              className="mt-6 sm:mt-8 self-end inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+              aria-expanded="false"
+              aria-controls="intro-expanded-content"
+            >
+              ДЕТАЛЬНІШЕ
+              <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 shrink-0" />
+            </button>
+          )}
+          {isExpanded && expandedContent && (
+            <button
+              type="button"
+              onClick={handleToggle}
+              className="mt-6 sm:mt-8 self-end inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+              aria-expanded="true"
+              aria-controls="intro-expanded-content"
+            >
+              ЗГОРНУТИ
+              <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 rotate-180 shrink-0" />
+            </button>
+          )}
+        </div>
+        <img
+          src={image}
+          alt={imageAlt}
+          width={1200}
+          height={800}
+          loading="lazy"
+          className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md shrink-0"
+          aria-hidden="true"
+        />
       </div>
-      <img
-        src={image}
-        alt={imageAlt}
-        width={1200}
-        height={800}
-        loading="lazy"
-        className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md shrink-0"
-        aria-hidden="true"
-      />
       {expandedContent && (
         <div
           id="intro-expanded-content"
-          className="lg:col-span-2 mt-6 overflow-hidden transition-all duration-300 ease-in-out"
+          className="mt-6 overflow-hidden transition-all duration-300 ease-in-out"
           style={{
             maxHeight: isExpanded ? contentHeight : 0,
             opacity: isExpanded ? 1 : 0,
