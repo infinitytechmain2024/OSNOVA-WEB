@@ -299,30 +299,6 @@ const EDUCATION_CARDS = [
   },
 ];
 
-// Інформаційні карточки "О компанії"
-const ABOUT_CARDS = [
-  {
-    icon: ClipboardList,
-    title: "Індивідуальний підхід",
-    text: "Персональна програма відновлення під стан та цілі пацієнта.",
-  },
-  {
-    icon: Network,
-    title: "Комплексна допомога",
-    text: "Діагностика, лікування та відновлення в одному центрі.",
-  },
-  {
-    icon: Users,
-    title: "Контроль спеціалістів",
-    text: "Супровід пацієнта на всіх етапах реабілітації.",
-  },
-  {
-    icon: Microscope,
-    title: "Сучасні методи",
-    text: "Використання актуальних медичних підходів.",
-  },
-];
-
 // FAQ
 const FAQS = [
   {
@@ -760,12 +736,11 @@ function Index() {
                   }
                 />
 
-                <p className="mb-4 text-base md:text-lg font-medium text-navy text-xl leading-relaxed">
-                  Сучасна медична компанія, що спеціалізується на лікуванні
-                  та комплексній реабілітації пацієнтів.
-                </p>
-
                 <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+                  <p className="font-medium text-navy text-xl leading-relaxed">
+                    Сучасна медична компанія, що спеціалізується на лікуванні
+                    та комплексній реабілітації пацієнтів.
+                  </p>
                   <p>
                     ОСНОВА Реабілітація допомагає відновити здоров'я, рух та якість життя
                     після захворювань, травм та операцій.
@@ -776,7 +751,7 @@ function Index() {
                   </p>
                 </div>
 
-                <div className="mt-10">
+                <div className="mt-10 flex flex-wrap gap-3">
                   <button
                     type="button"
                     onClick={() => setAboutExpanded(!aboutExpanded)}
@@ -812,26 +787,33 @@ function Index() {
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                {ABOUT_CARDS.map((card, i) => {
-                  const Icon = card.icon;
-                  return (
-                    <div
-                      key={i}
-                      className="group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                    >
-                      <div className="mb-3 flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                        <Icon className="size-5" />
-                      </div>
-                      <h3 className="mb-2 text-base font-bold text-navy">
-                        {card.title}
-                      </h3>
-                      <p className="text-sm text-slate-600 leading-relaxed">
-                        {card.text}
-                      </p>
-                    </div>
-                  );
-                })}
+              <div className="grid grid-cols-2 gap-6">
+                <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
+                  <img
+                    src={rehabImg}
+                    alt="Реабілітація"
+                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="flex flex-col justify-center rounded-3xl bg-primary/10 border border-primary/20 p-8 shadow-xl lg:p-10">
+                  <h3 className="text-5xl font-black text-primary mb-3">10+</h3>
+                  <p className="text-base font-medium text-navy/80">
+                    Років досвіду медичної команди
+                  </p>
+                </div>
+                <div className="flex flex-col justify-center rounded-3xl bg-secondary p-8 shadow-xl lg:p-10 border border-primary/10">
+                  <h3 className="text-5xl font-black text-navy mb-3">100%</h3>
+                  <p className="text-base font-medium text-navy/80">
+                    Персоналізований підхід до кожного пацієнта
+                  </p>
+                </div>
+                <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
+                  <img
+                    src={cpetImg}
+                    alt="Діагностика"
+                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
               </div>
             </div>
           </div>
