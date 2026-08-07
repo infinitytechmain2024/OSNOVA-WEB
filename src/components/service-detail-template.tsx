@@ -91,64 +91,77 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 2 — Коли рекомендовано */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-          <div className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2">
-            <div className="flex flex-col">
-              <SectionTitle>{data.recommendedTitle}</SectionTitle>
-              <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">
-                {data.recommendedSubtitle}
-              </p>
-              <ul className="mt-4 sm:mt-6 space-y-3">
-                {data.recommendedItems.map((item) => (
-                  <li key={item} className="flex gap-3 text-sm sm:text-base text-navy/90">
-                    <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              {custom.recommendedExpandedText && (
-                <button
-                  type="button"
-                  onClick={() => setRecommendedExpanded(!recommendedExpanded)}
-                  className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
-                >
-                  {recommendedExpanded ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
-                  <ChevronDown
-                    className={cn(
-                      "size-4 sm:size-5 transition-transform duration-200",
-                      recommendedExpanded && "rotate-180",
-                    )}
-                  />
-                </button>
-              )}
+          <div className="rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm">
+            <div className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2">
+              <div className="flex flex-col">
+                <SectionTitle>{data.recommendedTitle}</SectionTitle>
+                <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">
+                  {data.recommendedSubtitle}
+                </p>
+                <ul className="mt-4 sm:mt-6 space-y-3">
+                  {data.recommendedItems.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm sm:text-base text-navy/90">
+                      <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                {custom.recommendedExpandedText && !recommendedExpanded && (
+                  <button
+                    type="button"
+                    onClick={() => setRecommendedExpanded(true)}
+                    className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+                  >
+                    ДЕТАЛЬНІШЕ
+                    <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 shrink-0" />
+                  </button>
+                )}
+              </div>
+              <img
+                src={data.recommendedImage}
+                alt={data.recommendedTitle}
+                width={1200}
+                height={800}
+                loading="lazy"
+                className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
+              />
             </div>
-            <img
-              src={data.recommendedImage}
-              alt={data.recommendedTitle}
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
-            />
-          </div>
-          {custom.recommendedExpandedText && (
-            <div className="mt-8">
+            {custom.recommendedExpandedText && (
               <div
                 className={cn(
-                  "text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
+                  "mt-6 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
                   recommendedExpanded ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
                 )}
               >
                 {custom.recommendedExpandedText}
               </div>
-            </div>
-          )}
+            )}
+            {custom.recommendedExpandedText && recommendedExpanded && (
+              <button
+                type="button"
+                onClick={() => setRecommendedExpanded(false)}
+                className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+              >
+                ЗГОРНУТИ
+                <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 rotate-180 shrink-0" />
+              </button>
+            )}
+          </div>
         </section>
 
         {/* 3 — Протипоказання до реабілітації + Екстрений блок */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
           <div className="grid gap-8 lg:grid-cols-3">
+            {/* Червоний блок — 1 колонка */}
+            <div className="lg:col-span-1 rounded-xl border-2 border-destructive/30 bg-destructive/10 p-5 sm:p-6 md:p-8 flex flex-col items-center justify-center text-center h-full">
+              <p className="font-bold text-navy text-base sm:text-lg md:text-xl">
+                {data.emergencyTitle}
+              </p>
+              <p className="mt-1 sm:mt-2 text-sm sm:text-base text-navy/85">{data.emergencyBody}</p>
+            </div>
+
             {/* Основний блок протипоказань — 2 колонки */}
-            <div className="lg:col-span-2 rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm">
+            <div className="lg:col-span-2 rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm h-full">
               <SectionTitle>{data.postponeTitle}</SectionTitle>
               <p className="mt-6 sm:mt-10 text-base sm:text-lg font-bold text-navy">
                 {data.postponeIntro}
@@ -165,67 +178,64 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                 ))}
               </div>
             </div>
-
-            {/* Червоний блок — 1 колонка, sticky */}
-            <div className="lg:col-span-1 rounded-xl border-2 border-destructive/30 bg-destructive/10 p-5 sm:p-6 md:p-8 lg:sticky lg:top-8 lg:self-start">
-              <p className="font-bold text-navy text-base sm:text-lg md:text-xl">
-                {data.emergencyTitle}
-              </p>
-              <p className="mt-1 sm:mt-2 text-sm sm:text-base text-navy/85">{data.emergencyBody}</p>
-            </div>
           </div>
         </section>
 
         {/* 4 — Як часто */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
-          <div className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2">
-            <div className="flex flex-col">
-              <SectionTitle>{data.frequencyTitle}</SectionTitle>
-              {data.frequencyParagraphs.map((p, i) => (
-                <p
-                  key={i}
-                  className="mt-4 sm:mt-6 text-sm sm:text-base text-navy/90 first:mt-6 sm:first:mt-10"
-                >
-                  {p}
-                </p>
-              ))}
-              {custom.frequencyExpandedText && (
-                <button
-                  type="button"
-                  onClick={() => setFrequencyExpanded(!frequencyExpanded)}
-                  className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
-                >
-                  {frequencyExpanded ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
-                  <ChevronDown
-                    className={cn(
-                      "size-4 sm:size-5 transition-transform duration-200",
-                      frequencyExpanded && "rotate-180",
-                    )}
-                  />
-                </button>
-              )}
+          <div className="rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm">
+            <div className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2">
+              <div className="flex flex-col">
+                <SectionTitle>{data.frequencyTitle}</SectionTitle>
+                {data.frequencyParagraphs.map((p, i) => (
+                  <p
+                    key={i}
+                    className="mt-4 sm:mt-6 text-sm sm:text-base text-navy/90 first:mt-6 sm:first:mt-10"
+                  >
+                    {p}
+                  </p>
+                ))}
+                {custom.frequencyExpandedText && !frequencyExpanded && (
+                  <button
+                    type="button"
+                    onClick={() => setFrequencyExpanded(true)}
+                    className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+                  >
+                    ДЕТАЛЬНІШЕ
+                    <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 shrink-0" />
+                  </button>
+                )}
+              </div>
+              <img
+                src={data.frequencyImage}
+                alt={data.frequencyTitle}
+                width={1200}
+                height={800}
+                loading="lazy"
+                className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
+              />
             </div>
-            <img
-              src={data.frequencyImage}
-              alt={data.frequencyTitle}
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
-            />
-          </div>
-          {custom.frequencyExpandedText && (
-            <div className="mt-8">
+            {custom.frequencyExpandedText && (
               <div
                 className={cn(
-                  "text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
+                  "mt-6 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
                   frequencyExpanded ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
                 )}
               >
                 {custom.frequencyExpandedText}
               </div>
-            </div>
-          )}
+            )}
+            {custom.frequencyExpandedText && frequencyExpanded && (
+              <button
+                type="button"
+                onClick={() => setFrequencyExpanded(false)}
+                className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+              >
+                ЗГОРНУТИ
+                <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 rotate-180 shrink-0" />
+              </button>
+            )}
+          </div>
         </section>
 
         {/* 5 — Методи */}
@@ -469,60 +479,65 @@ function ExpandableSectionBlock({
 
   return (
     <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-      <div className={cn("section-shell", section.image && "grid gap-8 lg:gap-12 lg:grid-cols-2")}>
-        <div className="flex flex-col">
-          {section.title && (
-            <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl">
-              {section.title}
-            </h2>
-          )}
-          {section.title && (
-            <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />
-          )}
-          {section.visibleText && (
-            <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
-              {section.visibleText}
-            </p>
-          )}
-          {section.expandedText && !alwaysOpen && (
-            <button
-              type="button"
-              onClick={() => setOpen(!open)}
-              className="mt-6 sm:mt-8 inline-flex items-center gap-3 rounded-xl bg-secondary px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-bold tracking-wide text-navy transition-colors hover:bg-accent"
-            >
-              {open ? "ЗГОРНУТИ" : "ДЕТАЛЬНІШЕ"}
-              <ChevronDown
-                className={cn(
-                  "size-4 sm:size-5 transition-transform duration-200",
-                  open && "rotate-180",
-                )}
-              />
-            </button>
+      <div className="rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm">
+        <div className={cn("section-shell", section.image && "grid gap-8 lg:gap-12 lg:grid-cols-2")}>
+          <div className="flex flex-col">
+            {section.title && (
+              <h2 className="text-2xl leading-tight font-extrabold tracking-wide text-navy sm:text-4xl md:text-5xl">
+                {section.title}
+              </h2>
+            )}
+            {section.title && (
+              <div className="mt-4 sm:mt-6 h-1 w-20 sm:w-24 rounded-full bg-primary/60" />
+            )}
+            {section.visibleText && (
+              <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
+                {section.visibleText}
+              </p>
+            )}
+            {section.expandedText && !alwaysOpen && !open && (
+              <button
+                type="button"
+                onClick={() => setOpen(true)}
+                className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+              >
+                ДЕТАЛЬНІШЕ
+                <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 shrink-0" />
+              </button>
+            )}
+          </div>
+          {section.image && (
+            <img
+              src={section.image}
+              alt={section.title}
+              width={1200}
+              height={800}
+              loading="lazy"
+              className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
+            />
           )}
         </div>
-        {section.image && (
-          <img
-            src={section.image}
-            alt={section.title}
-            width={1200}
-            height={800}
-            loading="lazy"
-            className="h-full max-h-[280px] sm:max-h-[460px] w-full rounded-xl object-cover shadow-md"
-          />
-        )}
-      </div>
-      {section.expandedText && (
-        <div className="mt-8">
+        {section.expandedText && (
           <div
             className={cn(
-              "text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
+              "mt-6 text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line overflow-hidden transition-all duration-300",
               open ? "max-h-[8000px] opacity-100" : "max-h-0 opacity-0",
             )}
           >
             {section.expandedText}
           </div>
-        </div>
-      )}
+        )}
+        {section.expandedText && !alwaysOpen && open && (
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+          >
+            ЗГОРНУТИ
+            <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 rotate-180 shrink-0" />
+          </button>
+        )}
+      </div>
     </section>
   );
 }
@@ -586,24 +601,12 @@ function ExpandableIntroSection({
             <button
               type="button"
               onClick={handleToggle}
-              className="mt-6 sm:mt-8 self-end inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+              className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
               aria-expanded="false"
               aria-controls="intro-expanded-content"
             >
               ДЕТАЛЬНІШЕ
               <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 shrink-0" />
-            </button>
-          )}
-          {isExpanded && expandedContent && (
-            <button
-              type="button"
-              onClick={handleToggle}
-              className="mt-6 sm:mt-8 self-end inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
-              aria-expanded="true"
-              aria-controls="intro-expanded-content"
-            >
-              ЗГОРНУТИ
-              <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 rotate-180 shrink-0" />
             </button>
           )}
         </div>
@@ -633,6 +636,18 @@ function ExpandableIntroSection({
           <div ref={contentRef} className="text-base sm:text-lg leading-relaxed text-navy/90 whitespace-pre-line">
             {expandedContent}
           </div>
+          {isExpanded && (
+            <button
+              type="button"
+              onClick={handleToggle}
+              className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+              aria-expanded="true"
+              aria-controls="intro-expanded-content"
+            >
+              ЗГОРНУТИ
+              <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 rotate-180 shrink-0" />
+            </button>
+          )}
         </div>
       )}
     </section>
