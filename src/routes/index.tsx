@@ -557,7 +557,6 @@ function Index() {
   const [partnersApi, setPartnersApi] = React.useState<CarouselApi>();
   const [currentPartnersSlide, setCurrentPartnersSlide] = React.useState(0);
   const [partnersSlideCount, setPartnersSlideCount] = React.useState(0);
-  const [aboutExpanded, setAboutExpanded] = React.useState(false);
 
   React.useEffect(() => {
     if (!heroApi) return;
@@ -736,11 +735,12 @@ function Index() {
                   }
                 />
 
+                <p className="mb-4 text-base md:text-lg font-medium text-navy text-xl leading-relaxed">
+                  Сучасна медична компанія, що спеціалізується на лікуванні
+                  та комплексній реабілітації пацієнтів.
+                </p>
+
                 <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
-                  <p className="font-medium text-navy text-xl leading-relaxed">
-                    Сучасна медична компанія, що спеціалізується на лікуванні
-                    та комплексній реабілітації пацієнтів.
-                  </p>
                   <p>
                     ОСНОВА Реабілітація допомагає відновити здоров'я, рух та якість життя
                     після захворювань, травм та операцій.
@@ -751,40 +751,14 @@ function Index() {
                   </p>
                 </div>
 
-                <div className="mt-10 flex flex-wrap gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setAboutExpanded(!aboutExpanded)}
-                    className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105 cursor-pointer"
+                <div className="mt-10">
+                  <AppLink
+                    to="/pro-nas"
+                    className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105"
                   >
-                    ДЕТАЛЬНІШЕ <ChevronRight className={`size-5 transition-transform duration-300 ${aboutExpanded ? "rotate-90" : ""}`} />
-                  </button>
+                    ДЕТАЛЬНІШЕ <ChevronRight className="size-5" />
+                  </AppLink>
                 </div>
-
-                {aboutExpanded && (
-                  <div className="mt-6 space-y-4 text-base text-muted-foreground leading-relaxed animate-in slide-in-from-top-4 fade-in duration-300">
-                    <p>
-                      ОСНОВА Реабілітація працює в напрямках:
-                    </p>
-                    <ul className="list-disc list-inside space-y-1 text-navy font-medium">
-                      <li>кардіологія;</li>
-                      <li>ортопедія;</li>
-                      <li>травматологія;</li>
-                      <li>ревматологія;</li>
-                      <li>вертебрологія;</li>
-                      <li>психологічна підтримка.</li>
-                    </ul>
-                    <p>
-                      Ми не лише працюємо з наслідками захворювань, а й допомагаємо виявляти
-                      ризики завчасно завдяки сучасній діагностиці та профілактичним програмам.
-                    </p>
-                    <p>
-                      ОСНОВА Реабілітація розвиває науково-освітній напрям, вдосконалює
-                      протоколи відновлення, співпрацює з медичними закладами та впроваджує
-                      сучасні підходи в реабілітації.
-                    </p>
-                  </div>
-                )}
               </div>
 
               <div className="grid grid-cols-2 gap-6">
@@ -796,15 +770,15 @@ function Index() {
                   />
                 </div>
                 <div className="flex flex-col justify-center rounded-3xl bg-primary/10 border border-primary/20 p-8 shadow-xl lg:p-10">
-                  <h3 className="text-5xl font-black text-primary mb-3">10+</h3>
+                  <h3 className="text-5xl font-black text-primary mb-3">8+</h3>
                   <p className="text-base font-medium text-navy/80">
-                    Років досвіду медичної команди
+                    Напрямків реабілітації
                   </p>
                 </div>
                 <div className="flex flex-col justify-center rounded-3xl bg-secondary p-8 shadow-xl lg:p-10 border border-primary/10">
-                  <h3 className="text-5xl font-black text-navy mb-3">100%</h3>
+                  <h3 className="text-5xl font-black text-navy mb-3">30+</h3>
                   <p className="text-base font-medium text-navy/80">
-                    Персоналізований підхід до кожного пацієнта
+                    Методів реабілітації
                   </p>
                 </div>
                 <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
