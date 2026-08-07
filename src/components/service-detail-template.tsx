@@ -91,7 +91,7 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 2 — Коли рекомендовано */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-          <div className="rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm">
+          <div className="rounded-2xl sm:rounded-3xl bg-card p-5 sm:p-8 md:p-12">
             <div className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2">
               <div className="flex flex-col">
                 <SectionTitle>{data.recommendedTitle}</SectionTitle>
@@ -183,7 +183,7 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
 
         {/* 4 — Як часто */}
         <section className="mx-auto max-w-[1600px] px-4 sm:px-6 pb-10 sm:pb-16 lg:px-10">
-          <div className="rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm">
+          <div className="rounded-2xl sm:rounded-3xl bg-card p-5 sm:p-8 md:p-12">
             <div className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2">
               <div className="flex flex-col">
                 <SectionTitle>{data.frequencyTitle}</SectionTitle>
@@ -479,7 +479,7 @@ function ExpandableSectionBlock({
 
   return (
     <section className="mx-auto max-w-[1600px] px-4 sm:px-6 py-10 sm:py-16 lg:px-10">
-      <div className="rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm">
+      <div className="rounded-2xl sm:rounded-3xl bg-card p-5 sm:p-8 md:p-12">
         <div className={cn("section-shell", section.image && "grid gap-8 lg:gap-12 lg:grid-cols-2")}>
           <div className="flex flex-col">
             {section.title && (
@@ -586,7 +586,7 @@ function ExpandableIntroSection({
   return (
     <section
       id="intro-section"
-      className="rounded-2xl sm:rounded-3xl border border-border bg-card p-5 sm:p-8 md:p-12 shadow-sm transition-all duration-300 ease-in-out"
+      className="rounded-2xl sm:rounded-3xl bg-card p-5 sm:p-8 md:p-12 transition-all duration-300 ease-in-out"
     >
       <div className="section-shell grid gap-8 lg:gap-12 lg:grid-cols-2">
         <div className="flex flex-col">
