@@ -110,10 +110,10 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                   <button
                     type="button"
                     onClick={() => setRecommendedExpanded(true)}
-                    className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+                    className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent"
                   >
                     ДЕТАЛЬНІШЕ
-                    <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 shrink-0" />
+                    <ChevronDown className="size-4 transition-transform duration-200 shrink-0" />
                   </button>
                 )}
               </div>
@@ -140,10 +140,10 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
               <button
                 type="button"
                 onClick={() => setRecommendedExpanded(false)}
-                className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+                className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent"
               >
                 ЗГОРНУТИ
-                <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 rotate-180 shrink-0" />
+                <ChevronDown className="size-4 transition-transform duration-200 rotate-180 shrink-0" />
               </button>
             )}
           </div>
@@ -199,10 +199,10 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
                   <button
                     type="button"
                     onClick={() => setFrequencyExpanded(true)}
-                    className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+                    className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent"
                   >
                     ДЕТАЛЬНІШЕ
-                    <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 shrink-0" />
+                    <ChevronDown className="size-4 transition-transform duration-200 shrink-0" />
                   </button>
                 )}
               </div>
@@ -229,10 +229,10 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
               <button
                 type="button"
                 onClick={() => setFrequencyExpanded(false)}
-                className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+                className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent"
               >
                 ЗГОРНУТИ
-                <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 rotate-180 shrink-0" />
+                <ChevronDown className="size-4 transition-transform duration-200 rotate-180 shrink-0" />
               </button>
             )}
           </div>
@@ -499,10 +499,10 @@ function ExpandableSectionBlock({
               <button
                 type="button"
                 onClick={() => setOpen(true)}
-                className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+                className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent"
               >
                 ДЕТАЛЬНІШЕ
-                <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 shrink-0" />
+                <ChevronDown className="size-4 transition-transform duration-200 shrink-0" />
               </button>
             )}
           </div>
@@ -527,16 +527,16 @@ function ExpandableSectionBlock({
             {section.expandedText}
           </div>
         )}
-        {section.expandedText && !alwaysOpen && open && (
-          <button
-            type="button"
-            onClick={() => setOpen(false)}
-            className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
-          >
-            ЗГОРНУТИ
-            <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 rotate-180 shrink-0" />
-          </button>
-        )}
+            {section.expandedText && !alwaysOpen && open && (
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent"
+              >
+                ЗГОРНУТИ
+                <ChevronDown className="size-4 transition-transform duration-200 rotate-180 shrink-0" />
+              </button>
+            )}
       </div>
     </section>
   );
@@ -601,12 +601,12 @@ function ExpandableIntroSection({
             <button
               type="button"
               onClick={handleToggle}
-              className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+              className="mt-6 sm:mt-8 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent"
               aria-expanded="false"
               aria-controls="intro-expanded-content"
             >
               ДЕТАЛЬНІШЕ
-              <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 shrink-0" />
+              <ChevronDown className="size-4 transition-transform duration-200 shrink-0" />
             </button>
           )}
         </div>
@@ -640,12 +640,12 @@ function ExpandableIntroSection({
             <button
               type="button"
               onClick={handleToggle}
-              className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs font-semibold tracking-wide text-navy transition-colors hover:bg-accent h-[32px] sm:h-[36px]"
+              className="mt-6 w-fit inline-flex items-center gap-2 rounded-lg bg-secondary px-5 sm:px-6 py-4 sm:py-5 text-xs sm:text-sm font-semibold tracking-wide text-navy transition-colors hover:bg-accent"
               aria-expanded="true"
               aria-controls="intro-expanded-content"
             >
               ЗГОРНУТИ
-              <ChevronDown className="size-3 sm:size-3.5 transition-transform duration-200 rotate-180 shrink-0" />
+              <ChevronDown className="size-4 transition-transform duration-200 rotate-180 shrink-0" />
             </button>
           )}
         </div>
