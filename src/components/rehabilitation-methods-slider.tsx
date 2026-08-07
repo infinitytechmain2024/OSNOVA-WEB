@@ -10,7 +10,6 @@ import {
 import { cn } from "@/lib/utils";
 
 import rehabImg from "@/assets/service-rehab.jpg";
-import checkupImg from "@/assets/service-checkup.jpg";
 import sportsImg from "@/assets/service-sports.jpg";
 import cpetImg from "@/assets/cpet-test.jpg";
 import ergoImg from "@/assets/ergometer.jpg";
@@ -28,9 +27,9 @@ type RehabilitationMethod = {
 const REHABILITATION_METHODS: RehabilitationMethod[] = [
   {
     id: "individual-plan",
-    title: "Індивідуальний план реабілітації",
+    title: "Індивідуальна програма",
     description:
-      "Персональна програма відновлення після травм, операцій і захворювань, складена лікарем ФРМ з урахуванням ваших цілей та стану здоров'я.",
+      "Персональний план відновлення на основі стану пацієнта.",
     image: rehabImg,
     href: "/reabilitatsiia",
   },
@@ -38,7 +37,7 @@ const REHABILITATION_METHODS: RehabilitationMethod[] = [
     id: "physical-therapy",
     title: "Фізична терапія",
     description:
-      "Відновлення рухових функцій і повернення до активного життя під керівництвом досвідчених фізичних терапевтів.",
+      "Вправи для відновлення сили, руху та витривалості.",
     image: ergoImg,
     href: "/vidnovlennia",
   },
@@ -46,7 +45,7 @@ const REHABILITATION_METHODS: RehabilitationMethod[] = [
     id: "hydrokinesiotherapy",
     title: "Гідрокінезіотерапія",
     description:
-      "Водні процедури та відновлювальна гімнастика в басейні для м'якого розвантаження суглобів і хребта.",
+      "Безпечне відновлення рухів за допомогою занять у воді.",
     image: sportsImg,
     href: "/vidnovlennia/hidrokinezioterapiia",
   },
@@ -54,7 +53,7 @@ const REHABILITATION_METHODS: RehabilitationMethod[] = [
     id: "physiotherapy",
     title: "Фізіотерапія",
     description:
-      "Сучасні апаратні методики: електротерапія, лазеротерапія, магнітотерапія та ударно-хвильова терапія.",
+      "Додаткові методи підтримки процесу відновлення.",
     image: cpetImg,
     href: "/vidnovlennia/fizioterapiia",
   },
@@ -62,17 +61,9 @@ const REHABILITATION_METHODS: RehabilitationMethod[] = [
     id: "therapeutic-massage",
     title: "Лікувальний масаж",
     description:
-      "Класичний і апаратний масаж для зняття м'язового напруження, покращення кровообігу та прискорення відновлення.",
+      "Робота з м'язовим станом та покращення якості руху.",
     image: rehabImg,
     href: "/vidnovlennia/likuvalnyi-masazh",
-  },
-  {
-    id: "mineral-water",
-    title: "Оздоровчий бювет",
-    description:
-      "Цілюща мінеральна вода для оздоровлення, підтримки обміну речовин та комплексного відновлення.",
-    image: checkupImg,
-    href: "/infrastruktura",
   },
 ];
 
@@ -159,9 +150,9 @@ function StatsPanel() {
         <div>
           <span className="block text-5xl font-extrabold tracking-tight">5</span>
           <span className="mt-1 block text-sm font-medium leading-snug text-white/70">
-            напрямків
+            методів
             <br />
-            реабілітації
+            відновлення
           </span>
         </div>
 
@@ -184,15 +175,14 @@ function SectionHeader() {
   return (
     <div className="mb-12 text-center md:mb-16">
       <span className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-primary backdrop-blur-md uppercase">
-        Методи реабілітації
+        Методи відновлення
       </span>
       <h2 className="text-3xl font-extrabold leading-[1.15] text-navy md:text-5xl lg:text-6xl">
-        МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ
+        СУЧАСНІ МЕТОДИ ВІДНОВЛЕННЯ
       </h2>
       <div className="mx-auto mt-6 h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green" />
       <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-base">
-        Повернення до активного життя після травм, операцій і захворювань: індивідуальні програми,
-        сучасні методи фізичної терапії та лікарський супровід на кожному етапі відновлення.
+        Ми використовуємо комплексний підхід, поєднуючи різноманітні методи під завдання пацієнта.
       </p>
     </div>
   );
