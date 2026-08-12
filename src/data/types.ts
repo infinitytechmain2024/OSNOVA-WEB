@@ -144,6 +144,7 @@ export type SiteNode = {
   /** Custom page renderer key for hand-built pages (e.g. кардіодіагностика) */
   customPage?:
     | "cardio-diagnostics"
+    | "cardio-rehab"
     | "all-services"
     | "institute-partnership"
     | "mobile-rehab"
