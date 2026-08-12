@@ -94,6 +94,7 @@ const CARDIO_PROGRAMS = [
     shortDescription: "Стартовий формат відновлення з контролем навантаження та самопочуття.",
     duration: "7 днів",
     priceLabel: "21000 грн",
+    isPopular: true,
   },
   {
     title: "Інтенсивна",
@@ -284,10 +285,6 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                 Процес не рухається “за календарем”. Навантаження змінюють після оцінки самопочуття,
                 реакції організму та медичних рекомендацій.
               </p>
-              <div className="mt-6 inline-flex flex-wrap items-center gap-2 rounded-full border border-background/16 bg-background/8 px-4 py-2 text-sm font-semibold text-background/88">
-                <span className="text-brand-green">Формат:</span>
-                <span>стаціонарно або амбулаторно</span>
-              </div>
             </div>
 
             <div className="relative mt-9 grid gap-4 lg:grid-cols-4">
@@ -311,20 +308,10 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
         </section>
 
         <PageSection id="programs" className="py-12 sm:py-20">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-            <SectionHeading
-              title="Програми та вартість"
-              text="Картки нижче показують основні напрями. Остаточний склад програми залежить від стану пацієнта, документів і рекомендацій лікаря."
-            />
-            <button
-              type="button"
-              onClick={() => scrollToId("documents")}
-              className="inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              Надіслати документи
-              <ArrowRight className="size-4" />
-            </button>
-          </div>
+          <SectionHeading
+            title="Програми та вартість"
+            text="Картки нижче показують основні напрями. Остаточний склад програми залежить від стану пацієнта, документів і рекомендацій лікаря."
+          />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-[repeat(4,minmax(0,1fr))_0.82fr]">
             {programCards.map((program) => (
@@ -602,39 +589,94 @@ function ProgramCard({
   program: Pick<
     SiteNode,
     "id" | "title" | "shortDescription" | "duration" | "priceLabel" | "route"
-  >;
+  > & {
+    isPopular?: boolean;
+  };
 }) {
   const duration = program.duration === "За програмою" ? "Індивідуально" : program.duration;
+  const isPopular = Boolean(program.isPopular);
 
   return (
-    <article className="flex min-h-[320px] flex-col rounded-2xl border border-blue-100 bg-white p-6 shadow-sm">
-      <h3 className="text-xl font-bold leading-snug text-navy">{program.title}</h3>
-      {program.shortDescription && (
-        <p className="mt-3 text-sm leading-relaxed text-navy/72">{program.shortDescription}</p>
+    <article
+      className={cn(
+        "relative flex min-h-[320px] flex-col rounded-2xl border p-6 shadow-sm",
+        isPopular
+          ? "border-primary bg-primary text-white shadow-primary/20"
+          : "border-blue-100 bg-white",
       )}
-      <dl className="mt-6 space-y-4 border-t border-border pt-5 text-sm">
+    >
+      {isPopular && (
+        <span className="absolute right-5 top-5 rounded-full bg-white px-3 py-1 text-xs font-bold text-primary shadow-sm">
+          Популярна
+        </span>
+      )}
+      <h3
+        className={cn(
+          "text-xl font-bold leading-snug",
+          isPopular ? "pr-24 text-white" : "text-navy",
+        )}
+      >
+        {program.title}
+      </h3>
+      {program.shortDescription && (
+        <p
+          className={cn(
+            "mt-3 text-sm leading-relaxed",
+            isPopular ? "text-white/82" : "text-navy/72",
+          )}
+        >
+          {program.shortDescription}
+        </p>
+      )}
+      <dl
+        className={cn(
+          "mt-6 space-y-4 border-t pt-5 text-sm",
+          isPopular ? "border-white/22" : "border-border",
+        )}
+      >
         <div>
-          <dt className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
+          <dt
+            className={cn(
+              "text-xs font-bold uppercase tracking-[0.14em]",
+              isPopular ? "text-white/70" : "text-muted-foreground",
+            )}
+          >
             Тривалість
           </dt>
-          <dd className="mt-1 font-semibold text-navy">{duration || "Індивідуально"}</dd>
+          <dd className={cn("mt-1 font-semibold", isPopular ? "text-white" : "text-navy")}>
+            {duration || "Індивідуально"}
+          </dd>
         </div>
         <div>
-          <dt className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
+          <dt
+            className={cn(
+              "text-xs font-bold uppercase tracking-[0.14em]",
+              isPopular ? "text-white/70" : "text-muted-foreground",
+            )}
+          >
             Ціна
           </dt>
-          <dd className="mt-1 text-lg font-extrabold text-primary">
+          <dd
+            className={cn("mt-1 text-lg font-extrabold", isPopular ? "text-white" : "text-primary")}
+          >
             {program.priceLabel || "Уточнюється"}
           </dd>
         </div>
       </dl>
-      <AppLink
-        to={program.route}
-        className="mt-auto inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90"
-      >
-        Детальніше
-        <ArrowRight className="size-4" />
-      </AppLink>
+      <div className="mt-auto pt-8">
+        <AppLink
+          to={program.route}
+          className={cn(
+            "inline-flex w-fit items-center gap-2 rounded-lg px-5 py-3 text-sm font-bold transition-colors",
+            isPopular
+              ? "bg-white text-primary hover:bg-white/90"
+              : "bg-primary text-primary-foreground hover:bg-primary/90",
+          )}
+        >
+          Детальніше
+          <ArrowRight className="size-4" />
+        </AppLink>
+      </div>
     </article>
   );
 }
