@@ -209,9 +209,9 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           <div className="grid gap-8 lg:grid-cols-3">
             {/* Ліворуч: Коли потрібна невідкладна медична допомога */}
             <div className="lg:col-span-1 rounded-xl border-2 border-destructive/30 bg-destructive/10 p-5 sm:p-6 md:p-8 flex flex-col justify-center text-center h-full">
-              <p className="font-bold text-navy text-base sm:text-lg md:text-xl">
+              <h3 className="font-bold text-navy text-base sm:text-lg md:text-xl">
                 {data.emergencyTitle}
-              </p>
+              </h3>
               <p className="mt-3 text-sm sm:text-base text-navy/85 leading-relaxed">
                 {data.emergencyBody}
               </p>
@@ -384,15 +384,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           />
         </section>
 
-        {/* 10 — Об'єднаний блок звернення */}
-        <div id="online-application">
-          <OnlineApplication
-            title="Онлайн-звернення: надішліть документи та обговоріть можливість програми"
-            description="Залиште заявку та коротко повідомте про перенесене захворювання, операцію або втручання. Адміністратор пояснить, які документи потрібно підготувати та як організовується попереднє узгодження подальших кроків."
-          />
-        </div>
-
-        {/* 11 — Поширені питання */}
+        {/* 10 — Поширені питання (FAQ) */}
         {node.faq && node.faq.length > 0 && (
           <section className="mx-auto max-w-[1400px] px-4 sm:px-6 py-16 sm:py-24 lg:px-10">
             <h2 className="text-2xl sm:text-3xl leading-tight font-bold text-navy">
@@ -402,6 +394,14 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
             <FAQAccordion items={node.faq} />
           </section>
         )}
+
+        {/* 11 — Онлайн-звернення */}
+        <div id="online-application">
+          <OnlineApplication
+            title="Онлайн-звернення: надішліть документи та обговоріть можливість програми"
+            description="Залиште заявку та коротко повідомте про перенесене захворювання, операцію або втручання. Адміністратор пояснить, які документи потрібно підготувати та як організовується попереднє узгодження подальших кроків."
+          />
+        </div>
 
         {/* 12 — Інші послуги ОСНОВИ */}
         <OtherServices />
