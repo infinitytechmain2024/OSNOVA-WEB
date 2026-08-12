@@ -28,6 +28,8 @@ interface UploadedFile {
 }
 
 interface OnlineApplicationProps {
+  title?: string;
+  description?: string;
   onSubmit?: (data: {
     name: string;
     phone: string;
@@ -35,7 +37,7 @@ interface OnlineApplicationProps {
   }) => Promise<void>;
 }
 
-export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
+export function OnlineApplication({ title, description, onSubmit }: OnlineApplicationProps) {
   const [files, setFiles] = React.useState<UploadedFile[]>([]);
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");
@@ -232,8 +234,8 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
 
         <div className="mt-5" />
 
-        <h2 className="w-full max-w-[1100px] text-center text-[clamp(34px,5vw,64px)] text-[#0B1F44] font-extrabold leading-[1.05] tracking-[-0.02em] max-md:text-left max-md:text-[clamp(36px,6vw,44px)]">
-          НАДІШЛІТЬ ДОКУМЕНТИ — МИ ОЦІНИМО ВАШ ЗАПИТ
+        <h2 className="w-full max-w-[1100px] text-center text-[clamp(34px,5vw,64px)] text-[#0B1F44] font-extrabold leading-[1.05] tracking-[-0.02em] uppercase max-md:text-left max-md:text-[clamp(36px,6vw,44px)]">
+          {title || "НАДІШЛІТЬ ДОКУМЕНТИ — МИ ОЦІНИМО ВАШ ЗАПИТ"}
         </h2>
 
         <div className="mt-5" />
@@ -243,7 +245,7 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
         <div className="mt-5" />
 
         <p className="max-w-[850px] text-center text-[18px] leading-[1.55] text-[#68758C] max-md:text-left">
-          Завантажте медичні документи онлайн — наші фахівці ознайомляться з ними та запропонують подальші кроки.
+          {description || "Завантажте медичні документи онлайн — наші фахівці ознайомляться з ними та запропонують подальші кроки."}
         </p>
       </div>
 
@@ -266,15 +268,15 @@ export function OnlineApplication({ onSubmit }: OnlineApplicationProps) {
           <StageCard
             number={3}
             icon={Stethoscope}
-            title="Отримайте попередню оцінку"
-            description="Фахівці ознайомляться з документами та визначать подальші кроки."
+            title="Попередній розгляд"
+            description="Фахівці ознайомляться з наданими документами для узгодження подальших кроків."
             reducedMotion={prefersReducedMotion}
           />
           <StageCard
             number={4}
             icon={CalendarCheck}
-            title="Узгодьте подальші дії"
-            description="Адміністратор зв'яжеться з вами, щоб обговорити формат і дату початку."
+            title="Узгодження дій"
+            description="Адміністратор зв'яжеться з вами, щоб обговорити наступні етапи та відповіді на запитання."
             reducedMotion={prefersReducedMotion}
           />
         </div>
