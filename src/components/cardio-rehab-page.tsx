@@ -284,6 +284,10 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                 Процес не рухається “за календарем”. Навантаження змінюють після оцінки самопочуття,
                 реакції організму та медичних рекомендацій.
               </p>
+              <div className="mt-6 inline-flex flex-wrap items-center gap-2 rounded-full border border-background/16 bg-background/8 px-4 py-2 text-sm font-semibold text-background/88">
+                <span className="text-brand-green">Формат:</span>
+                <span>стаціонарно або амбулаторно</span>
+              </div>
             </div>
 
             <div className="relative mt-9 grid gap-4 lg:grid-cols-4">
@@ -357,8 +361,9 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
 function AnchorNav() {
   return (
     <div className="border-b border-border bg-white">
-      <div className="mx-auto max-w-[1600px] overflow-x-auto px-4 sm:px-6 lg:px-10">
-        <nav aria-label="Розділи сторінки" className="flex min-w-max gap-2 py-3 sm:gap-3">
+      <div className="mx-auto flex max-w-[1600px] items-center gap-4 overflow-x-auto px-4 py-3 sm:px-6 lg:px-10">
+        <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить?</p>
+        <nav aria-label="Розділи сторінки" className="flex min-w-max gap-2 sm:gap-3">
           {ANCHORS.map((item) => (
             <a
               key={item.href}
@@ -602,25 +607,19 @@ function ProgramCard({
   const duration = program.duration === "За програмою" ? "Індивідуально" : program.duration;
 
   return (
-    <article className="flex min-h-[260px] flex-col rounded-2xl border border-blue-100 bg-white p-6 shadow-sm">
+    <article className="flex min-h-[320px] flex-col rounded-2xl border border-blue-100 bg-white p-6 shadow-sm">
       <h3 className="text-xl font-bold leading-snug text-navy">{program.title}</h3>
       {program.shortDescription && (
         <p className="mt-3 text-sm leading-relaxed text-navy/72">{program.shortDescription}</p>
       )}
-      <dl className="mt-6 grid grid-cols-2 gap-3 border-t border-border pt-5 text-sm">
-        <div>
-          <dt className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
-            Формат
-          </dt>
-          <dd className="mt-1 font-semibold text-navy">Стаціонарно або амбулаторно</dd>
-        </div>
+      <dl className="mt-6 space-y-4 border-t border-border pt-5 text-sm">
         <div>
           <dt className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
             Тривалість
           </dt>
           <dd className="mt-1 font-semibold text-navy">{duration || "Індивідуально"}</dd>
         </div>
-        <div className="col-span-2">
+        <div>
           <dt className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
             Ціна
           </dt>
@@ -642,7 +641,7 @@ function ProgramCard({
 
 function MilitaryInfoCard() {
   return (
-    <aside className="flex min-h-[220px] flex-col justify-center rounded-2xl border border-brand-green/25 bg-brand-green/10 p-6 shadow-sm xl:self-center">
+    <aside className="flex min-h-[320px] flex-col justify-center rounded-2xl border border-brand-green/25 bg-brand-green/10 p-6 shadow-sm">
       <h3 className="text-lg font-extrabold text-navy">Для військових</h3>
       <p className="mt-3 text-sm leading-relaxed text-navy/72">
         Діють спеціальні умови та знижки на програми відновлення.
@@ -778,7 +777,7 @@ function DocumentsReviewSection() {
           </div>
 
           <form
-            className="mx-auto mt-8 max-w-3xl rounded-xl border border-border bg-soft p-5 sm:p-6"
+            className="mt-8 rounded-xl border border-border bg-soft p-5 sm:p-6"
             onSubmit={(event) => {
               event.preventDefault();
               setSubmitted(true);
