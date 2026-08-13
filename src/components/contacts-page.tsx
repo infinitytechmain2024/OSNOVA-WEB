@@ -215,14 +215,15 @@ export function ContactsPage({ node }: { node: SiteNode }) {
           <PageContainer>
             <div className="mx-auto max-w-3xl text-center">
               <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-primary uppercase">
-                <Sparkles className="size-3.5" /> ФОРМА ТА СОЦІАЛЬНІ МЕРЕЖІ
+                <Sparkles className="size-3.5" /> ФОРМА ТА СПОСОБИ ЗВ'ЯЗКУ
               </span>
-              <h2 className="mt-4 text-2xl font-extrabold sm:text-3xl lg:text-4xl text-navy tracking-tight">
-                Напишіть нам або оберіть соціальну мережу
+              <h2 className="mt-4 text-xl sm:text-2xl lg:text-3xl font-extrabold text-navy tracking-tight">
+                Оберіть зручний спосіб зв'язку
               </h2>
               <p className="mt-3 text-sm sm:text-base text-muted-foreground">
-                Ми на зв'язку щодня. Заповніть форму нижче для швидкого запису або підписуйтеся на наші офіційні канали.
+                Заповніть форму для запису на консультацію або зв'яжіться з адміністратором у зручному месенджері.
               </p>
+              <hr className="my-6 border-border/60" />
             </div>
 
             <div className="mt-12 grid gap-8 lg:gap-10 lg:grid-cols-12 items-stretch">
@@ -322,7 +323,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                     </div>
                     <div>
                       <h3 className="text-base font-bold text-navy">Соціальні мережі</h3>
-                      <p className="text-xs text-muted-foreground">Слідкуйте за новинами та порадами</p>
+                      <p className="text-xs text-muted-foreground">Стежте за ОСНОВОЮ у соціальних мережах</p>
                     </div>
                   </div>
 
