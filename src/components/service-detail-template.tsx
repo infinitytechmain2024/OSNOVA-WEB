@@ -414,31 +414,83 @@ export function ServiceDetailTemplate({ node }: { node: SiteNode }) {
         </section>
 
         {/* 9 — Коли варто пройти обстеження */}
-        <section className="mx-auto max-w-[1400px] px-4 sm:px-6 pb-16 sm:pb-24 lg:px-10">
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-navy md:text-5xl">
-            {data.signsTitle}
-          </h2>
-          <p className="mt-4 sm:mt-8 text-sm sm:text-lg leading-relaxed text-navy/85">
-            {data.signsIntro}
-          </p>
-          <p className="mt-6 sm:mt-8 font-bold text-navy text-sm sm:text-base">
-            {data.signsListIntro}
-          </p>
-          <ul className="mt-4 sm:mt-6 space-y-2.5 sm:space-y-3">
-            {data.signsItems.map((s) => (
-              <li key={s} className="flex gap-3 text-xs sm:text-base text-navy/90">
-                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-muted-foreground" />
-                {s};
-              </li>
-            ))}
-          </ul>
-          <button
-            type="button"
-            onClick={scrollToContact}
-            className="mt-8 sm:mt-10 w-full sm:w-auto rounded-lg bg-primary px-8 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Детальніше
-          </button>
+        <section className="relative overflow-hidden rounded-[32px] bg-[#F5F7FA] px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-20 mx-auto max-w-[1400px]">
+          <div className="overflow-hidden rounded-[24px] bg-white p-6 shadow-sm sm:p-10 lg:p-14">
+            <div className="grid gap-10 lg:grid-cols-[1fr_280px]">
+              <div className="max-w-[760px]">
+                <h2 className="text-[32px] sm:text-[40px] lg:text-[48px] font-extrabold leading-[1.15] text-navy tracking-tight">
+                  {data.signsTitle}
+                </h2>
+                <p className="mt-5 text-sm sm:text-base leading-relaxed sm:leading-[1.7] text-navy/75 max-w-[760px]">
+                  {data.signsIntro}
+                </p>
+
+                <div className="mt-8 flex items-center gap-3">
+                  <div className="h-6 w-0.5 rounded-full bg-primary" />
+                  <span className="text-sm sm:text-base font-bold text-navy">
+                    {data.signsListIntro}
+                  </span>
+                </div>
+
+                <ul className="mt-5 space-y-0">
+                  {data.signsItems.map((s, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-3 py-3 border-b border-slate-100 last:border-0"
+                    >
+                      <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[#E8F0FE]">
+                        <Check className="size-3 stroke-[3] text-primary" />
+                      </span>
+                      <span className="text-sm sm:text-base font-medium text-navy/85 leading-relaxed">
+                        {s}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-7">
+                  <button
+                    type="button"
+                    onClick={scrollToContact}
+                    className="inline-flex items-center gap-2 rounded-xl bg-[#1E3A5F] px-5 py-3 text-sm font-bold text-white shadow-md transition-colors hover:bg-[#1E3A5F]/90 cursor-pointer"
+                  >
+                    <span>Детальніше</span>
+                    <ArrowRight className="size-4" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="relative hidden lg:block">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    viewBox="0 0 200 200"
+                    className="w-48 h-48 text-[#E8F0FE] opacity-60"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="0.5" />
+                    <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="0.5" />
+                    <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="0.5" />
+                    <path
+                      d="M40 100 Q70 60 100 100 T160 100"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      fill="none"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M50 120 Q80 80 110 110 T170 90"
+                      stroke="currentColor"
+                      strokeWidth="0.75"
+                      fill="none"
+                      strokeLinecap="round"
+                      opacity="0.6"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Online Application Block */}
