@@ -291,9 +291,9 @@
       --cooperation-card-size: clamp(11.875rem, 16.95vw, 16.25rem);
       grid-template-areas: "marker copy media cta";
       grid-template-columns:
-        clamp(5.625rem, 9vw, 9rem)
-        minmax(16.25rem, 1.05fr)
-        minmax(11.25rem, 1.1fr)
+        clamp(5.625rem, 9vw, 10rem)
+        minmax(16.25rem, 1.15fr)
+        minmax(11.25rem, 1fr)
         var(--cooperation-card-size);
       height: var(--cooperation-card-size);
     }

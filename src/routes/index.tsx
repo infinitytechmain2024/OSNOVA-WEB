@@ -55,6 +55,8 @@ import ecgImg from "@/assets/ecg-review.jpg";
 import ergoImg from "@/assets/ergometer.jpg";
 import educationTrainingImg from "@/assets/education-training.png";
 import educationConferenceImg from "@/assets/education-conference.png";
+import educationPracticalTrainingImg from "@/assets/education-practical-training-v2.jpg";
+import educationScienceEventImg from "@/assets/education-science-event-v2.jpg";
 import cooperationEventsImg from "@/assets/cooperation/events.jpg";
 import cooperationSocialImg from "@/assets/cooperation/social-projects.jpg";
 import cooperationMobileRehabImg from "@/assets/cooperation/mobile-rehab.jpg";
@@ -324,9 +326,8 @@ const EDUCATION_CARDS = [
     title: "КУРСИ ТА МАЙСТЕР-КЛАСИ",
     text: "Практичні формати для відпрацювання навичок, сучасних методик та клінічних підходів.",
     href: "/kursy",
-    image: educationTrainingImg,
+    image: educationPracticalTrainingImg,
     label: "ПРАКТИЧНЕ НАВЧАННЯ",
-    kicker: "",
     audience: "Для лікарів та фахівців",
     format: "Практичні модулі",
     icon: GraduationCap,
@@ -335,9 +336,8 @@ const EDUCATION_CARDS = [
     title: "НАУКОВІ ПОДІЇ",
     text: "Зустрічі фахівців для обміну досвідом, презентації досліджень і професійного діалогу.",
     href: "/konferentsii",
-    image: educationConferenceImg,
+    image: educationScienceEventImg,
     label: "МІЖНАРОДНИЙ ОБМІН ДОСВІДОМ",
-    kicker: "",
     audience: "Для медичної спільноти",
     format: "Лекції та дискусії",
     icon: BookOpen,
@@ -468,34 +468,32 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
     <AppLink
       to={item.href}
       aria-label={`Детальніше про ${item.title}`}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-slate-200/80 bg-card shadow-lg shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/35 hover:shadow-2xl hover:shadow-slate-900/10"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-blue-100 bg-white shadow-[0_18px_50px_-28px_rgba(15,50,92,0.35)] transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-[0_24px_60px_-30px_rgba(15,50,92,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
     >
-      <div className="relative h-56 w-full overflow-hidden bg-slate-100 sm:h-64 lg:h-72">
+      <div className="relative h-60 w-full overflow-hidden bg-navy-deep sm:h-72 lg:h-80">
         <img
           src={item.image}
           alt={item.title}
           loading="lazy"
           className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-navy-deep/20 to-transparent" />
-        <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
+        <div className="absolute inset-0 bg-navy-deep/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/75 via-navy-deep/20 to-navy-deep/5" />
+        <div className="absolute inset-x-5 bottom-5 flex items-end sm:inset-x-6 sm:bottom-6">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md">
             <Icon className="size-4" />
             {item.label}
           </span>
-          <span className="hidden rounded-full border border-white/20 bg-white/15 px-3 py-1 text-[11px] font-semibold text-white/90 backdrop-blur-md sm:inline-flex">
-            {item.kicker}
-          </span>
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-6 sm:p-7 lg:p-8">
+      <div className="flex flex-1 flex-col bg-white p-6 sm:p-7 lg:p-8">
         <div className="mb-5 flex flex-wrap gap-2.5 text-[11px] font-semibold text-navy/70">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/7 px-3 py-1.5 text-primary">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-primary/[0.07] px-3 py-1.5 text-primary">
             <Users className="size-3.5" />
             {item.audience}
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-green/10 px-3 py-1.5 text-navy">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-green/25 bg-brand-green/10 px-3 py-1.5 text-navy">
             <Calendar className="size-3.5 text-brand-green" />
             {item.format}
           </span>
@@ -508,7 +506,7 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
           <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">{item.text}</p>
         </div>
 
-        <span className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 group-hover:bg-primary/90 group-hover:shadow-md">
+        <span className="mt-8 inline-flex min-w-40 w-fit items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md shadow-primary/20 transition-all duration-300 group-hover:bg-primary/90 group-hover:shadow-lg group-hover:shadow-primary/25">
           Детальніше{" "}
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
         </span>
@@ -1071,16 +1069,16 @@ function Index() {
           </div>
         </section>
 
-        {/* 7. НАВЧАННЯ ТА КОНФЕРЕНЦІЇ */}
-        <section className="py-24 md:py-32 bg-background">
+        {/* 7. ОСВІТА ТА НАУКА */}
+        <section className="bg-white py-24 md:py-32">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader
               centered
-              subtitle="МІЖНАРОДНА МЕДИЧНА НАУКОВА БАЗА"
-              title="ОСВІТА ТА НАУКА"
+              subtitle="ОСВІТА ТА НАУКА"
+              title="МІЖНАРОДНА МЕДИЧНА НАУКОВА БАЗА"
             />
 
-            <div className="mx-auto mt-12 grid max-w-7xl gap-7 md:grid-cols-2 lg:gap-8">
+            <div className="mx-auto mt-12 grid max-w-7xl auto-rows-fr gap-7 md:grid-cols-2 lg:gap-8">
               {EDUCATION_CARDS.map((item) => (
                 <EducationCard key={item.title} item={item} />
               ))}
