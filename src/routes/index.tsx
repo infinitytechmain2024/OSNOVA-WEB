@@ -119,7 +119,7 @@ const DIRECTIONS = [
   {
     icon: Heart,
     title: "КАРДІОЛОГІЯ",
-    text: "Відновлення після серцево-судинних захворювань, операцій та зниження фізичної активності.",
+    text: "Лікування захворювань серця, відновлення після інфаркту та операцій, ЕКГ та CPET-діагностика.",
     image: ecgImg,
     href: "/poslugy/reabilitatsiia/kardioreabilitatsiia",
     badge: "Серцево-судинна система",
@@ -127,40 +127,56 @@ const DIRECTIONS = [
   {
     icon: Dumbbell,
     title: "ОРТОПЕДІЯ ТА ТРАВМАТОЛОГІЯ",
-    text: "Реабілітація після травм, операцій, переломів та проблем із суглобами.",
+    text: "Відновлення після травм, переломів, хірургічних втручань на суглобах та ендопротезування.",
     image: rehabImg,
     href: "/poslugy/reabilitatsiia/ortopedichna-reabilitatsiia",
     badge: "Суглоби та зв'язки",
   },
   {
-    icon: Brain,
-    title: "НЕВРОЛОГІЯ",
-    text: "Відновлення після інсультів та захворювань нервової системи.",
-    image: cpetImg,
-    href: "/poslugy/reabilitatsiia/nevrolohichna-reabilitatsiia",
-    badge: "Нервова система",
-  },
-  {
     icon: Flame,
-    title: "ЗАХВОРЮВАННЯ ХРЕБТА",
-    text: "Допомога при болях, обмеженні руху та порушеннях функції хребта.",
+    title: "ВЕРТЕБРОЛОГІЯ (ЗАХВОРЮВАННЯ ХРЕБТА)",
+    text: "Лікування та реабілітація захворювань хребта, гриж, остеохондрозу та відновлення біомеханіки спини.",
     image: ergoImg,
     href: "/poslugy/reabilitatsiia/vertebrolohichna-reabilitatsiia",
     badge: "Здоров'я хребта",
   },
   {
+    icon: Stethoscope,
+    title: "РЕВМАТОЛОГІЯ",
+    text: "Комплексна терапія артриту, артрозу, системних захворювань сполучної тканини зі збереженням рухливості.",
+    image: checkupImg,
+    href: "/poslugy/reabilitatsiia/revmatolohichna-reabilitatsiia",
+    badge: "Суглоби та сполучна тканина",
+  },
+  {
+    icon: Brain,
+    title: "НЕВРОЛОГІЯ",
+    text: "Відновлення після інсультів, нейропатій, уражень центральної та периферичної нервової системи.",
+    image: cpetImg,
+    href: "/poslugy/reabilitatsiia/nevrolohichna-reabilitatsiia",
+    badge: "Нервова система",
+  },
+  {
+    icon: Users,
+    title: "ПСИХОЛОГІЯ ТА ПСИХІЧНЕ (МЕНТАЛЬНЕ) ЗДОРОВ'Я",
+    text: "Психологічна підтримка, зняття стресу, відновлення ментального здоров'я та адаптація після навантажень.",
+    image: educationTrainingImg,
+    href: "/poslugy/reabilitatsiia/psykholohichna-pidtrymka",
+    badge: "Психологія",
+  },
+  {
     icon: Trophy,
     title: "СПОРТИВНА МЕДИЦИНА",
-    text: "Діагностика можливостей організму та відновлення після навантажень.",
+    text: "Підвищення фізичних показників, спортивна адаптація та швидке реабілітаційне відновлення фізичної...",
     image: sportsImg,
     href: "/poslugy/vidnovlennia",
     badge: "Спорт & Адаптація",
   },
   {
     icon: Zap,
-    title: "ПРОФІЛАКТИЧНА РЕАБІЛІТАЦІЯ",
-    text: "Оцінка здоров'я та профілактика зниження фізичної активності.",
-    image: checkupImg,
+    title: "ПРОФІЛАКТИЧНА РЕАБІЛІТАЦІЯ (ПРЕВЕНТИВНА)",
+    text: "Виявлення прихованих медичних ризиків до появи симптомів, превентивні програми здоров'я та...",
+    image: educationConferenceImg,
     href: "/poslugy/check-up",
     badge: "Раннє виявлення ризиків",
   },
@@ -169,21 +185,21 @@ const DIRECTIONS = [
 // Переваги — Featured (з зображеннями)
 const FEATURED_FEATURES = [
   {
-    icon: ClipboardList,
-    title: "Індивідуальний підхід",
-    text: "Кожен пацієнт отримує програму, створену з урахуванням його стану та цілей.",
+    icon: Stethoscope,
+    title: "Провідні методики",
+    text: "Починаємо фізичну терапію, апаратні методики, гідрокінезотерапію та інші підходи у персональній програмі відновлення.",
     image: rehabImg,
   },
   {
-    icon: Stethoscope,
-    title: "Медичний контроль",
-    text: "Усі етапи відновлення проходять під наглядом спеціалістів.",
+    icon: Microscope,
+    title: "Наукова база",
+    text: "Клінічна практика, навчання та розвиток методик на основі фахової медичної експертизи.",
     image: ecgImg,
   },
   {
-    icon: Microscope,
-    title: "Сучасна діагностика",
-    text: "Рішення приймаються на основі оцінки стану організму.",
+    icon: ClipboardList,
+    title: "Середовище Карпат",
+    text: "Чисте повітря, спокійна атмосфера та природне оточення, що підтримують процес відновлення.",
     image: cpetImg,
   },
 ];
@@ -191,14 +207,34 @@ const FEATURED_FEATURES = [
 // Переваги — Secondary (з іконками)
 const SECONDARY_FEATURES = [
   {
-    icon: ShieldCheck,
-    title: "Контроль результату",
-    text: "Відстежуємо динаміку та коригуємо програму при необхідності.",
+    icon: ClipboardList,
+    title: "Індивідуальні програми",
+    text: "Програма реабілітації формується під ваші потреби та стан.",
   },
   {
     icon: Network,
     title: "Комплексний підхід",
-    text: "Діагностика, консультації та відновлення об'єднані в одну систему.",
+    text: "Об'єднуємо різні напрямки роботи для максимального результату.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Досвідчена команда",
+    text: "Лікарі та терапевти з підтвердженою кваліфікацією та практикою.",
+  },
+  {
+    icon: Stethoscope,
+    title: "Професійна діагностика",
+    text: "Сучасні методи оцінки для точного плану відновлення.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Комфорт і конфіденційність",
+    text: "Спокійна атмосфера, повага до вас і вашого особистого простору.",
+  },
+  {
+    icon: Microscope,
+    title: "Мінеральні води",
+    text: "Природний ресурс, що доповнює програму оздоровлення.",
   },
 ];
 
@@ -478,31 +514,28 @@ function BlogCarousel() {
   const perPage = 2;
   const totalPages = Math.ceil(articles.length / perPage);
 
-  const next = () => setCurrent((p) => Math.min(p + 1, totalPages - 1));
-  const prev = () => setCurrent((p) => Math.max(p - 1, 0));
-
   const visible = articles.slice(current * perPage, current * perPage + perPage);
 
   return (
     <div>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
         {/* Left Navy Hero Card */}
-        <div className="flex flex-col justify-between rounded-[24px] bg-[#0A192F] p-8 lg:p-10 text-white shadow-xl min-h-[480px]">
+        <div className="flex flex-col justify-between rounded-[24px] bg-[#07152D] p-8 lg:p-10 text-white shadow-sm min-h-[480px]">
           <div>
-            <span className="inline-block rounded-full border border-white/30 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-white/90">
+            <span className="inline-block rounded-full border border-white/25 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-white/90">
               НОВИНИ ТА СТАТТІ
             </span>
             <h2 className="mt-8 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase">
               БЛОГ
             </h2>
-            <div className="mt-4 mb-8 h-1.5 w-20 rounded-full bg-gradient-to-r from-sky-400 via-teal-400 to-brand-green" />
+            <div className="mt-4 mb-8 h-1.5 w-20 rounded-full bg-gradient-to-r from-sky-400 via-emerald-400 to-[#22C55E]" />
             <p className="text-sm md:text-base leading-relaxed text-white/80 max-w-xs">
               Корисні поради, новини центру та експертні матеріали про реабілітацію, здоров'я та якість життя.
             </p>
           </div>
           <AppLink
             to="/novyny"
-            className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-brand-green px-6 py-4 text-base font-bold text-white shadow-md transition-all hover:bg-brand-green/90 hover:scale-[1.02]"
+            className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#22C55E] px-6 py-4 text-base font-bold text-white shadow-sm transition-all hover:bg-[#16A34A] hover:scale-[1.01]"
           >
             Усі статті <ArrowRight className="size-5" />
           </AppLink>
@@ -524,7 +557,7 @@ function BlogCarousel() {
           return (
             <article
               key={article.id}
-              className="group flex flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl min-h-[480px]"
+              className="group flex flex-col justify-between overflow-hidden rounded-[24px] border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-md min-h-[480px]"
             >
               <div>
                 <AppLink to={article.href} className="relative block h-56 w-full overflow-hidden bg-slate-100 rounded-t-[24px]">
@@ -534,20 +567,20 @@ function BlogCarousel() {
                     loading="lazy"
                     className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <span className="absolute top-4 left-4 rounded-full bg-navy/90 px-3.5 py-1 text-xs font-bold text-white shadow-sm backdrop-blur-md">
+                  <span className="absolute top-4 left-4 rounded-full bg-[#07152D] px-3.5 py-1 text-xs font-bold text-white shadow-sm">
                     {article.date}
                   </span>
                 </AppLink>
 
                 <div className="p-6 md:p-7">
-                  <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-primary">
+                  <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#1E64B4]">
                     <CategoryIcon className="size-4" />
                     <span>{article.category}</span>
                     <span className="text-slate-300 font-normal">|</span>
                     <span className="text-slate-400">{article.readTime}</span>
                   </div>
 
-                  <h3 className="text-xl font-bold leading-snug text-navy transition-colors group-hover:text-primary line-clamp-2">
+                  <h3 className="text-xl font-bold leading-snug text-[#07152D] transition-colors group-hover:text-[#1E64B4] line-clamp-2">
                     <AppLink to={article.href}>{article.title}</AppLink>
                   </h3>
 
@@ -560,7 +593,7 @@ function BlogCarousel() {
               <div className="p-6 pt-0 md:p-7 md:pt-0">
                 <AppLink
                   to={article.href}
-                  className="inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-navy"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#1E64B4] transition-colors hover:text-[#07152D]"
                 >
                   Читати далі <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </AppLink>
@@ -570,40 +603,20 @@ function BlogCarousel() {
         })}
       </div>
 
-      {/* Pagination dots & navigation */}
-      <div className="mt-10 flex flex-col items-center gap-6">
-        <div className="flex items-center justify-center gap-2.5">
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                i === current
-                  ? "w-8 bg-primary shadow-sm"
-                  : "w-2.5 bg-slate-300 hover:bg-slate-400"
-              }`}
-              aria-label={`Сторінка ${i + 1}`}
-            />
-          ))}
-        </div>
-        <div className="flex items-center gap-3">
+      {/* Pagination dots */}
+      <div className="mt-10 flex items-center justify-center gap-2.5">
+        {Array.from({ length: totalPages }).map((_, i) => (
           <button
-            onClick={prev}
-            disabled={current === 0}
-            className="flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-all hover:bg-primary hover:text-white hover:border-primary disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-navy disabled:hover:border-slate-200"
-            aria-label="Попередня сторінка"
-          >
-            <ChevronLeft className="size-4" />
-          </button>
-          <button
-            onClick={next}
-            disabled={current === totalPages - 1}
-            className="flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-all hover:bg-primary hover:text-white hover:border-primary disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-navy disabled:hover:border-slate-200"
-            aria-label="Наступна сторінка"
-          >
-            <ChevronRight className="size-4" />
-          </button>
-        </div>
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`size-2.5 rounded-full transition-all duration-300 ${
+              i === current
+                ? "bg-[#1E64B4] scale-110"
+                : "bg-slate-300 hover:bg-slate-400"
+            }`}
+            aria-label={`Сторінка ${i + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
@@ -862,7 +875,7 @@ function Index() {
         {/* 4. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
         <section className="bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader centered subtitle="НАПРЯМИ" title="ОБЕРІТЬ НАПРЯМ ВІДНОВЛЕННЯ" />
+            <SectionHeader centered subtitle="НАПРЯМИ" title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ" />
 
             <div className="mt-12 hidden gap-7 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {DIRECTIONS.map((direction, index) => (
@@ -924,7 +937,7 @@ function Index() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-navy tracking-tight leading-tight mb-4">
                 ЧОМУ ОБИРАЮТЬ
                 <br />
-                <span className="text-navy">«СНОВА РЕАБІЛІТАЦІЯ»</span>
+                <span className="text-navy">«ОСНОВА РЕАБІЛІТАЦІЯ»</span>
               </h2>
               <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-emerald-400 to-primary" />
               <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
