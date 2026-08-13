@@ -1,4 +1,4 @@
-import { ArrowRight, Phone, Send, Info, FileText } from "lucide-react";
+import { ArrowRight, Phone, Send, CheckCircle2 } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { AppLink } from "@/components/app-link";
@@ -23,113 +23,57 @@ import partnerHeartLogo from "@/assets/partners/partner-heart.svg";
 import partnerIfnmuLogo from "@/assets/partners/partner-ifnmu.png";
 import partnerSytenkoLogo from "@/assets/partners/partner-sytenko.svg";
 
-const PROCESS_STEPS = [
-  {
-    number: "01",
-    title: "Попередній запит",
-    text: "Пацієнт описує ситуацію або надсилає наявні медичні документи.",
-  },
-  {
-    number: "02",
-    title: "Консультація та оцінка",
-    text: "Лікар і фахівці визначають стан, обмеження, цілі та доцільний формат роботи.",
-  },
-  {
-    number: "03",
-    title: "Програма відновлення",
-    text: "Формується персональний план із потрібних методів, навантаження та графіка.",
-  },
-  {
-    number: "04",
-    title: "Робота й контроль динаміки",
-    text: "Команда супроводжує процес і за потреби коригує програму.",
-  },
-  {
-    number: "05",
-    title: "Рекомендації далі",
-    text: "Пацієнт отримує зрозумілі подальші кроки для активності, профілактики або продовження відновлення.",
-  },
+const PROFILES = [
+  "Ортопедія та травматологія",
+  "Кардіологія",
+  "Ревматологія",
+  "Вертебрологія",
+  "Неврологія",
+  "Спортивна медицина",
+  "Психологія ментального здоров’я",
 ];
 
-const DIRECTIONS = [
+const METHODS = [
   {
-    title: "Реабілітація",
-    text: "Повернення руху, витривалості та самостійності.",
-    image: therapySessionImg,
-    href: "/poslugy/reabilitatsiia",
-  },
-  {
-    title: "Функціональна діагностика",
-    text: "Об’єктивна оцінка стану й реакції організму на навантаження.",
-    image: diagnosticsSessionImg,
-    href: "/poslugy/diahnostyka",
-  },
-  {
-    title: "Відновлювальні методи",
-    text: "Допоміжні методи для комплексного відновлення.",
-    image: functionalTrainingImg,
-    href: "/poslugy/vidnovlennia",
-  },
-  {
-    title: "Спортивна медицина",
-    text: "Оцінка готовності до навантажень і безпечне повернення до тренувань.",
-    image: hurEquipmentImg,
-    href: "/poslugy/vidnovlennia/funktsionalne-trenuvannia",
-  },
-  {
-    title: "Профілактика та чек-апи",
-    text: "Комплексна перевірка стану здоров’я з висновком лікаря.",
-    image: consultationImg,
-    href: "/poslugy/check-up",
-  },
-];
-
-const TEAM_ROLES = [
-  {
-    title: "Лікар",
-    text: "Визначає медичну тактику та безпечні межі навантаження.",
-  },
-  {
-    title: "Фізичний терапевт",
-    text: "Працює з рухом, витривалістю, силою та поверненням до повсякденної активності.",
-  },
-  {
-    title: "Профільні спеціалісти",
-    text: "Підключаються відповідно до стану та цілей пацієнта.",
-  },
-];
-
-const SPACE_CARDS = [
-  {
-    title: "Кабінети діагностики",
-    text: "Допомагають оцінити стан до початку програми.",
-    image: diagnosticsSessionImg,
-    className: "md:col-span-1 lg:col-span-7",
-  },
-  {
-    title: "Зали для фізичної терапії",
-    text: "Простір для індивідуальних занять і роботи з рухом.",
+    title: "Фізіотерапія та апаратні методи",
+    text: "Магнітотерапія, ударно-хвильова терапія, високопотужний лазер, електростимуляція, пресотерапія та лімфодренаж. Ці методи зменшують біль, знімають набряк, покращують мікроциркуляцію та прискорюють процеси загоєння.",
     image: therapyHallImg,
-    className: "md:col-span-1 lg:col-span-5",
   },
   {
-    title: "Обладнання HUR",
-    text: "Дає змогу точно дозувати та контролювати силове навантаження.",
-    image: hurEquipmentImg,
-    className: "md:col-span-1 lg:col-span-4",
-  },
-  {
-    title: "Басейн та гідрокінезіотерапія",
-    text: "Басейн допомагає безпечніше починати рух при обмеженні навантаження на суглоби.",
+    title: "Гідрокінезіотерапія та бальнеологія",
+    text: "Заняття у воді та використання водних процедур дозволяють безпечно відновлювати рух при обмеженому навантаженні на суглоби й хребет. Вода зменшує вагу тіла, знижує біль і дає можливість раніше починати активну роботу.",
     image: poolImg,
-    className: "md:col-span-1 lg:col-span-8",
   },
   {
-    title: "Зони проживання / відпочинку",
-    text: "Комфортні умови для відновлення в стаціонарному форматі.",
-    image: carpathiansLocationImg,
-    className: "md:col-span-2 lg:col-span-12",
+    title: "Механотерапія та функціональне тренування",
+    text: "Робота на сучасному обладнанні HUR з точним дозуванням навантаження, підвісні системи Levitas і Redcord, нейром’язове тренування на системах Witty SEM Pro. Ці методи дозволяють контрольовано відновлювати силу, витривалість, баланс і координацію.",
+    image: hurEquipmentImg,
   },
+  {
+    title: "Лікувальна фізкультура, пілатес і TRX",
+    text: "Індивідуальні та групові заняття, спрямовані на відновлення амплітуди рухів, зміцнення м’язового корсета та повернення до повсякденної активності.",
+    image: functionalTrainingImg,
+  },
+  {
+    title: "Масаж і мануальні техніки",
+    text: "Лікувальний, лімфодренажний та інші види масажу, які доповнюють основну програму, знімають напругу та покращують кровообіг.",
+    image: therapySessionImg,
+  },
+  {
+    title: "Додаткові підтримуючі методи",
+    text: "Капельниці (інфузійна терапія), ін’єкційні методики та інші призначення лікаря за показаннями. Вони використовуються для корекції дефіцитів, зменшення запалення та підтримки загального стану організму.",
+    image: diagnosticsSessionImg,
+  }
+];
+
+const EQUIPMENT = [
+  "Системи силового тренування HUR",
+  "Zimmer EmFieldPro, Enraf-Nonius Endomed 484",
+  "EMS DolorClast High Power Laser, Intelect RPW",
+  "BTL-6000 Lymphastim",
+  "Підвісні системи Levitas і Redcord",
+  "Кардіологічне обладнання (ЕКГ, холтери, велоергометр, тредміл, MetaLyzer 3B)",
+  "Апарати для нейром’язового тестування та функціональної діагностики",
 ];
 
 const PARTNERS = [
@@ -152,40 +96,6 @@ const PARTNERS = [
     name: "Асоціація спортивної медицини України",
     logo: partnerAsmuLogo,
     href: "https://asmu.com.ua/",
-  },
-];
-
-const SUITABILITY = [
-  {
-    title: "Після захворювання, операції або травми",
-    text: "Коли потрібно поступово повернути рух, витривалість і самостійність.",
-  },
-  {
-    title: "Коли активність стала обмеженою",
-    text: "Коли біль, слабкість, скутість або зниження витривалості заважають у повсякденному житті.",
-  },
-  {
-    title: "Для безпечного повернення до навантажень",
-    text: "Коли потрібна оцінка стану та зрозумілий план фізичної активності.",
-  },
-];
-
-const PATIENT_CASES = [
-  {
-    title: "Відновлення після травми суглоба",
-    start: "Через тривале обмеження руху після травми виникла слабкість і невпевненість у нозі.",
-    goal: "Відновити амплітуду, силу та здатність безпечно спиратися на ногу під час ходьби.",
-    process:
-      "Оцінка амплітуди та болю, поступова робота з фізичним терапевтом для відновлення сили, включення вправ на баланс.",
-    next: "Пацієнт отримав домашню програму вправ для підтримання результату.",
-  },
-  {
-    title: "Кардіологічна реабілітація після операції",
-    start: "Невпевненість щодо допустимих навантажень після оперативного втручання.",
-    goal: "Безпечно повернути витривалість і підвищити рівень щоденної активності.",
-    process:
-      "Медичний огляд, функціональне тестування під наглядом, аеробні тренування з контролем пульсу та тиску.",
-    next: "Визначено безпечний пульсовий коридор, надані рекомендації щодо тривалості прогулянок.",
   },
 ];
 
@@ -276,11 +186,10 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                   ОСНОВА РЕАБІЛІТАЦІЯ
                 </p>
                 <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.08] text-navy sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]">
-                  ОСНОВА Реабілітація — медичний центр відновлення в Буковелі
+                  ОСНОВА Реабілітація — сучасний медичний центр відновлення в Буковелі
                 </h1>
                 <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg lg:text-xl">
-                  Ми поєднуємо медичну оцінку, функціональну діагностику та персональну програму
-                  відновлення, щоб пацієнт розумів свій стан і наступні кроки.
+                  ОСНОВА Реабілітація — це сучасний науково-медичний центр у серці Карпат (ТРК Буковель, с. Поляниця, Івано-Франківська область). Центр спеціалізується на комплексному відновленні здоров’я та працює за чотирма ключовими напрямками: реабілітація, оздоровлення, профілактика та діагностика.
                 </p>
                 <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
                   <button
@@ -331,7 +240,7 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
           </Container>
         </div>
 
-        {/* 2. ВІДНОВЛЕННЯ ПОЧИНАЄТЬСЯ */}
+        {/* 2. ГОЛОВНИЙ ПІДХІД */}
         <section className="py-16 sm:py-24 lg:py-28" aria-labelledby="state-understanding-title">
           <Container>
             <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
@@ -340,13 +249,20 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                   id="state-understanding-title"
                   className="mt-4 text-3xl font-extrabold leading-[1.14] text-navy sm:text-4xl lg:text-5xl"
                 >
-                  Відновлення починається з розуміння вашого стану
+                  Головний підхід — персональна програма
                 </h2>
                 <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
-                  ОСНОВА не формує програму за шаблоном і не пропонує випадковий набір процедур.
-                  Спочатку команда визначає медичні та функціональні завдання пацієнта, після чого
-                  формує послідовний план роботи й контролює динаміку.
+                  ОСНОВА не пропонує випадковий набір процедур, а формує персональну програму, яка починається з медичної та функціональної оцінки. Команда визначає стан пацієнта, його обмеження й цілі, формує послідовний план і контролює динаміку на кожному етапі. Усе необхідне — консультації, діагностика, фізична терапія та відновлювальні методи — зібрано в одному процесі.
                 </p>
+                <div className="mt-8">
+                  <button
+                    type="button"
+                    onClick={() => openModal("Обговорити свій випадок")}
+                    className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 sm:w-auto"
+                  >
+                    Обговорити свій випадок
+                  </button>
+                </div>
               </div>
               <div className="overflow-hidden rounded-[28px] shadow-xl shadow-slate-900/10">
                 <img
@@ -362,64 +278,50 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
           </Container>
         </section>
 
-        {/* 3. ЯК ПРАЦЮЄ ОСНОВА */}
+        {/* 3. НАПРЯМКИ РОБОТИ ТА ПРОФІЛІ */}
         <section
           className="border-y border-slate-200/70 bg-soft-blue py-16 sm:py-24 lg:py-28"
-          aria-labelledby="process-title"
+          aria-labelledby="profiles-title"
         >
           <Container>
-            <SectionIntro title="Від першого звернення до наступного кроку" titleId="process-title" />
+            <SectionIntro
+              title="Основні напрямки роботи"
+              text="Центр допомагає пацієнтам після травм, операцій, інсультів, а також людям із хронічними захворюваннями опорно-рухового апарату, нервової та серцево-судинної систем."
+              titleId="profiles-title"
+            />
 
-            <ol className="relative mt-12 grid gap-8 lg:grid-cols-5 lg:gap-5">
-              <div
-                className="absolute bottom-7 left-[1.2rem] top-7 w-px bg-primary/25 lg:hidden"
-                aria-hidden
-              />
-              <div
-                className="absolute left-[8%] right-[8%] top-6 hidden h-px bg-primary/25 lg:block"
-                aria-hidden
-              />
-              {PROCESS_STEPS.map((step) => (
-                <li key={step.number} className="relative grid grid-cols-[3rem_1fr] gap-4 lg:block">
-                  <span className="relative z-10 flex size-12 items-center justify-center rounded-full border-4 border-soft-blue bg-primary text-xs font-extrabold text-white shadow-sm lg:mx-auto">
-                    {step.number}
-                  </span>
-                  <div className="pt-1 lg:pt-6 lg:text-center">
-                    <h3 className="text-lg font-extrabold leading-snug text-navy">{step.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-600">{step.text}</p>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {PROFILES.map((profile, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm transition hover:shadow-md"
+                >
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <CheckCircle2 className="size-5" />
                   </div>
-                </li>
+                  <span className="text-sm font-bold text-navy">{profile}</span>
+                </div>
               ))}
-            </ol>
-
-            <div className="mt-12 lg:text-center">
-              <button
-                type="button"
-                onClick={() => openModal("Обговорити свій випадок")}
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 sm:w-auto"
-              >
-                Обговорити свій випадок
-              </button>
             </div>
           </Container>
         </section>
 
-        {/* 4. ОДИН ЦЕНТР */}
-        <section className="py-16 sm:py-24 lg:py-28" aria-labelledby="connected-care-title">
+        {/* 4. МЕТОДИ ВІДНОВЛЕННЯ */}
+        <section className="py-16 sm:py-24 lg:py-28" aria-labelledby="methods-title">
           <Container>
             <SectionIntro
-              title="Усе необхідне для відновлення — в одному процесі"
-              text="Пацієнту не потрібно самостійно поєднувати консультації, діагностику, фізичну терапію та відновлювальні методи в різних місцях. ОСНОВА об’єднує їх навколо однієї мети."
-              titleId="connected-care-title"
+              title="Методи відновлення"
+              text="ОСНОВА застосовує широкий спектр сучасних і доведених методів, які підбираються індивідуально. Усі методи застосовуються під контролем лікаря та фізичного терапевта з постійним коригуванням програми."
+              titleId="methods-title"
             />
 
-            <div className="mt-12 grid gap-5 md:grid-cols-3 xl:grid-cols-5">
-              {DIRECTIONS.map((item) => (
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {METHODS.map((item) => (
                 <article
                   key={item.title}
                   className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md shadow-slate-900/5 transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl"
                 >
-                  <div className="aspect-[4/3] overflow-hidden bg-slate-100">
+                  <div className="aspect-[16/10] overflow-hidden bg-slate-100">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -427,17 +329,11 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                       className="size-full object-cover transition duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <div className="flex flex-1 flex-col p-5">
+                  <div className="flex flex-1 flex-col p-6">
                     <h3 className="text-lg font-extrabold leading-snug text-navy">{item.title}</h3>
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
                       {item.text}
                     </p>
-                    <AppLink
-                      to={item.href}
-                      className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary transition hover:text-navy"
-                    >
-                      Переглянути <ArrowRight className="size-4" />
-                    </AppLink>
                   </div>
                 </article>
               ))}
@@ -445,76 +341,80 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
           </Container>
         </section>
 
-        {/* 5. КОМАНДА */}
+        {/* 5. ОБЛАДНАННЯ ТА ДІАГНОСТИКА */}
         <section
           className="border-y border-slate-200/70 bg-slate-50/80 py-16 sm:py-24 lg:py-28"
-          aria-labelledby="team-title"
+          aria-labelledby="equipment-title"
         >
           <Container>
-            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+            <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
               <div>
                 <SectionIntro
-                  title="Не один спеціаліст, а узгоджена робота команди"
-                  text="Програму формують і супроводжують фахівці різних напрямів. Кожен відповідає за свою частину процесу, але всі працюють із єдиною метою пацієнта."
-                  titleId="team-title"
+                  title="Сучасне обладнання"
+                  text="Центр оснащений професійним обладнанням європейського та світового рівня. Це дозволяє не лише проводити ефективну терапію, а й точно оцінювати стан пацієнта до, під час і після програми."
+                  titleId="equipment-title"
                 />
+                <ul className="mt-8 space-y-4">
+                  {EQUIPMENT.map((eq, i) => (
+                    <li key={i} className="flex items-start gap-3 text-slate-700">
+                      <div className="mt-1 size-2 rounded-full bg-brand-green shrink-0" />
+                      <span className="text-sm font-semibold">{eq}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <SectionIntro
+                  title="Діагностика"
+                  text="До початку будь-якої програми проводиться комплексна оцінка: КТ, МРТ, УЗД, рентген, лабораторія ходи, кардіопульмональний тест, холтерівське моніторування та нейром’язове тестування."
+                  titleId="diagnostic-title"
+                />
+                <p className="mt-5 text-base leading-relaxed text-slate-600">
+                  Результати дають об’єктивну картину і стають основою для персонального плану.
+                </p>
+                
+                <div className="mt-10 overflow-hidden rounded-[24px] shadow-lg">
+                  <img
+                    src={diagnosticsSessionImg}
+                    alt="Діагностика"
+                    width={800}
+                    height={600}
+                    loading="lazy"
+                    className="aspect-[4/3] size-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* 6. ПРОФІЛАКТИКА */}
+        <section className="py-16 sm:py-24 lg:py-28" aria-labelledby="prevention-title">
+          <Container>
+            <div className="rounded-[32px] bg-brand-green p-8 sm:p-12 lg:p-16">
+              <div className="max-w-4xl">
+                <h2 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+                  Профілактична медицина
+                </h2>
+                <p className="mt-6 text-base leading-relaxed text-white/90 sm:text-lg">
+                  Окремий важливий напрямок центру — профілактика. ОСНОВА пропонує чек-апи та профілактичні програми, спрямовані на раннє виявлення ризиків і підтримку здоров’я.
+                </p>
+                <p className="mt-4 text-base leading-relaxed text-white/90 sm:text-lg">
+                  Це особливо актуально для людей із підвищеним ризиком серцево-судинних захворювань, проблемами опорно-рухового апарату, а також для тих, хто хоче безпечно повертатися до фізичних навантажень або підтримувати активний спосіб життя. Профілактичні програми включають функціональну діагностику, оцінку витривалості, рекомендації щодо навантажень і спостереження динаміки.
+                </p>
                 <AppLink
-                  to="/komanda"
-                  className="mt-8 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-navy px-6 py-3 text-sm font-bold text-white transition hover:bg-primary sm:w-auto"
+                  to="/poslugy/check-up"
+                  className="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-brand-green shadow-md transition hover:-translate-y-0.5 hover:bg-white/90 sm:w-auto"
                 >
-                  Познайомитися з командою <ArrowRight className="size-4" />
+                  Дізнатися більше про чек-апи
                 </AppLink>
               </div>
-
-              <div className="grid gap-5 md:grid-cols-3">
-                {TEAM_ROLES.map((role) => (
-                  <article
-                    key={role.title}
-                    className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm sm:p-7"
-                  >
-                    <h3 className="mt-2 text-xl font-extrabold text-navy">{role.title}</h3>
-                    <p className="mt-4 text-sm leading-relaxed text-slate-600">{role.text}</p>
-                  </article>
-                ))}
-              </div>
             </div>
           </Container>
         </section>
 
-        {/* 6. ПРОСТІР ДЛЯ ВІДНОВЛЕННЯ */}
-        <section className="py-16 sm:py-24 lg:py-28" aria-labelledby="space-title">
-          <Container>
-            <SectionIntro
-              title="Простір, де програма переходить у щоденну практику"
-              titleId="space-title"
-            />
-
-            <div className="mt-12 grid auto-rows-[minmax(280px,auto)] gap-5 md:grid-cols-2 lg:grid-cols-12">
-              {SPACE_CARDS.map((item) => (
-                <article
-                  key={item.title}
-                  className={`group relative min-h-[300px] overflow-hidden rounded-[26px] bg-navy-deep shadow-lg shadow-slate-900/10 ${item.className}`}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                    className="absolute inset-0 size-full object-cover transition duration-700 group-hover:scale-[1.035]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/25 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-                    <h3 className="text-xl font-extrabold text-white sm:text-2xl">{item.title}</h3>
-                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base">
-                      {item.text}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </Container>
-        </section>
-
-        {/* 7. ОСВІТА ТА НАУКА */}
+        {/* 7. НАУКА ТА ОСВІТА */}
         <section
           className="border-y border-slate-200/70 bg-soft-blue py-16 sm:py-24 lg:py-28"
           aria-labelledby="education-title"
@@ -524,8 +424,8 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
               <div>
                 <SectionIntro
                   eyebrow="ОСВІТА ТА НАУКА"
-                  title="Практика, що розвивається разом із професійною спільнотою"
-                  text="ОСНОВА поєднує практичну роботу з навчанням, професійним обміном і співпрацею з медичними та освітніми партнерами."
+                  title="Наукова та освітня діяльність"
+                  text="ОСНОВА є клінічною базою провідних установ України. Центр бере участь у клінічних дослідженнях (зокрема EUROASPIRE VI) і проводить науково-практичні конференції. Це забезпечує постійне впровадження актуальних протоколів і високий професійний рівень команди."
                   titleId="education-title"
                 />
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -534,12 +434,6 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                     className="inline-flex min-h-12 items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition hover:bg-primary/90"
                   >
                     Навчання для фахівців
-                  </AppLink>
-                  <AppLink
-                    to="/iventy"
-                    className="inline-flex min-h-12 items-center justify-center rounded-xl border border-primary/30 bg-white px-6 py-3 text-sm font-bold text-primary transition hover:border-primary hover:bg-primary/5"
-                  >
-                    Наукові події
                   </AppLink>
                 </div>
               </div>
@@ -588,125 +482,22 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                   id="carpathians-title"
                   className="mt-4 text-3xl font-extrabold leading-tight text-white sm:text-5xl"
                 >
-                  Карпати — середовище для зосередженого відновлення
+                  Переваги розташування
                 </h2>
                 <p className="mt-6 text-base leading-relaxed text-white/80 sm:text-lg">
-                  Спокійний ритм, природа та можливість пройти консультації, заняття й відпочинок в
-                  одному місці допомагають приділити більше уваги процесу відновлення.
+                  Карпати та Буковель створюють унікальне середовище для відновлення: свіже повітря, спокійний ритм і можливість поєднати лікування з відпочинком. 
+                </p>
+                <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
+                  Усі кабінети діагностики, зали терапії, басейн і зони проживання розташовані в одному комплексі — пацієнту не потрібно переміщатися між різними установами.
                 </p>
               </div>
-            </div>
-          </Container>
-        </section>
-
-        {/* 9. КОМУ МОЖЕ ПІДІЙТИ ОСНОВА */}
-        <section
-          className="border-y border-slate-200/70 bg-slate-50/80 py-16 sm:py-24 lg:py-28"
-          aria-labelledby="suitability-title"
-        >
-          <Container>
-            <SectionIntro
-              title="Кому може підійти ОСНОВА"
-              titleId="suitability-title"
-            />
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
-              {SUITABILITY.map((item) => (
-                <article
-                  key={item.title}
-                  className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
-                >
-                  <h3 className="mt-2 text-xl font-extrabold leading-snug text-navy sm:text-2xl">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                    {item.text}
-                  </p>
-                </article>
-              ))}
-            </div>
-            <AppLink
-              to="/poslugy/reabilitatsiia"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-primary transition hover:text-navy"
-            >
-              Переглянути напрями реабілітації <ArrowRight className="size-4" />
-            </AppLink>
-          </Container>
-        </section>
-
-        {/* 10. СОЦІАЛЬНІ ПРОЄКТИ */}
-        <section className="py-16 sm:py-24 lg:py-28">
-          <Container>
-            <div className="rounded-[32px] bg-brand-green p-8 sm:p-12 lg:p-16">
-              <div className="max-w-3xl">
-                <h2 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
-                  Повертаємо можливість рухатися далі
-                </h2>
-                <p className="mt-6 text-base leading-relaxed text-white/90 sm:text-lg">
-                  ОСНОВА реалізує соціальні ініціативи для підтримки відновлення людей після травм,
-                  поранень та операцій. Ми об’єднуємо зусилля фахівців для забезпечення системної допомоги тим, хто цього найбільше потребує.
-                </p>
-                <AppLink
-                  to="/sotsialni-proiekty"
-                  className="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-brand-green shadow-md transition hover:-translate-y-0.5 hover:bg-white/90 sm:w-auto"
-                >
-                  Дізнатися про соціальні проєкти
-                </AppLink>
-              </div>
-            </div>
-          </Container>
-        </section>
-
-        {/* 11. ІСТОРІЇ ВІДНОВЛЕННЯ */}
-        <section
-          className="border-y border-slate-200/70 bg-slate-50/80 py-16 sm:py-24 lg:py-28"
-          aria-labelledby="patient-route-title"
-        >
-          <Container>
-            <SectionIntro
-              title="Шлях пацієнта — не лише діагноз"
-              titleId="patient-route-title"
-            />
-            <p className="mt-5 max-w-4xl text-sm font-semibold leading-relaxed text-navy/75 sm:text-base">
-              Кожен план залежить від діагнозу, загального стану, супутніх факторів і дотримання
-              рекомендацій.
-            </p>
-
-            <div className="mt-10 grid gap-5 xl:grid-cols-2">
-              {PATIENT_CASES.map((route) => (
-                <article
-                  key={route.title}
-                  className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-md shadow-slate-900/5 sm:p-8"
-                >
-                  <h3 className="text-xl font-extrabold leading-snug text-navy sm:text-2xl">
-                    {route.title}
-                  </h3>
-                  <dl className="mt-6 space-y-5">
-                    {[
-                      ["Ситуація", route.start],
-                      ["Мета", route.goal],
-                      ["Процес", route.process],
-                      ["Результат етапу", route.next],
-                    ].map(([label, value]) => (
-                      <div
-                        key={label}
-                        className="border-t border-slate-200 pt-4 first:border-0 first:pt-0"
-                      >
-                        <dt className="text-xs font-extrabold uppercase tracking-[0.14em] text-primary">
-                          {label}
-                        </dt>
-                        <dd className="mt-2 text-sm leading-relaxed text-slate-600">{value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </article>
-              ))}
             </div>
           </Container>
         </section>
 
         {/* 12. FAQ */}
         <section
-          className="py-16 sm:py-24 lg:py-28"
+          className="border-y border-slate-200/70 bg-slate-50/80 py-16 sm:py-24 lg:py-28"
           aria-labelledby="faq-title"
         >
           <Container className="!max-w-[1120px]">
@@ -717,7 +508,7 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
           </Container>
         </section>
 
-        {/* 13. CTA */}
+        {/* 13. CTA / CONTACTS */}
         <section className="bg-navy-deep py-16 sm:py-20 lg:py-24" aria-labelledby="final-cta-title">
           <Container>
             <div className="grid items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
@@ -726,11 +517,10 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                   id="final-cta-title"
                   className="text-3xl font-extrabold leading-tight text-white sm:text-5xl"
                 >
-                  Не знаєте, з чого почати?
+                  ОСНОВА Реабілітація
                 </h2>
                 <p className="mt-5 max-w-3xl text-base leading-relaxed text-white/75 sm:text-lg">
-                  Опишіть свою ситуацію або надішліть наявні документи. Адміністратор допоможе
-                  визначити зручний наступний крок.
+                  ОСНОВА Реабілітація поєднує сучасні методи, точну діагностику, професійну команду та природне середовище Карпат, щоб допомогти пацієнту не просто пройти курс процедур, а повернути рух, витривалість і якість життя.
                 </p>
               </div>
 
@@ -753,21 +543,41 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
               </div>
             </div>
 
-            <div className="mt-10 flex flex-col gap-3 border-t border-white/15 pt-7 text-sm text-white/75 sm:flex-row sm:items-center sm:gap-8">
+            <div className="mt-10 flex flex-col gap-4 border-t border-white/15 pt-7 text-sm text-white/75 md:flex-row md:items-center md:flex-wrap md:gap-8">
+              <span className="font-semibold text-white/90">
+                Адреса: Івано-Франківська область, Надвірнянський р-н, с. Поляниця, участок Вишня 354/А, ТРК Буковель
+              </span>
               <a
-                href={CONTACTS.phoneHref}
+                href="tel:+380675101575"
                 className="inline-flex items-center gap-2 font-bold text-white transition hover:text-brand-green"
               >
-                <Phone className="size-4" /> {CONTACTS.phone}
+                <Phone className="size-4" /> +38 (067) 510 15 75
               </a>
               <a
-                href={CONTACTS.messengers.telegram}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 font-semibold transition hover:text-white"
+                href="tel:+380674702788"
+                className="inline-flex items-center gap-2 font-bold text-white transition hover:text-brand-green"
               >
-                <Send className="size-4" /> Telegram {CONTACTS.messengers.telegramHandle}
+                <Phone className="size-4" /> +380 674 702 788
               </a>
+              <a
+                href="mailto:osnova.rehabilitation@gmail.com"
+                className="font-bold text-white transition hover:text-brand-green"
+              >
+                osnova.rehabilitation@gmail.com
+              </a>
+              <a
+                href="mailto:info@osnova-rehab.com.ua"
+                className="font-bold text-white transition hover:text-brand-green"
+              >
+                info@osnova-rehab.com.ua
+              </a>
+            </div>
+            
+            <div className="mt-4 text-sm text-white/75 font-semibold flex flex-wrap gap-4">
+               Соцмережі: 
+               <a href="https://instagram.com/osnova.rehab.bukovel" target="_blank" rel="noreferrer" className="text-white hover:text-brand-green transition">Instagram @osnova.rehab.bukovel</a>,
+               <a href="https://facebook.com/OsnovaRehab" target="_blank" rel="noreferrer" className="text-white hover:text-brand-green transition">Facebook @Osnova Rehab</a>,
+               <span className="text-white">TikTok і YouTube @osnova_rehabilitation</span>
             </div>
           </Container>
         </section>
