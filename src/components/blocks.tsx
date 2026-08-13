@@ -338,7 +338,6 @@ export function CTASection({
 }
 
 export function WhenToPassCardioRehabBlock({
-  eyebrow = "ВІДНОВЛЕННЯ ПІСЛЯ ЛІКУВАННЯ",
   title = "Коли варто пройти кардіологічну реабілітацію",
   description = "Багато захворювань та порушень розвитку часто протікають приховано і тривалий час можуть не проявлятися вираженими симптомами. Саме тому важливо вчасно реагувати на найменші зміни самопочуття та регулярно проходити обстеження та профілактику.",
   calloutTitle = "Звернутися до лікаря варто при:",
@@ -352,7 +351,6 @@ export function WhenToPassCardioRehabBlock({
   href = "#for-whom",
   className,
 }: {
-  eyebrow?: string;
   title?: string;
   description?: string;
   calloutTitle?: string;
@@ -383,14 +381,7 @@ export function WhenToPassCardioRehabBlock({
       )}
     >
       <div className="max-w-3xl">
-        <div className="inline-block">
-          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-primary">
-            {eyebrow}
-          </span>
-          <div className="mt-1 h-0.5 w-8 rounded-full bg-primary" />
-        </div>
-
-        <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-navy tracking-tight">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-navy tracking-tight">
           {title}
         </h2>
 

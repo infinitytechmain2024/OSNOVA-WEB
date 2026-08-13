@@ -175,7 +175,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
   const allConditionCards = CARDIO_CONDITIONS;
   const visibleConditionCards = showAllConditions
     ? allConditionCards
-    : allConditionCards.slice(0, 3);
+    : allConditionCards.slice(0, 2);
   const programCards = CARDIO_PROGRAMS.map((program, index) => ({
     id: `cardio-program-${index}`,
     route: node.children?.[index]?.route || node.route,
@@ -219,13 +219,6 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                   className="inline-flex min-h-12 items-center justify-center rounded-lg bg-brand-green px-6 py-3 text-sm font-bold text-brand-green-foreground shadow-md transition-colors hover:bg-brand-green/90 sm:min-h-14 sm:px-8"
                 >
                   Записатися на консультацію
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollToId("documents")}
-                  className="inline-flex min-h-12 items-center justify-center rounded-lg border border-background/45 bg-background/8 px-6 py-3 text-sm font-bold text-background transition-colors hover:bg-background/14 sm:min-h-14 sm:px-8"
-                >
-                  Надіслати документи
                 </button>
               </div>
             </div>
@@ -284,7 +277,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
         <section id="for-whom" className="scroll-mt-24 bg-soft-blue py-12 sm:py-20">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
             <SectionHeading
-              title="Кому підходить кардіологічна реабілітація"
+              title="Які напрямки реабілітації та лікування можна пройти в «Основа»?"
               text="Основні напрями, з якими може працювати команда після попереднього ознайомлення з документами та оцінки стану."
             />
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -296,7 +289,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                 />
               ))}
             </div>
-            {allConditionCards.length > 3 && (
+            {allConditionCards.length > 2 && (
               <button
                 type="button"
                 onClick={() => setShowAllConditions((value) => !value)}
@@ -315,7 +308,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                 Як проходить
               </p>
               <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
-                Як проходить відновлення
+                Як проходить відновлення?
               </h2>
               <p className="mt-5 text-sm leading-relaxed text-background/78 sm:text-base">
                 Процес не рухається “за календарем”. Навантаження змінюють після оцінки самопочуття,
@@ -584,13 +577,27 @@ function ConditionCard({ card, image }: { card: { title: string; text: string; e
         />
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-lg font-bold leading-snug text-navy sm:text-xl">{card.title}</h3>
-        <p className="mt-4 text-sm leading-relaxed text-navy/70">{card.text}</p>
+        <h3 className="text-base font-bold leading-snug text-navy sm:text-lg">{card.title}</h3>
+        <p className="mt-3 text-xs leading-relaxed text-navy/70 sm:text-sm">{card.text}</p>
         {card.expandedText && <ExpandableCardText expandedText={card.expandedText} />}
+        {!card.expandedText && (
+          <a
+            href="#documents"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("documents")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className="mt-4 inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+          >
+            Детальніше
+            <ChevronDown className="size-4 -rotate-90" />
+          </a>
+        )}
       </div>
     </article>
   );
 }
+
 
 function ExpandableCardText({ expandedText }: { expandedText: string }) {
   const [open, setOpen] = React.useState(false);
@@ -960,17 +967,6 @@ function SeoBlock() {
             <p className="mb-4">
               Після операцій на серці або перенесеного інфаркту міокарда організм ще певний час не працює у звичному режимі. Серцево-судинна система не готова до звичного ритму життя, тому будь-яка активність без контролю може створити додаткове навантаження на серце. Саме тому період відновлення має проходити під наглядом фахівців із чітким розумінням допустимого рівня навантаження.
             </p>
-            <p className="mb-4">
-              Ключове завдання кардіореабілітації — не просто відновити фізичну активність, а зробити це безпечно. Навантаження підбирають індивідуально з урахуванням стану пацієнта, показників серцевого ритму, артеріального тиску та реакції організму на вправи.
-            </p>
-            <p className="mb-4">Самостійні тренування після серцевих втручань можуть бути небезпечними:</p>
-            <ul className="list-disc pl-5 mb-4 space-y-1">
-              <li>надмірна інтенсивність або різкі зміни активності здатні спровокувати порушення ритму чи повторні серцеві проблеми;</li>
-              <li>повна відмова від руху уповільнює кровообіг і знижує функціональні можливості організму.</li>
-            </ul>
-            <p className="mb-4">
-              Контрольоване відновлення дозволяє досягти балансу між безпекою і прогресом. Пацієнт поступово повертається до активного життя, зменшується ризик повторних ускладнень, покращується загальне самопочуття та якість життя.
-            </p>
           </div>
 
           <div className="mt-6">
@@ -980,7 +976,7 @@ function SeoBlock() {
               className="group inline-flex min-h-12 cursor-pointer items-center gap-2.5 rounded-xl bg-navy px-6 py-3.5 text-sm font-bold text-white shadow-[0_14px_30px_-16px_rgba(15,34,68,0.85)] transition-all hover:-translate-y-0.5 hover:bg-primary hover:shadow-[0_18px_36px_-16px_rgba(43,93,190,0.75)]"
               aria-expanded={expanded}
             >
-              <span>{expanded ? "Згорнути" : "Читати далі"}</span>
+              <span>{expanded ? "Згорнути" : "Детальніше"}</span>
               <ArrowRight
                 className={cn(
                   "size-4 transition-transform duration-300 group-hover:translate-x-0.5",
@@ -992,6 +988,17 @@ function SeoBlock() {
 
           {expanded && (
             <div className="mt-6 border-t border-sky-100 pt-5 text-sm leading-relaxed text-navy/72 sm:text-base sm:leading-7 animate-in fade-in slide-in-from-top-2 duration-300">
+              <p className="mb-4">
+                Ключове завдання кардіореабілітації — не просто відновити фізичну активність, а зробити це безпечно. Навантаження підбирають індивідуально з урахуванням стану пацієнта, показників серцевого ритму, артеріального тиску та реакції організму на вправи.
+              </p>
+              <p className="mb-4">Самостійні тренування після серцевих втручань можуть бути небезпечними:</p>
+              <ul className="list-disc pl-5 mb-4 space-y-1">
+                <li>надмірна інтенсивність або різкі зміни активності здатні спровокувати порушення ритму чи повторні серцеві проблеми;</li>
+                <li>повна відмова від руху уповільнює кровообіг і знижує функціональні можливості організму.</li>
+              </ul>
+              <p className="mb-4">
+                Контрольоване відновлення дозволяє досягти балансу між безпекою і прогресом. Пацієнт поступово повертається до активного життя, зменшується ризик повторних ускладнень, покращується загальне самопочуття та якість життя.
+              </p>
               <h3 className="font-bold text-navy mt-4 mb-2">Де можливо пройти реабілітацію після операції на серці в Україні</h3>
               <p className="mb-4">
                 Після кардіологічних втручань пацієнти зазвичай обирають між двома форматами відновлення — санаторним або спеціалізованим медичним центром. Вибір здається простим, але саме тут часто виникає помилка: не кожен варіант однаково підходить для відновлення серця.

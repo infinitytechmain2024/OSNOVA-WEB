@@ -167,7 +167,7 @@ const cardioRehab: SiteNode = {
   type: "direction",
   customPage: "cardio-rehab",
   title: "Реабілітація в кардіології",
-  eyebrow: "ПОВЕРНЕННЯ ДО АКТИВНОГО ЖИТТЯ",
+  eyebrow: "РЕАБІЛІТАЦІЯ",
   route: CARDIO_REHAB_ROUTE,
   shortDescription:
     "Контрольована програма відновлення для безпечного повернення до активності після серцево-судинних захворювань, операцій і втручань.",
