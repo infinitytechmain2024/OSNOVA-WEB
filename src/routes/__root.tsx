@@ -18,7 +18,6 @@ function NotFoundComponent() {
   return <NotFoundPage />;
 }
 
-
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
@@ -84,7 +83,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
-
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -94,7 +92,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="uk">
       <head>
         <HeadContent />
       </head>

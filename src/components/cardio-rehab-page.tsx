@@ -23,6 +23,7 @@ import cpetImg from "@/assets/cpet-test.jpg";
 import ecgImg from "@/assets/ecg-review.jpg";
 import rehabImg from "@/assets/service-rehab.jpg";
 import sportsImg from "@/assets/service-sports.jpg";
+import cardioHeart3dImg from "@/assets/cardio-heart-3d.jpg";
 
 const ANCHORS = [
   { href: "#about", label: "Про програму" },
@@ -956,20 +957,24 @@ function SeoBlock() {
           )}
         </div>
 
-        <div className="grid gap-3 min-[480px]:grid-cols-2 min-[480px]:grid-rows-[minmax(230px,1.08fr)_minmax(210px,0.92fr)] sm:gap-4 lg:gap-5">
-          <figure className="group relative min-h-[230px] overflow-hidden rounded-[1.75rem] border border-sky-100 bg-soft-blue shadow-[0_16px_40px_-28px_rgba(30,64,175,0.55)] min-[480px]:min-h-0">
+        <div className="grid gap-4 sm:grid-cols-[minmax(0,1.12fr)_minmax(220px,0.88fr)] sm:grid-rows-2 lg:min-h-[520px] lg:gap-5">
+          <figure className="group relative min-h-[420px] overflow-hidden rounded-[1.75rem] border border-sky-100 bg-[#eaf5ff] shadow-[0_20px_50px_-30px_rgba(30,64,175,0.55)] sm:row-span-2 sm:min-h-0">
             <img
-              src={rehabImg}
-              alt="Кардіологічна реабілітація в Буковелі"
+              src={cardioHeart3dImg}
+              alt="Стилізована 3D-модель серця"
               loading="lazy"
               width={1024}
-              height={768}
-              className="absolute inset-0 size-full object-cover object-[58%_center] transition-transform duration-700 group-hover:scale-[1.03]"
+              height={1536}
+              className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/10 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 bg-white/80 px-5 py-4 backdrop-blur-sm">
+              <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
+                Серце під контролем команди
+              </p>
+            </div>
           </figure>
 
-          <article className="relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-primary/15 bg-[#eef6ff] p-6 shadow-[0_16px_40px_-28px_rgba(30,64,175,0.45)] min-[480px]:min-h-0 sm:p-7">
+          <article className="relative flex min-h-[220px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-primary/15 bg-[#eef6ff] p-6 shadow-[0_16px_40px_-28px_rgba(30,64,175,0.45)] sm:min-h-0 sm:p-7">
             <HeartPulse
               aria-hidden="true"
               className="absolute -right-5 -top-5 size-28 text-primary/[0.07]"
@@ -989,7 +994,7 @@ function SeoBlock() {
             </div>
           </article>
 
-          <article className="relative flex min-h-[230px] flex-col overflow-hidden rounded-[1.75rem] border border-primary/12 bg-secondary/70 p-6 shadow-[0_16px_40px_-28px_rgba(30,64,175,0.45)] min-[480px]:min-h-0 sm:p-7">
+          <article className="relative flex min-h-[220px] flex-col overflow-hidden rounded-[1.75rem] border border-primary/12 bg-secondary/70 p-6 shadow-[0_16px_40px_-28px_rgba(30,64,175,0.45)] sm:min-h-0 sm:p-7">
             <Activity
               aria-hidden="true"
               className="absolute -bottom-7 -right-5 size-32 text-primary/[0.06]"
@@ -1009,18 +1014,6 @@ function SeoBlock() {
               </li>
             </ul>
           </article>
-
-          <figure className="group relative min-h-[230px] overflow-hidden rounded-[1.75rem] border border-sky-100 bg-soft-blue shadow-[0_16px_40px_-28px_rgba(30,64,175,0.55)] min-[480px]:min-h-0">
-            <img
-              src={cpetImg}
-              alt="Кардіологічна реабілітація в Буковелі"
-              loading="lazy"
-              width={1200}
-              height={800}
-              className="absolute inset-0 size-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/10 to-transparent" />
-          </figure>
         </div>
       </div>
     </div>

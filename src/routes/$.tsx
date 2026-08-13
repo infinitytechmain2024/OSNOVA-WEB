@@ -13,6 +13,7 @@ import { MobileRehabPage } from "@/components/mobile-rehab-page";
 import { RentalEquipmentPage } from "@/components/rental-equipment-page";
 import { SocialProjectsPage } from "@/components/social-projects-page";
 import { ContactsPage } from "@/components/contacts-page";
+import { AboutOsnovaPage } from "@/components/about-osnova-page";
 
 export const Route = createFileRoute("/$")({
   loader: ({ params }) => {
@@ -68,6 +69,10 @@ function NodePage() {
 
   if (node.id === "social") {
     return <SocialProjectsPage node={node} />;
+  }
+
+  if (node.id === "about") {
+    return <AboutOsnovaPage node={node} />;
   }
 
   if (node.customPage === "institute-partnership") {

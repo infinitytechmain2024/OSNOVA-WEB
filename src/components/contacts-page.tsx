@@ -215,17 +215,20 @@ export function ContactsPage({ node }: { node: SiteNode }) {
           <PageContainer>
             <div className="mx-auto max-w-3xl text-center">
               <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-primary uppercase">
-                <Sparkles className="size-3.5" /> ФОРМА ТА СОЦІАЛЬНІ МЕРЕЖІ
+                <Sparkles className="size-3.5" /> ФОРМА ТА СПОСОБИ ЗВ’ЯЗКУ
               </span>
               <h2 className="mt-4 text-2xl font-extrabold sm:text-3xl lg:text-4xl text-navy tracking-tight">
-                Напишіть нам або оберіть соціальну мережу
+                Оберіть зручний спосіб зв’язку
               </h2>
               <p className="mt-3 text-sm sm:text-base text-muted-foreground">
-                Ми на зв'язку щодня. Заповніть форму нижче для швидкого запису або підписуйтеся на наші офіційні канали.
+                Заповніть форму для запису на консультацію або зв’яжіться з адміністратором у
+                зручному месенджері.
               </p>
             </div>
 
-            <div className="mt-12 grid gap-8 lg:gap-10 lg:grid-cols-12 items-stretch">
+            <div className="mt-6 border-t border-slate-200" aria-hidden="true" />
+
+            <div className="mt-6 grid gap-8 lg:gap-10 lg:grid-cols-12 items-stretch">
               {/* Left Column: Form (7 cols) */}
               <div className="lg:col-span-7 flex flex-col">
                 <ConsultationForm
@@ -322,7 +325,9 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                     </div>
                     <div>
                       <h3 className="text-base font-bold text-navy">Соціальні мережі</h3>
-                      <p className="text-xs text-muted-foreground">Слідкуйте за новинами та порадами</p>
+                      <p className="text-xs text-muted-foreground">
+                        Стежте за ОСНОВОЮ у соціальних мережах
+                      </p>
                     </div>
                   </div>
 

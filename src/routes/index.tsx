@@ -59,6 +59,7 @@ import educationScienceEventImg from "@/assets/education-science-event-v2.jpg";
 import cooperationEventsImg from "@/assets/cooperation/events.jpg";
 import cooperationSocialImg from "@/assets/cooperation/social-projects.jpg";
 import cooperationMobileRehabImg from "@/assets/cooperation/mobile-rehab.jpg";
+import osnovaLogo3dImg from "@/assets/osnova-logo-3d.jpg";
 import partnerAsmuLogo from "@/assets/partners/partner-asmu.png";
 import partnerChnuLogo from "@/assets/partners/partner-chnu.png";
 import partnerHeartLogo from "@/assets/partners/partner-heart.svg";
@@ -845,7 +846,7 @@ function Index() {
 
                 <div className="mt-10">
                   <AppLink
-                    to="/pro-nas"
+                    to="/pro-osnovu"
                     className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105"
                   >
                     ДЕТАЛЬНІШЕ <ChevronRight className="size-5" />
@@ -1161,33 +1162,60 @@ function Index() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
-                <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
+              <div className="grid gap-5 sm:grid-cols-[minmax(0,1.12fr)_minmax(220px,0.88fr)] sm:grid-rows-2 lg:min-h-[560px]">
+                <figure className="group relative min-h-[440px] overflow-hidden rounded-3xl border border-sky-100 bg-[#eaf5ff] shadow-[0_22px_55px_-30px_rgba(30,64,175,0.55)] sm:row-span-2 sm:min-h-0">
                   <img
-                    src={rehabImg}
-                    alt="Реабілітація"
-                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
+                    src={osnovaLogo3dImg}
+                    alt="3D-модель логотипа ОСНОВА"
+                    loading="lazy"
+                    width={1024}
+                    height={1536}
+                    className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
                   />
-                </div>
-                <div className="flex flex-col justify-center rounded-3xl bg-primary/10 border border-primary/20 p-8 shadow-xl lg:p-10">
-                  <h3 className="text-5xl font-black text-primary mb-3">10+</h3>
-                  <p className="text-base font-medium text-navy/80">
-                    Років досвіду медичної команди
-                  </p>
-                </div>
-                <div className="flex flex-col justify-center rounded-3xl bg-secondary p-8 shadow-xl lg:p-10 border border-primary/10">
-                  <h3 className="text-5xl font-black text-navy mb-3">100%</h3>
-                  <p className="text-base font-medium text-navy/80">
-                    Персоналізований підхід до кожного пацієнта
-                  </p>
-                </div>
-                <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
-                  <img
-                    src={cpetImg}
-                    alt="Діагностика"
-                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
+                  <div className="absolute inset-x-0 bottom-0 bg-white/80 px-6 py-5 backdrop-blur-sm">
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                      Методики, об'єднані в систему
+                    </p>
+                  </div>
+                </figure>
+
+                <article className="relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-3xl border border-primary/15 bg-[#eef6ff] p-7 shadow-[0_18px_45px_-28px_rgba(30,64,175,0.5)] sm:min-h-0 lg:p-8">
+                  <Zap
+                    aria-hidden="true"
+                    className="absolute -right-6 -top-6 size-28 text-primary/[0.06]"
+                    strokeWidth={1.25}
                   />
-                </div>
+                  <div className="relative flex size-11 items-center justify-center rounded-2xl bg-white text-primary shadow-sm ring-1 ring-primary/10">
+                    <Zap className="size-5" aria-hidden="true" />
+                  </div>
+                  <div className="relative mt-7">
+                    <h3 className="text-4xl font-black tracking-tight text-primary lg:text-5xl">
+                      10+
+                    </h3>
+                    <p className="mt-3 text-sm font-semibold leading-relaxed text-navy/78 lg:text-base">
+                      Років досвіду медичної команди
+                    </p>
+                  </div>
+                </article>
+
+                <article className="relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-3xl border border-primary/12 bg-secondary/70 p-7 shadow-[0_18px_45px_-28px_rgba(30,64,175,0.5)] sm:min-h-0 lg:p-8">
+                  <UserCheck
+                    aria-hidden="true"
+                    className="absolute -bottom-7 -right-6 size-32 text-primary/[0.06]"
+                    strokeWidth={1.2}
+                  />
+                  <div className="relative flex size-11 items-center justify-center rounded-2xl bg-white text-primary shadow-sm ring-1 ring-primary/10">
+                    <UserCheck className="size-5" aria-hidden="true" />
+                  </div>
+                  <div className="relative mt-7">
+                    <h3 className="text-4xl font-black tracking-tight text-navy lg:text-5xl">
+                      100%
+                    </h3>
+                    <p className="mt-3 text-sm font-semibold leading-relaxed text-navy/78 lg:text-base">
+                      Персоналізований підхід до кожного пацієнта
+                    </p>
+                  </div>
+                </article>
               </div>
             </div>
           </div>
