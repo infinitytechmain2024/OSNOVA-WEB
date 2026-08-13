@@ -55,6 +55,9 @@ import ecgImg from "@/assets/ecg-review.jpg";
 import ergoImg from "@/assets/ergometer.jpg";
 import educationTrainingImg from "@/assets/education-training.png";
 import educationConferenceImg from "@/assets/education-conference.png";
+import cooperationEventsImg from "@/assets/cooperation/events.jpg";
+import cooperationSocialImg from "@/assets/cooperation/social-projects.jpg";
+import cooperationMobileRehabImg from "@/assets/cooperation/mobile-rehab.jpg";
 import partnerAsmuLogo from "@/assets/partners/partner-asmu.png";
 import partnerChnuLogo from "@/assets/partners/partner-chnu.png";
 import partnerHeartLogo from "@/assets/partners/partner-heart.svg";
@@ -288,25 +291,31 @@ const PARTNER_GROUPS = Array.from(
 // Співпраця
 const COOPERATION_ITEMS = [
   {
-    title: "СПІВПРАЦЯ З СПЕЦІАЛІСТАМИ",
-    text: "Ми співпрацюємо з медичними спеціалістами, закладами та професійними спільнотами для розвитку якісної реабілітаційної допомоги.",
-    href: "/partnerstvo/likariam",
-    icon: UserCheck,
-    image: cpetImg,
+    number: "01",
+    title: "ІВЕНТИ",
+    text: "Організація медичних форумів, конференцій, виставок та професійних заходів.",
+    tags: ["Для спеціалістів", "Конференції та виставки"],
+    href: "/iventy",
+    icon: Calendar,
+    image: cooperationEventsImg,
   },
   {
-    title: "НАВЧАННЯ ТА РОЗВИТОК",
-    text: "Проводимо навчання, беремо участь у професійних заходах та розвиваємо сучасні підходи до відновлення пацієнтів.",
-    href: "/kursy",
-    icon: GraduationCap,
-    image: educationTrainingImg,
+    number: "02",
+    title: "СОЦІАЛЬНІ ПРОЄКТИ",
+    text: "Благодійні та реабілітаційні ініціативи, допомога громаді та соціальні програми.",
+    tags: ["Для громади", "Благодійні ініціативи"],
+    href: "/sotsialni-proiekty",
+    icon: Heart,
+    image: cooperationSocialImg,
   },
   {
+    number: "03",
     title: "ВИЇЗНА РЕАБІЛІТАЦІЯ",
-    text: "Команда приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
+    text: "Команда ОСНОВА приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
+    tags: ["Для пацієнтів", "На дому та в готелі"],
     href: "/vyizna-reabilitatsiia",
     icon: Ambulance,
-    image: rehabImg,
+    image: cooperationMobileRehabImg,
   },
 ];
 
@@ -349,13 +358,11 @@ const FAQS = [
   },
   {
     question: "Скільки триває реабілітація?",
-    answer:
-      "Тривалість залежить від стану пацієнта та цілей відновлення.",
+    answer: "Тривалість залежить від стану пацієнта та цілей відновлення.",
   },
   {
     question: "Чи можна пройти лише діагностику?",
-    answer:
-      "Так. Ви можете пройти окреме обстеження та отримати рекомендації спеціалістів.",
+    answer: "Так. Ви можете пройти окреме обстеження та отримати рекомендації спеціалістів.",
   },
 ];
 
@@ -508,6 +515,42 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
   );
 }
 
+function CooperationCard({ item }: { item: (typeof COOPERATION_ITEMS)[number] }) {
+  const Icon = item.icon;
+
+  return (
+    <AppLink
+      to={item.href}
+      aria-label={`Перейти до розділу «${item.title}»`}
+      className="cooperation-card group"
+    >
+      <div className="cooperation-marker" aria-hidden="true">
+        <span className="cooperation-number">{item.number}</span>
+        <span className="cooperation-icon">
+          <Icon strokeWidth={1.8} />
+        </span>
+      </div>
+
+      <div className="cooperation-copy">
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+        <div className="cooperation-tags" aria-label="Категорії напрямку">
+          <span>{item.tags[0]}</span>
+          <span>{item.tags[1]}</span>
+        </div>
+      </div>
+
+      <div className="cooperation-media">
+        <img src={item.image} alt={item.title} loading="lazy" />
+      </div>
+
+      <span className="cooperation-cta" aria-hidden="true">
+        <ArrowRight strokeWidth={1.8} />
+      </span>
+    </AppLink>
+  );
+}
+
 function BlogCarousel() {
   const articles = NEWS_ARTICLES;
   const [current, setCurrent] = React.useState(0);
@@ -530,7 +573,8 @@ function BlogCarousel() {
             </h2>
             <div className="mt-4 mb-8 h-1.5 w-20 rounded-full bg-gradient-to-r from-sky-400 via-emerald-400 to-[#22C55E]" />
             <p className="text-sm md:text-base leading-relaxed text-white/80 max-w-xs">
-              Корисні поради, новини центру та експертні матеріали про реабілітацію, здоров'я та якість життя.
+              Корисні поради, новини центру та експертні матеріали про реабілітацію, здоров'я та
+              якість життя.
             </p>
           </div>
           <AppLink
@@ -560,7 +604,10 @@ function BlogCarousel() {
               className="group flex flex-col justify-between overflow-hidden rounded-[24px] border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-md min-h-[480px]"
             >
               <div>
-                <AppLink to={article.href} className="relative block h-56 w-full overflow-hidden bg-slate-100 rounded-t-[24px]">
+                <AppLink
+                  to={article.href}
+                  className="relative block h-56 w-full overflow-hidden bg-slate-100 rounded-t-[24px]"
+                >
                   <img
                     src={article.image}
                     alt={article.imageAlt}
@@ -595,7 +642,8 @@ function BlogCarousel() {
                   to={article.href}
                   className="inline-flex items-center gap-2 text-sm font-bold text-[#1E64B4] transition-colors hover:text-[#07152D]"
                 >
-                  Читати далі <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                  Читати далі{" "}
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </AppLink>
               </div>
             </article>
@@ -610,9 +658,7 @@ function BlogCarousel() {
             key={i}
             onClick={() => setCurrent(i)}
             className={`size-2.5 rounded-full transition-all duration-300 ${
-              i === current
-                ? "bg-[#1E64B4] scale-110"
-                : "bg-slate-300 hover:bg-slate-400"
+              i === current ? "bg-[#1E64B4] scale-110" : "bg-slate-300 hover:bg-slate-400"
             }`}
             aria-label={`Сторінка ${i + 1}`}
           />
@@ -630,9 +676,6 @@ function Index() {
   const [directionsApi, setDirectionsApi] = React.useState<CarouselApi>();
   const [currentDirectionsSlide, setCurrentDirectionsSlide] = React.useState(0);
   const [directionsSlideCount, setDirectionsSlideCount] = React.useState(0);
-  const [cooperationApi, setCooperationApi] = React.useState<CarouselApi>();
-  const [currentCooperationSlide, setCurrentCooperationSlide] = React.useState(0);
-  const [cooperationSlideCount, setCooperationSlideCount] = React.useState(0);
   const [partnersApi, setPartnersApi] = React.useState<CarouselApi>();
   const [currentPartnersSlide, setCurrentPartnersSlide] = React.useState(0);
   const [partnersSlideCount, setPartnersSlideCount] = React.useState(0);
@@ -672,24 +715,6 @@ function Index() {
       directionsApi.off("reInit", updateState);
     };
   }, [directionsApi]);
-
-  React.useEffect(() => {
-    if (!cooperationApi) return;
-
-    const updateState = () => {
-      setCooperationSlideCount(cooperationApi.scrollSnapList().length);
-      setCurrentCooperationSlide(cooperationApi.selectedScrollSnap());
-    };
-
-    updateState();
-    cooperationApi.on("select", updateState);
-    cooperationApi.on("reInit", updateState);
-
-    return () => {
-      cooperationApi.off("select", updateState);
-      cooperationApi.off("reInit", updateState);
-    };
-  }, [cooperationApi]);
 
   React.useEffect(() => {
     if (!partnersApi) return;
@@ -815,18 +840,18 @@ function Index() {
                 />
 
                 <p className="mb-4 text-base md:text-lg font-medium text-navy text-xl leading-relaxed">
-                  Сучасна медична компанія, що спеціалізується на лікуванні
-                  та комплексній реабілітації пацієнтів.
+                  Сучасна медична компанія, що спеціалізується на лікуванні та комплексній
+                  реабілітації пацієнтів.
                 </p>
 
                 <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    ОСНОВА Реабілітація допомагає відновити здоров'я, рух та якість життя
-                    після захворювань, травм та операцій.
+                    ОСНОВА Реабілітація допомагає відновити здоров'я, рух та якість життя після
+                    захворювань, травм та операцій.
                   </p>
                   <p>
-                    Ми використовуємо сучасні методи діагностики, персональні програми
-                    відновлення та комплексний підхід під контролем спеціалістів.
+                    Ми використовуємо сучасні методи діагностики, персональні програми відновлення
+                    та комплексний підхід під контролем спеціалістів.
                   </p>
                 </div>
 
@@ -850,15 +875,11 @@ function Index() {
                 </div>
                 <div className="flex flex-col justify-center rounded-3xl bg-primary/10 border border-primary/20 p-8 shadow-xl lg:p-10">
                   <h3 className="text-5xl font-black text-primary mb-3">8+</h3>
-                  <p className="text-base font-medium text-navy/80">
-                    Напрямків реабілітації
-                  </p>
+                  <p className="text-base font-medium text-navy/80">Напрямків реабілітації</p>
                 </div>
                 <div className="flex flex-col justify-center rounded-3xl bg-secondary p-8 shadow-xl lg:p-10 border border-primary/10">
                   <h3 className="text-5xl font-black text-navy mb-3">30+</h3>
-                  <p className="text-base font-medium text-navy/80">
-                    Методів реабілітації
-                  </p>
+                  <p className="text-base font-medium text-navy/80">Методів реабілітації</p>
                 </div>
                 <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
                   <img
@@ -966,13 +987,9 @@ function Index() {
                         <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                           <Icon className="size-5" />
                         </div>
-                        <h3 className="text-lg font-bold text-navy">
-                          {feature.title}
-                        </h3>
+                        <h3 className="text-lg font-bold text-navy">{feature.title}</h3>
                       </div>
-                      <p className="text-sm text-slate-600 leading-relaxed">
-                        {feature.text}
-                      </p>
+                      <p className="text-sm text-slate-600 leading-relaxed">{feature.text}</p>
                     </div>
                   </div>
                 );
@@ -992,12 +1009,8 @@ function Index() {
                       <Icon className="size-5" />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <h3 className="text-base font-bold text-navy">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm text-slate-600 leading-relaxed">
-                        {feature.text}
-                      </p>
+                      <h3 className="text-base font-bold text-navy">{feature.title}</h3>
+                      <p className="text-sm text-slate-600 leading-relaxed">{feature.text}</p>
                     </div>
                   </div>
                 );
@@ -1074,81 +1087,15 @@ function Index() {
         </section>
 
         {/* 8. СПІВПРАЦЯ */}
-        <section className="bg-slate-50/90 py-24 md:py-32 border-y border-slate-200/80">
-          <div className="mx-auto max-w-[1840px] px-4 sm:px-6 lg:px-8">
-            <SectionHeader centered subtitle="СПІВПРАЦЯ" title="РОЗВИВАЄМО СУЧАСНУ РЕАБІЛІТАЦІЮ РАЗОМ" />
+        <section className="bg-white py-24 md:py-32">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <SectionHeader centered subtitle="ПАРТНЕРСЬКА ПЛАТФОРМА" title="СПІВПРАЦЯ" />
 
-            <Carousel
-              setApi={setCooperationApi}
-              plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
-              opts={{ align: "start", loop: true, slidesToScroll: 1 }}
-              className="mt-12 w-full"
-            >
-              <CarouselContent className="-ml-4 items-stretch md:-ml-5">
-                {COOPERATION_ITEMS.map((item, idx) => (
-                  <CarouselItem
-                    key={idx}
-                    className="flex basis-[88%] pl-4 sm:basis-[56%] md:basis-[48%] md:pl-5 lg:basis-1/3"
-                  >
-                    <AppLink
-                      to={item.href}
-                      className="group relative flex h-full min-h-[320px] w-full flex-col justify-between overflow-hidden rounded-[24px] border-2 border-transparent p-7 shadow-lg transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/60 hover:shadow-2xl md:min-h-[360px] md:p-8 lg:min-h-[400px]"
-                    >
-                      <div className="absolute inset-0 z-0">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          loading="lazy"
-                          className="size-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
-                        />
-                        <div className="absolute inset-0 bg-navy-deep/80 transition-all duration-500 group-hover:bg-navy-deep/50" />
-                      </div>
-
-                      <div className="relative z-10">
-                        <div className="mb-7 flex size-14 items-center justify-center rounded-2xl bg-white text-primary shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
-                          <item.icon className="size-7" />
-                        </div>
-                        <h3 className="mb-4 text-xl font-bold leading-tight text-white md:text-2xl">
-                          {item.title}
-                        </h3>
-                        <p className="text-sm leading-relaxed text-white/90 md:text-base transition-colors duration-300 group-hover:text-white">
-                          {item.text}
-                        </p>
-                      </div>
-
-                      <div className="relative z-10 mt-8 flex items-center gap-2 text-xs font-bold uppercase text-white md:text-sm">
-                        Деталі{" "}
-                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </AppLink>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-
-              <div className="mt-10 flex flex-col items-center gap-6">
-                {cooperationSlideCount > 0 && (
-                  <div className="flex items-center justify-center gap-2.5">
-                    {Array.from({ length: cooperationSlideCount }).map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => cooperationApi?.scrollTo(index)}
-                        className={`h-2.5 rounded-full transition-all duration-300 ${
-                          currentCooperationSlide === index
-                            ? "w-8 bg-primary shadow-sm"
-                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
-                        }`}
-                        aria-label={`Перейти до слайду співпраці ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                <div className="flex items-center justify-center gap-3">
-                  <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
-                  <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
-                </div>
-              </div>
-            </Carousel>
+            <div className="mx-auto mt-12 flex max-w-[1440px] flex-col gap-4 md:mt-14 md:gap-5">
+              {COOPERATION_ITEMS.map((item) => (
+                <CooperationCard key={item.number} item={item} />
+              ))}
+            </div>
           </div>
         </section>
 
@@ -1201,13 +1148,13 @@ function Index() {
 
                 <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
                   <p className="font-medium text-navy text-xl leading-relaxed">
-                    Ми використовуємо комплексний підхід, поєднуючи різноманітні методи під
-                    завдання пацієнта.
+                    Ми використовуємо комплексний підхід, поєднуючи різноманітні методи під завдання
+                    пацієнта.
                   </p>
                   <p>
-                    Індивідуальна програма, фізична терапія, гідрокінезіотерапія, фізіотерапія
-                    та лікувальний масаж — кожен метод підбирається з урахуванням стану
-                    здоров'я та цілей відновлення.
+                    Індивідуальна програма, фізична терапія, гідрокінезіотерапія, фізіотерапія та
+                    лікувальний масаж — кожен метод підбирається з урахуванням стану здоров'я та
+                    цілей відновлення.
                   </p>
                 </div>
 
@@ -1262,7 +1209,8 @@ function Index() {
               до <span className="text-primary">відновлення</span>
             </h2>
             <p className="mb-10 text-lg md:text-xl text-navy/70 max-w-2xl mx-auto leading-relaxed">
-              Розкажіть про свою ситуацію — спеціаліст допоможе визначити відповідну програму та подальші дії.
+              Розкажіть про свою ситуацію — спеціаліст допоможе визначити відповідну програму та
+              подальші дії.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <button

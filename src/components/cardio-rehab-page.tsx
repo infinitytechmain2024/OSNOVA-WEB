@@ -1,10 +1,12 @@
 import * as React from "react";
 import {
+  Activity,
   ArrowRight,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
   FileText,
+  HeartPulse,
   Send,
   UploadCloud,
 } from "lucide-react";
@@ -189,9 +191,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                 Реабілітація в кардіології
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-background/86 sm:text-lg">
-                Контрольована програма відновлення для людей після серцево-судинних захворювань,
-                операцій або втручань. Команда допомагає безпечно повернутися до активності з
-                урахуванням стану серця, самопочуття та рекомендацій лікаря.
+                Профілактика • діагностика • лікування • відновлення • навчання • супровід
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <button
@@ -907,92 +907,120 @@ function SeoBlock() {
   const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white p-6 sm:p-10 lg:p-12 shadow-sm transition-all">
-      <div className="max-w-3xl">
-        <div className="inline-block">
-          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-primary">
+    <div className="relative overflow-hidden rounded-[2rem] border border-sky-100 bg-white px-5 py-8 shadow-[0_24px_70px_-38px_rgba(30,64,175,0.3)] sm:px-8 sm:py-10 lg:px-10 lg:py-12 xl:px-14 xl:py-14">
+      <div className="pointer-events-none absolute -left-24 -top-28 size-64 rounded-full bg-sky-100/60 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 right-1/4 size-72 rounded-full bg-emerald-100/40 blur-3xl" />
+
+      <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,0.88fr)_minmax(520px,1.12fr)] lg:gap-12 xl:gap-20">
+        <div className="max-w-2xl">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-soft-blue px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-primary sm:text-xs">
+            <span className="size-1.5 rounded-full bg-brand-green" />
             ВІДНОВЛЕННЯ В БУКОВЕЛІ
           </span>
-          <div className="mt-1 h-0.5 w-8 rounded-full bg-primary" />
-        </div>
 
-        <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-navy tracking-tight">
-          Кардіологічна реабілітація в Буковелі
-        </h2>
+          <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-tight text-navy sm:text-4xl lg:text-5xl xl:text-[3.4rem]">
+            Кардіологічна реабілітація <span className="text-primary lg:block">в Буковелі</span>
+          </h2>
 
-        <p className="mt-4 text-sm sm:text-base leading-relaxed text-navy/75">
-          ОСНОВА Реабілітація у Буковелі працює з пацієнтами після серцево-судинних захворювань,
-          операцій і втручань. Програма формується індивідуально після аналізу медичних документів,
-          оцінки стану та визначення допустимого навантаження.
-        </p>
+          <div className="mt-5 h-1 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green" />
 
-        <div className="mt-6 inline-flex items-center gap-2 rounded-lg border-l-4 border-primary bg-[#edf4fc] px-4 py-2.5 text-sm sm:text-base font-bold text-navy">
-          <span>Програму варто розглянути при:</span>
-        </div>
+          <p className="mt-6 text-sm leading-relaxed text-navy/72 sm:text-base sm:leading-7">
+            ОСНОВА Реабілітація у Буковелі працює з пацієнтами після серцево-судинних захворювань,
+            операцій і втручань. Програма формується індивідуально після аналізу медичних
+            документів, оцінки стану та визначення допустимого навантаження.
+          </p>
 
-        <ul className="mt-5 space-y-3">
-          <li className="flex items-center gap-3 text-sm sm:text-base font-medium text-navy/85">
-            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
-              <ArrowRight className="size-3 rotate-0 hidden" />
-              <svg
-                className="size-3.5 stroke-[3]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </span>
-            <span>
-              Після стабілізації стану після серцево-судинного захворювання, операції або втручання
-            </span>
-          </li>
-          <li className="flex items-center gap-3 text-sm sm:text-base font-medium text-navy/85">
-            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
-              <svg
-                className="size-3.5 stroke-[3]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </span>
-            <span>При зниженні витривалості та переносимості щоденних навантажень</span>
-          </li>
-          <li className="flex items-center gap-3 text-sm sm:text-base font-medium text-navy/85">
-            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
-              <svg
-                className="size-3.5 stroke-[3]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </span>
-            <span>За рекомендацією лікуючого лікаря</span>
-          </li>
-        </ul>
-
-        {expanded && (
-          <div className="mt-5 border-t border-blue-100 pt-5 text-sm sm:text-base leading-relaxed text-navy/75 animate-fadeIn">
-            Відновлення може включати консультації, контрольовані заняття, функціональну оцінку,
-            рекомендації щодо активності та подальшого самоконтролю. Остаточний план визначає
-            команда фахівців з урахуванням рекомендацій лікаря.
+          <div className="mt-8">
+            <button
+              type="button"
+              onClick={() => setExpanded((value) => !value)}
+              className="group inline-flex min-h-12 cursor-pointer items-center gap-2.5 rounded-xl bg-navy px-6 py-3.5 text-sm font-bold text-white shadow-[0_14px_30px_-16px_rgba(15,34,68,0.85)] transition-all hover:-translate-y-0.5 hover:bg-primary hover:shadow-[0_18px_36px_-16px_rgba(43,93,190,0.75)]"
+              aria-expanded={expanded}
+            >
+              <span>{expanded ? "Згорнути" : "Детальніше"}</span>
+              <ArrowRight
+                className={cn(
+                  "size-4 transition-transform duration-300 group-hover:translate-x-0.5",
+                  expanded && "rotate-90 group-hover:translate-x-0",
+                )}
+              />
+            </button>
           </div>
-        )}
 
-        <div className="mt-8">
-          <button
-            type="button"
-            onClick={() => setExpanded((value) => !value)}
-            className="inline-flex items-center gap-2.5 rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md transition-colors hover:bg-primary/90 cursor-pointer"
-            aria-expanded={expanded}
-          >
-            <span>{expanded ? "Згорнути" : "Детальніше"}</span>
-            <ArrowRight className={cn("size-4 transition-transform", expanded && "rotate-90")} />
-          </button>
+          {expanded && (
+            <div className="mt-6 border-t border-sky-100 pt-5 text-sm leading-relaxed text-navy/72 sm:text-base sm:leading-7 animate-in fade-in slide-in-from-top-2 duration-300">
+              Відновлення може включати консультації, контрольовані заняття, функціональну оцінку,
+              рекомендації щодо активності та подальшого самоконтролю. Остаточний план визначає
+              команда фахівців з урахуванням рекомендацій лікаря.
+            </div>
+          )}
+        </div>
+
+        <div className="grid gap-3 min-[480px]:grid-cols-2 min-[480px]:grid-rows-[minmax(230px,1.08fr)_minmax(210px,0.92fr)] sm:gap-4 lg:gap-5">
+          <figure className="group relative min-h-[230px] overflow-hidden rounded-[1.75rem] border border-sky-100 bg-soft-blue shadow-[0_16px_40px_-28px_rgba(30,64,175,0.55)] min-[480px]:min-h-0">
+            <img
+              src={rehabImg}
+              alt="Кардіологічна реабілітація в Буковелі"
+              loading="lazy"
+              width={1024}
+              height={768}
+              className="absolute inset-0 size-full object-cover object-[58%_center] transition-transform duration-700 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/10 to-transparent" />
+          </figure>
+
+          <article className="relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-primary/15 bg-[#eef6ff] p-6 shadow-[0_16px_40px_-28px_rgba(30,64,175,0.45)] min-[480px]:min-h-0 sm:p-7">
+            <HeartPulse
+              aria-hidden="true"
+              className="absolute -right-5 -top-5 size-28 text-primary/[0.07]"
+              strokeWidth={1.25}
+            />
+            <div className="relative flex size-11 items-center justify-center rounded-2xl bg-white text-primary shadow-sm ring-1 ring-primary/10">
+              <HeartPulse className="size-5" aria-hidden="true" />
+            </div>
+            <div className="relative mt-7">
+              <h3 className="text-base font-extrabold leading-snug text-navy sm:text-lg">
+                Програму варто розглянути при:
+              </h3>
+              <p className="mt-3 text-sm font-medium leading-relaxed text-navy/74">
+                Після стабілізації стану після серцево-судинного захворювання, операції або
+                втручання
+              </p>
+            </div>
+          </article>
+
+          <article className="relative flex min-h-[230px] flex-col overflow-hidden rounded-[1.75rem] border border-primary/12 bg-secondary/70 p-6 shadow-[0_16px_40px_-28px_rgba(30,64,175,0.45)] min-[480px]:min-h-0 sm:p-7">
+            <Activity
+              aria-hidden="true"
+              className="absolute -bottom-7 -right-5 size-32 text-primary/[0.06]"
+              strokeWidth={1.2}
+            />
+            <div className="relative flex size-11 items-center justify-center rounded-2xl bg-white text-primary shadow-sm ring-1 ring-primary/10">
+              <Activity className="size-5" aria-hidden="true" />
+            </div>
+            <ul className="relative mt-6 space-y-4">
+              <li className="flex gap-3 text-sm font-medium leading-relaxed text-navy/78">
+                <span className="mt-1.5 size-2 shrink-0 rounded-full bg-brand-green ring-4 ring-brand-green/10" />
+                <span>При зниженні витривалості та переносимості щоденних навантажень</span>
+              </li>
+              <li className="flex gap-3 text-sm font-medium leading-relaxed text-navy/78">
+                <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary ring-4 ring-primary/10" />
+                <span>За рекомендацією лікуючого лікаря</span>
+              </li>
+            </ul>
+          </article>
+
+          <figure className="group relative min-h-[230px] overflow-hidden rounded-[1.75rem] border border-sky-100 bg-soft-blue shadow-[0_16px_40px_-28px_rgba(30,64,175,0.55)] min-[480px]:min-h-0">
+            <img
+              src={cpetImg}
+              alt="Кардіологічна реабілітація в Буковелі"
+              loading="lazy"
+              width={1200}
+              height={800}
+              className="absolute inset-0 size-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/10 to-transparent" />
+          </figure>
         </div>
       </div>
     </div>
