@@ -1,12 +1,10 @@
 import * as React from "react";
 import {
-  Activity,
   ArrowRight,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
   FileText,
-  HeartPulse,
   Send,
   UploadCloud,
 } from "lucide-react";
@@ -957,8 +955,8 @@ function SeoBlock() {
           )}
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-[minmax(0,1.12fr)_minmax(220px,0.88fr)] sm:grid-rows-2 lg:min-h-[520px] lg:gap-5">
-          <figure className="group relative min-h-[420px] overflow-hidden rounded-[1.75rem] border border-sky-100 bg-[#eaf5ff] shadow-[0_20px_50px_-30px_rgba(30,64,175,0.55)] sm:row-span-2 sm:min-h-0">
+        <div className="flex w-full items-center justify-center lg:justify-end">
+          <figure className="group relative w-full max-w-[520px] aspect-square overflow-hidden rounded-[1.75rem] border border-sky-100 bg-[#eaf5ff] shadow-[0_20px_50px_-30px_rgba(30,64,175,0.55)]">
             <img
               src={cardioHeart3dImg}
               alt="Стилізована 3D-модель серця"
@@ -973,47 +971,6 @@ function SeoBlock() {
               </p>
             </div>
           </figure>
-
-          <article className="relative flex min-h-[220px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-primary/15 bg-[#eef6ff] p-6 shadow-[0_16px_40px_-28px_rgba(30,64,175,0.45)] sm:min-h-0 sm:p-7">
-            <HeartPulse
-              aria-hidden="true"
-              className="absolute -right-5 -top-5 size-28 text-primary/[0.07]"
-              strokeWidth={1.25}
-            />
-            <div className="relative flex size-11 items-center justify-center rounded-2xl bg-white text-primary shadow-sm ring-1 ring-primary/10">
-              <HeartPulse className="size-5" aria-hidden="true" />
-            </div>
-            <div className="relative mt-7">
-              <h3 className="text-base font-extrabold leading-snug text-navy sm:text-lg">
-                Програму варто розглянути при:
-              </h3>
-              <p className="mt-3 text-sm font-medium leading-relaxed text-navy/74">
-                Після стабілізації стану після серцево-судинного захворювання, операції або
-                втручання
-              </p>
-            </div>
-          </article>
-
-          <article className="relative flex min-h-[220px] flex-col overflow-hidden rounded-[1.75rem] border border-primary/12 bg-secondary/70 p-6 shadow-[0_16px_40px_-28px_rgba(30,64,175,0.45)] sm:min-h-0 sm:p-7">
-            <Activity
-              aria-hidden="true"
-              className="absolute -bottom-7 -right-5 size-32 text-primary/[0.06]"
-              strokeWidth={1.2}
-            />
-            <div className="relative flex size-11 items-center justify-center rounded-2xl bg-white text-primary shadow-sm ring-1 ring-primary/10">
-              <Activity className="size-5" aria-hidden="true" />
-            </div>
-            <ul className="relative mt-6 space-y-4">
-              <li className="flex gap-3 text-sm font-medium leading-relaxed text-navy/78">
-                <span className="mt-1.5 size-2 shrink-0 rounded-full bg-brand-green ring-4 ring-brand-green/10" />
-                <span>При зниженні витривалості та переносимості щоденних навантажень</span>
-              </li>
-              <li className="flex gap-3 text-sm font-medium leading-relaxed text-navy/78">
-                <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary ring-4 ring-primary/10" />
-                <span>За рекомендацією лікуючого лікаря</span>
-              </li>
-            </ul>
-          </article>
         </div>
       </div>
     </div>

@@ -1162,8 +1162,8 @@ function Index() {
                 </div>
               </div>
 
-              <div className="grid gap-5 sm:grid-cols-[minmax(0,1.12fr)_minmax(220px,0.88fr)] sm:grid-rows-2 lg:min-h-[560px]">
-                <figure className="group relative min-h-[440px] overflow-hidden rounded-3xl border border-sky-100 bg-[#eaf5ff] shadow-[0_22px_55px_-30px_rgba(30,64,175,0.55)] sm:row-span-2 sm:min-h-0">
+              <div className="flex w-full items-center justify-center lg:justify-end">
+                <figure className="group relative w-full max-w-[560px] aspect-square overflow-hidden rounded-[2rem] border border-sky-100 bg-[#eaf5ff] shadow-[0_22px_55px_-30px_rgba(30,64,175,0.55)]">
                   <img
                     src={osnovaLogo3dImg}
                     alt="3D-модель логотипа ОСНОВА"
@@ -1178,44 +1178,6 @@ function Index() {
                     </p>
                   </div>
                 </figure>
-
-                <article className="relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-3xl border border-primary/15 bg-[#eef6ff] p-7 shadow-[0_18px_45px_-28px_rgba(30,64,175,0.5)] sm:min-h-0 lg:p-8">
-                  <Zap
-                    aria-hidden="true"
-                    className="absolute -right-6 -top-6 size-28 text-primary/[0.06]"
-                    strokeWidth={1.25}
-                  />
-                  <div className="relative flex size-11 items-center justify-center rounded-2xl bg-white text-primary shadow-sm ring-1 ring-primary/10">
-                    <Zap className="size-5" aria-hidden="true" />
-                  </div>
-                  <div className="relative mt-7">
-                    <h3 className="text-4xl font-black tracking-tight text-primary lg:text-5xl">
-                      10+
-                    </h3>
-                    <p className="mt-3 text-sm font-semibold leading-relaxed text-navy/78 lg:text-base">
-                      Років досвіду медичної команди
-                    </p>
-                  </div>
-                </article>
-
-                <article className="relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-3xl border border-primary/12 bg-secondary/70 p-7 shadow-[0_18px_45px_-28px_rgba(30,64,175,0.5)] sm:min-h-0 lg:p-8">
-                  <UserCheck
-                    aria-hidden="true"
-                    className="absolute -bottom-7 -right-6 size-32 text-primary/[0.06]"
-                    strokeWidth={1.2}
-                  />
-                  <div className="relative flex size-11 items-center justify-center rounded-2xl bg-white text-primary shadow-sm ring-1 ring-primary/10">
-                    <UserCheck className="size-5" aria-hidden="true" />
-                  </div>
-                  <div className="relative mt-7">
-                    <h3 className="text-4xl font-black tracking-tight text-navy lg:text-5xl">
-                      100%
-                    </h3>
-                    <p className="mt-3 text-sm font-semibold leading-relaxed text-navy/78 lg:text-base">
-                      Персоналізований підхід до кожного пацієнта
-                    </p>
-                  </div>
-                </article>
               </div>
             </div>
           </div>
