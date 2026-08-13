@@ -317,7 +317,6 @@ const EDUCATION_CARDS = [
     href: "/kursy",
     image: educationTrainingImg,
     label: "ПРАКТИЧНЕ НАВЧАННЯ",
-    kicker: "",
     audience: "Для лікарів та фахівців",
     format: "Практичні модулі",
     icon: GraduationCap,
@@ -328,7 +327,6 @@ const EDUCATION_CARDS = [
     href: "/konferentsii",
     image: educationConferenceImg,
     label: "МІЖНАРОДНИЙ ОБМІН ДОСВІДОМ",
-    kicker: "",
     audience: "Для медичної спільноти",
     format: "Лекції та дискусії",
     icon: BookOpen,
@@ -456,11 +454,7 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
   const Icon = item.icon;
 
   return (
-    <AppLink
-      to={item.href}
-      aria-label={`Детальніше про ${item.title}`}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-slate-200/80 bg-card shadow-lg shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/35 hover:shadow-2xl hover:shadow-slate-900/10"
-    >
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-slate-200/80 bg-white shadow-lg shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/35 hover:shadow-2xl hover:shadow-slate-900/10">
       <div className="relative h-56 w-full overflow-hidden bg-slate-100 sm:h-64 lg:h-72">
         <img
           src={item.image}
@@ -468,26 +462,23 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
           loading="lazy"
           className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-navy-deep/20 to-transparent" />
+        <div className="absolute inset-0 bg-navy-deep/60" />
         <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md">
             <Icon className="size-4" />
             {item.label}
           </span>
-          <span className="hidden rounded-full border border-white/20 bg-white/15 px-3 py-1 text-[11px] font-semibold text-white/90 backdrop-blur-md sm:inline-flex">
-            {item.kicker}
-          </span>
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-6 sm:p-7 lg:p-8">
-        <div className="mb-5 flex flex-wrap gap-2.5 text-[11px] font-semibold text-navy/70">
+      <div className="flex flex-1 flex-col border-t border-slate-100 bg-white p-6 sm:p-7 lg:p-8">
+        <div className="mb-5 flex flex-wrap gap-2.5 text-[11px] font-semibold">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/7 px-3 py-1.5 text-primary">
             <Users className="size-3.5" />
             {item.audience}
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-green/10 px-3 py-1.5 text-navy">
-            <Calendar className="size-3.5 text-brand-green" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-green/10 px-3 py-1.5 text-brand-green">
+            <Calendar className="size-3.5" />
             {item.format}
           </span>
         </div>
@@ -499,12 +490,15 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
           <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">{item.text}</p>
         </div>
 
-        <span className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 group-hover:bg-primary/90 group-hover:shadow-md">
+        <AppLink
+          to={item.href}
+          className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md"
+        >
           Детальніше{" "}
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-        </span>
+        </AppLink>
       </div>
-    </AppLink>
+    </article>
   );
 }
 
