@@ -907,58 +907,94 @@ function SeoBlock() {
   const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <div className="py-8 sm:py-12">
-      <h2 className="max-w-5xl text-3xl font-extrabold leading-[1.08] text-navy sm:text-5xl lg:text-6xl">
-        Кардіологічна реабілітація в Буковелі
-      </h2>
-
-      <p className="mt-8 max-w-6xl text-base leading-relaxed text-navy/76 sm:text-lg">
-        ОСНОВА Реабілітація у Буковелі працює з пацієнтами після серцево-судинних захворювань,
-        операцій і втручань. Програма формується індивідуально після аналізу медичних документів,
-        оцінки стану та визначення допустимого навантаження.
-      </p>
-
-      <p className="mt-10 text-base font-extrabold text-navy sm:text-lg">
-        Програму варто розглянути при:
-      </p>
-      <ul className="mt-6 space-y-4 text-base leading-relaxed text-navy/76 sm:text-lg">
-        <li className="flex gap-4">
-          <span className="mt-3 size-1.5 shrink-0 rounded-full bg-navy/55" />
-          <span>
-            після стабілізації стану після серцево-судинного захворювання, операції або втручання;
+    <div className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white p-6 sm:p-10 lg:p-12 shadow-sm transition-all">
+      <div className="max-w-3xl">
+        <div className="inline-block">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-primary">
+            ВІДНОВЛЕННЯ В БУКОВЕЛІ
           </span>
-        </li>
-        <li className="flex gap-4">
-          <span className="mt-3 size-1.5 shrink-0 rounded-full bg-navy/55" />
-          <span>при зниженні витривалості та переносимості щоденних навантажень;</span>
-        </li>
-        <li className="flex gap-4">
-          <span className="mt-3 size-1.5 shrink-0 rounded-full bg-navy/55" />
-          <span>за рекомендацією лікуючого лікаря.</span>
-        </li>
-      </ul>
+          <div className="mt-1 h-0.5 w-8 rounded-full bg-primary" />
+        </div>
 
-      <div
-        className={cn(
-          "overflow-hidden transition-[max-height,opacity] duration-300",
-          expanded ? "mt-8 max-h-[900px] opacity-100" : "max-h-0 opacity-0",
-        )}
-      >
-        <p className="max-w-6xl text-base leading-relaxed text-navy/76 sm:text-lg">
-          Відновлення може включати консультації, контрольовані заняття, функціональну оцінку,
-          рекомендації щодо активності та подальшого самоконтролю. Остаточний план визначає команда
-          фахівців з урахуванням рекомендацій лікаря.
+        <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-navy tracking-tight">
+          Кардіологічна реабілітація в Буковелі
+        </h2>
+
+        <p className="mt-4 text-sm sm:text-base leading-relaxed text-navy/75">
+          ОСНОВА Реабілітація у Буковелі працює з пацієнтами після серцево-судинних захворювань,
+          операцій і втручань. Програма формується індивідуально після аналізу медичних документів,
+          оцінки стану та визначення допустимого навантаження.
         </p>
-      </div>
 
-      <button
-        type="button"
-        onClick={() => setExpanded((value) => !value)}
-        className="mt-10 inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-8 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90 sm:min-h-14 sm:px-10"
-        aria-expanded={expanded}
-      >
-        {expanded ? "Згорнути" : "Детальніше"}
-      </button>
+        <div className="mt-6 inline-flex items-center gap-2 rounded-lg border-l-4 border-primary bg-[#edf4fc] px-4 py-2.5 text-sm sm:text-base font-bold text-navy">
+          <span>Програму варто розглянути при:</span>
+        </div>
+
+        <ul className="mt-5 space-y-3">
+          <li className="flex items-center gap-3 text-sm sm:text-base font-medium text-navy/85">
+            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+              <ArrowRight className="size-3 rotate-0 hidden" />
+              <svg
+                className="size-3.5 stroke-[3]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <span>
+              Після стабілізації стану після серцево-судинного захворювання, операції або втручання
+            </span>
+          </li>
+          <li className="flex items-center gap-3 text-sm sm:text-base font-medium text-navy/85">
+            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+              <svg
+                className="size-3.5 stroke-[3]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <span>При зниженні витривалості та переносимості щоденних навантажень</span>
+          </li>
+          <li className="flex items-center gap-3 text-sm sm:text-base font-medium text-navy/85">
+            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+              <svg
+                className="size-3.5 stroke-[3]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <span>За рекомендацією лікуючого лікаря</span>
+          </li>
+        </ul>
+
+        {expanded && (
+          <div className="mt-5 border-t border-blue-100 pt-5 text-sm sm:text-base leading-relaxed text-navy/75 animate-fadeIn">
+            Відновлення може включати консультації, контрольовані заняття, функціональну оцінку,
+            рекомендації щодо активності та подальшого самоконтролю. Остаточний план визначає
+            команда фахівців з урахуванням рекомендацій лікаря.
+          </div>
+        )}
+
+        <div className="mt-8">
+          <button
+            type="button"
+            onClick={() => setExpanded((value) => !value)}
+            className="inline-flex items-center gap-2.5 rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md transition-colors hover:bg-primary/90 cursor-pointer"
+            aria-expanded={expanded}
+          >
+            <span>{expanded ? "Згорнути" : "Детальніше"}</span>
+            <ArrowRight className={cn("size-4 transition-transform", expanded && "rotate-90")} />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
