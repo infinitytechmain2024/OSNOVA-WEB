@@ -276,23 +276,23 @@ const COOPERATION_ITEMS = [
 
 const EDUCATION_CARDS = [
   {
-    title: "НАВЧАННЯ",
-    text: "Знання, які допомагають покращувати медицину. Проводимо навчання, беремо участь у професійних заходах та розвиваємо сучасні підходи до відновлення пацієнтів.",
+    title: "КУРСИ ТА МАЙСТЕР-КЛАСИ",
+    text: "Практичні формати для відпрацювання навичок, сучасних методик та клінічних підходів.",
     href: "/kursy",
     image: educationTrainingImg,
-    label: "Практичні курси",
-    kicker: "Hands-on формат",
+    label: "ПРАКТИЧНЕ НАВЧАННЯ",
+    kicker: "",
     audience: "Для лікарів та фахівців",
     format: "Практичні модулі",
     icon: GraduationCap,
   },
   {
-    title: "КОНФЕРЕНЦІЇ",
-    text: "Професійні зустрічі для обміну досвідом, презентації нових методик та обговорення актуальних питань реабілітаційної медицини.",
+    title: "НАУКОВІ ПОДІЇ",
+    text: "Зустрічі фахівців для обміну досвідом, презентації досліджень і професійного діалогу.",
     href: "/konferentsii",
     image: educationConferenceImg,
-    label: "Фахові події",
-    kicker: "Наукова платформа",
+    label: "МІЖНАРОДНИЙ ОБМІН ДОСВІДОМ",
+    kicker: "",
     audience: "Для медичної спільноти",
     format: "Лекції та дискусії",
     icon: BookOpen,
@@ -485,57 +485,123 @@ function BlogCarousel() {
 
   return (
     <div>
-      <div className="grid gap-5 grid-cols-1 md:grid-cols-3">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 rounded-3xl bg-navy p-8 sm:p-10 lg:p-12 text-white">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
+        {/* Left Navy Hero Card */}
+        <div className="flex flex-col justify-between rounded-[24px] bg-[#0A192F] p-8 lg:p-10 text-white shadow-xl min-h-[480px]">
           <div>
-            <h3 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-4xl">
-              Наш блог —<br />ваш орієнтир
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-base">
-              Корисне про здоров'я, реабілітацію, фізичну активність та профілактику захворювань.
+            <span className="inline-block rounded-full border border-white/30 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-white/90">
+              НОВИНИ ТА СТАТТІ
+            </span>
+            <h2 className="mt-8 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase">
+              БЛОГ
+            </h2>
+            <div className="mt-4 mb-8 h-1.5 w-20 rounded-full bg-gradient-to-r from-sky-400 via-teal-400 to-brand-green" />
+            <p className="text-sm md:text-base leading-relaxed text-white/80 max-w-xs">
+              Корисні поради, новини центру та експертні матеріали про реабілітацію, здоров'я та якість життя.
             </p>
-            <div className="mt-6 h-1.5 w-16 rounded-full bg-gradient-to-r from-primary to-brand-green" />
           </div>
           <AppLink
             to="/novyny"
-            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition-all hover:bg-primary/90"
+            className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-brand-green px-6 py-4 text-base font-bold text-white shadow-md transition-all hover:bg-brand-green/90 hover:scale-[1.02]"
           >
-            Усі статті <ArrowRight className="size-4" />
+            Усі статті <ArrowRight className="size-5" />
           </AppLink>
         </div>
 
-        {visible.map((article) => (
-          <NewsCard key={article.id} article={article} />
-        ))}
+        {/* 2 Article Cards */}
+        {visible.map((article) => {
+          const CategoryIcon =
+            article.category === "Кардіологія"
+              ? Heart
+              : article.category === "Реабілітація"
+                ? UserCheck
+                : article.category === "Діагностика"
+                  ? Microscope
+                  : article.category === "Спортивна медицина"
+                    ? Trophy
+                    : Stethoscope;
+
+          return (
+            <article
+              key={article.id}
+              className="group flex flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl min-h-[480px]"
+            >
+              <div>
+                <AppLink to={article.href} className="relative block h-56 w-full overflow-hidden bg-slate-100 rounded-t-[24px]">
+                  <img
+                    src={article.image}
+                    alt={article.imageAlt}
+                    loading="lazy"
+                    className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <span className="absolute top-4 left-4 rounded-full bg-navy/90 px-3.5 py-1 text-xs font-bold text-white shadow-sm backdrop-blur-md">
+                    {article.date}
+                  </span>
+                </AppLink>
+
+                <div className="p-6 md:p-7">
+                  <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-primary">
+                    <CategoryIcon className="size-4" />
+                    <span>{article.category}</span>
+                    <span className="text-slate-300 font-normal">|</span>
+                    <span className="text-slate-400">{article.readTime}</span>
+                  </div>
+
+                  <h3 className="text-xl font-bold leading-snug text-navy transition-colors group-hover:text-primary line-clamp-2">
+                    <AppLink to={article.href}>{article.title}</AppLink>
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-relaxed text-slate-500 line-clamp-3">
+                    {article.excerpt}
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6 pt-0 md:p-7 md:pt-0">
+                <AppLink
+                  to={article.href}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-navy"
+                >
+                  Читати далі <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </AppLink>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
+      {/* Pagination dots & navigation */}
       <div className="mt-10 flex flex-col items-center gap-6">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2.5">
           {Array.from({ length: totalPages }).map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`size-2.5 rounded-full transition-colors ${i === current ? "bg-primary" : "bg-slate-300"}`}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                i === current
+                  ? "w-8 bg-primary shadow-sm"
+                  : "w-2.5 bg-slate-300 hover:bg-slate-400"
+              }`}
               aria-label={`Сторінка ${i + 1}`}
             />
           ))}
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <button
             onClick={prev}
             disabled={current === 0}
-            className="flex size-12 items-center justify-center rounded-full border border-slate-300 bg-white text-navy transition-colors hover:bg-slate-50 disabled:opacity-40"
-            aria-label="Попередня"
+            className="flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-all hover:bg-primary hover:text-white hover:border-primary disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-navy disabled:hover:border-slate-200"
+            aria-label="Попередня сторінка"
           >
-            <ChevronLeft className="size-5" />
+            <ChevronLeft className="size-4" />
           </button>
           <button
             onClick={next}
             disabled={current === totalPages - 1}
-            className="flex size-12 items-center justify-center rounded-full border border-slate-300 bg-white text-navy transition-colors hover:bg-slate-50 disabled:opacity-40"
-            aria-label="Наступна"
+            className="flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-all hover:bg-primary hover:text-white hover:border-primary disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-navy disabled:hover:border-slate-200"
+            aria-label="Наступна сторінка"
           >
-            <ChevronRight className="size-5" />
+            <ChevronRight className="size-4" />
           </button>
         </div>
       </div>
@@ -980,7 +1046,11 @@ function Index() {
         {/* 7. НАВЧАННЯ ТА КОНФЕРЕНЦІЇ */}
         <section className="py-24 md:py-32 bg-background">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <SectionHeader centered subtitle="ОСВІТА ТА НАУКА" title="ЗНАННЯ, ЯКІ ДОПОМАГАЮТЬ ПОКРАЩУВАТИ МЕДИЦИНУ" />
+            <SectionHeader
+              centered
+              subtitle="МІЖНАРОДНА МЕДИЧНА НАУКОВА БАЗА"
+              title="ОСВІТА ТА НАУКА"
+            />
 
             <div className="mx-auto mt-12 grid max-w-7xl gap-7 md:grid-cols-2 lg:gap-8">
               {EDUCATION_CARDS.map((item) => (
@@ -1070,23 +1140,8 @@ function Index() {
         </section>
 
         {/* 9. БЛОГ */}
-        <section className="py-24 md:py-32 bg-background">
+        <section className="py-20 md:py-28 bg-background">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
-            <div className="mb-10 md:mb-12 text-center">
-              <span className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-primary backdrop-blur-md uppercase">
-                БЛОГ
-              </span>
-              <h2 className="text-3xl font-extrabold leading-[1.15] text-navy md:text-5xl lg:text-6xl">
-                КОРИСНЕ ПРО ЗДОРОВ'Я ТА ВІДНОВЛЕННЯ
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600">
-                Прості пояснення про реабілітацію, діагностику, фізичну активність та профілактику захворювань.
-              </p>
-              <div className="mt-6 flex justify-center">
-                <div className="h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green" />
-              </div>
-            </div>
-
             <BlogCarousel />
           </div>
         </section>

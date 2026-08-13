@@ -11,7 +11,7 @@ import {
 import { AppLink } from "@/components/app-link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Breadcrumbs, FAQAccordion } from "@/components/blocks";
+import { Breadcrumbs, FAQAccordion, WhenToPassCardioRehabBlock } from "@/components/blocks";
 import { getServicePageData } from "@/data/service-content-generator";
 import { useConsultationModal } from "@/components/consultation-form";
 import type { FAQItem, ServiceMethodCard, SiteNode } from "@/data/types";
@@ -24,6 +24,7 @@ import sportsImg from "@/assets/service-sports.jpg";
 
 const ANCHORS = [
   { href: "#about", label: "Про програму" },
+  { href: "#when-to-pass", label: "Коли варто пройти" },
   { href: "#for-whom", label: "Кому підходить" },
   { href: "#process", label: "Як проходить" },
   { href: "#programs", label: "Вартість" },
@@ -241,7 +242,11 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           />
         </PageSection>
 
-        <PageSection className="py-10 sm:py-16">
+        <PageSection id="when-to-pass" className="py-10 sm:py-16">
+          <WhenToPassCardioRehabBlock href="#for-whom" />
+        </PageSection>
+
+        <PageSection className="pb-10 sm:pb-16">
           <TimingSection />
         </PageSection>
 

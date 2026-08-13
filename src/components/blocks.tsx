@@ -336,3 +336,96 @@ export function CTASection({
     </PageContainer>
   );
 }
+
+export function WhenToPassCardioRehabBlock({
+  eyebrow = "ВІДНОВЛЕННЯ ПІСЛЯ ЛІКУВАННЯ",
+  title = "Коли варто пройти кардіологічну реабілітацію",
+  description = "Багато захворювань та порушень розвитку часто протікають приховано і тривалий час можуть не проявлятися вираженими симптомами. Саме тому важливо вчасно реагувати на найменші зміни самопочуття та регулярно проходити обстеження та профілактику.",
+  calloutTitle = "Звернутися до лікаря варто при:",
+  items = [
+    "Після перенесеного захворювання, травми або операції",
+    "При зниженні витривалості та повсякденної активності",
+    "За рекомендацією лікуючого лікаря",
+  ],
+  buttonLabel = "Детальніше",
+  onButtonClick,
+  href = "#for-whom",
+  className,
+}: {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  calloutTitle?: string;
+  items?: string[];
+  buttonLabel?: string;
+  onButtonClick?: () => void;
+  href?: string;
+  className?: string;
+}) {
+  const handleClick = (e: React.MouseEvent) => {
+    if (onButtonClick) {
+      e.preventDefault();
+      onButtonClick();
+    } else if (href && href.startsWith("#")) {
+      e.preventDefault();
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
+
+  return (
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-3xl border border-blue-100 bg-white p-6 sm:p-10 lg:p-12 shadow-sm transition-all",
+        className,
+      )}
+    >
+      <div className="max-w-3xl">
+        <div className="inline-block">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-primary">
+            {eyebrow}
+          </span>
+          <div className="mt-1 h-0.5 w-8 rounded-full bg-primary" />
+        </div>
+
+        <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-navy tracking-tight">
+          {title}
+        </h2>
+
+        <p className="mt-4 text-sm sm:text-base leading-relaxed text-navy/75">{description}</p>
+
+        <div className="mt-6 inline-flex items-center gap-2 rounded-lg border-l-4 border-primary bg-[#edf4fc] px-4 py-2.5 text-sm sm:text-base font-bold text-navy">
+          <span>{calloutTitle}</span>
+        </div>
+
+        <ul className="mt-5 space-y-3">
+          {items.map((item, idx) => (
+            <li
+              key={idx}
+              className="flex items-center gap-3 text-sm sm:text-base font-medium text-navy/85"
+            >
+              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+                <Check className="size-3.5 stroke-[3]" />
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-8">
+          <a
+            href={href}
+            onClick={handleClick}
+            className="inline-flex items-center gap-2.5 rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md transition-colors hover:bg-primary/90 cursor-pointer"
+          >
+            <span>{buttonLabel}</span>
+            <ArrowRight className="size-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
