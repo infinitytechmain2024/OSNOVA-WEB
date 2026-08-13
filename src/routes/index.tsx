@@ -17,7 +17,6 @@ import {
   UserCheck,
   Flame,
   Zap,
-  Ambulance,
   Network,
   Microscope,
   Stethoscope,
@@ -298,7 +297,6 @@ const COOPERATION_ITEMS = [
     text: "Організація медичних форумів, конференцій, виставок та професійних заходів.",
     tags: ["Для спеціалістів", "Конференції та виставки"],
     href: "/iventy",
-    icon: Calendar,
     image: cooperationEventsImg,
   },
   {
@@ -307,7 +305,6 @@ const COOPERATION_ITEMS = [
     text: "Благодійні та реабілітаційні ініціативи, допомога громаді та соціальні програми.",
     tags: ["Для громади", "Благодійні ініціативи"],
     href: "/sotsialni-proiekty",
-    icon: Heart,
     image: cooperationSocialImg,
   },
   {
@@ -316,7 +313,6 @@ const COOPERATION_ITEMS = [
     text: "Команда ОСНОВА приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
     tags: ["Для пацієнтів", "На дому та в готелі"],
     href: "/vyizna-reabilitatsiia",
-    icon: Ambulance,
     image: cooperationMobileRehabImg,
   },
 ];
@@ -516,8 +512,6 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
 }
 
 function CooperationCard({ item }: { item: (typeof COOPERATION_ITEMS)[number] }) {
-  const Icon = item.icon;
-
   return (
     <AppLink
       to={item.href}
@@ -526,9 +520,6 @@ function CooperationCard({ item }: { item: (typeof COOPERATION_ITEMS)[number] })
     >
       <div className="cooperation-marker" aria-hidden="true">
         <span className="cooperation-number">{item.number}</span>
-        <span className="cooperation-icon">
-          <Icon strokeWidth={1.8} />
-        </span>
       </div>
 
       <div className="cooperation-copy">
@@ -538,15 +529,12 @@ function CooperationCard({ item }: { item: (typeof COOPERATION_ITEMS)[number] })
           <span>{item.tags[0]}</span>
           <span>{item.tags[1]}</span>
         </div>
+        <span className="cooperation-details">Детальніше</span>
       </div>
 
       <div className="cooperation-media">
         <img src={item.image} alt={item.title} loading="lazy" />
       </div>
-
-      <span className="cooperation-cta" aria-hidden="true">
-        <ArrowRight strokeWidth={1.8} />
-      </span>
     </AppLink>
   );
 }
