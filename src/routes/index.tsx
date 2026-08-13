@@ -288,25 +288,40 @@ const PARTNER_GROUPS = Array.from(
 // Співпраця
 const COOPERATION_ITEMS = [
   {
-    title: "СПІВПРАЦЯ З СПЕЦІАЛІСТАМИ",
-    text: "Ми співпрацюємо з медичними спеціалістами, закладами та професійними спільнотами для розвитку якісної реабілітаційної допомоги.",
+    number: "01",
+    title: "ІВЕНТИ",
+    text: "Організація медичних форумів, конференцій, виставок та професійних заходів.",
     href: "/partnerstvo/likariam",
-    icon: UserCheck,
-    image: cpetImg,
+    icon: Calendar,
+    image: educationConferenceImg,
+    tags: [
+      { text: "Для спеціалістів", color: "blue" },
+      { text: "Конференції та виставки", color: "green" },
+    ],
   },
   {
-    title: "НАВЧАННЯ ТА РОЗВИТОК",
-    text: "Проводимо навчання, беремо участь у професійних заходах та розвиваємо сучасні підходи до відновлення пацієнтів.",
-    href: "/kursy",
-    icon: GraduationCap,
+    number: "02",
+    title: "СОЦІАЛЬНІ ПРОЄКТИ",
+    text: "Благодійні та реабілітаційні ініціативи, допомога громаді та соціальні програми.",
+    href: "/socialni-proekty",
+    icon: Heart,
     image: educationTrainingImg,
+    tags: [
+      { text: "Для громади", color: "blue" },
+      { text: "Благодійні ініціативи", color: "green" },
+    ],
   },
   {
+    number: "03",
     title: "ВИЇЗНА РЕАБІЛІТАЦІЯ",
-    text: "Команда приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
+    text: "Команда ОСНОВА приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
     href: "/vyizna-reabilitatsiia",
-    icon: Ambulance,
+    icon: Stethoscope,
     image: rehabImg,
+    tags: [
+      { text: "Для пацієнтів", color: "blue" },
+      { text: "На дому та в готелі", color: "green" },
+    ],
   },
 ];
 
