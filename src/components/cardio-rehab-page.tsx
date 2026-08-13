@@ -189,9 +189,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                 Реабілітація в кардіології
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-background/86 sm:text-lg">
-                Контрольована програма відновлення для людей після серцево-судинних захворювань,
-                операцій або втручань. Команда допомагає безпечно повернутися до активності з
-                урахуванням стану серця, самопочуття та рекомендацій лікаря.
+                Профілактика • діагностика • лікування • відновлення • навчання • супровід
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <button
