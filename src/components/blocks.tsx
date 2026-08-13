@@ -376,56 +376,98 @@ export function WhenToPassCardioRehabBlock({
   };
 
   return (
-    <div
+    <section
       className={cn(
-        "relative overflow-hidden rounded-3xl border border-blue-100 bg-white p-6 sm:p-10 lg:p-12 shadow-sm transition-all",
+        "relative overflow-hidden rounded-[32px] bg-[#F5F7FA] px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-20",
         className,
       )}
     >
-      <div className="max-w-3xl">
-        <div className="inline-block">
-          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-primary">
-            {eyebrow}
-          </span>
-          <div className="mt-1 h-0.5 w-8 rounded-full bg-primary" />
-        </div>
+      <div className="mx-auto max-w-[1400px]">
+        <div className="overflow-hidden rounded-[24px] bg-white p-6 shadow-sm sm:p-10 lg:p-14">
+          <div className="grid gap-10 lg:grid-cols-[1fr_280px]">
+            <div className="max-w-[760px]">
+              <div className="inline-block">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                  {eyebrow}
+                </span>
+              </div>
 
-        <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-navy tracking-tight">
-          {title}
-        </h2>
+              <h2 className="mt-3 text-[32px] sm:text-[40px] lg:text-[48px] font-extrabold leading-[1.15] text-navy tracking-tight">
+                {title}
+              </h2>
 
-        <p className="mt-4 text-sm sm:text-base leading-relaxed text-navy/75">{description}</p>
+              <p className="mt-5 text-sm sm:text-base leading-relaxed sm:leading-[1.7] text-navy/75 max-w-[760px]">
+                {description}
+              </p>
 
-        <div className="mt-6 inline-flex items-center gap-2 rounded-lg border-l-4 border-primary bg-[#edf4fc] px-4 py-2.5 text-sm sm:text-base font-bold text-navy">
-          <span>{calloutTitle}</span>
-        </div>
+              <div className="mt-8 flex items-center gap-3">
+                <div className="h-6 w-0.5 rounded-full bg-primary" />
+                <span className="text-sm sm:text-base font-bold text-navy">
+                  {calloutTitle}
+                </span>
+              </div>
 
-        <ul className="mt-5 space-y-3">
-          {items.map((item, idx) => (
-            <li
-              key={idx}
-              className="flex items-center gap-3 text-sm sm:text-base font-medium text-navy/85"
-            >
-              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
-                <Check className="size-3.5 stroke-[3]" />
-              </span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+              <ul className="mt-5 space-y-0">
+                {items.map((item, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-start gap-3 py-3 border-b border-slate-100 last:border-0"
+                  >
+                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[#E8F0FE]">
+                      <Check className="size-3 stroke-[3] text-primary" />
+                    </span>
+                    <span className="text-sm sm:text-base font-medium text-navy/85 leading-relaxed">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
 
-        <div className="mt-8">
-          <a
-            href={href}
-            onClick={handleClick}
-            className="inline-flex items-center gap-2.5 rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md transition-colors hover:bg-primary/90 cursor-pointer"
-          >
-            <span>{buttonLabel}</span>
-            <ArrowRight className="size-4" />
-          </a>
+              <div className="mt-7">
+                <a
+                  href={href}
+                  onClick={handleClick}
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#1E3A5F] px-5 py-3 text-sm font-bold text-white shadow-md transition-colors hover:bg-[#1E3A5F]/90 cursor-pointer"
+                >
+                  <span>{buttonLabel}</span>
+                  <ArrowRight className="size-4" />
+                </a>
+              </div>
+            </div>
+
+            <div className="relative hidden lg:block">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <svg
+                  viewBox="0 0 200 200"
+                  className="w-48 h-48 text-[#E8F0FE] opacity-60"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="0.5" />
+                  <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="0.5" />
+                  <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="0.5" />
+                  <path
+                    d="M40 100 Q70 60 100 100 T160 100"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M50 120 Q80 80 110 110 T170 90"
+                    stroke="currentColor"
+                    strokeWidth="0.75"
+                    fill="none"
+                    strokeLinecap="round"
+                    opacity="0.6"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
