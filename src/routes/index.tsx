@@ -1154,7 +1154,7 @@ function Index() {
 
                 <div className="mt-10">
                   <AppLink
-                    to="/pro-nas"
+                    to="/pro-osnovu"
                     className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105"
                   >
                     ДЕТАЛЬНІШЕ <ChevronRight className="size-5" />
