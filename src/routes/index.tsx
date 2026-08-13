@@ -370,13 +370,15 @@ function SectionHeader({
   subtitle,
   title,
   centered = false,
+  className = "",
 }: {
   subtitle?: string;
   title: React.ReactNode;
   centered?: boolean;
+  className?: string;
 }) {
   return (
-    <div className={`mb-12 md:mb-16 ${centered ? "text-center" : ""}`}>
+    <div className={`mb-12 md:mb-16 ${centered ? "text-center" : ""} ${className}`}>
       {subtitle && (
         <span className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-primary backdrop-blur-md uppercase">
           {subtitle}
@@ -1087,11 +1089,16 @@ function Index() {
         </section>
 
         {/* 8. СПІВПРАЦЯ */}
-        <section className="bg-white py-24 md:py-32">
+        <section className="bg-white py-16 md:py-20 lg:py-16">
           <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-            <SectionHeader centered subtitle="ПАРТНЕРСЬКА ПЛАТФОРМА" title="СПІВПРАЦЯ" />
+            <SectionHeader
+              centered
+              subtitle="ПАРТНЕРСЬКА ПЛАТФОРМА"
+              title="СПІВПРАЦЯ"
+              className="!mb-12"
+            />
 
-            <div className="mx-auto mt-12 flex max-w-[1440px] flex-col gap-4 md:mt-14 md:gap-5">
+            <div className="mx-auto flex max-w-[1540px] flex-col gap-4 md:gap-5">
               {COOPERATION_ITEMS.map((item) => (
                 <CooperationCard key={item.number} item={item} />
               ))}
