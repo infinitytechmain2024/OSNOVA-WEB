@@ -294,6 +294,14 @@ const PARTNER_GROUPS = Array.from(
 const COOPERATION_ITEMS = [
   {
     number: "01",
+    title: "ВИЇЗНА РЕАБІЛІТАЦІЯ",
+    text: "Команда ОСНОВА приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
+    tags: ["Для пацієнтів", "На дому та в готелі"],
+    href: "/vyizna-reabilitatsiia",
+    image: cooperationMobileRehabImg,
+  },
+  {
+    number: "02",
     title: "ІВЕНТИ",
     text: "Організація медичних форумів, конференцій, виставок та професійних заходів.",
     tags: ["Для спеціалістів", "Конференції та виставки"],
@@ -301,20 +309,12 @@ const COOPERATION_ITEMS = [
     image: cooperationEventsImg,
   },
   {
-    number: "02",
+    number: "03",
     title: "СОЦІАЛЬНІ ПРОЄКТИ",
     text: "Благодійні та реабілітаційні ініціативи, допомога громаді та соціальні програми.",
     tags: ["Для громади", "Благодійні ініціативи"],
     href: "/sotsialni-proiekty",
     image: cooperationSocialImg,
-  },
-  {
-    number: "03",
-    title: "ВИЇЗНА РЕАБІЛІТАЦІЯ",
-    text: "Команда ОСНОВА приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
-    tags: ["Для пацієнтів", "На дому та в готелі"],
-    href: "/vyizna-reabilitatsiia",
-    image: cooperationMobileRehabImg,
   },
 ];
 
@@ -512,12 +512,13 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
   );
 }
 
-function CooperationCard({ item }: { item: (typeof COOPERATION_ITEMS)[number] }) {
+function CooperationCard({ item, index }: { item: (typeof COOPERATION_ITEMS)[number]; index: number }) {
   return (
     <AppLink
       to={item.href}
       aria-label={`Перейти до розділу «${item.title}»`}
       className="cooperation-card group"
+      style={{ zIndex: COOPERATION_ITEMS.length - index }}
     >
       <div className="cooperation-marker" aria-hidden="true">
         <span className="cooperation-number">{item.number}</span>
@@ -1082,12 +1083,12 @@ function Index() {
               centered
               subtitle="ПАРТНЕРСЬКА ПЛАТФОРМА"
               title="СПІВПРАЦЯ"
-              className="!mb-12"
+              className="!mb-4 md:!mb-5"
             />
 
-            <div className="mx-auto flex max-w-[1540px] flex-col gap-4 md:gap-5">
-              {COOPERATION_ITEMS.map((item) => (
-                <CooperationCard key={item.number} item={item} />
+            <div className="cooperation-stack mx-auto max-w-[1540px]">
+              {COOPERATION_ITEMS.map((item, index) => (
+                <CooperationCard key={item.number} item={item} index={index} />
               ))}
             </div>
           </div>

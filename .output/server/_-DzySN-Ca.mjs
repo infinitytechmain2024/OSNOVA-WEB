@@ -4,11 +4,11 @@ import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...
 import { $ as Dumbbell, B as House, D as Microscope, G as GraduationCap, H as HeartPulse, I as Layers, M as MapPin, N as Mail, O as MessageSquare, Q as ExternalLink, S as Package, St as ArrowRight, T as Navigation, Tt as Activity, V as Heart, W as Handshake, Y as FileText, _ as Search, _t as Building2, a as Users, b as Phone, bt as BadgeCheck, d as TriangleAlert, dt as ChevronLeft, et as CloudUpload, f as Stethoscope, ft as ChevronDown, g as Send, h as Share2, ht as CalendarDays, i as Wrench, it as ClipboardCheck, j as MapPinned, k as MessageCircle, lt as ChevronUp, m as ShieldCheck, p as Sparkles, pt as Check, q as FlaskConical, rt as ClipboardList, s as UserRoundCheck, st as CircleCheck, tt as Clock, u as Truck, ut as ChevronRight, v as Route, wt as Ambulance, x as PhoneCall, y as Presentation, yt as BookOpen } from "./_libs/lucide-react.mjs";
 import { _ as service_sports_default, a as IMAGES, c as cn, d as ergometer_default, f as getBreadcrumbs, g as service_rehab_default, h as service_checkup_default, l as cpet_test_default, m as getNodeByRoute, n as CONTACTS, o as SiteFooter, r as ConsultationForm, s as SiteHeader, t as AppLink, u as ecg_review_default, v as siteTree, y as useConsultationModal } from "./_ssr/site-footer-DtdGqSzK.mjs";
 import { a as WhenToPassCardioRehabBlock, i as SectionHeader$1, n as FAQAccordion, r as PageContainer, t as Breadcrumbs } from "./_ssr/blocks-x0lAFLuX.mjs";
-import { t as Route$1 } from "./_-Bu5oFV71.mjs";
+import { t as Route$1 } from "./_-CYqUJvQv.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-CQaoChX0.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as partner_ifnmu_default, i as partner_heart_default, n as partner_asmu_default, o as partner_karpatska_akademiia_default, r as partner_chnu_default, s as partner_sytenko_default, t as osnova_logo_3d_default } from "./_ssr/osnova-logo-3d-DbG2o_rZ.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-Df_gqUdG.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-DzySN-Ca.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -1864,11 +1864,7 @@ function TimingSection() {
 						src: osnova_logo_3d_default,
 						alt: "Логотип клініки Основа",
 						className: "size-20 rounded-xl object-cover shadow-sm"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-						src: cardio_heart_3d_default,
-						alt: "Декоративне серце",
-						className: "size-24 rounded-xl object-contain bg-white/40 p-1 shadow-sm"
-					})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecorativeHeart, {})]
 				})]
 			})
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -1896,6 +1892,36 @@ function TimingSection() {
 				}, column.title);
 			})
 		})]
+	});
+}
+function DecorativeHeart() {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+		viewBox: "0 0 280 220",
+		"aria-label": "Декоративне серце",
+		className: "h-24 w-32 text-sky-400/90",
+		fill: "none",
+		xmlns: "http://www.w3.org/2000/svg",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+				d: "M44 79C44 38 84 34 104 48C123 33 165 37 182 60C197 81 196 101 176 118C156 136 131 147 108 170C84 147 60 136 40 118C20 101 19 81 44 79Z",
+				stroke: "currentColor",
+				strokeWidth: "3",
+				strokeLinecap: "round",
+				strokeLinejoin: "round"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+				d: "M146 75C173 52 197 42 221 55C245 68 251 101 237 121C223 141 203 150 175 165",
+				stroke: "currentColor",
+				strokeWidth: "3",
+				strokeLinecap: "round"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+				d: "M33 98C42 97 50 102 58 112C69 126 80 132 96 136",
+				stroke: "currentColor",
+				strokeWidth: "3",
+				strokeLinecap: "round"
+			})
+		]
 	});
 }
 function ConditionCard({ card, image }) {

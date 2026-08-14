@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-ByCmqbTV.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-tuFpNnfe.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/workspaces/block-builder-page/src/routes/__root.tsx",
@@ -15,22 +15,22 @@ var tsrStartManifest = () => ({ routes: {
 			"/statti/pershi-symptomy-problem-iz-sertsem"
 		],
 		preloads: [
-			"/assets/index-BfwwwlkL.js",
+			"/assets/index-BDaneWKX.js",
 			"/assets/site-footer-BAHqLps3.js",
-			"/assets/_-BeO8vzfR.js",
+			"/assets/_-BMXTytvM.js",
 			"/assets/preload-helper-WfUlQCdB.js"
 		],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-BfwwwlkL.js"
+			src: "/assets/index-BDaneWKX.js"
 		} }]
 	},
 	"/": {
 		filePath: "/workspaces/block-builder-page/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-CcIMyzM-.js",
+			"/assets/routes-B9VJGf7K.js",
 			"/assets/osnova-logo-3d-CJr8_I7f.js",
 			"/assets/users-DXInPeek.js",
 			"/assets/education-training-VQUtcCqH.js",
@@ -41,10 +41,10 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspaces/block-builder-page/src/routes/$.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_-DiNo23qp.js",
+			"/assets/_-Ba2xVRDu.js",
 			"/assets/osnova-logo-3d-CJr8_I7f.js",
 			"/assets/building-2-BsVU4eVn.js",
-			"/assets/service-detail-template-DMhUMnLc.js",
+			"/assets/service-detail-template-VvxgG0lq.js",
 			"/assets/calendar-days-D-M4U1As.js",
 			"/assets/chevron-left-CaZHK7ax.js",
 			"/assets/users-DXInPeek.js",
@@ -57,7 +57,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspaces/block-builder-page/src/routes/iventy.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/iventy-WnveGZUQ.js",
+			"/assets/iventy-BVBFYSPO.js",
 			"/assets/building-2-BsVU4eVn.js",
 			"/assets/calendar-days-D-M4U1As.js",
 			"/assets/clock-3-1JvrzC54.js",
@@ -68,13 +68,13 @@ var tsrStartManifest = () => ({ routes: {
 	"/kardiolohichna-diahnostyka": {
 		filePath: "/workspaces/block-builder-page/src/routes/kardiolohichna-diahnostyka.tsx",
 		children: void 0,
-		preloads: ["/assets/kardiolohichna-diahnostyka-DPEFNsqq.js", "/assets/service-detail-template-DMhUMnLc.js"]
+		preloads: ["/assets/kardiolohichna-diahnostyka-S3keLA0U.js", "/assets/service-detail-template-VvxgG0lq.js"]
 	},
 	"/konferentsii": {
 		filePath: "/workspaces/block-builder-page/src/routes/konferentsii.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/konferentsii-F1kYVJrn.js",
+			"/assets/konferentsii-jUtClRl2.js",
 			"/assets/calendar-days-D-M4U1As.js",
 			"/assets/chevron-left-CaZHK7ax.js",
 			"/assets/clock-3-1JvrzC54.js",
@@ -84,18 +84,18 @@ var tsrStartManifest = () => ({ routes: {
 	"/kursy": {
 		filePath: "/workspaces/block-builder-page/src/routes/kursy.tsx",
 		children: void 0,
-		preloads: ["/assets/kursy-BixIUNFt.js", "/assets/education-courses-page-DlhHV_O9.js"]
+		preloads: ["/assets/kursy-DMTGjeGE.js", "/assets/education-courses-page-DFKEcx99.js"]
 	},
 	"/navchannia": {
 		filePath: "/workspaces/block-builder-page/src/routes/navchannia.tsx",
 		children: void 0,
-		preloads: ["/assets/navchannia-D5tTUlWS.js", "/assets/education-courses-page-DlhHV_O9.js"]
+		preloads: ["/assets/navchannia-XcQd3Bar.js", "/assets/education-courses-page-DFKEcx99.js"]
 	},
 	"/novyny": {
 		filePath: "/workspaces/block-builder-page/src/routes/novyny.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/novyny-CYlnYGx-.js",
+			"/assets/novyny-BOAqcRJO.js",
 			"/assets/calendar-days-D-M4U1As.js",
 			"/assets/clock-3-1JvrzC54.js",
 			"/assets/news-BCfUfk_p.js"
@@ -105,7 +105,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspaces/block-builder-page/src/routes/statti/pershi-symptomy-problem-iz-sertsem.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/pershi-symptomy-problem-iz-sertsem-CGe4os0l.js",
+			"/assets/pershi-symptomy-problem-iz-sertsem-BZapjvQO.js",
 			"/assets/calendar-days-D-M4U1As.js",
 			"/assets/triangle-alert-BR6XVldl.js"
 		]

@@ -9,7 +9,7 @@ import { a as partner_ifnmu_default, i as partner_heart_default, n as partner_as
 import { t as NEWS_ARTICLES } from "./news-NnYWL2Kt.mjs";
 import { t as useEmblaCarousel } from "../_libs/embla-carousel-react+[...].mjs";
 import { t as Autoplay } from "../_libs/embla-carousel-autoplay.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-CrYV0Pkl.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DjboqJx_.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var Accordion = Accordion$1;
@@ -636,6 +636,14 @@ var PARTNER_GROUPS = Array.from({ length: Math.ceil(PARTNERS.length / PARTNERS_P
 var COOPERATION_ITEMS = [
 	{
 		number: "01",
+		title: "ВИЇЗНА РЕАБІЛІТАЦІЯ",
+		text: "Команда ОСНОВА приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
+		tags: ["Для пацієнтів", "На дому та в готелі"],
+		href: "/vyizna-reabilitatsiia",
+		image: mobile_rehab_default
+	},
+	{
+		number: "02",
 		title: "ІВЕНТИ",
 		text: "Організація медичних форумів, конференцій, виставок та професійних заходів.",
 		tags: ["Для спеціалістів", "Конференції та виставки"],
@@ -643,20 +651,12 @@ var COOPERATION_ITEMS = [
 		image: events_default
 	},
 	{
-		number: "02",
+		number: "03",
 		title: "СОЦІАЛЬНІ ПРОЄКТИ",
 		text: "Благодійні та реабілітаційні ініціативи, допомога громаді та соціальні програми.",
 		tags: ["Для громади", "Благодійні ініціативи"],
 		href: "/sotsialni-proiekty",
 		image: social_projects_default
-	},
-	{
-		number: "03",
-		title: "ВИЇЗНА РЕАБІЛІТАЦІЯ",
-		text: "Команда ОСНОВА приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
-		tags: ["Для пацієнтів", "На дому та в готелі"],
-		href: "/vyizna-reabilitatsiia",
-		image: mobile_rehab_default
 	}
 ];
 var EDUCATION_CARDS = [{
@@ -836,11 +836,12 @@ function EducationCard({ item }) {
 		})]
 	});
 }
-function CooperationCard({ item }) {
+function CooperationCard({ item, index }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppLink, {
 		to: item.href,
 		"aria-label": `Перейти до розділу «${item.title}»`,
 		className: "cooperation-card group",
+		style: { zIndex: COOPERATION_ITEMS.length - index },
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "cooperation-marker",
@@ -1396,10 +1397,13 @@ function Index() {
 							centered: true,
 							subtitle: "ПАРТНЕРСЬКА ПЛАТФОРМА",
 							title: "СПІВПРАЦЯ",
-							className: "!mb-12"
+							className: "!mb-4 md:!mb-5"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "mx-auto flex max-w-[1540px] flex-col gap-4 md:gap-5",
-							children: COOPERATION_ITEMS.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CooperationCard, { item }, item.number))
+							className: "cooperation-stack mx-auto max-w-[1540px]",
+							children: COOPERATION_ITEMS.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CooperationCard, {
+								item,
+								index
+							}, item.number))
 						})]
 					})
 				}),

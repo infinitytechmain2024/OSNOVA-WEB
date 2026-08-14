@@ -5,14 +5,14 @@ import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[..
 import { $ as Dumbbell, B as House, H as HeartPulse, M as MapPin, St as ArrowRight, Tt as Activity, U as Headphones, b as Phone, f as Stethoscope, g as Send, ut as ChevronRight } from "../_libs/lucide-react.mjs";
 import { d as ergometer_default, i as ConsultationModalProvider, n as CONTACTS, o as SiteFooter, p as getNodeById, s as SiteHeader, t as AppLink } from "./site-footer-DtdGqSzK.mjs";
 import { r as PageContainer } from "./blocks-x0lAFLuX.mjs";
-import { t as Route } from "../_-Bu5oFV71.mjs";
+import { t as Route } from "../_-CYqUJvQv.mjs";
 import { t as Route$10 } from "./konferentsii-CGHaxsUf.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
 import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CPkG9t3_.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-DkReO1eP.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-Xj379gpu.css";
+var styles_default = "/assets/styles-BOdjt44e.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -343,7 +343,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ConsultationModalProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {}) })
 	});
 }
-var $$splitComponentImporter$6 = () => import("./routes-CrYV0Pkl.mjs");
+var $$splitComponentImporter$6 = () => import("./routes-DjboqJx_.mjs");
 var Route$8 = createFileRoute("/")({
 	head: () => ({ meta: [{ title: "Снова Реабілітація — Медичний центр діагностики та відновлення" }, {
 		name: "description",

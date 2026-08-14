@@ -573,11 +573,7 @@ function TimingSection() {
               alt="Логотип клініки Основа"
               className="size-20 rounded-xl object-cover shadow-sm"
             />
-            <img
-              src={cardioHeart3dImg}
-              alt="Декоративне серце"
-              className="size-24 rounded-xl object-contain bg-white/40 p-1 shadow-sm"
-            />
+            <DecorativeHeart />
           </div>
         </div>
       </div>
@@ -610,6 +606,38 @@ function TimingSection() {
         })}
       </div>
     </div>
+  );
+}
+
+function DecorativeHeart() {
+  return (
+    <svg
+      viewBox="0 0 280 220"
+      aria-label="Декоративне серце"
+      className="h-24 w-32 text-sky-400/90"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M44 79C44 38 84 34 104 48C123 33 165 37 182 60C197 81 196 101 176 118C156 136 131 147 108 170C84 147 60 136 40 118C20 101 19 81 44 79Z"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M146 75C173 52 197 42 221 55C245 68 251 101 237 121C223 141 203 150 175 165"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <path
+        d="M33 98C42 97 50 102 58 112C69 126 80 132 96 136"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+    </svg>
   );
 }
 
