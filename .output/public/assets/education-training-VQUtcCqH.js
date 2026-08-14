@@ -1,0 +1,1 @@
+var e=`/assets/education-conference-CO2NSB9R.png`,t=`/assets/education-training-Cwv52uGB.png`;export{e as n,t};
