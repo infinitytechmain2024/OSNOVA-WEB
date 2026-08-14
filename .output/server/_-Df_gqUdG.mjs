@@ -4,11 +4,11 @@ import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...
 import { $ as Dumbbell, B as House, D as Microscope, G as GraduationCap, H as HeartPulse, I as Layers, M as MapPin, N as Mail, O as MessageSquare, Q as ExternalLink, S as Package, St as ArrowRight, T as Navigation, Tt as Activity, V as Heart, W as Handshake, Y as FileText, _ as Search, _t as Building2, a as Users, b as Phone, bt as BadgeCheck, d as TriangleAlert, dt as ChevronLeft, et as CloudUpload, f as Stethoscope, ft as ChevronDown, g as Send, h as Share2, ht as CalendarDays, i as Wrench, it as ClipboardCheck, j as MapPinned, k as MessageCircle, lt as ChevronUp, m as ShieldCheck, p as Sparkles, pt as Check, q as FlaskConical, rt as ClipboardList, s as UserRoundCheck, st as CircleCheck, tt as Clock, u as Truck, ut as ChevronRight, v as Route, wt as Ambulance, x as PhoneCall, y as Presentation, yt as BookOpen } from "./_libs/lucide-react.mjs";
 import { _ as service_sports_default, a as IMAGES, c as cn, d as ergometer_default, f as getBreadcrumbs, g as service_rehab_default, h as service_checkup_default, l as cpet_test_default, m as getNodeByRoute, n as CONTACTS, o as SiteFooter, r as ConsultationForm, s as SiteHeader, t as AppLink, u as ecg_review_default, v as siteTree, y as useConsultationModal } from "./_ssr/site-footer-DtdGqSzK.mjs";
 import { a as WhenToPassCardioRehabBlock, i as SectionHeader$1, n as FAQAccordion, r as PageContainer, t as Breadcrumbs } from "./_ssr/blocks-x0lAFLuX.mjs";
-import { t as Route$1 } from "./_-D7v_iLdn.mjs";
+import { t as Route$1 } from "./_-Bu5oFV71.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-CQaoChX0.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as partner_ifnmu_default, i as partner_heart_default, n as partner_asmu_default, o as partner_karpatska_akademiia_default, r as partner_chnu_default, s as partner_sytenko_default, t as osnova_logo_3d_default } from "./_ssr/osnova-logo-3d-DbG2o_rZ.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-Dgl5pz3B.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-Df_gqUdG.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -1709,17 +1709,17 @@ function CardioRehabPage({ node }) {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 					id: "programs",
-					className: "scroll-mt-24 bg-navy-deep py-14 sm:py-20",
+					className: "scroll-mt-24 bg-soft-blue py-14 sm:py-20",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-								className: "max-w-4xl text-2xl font-extrabold leading-tight text-white sm:text-3xl lg:text-4xl",
+								className: "max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-4xl",
 								children: "Програми та вартість"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mt-4 h-1 w-16 rounded-full bg-brand-green" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mt-4 h-1 w-16 rounded-full bg-primary" }),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-4 max-w-3xl text-base leading-relaxed text-white/70",
+								className: "mt-4 max-w-3xl text-base leading-relaxed text-navy/70",
 								children: "Точну вартість і детальний склад кожного пакету повідомляє адміністратор після попереднього розгляду документів і консультації лікаря."
 							})
 						] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -1858,10 +1858,17 @@ function TimingSection() {
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeading$1, {
 					title: "Коли варто розпочати програму",
 					text: "Старт залежить від стабільності стану, медичних документів і дозволу лікаря. Нижче — короткий орієнтир, який не замінює консультацію."
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-					src: osnova_logo_3d_default,
-					alt: "Логотип клініки Основа",
-					className: "hidden size-20 shrink-0 rounded-xl object-cover shadow-sm lg:block"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "hidden shrink-0 items-center gap-3 lg:flex",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+						src: osnova_logo_3d_default,
+						alt: "Логотип клініки Основа",
+						className: "size-20 rounded-xl object-cover shadow-sm"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+						src: cardio_heart_3d_default,
+						alt: "Декоративне серце",
+						className: "size-24 rounded-xl object-contain bg-white/40 p-1 shadow-sm"
+					})]
 				})]
 			})
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -2212,7 +2219,7 @@ function SeoBlock() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute -left-24 -top-28 size-64 rounded-full bg-sky-100/60 blur-3xl" }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute -bottom-32 right-1/4 size-72 rounded-full bg-emerald-100/40 blur-3xl" }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.8fr)] lg:gap-12 xl:gap-20",
+				className: "relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(500px,0.82fr)] lg:gap-12 xl:gap-20",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "max-w-3xl",
 					children: [
@@ -2370,7 +2377,7 @@ function SeoBlock() {
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "flex w-full items-center justify-center lg:justify-end lg:self-start mt-6 lg:mt-0",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("figure", {
-						className: "group relative w-full max-w-[420px] aspect-square overflow-hidden rounded-[1.75rem] border border-sky-100 bg-[#eaf5ff] shadow-[0_20px_50px_-30px_rgba(30,64,175,0.55)]",
+						className: "group relative w-full max-w-[520px] aspect-square overflow-hidden rounded-[1.75rem] border border-sky-100 bg-[#eaf5ff] shadow-[0_20px_50px_-30px_rgba(30,64,175,0.55)]",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 							src: cardio_heart_3d_default,
 							alt: "Стилізована 3D-модель серця",

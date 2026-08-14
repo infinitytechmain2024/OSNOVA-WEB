@@ -362,14 +362,14 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           </div>
         </section>
 
-        <section id="programs" className="scroll-mt-24 bg-navy-deep py-14 sm:py-20">
+        <section id="programs" className="scroll-mt-24 bg-soft-blue py-14 sm:py-20">
           <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <div>
-              <h2 className="max-w-4xl text-2xl font-extrabold leading-tight text-white sm:text-3xl lg:text-4xl">
+              <h2 className="max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-4xl">
                 Програми та вартість
               </h2>
-              <div className="mt-4 h-1 w-16 rounded-full bg-brand-green" />
-              <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/70">
+              <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/70">
                 Точну вартість і детальний склад кожного пакету повідомляє адміністратор після попереднього розгляду документів і консультації лікаря.
               </p>
             </div>
@@ -567,11 +567,18 @@ function TimingSection() {
             title="Коли варто розпочати програму"
             text="Старт залежить від стабільності стану, медичних документів і дозволу лікаря. Нижче — короткий орієнтир, який не замінює консультацію."
           />
-          <img
-            src={osnovaLogo3dImg}
-            alt="Логотип клініки Основа"
-            className="hidden size-20 shrink-0 rounded-xl object-cover shadow-sm lg:block"
-          />
+          <div className="hidden shrink-0 items-center gap-3 lg:flex">
+            <img
+              src={osnovaLogo3dImg}
+              alt="Логотип клініки Основа"
+              className="size-20 rounded-xl object-cover shadow-sm"
+            />
+            <img
+              src={cardioHeart3dImg}
+              alt="Декоративне серце"
+              className="size-24 rounded-xl object-contain bg-white/40 p-1 shadow-sm"
+            />
+          </div>
         </div>
       </div>
       <div className="grid gap-0 lg:grid-cols-3">
@@ -1008,7 +1015,7 @@ function SeoBlock() {
       <div className="pointer-events-none absolute -left-24 -top-28 size-64 rounded-full bg-sky-100/60 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-32 right-1/4 size-72 rounded-full bg-emerald-100/40 blur-3xl" />
 
-      <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.8fr)] lg:gap-12 xl:gap-20">
+      <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(500px,0.82fr)] lg:gap-12 xl:gap-20">
         <div className="max-w-3xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-soft-blue px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-primary sm:text-xs">
             <span className="size-1.5 rounded-full bg-brand-green" />
@@ -1114,7 +1121,7 @@ function SeoBlock() {
         </div>
 
         <div className="flex w-full items-center justify-center lg:justify-end lg:self-start mt-6 lg:mt-0">
-          <figure className="group relative w-full max-w-[420px] aspect-square overflow-hidden rounded-[1.75rem] border border-sky-100 bg-[#eaf5ff] shadow-[0_20px_50px_-30px_rgba(30,64,175,0.55)]">
+          <figure className="group relative w-full max-w-[520px] aspect-square overflow-hidden rounded-[1.75rem] border border-sky-100 bg-[#eaf5ff] shadow-[0_20px_50px_-30px_rgba(30,64,175,0.55)]">
             <img
               src={cardioHeart3dImg}
               alt="Стилізована 3D-модель серця"
