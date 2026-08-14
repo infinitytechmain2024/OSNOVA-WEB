@@ -17,7 +17,7 @@ import {
   MessageCircle,
   Share2,
   Navigation,
-  Sparkles,
+
 } from "lucide-react";
 
 // Brand icons or custom SVGs for Telegram, WhatsApp, Viber, Instagram, Facebook, YouTube, TikTok
@@ -214,11 +214,8 @@ export function ContactsPage({ node }: { node: SiteNode }) {
         <section className="bg-slate-50/80 py-16 border-y border-border/60">
           <PageContainer>
             <div className="mx-auto max-w-3xl text-center">
-              <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-primary uppercase">
-                <Sparkles className="size-3.5" /> ФОРМА ТА СПОСОБИ ЗВ’ЯЗКУ
-              </span>
-              <h2 className="mt-4 text-2xl font-extrabold sm:text-3xl lg:text-4xl text-navy tracking-tight">
-                Оберіть зручний спосіб зв’язку
+              <h2 className="text-2xl font-extrabold sm:text-3xl lg:text-4xl text-navy tracking-tight">
+                Оберіть зручний спосіб зв'язку
               </h2>
               <div className="mx-auto mt-5 h-1 w-16 rounded-full bg-primary" />
               <p className="mt-3 text-sm sm:text-base text-muted-foreground">
@@ -325,7 +322,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                       <Share2 className="size-5" />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-navy">Стежте за ОСНОВОЮ у соціальних мережах</h3>
+                      <h3 className="text-base font-bold text-navy">Стартапи в основі соціальних мереж</h3>
                     </div>
                   </div>
 
@@ -411,8 +408,9 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                     <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-700 uppercase">
                       <Navigation className="size-3.5" /> ГЕОЛОКАЦІЯ
                     </span>
-                    <h3 className="mt-4 text-2xl font-extrabold text-navy sm:text-3xl">
-                      Геолокація
+                    <p className="mt-4 text-xs font-semibold tracking-[0.2em] text-emerald-700 uppercase">Геолокація</p>
+                    <h3 className="mt-2 text-2xl font-extrabold text-navy sm:text-3xl">
+                      Де ми знаходимося
                     </h3>
                     <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
                       Наш єдиний медичний та реабілітаційний центр розташований у серці курорту Буковель. Для вашої зручності у центрі функціонують два відділення з власними графіками прийому.

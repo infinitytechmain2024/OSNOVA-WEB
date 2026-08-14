@@ -1103,7 +1103,12 @@ function Index() {
         {/* 10. ПИТАННЯ ТА ВІДПОВІДІ (FAQ) */}
         <section className="bg-slate-50/70 py-24 md:py-32 border-t border-slate-200/60">
           <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
-            <SectionHeader centered subtitle="ВІДПОВІДІ" title="ПИТАННЯ ТА ВІДПОВІДІ" />
+            <div className="text-center">
+              <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">
+                Питання та відповіді
+              </h2>
+              <div className="mx-auto mt-4 sm:mt-6 h-1 w-16 rounded-full bg-primary" />
+            </div>
 
             <Accordion type="single" collapsible className="w-full space-y-5 mt-12">
               {FAQS.map((faq, i) => (
