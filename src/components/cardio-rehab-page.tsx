@@ -7,6 +7,9 @@ import {
   FileText,
   Send,
   UploadCloud,
+  CheckCircle2,
+  Heart,
+  AlertTriangle,
 } from "lucide-react";
 import { AppLink } from "@/components/app-link";
 import { SiteHeader } from "@/components/site-header";
@@ -22,6 +25,7 @@ import ecgImg from "@/assets/ecg-review.jpg";
 import rehabImg from "@/assets/service-rehab.jpg";
 import sportsImg from "@/assets/service-sports.jpg";
 import cardioHeart3dImg from "@/assets/cardio-heart-3d.jpg";
+import osnovaLogo3dImg from "@/assets/osnova-logo-3d.jpg";
 
 const ANCHORS = [
   { href: "#about", label: "Про програму" },
@@ -29,26 +33,45 @@ const ANCHORS = [
   { href: "#for-whom", label: "Кому підходить" },
   { href: "#process", label: "Як проходить" },
   { href: "#programs", label: "Вартість" },
-  { href: "#documents", label: "Документи" },
-  { href: "#faq", label: "Запитання" },
-];
-
-const TIMING_COLUMNS = [
+  { href: "#documents", label: "const TIMING_COLUMNS = [
   {
-    title: "Показання",
+    title: "Коли рекомендовано",
+    icon: CheckCircle2,
+    iconColor: "text-emerald-500",
+    iconBg: "bg-emerald-50",
     items: [
-      "Стан пацієнта стабілізувався, гострі симптоми відсутні, і лікар дозволив поступове збільшення фізичних навантажень.",
-      "Після інфаркту міокарда минув період раннього відновлення, і пацієнт готовий до контрольованих тренувань.",
-      "Після стентування або шунтування загоєння проходить без ускладнень, і можна безпечно розширювати руховий режим.",
-      "При хронічній серцевій недостатності або стабільній стенокардії є потреба підвищити витривалість і навчитися правильно дозувати навантаження.",
+      "Після інфаркту міокарда",
+      "Після стентування коронарних артерій",
+      "Після операцій на серці (АКШ, клапани)",
+      "При хронічній серцевій недостатності",
+      "При зниженій переносимості навантажень",
     ],
   },
   {
-    title: "Результати реабілітації",
+    title: "Яких результатів очікувати",
+    icon: Heart,
+    iconColor: "text-primary",
+    iconBg: "bg-primary/10",
     items: [
-      "Пацієнт помітно краще переносить фізичні навантаження і швидше відновлюється після звичайних справ.",
-      "Зменшується частота повторних госпіталізацій і ризик нових серцевих подій.",
-      "Покращується контроль артеріального тиску, рівня холестерину та інших факторів ризику.",
+      "Підвищення витривалості та сили",
+      "Зменшення задишки та втоми",
+      "Стабілізація артеріального тиску",
+      "Покращення якості життя та настрою",
+      "Безпечне повернення до активності",
+    ],
+  },
+  {
+    title: "Коли варто відкласти",
+    icon: AlertTriangle,
+    iconColor: "text-amber-500",
+    iconBg: "bg-amber-50",
+    tone: "warning",
+    items: [
+      "Гострі стани, декомпенсація захворювань, деякі протипоказання.",
+      "Рішення приймає лікар після оцінки ваших документів.",
+    ],
+  },
+];� інших факторів ризику.",
       "Знижується рівень тривоги, зростає впевненість у своїх силах і якість повсякденного життя.",
     ],
   },
@@ -68,16 +91,20 @@ const TIMING_COLUMNS = [
 
 const PROCESS_STEPS = [
   {
-    title: "Оцінка стану та складання індивідуального плану",
-    text: "Лікар проводить огляд, вивчає результати обстежень і визначає безпечний рівень навантажень. На цій основі формують цілі програми, тривалість етапів і перелік необхідних заходів.",
+    title: "Оцінка стаconst CARDIO_CONDITIONS = [
+  {
+    title: "Реабілітація після інфаркту міокарда",
+    text: "Відновлення роботи серця, поступове повернення до активності та контроль факторів ризику.",
   },
   {
-    title: "Фізичні тренування під контролем",
-    text: "Заняття проходять із постійним моніторингом пульсу, артеріального тиску та самопочуття. Навантаження збільшують поступово: від ходьби та дихальних вправ до більш інтенсивних кардіотренувань, які підходять саме цьому пацієнту.",
+    title: "Реабілітація після стентування коронарних артерій",
+    text: "Дозовані тренування, контроль тиску та ліпідів для підтримки прохідності судин.",
   },
   {
-    title: "Навчання та корекція способу життя",
-    text: "Пацієнт отримує практичні рекомендації щодо харчування, прийому ліків, контролю ваги та відмови від куріння. Окремо працюють над управлінням стресом, щоб нові звички закріпилися надовго.",
+    title: "Реабілітація після аортокоронарного шунтування",
+    text: "Поетапне відновлення: від дихальної гімнастики до зміцнення м'язів і судин.",
+  }
+];ння. Окремо працюють над управлінням стресом, щоб нові звички закріпилися надовго.",
   },
   {
     title: "Психологічна підтримка та контроль динаміки",
@@ -175,7 +202,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
   const allConditionCards = CARDIO_CONDITIONS;
   const visibleConditionCards = showAllConditions
     ? allConditionCards
-    : allConditionCards.slice(0, 2);
+    : allConditionCards.slice(0, 3);
   const programCards = CARDIO_PROGRAMS.map((program, index) => ({
     id: `cardio-program-${index}`,
     route: node.children?.[index]?.route || node.route,
@@ -276,11 +303,16 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
 
         <section id="for-whom" className="scroll-mt-24 bg-soft-blue py-12 sm:py-20">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
-            <SectionHeading
-              title="Які напрямки реабілітації та лікування можна пройти в «Основа»?"
-              text="Основні напрями, з якими може працювати команда після попереднього ознайомлення з документами та оцінки стану."
-            />
-            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="text-center">
+              <h2 className="mx-auto max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-4xl">
+                Які напрямки реабілітації та лікування можна пройти в «Основа»?
+              </h2>
+              <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-primary" />
+              <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-navy/76">
+                Основні напрями, з якими може працювати команда після попереднього ознайомлення з документами та оцінки стану.
+              </p>
+            </div>
+            <div className="mt-10 grid justify-center gap-7 sm:grid-cols-2 lg:grid-cols-3">
               {visibleConditionCards.map((card, index) => (
                 <ConditionCard
                   key={card.title}
@@ -289,14 +321,16 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                 />
               ))}
             </div>
-            {allConditionCards.length > 2 && (
-              <button
-                type="button"
-                onClick={() => setShowAllConditions((value) => !value)}
-                className="mt-8 rounded-lg border-2 border-primary/20 px-8 py-3.5 text-sm font-semibold text-navy transition-colors hover:border-primary hover:text-primary"
-              >
-                {showAllConditions ? "Згорнути" : "Більше"}
-              </button>
+            {allConditionCards.length > 3 && (
+              <div className="mt-10 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => setShowAllConditions((value) => !value)}
+                  className="rounded-full border-2 border-primary/20 px-10 py-3.5 text-sm font-semibold text-navy transition-colors hover:border-primary hover:text-primary"
+                >
+                  {showAllConditions ? "Згорнути" : "Більше"}
+                </button>
+              </div>
             )}
           </div>
         </section>
@@ -336,19 +370,26 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           </div>
         </section>
 
-        <PageSection id="programs" className="py-12 sm:py-20">
-          <SectionHeading
-            title="Програми та вартість"
-            text="Точну вартість і детальний склад кожного пакету повідомляє адміністратор після попереднього розгляду документів і консультації лікаря."
-          />
+        <section id="programs" className="scroll-mt-24 bg-navy-deep py-14 sm:py-20">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div>
+              <h2 className="max-w-4xl text-2xl font-extrabold leading-tight text-white sm:text-3xl lg:text-4xl">
+                Програми та вартість
+              </h2>
+              <div className="mt-4 h-1 w-16 rounded-full bg-brand-green" />
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/70">
+                Точну вартість і детальний склад кожного пакету повідомляє адміністратор після попереднього розгляду документів і консультації лікаря.
+              </p>
+            </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-[repeat(4,minmax(0,1fr))_0.82fr]">
-            {programCards.map((program) => (
-              <ProgramCard key={program.id} program={program} />
-            ))}
-            <MilitaryInfoCard />
+            <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-[repeat(4,minmax(0,1fr))_0.82fr]">
+              {programCards.map((program) => (
+                <ProgramCard key={program.id} program={program} />
+              ))}
+              <MilitaryInfoCard />
+            </div>
           </div>
-        </PageSection>
+        </section>
 
         <OtherServicesSlider />
 
@@ -357,7 +398,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
         {faqItems.length > 0 && (
           <PageSection id="faq" className="py-12 sm:py-20">
             <SectionHeading
-              title="Поширені питання"
+              title="Питання та відповіді"
               text="Короткі відповіді на запитання, які найчастіше виникають перед стартом програми."
             />
             <FAQAccordion items={faqItems} />
@@ -529,35 +570,45 @@ function TimingSection() {
   return (
     <div className="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm">
       <div className="bg-soft-blue p-5 sm:p-8 lg:p-10">
-        <SectionHeading
-          title="Коли варто розпочати програму"
-          text="Старт залежить від стабільності стану, медичних документів і дозволу лікаря. Нижче — короткий орієнтир, який не замінює консультацію."
-        />
+        <div className="flex items-start justify-between gap-6">
+          <SectionHeading
+            title="Коли варто розпочати програму"
+            text="Старт залежить від стабільності стану, медичних документів і дозволу лікаря. Нижче — короткий орієнтир, який не замінює консультацію."
+          />
+          <img
+            src={osnovaLogo3dImg}
+            alt="Логотип клініки Основа"
+            className="hidden size-20 shrink-0 rounded-xl object-cover shadow-sm lg:block"
+          />
+        </div>
       </div>
       <div className="grid gap-0 lg:grid-cols-3">
-        {TIMING_COLUMNS.map((column, index) => (
-          <div
-            key={column.title}
-            className="border-t border-blue-100 p-5 sm:p-7 lg:border-l lg:border-t-0 first:lg:border-l-0"
-          >
-            <div className="flex items-start gap-4">
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-extrabold text-primary">
-                {index + 1}
-              </span>
-              <div>
-                <h3 className="text-lg font-bold text-navy">{column.title}</h3>
-                <ul className="mt-4 space-y-3">
-                  {column.items.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-relaxed text-navy/76">
-                      <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+        {TIMING_COLUMNS.map((column) => {
+          const Icon = column.icon;
+          return (
+            <div
+              key={column.title}
+              className="border-t border-blue-100 p-5 sm:p-7 lg:border-l lg:border-t-0 first:lg:border-l-0"
+            >
+              <div className="flex items-start gap-4">
+                <span className={cn("flex size-10 shrink-0 items-center justify-center rounded-full", column.iconBg)}>
+                  <Icon className={cn("size-5", column.iconColor)} />
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold text-navy">{column.title}</h3>
+                  <ul className="mt-4 space-y-3">
+                    {column.items.map((item) => (
+                      <li key={item} className="flex gap-3 text-sm leading-relaxed text-navy/76">
+                        <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -565,34 +616,34 @@ function TimingSection() {
 
 function ConditionCard({ card, image }: { card: { title: string; text: string; expandedText?: string }; image: string }) {
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm transition-shadow hover:shadow-md">
-      <div className="h-48 w-full overflow-hidden bg-muted sm:h-56">
+    <article className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+      <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
         <img
           src={image}
           alt={card.title}
           loading="lazy"
           width={900}
           height={620}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </div>
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-base font-bold leading-snug text-navy sm:text-lg">{card.title}</h3>
-        <p className="mt-3 text-xs leading-relaxed text-navy/70 sm:text-sm">{card.text}</p>
-        {card.expandedText && <ExpandableCardText expandedText={card.expandedText} />}
-        {!card.expandedText && (
+      <div className="flex flex-1 flex-col justify-between bg-white p-6 md:p-7">
+        <div>
+          <h3 className="mb-3 text-xl font-bold leading-snug text-navy">{card.title}</h3>
+          <p className="mb-6 line-clamp-3 text-sm font-normal leading-relaxed text-slate-600">{card.text}</p>
+        </div>
+        <div>
           <a
             href="#documents"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById("documents")?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
-            className="mt-4 inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-md"
           >
-            Детальніше
-            <ChevronDown className="size-4 -rotate-90" />
+            Детальніше <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </a>
-        )}
+        </div>
       </div>
     </article>
   );
@@ -820,6 +871,22 @@ function OtherServicesSlider() {
                 </AppLink>
               </div>
             </article>
+          ))}
+        </div>
+
+        {/* Dot indicators */}
+        <div className="mt-6 flex items-center justify-center gap-2.5">
+          {OTHER_SERVICES.map((service, index) => (
+            <button
+              key={service.title}
+              type="button"
+              onClick={() => scrollToIndex(index)}
+              className={cn(
+                "size-2.5 rounded-full transition-all duration-300",
+                active === index ? "bg-primary scale-110" : "bg-slate-300 hover:bg-slate-400",
+              )}
+              aria-label={`Перейти до послуги ${index + 1}`}
+            />
           ))}
         </div>
       </div>
@@ -1062,7 +1129,7 @@ function SeoBlock() {
               loading="lazy"
               width={1024}
               height={1536}
-              className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+              className="absolute inset-0 size-full object-contain transition-transform duration-700 group-hover:scale-[1.025]"
             />
             <div className="absolute inset-x-0 bottom-0 bg-white/80 px-5 py-4 backdrop-blur-sm">
               <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
