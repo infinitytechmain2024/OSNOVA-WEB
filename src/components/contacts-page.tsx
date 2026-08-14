@@ -220,6 +220,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
               <h2 className="mt-4 text-2xl font-extrabold sm:text-3xl lg:text-4xl text-navy tracking-tight">
                 Оберіть зручний спосіб зв’язку
               </h2>
+              <div className="mx-auto mt-5 h-1 w-16 rounded-full bg-primary" />
               <p className="mt-3 text-sm sm:text-base text-muted-foreground">
                 Заповніть форму для запису на консультацію або зв’яжіться з адміністратором у
                 зручному месенджері.
@@ -324,10 +325,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                       <Share2 className="size-5" />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-navy">Соціальні мережі</h3>
-                      <p className="text-xs text-muted-foreground">
-                        Стежте за ОСНОВОЮ у соціальних мережах
-                      </p>
+                      <h3 className="text-base font-bold text-navy">Стежте за ОСНОВОЮ у соціальних мережах</h3>
                     </div>
                   </div>
 
@@ -411,10 +409,10 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                 <div className="p-8 lg:p-12 lg:col-span-5 flex flex-col justify-between">
                   <div>
                     <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-700 uppercase">
-                      <Navigation className="size-3.5" /> ДЕ МИ ЗНАХОДИМОСЬ
+                      <Navigation className="size-3.5" /> ГЕОЛОКАЦІЯ
                     </span>
                     <h3 className="mt-4 text-2xl font-extrabold text-navy sm:text-3xl">
-                      Де ми знаходимось
+                      Геолокація
                     </h3>
                     <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
                       Наш єдиний медичний та реабілітаційний центр розташований у серці курорту Буковель. Для вашої зручності у центрі функціонують два відділення з власними графіками прийому.
@@ -545,10 +543,10 @@ export function ContactsPage({ node }: { node: SiteNode }) {
 
         {/* FAQ Section */}
         <PageContainer className="pb-20">
-          <SectionHeader
-            eyebrow="ПОШИРЕНІ ЗАПИТАННЯ"
-            title="Часті запитання про візит та консультації"
-          />
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-navy sm:text-3xl md:text-4xl">Питання та відповіді</h2>
+            <div className="mx-auto mt-4 sm:mt-6 h-1 w-16 rounded-full bg-primary" />
+          </div>
           <div className="mt-8 max-w-3xl mx-auto">
             <FAQAccordion
               items={[
