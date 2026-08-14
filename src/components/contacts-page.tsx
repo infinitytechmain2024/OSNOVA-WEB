@@ -408,8 +408,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                     <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-700 uppercase">
                       <Navigation className="size-3.5" /> ГЕОЛОКАЦІЯ
                     </span>
-                    <p className="mt-4 text-xs font-semibold tracking-[0.2em] text-emerald-700 uppercase">Геолокація</p>
-                    <h3 className="mt-2 text-2xl font-extrabold text-navy sm:text-3xl">
+                    <h3 className="mt-4 text-2xl font-extrabold text-navy sm:text-3xl">
                       Де ми знаходимося
                     </h3>
                     <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
