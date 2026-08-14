@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кардіологічна Реабілітація</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { font-family: 'Montserrat', sans-serif; }
+  :root {
+    --primary-blue: #2563eb;
+    --light-blue-bg: #eff6ff;
+    --light-blue-border: #dbeafe;
+  }
+  .checkmark-icon {
+    width: 20px;
+    height: 20px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .checkmark-icon svg {
+    width: 12px;
+    height: 12px;
+    color: white;
+  }
+  .heart-outline {
+    fill: none;
+    stroke: #93c5fd;
+    stroke-width: 1.5;
+  }
+  .curved-line {
+    fill: none;
+    stroke: #bfdbfe;
+    stroke-width: 2;
+    stroke-dasharray: 6 4;
+  }
+</style>
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center p-8">
+
+<div class="max-w-2xl w-full">
+  
+  <!-- Top text line (small blue) -->
+  <p class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-4">
+    ВІДНОВЛЕННЯ ПІСЛЯ ЛІКУВАННЯ
+  </p>
+
+  <!-- Main Heading -->
+  <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
+    Коли варто пройти кардіологічну реабілітацію
+  </h1>
+
+  <!-- Body Paragraph -->
+  <p class="text-gray-600 text-base leading-relaxed mb-8 max-w-xl">
+    Багато захворювань та порушень розвитку часто протікають приховано і тривалий час можуть не проявлятися вираженими симптомами. Саме тому важливо вчасно реагувати на найменші зміни самопочуття та регулярно проходити обстеження та профілактику.
+  </p>
+
+  <!-- Sub-header Block -->
+  <div class="bg-[#eff6ff] rounded-2xl p-5 mb-6 relative border-l-4 border-blue-600">
+    <p class="text-blue-800 font-semibold text-sm">
+      Звернутися до лікаря варто при:
+    </p>
+  </div>
+
+  <!-- List Items with Blue Checkmark Icons -->
+  <ul class="space-y-4 mb-8">
+    <li class="flex items-start gap-3">
+      <span class="checkmark-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </span>
+      <span class="text-gray-700 text-sm font-medium">Після перенесеного захворювання, травми або операції</span>
+    </li>
+    <li class="flex items-start gap-3">
+      <span class="checkmark-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </span>
+      <span class="text-gray-700 text-sm font-medium">При зниженні витривалості та повсякденної активності</span>
+    </li>
+    <li class="flex items-start gap-3">
+      <span class="checkmark-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </span>
+      <span class="text-gray-700 text-sm font-medium">За рекомендацією лікуючого лікаря</span>
+    </li>
+    <li class="flex items-start gap-3">
+      <span class="checkmark-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </span>
+      <span class="text-gray-700 text-sm font-medium">при стабійній стенокардії;</span>
+    </li>
+    <li class="flex items-start gap-3">
+      <span class="checkmark-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </span>
+      <span class="text-gray-700 text-sm font-medium">після імплантації кардіостимулятора або кардіовертера-дефібрилятора.</span>
+    </li>
+  </ul>
+
+  <!-- Bottom Button -->
+  <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-xl flex items-center gap-3 transition-all duration-300 shadow-lg shadow-blue-600/30 hover:shadow-blue-600/40 hover:-translate-y-0.5">
+    <span>Детальніше</span>
+    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+  </button>
+
+  <!-- Heart Illustration (top-right area) -->
+  <div class="relative mt-8 flex justify-end">
+    <svg width="200" height="180" viewBox="0 0 200 180" class="overflow-visible">
+      <!-- Curved connecting line -->
+      <path class="curved-line" d="M20 160 Q60 140 100 100 Q130 70 150 50" />
+      
+      <!-- Empty heart outline (no EKG lines inside) -->
+      <g transform="translate(150, 40)">
+        <path class="heart-outline" d="M0 10 
+                     C-20 -15 -50 5 -50 30 
+                     C-50 65 -10 90 0 100 
+                     C10 90 50 65 50 30 
+                     C50 5 22 -15 0 10 Z" />
+      </g>
+    </svg>
+  </div>
+
+</div>
+
+</body>
+</html>
