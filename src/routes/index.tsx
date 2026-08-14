@@ -841,68 +841,96 @@ function Index() {
         </section>
 
         {/* 2. ПРО КОМПАНІЮ */}
-        <section className="relative overflow-hidden bg-background py-24 md:py-32">
-          <div className="absolute -left-[10%] top-[20%] size-[500px] rounded-full bg-primary/5 blur-[120px]" />
+        <section className="relative overflow-hidden bg-[#f4f8fd] py-24 md:py-32">
+          <div className="absolute -left-[8%] top-[18%] h-[420px] w-[420px] rounded-full bg-[#bfe3ff]/50 blur-[120px]" />
+          <div className="absolute -right-[5%] bottom-[8%] h-[360px] w-[360px] rounded-full bg-[#d9f0ff]/70 blur-[100px]" />
 
-          <div className="relative mx-auto max-w-[1600px] px-6 lg:px-10">
-            <div className="grid items-center gap-16 lg:grid-cols-2">
-              <div>
-                <SectionHeader
-                  subtitle="ПРО КОМПАНІЮ"
-                  title={
-                    <>
-                      ОСНОВА <span className="text-primary">Реабілітація</span>
-                    </>
-                  }
-                />
+          <div className="relative mx-auto max-w-[1280px] px-6 lg:px-10">
+            <div className="grid items-center gap-12 xl:grid-cols-[1.02fr_1.1fr]">
+              <div className="max-w-[610px]">
+                <div className="mb-5 inline-flex items-center rounded-full bg-[#dfeefb] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#17345a] shadow-sm ring-1 ring-[#cfe7f9]">
+                  ПРО КОМПАНІЮ
+                </div>
 
-                <p className="mb-4 text-base md:text-lg font-medium text-navy text-xl leading-relaxed">
-                  Сучасна медична компанія, що спеціалізується на лікуванні та комплексній
-                  реабілітації пацієнтів.
-                </p>
+                <h2 className="mb-4 text-4xl font-black leading-[0.98] tracking-[-0.04em] md:text-5xl xl:text-[4.2rem]">
+                  <span className="block text-[#142d4a]">ОСНОВА</span>
+                  <span className="block text-[#0d66d9]">Реабілітація</span>
+                </h2>
 
-                <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+                <div className="mb-8 h-1.5 w-24 rounded-full bg-gradient-to-r from-[#0d66d9] via-[#5ebaf9] to-[#8be0d8]" />
+
+                <div className="space-y-5 text-[17px] leading-relaxed text-[#3d5875] md:text-[18px]">
                   <p>
-                    ОСНОВА Реабілітація допомагає відновити здоров'я, рух та якість життя після
-                    захворювань, травм та операцій.
+                    «ОСНОВА Реабілітація — сучасна медична компанія, що спеціалізується на
+                    лікуванні та комплексній реабілітації пацієнтів у сферах кардіології,
+                    ортопедії, травматології, ревматології, вертебрології та психології.»
                   </p>
+
                   <p>
-                    Ми використовуємо сучасні методи діагностики, персональні програми відновлення
-                    та комплексний підхід під контролем спеціалістів.
+                    «Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики ще до
+                    появи симптомів — завдяки сучасній діагностиці, точним обстеженням і
+                    персоналізованим профілактичним програмам.»
+                  </p>
+
+                  <p className="mt-2 text-[1.15rem] font-bold leading-relaxed text-[#112f52] md:text-[1.35rem]">
+                    «Наше завдання — допомогти вам відновити здоров'я, рухливість і якість життя.»
+                  </p>
+
+                  <p>
+                    «ОСНОВА Реабілітація також є науково-освітньою платформою, що розробляє та
+                    вдосконалює протоколи лікування, співпрацює з провідними медичними
+                    університетами світу, впроваджує інноваційні технології та розвиває виїзні
+                    формати реабілітаційної допомоги для пацієнтів поза центром.»
                   </p>
                 </div>
 
-                <div className="mt-10">
+                <div className="mt-9">
                   <AppLink
                     to="/pro-osnovu"
-                    className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105"
+                    className="inline-flex items-center gap-3 rounded-xl bg-[#132f52] px-7 py-4 text-base font-bold text-white shadow-[0_18px_36px_-18px_rgba(19,47,82,0.7)] transition-all duration-200 hover:translate-y-[-1px] hover:bg-[#0d66d9]"
                   >
-                    ДЕТАЛЬНІШЕ <ChevronRight className="size-5" />
+                    ДЕТАЛЬНІШЕ <span aria-hidden="true">→</span>
                   </AppLink>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
-                <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="overflow-hidden rounded-[28px] bg-white shadow-[0_18px_44px_-28px_rgba(15,31,56,0.45)] ring-1 ring-[#dfeaf4] sm:col-span-1">
                   <img
-                    src={rehabImg}
-                    alt="Реабілітація"
-                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
+                    src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80"
+                    alt="Реабілітаційний процес з фахівцем у світлому залі"
+                    className="h-[270px] w-full object-cover transition-transform duration-700 hover:scale-105 sm:h-[320px]"
                   />
                 </div>
-                <div className="flex flex-col justify-center rounded-3xl bg-primary/10 border border-primary/20 p-8 shadow-xl lg:p-10">
-                  <h3 className="text-5xl font-black text-primary mb-3">8+</h3>
-                  <p className="text-base font-medium text-navy/80">Напрямків реабілітації</p>
+
+                <div className="flex min-h-[270px] items-center justify-center rounded-[28px] bg-[#dfeefb] p-6 text-center shadow-[0_18px_44px_-28px_rgba(15,31,56,0.4)] ring-1 ring-[#d3e7f9] sm:min-h-[320px]">
+                  <div>
+                    <div className="text-[3.4rem] font-black leading-none tracking-[-0.06em] text-[#0d66d9] md:text-[4.2rem]">
+                      10+
+                    </div>
+                    <p className="mt-3 text-base font-semibold leading-snug text-[#17345a] md:text-lg">
+                      Років досвіду<br />
+                      медичної команди
+                    </p>
+                  </div>
                 </div>
-                <div className="flex flex-col justify-center rounded-3xl bg-secondary p-8 shadow-xl lg:p-10 border border-primary/10">
-                  <h3 className="text-5xl font-black text-navy mb-3">30+</h3>
-                  <p className="text-base font-medium text-navy/80">Методів реабілітації</p>
+
+                <div className="flex min-h-[270px] items-center justify-center rounded-[28px] bg-[#edf7ff] p-6 text-center shadow-[0_18px_44px_-28px_rgba(15,31,56,0.4)] ring-1 ring-[#dfeaf4] sm:min-h-[320px]">
+                  <div>
+                    <div className="text-[2.5rem] font-black leading-none tracking-[-0.06em] text-[#17345a] md:text-[3.2rem]">
+                      100%
+                    </div>
+                    <p className="mt-3 max-w-[250px] text-base font-semibold leading-snug text-[#17345a] md:text-lg">
+                      Персоналізований підхід до кожного пацієнта
+                    </p>
+                  </div>
                 </div>
-                <div className="col-span-2 overflow-hidden rounded-3xl lg:col-span-1 shadow-lg">
+
+                <div className="overflow-hidden rounded-[28px] bg-white shadow-[0_18px_44px_-28px_rgba(15,31,56,0.45)] ring-1 ring-[#dfeaf4]">
                   <img
-                    src={cpetImg}
-                    alt="Діагностика"
-                    className="size-full object-cover min-h-[280px] hover:scale-105 transition-transform duration-700"
+                    src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80"
+                    alt="Медичний персонал в захисних масках за обладнанням"
+                    className="h-[270px] w-full object-cover transition-transform duration-700 hover:scale-105 sm:h-[320px]"
                   />
                 </div>
               </div>
