@@ -362,7 +362,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           </div>
         </section>
 
-        <section id="programs" className="scroll-mt-24 bg-soft-blue py-14 sm:py-20">
+        <section id="programs" className="scroll-mt-24 bg-white py-14 sm:py-20">
           <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <div>
               <h2 className="max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-4xl">
@@ -567,14 +567,6 @@ function TimingSection() {
             title="Коли варто розпочати програму"
             text="Старт залежить від стабільності стану, медичних документів і дозволу лікаря. Нижче — короткий орієнтир, який не замінює консультацію."
           />
-          <div className="hidden shrink-0 items-center gap-3 lg:flex">
-            <img
-              src={osnovaLogo3dImg}
-              alt="Логотип клініки Основа"
-              className="size-20 rounded-xl object-cover shadow-sm"
-            />
-            <DecorativeHeart />
-          </div>
         </div>
       </div>
       <div className="grid gap-0 lg:grid-cols-3">

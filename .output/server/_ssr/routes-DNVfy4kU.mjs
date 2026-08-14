@@ -1,7 +1,7 @@
 import { n as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { a as AccordionTrigger$1, d as Slot, i as AccordionItem$1, n as AccordionContent$1, r as AccordionHeader, t as Accordion$1, v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { $ as Dumbbell, Ct as ArrowLeft, D as Microscope, G as GraduationCap, J as Flame, St as ArrowRight, V as Heart, a as Users, b as Phone, c as UserCheck, f as Stethoscope, ft as ChevronDown, l as Trophy, m as ShieldCheck, mt as Calendar, rt as ClipboardList, t as Zap, ut as ChevronRight, vt as Brain, w as Network, yt as BookOpen } from "../_libs/lucide-react.mjs";
+import { $ as Dumbbell, Ct as ArrowLeft, D as Microscope, G as GraduationCap, J as Flame, St as ArrowRight, V as Heart, a as Users, b as Phone, c as UserCheck, f as Stethoscope, ft as ChevronDown, l as Trophy, lt as ChevronUp, m as ShieldCheck, mt as Calendar, rt as ClipboardList, t as Zap, ut as ChevronRight, vt as Brain, w as Network, yt as BookOpen } from "../_libs/lucide-react.mjs";
 import { t as cva } from "../_libs/class-variance-authority+clsx.mjs";
 import { _ as service_sports_default, c as cn, d as ergometer_default, g as service_rehab_default, h as service_checkup_default, l as cpet_test_default, o as SiteFooter, s as SiteHeader, t as AppLink, u as ecg_review_default, y as useConsultationModal } from "./site-footer-DtdGqSzK.mjs";
 import { n as education_training_default, t as education_conference_default } from "./education-training-D0E3Ecw7.mjs";
@@ -9,7 +9,7 @@ import { a as partner_ifnmu_default, i as partner_heart_default, n as partner_as
 import { t as NEWS_ARTICLES } from "./news-NnYWL2Kt.mjs";
 import { t as useEmblaCarousel } from "../_libs/embla-carousel-react+[...].mjs";
 import { t as Autoplay } from "../_libs/embla-carousel-autoplay.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DjboqJx_.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DNVfy4kU.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var Accordion = Accordion$1;
@@ -657,6 +657,30 @@ var COOPERATION_ITEMS = [
 		tags: ["Для громади", "Благодійні ініціативи"],
 		href: "/sotsialni-proiekty",
 		image: social_projects_default
+	},
+	{
+		number: "04",
+		title: "КОНСУЛЬТАЦІЇ СПЕЦІАЛІСТІВ",
+		text: "Фахові консультації лікарів-спеціалістів, діагностика та планування індивідуальної програми лікування.",
+		tags: ["Для пацієнтів", "Онлайн та офлайн"],
+		href: "/pro-osnovu",
+		image: events_default
+	},
+	{
+		number: "05",
+		title: "ОСВІТНІ ПРОГРАМИ",
+		text: "Навчальні курси та майстер-класи для медичних спеціалістів, обмін досвідом та професійний розвиток.",
+		tags: ["Для лікарів", "Сертифікація та навички"],
+		href: "/kursy",
+		image: mobile_rehab_default
+	},
+	{
+		number: "06",
+		title: "ДОСЛІДЖЕННЯ І РОЗРОБКИ",
+		text: "Наукові проекти, клінічні дослідження та інновації у сфері реабілітаційної медицини та оздоровлення.",
+		tags: ["Для науковців", "Науковий обмін"],
+		href: "/konferentsii",
+		image: social_projects_default
 	}
 ];
 var EDUCATION_CARDS = [{
@@ -987,6 +1011,7 @@ function Index() {
 	const [partnersApi, setPartnersApi] = import_react.useState();
 	const [currentPartnersSlide, setCurrentPartnersSlide] = import_react.useState(0);
 	const [partnersSlideCount, setPartnersSlideCount] = import_react.useState(0);
+	const [cooperationCurrentSlide, setCooperationCurrentSlide] = import_react.useState(0);
 	import_react.useEffect(() => {
 		if (!heroApi) return;
 		const updateState = () => {
@@ -1398,12 +1423,39 @@ function Index() {
 							subtitle: "ПАРТНЕРСЬКА ПЛАТФОРМА",
 							title: "СПІВПРАЦЯ",
 							className: "!mb-4 md:!mb-5"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "cooperation-stack mx-auto max-w-[1540px]",
-							children: COOPERATION_ITEMS.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CooperationCard, {
-								item,
-								index
-							}, item.number))
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-col lg:flex-row items-start justify-between gap-6 max-w-[1540px] mx-auto",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "cooperation-stack w-full lg:flex-1",
+								children: COOPERATION_ITEMS.slice(cooperationCurrentSlide, cooperationCurrentSlide + 1).map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CooperationCard, {
+									item,
+									index
+								}, item.number))
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-row lg:flex-col items-center justify-between lg:justify-center gap-4 w-full lg:w-auto",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										onClick: () => setCooperationCurrentSlide((prev) => prev === 0 ? COOPERATION_ITEMS.length - 1 : prev - 1),
+										className: "flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95",
+										"aria-label": "Попередня карта",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronUp, { className: "size-6" })
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "flex flex-row lg:flex-col gap-2.5",
+										children: COOPERATION_ITEMS.map((_, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+											onClick: () => setCooperationCurrentSlide(index),
+											className: `h-2.5 rounded-full transition-all duration-300 ${cooperationCurrentSlide === index ? "w-2.5 bg-primary shadow-sm" : "w-2.5 bg-slate-300 hover:bg-slate-400"}`,
+											"aria-label": `Перейти до карти ${index + 1}`
+										}, index))
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										onClick: () => setCooperationCurrentSlide((prev) => prev === COOPERATION_ITEMS.length - 1 ? 0 : prev + 1),
+										className: "flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95",
+										"aria-label": "Наступна карта",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { className: "size-6" })
+									})
+								]
+							})]
 						})]
 					})
 				}),

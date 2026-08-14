@@ -9,6 +9,8 @@ import {
   Users,
   ChevronRight,
   ChevronLeft,
+  ChevronUp,
+  ChevronDown,
   Brain,
   Trophy,
   ShieldCheck,
@@ -314,6 +316,30 @@ const COOPERATION_ITEMS = [
     text: "Благодійні та реабілітаційні ініціативи, допомога громаді та соціальні програми.",
     tags: ["Для громади", "Благодійні ініціативи"],
     href: "/sotsialni-proiekty",
+    image: cooperationSocialImg,
+  },
+  {
+    number: "04",
+    title: "КОНСУЛЬТАЦІЇ СПЕЦІАЛІСТІВ",
+    text: "Фахові консультації лікарів-спеціалістів, діагностика та планування індивідуальної програми лікування.",
+    tags: ["Для пацієнтів", "Онлайн та офлайн"],
+    href: "/pro-osnovu",
+    image: cooperationEventsImg,
+  },
+  {
+    number: "05",
+    title: "ОСВІТНІ ПРОГРАМИ",
+    text: "Навчальні курси та майстер-класи для медичних спеціалістів, обмін досвідом та професійний розвиток.",
+    tags: ["Для лікарів", "Сертифікація та навички"],
+    href: "/kursy",
+    image: cooperationMobileRehabImg,
+  },
+  {
+    number: "06",
+    title: "ДОСЛІДЖЕННЯ І РОЗРОБКИ",
+    text: "Наукові проекти, клінічні дослідження та інновації у сфері реабілітаційної медицини та оздоровлення.",
+    tags: ["Для науковців", "Науковий обмін"],
+    href: "/konferentsii",
     image: cooperationSocialImg,
   },
 ];
@@ -669,6 +695,7 @@ function Index() {
   const [partnersApi, setPartnersApi] = React.useState<CarouselApi>();
   const [currentPartnersSlide, setCurrentPartnersSlide] = React.useState(0);
   const [partnersSlideCount, setPartnersSlideCount] = React.useState(0);
+  const [cooperationCurrentSlide, setCooperationCurrentSlide] = React.useState(0);
 
   React.useEffect(() => {
     if (!heroApi) return;
@@ -1086,10 +1113,58 @@ function Index() {
               className="!mb-4 md:!mb-5"
             />
 
-            <div className="cooperation-stack mx-auto max-w-[1540px]">
-              {COOPERATION_ITEMS.map((item, index) => (
-                <CooperationCard key={item.number} item={item} index={index} />
-              ))}
+            <div className="flex flex-col lg:flex-row items-start justify-between gap-6 max-w-[1540px] mx-auto">
+              {/* Main card stack */}
+              <div className="cooperation-stack w-full lg:flex-1">
+                {COOPERATION_ITEMS.slice(cooperationCurrentSlide, cooperationCurrentSlide + 1).map((item, index) => (
+                  <CooperationCard key={item.number} item={item} index={index} />
+                ))}
+              </div>
+
+              {/* Navigation: Vertical arrows and bullet points */}
+              <div className="flex flex-row lg:flex-col items-center justify-between lg:justify-center gap-4 w-full lg:w-auto">
+                {/* Up arrow */}
+                <button
+                  onClick={() =>
+                    setCooperationCurrentSlide((prev) =>
+                      prev === 0 ? COOPERATION_ITEMS.length - 1 : prev - 1
+                    )
+                  }
+                  className="flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95"
+                  aria-label="Попередня карта"
+                >
+                  <ChevronUp className="size-6" />
+                </button>
+
+                {/* Bullet points */}
+                <div className="flex flex-row lg:flex-col gap-2.5">
+                  {COOPERATION_ITEMS.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCooperationCurrentSlide(index)}
+                      className={`h-2.5 rounded-full transition-all duration-300 ${
+                        cooperationCurrentSlide === index
+                          ? "w-2.5 bg-primary shadow-sm"
+                          : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                      }`}
+                      aria-label={`Перейти до карти ${index + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Down arrow */}
+                <button
+                  onClick={() =>
+                    setCooperationCurrentSlide((prev) =>
+                      prev === COOPERATION_ITEMS.length - 1 ? 0 : prev + 1
+                    )
+                  }
+                  className="flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95"
+                  aria-label="Наступна карта"
+                >
+                  <ChevronDown className="size-6" />
+                </button>
+              </div>
             </div>
           </div>
         </section>
