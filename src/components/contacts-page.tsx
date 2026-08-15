@@ -18,7 +18,7 @@ import {
   MessageCircle,
   Share2,
   Navigation,
-
+  Compass,
 } from "lucide-react";
 
 // Brand icons or custom SVGs for Telegram, WhatsApp, Viber, Instagram, Facebook, YouTube, TikTok
@@ -74,6 +74,40 @@ function TikTokIcon({ className = "size-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
       <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+    </svg>
+  );
+}
+
+function MallBuildingIcon({ className = "size-5 text-slate-600" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 21h18" />
+      <path d="M5 21V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14" />
+      <path d="M9 21v-4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4" />
+      <path d="M8 10h2v2H8zM14 10h2v2h-2zM8 14h2v2H8zM14 14h2v2h-2z" />
+      <path d="M9 3h6" />
+    </svg>
+  );
+}
+
+function CableCarIcon({ className = "size-5 text-slate-600" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 4.5l20-2" />
+      <path d="M12 3.5v4" />
+      <rect x="6.5" y="9" width="11" height="8.5" rx="2.5" />
+      <path d="M8.5 11.5h7v3h-7z" />
+      <path d="M9 17.5v2.5M15 17.5v2.5" />
+      <path d="M7.5 20h9" />
+    </svg>
+  );
+}
+
+function ParkingBadgeIcon({ className = "size-5 text-slate-600" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4" />
+      <path d="M9.5 16V8h4a2.5 2.5 0 0 1 0 5H9.5" strokeWidth="1.8" />
     </svg>
   );
 }
@@ -429,26 +463,38 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                         </div>
                       </div>
 
-                      <div className="rounded-2xl bg-slate-50/80 p-4 border border-border/60">
-                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                          <span className="inline-flex size-4 items-center justify-center rounded-full bg-emerald-100 text-[10px] text-emerald-700">•</span>
-                          <span>Орієнтири:</span>
+                      {/* Landmarks Card - "Орієнтири" */}
+                      <div className="rounded-2xl bg-white p-4 border border-border/60 shadow-2xs space-y-3">
+                        <div className="flex items-center gap-2">
+                          <div className="flex size-5.5 shrink-0 items-center justify-center rounded-full border border-emerald-500 text-emerald-600 bg-emerald-50/40">
+                            <Compass className="size-3.5" />
+                          </div>
+                          <strong className="text-xs font-black uppercase tracking-wider text-slate-700">
+                            ОРІЄНТИРИ:
+                          </strong>
                         </div>
 
-                        <div className="mt-3 flex flex-wrap gap-2 lg:flex-nowrap lg:gap-2.5">
-                          {[
-                            "ТРК Бука",
-                            "Підйомник №7",
-                            "Паркінг №2",
-                          ].map((item) => (
-                            <div
-                              key={item}
-                              className="flex items-center gap-2 rounded-xl border border-emerald-200 bg-white px-2.5 py-2 text-[11px] font-bold text-navy shadow-2xs"
-                            >
-                              <span className="inline-block size-2.5 shrink-0 rounded-full bg-emerald-500" />
-                              <span>{item}</span>
-                            </div>
-                          ))}
+                        <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 text-xs sm:text-sm pt-0.5">
+                          {/* Item 1: ТРК Бука */}
+                          <div className="flex items-center gap-2 font-bold text-navy">
+                            <span className="size-2.5 shrink-0 rounded-full bg-emerald-500" />
+                            <span>ТРК Бука</span>
+                            <MallBuildingIcon className="size-5 text-slate-500 shrink-0 ml-0.5" />
+                          </div>
+
+                          {/* Item 2: Підйомник №7 */}
+                          <div className="flex items-center gap-2 font-bold text-navy">
+                            <span className="size-2.5 shrink-0 rounded-full bg-emerald-500" />
+                            <span>Підйомник №7</span>
+                            <CableCarIcon className="size-5 text-slate-500 shrink-0 ml-0.5" />
+                          </div>
+
+                          {/* Item 3: Паркінг №2 */}
+                          <div className="flex items-center gap-2 font-bold text-navy">
+                            <span className="size-2.5 shrink-0 rounded-full bg-emerald-500" />
+                            <span>Паркінг №2</span>
+                            <ParkingBadgeIcon className="size-5 text-slate-500 shrink-0 ml-0.5" />
+                          </div>
                         </div>
                       </div>
 

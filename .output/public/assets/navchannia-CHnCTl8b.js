@@ -1,1 +1,0 @@
-import{at as e}from"./site-footer-C6OIjCem.js";import{t}from"./education-courses-page-Rav-8WvD.js";var n=e();function r(){return(0,n.jsx)(t,{})}export{r as component};

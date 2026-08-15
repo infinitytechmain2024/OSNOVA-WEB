@@ -167,57 +167,77 @@
     flex-shrink: 0;
   }
 
-  /* Adjacent cards styling */
-  .cooperation-card--adjacent {
-    opacity: 0.52;
+  /* Inactive / Adjacent cards styling */
+  .cooperation-card--adjacent,
+  .cooperation-card--inactive {
+    opacity: 0.5;
     cursor: pointer;
     padding: 0;
     border: 1px solid oklch(0.91 0.018 247);
     background: inherit;
-    filter: saturate(0.72) brightness(0.96);
+    filter: saturate(0.6) brightness(0.92);
+    transition:
+      transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 230ms ease,
+      box-shadow 230ms ease;
   }
 
-  .cooperation-card--adjacent:hover {
-    opacity: 0.7;
+  .cooperation-card--adjacent:hover,
+  .cooperation-card--inactive:hover {
+    opacity: 0.65;
+    filter: saturate(0.75) brightness(0.96);
     transform: none;
   }
 
-  .cooperation-card--adjacent .cooperation-number {
-    opacity: 0.72;
+  .cooperation-card--adjacent .cooperation-number,
+  .cooperation-card--inactive .cooperation-number {
+    opacity: 0.65;
   }
 
   .cooperation-card--adjacent .cooperation-copy h3,
   .cooperation-card--adjacent .cooperation-copy p,
   .cooperation-card--adjacent .cooperation-tags span,
-  .cooperation-card--adjacent .cooperation-details {
-    opacity: 0.78;
+  .cooperation-card--adjacent .cooperation-details,
+  .cooperation-card--inactive .cooperation-copy h3,
+  .cooperation-card--inactive .cooperation-copy p,
+  .cooperation-card--inactive .cooperation-tags span,
+  .cooperation-card--inactive .cooperation-details {
+    opacity: 0.75;
   }
 
-  .cooperation-card--adjacent .cooperation-copy h3 {
-    color: oklch(0.62 0.04 257);
+  .cooperation-card--adjacent .cooperation-copy h3,
+  .cooperation-card--inactive .cooperation-copy h3 {
+    color: oklch(0.58 0.03 257);
   }
 
-  .cooperation-card--adjacent .cooperation-copy p {
-    color: oklch(0.6 0.024 257);
+  .cooperation-card--adjacent .cooperation-copy p,
+  .cooperation-card--inactive .cooperation-copy p {
+    color: oklch(0.58 0.024 257);
   }
 
-  .cooperation-card--adjacent .cooperation-tags span {
-    border-color: oklch(0.9 0.026 250);
-    color: oklch(0.62 0.05 250);
+  .cooperation-card--adjacent .cooperation-tags span,
+  .cooperation-card--inactive .cooperation-tags span {
+    border-color: oklch(0.9 0.02 250);
+    color: oklch(0.58 0.04 250);
     background: oklch(0.985 0.005 250);
   }
 
-  .cooperation-card--adjacent .cooperation-details {
-    background: oklch(0.68 0.08 250);
-    color: rgba(255, 255, 255, 0.86);
+  .cooperation-card--adjacent .cooperation-details,
+  .cooperation-card--inactive .cooperation-details {
+    background: oklch(0.68 0.07 250);
+    color: rgba(255, 255, 255, 0.85);
     box-shadow: none;
   }
 
-  .cooperation-card--adjacent .cooperation-media img {
-    filter: saturate(0.7) brightness(0.92) contrast(0.94);
+  .cooperation-card--adjacent .cooperation-media img,
+  .cooperation-card--inactive .cooperation-media img {
+    filter: saturate(0.55) brightness(0.88) contrast(0.92);
   }
 
-  .cooperation-card--adjacent button {
+  .cooperation-card--adjacent button,
+  .cooperation-card--inactive button {
     width: 100%;
   }
 
@@ -239,7 +259,7 @@
     box-shadow: 0 20px 38px -32px oklch(0.26 0.06 255 / 28%);
   }
 
-  .cooperation-card:not(.cooperation-card--adjacent):hover {
+  .cooperation-card:not(.cooperation-card--adjacent):not(.cooperation-card--inactive):hover {
     transform: translateY(-4px);
     border-color: oklch(0.69 0.1 250 / 70%);
     box-shadow: 0 22px 48px -30px oklch(0.26 0.08 255 / 38%);
@@ -364,7 +384,7 @@
   @media (min-width: 48rem) {
     /* Tablet+: update viewport heights and card size */
     .cooperation-viewport {
-      --card-height: 17.5rem;
+      --card-height: clamp(13rem, 16.95vw, 16.25rem);
       --preview-top: 3rem;
       --preview-bottom: 3rem;
       --gap-between-cards: -1.15rem;
@@ -436,7 +456,7 @@
   @media (min-width: 1024px) {
     /* Desktop: larger preview sizes */
     .cooperation-viewport {
-      --card-height: 16.25rem;
+      --card-height: clamp(13rem, 16.95vw, 16.25rem);
       --preview-top: 5.625rem;
       --preview-bottom: 5.625rem;
       --gap-between-cards: -1.15rem;
@@ -448,7 +468,7 @@
   @media (max-width: 47.99rem) {
     /* Mobile: smaller preview sizes */
     .cooperation-viewport {
-      --card-height: 100%;
+      --card-height: clamp(21rem, 105vw, 25rem);
       --preview-top: 1.75rem;
       --preview-bottom: 1.75rem;
       height: auto;
