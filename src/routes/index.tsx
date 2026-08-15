@@ -773,11 +773,14 @@ function Index() {
   const [cooperationIsAnimating, setCooperationIsAnimating] = React.useState(false);
   const [cooperationStepHeight, setCooperationStepHeight] = React.useState<number>(0);
   const cooperationStackRef = React.useRef<HTMLDivElement>(null);
+  const cooperationIsAnimatingRef = React.useRef(false);
 
   React.useEffect(() => {
+    const stackEl = cooperationStackRef.current;
+    if (!stackEl) return;
+
     const updateStepHeight = () => {
-      if (!cooperationStackRef.current) return;
-      const cards = cooperationStackRef.current.querySelectorAll(".cooperation-card");
+      const cards = stackEl.querySelectorAll(".cooperation-card");
       if (cards.length >= 2) {
         const card0 = cards[0] as HTMLElement;
         const card1 = cards[1] as HTMLElement;
@@ -789,13 +792,22 @@ function Index() {
     };
 
     updateStepHeight();
+
+    const observer = new ResizeObserver(() => {
+      updateStepHeight();
+    });
+    observer.observe(stackEl);
     window.addEventListener("resize", updateStepHeight);
-    return () => window.removeEventListener("resize", updateStepHeight);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateStepHeight);
+    };
   }, []);
 
   const goToCooperationStep = React.useCallback(
     (direction: -1 | 1) => {
-      if (cooperationIsAnimating) return;
+      if (cooperationIsAnimatingRef.current) return;
 
       setCooperationCurrentSlide((prev) => {
         const nextIndex = Math.min(
@@ -803,17 +815,19 @@ function Index() {
           COOPERATION_ITEMS.length - 1
         );
         if (nextIndex === prev) return prev;
+        cooperationIsAnimatingRef.current = true;
         setCooperationIsAnimating(true);
         return nextIndex;
       });
     },
-    [cooperationIsAnimating]
+    []
   );
 
   React.useEffect(() => {
     if (!cooperationIsAnimating) return;
 
     const timer = window.setTimeout(() => {
+      cooperationIsAnimatingRef.current = false;
       setCooperationIsAnimating(false);
     }, 520);
 
@@ -1321,7 +1335,7 @@ function Index() {
                         isActive={isActive}
                         isNext={isNext}
                         onClick={() => {
-                          if (cooperationIsAnimating || !isNext) return;
+                          if (cooperationIsAnimatingRef.current || !isNext) return;
                           goToCooperationStep(1);
                         }}
                       />
@@ -1349,7 +1363,8 @@ function Index() {
                       key={index}
                       disabled={cooperationIsAnimating}
                       onClick={() => {
-                        if (cooperationIsAnimating || index === cooperationCurrentSlide) return;
+                        if (cooperationIsAnimatingRef.current || index === cooperationCurrentSlide) return;
+                        cooperationIsAnimatingRef.current = true;
                         setCooperationIsAnimating(true);
                         setCooperationCurrentSlide(index);
                       }}

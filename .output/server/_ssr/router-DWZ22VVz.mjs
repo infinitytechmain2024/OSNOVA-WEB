@@ -9,10 +9,10 @@ import { t as Route } from "../_-phRm-ppr.mjs";
 import { t as Route$10 } from "./konferentsii-CZ5cJ9p9.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
 import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-Cq_RHUNG.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-DWZ22VVz.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-CY8eUMkD.css";
+var styles_default = "/assets/styles-Cq-M8p0v.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -343,7 +343,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ConsultationModalProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {}) })
 	});
 }
-var $$splitComponentImporter$6 = () => import("./routes-j80zDC_9.mjs");
+var $$splitComponentImporter$6 = () => import("./routes-ClJjskFS.mjs");
 var Route$8 = createFileRoute("/")({
 	head: () => ({ meta: [{ title: "Снова Реабілітація — Медичний центр діагностики та відновлення" }, {
 		name: "description",

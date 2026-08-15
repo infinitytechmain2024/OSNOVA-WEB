@@ -175,7 +175,7 @@
     padding: 0;
     border: 1px solid oklch(0.91 0.018 247);
     background: inherit;
-    filter: saturate(0.6) brightness(0.92);
+    filter: saturate(0.45) brightness(0.85);
     transition:
       transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
       opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -186,14 +186,14 @@
 
   .cooperation-card--adjacent:hover,
   .cooperation-card--inactive:hover {
-    opacity: 0.65;
-    filter: saturate(0.75) brightness(0.96);
+    opacity: 0.6;
+    filter: saturate(0.6) brightness(0.9);
     transform: none;
   }
 
   .cooperation-card--adjacent .cooperation-number,
   .cooperation-card--inactive .cooperation-number {
-    opacity: 0.65;
+    opacity: 0.5;
   }
 
   .cooperation-card--adjacent .cooperation-copy h3,
@@ -204,36 +204,36 @@
   .cooperation-card--inactive .cooperation-copy p,
   .cooperation-card--inactive .cooperation-tags span,
   .cooperation-card--inactive .cooperation-details {
-    opacity: 0.75;
+    opacity: 0.65;
   }
 
   .cooperation-card--adjacent .cooperation-copy h3,
   .cooperation-card--inactive .cooperation-copy h3 {
-    color: oklch(0.58 0.03 257);
+    color: oklch(0.55 0.025 257);
   }
 
   .cooperation-card--adjacent .cooperation-copy p,
   .cooperation-card--inactive .cooperation-copy p {
-    color: oklch(0.58 0.024 257);
+    color: oklch(0.58 0.02 257);
   }
 
   .cooperation-card--adjacent .cooperation-tags span,
   .cooperation-card--inactive .cooperation-tags span {
-    border-color: oklch(0.9 0.02 250);
-    color: oklch(0.58 0.04 250);
-    background: oklch(0.985 0.005 250);
+    border-color: oklch(0.92 0.01 250);
+    color: oklch(0.55 0.03 250);
+    background: oklch(0.98 0.005 250);
   }
 
   .cooperation-card--adjacent .cooperation-details,
   .cooperation-card--inactive .cooperation-details {
-    background: oklch(0.68 0.07 250);
-    color: rgba(255, 255, 255, 0.85);
+    background: oklch(0.65 0.06 250);
+    color: rgba(255, 255, 255, 0.75);
     box-shadow: none;
   }
 
   .cooperation-card--adjacent .cooperation-media img,
   .cooperation-card--inactive .cooperation-media img {
-    filter: saturate(0.55) brightness(0.88) contrast(0.92);
+    filter: saturate(0.4) brightness(0.82) contrast(0.9);
   }
 
   .cooperation-card--adjacent button,

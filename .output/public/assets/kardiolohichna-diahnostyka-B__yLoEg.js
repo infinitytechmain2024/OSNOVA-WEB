@@ -1,0 +1,1 @@
+import{at as e,i as t}from"./site-footer-C6OIjCem.js";import{t as n}from"./service-detail-template-C_g-F0Nr.js";var r=e();function i(){let e=t(`/diagnostyka/kardiodiahnostyka`);return e?(0,r.jsx)(n,{node:e}):null}export{i as component};

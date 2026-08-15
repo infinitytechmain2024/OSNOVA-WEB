@@ -1,4 +1,4 @@
-//#region \0tanstack-start-manifest:v
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-CdpDn_Ht.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/__root.tsx",
@@ -15,22 +15,22 @@ var tsrStartManifest = () => ({ routes: {
 			"/statti/pershi-symptomy-problem-iz-sertsem"
 		],
 		preloads: [
-			"/assets/index-P42HAPb2.js",
+			"/assets/index-Dpdw5vHL.js",
 			"/assets/site-footer-C6OIjCem.js",
-			"/assets/_-nw56UUdy.js",
+			"/assets/_-CrGnCPmI.js",
 			"/assets/preload-helper-B1Plj4Kx.js"
 		],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-P42HAPb2.js"
+			src: "/assets/index-Dpdw5vHL.js"
 		} }]
 	},
 	"/": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-D04o98xF.js",
+			"/assets/routes-BnKBC6hk.js",
 			"/assets/partner-sytenko-7TMWGgrq.js",
 			"/assets/chevron-left-7AB4hybL.js",
 			"/assets/users-DkEiG1Yd.js",
@@ -42,10 +42,10 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/$.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_-6ylcmqJd.js",
+			"/assets/_-DNYuS2te.js",
 			"/assets/partner-sytenko-7TMWGgrq.js",
 			"/assets/building-2-Ct3LOt8W.js",
-			"/assets/service-detail-template-4odlOUm3.js",
+			"/assets/service-detail-template-C_g-F0Nr.js",
 			"/assets/calendar-days-drMWACq3.js",
 			"/assets/chevron-left-7AB4hybL.js",
 			"/assets/users-DkEiG1Yd.js",
@@ -58,7 +58,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/iventy.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/iventy-CqbKvgav.js",
+			"/assets/iventy-BZvtjvHX.js",
 			"/assets/building-2-Ct3LOt8W.js",
 			"/assets/calendar-days-drMWACq3.js",
 			"/assets/clock-3-D7PoflS4.js",
@@ -69,13 +69,13 @@ var tsrStartManifest = () => ({ routes: {
 	"/kardiolohichna-diahnostyka": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/kardiolohichna-diahnostyka.tsx",
 		children: void 0,
-		preloads: ["/assets/kardiolohichna-diahnostyka-8ReHrBtl.js", "/assets/service-detail-template-4odlOUm3.js"]
+		preloads: ["/assets/kardiolohichna-diahnostyka-B__yLoEg.js", "/assets/service-detail-template-C_g-F0Nr.js"]
 	},
 	"/konferentsii": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/konferentsii.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/konferentsii-gBVehbex.js",
+			"/assets/konferentsii-v1dLTlYU.js",
 			"/assets/calendar-days-drMWACq3.js",
 			"/assets/chevron-left-7AB4hybL.js",
 			"/assets/clock-3-D7PoflS4.js",
@@ -85,18 +85,18 @@ var tsrStartManifest = () => ({ routes: {
 	"/kursy": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/kursy.tsx",
 		children: void 0,
-		preloads: ["/assets/kursy-DrmQ9usF.js", "/assets/education-courses-page-KZ8XgX_X.js"]
+		preloads: ["/assets/kursy-ewr7Qaxy.js", "/assets/education-courses-page-ByAU5tsA.js"]
 	},
 	"/navchannia": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/navchannia.tsx",
 		children: void 0,
-		preloads: ["/assets/navchannia-EVIjcgnb.js", "/assets/education-courses-page-KZ8XgX_X.js"]
+		preloads: ["/assets/navchannia-8Tt78jvO.js", "/assets/education-courses-page-ByAU5tsA.js"]
 	},
 	"/novyny": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/novyny.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/novyny-Cui9qoLm.js",
+			"/assets/novyny-CfsR14HE.js",
 			"/assets/calendar-days-drMWACq3.js",
 			"/assets/clock-3-D7PoflS4.js",
 			"/assets/news-DjSDQmko.js"
@@ -106,7 +106,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/statti/pershi-symptomy-problem-iz-sertsem.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/pershi-symptomy-problem-iz-sertsem-BXw5F5H4.js",
+			"/assets/pershi-symptomy-problem-iz-sertsem-B-HfYd2H.js",
 			"/assets/calendar-days-drMWACq3.js",
 			"/assets/triangle-alert-BoPWvrBx.js"
 		]
