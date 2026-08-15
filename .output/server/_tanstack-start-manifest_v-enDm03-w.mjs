@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DQRhY5Xo.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-enDm03-w.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/__root.tsx",
@@ -15,22 +15,22 @@ var tsrStartManifest = () => ({ routes: {
 			"/statti/pershi-symptomy-problem-iz-sertsem"
 		],
 		preloads: [
-			"/assets/index-X15dXeem.js",
+			"/assets/index-DdWnyY4-.js",
 			"/assets/blocks-B5BfPMKL.js",
-			"/assets/_-CKD7xEt3.js",
+			"/assets/_-Cji2LZNm.js",
 			"/assets/preload-helper-7VXMhg0-.js"
 		],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-X15dXeem.js"
+			src: "/assets/index-DdWnyY4-.js"
 		} }]
 	},
 	"/": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-x-dqZUnc.js",
+			"/assets/routes-BrHPBm6y.js",
 			"/assets/partner-sytenko-w6GD8zJm.js",
 			"/assets/chevron-left-PX2kkt1K.js",
 			"/assets/users-JoAj4nLR.js",
@@ -42,10 +42,10 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/$.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_-CCJSuUGl.js",
+			"/assets/_-DS6_4-K0.js",
 			"/assets/partner-sytenko-w6GD8zJm.js",
 			"/assets/building-2-DUKRdYWJ.js",
-			"/assets/service-detail-template-Dx7LdRmT.js",
+			"/assets/service-detail-template-DtN11bj7.js",
 			"/assets/calendar-days-B75hT1_1.js",
 			"/assets/chevron-left-PX2kkt1K.js",
 			"/assets/users-JoAj4nLR.js",
@@ -58,7 +58,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/iventy.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/iventy-DKlvZKtj.js",
+			"/assets/iventy-BtL8nVd6.js",
 			"/assets/building-2-DUKRdYWJ.js",
 			"/assets/calendar-days-B75hT1_1.js",
 			"/assets/clock-3-DEU_iFaF.js",
@@ -69,13 +69,13 @@ var tsrStartManifest = () => ({ routes: {
 	"/kardiolohichna-diahnostyka": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/kardiolohichna-diahnostyka.tsx",
 		children: void 0,
-		preloads: ["/assets/kardiolohichna-diahnostyka-zihxT50U.js", "/assets/service-detail-template-Dx7LdRmT.js"]
+		preloads: ["/assets/kardiolohichna-diahnostyka-CX_17wwJ.js", "/assets/service-detail-template-DtN11bj7.js"]
 	},
 	"/konferentsii": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/konferentsii.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/konferentsii-BnIomgaH.js",
+			"/assets/konferentsii-CDml6nle.js",
 			"/assets/calendar-days-B75hT1_1.js",
 			"/assets/chevron-left-PX2kkt1K.js",
 			"/assets/clock-3-DEU_iFaF.js",
@@ -85,12 +85,12 @@ var tsrStartManifest = () => ({ routes: {
 	"/kursy": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/kursy.tsx",
 		children: void 0,
-		preloads: ["/assets/kursy-BTw23Dow.js", "/assets/education-courses-page-CWMDBM31.js"]
+		preloads: ["/assets/kursy-C6pSRjN0.js", "/assets/education-courses-page-S4gVuKuD.js"]
 	},
 	"/navchannia": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/navchannia.tsx",
 		children: void 0,
-		preloads: ["/assets/navchannia-P1FEcK0R.js", "/assets/education-courses-page-CWMDBM31.js"]
+		preloads: ["/assets/navchannia-BIGC5P77.js", "/assets/education-courses-page-S4gVuKuD.js"]
 	},
 	"/novyny": {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/novyny.tsx",
@@ -106,7 +106,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/untitled folder/Untitled/src/routes/statti/pershi-symptomy-problem-iz-sertsem.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/pershi-symptomy-problem-iz-sertsem-BN6dkM5g.js",
+			"/assets/pershi-symptomy-problem-iz-sertsem-CgHIjUba.js",
 			"/assets/calendar-days-B75hT1_1.js",
 			"/assets/triangle-alert-V88iBmZw.js"
 		]

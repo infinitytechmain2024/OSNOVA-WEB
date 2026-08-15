@@ -1082,16 +1082,16 @@ function Index() {
               </div>
 
               <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:gap-6">
-                <div className="overflow-hidden rounded-[28px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-slate-100/80">
+                <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-slate-100">
                   <img
                     src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80"
                     alt="Реабілітаційний процес з фахівцем у світлому залі"
-                    className="h-full min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] w-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="h-full min-h-[190px] sm:min-h-[220px] lg:min-h-[240px] w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
 
-                <div className="flex flex-col justify-center rounded-[28px] bg-[#edf4ff] p-6 sm:p-7 lg:p-8 text-left shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-[#e2edfd] transition-all duration-300 hover:shadow-[0_14px_35px_rgba(29,99,237,0.08)]">
-                  <div className="mb-3 text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight text-[#0062d2] leading-none">
+                <div className="flex flex-col justify-center rounded-[24px] bg-[#edf4ff] p-6 sm:p-7 lg:p-8 text-left shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-[#e2edfd]">
+                  <div className="mb-3 text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight text-[#1d63ed] leading-none">
                     8+
                   </div>
                   <p className="text-xs sm:text-sm font-semibold text-[#334155] leading-snug">
@@ -1099,7 +1099,7 @@ function Index() {
                   </p>
                 </div>
 
-                <div className="flex flex-col justify-center rounded-[28px] bg-[#dcebfe] p-6 sm:p-7 lg:p-8 text-left shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-[#cbe0fd] transition-all duration-300 hover:shadow-[0_14px_35px_rgba(11,25,44,0.08)]">
+                <div className="flex flex-col justify-center rounded-[24px] bg-[#edf4ff] p-6 sm:p-7 lg:p-8 text-left shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-[#e2edfd]">
                   <div className="mb-3 text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight text-[#0b192c] leading-none">
                     30+
                   </div>
@@ -1108,11 +1108,11 @@ function Index() {
                   </p>
                 </div>
 
-                <div className="overflow-hidden rounded-[28px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-slate-100/80">
+                <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-slate-100">
                   <img
                     src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80"
                     alt="Медичний персонал за обладнанням"
-                    className="h-full min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] w-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="h-full min-h-[190px] sm:min-h-[220px] lg:min-h-[240px] w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
               </div>
