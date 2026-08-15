@@ -46,6 +46,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { NEWS_ARTICLES } from "@/data/news";
 import { useConsultationModal } from "@/components/consultation-form";
 import { RehabilitationMethodsSlider } from "@/components/rehabilitation-methods-slider";
+import { Breadcrumbs } from "@/components/blocks";
 
 // Images
 import rehabImg from "@/assets/service-rehab.jpg";
@@ -976,6 +977,16 @@ function Index() {
             )}
           </Carousel>
         </section>
+
+        {/* BREADCRUMBS NAVIGATION */}
+        <div className="border-b border-border/70 bg-white">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <Breadcrumbs
+              items={[{ title: "Головна", route: "/" }]}
+              className="pb-4"
+            />
+          </div>
+        </div>
 
         {/* 2. ПРО КОМПАНІЮ */}
         <section className="bg-white py-16 md:py-24 lg:py-28">

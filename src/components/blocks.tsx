@@ -56,7 +56,15 @@ export function Breadcrumbs({ items, className }: { items: { title: string; rout
           <li key={item.route + i} className="flex items-center gap-2">
             {i > 0 && <span aria-hidden>/</span>}
             {i === items.length - 1 ? (
-              <span className="font-semibold text-navy">{item.title}</span>
+              <span className="font-semibold text-navy">
+                {i === 0 ? (
+                  <span className="inline-flex items-center gap-1">
+                    <Home className="size-3.5" /> {item.title}
+                  </span>
+                ) : (
+                  item.title
+                )}
+              </span>
             ) : (
               <AppLink to={item.route} className="hover:text-primary transition-colors">
                 {i === 0 ? (
