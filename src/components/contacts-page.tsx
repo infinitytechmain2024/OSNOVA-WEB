@@ -429,6 +429,29 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                         </div>
                       </div>
 
+                      <div className="rounded-2xl bg-slate-50/80 p-4 border border-border/60">
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                          <span className="inline-flex size-4 items-center justify-center rounded-full bg-emerald-100 text-[10px] text-emerald-700">•</span>
+                          <span>Орієнтири:</span>
+                        </div>
+
+                        <div className="mt-3 flex flex-wrap gap-2 lg:flex-nowrap lg:gap-2.5">
+                          {[
+                            "ТРК Бука",
+                            "Підйомник №7",
+                            "Паркінг №2",
+                          ].map((item) => (
+                            <div
+                              key={item}
+                              className="flex items-center gap-2 rounded-xl border border-emerald-200 bg-white px-2.5 py-2 text-[11px] font-bold text-navy shadow-2xs"
+                            >
+                              <span className="inline-block size-2.5 shrink-0 rounded-full bg-emerald-500" />
+                              <span>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
                       {/* Working Hours split item */}
                       <div className="rounded-2xl bg-slate-50/80 p-4 border border-border/60 space-y-3">
                         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
