@@ -9,7 +9,7 @@ import { a as partner_karpatska_akademiia_default, i as partner_ifnmu_default, n
 import { t as NEWS_ARTICLES } from "./news-Bg28w2cq.mjs";
 import { t as useEmblaCarousel } from "../_libs/embla-carousel-react+[...].mjs";
 import { t as Autoplay } from "../_libs/embla-carousel-autoplay.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DhqEvW7L.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CMrEOwBW.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var Accordion = Accordion$1;
@@ -1288,99 +1288,100 @@ function Index() {
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-					className: "bg-white py-16 md:py-24 lg:py-32",
+					className: "bg-white py-16 md:py-24 lg:py-28",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-12",
+						className: "mx-auto max-w-[1240px] px-6 lg:px-10",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid items-center gap-12 lg:gap-16 xl:gap-20 lg:grid-cols-12",
+							className: "grid items-center gap-10 lg:gap-14 lg:grid-cols-2",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "w-full lg:col-span-6 xl:col-span-6",
+								className: "max-w-[600px]",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "mb-5 inline-flex items-center rounded-full bg-[#edf4ff] border border-[#d4e4fa] px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#1d63ed]",
+										className: "mb-4 inline-flex items-center rounded-full bg-[#edf4ff] border border-[#d4e4fa] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em] text-[#1d63ed]",
 										children: "ПРО КОМПАНІЮ"
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
-										className: "mb-4 text-4xl sm:text-5xl lg:text-[52px] xl:text-[56px] font-black tracking-tight leading-[1.08] text-[#0b192c]",
+										className: "mb-3 text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-black tracking-tight leading-none text-[#0b192c]",
 										children: ["ОСНОВА ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "text-[#1d63ed]",
 											children: "Реабілітація"
 										})]
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mb-8 h-[5px] w-24 rounded-full bg-gradient-to-r from-[#1d63ed] via-[#1d63ed] 50% to-[#10b981]" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mb-7 h-[4px] w-20 rounded-full bg-gradient-to-r from-[#1d63ed] via-[#1d63ed] 50% to-[#10b981]" }),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "space-y-6 text-base sm:text-lg leading-relaxed",
+										className: "space-y-4 text-sm sm:text-base leading-relaxed",
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "font-bold text-[#1e293b] leading-relaxed text-base sm:text-lg",
+												className: "font-bold text-[#1e293b]",
 												children: "ОСНОВА Реабілітація — сучасна медична компанія, що спеціалізується на лікуванні та комплексній реабілітації пацієнтів у сферах кардіології, ортопедії, травматології, ревматології, вертебрології та психології."
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "font-normal text-[#475569] leading-relaxed text-base sm:text-lg",
+												className: "font-normal text-[#475569]",
 												children: "Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики ще до появи симптомів — завдяки сучасній діагностиці, точним обстеженням і персоналізованим профілактичним програмам."
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "my-2 font-bold text-[#1d63ed] text-base sm:text-lg leading-relaxed",
+												className: "font-bold text-[#1d63ed]",
 												children: "Наше завдання — допомогти вам відновити здоров'я, рухливість і якість життя."
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "font-normal text-[#475569] leading-relaxed text-base sm:text-lg",
+												className: "font-normal text-[#475569]",
 												children: "ОСНОВА Реабілітація також є науково-освітньою платформою, що розробляє та вдосконалює протоколи лікування, співпрацює з провідними медичними університетами світу, впроваджує інноваційні технології та розвиває виїзні формати реабілітаційної допомоги для пацієнтів поза центром."
 											})
 										]
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "mt-10",
+										className: "mt-8",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppLink, {
 											to: "/pro-osnovu",
-											className: "inline-flex items-center gap-2.5 rounded-full bg-[#0b192c] px-8 py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-[0_12px_28px_rgba(11,25,44,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1d63ed] hover:shadow-[0_14px_32px_rgba(29,99,237,0.35)]",
-											children: ["ДЕТАЛЬНІШЕ ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { className: "h-4.5 w-4.5 stroke-[2.5]" })]
+											className: "inline-flex items-center gap-2 rounded-full bg-[#0b192c] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-[0_10px_25px_rgba(11,25,44,0.25)] transition-all duration-200 hover:bg-[#1d63ed] hover:shadow-[0_10px_25px_rgba(29,99,237,0.3)]",
+											children: ["ДЕТАЛЬНІШЕ ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { className: "h-4 w-4 stroke-[2.5]" })]
 										})
 									})
 								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "w-full lg:col-span-6 xl:col-span-6",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "grid grid-cols-2 gap-5 sm:gap-6 lg:gap-7",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "overflow-hidden rounded-[32px] bg-white shadow-[0_14px_36px_rgba(0,0,0,0.06)] border border-slate-100/90 aspect-[4/3] sm:aspect-square lg:aspect-[4/3.4] min-h-[220px] sm:min-h-[260px] lg:min-h-[280px]",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-												src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80",
-												alt: "Реабілітаційний процес з фахівцем у світлому залі",
-												className: "size-full object-cover transition-transform duration-700 hover:scale-105"
-											})
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex flex-col justify-center rounded-[32px] bg-[#edf4ff] p-7 sm:p-8 lg:p-9 text-left shadow-[0_14px_36px_rgba(0,0,0,0.04)] border border-[#e2edfd] aspect-[4/3] sm:aspect-square lg:aspect-[4/3.4] min-h-[220px] sm:min-h-[260px] lg:min-h-[280px] transition-all duration-300 hover:shadow-[0_18px_40px_rgba(29,99,237,0.1)]",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-												className: "mb-3 text-5xl sm:text-6xl lg:text-[62px] font-black tracking-tight text-[#1d63ed] leading-none",
-												children: "8+"
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "text-xs sm:text-sm md:text-base font-bold text-[#334155] leading-snug",
-												children: "Напрямків реабілітації"
-											})]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex flex-col justify-center rounded-[32px] bg-[#edf4ff] p-7 sm:p-8 lg:p-9 text-left shadow-[0_14px_36px_rgba(0,0,0,0.04)] border border-[#e2edfd] aspect-[4/3] sm:aspect-square lg:aspect-[4/3.4] min-h-[220px] sm:min-h-[260px] lg:min-h-[280px] transition-all duration-300 hover:shadow-[0_18px_40px_rgba(11,25,44,0.1)]",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-												className: "mb-3 text-5xl sm:text-6xl lg:text-[62px] font-black tracking-tight text-[#0b192c] leading-none",
-												children: "30+"
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "text-xs sm:text-sm md:text-base font-bold text-[#334155] leading-snug",
-												children: "Методів реабілітації"
-											})]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "overflow-hidden rounded-[32px] bg-white shadow-[0_14px_36px_rgba(0,0,0,0.06)] border border-slate-100/90 aspect-[4/3] sm:aspect-square lg:aspect-[4/3.4] min-h-[220px] sm:min-h-[260px] lg:min-h-[280px]",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-												src: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80",
-												alt: "Медичний персонал за обладнанням",
-												className: "size-full object-cover transition-transform duration-700 hover:scale-105"
-											})
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-4 sm:gap-5 lg:gap-6",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "overflow-hidden rounded-[24px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-slate-100",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+											src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80",
+											alt: "Реабілітаційний процес з фахівцем у світлому залі",
+											className: "h-full min-h-[190px] sm:min-h-[220px] lg:min-h-[240px] w-full object-cover transition-transform duration-500 hover:scale-105"
 										})
-									]
-								})
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex flex-col justify-center rounded-[24px] bg-[#edf4ff] p-6 sm:p-7 lg:p-8 text-left shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-[#e2edfd]",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "mb-3 text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight text-[#1d63ed] leading-none",
+											children: "10+"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+											className: "text-xs sm:text-sm font-semibold text-[#334155] leading-snug",
+											children: [
+												"Років досвіду медичної",
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
+												"команди"
+											]
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex flex-col justify-center rounded-[24px] bg-[#edf4ff] p-6 sm:p-7 lg:p-8 text-left shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-[#e2edfd]",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "mb-3 text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight text-[#0b192c] leading-none",
+											children: "100%"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-xs sm:text-sm font-semibold text-[#334155] leading-snug",
+											children: "Персоналізований підхід до кожного пацієнта"
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "overflow-hidden rounded-[24px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-slate-100",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+											src: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80",
+											alt: "Медичний персонал за обладнанням",
+											className: "h-full min-h-[190px] sm:min-h-[220px] lg:min-h-[240px] w-full object-cover transition-transform duration-500 hover:scale-105"
+										})
+									})
+								]
 							})]
 						})
 					})
