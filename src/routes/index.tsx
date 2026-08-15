@@ -764,6 +764,34 @@ function Index() {
   const [currentPartnersSlide, setCurrentPartnersSlide] = React.useState(0);
   const [partnersSlideCount, setPartnersSlideCount] = React.useState(0);
   const [cooperationCurrentSlide, setCooperationCurrentSlide] = React.useState(0);
+  const [cooperationIsAnimating, setCooperationIsAnimating] = React.useState(false);
+
+  const goToCooperationStep = React.useCallback(
+    (direction: -1 | 1) => {
+      if (cooperationIsAnimating) return;
+
+      const nextIndex = Math.min(
+        Math.max(cooperationCurrentSlide + direction, 0),
+        COOPERATION_ITEMS.length - 1
+      );
+
+      if (nextIndex === cooperationCurrentSlide) return;
+
+      setCooperationIsAnimating(true);
+      setCooperationCurrentSlide(nextIndex);
+    },
+    [cooperationCurrentSlide, cooperationIsAnimating]
+  );
+
+  React.useEffect(() => {
+    if (!cooperationIsAnimating) return;
+
+    const timer = window.setTimeout(() => {
+      setCooperationIsAnimating(false);
+    }, 520);
+
+    return () => window.clearTimeout(timer);
+  }, [cooperationIsAnimating]);
 
   React.useEffect(() => {
     if (!heroApi) return;
@@ -1249,19 +1277,17 @@ function Index() {
             <div className="flex flex-col lg:flex-row items-start justify-between gap-6 max-w-[1540px] mx-auto">
               {/* Main card stack with viewport */}
               <div className="cooperation-viewport w-full lg:flex-1">
-                <div 
+                <div
                   className="cooperation-stack"
                   style={{
                     transform: `translateY(calc(-${cooperationCurrentSlide} * (var(--card-height) + 1.15rem)))`,
-                    transition: "transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+                    transition: "transform 520ms cubic-bezier(0.22, 1, 0.36, 1)",
                   }}
                 >
                   {COOPERATION_ITEMS.map((item, index) => {
-                    const prevIndex = (cooperationCurrentSlide - 1 + COOPERATION_ITEMS.length) % COOPERATION_ITEMS.length;
                     const nextIndex = (cooperationCurrentSlide + 1) % COOPERATION_ITEMS.length;
                     const isActive = index === cooperationCurrentSlide;
-                    const isVisible = index === prevIndex || index === cooperationCurrentSlide || index === nextIndex;
-                    const isAdjacentVisible = index === prevIndex || index === nextIndex;
+                    const isAdjacentVisible = index === nextIndex;
 
                     return (
                       <CooperationCard
@@ -1269,13 +1295,10 @@ function Index() {
                         item={item}
                         index={index}
                         isActive={isActive}
-                        isAdjacentVisible={isAdjacentVisible && isVisible}
+                        isAdjacentVisible={isAdjacentVisible}
                         onClick={() => {
-                          if (index === prevIndex) {
-                            setCooperationCurrentSlide(prevIndex);
-                          } else if (index === nextIndex) {
-                            setCooperationCurrentSlide(nextIndex);
-                          }
+                          if (cooperationIsAnimating || index !== nextIndex) return;
+                          goToCooperationStep(1);
                         }}
                       />
                     );
@@ -1287,12 +1310,9 @@ function Index() {
               <div className="flex flex-row lg:flex-col items-center justify-between lg:justify-center gap-4 w-full lg:w-auto">
                 {/* Up arrow */}
                 <button
-                  onClick={() =>
-                    setCooperationCurrentSlide((prev) =>
-                      prev === 0 ? COOPERATION_ITEMS.length - 1 : prev - 1
-                    )
-                  }
-                  className="flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95"
+                  onClick={() => goToCooperationStep(-1)}
+                  disabled={cooperationCurrentSlide === 0 || cooperationIsAnimating}
+                  className="flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 disabled:hover:scale-100 disabled:hover:bg-slate-100 disabled:hover:text-slate-400"
                   aria-label="Попередня карта"
                 >
                   <ChevronUp className="size-6" />
@@ -1303,7 +1323,11 @@ function Index() {
                   {COOPERATION_ITEMS.map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => setCooperationCurrentSlide(index)}
+                      onClick={() => {
+                        if (cooperationIsAnimating || index === cooperationCurrentSlide) return;
+                        setCooperationIsAnimating(true);
+                        setCooperationCurrentSlide(index);
+                      }}
                       className={`h-2.5 rounded-full transition-all duration-300 ${
                         cooperationCurrentSlide === index
                           ? "w-2.5 bg-primary shadow-sm"
@@ -1316,12 +1340,9 @@ function Index() {
 
                 {/* Down arrow */}
                 <button
-                  onClick={() =>
-                    setCooperationCurrentSlide((prev) =>
-                      prev === COOPERATION_ITEMS.length - 1 ? 0 : prev + 1
-                    )
-                  }
-                  className="flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95"
+                  onClick={() => goToCooperationStep(1)}
+                  disabled={cooperationCurrentSlide === COOPERATION_ITEMS.length - 1 || cooperationIsAnimating}
+                  className="flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 disabled:hover:scale-100 disabled:hover:bg-slate-100 disabled:hover:text-slate-400"
                   aria-label="Наступна карта"
                 >
                   <ChevronDown className="size-6" />

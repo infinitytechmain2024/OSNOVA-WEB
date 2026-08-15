@@ -162,22 +162,59 @@
       transform 230ms ease,
       border-color 230ms ease,
       box-shadow 230ms ease,
-      opacity 400ms ease;
+      opacity 520ms ease,
+      filter 520ms ease;
     flex-shrink: 0;
   }
 
   /* Adjacent cards styling */
   .cooperation-card--adjacent {
-    opacity: 0.65;
+    opacity: 0.52;
     cursor: pointer;
     padding: 0;
     border: 1px solid oklch(0.91 0.018 247);
     background: inherit;
+    filter: saturate(0.72) brightness(0.96);
   }
 
   .cooperation-card--adjacent:hover {
-    opacity: 0.8;
+    opacity: 0.7;
     transform: none;
+  }
+
+  .cooperation-card--adjacent .cooperation-number {
+    opacity: 0.72;
+  }
+
+  .cooperation-card--adjacent .cooperation-copy h3,
+  .cooperation-card--adjacent .cooperation-copy p,
+  .cooperation-card--adjacent .cooperation-tags span,
+  .cooperation-card--adjacent .cooperation-details {
+    opacity: 0.78;
+  }
+
+  .cooperation-card--adjacent .cooperation-copy h3 {
+    color: oklch(0.62 0.04 257);
+  }
+
+  .cooperation-card--adjacent .cooperation-copy p {
+    color: oklch(0.6 0.024 257);
+  }
+
+  .cooperation-card--adjacent .cooperation-tags span {
+    border-color: oklch(0.9 0.026 250);
+    color: oklch(0.62 0.05 250);
+    background: oklch(0.985 0.005 250);
+  }
+
+  .cooperation-card--adjacent .cooperation-details {
+    background: oklch(0.68 0.08 250);
+    color: rgba(255, 255, 255, 0.86);
+    box-shadow: none;
+  }
+
+  .cooperation-card--adjacent .cooperation-media img {
+    filter: saturate(0.7) brightness(0.92) contrast(0.94);
   }
 
   .cooperation-card--adjacent button {
@@ -187,6 +224,7 @@
   /* Active card styling */
   .cooperation-card--active {
     opacity: 1;
+    filter: none;
   }
 
   .cooperation-card + .cooperation-card {
