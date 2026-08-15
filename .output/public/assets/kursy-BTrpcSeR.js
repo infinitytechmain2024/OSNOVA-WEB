@@ -1,0 +1,1 @@
+import{ut as e}from"./blocks-B5BfPMKL.js";import{t}from"./education-courses-page-Dy2jOEDS.js";var n=e();function r(){return(0,n.jsx)(t,{title:`Курси`})}export{r as component};
