@@ -178,81 +178,93 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
 
       <main>
         {/* 1. КОМПАНІЯ - ПРО НАС */}
-        <section className="bg-white py-14 sm:py-18 lg:py-22">
+        <section className="bg-white py-16 md:py-24 lg:py-28">
           <Container>
-            <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary sm:text-sm">
-                  ПРО КОМПАНИЮ
-                </p>
-                <h1 className="mt-3 text-3xl font-extrabold leading-[1.2] text-navy sm:text-4xl lg:text-5xl">
-                  ОСНОВА <span className="text-primary">Реабілітація</span>
-                </h1>
-                <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
-                  ОСНОВА Реабілітація — сучасна медична компанія, що спеціалізується на лікуванні та комплексній реабілітації пацієнтів у сферах кардіології, ортопедії, травматології, ревматології, вертебрології та психології.
-                </p>
-                <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-                  Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики що до появи симптомів — завдяки сучасній діагностиці, точним обстеженням і персоналізованим профілактичним програмам.
-                </p>
+            <div className="grid items-center gap-10 lg:gap-14 lg:grid-cols-2">
+              <div className="max-w-[600px]">
+                <div className="mb-4 inline-flex items-center rounded-full bg-[#edf4ff] border border-[#d4e4fa] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em] text-[#1d63ed]">
+                  ПРО КОМПАНІЮ
+                </div>
 
-                {/* MISSION */}
-                <div className="mt-8 border-l-4 border-primary pl-5">
-                  <h3 className="text-lg font-bold text-navy">Наше завдання — допомогти вам відновити здоров'я, рухливість і якість життя.</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                    ОСНОВА Реабілітація також є науково-освітною платформою, що розробляє та впроваджує інноваційні технології та розвиває різні формати реабілітаційної допомоги для пацієнтів поза центром.
+                <h1 className="mb-3 text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-black tracking-tight leading-none text-[#0b192c]">
+                  ОСНОВА <span className="text-[#1d63ed]">Реабілітація</span>
+                </h1>
+
+                <div className="mb-7 h-[4px] w-20 rounded-full bg-gradient-to-r from-[#1d63ed] via-[#1d63ed] 50% to-[#10b981]" />
+
+                <div className="space-y-4 text-sm sm:text-base leading-relaxed">
+                  <p className="font-bold text-[#1e293b]">
+                    ОСНОВА Реабілітація — сучасна медична компанія, що
+                    спеціалізується на лікуванні та комплексній реабілітації пацієнтів у
+                    сферах кардіології, ортопедії, травматології, ревматології,
+                    вертебрології та психології.
+                  </p>
+
+                  <p className="font-normal text-[#475569]">
+                    Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики
+                    ще до появи симптомів — завдяки сучасній діагностиці, точним
+                    обстеженням і персоналізованим профілактичним програмам.
+                  </p>
+
+                  <p className="font-bold text-[#1d63ed]">
+                    Наше завдання — допомогти вам відновити здоров'я, рухливість і якість
+                    життя.
+                  </p>
+
+                  <p className="font-normal text-[#475569]">
+                    ОСНОВА Реабілітація також є науково-освітньою платформою, що
+                    розробляє та вдосконалює протоколи лікування, співпрацює з провідними
+                    медичними університетами світу, впроваджує інноваційні технології та
+                    розвиває виїзні формати реабілітаційної допомоги для пацієнтів поза
+                    центром.
                   </p>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => openModal("Записатися на консультацію")}
-                  className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-navy px-8 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-navy/90"
-                >
-                  ДЕТАЛЬНІШЕ
-                </button>
+                <div className="mt-8">
+                  <button
+                    type="button"
+                    onClick={() => openModal("Записатися на консультацію")}
+                    className="inline-flex items-center gap-2 rounded-full bg-[#0b192c] px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-[0_10px_25px_rgba(11,25,44,0.25)] transition-all duration-200 hover:bg-[#1d63ed] hover:shadow-[0_10px_25px_rgba(29,99,237,0.3)]"
+                  >
+                    ДЕТАЛЬНІШЕ <ArrowRight className="h-4 w-4 stroke-[2.5]" />
+                  </button>
+                </div>
               </div>
 
-              {/* RIGHT COLUMN - STATS & IMAGES */}
-              <div className="grid grid-cols-2 gap-4 sm:gap-5">
-                {/* STAT 1 */}
-                <div className="rounded-2xl bg-blue-50 p-6 sm:p-8 lg:p-10 text-center col-span-1 row-span-2 flex flex-col justify-center">
-                  <div className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary">10+</div>
-                  <p className="mt-3 text-xs sm:text-sm font-semibold text-navy">Років досвіду медичної команди</p>
-                </div>
-
-                {/* IMAGE 1 */}
-                <div className="rounded-2xl overflow-hidden shadow-md">
+              {/* RIGHT COLUMN - 2X2 GRID */}
+              <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:gap-6">
+                <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-slate-100">
                   <img
-                    src={functionalTrainingImg}
-                    alt="Фізіотерапія"
-                    loading="lazy"
-                    className="aspect-square w-full object-cover"
+                    src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80"
+                    alt="Реабілітаційний процес з фахівцем у світлому залі"
+                    className="h-full min-h-[190px] sm:min-h-[220px] lg:min-h-[240px] w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
 
-                {/* IMAGE 2 */}
-                <div className="rounded-2xl overflow-hidden shadow-md">
-                  <img
-                    src={consultationImg}
-                    alt="Консультація"
-                    loading="lazy"
-                    className="aspect-square w-full object-cover"
-                  />
+                <div className="flex flex-col justify-center rounded-[24px] bg-[#edf4ff] p-6 sm:p-7 lg:p-8 text-left shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-[#e2edfd]">
+                  <div className="mb-3 text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight text-[#1d63ed] leading-none">
+                    10+
+                  </div>
+                  <p className="text-xs sm:text-sm font-semibold text-[#334155] leading-snug">
+                    Років досвіду медичної<br />
+                    команди
+                  </p>
                 </div>
 
-                {/* STAT 2 */}
-                <div className="rounded-2xl bg-blue-50 p-6 sm:p-8 col-span-1 row-span-2 flex flex-col justify-center">
-                  <div className="text-4xl sm:text-5xl font-extrabold text-primary">100%</div>
-                  <p className="mt-3 text-xs sm:text-sm font-semibold text-navy">Персоналізований підхід до кожного пацієнта</p>
+                <div className="flex flex-col justify-center rounded-[24px] bg-[#dcebfe] p-6 sm:p-7 lg:p-8 text-left shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-[#cbe0fd]">
+                  <div className="mb-3 text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight text-[#0b192c] leading-none">
+                    100%
+                  </div>
+                  <p className="text-xs sm:text-sm font-semibold text-[#334155] leading-snug">
+                    Персоналізований підхід до кожного пацієнта
+                  </p>
                 </div>
 
-                {/* IMAGE 3 */}
-                <div className="rounded-2xl overflow-hidden shadow-md col-span-2 sm:col-span-1">
+                <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-slate-100">
                   <img
-                    src={therapySessionImg}
-                    alt="Терапія"
-                    loading="lazy"
-                    className="aspect-square w-full object-cover"
+                    src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80"
+                    alt="Медичний персонал за обладнанням"
+                    className="h-full min-h-[190px] sm:min-h-[220px] lg:min-h-[240px] w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
               </div>
