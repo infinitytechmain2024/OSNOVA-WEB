@@ -1022,7 +1022,8 @@ function Index() {
           <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <Breadcrumbs
               items={[{ title: "Головна", route: "/" }]}
-              className="pb-4"
+              align="center"
+              className="pb-4 pt-4 sm:pt-4"
             />
           </div>
         </div>

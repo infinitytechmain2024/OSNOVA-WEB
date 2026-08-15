@@ -48,10 +48,18 @@ export function SectionHeader({
   );
 }
 
-export function Breadcrumbs({ items, className }: { items: { title: string; route: string }[]; className?: string }) {
+export function Breadcrumbs({
+  items,
+  className,
+  align = "left",
+}: {
+  items: { title: string; route: string }[];
+  className?: string;
+  align?: "left" | "center";
+}) {
   return (
     <nav aria-label="Навігаційний ланцюжок" className={cn("pt-4 sm:pt-8 overflow-x-auto scrollbar-none", className)}>
-      <ol className="flex items-center gap-2 text-xs sm:text-sm text-navy/60 whitespace-nowrap">
+      <ol className={cn("flex items-center gap-2 text-xs sm:text-sm text-navy/60 whitespace-nowrap", align === "center" && "justify-center")}>
         {items.map((item, i) => (
           <li key={item.route + i} className="flex items-center gap-2">
             {i > 0 && <span aria-hidden>/</span>}
