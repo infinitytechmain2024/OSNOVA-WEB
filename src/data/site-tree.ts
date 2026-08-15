@@ -159,49 +159,12 @@ const cardioMethods = [
   "Інструментальна діагностика",
 ];
 
-const CARDIO_REHAB_ROUTE = "/reabilitatsiia/kardiolohichna";
-const cardiologyPrograms = [
-  {
-    id: "bazova",
-    title: "Базова",
-    description: "Базова програма для поступового відновлення витривалості, мобільності та самоконтролю.",
-    duration: "4–6 занять",
-    format: "амбулаторно",
-    price: "Вартість уточнюється",
-    detailsUrl: `${CARDIO_REHAB_ROUTE}/bazova`,
-    orderAction: "Замовити послугу",
-  },
-  {
-    id: "standartna",
-    title: "Стандартна",
-    description: "Розширена програма з більш регулярним контролем навантаження та динаміки стану.",
-    duration: "6–8 занять",
-    format: "амбулаторно",
-    price: "Вартість уточнюється",
-    detailsUrl: `${CARDIO_REHAB_ROUTE}/standartna`,
-    orderAction: "Замовити послугу",
-  },
-  {
-    id: "rozshyrena",
-    title: "Розширена",
-    description: "Програма з більш повним обсягом навантаження, контролю та рекомендацій для відновлення.",
-    duration: "8–12 занять",
-    format: "амбулаторно",
-    price: "Вартість уточнюється",
-    detailsUrl: `${CARDIO_REHAB_ROUTE}/rozshyrena`,
-    orderAction: "Замовити послугу",
-  },
-  {
-    id: "indyvidualna",
-    title: "Індивідуальна",
-    description: "Індивідуальний маршрут реабілітації з адаптацією до особливостей пацієнта і темпу відновлення.",
-    duration: "за індивідуальним планом",
-    format: "амбулаторно / виїзно",
-    price: "Вартість уточнюється",
-    detailsUrl: `${CARDIO_REHAB_ROUTE}/indyvidualna`,
-    orderAction: "Замовити послугу",
-  },
-];
+import { CARDIO_REHAB_PROGRAMS, CARDIO_REHAB_ROUTE } from "./cardio-rehab-pricing";
+
+const cardiologyPrograms = CARDIO_REHAB_PROGRAMS.map((program) => ({
+  ...program,
+  price: program.price,
+}));
 
 const cardioRehab: SiteNode = {
   id: "rehab-cardio",
@@ -217,7 +180,7 @@ const cardioRehab: SiteNode = {
   fullDescription:
     "Програми кардіологічної реабілітації будуються на результатах діагностики: лікар оцінює стан серця, переносимість навантажень і підбирає безпечний темп відновлення під наглядом команди.",
   duration: "1–21 день",
-  priceLabel: "від 3 000 грн",
+  priceLabel: "3 000 грн",
   image: cpetImg,
   published: true,
   featured: true,

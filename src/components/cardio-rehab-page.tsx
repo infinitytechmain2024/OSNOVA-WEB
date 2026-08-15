@@ -19,6 +19,7 @@ import { getServicePageData } from "@/data/service-content-generator";
 import { useConsultationModal } from "@/components/consultation-form";
 import type { FAQItem, ServiceMethodCard, SiteNode } from "@/data/types";
 import { cn } from "@/lib/utils";
+import { CARDIO_REHAB_PROGRAMS } from "@/data/cardio-rehab-pricing";
 import checkupImg from "@/assets/service-checkup.jpg";
 import cpetImg from "@/assets/cpet-test.jpg";
 import ecgImg from "@/assets/ecg-review.jpg";
@@ -122,33 +123,14 @@ const CARDIO_CONDITIONS = [
   },
 ];
 
-const CARDIO_PROGRAMS = [
-  {
-    title: "Базовий пакет",
-    shortDescription: "Коротка програма з акцентом на фізичну реабілітацію та базове навчання правилам життя після серцевої події.",
-    duration: "7–10 днів",
-    priceLabel: "Уточнюється",
-  },
-  {
-    title: "Стандартний пакет",
-    shortDescription: "Комплексна програма, яка включає тренування, навчання та психологічну підтримку.",
-    duration: "2–3 тижні",
-    priceLabel: "Уточнюється",
-    isPopular: true,
-  },
-  {
-    title: "Розширений пакет",
-    shortDescription: "Поглиблена програма з додатковими методами відновлення та більш інтенсивним супроводом фахівців.",
-    duration: "3–4 тижні",
-    priceLabel: "Уточнюється",
-  },
-  {
-    title: "Індивідуальний пакет",
-    shortDescription: "Програма, яку повністю адаптують під конкретний діагноз, супутні захворювання та побажання пацієнта.",
-    duration: "Індивідуально",
-    priceLabel: "Уточнюється",
-  },
-];
+const CARDIO_PROGRAMS = CARDIO_REHAB_PROGRAMS.map((program) => ({
+  title: program.title,
+  shortDescription: program.description,
+  duration: program.duration,
+  priceLabel: program.price,
+  route: program.detailsUrl,
+  isPopular: program.id === "standartna",
+}));
 
 const OTHER_SERVICES = [
   {
@@ -270,7 +252,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           />
         </PageSection>
 
-        <PageSection className="pb-10 sm:pb-16">
+        <PageSection className="pb-10 sm:pb-16 mt-6 sm:mt-10 lg:mt-12">
           <TimingSection />
         </PageSection>
 
@@ -392,7 +374,7 @@ function AnchorNav() {
   return (
     <div className="border-b border-border bg-white">
       <div className="mx-auto flex max-w-[1600px] items-center gap-4 overflow-x-auto px-4 py-3 sm:px-6 lg:px-10">
-        <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить?</p>
+        <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить:</p>
         <nav aria-label="Розділи сторінки" className="flex min-w-max gap-2 sm:gap-3">
           {ANCHORS.map((item) => (
             <a

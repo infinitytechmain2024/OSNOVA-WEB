@@ -538,14 +538,21 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
   );
 }
 
-function CooperationCard({ item, index }: { item: (typeof COOPERATION_ITEMS)[number]; index: number }) {
-  return (
-    <AppLink
-      to={item.href}
-      aria-label={`Перейти до розділу «${item.title}»`}
-      className="cooperation-card group"
-      style={{ zIndex: COOPERATION_ITEMS.length - index }}
-    >
+function CooperationCard({ 
+  item, 
+  index,
+  isActive = false,
+  isAdjacentVisible = false,
+  onClick
+}: { 
+  item: (typeof COOPERATION_ITEMS)[number]; 
+  index: number;
+  isActive?: boolean;
+  isAdjacentVisible?: boolean;
+  onClick?: () => void;
+}) {
+  const cardContent = (
+    <>
       <div className="cooperation-marker" aria-hidden="true">
         <span className="cooperation-number">{item.number}</span>
       </div>
@@ -563,6 +570,34 @@ function CooperationCard({ item, index }: { item: (typeof COOPERATION_ITEMS)[num
       <div className="cooperation-media">
         <img src={item.image} alt={item.title} loading="lazy" />
       </div>
+    </>
+  );
+
+  const baseClassName = `cooperation-card group ${isActive ? "cooperation-card--active" : ""}`;
+  const baseStyle = { zIndex: COOPERATION_ITEMS.length - index };
+
+  if (isAdjacentVisible) {
+    return (
+      <button
+        onClick={onClick}
+        type="button"
+        className={`${baseClassName} cooperation-card--adjacent`}
+        style={baseStyle}
+        aria-label={`Перейти до розділу «${item.title}»`}
+      >
+        {cardContent}
+      </button>
+    );
+  }
+
+  return (
+    <AppLink
+      to={item.href}
+      aria-label={`Перейти до розділу «${item.title}»`}
+      className={baseClassName}
+      style={baseStyle}
+    >
+      {cardContent}
     </AppLink>
   );
 }
@@ -1212,11 +1247,40 @@ function Index() {
             />
 
             <div className="flex flex-col lg:flex-row items-start justify-between gap-6 max-w-[1540px] mx-auto">
-              {/* Main card stack */}
-              <div className="cooperation-stack w-full lg:flex-1">
-                {COOPERATION_ITEMS.slice(cooperationCurrentSlide, cooperationCurrentSlide + 1).map((item, index) => (
-                  <CooperationCard key={item.number} item={item} index={index} />
-                ))}
+              {/* Main card stack with viewport */}
+              <div className="cooperation-viewport w-full lg:flex-1">
+                <div 
+                  className="cooperation-stack"
+                  style={{
+                    transform: `translateY(calc(-${cooperationCurrentSlide} * (var(--card-height) + 1.15rem)))`,
+                    transition: "transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  }}
+                >
+                  {COOPERATION_ITEMS.map((item, index) => {
+                    const prevIndex = (cooperationCurrentSlide - 1 + COOPERATION_ITEMS.length) % COOPERATION_ITEMS.length;
+                    const nextIndex = (cooperationCurrentSlide + 1) % COOPERATION_ITEMS.length;
+                    const isActive = index === cooperationCurrentSlide;
+                    const isVisible = index === prevIndex || index === cooperationCurrentSlide || index === nextIndex;
+                    const isAdjacentVisible = index === prevIndex || index === nextIndex;
+
+                    return (
+                      <CooperationCard
+                        key={item.number}
+                        item={item}
+                        index={index}
+                        isActive={isActive}
+                        isAdjacentVisible={isAdjacentVisible && isVisible}
+                        onClick={() => {
+                          if (index === prevIndex) {
+                            setCooperationCurrentSlide(prevIndex);
+                          } else if (index === nextIndex) {
+                            setCooperationCurrentSlide(nextIndex);
+                          }
+                        }}
+                      />
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Navigation: Vertical arrows and bullet points */}

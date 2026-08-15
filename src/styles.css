@@ -125,12 +125,25 @@
 }
 
 @layer components {
+  .cooperation-viewport {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Mobile: smaller preview sizes */
+    --card-height: auto;
+    --preview-top: 1.75rem;
+    --preview-bottom: 1.75rem;
+    --gap-between-cards: -1.15rem;
+    padding: var(--preview-top) 0 var(--preview-bottom) 0;
+  }
+
   .cooperation-stack {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 0;
-    margin-top: 0;
+    margin-top: calc(-1 * var(--preview-top));
+    will-change: transform;
   }
 
   .cooperation-card {
@@ -148,7 +161,32 @@
     transition:
       transform 230ms ease,
       border-color 230ms ease,
-      box-shadow 230ms ease;
+      box-shadow 230ms ease,
+      opacity 400ms ease;
+    flex-shrink: 0;
+  }
+
+  /* Adjacent cards styling */
+  .cooperation-card--adjacent {
+    opacity: 0.65;
+    cursor: pointer;
+    padding: 0;
+    border: 1px solid oklch(0.91 0.018 247);
+    background: inherit;
+  }
+
+  .cooperation-card--adjacent:hover {
+    opacity: 0.8;
+    transform: none;
+  }
+
+  .cooperation-card--adjacent button {
+    width: 100%;
+  }
+
+  /* Active card styling */
+  .cooperation-card--active {
+    opacity: 1;
   }
 
   .cooperation-card + .cooperation-card {
@@ -163,7 +201,7 @@
     box-shadow: 0 20px 38px -32px oklch(0.26 0.06 255 / 28%);
   }
 
-  .cooperation-card:hover {
+  .cooperation-card:not(.cooperation-card--adjacent):hover {
     transform: translateY(-4px);
     border-color: oklch(0.69 0.1 250 / 70%);
     box-shadow: 0 22px 48px -30px oklch(0.26 0.08 255 / 38%);
@@ -286,6 +324,16 @@
   }
 
   @media (min-width: 48rem) {
+    /* Tablet+: update viewport heights and card size */
+    .cooperation-viewport {
+      --card-height: 17.5rem;
+      --preview-top: 3rem;
+      --preview-bottom: 3rem;
+      --gap-between-cards: -1.15rem;
+      height: calc(var(--card-height) + var(--preview-top) + var(--preview-bottom));
+      padding: var(--preview-top) 0 var(--preview-bottom) 0;
+    }
+
     .cooperation-card {
       --cooperation-card-size: clamp(13rem, 16.95vw, 16.25rem);
       grid-template-areas: "marker copy media";
@@ -344,6 +392,33 @@
       height: 100%;
       aspect-ratio: auto;
       border-radius: 1.125rem 0 0 1.125rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    /* Desktop: larger preview sizes */
+    .cooperation-viewport {
+      --card-height: 16.25rem;
+      --preview-top: 5.625rem;
+      --preview-bottom: 5.625rem;
+      --gap-between-cards: -1.15rem;
+      height: calc(var(--card-height) + var(--preview-top) + var(--preview-bottom));
+      padding: var(--preview-top) 0 var(--preview-bottom) 0;
+    }
+  }
+
+  @media (max-width: 47.99rem) {
+    /* Mobile: smaller preview sizes */
+    .cooperation-viewport {
+      --card-height: 100%;
+      --preview-top: 1.75rem;
+      --preview-bottom: 1.75rem;
+      height: auto;
+      padding: var(--preview-top) 0 var(--preview-bottom) 0;
+    }
+
+    .cooperation-stack {
+      margin-top: calc(-1 * var(--preview-top));
     }
   }
 
