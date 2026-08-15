@@ -1,14 +1,14 @@
 import { n as __toESM } from "./_runtime.mjs";
 import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
-import { $ as Dumbbell, B as House, D as Microscope, G as GraduationCap, H as HeartPulse, I as Layers, M as MapPin, N as Mail, O as MessageSquare, Q as ExternalLink, S as Package, St as ArrowRight, T as Navigation, Tt as Activity, V as Heart, W as Handshake, Y as FileText, _ as Search, _t as Building2, a as Users, b as Phone, bt as BadgeCheck, d as TriangleAlert, dt as ChevronLeft, et as CloudUpload, f as Stethoscope, ft as ChevronDown, g as Send, h as Share2, ht as CalendarDays, i as Wrench, it as ClipboardCheck, j as MapPinned, k as MessageCircle, lt as ChevronUp, m as ShieldCheck, p as Sparkles, pt as Check, q as FlaskConical, rt as ClipboardList, s as UserRoundCheck, st as CircleCheck, tt as Clock, u as Truck, ut as ChevronRight, v as Route, wt as Ambulance, x as PhoneCall, y as Presentation, yt as BookOpen } from "./_libs/lucide-react.mjs";
+import { $ as Dumbbell, B as House, Ct as ArrowRight, D as Microscope, Et as Activity, G as GraduationCap, H as HeartPulse, I as Layers, M as MapPin, N as Mail, O as MessageSquare, Q as ExternalLink, S as Package, T as Navigation, Tt as Ambulance, V as Heart, W as Handshake, Y as FileText, _ as Search, a as Users, at as ClipboardCheck, b as Phone, bt as BookOpen, ct as CircleCheck, d as TriangleAlert, dt as ChevronRight, et as Compass, f as Stethoscope, ft as ChevronLeft, g as Send, gt as CalendarDays, h as Share2, i as Wrench, it as ClipboardList, j as MapPinned, k as MessageCircle, m as ShieldCheck, mt as Check, nt as Clock, p as Sparkles, pt as ChevronDown, q as FlaskConical, s as UserRoundCheck, tt as CloudUpload, u as Truck, ut as ChevronUp, v as Route, vt as Building2, x as PhoneCall, xt as BadgeCheck, y as Presentation } from "./_libs/lucide-react.mjs";
 import { _ as service_rehab_default, b as useConsultationModal, c as SiteHeader, d as ecg_review_default, f as ergometer_default, g as service_checkup_default, h as getNodeByRoute, i as ConsultationForm, l as cn, n as CARDIO_REHAB_PROGRAMS, o as IMAGES, p as getBreadcrumbs, r as CONTACTS, s as SiteFooter, t as AppLink, u as cpet_test_default, v as service_sports_default, y as siteTree } from "./_ssr/site-footer-CIMyUY7e.mjs";
 import { i as SectionHeader$1, n as FAQAccordion, r as PageContainer, t as Breadcrumbs } from "./_ssr/blocks-V3Map8bV.mjs";
-import { t as Route$1 } from "./_-DuyevZ9l.mjs";
+import { t as Route$1 } from "./_-phRm-ppr.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-COrJq7O_.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as partner_karpatska_akademiia_default, i as partner_ifnmu_default, n as partner_chnu_default, o as partner_sytenko_default, r as partner_heart_default, t as partner_asmu_default } from "./_ssr/partner-sytenko-Oay8tZk6.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-6K94yhNY.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-CdyU0wdr.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -3655,6 +3655,70 @@ function TikTokIcon({ className = "size-5" }) {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" })
 	});
 }
+function MallBuildingIcon({ className = "size-5 text-slate-600" }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+		className,
+		viewBox: "0 0 24 24",
+		fill: "none",
+		stroke: "currentColor",
+		strokeWidth: "1.5",
+		strokeLinecap: "round",
+		strokeLinejoin: "round",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M3 21h18" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M5 21V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M9 21v-4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M8 10h2v2H8zM14 10h2v2h-2zM8 14h2v2H8zM14 14h2v2h-2z" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M9 3h6" })
+		]
+	});
+}
+function CableCarIcon({ className = "size-5 text-slate-600" }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+		className,
+		viewBox: "0 0 24 24",
+		fill: "none",
+		stroke: "currentColor",
+		strokeWidth: "1.4",
+		strokeLinecap: "round",
+		strokeLinejoin: "round",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M2 4.5l20-2" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M12 3.5v4" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+				x: "6.5",
+				y: "9",
+				width: "11",
+				height: "8.5",
+				rx: "2.5"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M8.5 11.5h7v3h-7z" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M9 17.5v2.5M15 17.5v2.5" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M7.5 20h9" })
+		]
+	});
+}
+function ParkingBadgeIcon({ className = "size-5 text-slate-600" }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+		className,
+		viewBox: "0 0 24 24",
+		fill: "none",
+		stroke: "currentColor",
+		strokeWidth: "1.4",
+		strokeLinecap: "round",
+		strokeLinejoin: "round",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+			x: "3.5",
+			y: "3.5",
+			width: "17",
+			height: "17",
+			rx: "4"
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+			d: "M9.5 16V8h4a2.5 2.5 0 0 1 0 5H9.5",
+			strokeWidth: "1.8"
+		})]
+	});
+}
 function ContactsPage({ node }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "min-h-screen bg-background",
@@ -4064,23 +4128,44 @@ function ContactsPage({ node }) {
 												] })]
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "rounded-2xl bg-slate-50/80 p-4 border border-border/60",
+												className: "rounded-2xl bg-white p-4 border border-border/60 shadow-2xs space-y-3",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														className: "inline-flex size-4 items-center justify-center rounded-full bg-emerald-100 text-[10px] text-emerald-700",
-														children: "•"
-													}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Орієнтири:" })]
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-													className: "mt-3 flex flex-wrap gap-2 lg:flex-nowrap lg:gap-2.5",
+													className: "flex items-center gap-2",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+														className: "flex size-5.5 shrink-0 items-center justify-center rounded-full border border-emerald-500 text-emerald-600 bg-emerald-50/40",
+														children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Compass, { className: "size-3.5" })
+													}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+														className: "text-xs font-black uppercase tracking-wider text-slate-700",
+														children: "ОРІЄНТИРИ:"
+													})]
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 text-xs sm:text-sm pt-0.5",
 													children: [
-														"ТРК Бука",
-														"Підйомник №7",
-														"Паркінг №2"
-													].map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-														className: "flex items-center gap-2 rounded-xl border border-emerald-200 bg-white px-2.5 py-2 text-[11px] font-bold text-navy shadow-2xs",
-														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "inline-block size-2.5 shrink-0 rounded-full bg-emerald-500" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: item })]
-													}, item))
+														/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+															className: "flex items-center gap-2 font-bold text-navy",
+															children: [
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2.5 shrink-0 rounded-full bg-emerald-500" }),
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "ТРК Бука" }),
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MallBuildingIcon, { className: "size-5 text-slate-500 shrink-0 ml-0.5" })
+															]
+														}),
+														/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+															className: "flex items-center gap-2 font-bold text-navy",
+															children: [
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2.5 shrink-0 rounded-full bg-emerald-500" }),
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Підйомник №7" }),
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CableCarIcon, { className: "size-5 text-slate-500 shrink-0 ml-0.5" })
+															]
+														}),
+														/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+															className: "flex items-center gap-2 font-bold text-navy",
+															children: [
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2.5 shrink-0 rounded-full bg-emerald-500" }),
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Паркінг №2" }),
+																/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ParkingBadgeIcon, { className: "size-5 text-slate-500 shrink-0 ml-0.5" })
+															]
+														})
+													]
 												})]
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {

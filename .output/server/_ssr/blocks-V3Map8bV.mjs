@@ -1,7 +1,7 @@
 import { n as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { B as House, ft as ChevronDown } from "../_libs/lucide-react.mjs";
+import { B as House, pt as ChevronDown } from "../_libs/lucide-react.mjs";
 import { l as cn, t as AppLink } from "./site-footer-CIMyUY7e.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/blocks-V3Map8bV.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
