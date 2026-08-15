@@ -142,7 +142,6 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-    margin-top: calc(-1 * var(--preview-top));
     will-change: transform;
   }
 
@@ -471,12 +470,8 @@
       --card-height: clamp(21rem, 105vw, 25rem);
       --preview-top: 1.75rem;
       --preview-bottom: 1.75rem;
-      height: auto;
+      height: calc(var(--card-height) + var(--preview-top) + var(--preview-bottom));
       padding: var(--preview-top) 0 var(--preview-bottom) 0;
-    }
-
-    .cooperation-stack {
-      margin-top: calc(-1 * var(--preview-top));
     }
   }
 

@@ -345,6 +345,12 @@ const COOPERATION_ITEMS = [
   },
 ];
 
+const EXTENDED_COOPERATION_ITEMS = [
+  { ...COOPERATION_ITEMS[COOPERATION_ITEMS.length - 1], virtualKey: "clone-last" },
+  ...COOPERATION_ITEMS.map((item, i) => ({ ...item, virtualKey: `real-${i}` })),
+  { ...COOPERATION_ITEMS[0], virtualKey: "clone-first" },
+];
+
 const EDUCATION_CARDS = [
   {
     title: "КУРСИ ТА МАЙСТЕР-КЛАСИ",
@@ -541,17 +547,18 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
 
 function CooperationCard({ 
   item, 
-  index,
-  isActive = false,
-  isNext = false,
+  domIndex,
+  activeDomIndex,
   onClick
 }: { 
   item: (typeof COOPERATION_ITEMS)[number]; 
-  index: number;
-  isActive?: boolean;
-  isNext?: boolean;
+  domIndex: number;
+  activeDomIndex: number;
   onClick?: () => void;
 }) {
+  const isActive = domIndex === activeDomIndex;
+  const isAdjacent = Math.abs(domIndex - activeDomIndex) === 1;
+
   const cardContent = (
     <>
       <div className="cooperation-marker" aria-hidden="true">
@@ -577,13 +584,26 @@ function CooperationCard({
   const baseClassName = `cooperation-card group ${
     isActive
       ? "cooperation-card--active"
-      : isNext
+      : isAdjacent
       ? "cooperation-card--adjacent cooperation-card--inactive"
       : "cooperation-card--inactive"
   }`;
-  const baseStyle = { zIndex: COOPERATION_ITEMS.length - index };
 
-  if (isNext) {
+  // Active card: zIndex 30 (overlaps previous card above and next card below)
+  // Cards above active (domIndex < activeDomIndex): 10 + domIndex (positioned behind active card, bottom edge peeks out)
+  // Cards below active (domIndex > activeDomIndex): 20 - (domIndex - activeDomIndex) (positioned behind active card, top edge peeks out)
+  let zIndex = 10;
+  if (isActive) {
+    zIndex = 30;
+  } else if (domIndex < activeDomIndex) {
+    zIndex = 10 + domIndex;
+  } else {
+    zIndex = 20 - (domIndex - activeDomIndex);
+  }
+
+  const baseStyle = { zIndex };
+
+  if (!isActive) {
     return (
       <button
         onClick={onClick}
@@ -771,6 +791,8 @@ function Index() {
   const [currentPartnersSlide, setCurrentPartnersSlide] = React.useState(0);
   const [partnersSlideCount, setPartnersSlideCount] = React.useState(0);
   const [cooperationCurrentSlide, setCooperationCurrentSlide] = React.useState(0);
+  const [cooperationDomIndex, setCooperationDomIndex] = React.useState(1);
+  const [cooperationDisableTransition, setCooperationDisableTransition] = React.useState(false);
   const [cooperationIsAnimating, setCooperationIsAnimating] = React.useState(false);
   const [cooperationStepHeight, setCooperationStepHeight] = React.useState<number>(0);
   const cooperationStackRef = React.useRef<HTMLDivElement>(null);
@@ -809,31 +831,48 @@ function Index() {
   const goToCooperationStep = React.useCallback(
     (direction: -1 | 1) => {
       if (cooperationIsAnimatingRef.current) return;
+      cooperationIsAnimatingRef.current = true;
+      setCooperationIsAnimating(true);
 
-      setCooperationCurrentSlide((prev) => {
-        const nextIndex = Math.min(
-          Math.max(prev + direction, 0),
-          COOPERATION_ITEMS.length - 1
-        );
-        if (nextIndex === prev) return prev;
-        cooperationIsAnimatingRef.current = true;
-        setCooperationIsAnimating(true);
-        return nextIndex;
-      });
+      setCooperationDomIndex((prevDom) => prevDom + direction);
+      setCooperationCurrentSlide(
+        (prevSlide) => (prevSlide + direction + COOPERATION_ITEMS.length) % COOPERATION_ITEMS.length
+      );
     },
     []
   );
 
-  React.useEffect(() => {
-    if (!cooperationIsAnimating) return;
+  const handleCooperationTransitionEnd = React.useCallback(
+    (e: React.TransitionEvent<HTMLDivElement>) => {
+      if (e.target !== e.currentTarget) return;
 
-    const timer = window.setTimeout(() => {
-      cooperationIsAnimatingRef.current = false;
-      setCooperationIsAnimating(false);
-    }, 520);
-
-    return () => window.clearTimeout(timer);
-  }, [cooperationIsAnimating]);
+      if (cooperationDomIndex === 0) {
+        setCooperationDisableTransition(true);
+        setCooperationDomIndex(COOPERATION_ITEMS.length);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setCooperationDisableTransition(false);
+            cooperationIsAnimatingRef.current = false;
+            setCooperationIsAnimating(false);
+          });
+        });
+      } else if (cooperationDomIndex === COOPERATION_ITEMS.length + 1) {
+        setCooperationDisableTransition(true);
+        setCooperationDomIndex(1);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setCooperationDisableTransition(false);
+            cooperationIsAnimatingRef.current = false;
+            setCooperationIsAnimating(false);
+          });
+        });
+      } else {
+        cooperationIsAnimatingRef.current = false;
+        setCooperationIsAnimating(false);
+      }
+    },
+    [cooperationDomIndex]
+  );
 
   React.useEffect(() => {
     if (!heroApi) return;
@@ -1326,28 +1365,37 @@ function Index() {
               <div className="cooperation-viewport w-full lg:flex-1">
                 <div
                   ref={cooperationStackRef}
+                  onTransitionEnd={handleCooperationTransitionEnd}
                   className="cooperation-stack"
                   style={{
                     transform: cooperationStepHeight
-                      ? `translateY(-${cooperationCurrentSlide * cooperationStepHeight}px)`
-                      : `translateY(calc(-${cooperationCurrentSlide} * (var(--card-height) - 1.15rem)))`,
-                    transition: "transform 520ms cubic-bezier(0.22, 1, 0.36, 1)",
+                      ? `translateY(-${cooperationDomIndex * cooperationStepHeight}px)`
+                      : `translateY(calc(-${cooperationDomIndex} * (var(--card-height) - 1.15rem)))`,
+                    transition: cooperationDisableTransition ? "none" : "transform 520ms cubic-bezier(0.22, 1, 0.36, 1)",
                   }}
                 >
-                  {COOPERATION_ITEMS.map((item, index) => {
-                    const isActive = index === cooperationCurrentSlide;
-                    const isNext = index === cooperationCurrentSlide + 1;
-
+                  {EXTENDED_COOPERATION_ITEMS.map((item, domIndex) => {
                     return (
                       <CooperationCard
-                        key={item.number}
+                        key={`${item.virtualKey}-${domIndex}`}
                         item={item}
-                        index={index}
-                        isActive={isActive}
-                        isNext={isNext}
+                        domIndex={domIndex}
+                        activeDomIndex={cooperationDomIndex}
                         onClick={() => {
-                          if (cooperationIsAnimatingRef.current || !isNext) return;
-                          goToCooperationStep(1);
+                          if (cooperationIsAnimatingRef.current || domIndex === cooperationDomIndex) return;
+                          cooperationIsAnimatingRef.current = true;
+                          setCooperationIsAnimating(true);
+                          setCooperationDomIndex(domIndex);
+
+                          let realIndex = 0;
+                          if (domIndex === 0) {
+                            realIndex = COOPERATION_ITEMS.length - 1;
+                          } else if (domIndex === COOPERATION_ITEMS.length + 1) {
+                            realIndex = 0;
+                          } else {
+                            realIndex = domIndex - 1;
+                          }
+                          setCooperationCurrentSlide(realIndex);
                         }}
                       />
                     );
@@ -1360,7 +1408,7 @@ function Index() {
                 {/* Up arrow */}
                 <button
                   onClick={() => goToCooperationStep(-1)}
-                  disabled={cooperationCurrentSlide === 0 || cooperationIsAnimating}
+                  disabled={cooperationIsAnimating}
                   className="flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 disabled:hover:scale-100 disabled:hover:bg-slate-100 disabled:hover:text-slate-400"
                   aria-label="Попередня карта"
                 >
@@ -1378,6 +1426,7 @@ function Index() {
                         cooperationIsAnimatingRef.current = true;
                         setCooperationIsAnimating(true);
                         setCooperationCurrentSlide(index);
+                        setCooperationDomIndex(index + 1);
                       }}
                       className={`h-2.5 rounded-full transition-all duration-300 ${
                         cooperationCurrentSlide === index
@@ -1392,7 +1441,7 @@ function Index() {
                 {/* Down arrow */}
                 <button
                   onClick={() => goToCooperationStep(1)}
-                  disabled={cooperationCurrentSlide === COOPERATION_ITEMS.length - 1 || cooperationIsAnimating}
+                  disabled={cooperationIsAnimating}
                   className="flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 disabled:hover:scale-100 disabled:hover:bg-slate-100 disabled:hover:text-slate-400"
                   aria-label="Наступна карта"
                 >
