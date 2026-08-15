@@ -22,6 +22,7 @@ import {
   Layers,
   ExternalLink,
 } from "lucide-react";
+import { useConsultationModal } from "@/components/consultation-form";
 
 // Get root services node and its categories
 const servicesNode = siteTree.find((n) => n.id === "services") || siteTree[0];
@@ -55,6 +56,7 @@ function countServices(node: SiteNode): number {
 export function AllServicesPricePage({ node }: { node: SiteNode }) {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [selectedCategoryFilter, setSelectedCategoryFilter] = React.useState<string>("all");
+  const { openModal } = useConsultationModal();
 
   // Track open state of Level 1 Categories
   const [openCategories, setOpenCategories] = React.useState<Record<string, boolean>>(() => ({}));
@@ -400,18 +402,19 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
                                           {/* Price */}
                                           <td className="py-4 px-4 text-right font-extrabold text-navy whitespace-nowrap">
                                             <span className="text-base text-primary">
-                                              {item.priceLabel || "За запитом"}
+                                              {item.priceLabel || "Вартість уточнюється"}
                                             </span>
                                           </td>
 
-                                          {/* Action Link Button */}
+                                          {/* Action Button */}
                                           <td className="py-4 px-4 sm:px-6 text-right whitespace-nowrap">
-                                            <AppLink
-                                              to={item.route}
-                                              className="inline-flex items-center gap-1 text-xs font-bold text-navy hover:text-primary bg-secondary/80 hover:bg-primary/10 px-3 py-1.5 rounded-lg transition-all"
+                                            <button
+                                              type="button"
+                                              onClick={() => openModal(item.orderAction || "Замовити послугу")}
+                                              className="inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-brand-green px-3.5 py-2 text-[11px] font-bold text-brand-green-foreground shadow-sm transition-all hover:bg-brand-green/90 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30"
                                             >
-                                              Перейти <ArrowRight className="size-3.5" />
-                                            </AppLink>
+                                              {item.orderAction || "Замовити послугу"}
+                                            </button>
                                           </td>
                                         </tr>
                                       ))}
@@ -445,16 +448,17 @@ export function AllServicesPricePage({ node }: { node: SiteNode }) {
                                             </span>
                                           )}
                                           <span className="text-sm font-extrabold text-primary">
-                                            {item.priceLabel || "За запитом"}
+                                            {item.priceLabel || "Вартість уточнюється"}
                                           </span>
                                         </div>
 
-                                        <AppLink
-                                          to={item.route}
-                                          className="inline-flex items-center gap-1 text-xs font-bold text-navy bg-secondary px-2.5 py-1 rounded-md"
+                                        <button
+                                          type="button"
+                                          onClick={() => openModal(item.orderAction || "Замовити послугу")}
+                                          className="inline-flex w-full cursor-pointer items-center justify-center gap-1.5 rounded-md bg-brand-green px-3 py-2 text-[11px] font-bold text-brand-green-foreground shadow-sm transition-all hover:bg-brand-green/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30"
                                         >
-                                          Перейти <ArrowRight className="size-3" />
-                                        </AppLink>
+                                          {item.orderAction || "Замовити послугу"}
+                                        </button>
                                       </div>
                                     </div>
                                   ))}

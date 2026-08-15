@@ -235,39 +235,40 @@ export function RehabilitationMethodsSlider() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-6">
-          <div className="flex items-center justify-center gap-2.5">
-            {REHABILITATION_METHODS.map((card, index) => (
-              <button
-                key={card.id}
-                type="button"
-                onClick={() => methodsApi?.scrollTo(index)}
-                aria-label={`Перейти до методу ${card.title}`}
-                aria-current={currentIndex === index ? "true" : undefined}
-                className={cn(
-                  "h-2.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-                  currentIndex === index
-                    ? "w-8 bg-primary shadow-sm"
-                    : "w-2.5 bg-slate-300 hover:bg-slate-400",
-                )}
-              />
-            ))}
-          </div>
-
-          <div className="flex items-center justify-center gap-3">
+        <div className="mt-10 flex items-center justify-center">
+          <div className="relative flex w-full max-w-[240px] items-center justify-center">
             <button
               type="button"
               onClick={() => methodsApi?.scrollPrev()}
               aria-label="Попередній слайд"
-              className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="absolute left-0 flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               <ArrowLeftIcon className="size-5" />
             </button>
+
+            <div className="flex items-center justify-center gap-2.5">
+              {REHABILITATION_METHODS.map((card, index) => (
+                <button
+                  key={card.id}
+                  type="button"
+                  onClick={() => methodsApi?.scrollTo(index)}
+                  aria-label={`Перейти до методу ${card.title}`}
+                  aria-current={currentIndex === index ? "true" : undefined}
+                  className={cn(
+                    "h-2.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                    currentIndex === index
+                      ? "w-8 bg-primary shadow-sm"
+                      : "w-2.5 bg-slate-300 hover:bg-slate-400",
+                  )}
+                />
+              ))}
+            </div>
+
             <button
               type="button"
               onClick={() => methodsApi?.scrollNext()}
               aria-label="Наступний слайд"
-              className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="absolute right-0 flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               <ArrowRightIcon className="size-5" />
             </button>

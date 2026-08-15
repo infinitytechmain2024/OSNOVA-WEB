@@ -160,6 +160,49 @@ const cardioMethods = [
 ];
 
 const CARDIO_REHAB_ROUTE = "/reabilitatsiia/kardiolohichna";
+const cardiologyPrograms = [
+  {
+    id: "bazova",
+    title: "Базова",
+    description: "Базова програма для поступового відновлення витривалості, мобільності та самоконтролю.",
+    duration: "4–6 занять",
+    format: "амбулаторно",
+    price: "Вартість уточнюється",
+    detailsUrl: `${CARDIO_REHAB_ROUTE}/bazova`,
+    orderAction: "Замовити послугу",
+  },
+  {
+    id: "standartna",
+    title: "Стандартна",
+    description: "Розширена програма з більш регулярним контролем навантаження та динаміки стану.",
+    duration: "6–8 занять",
+    format: "амбулаторно",
+    price: "Вартість уточнюється",
+    detailsUrl: `${CARDIO_REHAB_ROUTE}/standartna`,
+    orderAction: "Замовити послугу",
+  },
+  {
+    id: "rozshyrena",
+    title: "Розширена",
+    description: "Програма з більш повним обсягом навантаження, контролю та рекомендацій для відновлення.",
+    duration: "8–12 занять",
+    format: "амбулаторно",
+    price: "Вартість уточнюється",
+    detailsUrl: `${CARDIO_REHAB_ROUTE}/rozshyrena`,
+    orderAction: "Замовити послугу",
+  },
+  {
+    id: "indyvidualna",
+    title: "Індивідуальна",
+    description: "Індивідуальний маршрут реабілітації з адаптацією до особливостей пацієнта і темпу відновлення.",
+    duration: "за індивідуальним планом",
+    format: "амбулаторно / виїзно",
+    price: "Вартість уточнюється",
+    detailsUrl: `${CARDIO_REHAB_ROUTE}/indyvidualna`,
+    orderAction: "Замовити послугу",
+  },
+];
+
 const cardioRehab: SiteNode = {
   id: "rehab-cardio",
   slug: "kardiolohichna",
@@ -368,86 +411,25 @@ const cardioRehab: SiteNode = {
         "Залиште заявку на сайті або зателефонуйте до центру. Адміністратор уточнить ваш запит, повідомить, які документи потрібно надати, та пояснить наступні кроки.",
     },
   ],
-  children: [
-    {
-      ...program(
-        "rehab-cardio",
-        CARDIO_REHAB_ROUTE,
-        "pislia-infarktu-miokarda",
-        "Реабілітація після інфаркту міокарда",
-        "Безпечне відновлення роботи серця після перенесеного інфаркту.",
-        "За програмою",
-        "від 3 000 грн",
-        cpetImg,
-      ),
-      methods: cardioMethods,
-    },
-    {
-      ...program(
-        "rehab-cardio",
-        CARDIO_REHAB_ROUTE,
-        "pislia-stentuvannia",
-        "Після стентування коронарних артерій",
-        "Адаптація до навантажень та контроль стану після стентування.",
-        "За програмою",
-        "від 3 000 грн",
-        rehabImg,
-      ),
-      methods: cardioMethods,
-    },
-    {
-      ...program(
-        "rehab-cardio",
-        CARDIO_REHAB_ROUTE,
-        "pislia-aksh",
-        "Після аортокоронарного шунтування",
-        "Поетапне збільшення активності після кардіохірургічного втручання.",
-        "За програмою",
-        "від 3 000 грн",
-        rehabImg,
-      ),
-      methods: cardioMethods,
-    },
-    {
-      ...program(
-        "rehab-cardio",
-        CARDIO_REHAB_ROUTE,
-        "pislia-operatsii-na-klapanakh",
-        "Після операцій на клапанах серця",
-        "Відновлення витривалості та стабілізація гемодинаміки.",
-        "За програмою",
-        "від 3 000 грн",
-        cpetImg,
-      ),
-      methods: cardioMethods,
-    },
-    {
-      ...program(
-        "rehab-cardio",
-        CARDIO_REHAB_ROUTE,
-        "pislia-vstanovlennia-kardiostymuliatora",
-        "Після встановлення кардіостимулятора",
-        "Контроль адаптації організму до заданого ритму.",
-        "За програмою",
-        "від 3 000 грн",
-        rehabImg,
-      ),
-      methods: cardioMethods,
-    },
-    {
-      ...program(
-        "rehab-cardio",
-        CARDIO_REHAB_ROUTE,
-        "pislia-porushen-rytmu",
-        "Після порушень серцевого ритму",
-        "Формування безпечної зони пульсу та навантаження.",
-        "За програмою",
-        "від 3 000 грн",
-        ecgImg,
-      ),
-      methods: cardioMethods,
-    },
-  ],
+  children: cardiologyPrograms.map((programData) => ({
+    ...program(
+      "rehab-cardio",
+      CARDIO_REHAB_ROUTE,
+      programData.id,
+      programData.title,
+      programData.description,
+      `${programData.duration} / ${programData.format}`,
+      programData.price,
+      rehabImg,
+    ),
+    route: programData.detailsUrl,
+    duration: programData.duration,
+    priceLabel: programData.price,
+    shortDescription: programData.description,
+    formats: [programData.format],
+    detailsUrl: programData.detailsUrl,
+    orderAction: programData.orderAction,
+  })),
 };
 
 const ORTHO_ROUTE = "/reabilitatsiia/ortopedychna";
