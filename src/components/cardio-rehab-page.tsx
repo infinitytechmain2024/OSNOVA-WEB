@@ -14,7 +14,7 @@ import {
 import { AppLink } from "@/components/app-link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Breadcrumbs, FAQAccordion, WhenToPassCardioRehabBlock } from "@/components/blocks";
+import { Breadcrumbs, FAQAccordion } from "@/components/blocks";
 import { getServicePageData } from "@/data/service-content-generator";
 import { useConsultationModal } from "@/components/consultation-form";
 import type { FAQItem, ServiceMethodCard, SiteNode } from "@/data/types";
@@ -29,7 +29,6 @@ import osnovaLogo3dImg from "@/assets/osnova-logo-3d.jpg";
 
 const ANCHORS = [
   { href: "#about", label: "Про програму" },
-  { href: "#when-to-pass", label: "Коли варто пройти" },
   { href: "#for-whom", label: "Кому підходить" },
   { href: "#process", label: "Як проходить" },
   { href: "#programs", label: "Вартість" },
@@ -268,24 +267,6 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
             imageAlt="Лікар переглядає результати кардіологічного обстеження"
             isExpanded={introExpanded}
             onToggle={() => setIntroExpanded((value) => !value)}
-          />
-        </PageSection>
-
-        <PageSection id="when-to-pass" className="py-10 sm:py-16">
-          <WhenToPassCardioRehabBlock 
-            title="Коли варто пройти кардіологічну реабілітацію"
-            description="Реабілітацію рекомендують після гострих серцевих подій, операцій на серці та судинах, а також при хронічних захворюваннях, коли потрібно підвищити витривалість і зменшити ймовірність нових ускладнень."
-            calloutTitle="Найчастіше програму призначають у таких випадках:"
-            items={[
-              "після перенесеного інфаркту міокарда;",
-              "після стентування коронарних артерій;",
-              "після аортокоронарного шунтування;",
-              "після операцій на клапанах серця;",
-              "при хронічній серцевій недостатності;",
-              "при стабільній стенокардії;",
-              "після імплантації кардіостимулятора або кардіовертера-дефібрилятора."
-            ]}
-            href="#for-whom" 
           />
         </PageSection>
 

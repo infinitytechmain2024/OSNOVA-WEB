@@ -214,11 +214,11 @@ export function ContactsPage({ node }: { node: SiteNode }) {
         {/* Dedicated Block: Contact Form, Messengers & Social Networks */}
         <section className="bg-slate-50/80 py-16 border-y border-border/60">
           <PageContainer>
-            <div className="mx-auto max-w-3xl text-center">
+            <div className="max-w-3xl text-left">
               <h2 className="text-2xl font-extrabold sm:text-3xl lg:text-4xl text-navy tracking-tight">
                 Оберіть зручний спосіб зв'язку
               </h2>
-              <div className="mx-auto mt-5 h-1 w-16 rounded-full bg-primary" />
+              <div className="mt-5 h-1 w-16 rounded-full bg-primary" />
               <p className="mt-3 text-sm sm:text-base text-muted-foreground">
                 Заповніть форму для запису на консультацію або зв’яжіться з адміністратором у
                 зручному месенджері.
@@ -323,7 +323,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                       <Share2 className="size-5" />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-navy">Стартапи в основі соціальних мереж</h3>
+                      <h3 className="text-base font-bold text-navy">Стежити за основою в соціальних мережах</h3>
                     </div>
                   </div>
 

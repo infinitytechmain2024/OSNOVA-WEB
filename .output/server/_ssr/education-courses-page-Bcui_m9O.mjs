@@ -1,0 +1,625 @@
+import { n as __toESM } from "../_runtime.mjs";
+import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
+import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
+import { G as GraduationCap, M as MapPin, St as ArrowRight, a as Users, dt as ChevronLeft, f as Stethoscope, ht as CalendarDays, nt as Clock3, ut as ChevronRight } from "../_libs/lucide-react.mjs";
+import { _ as service_sports_default, d as ergometer_default, g as service_rehab_default, h as service_checkup_default, l as cpet_test_default, o as SiteFooter, s as SiteHeader, t as AppLink, u as ecg_review_default } from "./site-footer-DtdGqSzK.mjs";
+import { r as PageContainer, t as Breadcrumbs } from "./blocks-Lh4po0e0.mjs";
+import { n as education_training_default, t as education_conference_default } from "./education-training-D0E3Ecw7.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/education-courses-page-Bcui_m9O.js
+var import_react = /* @__PURE__ */ __toESM(require_react());
+var import_jsx_runtime = require_jsx_runtime();
+var COURSES_PER_PAGE = 8;
+var COURSES = [
+	{
+		title: "Кардіореабілітація після інфаркту",
+		date: "08 серпня 2026",
+		category: "Кардіологія",
+		format: "Практичний модуль",
+		duration: "2 дні",
+		audience: "Лікарі та фізичні терапевти",
+		description: "Алгоритми оцінки ризиків, дозування навантаження та побудова безпечного плану відновлення.",
+		image: cpet_test_default
+	},
+	{
+		title: "Ортопедична реабілітація колінного суглоба",
+		date: "15 серпня 2026",
+		category: "Ортопедія",
+		format: "Hands-on",
+		duration: "1 день",
+		audience: "Фізичні терапевти",
+		description: "Огляд післяопераційних протоколів, тестування функції та прогресія вправ у різні етапи відновлення.",
+		image: service_rehab_default
+	},
+	{
+		title: "CPET у спортивній медицині",
+		date: "22 серпня 2026",
+		category: "Діагностика",
+		format: "Лекція + практика",
+		duration: "4 години",
+		audience: "Лікарі, тренери, терапевти",
+		description: "Інтерпретація кардіопульмонального тестування для оцінки витривалості та безпеки тренувань.",
+		image: cpet_test_default
+	},
+	{
+		title: "Неврологічна реабілітація: базовий маршрут",
+		date: "29 серпня 2026",
+		category: "Неврологія",
+		format: "Інтенсив",
+		duration: "2 дні",
+		audience: "Мультидисциплінарні команди",
+		description: "Побудова маршруту пацієнта після інсульту: цілі, оцінка руху, домашні рекомендації та контроль динаміки.",
+		image: education_training_default
+	},
+	{
+		title: "Функціональне тестування у реабілітації",
+		date: "05 вересня 2026",
+		category: "Оцінка стану",
+		format: "Практикум",
+		duration: "1 день",
+		audience: "Фахівці реабілітації",
+		description: "Клінічні тести, шкали та прості рішення для документування прогресу пацієнта під час курсу.",
+		image: ergometer_default
+	},
+	{
+		title: "Спортивна адаптація після травм",
+		date: "12 вересня 2026",
+		category: "Спортивна медицина",
+		format: "Workshop",
+		duration: "6 годин",
+		audience: "Терапевти та тренери",
+		description: "Повернення до бігу, залу та командних видів спорту через контроль навантаження і функціональні критерії.",
+		image: service_sports_default
+	},
+	{
+		title: "Реабілітація при болю у спині",
+		date: "19 вересня 2026",
+		category: "Вертебрологія",
+		format: "Клінічний семінар",
+		duration: "1 день",
+		audience: "Лікарі, терапевти",
+		description: "Розбір червоних прапорців, рухових стратегій, ергономіки та безпечної прогресії активності.",
+		image: ergometer_default
+	},
+	{
+		title: "Комунікація з пацієнтом у довгих програмах",
+		date: "26 вересня 2026",
+		category: "Командна робота",
+		format: "Майстер-клас",
+		duration: "3 години",
+		audience: "Медичні команди",
+		description: "Як пояснювати цілі, підтримувати мотивацію та синхронізувати команду під час тривалого відновлення.",
+		image: education_conference_default
+	},
+	{
+		title: "ЕКГ для реабілітаційної команди",
+		date: "03 жовтня 2026",
+		category: "Кардіологія",
+		format: "Практикум",
+		duration: "1 день",
+		audience: "Лікарі та терапевти",
+		description: "Базові ЕКГ-зміни, які важливо враховувати перед стартом фізичного навантаження і під час занять.",
+		image: ecg_review_default
+	},
+	{
+		title: "Профілактичні чек-апи: дизайн програми",
+		date: "10 жовтня 2026",
+		category: "Превенція",
+		format: "Семінар",
+		duration: "4 години",
+		audience: "Лікарі та адміністратори",
+		description: "Як формувати корисні чек-апи без зайвих обстежень: покази, маршрутизація, висновок і супровід.",
+		image: service_checkup_default
+	},
+	{
+		title: "Механотерапія у відновленні суглобів",
+		date: "17 жовтня 2026",
+		category: "Технології",
+		format: "Hands-on",
+		duration: "1 день",
+		audience: "Фізичні терапевти",
+		description: "Покази, налаштування режимів, контроль болю та інтеграція механотерапії у загальну програму.",
+		image: service_rehab_default
+	},
+	{
+		title: "Ревматологічний пацієнт у реабілітації",
+		date: "24 жовтня 2026",
+		category: "Ревматологія",
+		format: "Клінічний розбір",
+		duration: "5 годин",
+		audience: "Лікарі та терапевти",
+		description: "Адаптація навантажень при артриті, артрозі та системних станах з урахуванням болю і втоми.",
+		image: service_checkup_default
+	},
+	{
+		title: "Планування індивідуального курсу відновлення",
+		date: "31 жовтня 2026",
+		category: "Методологія",
+		format: "Інтенсив",
+		duration: "2 дні",
+		audience: "Керівники програм",
+		description: "Структура цілей, етапів, контрольних точок та підсумкового висновку для різних клінічних сценаріїв.",
+		image: education_training_default
+	},
+	{
+		title: "Гідрокінезіотерапія: безпечний старт",
+		date: "07 листопада 2026",
+		category: "Відновлення",
+		format: "Практичний модуль",
+		duration: "1 день",
+		audience: "Фізичні терапевти",
+		description: "Вправи у воді для пацієнтів після травм, операцій та при обмеженні навантаження на суглоби.",
+		image: service_sports_default
+	},
+	{
+		title: "Психоемоційна підтримка під час реабілітації",
+		date: "14 листопада 2026",
+		category: "Ментальне здоровʼя",
+		format: "Семінар",
+		duration: "4 години",
+		audience: "Медичні команди",
+		description: "Практичні інструменти для зниження тривоги, роботи з очікуваннями та підтримки пацієнта в процесі.",
+		image: education_conference_default
+	},
+	{
+		title: "Силове тренування у медичному фітнесі",
+		date: "21 листопада 2026",
+		category: "Медичний фітнес",
+		format: "Workshop",
+		duration: "6 годин",
+		audience: "Терапевти та тренери",
+		description: "Побудова безпечних силових занять, моніторинг самопочуття та критерії прогресії навантаження.",
+		image: service_sports_default
+	},
+	{
+		title: "Холтер і ДМАТ: що важливо для реабілітації",
+		date: "28 листопада 2026",
+		category: "Кардіодіагностика",
+		format: "Лекція + кейси",
+		duration: "4 години",
+		audience: "Лікарі",
+		description: "Як використовувати дані добового моніторингу для оцінки безпеки реабілітаційного навантаження.",
+		image: ecg_review_default
+	},
+	{
+		title: "Післяопераційна реабілітація плеча",
+		date: "05 грудня 2026",
+		category: "Ортопедія",
+		format: "Hands-on",
+		duration: "1 день",
+		audience: "Фізичні терапевти",
+		description: "Етапи відновлення після втручань на плечовому суглобі: мобільність, стабільність і повернення функції.",
+		image: service_rehab_default
+	},
+	{
+		title: "Командні клінічні обговорення",
+		date: "12 грудня 2026",
+		category: "Клінічні кейси",
+		format: "Круглий стіл",
+		duration: "3 години",
+		audience: "Лікарі та терапевти",
+		description: "Модель мультидисциплінарного розбору випадку: від первинної оцінки до домашнього плану.",
+		image: education_conference_default
+	},
+	{
+		title: "Терапевтичні вправи при остеоартрозі",
+		date: "19 грудня 2026",
+		category: "Ревматологія",
+		format: "Практикум",
+		duration: "1 день",
+		audience: "Фахівці реабілітації",
+		description: "Прогресія вправ, контроль болю та навчання пацієнта самостійному підтриманню активності.",
+		image: ergometer_default
+	},
+	{
+		title: "Повернення до активності після COVID та ГРВІ",
+		date: "16 січня 2027",
+		category: "Кардіореспіраторна реабілітація",
+		format: "Семінар",
+		duration: "4 години",
+		audience: "Лікарі та терапевти",
+		description: "Оцінка толерантності до навантаження, дихальні вправи та поступове повернення до тренувань.",
+		image: cpet_test_default
+	},
+	{
+		title: "Документація реабілітаційної програми",
+		date: "23 січня 2027",
+		category: "Організація роботи",
+		format: "Практичний модуль",
+		duration: "5 годин",
+		audience: "Клінічні команди",
+		description: "Шаблони цілей, проміжних оцінок, рекомендацій і фінального висновку для прозорої роботи команди.",
+		image: education_training_default
+	},
+	{
+		title: "Вестибулярна реабілітація: перші кроки",
+		date: "30 січня 2027",
+		category: "Неврологія",
+		format: "Workshop",
+		duration: "1 день",
+		audience: "Фізичні терапевти",
+		description: "Оцінка запаморочення, вправи на стабілізацію погляду та критерії безпечного домашнього плану.",
+		image: ergometer_default
+	},
+	{
+		title: "Медичний супровід аматорського спорту",
+		date: "06 лютого 2027",
+		category: "Спортивна медицина",
+		format: "Клінічний семінар",
+		duration: "6 годин",
+		audience: "Лікарі, тренери",
+		description: "Скринінг ризиків, тестування витривалості та прості правила супроводу активних пацієнтів.",
+		image: service_sports_default
+	},
+	{
+		title: "Реабілітація пацієнтів старшого віку",
+		date: "13 лютого 2027",
+		category: "Геріатрія",
+		format: "Інтенсив",
+		duration: "2 дні",
+		audience: "Медичні команди",
+		description: "Баланс, сила, профілактика падінь і робота з супутніми станами у персоналізованій програмі.",
+		image: service_checkup_default
+	},
+	{
+		title: "Функціональна анатомія для практиків",
+		date: "20 лютого 2027",
+		category: "Базові навички",
+		format: "Hands-on",
+		duration: "2 дні",
+		audience: "Фахівці реабілітації",
+		description: "Оновлення прикладної анатомії через рухові тести, клінічні приклади та вправи для щоденної практики.",
+		image: education_training_default
+	},
+	{
+		title: "Тривалий біль: міждисциплінарний підхід",
+		date: "27 лютого 2027",
+		category: "Біль",
+		format: "Клінічний розбір",
+		duration: "5 годин",
+		audience: "Лікарі, психологи, терапевти",
+		description: "Комбінація освіти пацієнта, руху, психологічної підтримки та медичного контролю при хронічному болю.",
+		image: education_conference_default
+	},
+	{
+		title: "Професійний розвиток фізичного терапевта",
+		date: "06 березня 2027",
+		category: "Карʼєра",
+		format: "Майстер-клас",
+		duration: "3 години",
+		audience: "Фізичні терапевти",
+		description: "Клінічне мислення, комунікація, супервізія та побудова індивідуального плану професійного росту.",
+		image: service_rehab_default
+	},
+	{
+		title: "Реабілітація при серцевій недостатності",
+		date: "13 березня 2027",
+		category: "Кардіологія",
+		format: "Практичний модуль",
+		duration: "1 день",
+		audience: "Лікарі та терапевти",
+		description: "Оцінка стану, контроль симптомів і поступове підвищення активності у пацієнтів із серцевою недостатністю.",
+		image: cpet_test_default
+	},
+	{
+		title: "Робота з руховими звичками пацієнта",
+		date: "20 березня 2027",
+		category: "Поведінкова медицина",
+		format: "Workshop",
+		duration: "4 години",
+		audience: "Медичні команди",
+		description: "Як допомагати пацієнтам закріплювати рух, сон, активність і самоспостереження після завершення курсу.",
+		image: service_sports_default
+	},
+	{
+		title: "Підготовка до реабілітаційного аудиту",
+		date: "27 березня 2027",
+		category: "Якість",
+		format: "Семінар",
+		duration: "4 години",
+		audience: "Керівники напрямів",
+		description: "Показники якості, структура процесів, внутрішні чек-листи та прозора оцінка результатів програми.",
+		image: education_conference_default
+	},
+	{
+		title: "Клінічна практика ОСНОВА: відкритий день",
+		date: "03 квітня 2027",
+		category: "Стажування",
+		format: "Офлайн зустріч",
+		duration: "1 день",
+		audience: "Студенти та фахівці",
+		description: "Знайомство з просторами центру, командною моделлю, діагностикою та реабілітаційними маршрутами.",
+		image: education_training_default
+	},
+	{
+		title: "Медична освіта у реабілітаційному центрі",
+		date: "10 квітня 2027",
+		category: "Освіта",
+		format: "Конференційний день",
+		duration: "1 день",
+		audience: "Освітні партнери",
+		description: "Формати співпраці з університетами, кафедрами та професійними асоціаціями на базі ОСНОВА.",
+		image: education_conference_default
+	}
+];
+function CourseCard({ course }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+		className: "group flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-card shadow-lg shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/35 hover:shadow-2xl",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "relative h-56 overflow-hidden bg-slate-100",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+					src: course.image,
+					alt: course.title,
+					width: 900,
+					height: 600,
+					loading: "lazy",
+					className: "size-full object-cover transition-transform duration-700 group-hover:scale-105"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 bg-gradient-to-t from-navy-deep/75 via-navy-deep/10 to-transparent" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-primary shadow-sm",
+					children: course.category
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur-md",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { className: "size-3.5" }), course.date]
+				})
+			]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex flex-1 flex-col p-6",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+					className: "text-xl font-extrabold leading-snug text-navy transition-colors group-hover:text-primary",
+					children: course.title
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-4 flex-1 text-sm leading-relaxed text-slate-600",
+					children: course.description
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-6 space-y-2.5 border-t border-slate-200 pt-5 text-xs font-semibold text-navy/75",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GraduationCap, { className: "size-4 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: course.format })]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock3, { className: "size-4 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: course.duration })]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, { className: "size-4 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: course.audience })]
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppLink, {
+					to: "/kontakty",
+					className: "mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-primary/90",
+					children: [
+						"Детальніше",
+						" ",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4 transition-transform group-hover:translate-x-1" })
+					]
+				})
+			]
+		})]
+	});
+}
+function EducationCoursesPage({ title = "Навчання" }) {
+	const [currentPage, setCurrentPage] = import_react.useState(1);
+	const totalPages = Math.ceil(COURSES.length / COURSES_PER_PAGE);
+	const courseGridRef = import_react.useRef(null);
+	const visibleCourses = import_react.useMemo(() => {
+		const start = (currentPage - 1) * COURSES_PER_PAGE;
+		return COURSES.slice(start, start + COURSES_PER_PAGE);
+	}, [currentPage]);
+	const goToPage = (page) => {
+		setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+		window.requestAnimationFrame(() => {
+			courseGridRef.current?.scrollIntoView({
+				behavior: "smooth",
+				block: "start"
+			});
+		});
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "min-h-screen bg-background text-foreground",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SiteHeader, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+					className: "relative overflow-hidden bg-navy-deep",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+							src: education_training_default,
+							alt: "Практичне навчання ОСНОВА",
+							width: 1400,
+							height: 900,
+							className: "absolute inset-0 size-full object-cover object-center opacity-45 lg:opacity-100"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/90 to-navy-deep/25" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "relative mx-auto max-w-[1600px] px-4 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-28",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-xs font-semibold uppercase tracking-[0.22em] text-primary-foreground/70 sm:text-sm sm:tracking-[0.28em]",
+									children: "ОСВІТНЯ ПЛАТФОРМА"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+									className: "mt-4 max-w-4xl text-3xl font-extrabold leading-[1.1] text-background sm:mt-6 sm:text-5xl md:text-6xl lg:text-7xl",
+									children: title
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-4 max-w-2xl text-base leading-relaxed text-background/85 sm:mt-8 sm:text-lg",
+									children: "Усі курси ОСНОВА для лікарів, фізичних терапевтів, тренерів і медичних команд: практичні модулі, клінічні розбори та освітні події на базі центру."
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+										href: "#courses",
+										className: "inline-flex w-full items-center justify-center gap-3 rounded-xl bg-brand-green px-7 py-4 text-sm font-bold text-brand-green-foreground shadow-lg transition-all hover:scale-[1.02] hover:bg-brand-green/90 sm:w-auto",
+										children: ["ПЕРЕГЛЯНУТИ КУРСИ ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4" })]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppLink, {
+										to: "/kontakty",
+										className: "inline-flex w-full items-center justify-center gap-3 rounded-xl border border-white/25 bg-white/10 px-7 py-4 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/15 sm:w-auto",
+										children: "ЗАЛИШИТИ ЗАЯВКУ"
+									})]
+								})
+							]
+						})
+					]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageContainer, {
+					className: "py-5",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Breadcrumbs, {
+						className: "pt-0",
+						items: [{
+							title: "Головна",
+							route: "/"
+						}, {
+							title,
+							route: title === "Курси" ? "/kursy" : "/navchannia"
+						}]
+					})
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+					className: "border-y border-slate-200/70 bg-slate-50/80 py-8",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "grid gap-4 md:grid-cols-4",
+						children: [
+							{
+								icon: Stethoscope,
+								label: "Формат",
+								value: "Практика та кейси"
+							},
+							{
+								icon: CalendarDays,
+								label: "Розклад",
+								value: "2026–2027"
+							},
+							{
+								icon: MapPin,
+								label: "Локація",
+								value: "Буковель / гібридно"
+							},
+							{
+								icon: GraduationCap,
+								label: "Каталог",
+								value: `${COURSES.length} курсів`
+							}
+						].map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-4 rounded-[20px] border border-slate-200 bg-white p-5 shadow-sm",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(item.icon, { className: "size-5" })
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground",
+								children: item.label
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-1 text-sm font-extrabold text-navy",
+								children: item.value
+							})] })]
+						}, item.label))
+					}) })
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+					id: "courses",
+					className: "bg-background py-16 md:py-24",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						ref: courseGridRef,
+						className: "scroll-mt-24",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-col gap-4 md:flex-row md:items-end md:justify-between",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-xs font-bold uppercase tracking-[0.22em] text-primary",
+									children: "УСІ КУРСИ"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+									className: "mt-3 text-3xl font-extrabold leading-tight text-navy md:text-5xl",
+									children: "Каталог навчання"
+								})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "max-w-xl text-sm leading-relaxed text-slate-600 md:text-base",
+									children: [
+										"Показано ",
+										visibleCourses.length,
+										" курсів на сторінці ",
+										currentPage,
+										" з ",
+										totalPages,
+										". Оберіть подію та залиште заявку для уточнення місць і програми."
+									]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "mt-10 grid gap-7 sm:grid-cols-2 xl:grid-cols-4",
+								children: visibleCourses.map((course) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CourseCard, { course }, `${course.title}-${course.date}`))
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
+								"aria-label": "Пагінація курсів",
+								className: "mt-12 flex flex-wrap items-center justify-center gap-2",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										onClick: () => goToPage(currentPage - 1),
+										disabled: currentPage === 1,
+										className: "flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40",
+										"aria-label": "Попередня сторінка",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronLeft, { className: "size-4" })
+									}),
+									Array.from({ length: totalPages }).map((_, index) => {
+										const page = index + 1;
+										const isActive = page === currentPage;
+										return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+											type: "button",
+											onClick: () => goToPage(page),
+											"aria-current": isActive ? "page" : void 0,
+											className: `flex size-10 items-center justify-center rounded-full text-sm font-extrabold transition-all ${isActive ? "bg-primary text-white shadow-md" : "border border-slate-200 bg-white text-navy shadow-sm hover:border-primary hover:text-primary"}`,
+											children: page
+										}, page);
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										onClick: () => goToPage(currentPage + 1),
+										disabled: currentPage === totalPages,
+										className: "flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40",
+										"aria-label": "Наступна сторінка",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { className: "size-4" })
+									})
+								]
+							})
+						]
+					}) })
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+					className: "bg-soft-blue py-20 md:py-24",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(PageContainer, {
+						className: "text-center",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs font-bold uppercase tracking-[0.22em] text-primary",
+								children: "ЗАПИС НА НАВЧАННЯ"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "mx-auto mt-4 max-w-3xl text-3xl font-extrabold leading-tight text-navy md:text-5xl",
+								children: "Потрібна програма для себе або команди?"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mx-auto mt-6 max-w-2xl text-base leading-relaxed text-navy/75 md:text-lg",
+								children: "Напишіть нам, і адміністратор допоможе уточнити дату, формат, кількість місць та деталі участі."
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppLink, {
+								to: "/kontakty",
+								className: "mt-10 inline-flex w-full items-center justify-center gap-3 rounded-xl bg-primary px-8 py-4 text-sm font-bold text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:bg-primary/90 sm:w-auto",
+								children: ["ЗВʼЯЗАТИСЯ З НАМИ ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4" })]
+							})
+						]
+					})
+				})
+			] }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SiteFooter, {})
+		]
+	});
+}
+//#endregion
+export { EducationCoursesPage as t };
