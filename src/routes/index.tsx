@@ -575,6 +575,14 @@ function BlogCarousel() {
 
   const visible = articles.slice(current * perPage, current * perPage + perPage);
 
+  const goToPrevious = () => {
+    setCurrent((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  const goToNext = () => {
+    setCurrent((prev) => (prev + 1) % totalPages);
+  };
+
   return (
     <div>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
@@ -667,18 +675,43 @@ function BlogCarousel() {
         })}
       </div>
 
-      {/* Pagination dots */}
-      <div className="mt-10 flex items-center justify-center gap-2.5">
-        {Array.from({ length: totalPages }).map((_, i) => (
+      {/* Pagination controls */}
+      <div className="mt-10 flex items-center justify-center">
+        <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white p-2 shadow-sm">
           <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`size-2.5 rounded-full transition-all duration-300 ${
-              i === current ? "bg-[#1E64B4] scale-110" : "bg-slate-300 hover:bg-slate-400"
-            }`}
-            aria-label={`Сторінка ${i + 1}`}
-          />
-        ))}
+            type="button"
+            onClick={goToPrevious}
+            disabled={totalPages <= 1}
+            aria-label="Попередня сторінка блогу"
+            className="inline-flex size-9 items-center justify-center rounded-full text-slate-700 transition-all hover:bg-slate-100 hover:text-[#1E64B4] disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <ChevronLeft className="size-4" />
+          </button>
+
+          <div className="flex items-center justify-center gap-2.5 px-1">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setCurrent(i)}
+                className={`size-2.5 rounded-full transition-all duration-300 ${
+                  i === current ? "bg-[#1E64B4] scale-110" : "bg-slate-300 hover:bg-slate-400"
+                }`}
+                aria-label={`Сторінка ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={goToNext}
+            disabled={totalPages <= 1}
+            aria-label="Наступна сторінка блогу"
+            className="inline-flex size-9 items-center justify-center rounded-full text-slate-700 transition-all hover:bg-slate-100 hover:text-[#1E64B4] disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <ChevronRight className="size-4" />
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -990,6 +1023,43 @@ function Index() {
           </div>
         </section>
 
+        {/* CTA BANNER */}
+        <section className="relative overflow-hidden border-y border-sky-200/80 bg-[radial-gradient(circle_at_top_left,_rgba(14,101,241,0.18),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(45,212,191,0.16),_transparent_38%),linear-gradient(135deg,#eef8ff_0%,#f5fbff_35%,#ecfaf7_100%)] py-20 md:py-28">
+          <div className="absolute -left-20 top-8 size-56 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute -right-16 bottom-6 size-72 rounded-full bg-emerald-300/20 blur-3xl" />
+
+          <div className="relative mx-auto max-w-[1100px] px-6 text-center lg:px-10">
+            <div className="mx-auto max-w-4xl rounded-[2rem] border border-white/70 bg-white/60 p-8 shadow-[0_22px_60px_-35px_rgba(17,55,110,0.45)] backdrop-blur-sm md:p-12">
+              <h2 className="mb-6 text-3xl font-extrabold text-navy md:text-5xl lg:text-6xl">
+                Зробіть перший крок
+                <br />
+                до <span className="text-primary">відновлення</span>
+              </h2>
+              <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-navy/70 md:text-xl">
+                Розкажіть про свою ситуацію — спеціаліст допоможе визначити відповідну програму та
+                подальші дії.
+              </p>
+              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => openModal("Отримати консультацію")}
+                  className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 text-base font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto md:py-5 md:text-lg cursor-pointer"
+                >
+                  <span className="relative z-10">ОТРИМАТИ КОНСУЛЬТАЦІЮ</span>
+                  <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
+                </button>
+                <a
+                  href="tel:+380674702788"
+                  className="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-navy bg-transparent px-10 py-4 text-base font-bold text-navy transition-all hover:bg-navy hover:text-white sm:w-auto md:py-5 md:text-lg"
+                >
+                  <Phone className="size-5" />
+                  +380 674 702 788
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 4. МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ (Слайдером в 1 строчку) */}
         <RehabilitationMethodsSlider />
 
@@ -1292,37 +1362,6 @@ function Index() {
           </div>
         </section>
 
-        {/* 11. CTA BANNER */}
-        <section className="py-24 md:py-32 bg-soft-blue">
-          <div className="mx-auto max-w-[1000px] px-6 text-center lg:px-10">
-            <h2 className="mb-6 text-3xl font-extrabold text-navy md:text-5xl lg:text-6xl">
-              Зробіть перший крок
-              <br />
-              до <span className="text-primary">відновлення</span>
-            </h2>
-            <p className="mb-10 text-lg md:text-xl text-navy/70 max-w-2xl mx-auto leading-relaxed">
-              Розкажіть про свою ситуацію — спеціаліст допоможе визначити відповідну програму та
-              подальші дії.
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <button
-                type="button"
-                onClick={() => openModal("Отримати консультацію")}
-                className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 md:py-5 text-base md:text-lg font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto cursor-pointer"
-              >
-                <span className="relative z-10">ОТРИМАТИ КОНСУЛЬТАЦІЮ</span>
-                <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
-              </button>
-              <a
-                href="tel:+380674702788"
-                className="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-navy bg-transparent px-10 py-4 md:py-5 text-base md:text-lg font-bold text-navy transition-all hover:bg-navy hover:text-white sm:w-auto"
-              >
-                <Phone className="size-5" />
-                +380 674 702 788
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
 
       <SiteFooter />

@@ -177,49 +177,82 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
       <SiteHeader />
 
       <main>
-        {/* 1. ПЕРШИЙ ЕКРАН */}
-        <section className="overflow-hidden bg-[linear-gradient(135deg,var(--color-soft-blue),white_62%)] py-12 sm:py-16 lg:py-20">
+        {/* 1. КОМПАНІЯ - ПРО НАС */}
+        <section className="bg-white py-14 sm:py-18 lg:py-22">
           <Container>
-            <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 xl:gap-20">
+            <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary sm:text-sm">
-                  ОСНОВА РЕАБІЛІТАЦІЯ
+                  ПРО КОМПАНИЮ
                 </p>
-                <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.08] text-navy sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]">
-                  ОСНОВА Реабілітація — сучасний медичний центр відновлення в Буковелі
+                <h1 className="mt-3 text-3xl font-extrabold leading-[1.2] text-navy sm:text-4xl lg:text-5xl">
+                  ОСНОВА <span className="text-primary">Реабілітація</span>
                 </h1>
-                <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg lg:text-xl">
-                  ОСНОВА Реабілітація — це сучасний науково-медичний центр у серці Карпат (ТРК Буковель, с. Поляниця, Івано-Франківська область). Центр спеціалізується на комплексному відновленні здоров’я та працює за чотирма ключовими напрямками: реабілітація, оздоровлення, профілактика та діагностика.
+                <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
+                  ОСНОВА Реабілітація — сучасна медична компанія, що спеціалізується на лікуванні та комплексній реабілітації пацієнтів у сферах кардіології, ортопедії, травматології, ревматології, вертебрології та психології.
                 </p>
-                <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                  <button
-                    type="button"
-                    onClick={() => openModal("Записатися на консультацію")}
-                    className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-primary px-6 py-3 text-center text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 sm:w-auto"
-                  >
-                    Записатися на консультацію
-                  </button>
-                  <a
-                    href={CONTACTS.messengers.telegram}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group inline-flex min-h-12 items-center gap-2 px-1 text-sm font-bold text-primary underline decoration-primary/30 decoration-2 underline-offset-8 transition hover:text-navy"
-                  >
-                    Надіслати документи
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </a>
+                <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                  Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики що до появи симптомів — завдяки сучасній діагностиці, точним обстеженням і персоналізованим профілактичним програмам.
+                </p>
+
+                {/* MISSION */}
+                <div className="mt-8 border-l-4 border-primary pl-5">
+                  <h3 className="text-lg font-bold text-navy">Наше завдання — допомогти вам відновити здоров'я, рухливість і якість життя.</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    ОСНОВА Реабілітація також є науково-освітною платформою, що розробляє та впроваджує інноваційні технології та розвиває різні формати реабілітаційної допомоги для пацієнтів поза центром.
+                  </p>
                 </div>
+
+                <button
+                  type="button"
+                  onClick={() => openModal("Записатися на консультацію")}
+                  className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-navy px-8 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-navy/90"
+                >
+                  ДЕТАЛЬНІШЕ
+                </button>
               </div>
 
-              <div className="relative">
-                <div className="absolute -inset-5 -z-0 rounded-[38px] bg-primary/8 blur-2xl" />
-                <div className="relative overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-2xl shadow-slate-900/15">
+              {/* RIGHT COLUMN - STATS & IMAGES */}
+              <div className="grid grid-cols-2 gap-4 sm:gap-5">
+                {/* STAT 1 */}
+                <div className="rounded-2xl bg-blue-50 p-6 sm:p-8 lg:p-10 text-center col-span-1 row-span-2 flex flex-col justify-center">
+                  <div className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary">10+</div>
+                  <p className="mt-3 text-xs sm:text-sm font-semibold text-navy">Років досвіду медичної команди</p>
+                </div>
+
+                {/* IMAGE 1 */}
+                <div className="rounded-2xl overflow-hidden shadow-md">
+                  <img
+                    src={functionalTrainingImg}
+                    alt="Фізіотерапія"
+                    loading="lazy"
+                    className="aspect-square w-full object-cover"
+                  />
+                </div>
+
+                {/* IMAGE 2 */}
+                <div className="rounded-2xl overflow-hidden shadow-md">
+                  <img
+                    src={consultationImg}
+                    alt="Консультація"
+                    loading="lazy"
+                    className="aspect-square w-full object-cover"
+                  />
+                </div>
+
+                {/* STAT 2 */}
+                <div className="rounded-2xl bg-blue-50 p-6 sm:p-8 col-span-1 row-span-2 flex flex-col justify-center">
+                  <div className="text-4xl sm:text-5xl font-extrabold text-primary">100%</div>
+                  <p className="mt-3 text-xs sm:text-sm font-semibold text-navy">Персоналізований підхід до кожного пацієнта</p>
+                </div>
+
+                {/* IMAGE 3 */}
+                <div className="rounded-2xl overflow-hidden shadow-md col-span-2 sm:col-span-1">
                   <img
                     src={therapySessionImg}
-                    alt="Реабілітація в ОСНОВА"
-                    width={1400}
-                    height={940}
-                    className="aspect-[4/3] w-full object-cover object-center lg:aspect-[1.12/1]"
+                    alt="Терапія"
+                    loading="lazy"
+                    className="aspect-square w-full object-cover"
                   />
                 </div>
               </div>

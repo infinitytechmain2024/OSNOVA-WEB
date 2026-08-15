@@ -1,4 +1,4 @@
-//#region \0tanstack-start-manifest:v
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DiDrpR9p.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/workspaces/block-builder-page/src/routes/__root.tsx",
@@ -15,23 +15,24 @@ var tsrStartManifest = () => ({ routes: {
 			"/statti/pershi-symptomy-problem-iz-sertsem"
 		],
 		preloads: [
-			"/assets/index-DVJgSd64.js",
+			"/assets/index-D_ipvOQV.js",
 			"/assets/site-footer-BAHqLps3.js",
-			"/assets/_-kvipsEmX.js",
+			"/assets/_-BtMiQqTM.js",
 			"/assets/preload-helper-WfUlQCdB.js"
 		],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-DVJgSd64.js"
+			src: "/assets/index-D_ipvOQV.js"
 		} }]
 	},
 	"/": {
 		filePath: "/workspaces/block-builder-page/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-BEFbkRTf.js",
-			"/assets/osnova-logo-3d-CXsc14s0.js",
+			"/assets/routes-BZH_QBLE.js",
+			"/assets/partner-sytenko-CEotZ8OA.js",
+			"/assets/chevron-left-CaZHK7ax.js",
 			"/assets/users-DXInPeek.js",
 			"/assets/education-training-VQUtcCqH.js",
 			"/assets/news-BCfUfk_p.js"
@@ -41,10 +42,10 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspaces/block-builder-page/src/routes/$.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_-CXPEvYnj.js",
-			"/assets/osnova-logo-3d-CXsc14s0.js",
+			"/assets/_-C4nC6J5g.js",
+			"/assets/partner-sytenko-CEotZ8OA.js",
 			"/assets/building-2-BsVU4eVn.js",
-			"/assets/service-detail-template-B0moT7R0.js",
+			"/assets/service-detail-template-Bsji83ay.js",
 			"/assets/calendar-days-D-M4U1As.js",
 			"/assets/chevron-left-CaZHK7ax.js",
 			"/assets/users-DXInPeek.js",
@@ -57,7 +58,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspaces/block-builder-page/src/routes/iventy.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/iventy-Dpq1AFwI.js",
+			"/assets/iventy-DfOn7l0d.js",
 			"/assets/building-2-BsVU4eVn.js",
 			"/assets/calendar-days-D-M4U1As.js",
 			"/assets/clock-3-1JvrzC54.js",
@@ -68,13 +69,13 @@ var tsrStartManifest = () => ({ routes: {
 	"/kardiolohichna-diahnostyka": {
 		filePath: "/workspaces/block-builder-page/src/routes/kardiolohichna-diahnostyka.tsx",
 		children: void 0,
-		preloads: ["/assets/kardiolohichna-diahnostyka-BYlgJhpV.js", "/assets/service-detail-template-B0moT7R0.js"]
+		preloads: ["/assets/kardiolohichna-diahnostyka-B1Q3oCNU.js", "/assets/service-detail-template-Bsji83ay.js"]
 	},
 	"/konferentsii": {
 		filePath: "/workspaces/block-builder-page/src/routes/konferentsii.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/konferentsii-cJTAjMR4.js",
+			"/assets/konferentsii-JUv13-_d.js",
 			"/assets/calendar-days-D-M4U1As.js",
 			"/assets/chevron-left-CaZHK7ax.js",
 			"/assets/clock-3-1JvrzC54.js",
@@ -84,18 +85,18 @@ var tsrStartManifest = () => ({ routes: {
 	"/kursy": {
 		filePath: "/workspaces/block-builder-page/src/routes/kursy.tsx",
 		children: void 0,
-		preloads: ["/assets/kursy-CHHN8scs.js", "/assets/education-courses-page-DKj4Y9bT.js"]
+		preloads: ["/assets/kursy-yyRRoDu_.js", "/assets/education-courses-page-ChrErlwQ.js"]
 	},
 	"/navchannia": {
 		filePath: "/workspaces/block-builder-page/src/routes/navchannia.tsx",
 		children: void 0,
-		preloads: ["/assets/navchannia-C-ui4IDX.js", "/assets/education-courses-page-DKj4Y9bT.js"]
+		preloads: ["/assets/navchannia-Bs3eCsA6.js", "/assets/education-courses-page-ChrErlwQ.js"]
 	},
 	"/novyny": {
 		filePath: "/workspaces/block-builder-page/src/routes/novyny.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/novyny-D8E7ZmBO.js",
+			"/assets/novyny-Cl2vCPmN.js",
 			"/assets/calendar-days-D-M4U1As.js",
 			"/assets/clock-3-1JvrzC54.js",
 			"/assets/news-BCfUfk_p.js"
@@ -105,7 +106,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspaces/block-builder-page/src/routes/statti/pershi-symptomy-problem-iz-sertsem.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/pershi-symptomy-problem-iz-sertsem-DavVamLx.js",
+			"/assets/pershi-symptomy-problem-iz-sertsem-BB7vCZTY.js",
 			"/assets/calendar-days-D-M4U1As.js",
 			"/assets/triangle-alert-BR6XVldl.js"
 		]
