@@ -182,36 +182,36 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
           <Container className="max-w-[1480px] px-6 sm:px-8 lg:px-10 xl:px-12">
             <div className="grid items-center gap-10 lg:gap-14 xl:gap-16 lg:grid-cols-[1.08fr_1fr]">
               <div className="w-full max-w-[720px] lg:max-w-none">
-                <div className="mb-4 sm:mb-5 inline-flex items-center rounded-full bg-[#edf4ff] border border-[#d4e4fa] px-4.5 py-1.5 text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.15em] text-[#1b5bc9]">
+                <div className="mb-4 sm:mb-5 inline-flex items-center rounded-full bg-[#E9EEF8] border border-[#D0DCF2] px-4.5 py-1.5 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.15em] text-[#215FBC]">
                   ПРО КОМПАНІЮ
                 </div>
 
-                <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black tracking-tight leading-[1.06] text-[#0b192c]">
-                  ОСНОВА <span className="text-[#1b5bc9]">Реабілітація</span>
+                <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black font-extrabold tracking-tight leading-[1.06] text-[#091936]">
+                  ОСНОВА <span className="text-[#215FBC]">Реабілітація</span>
                 </h1>
 
-                <div className="mb-8 h-[4px] w-20 rounded-full bg-gradient-to-r from-[#1b5bc9] via-[#1b5bc9] 50% to-[#10b981]" />
+                <div className="mb-8 h-[4px] w-20 rounded-full bg-gradient-to-r from-[#215FBC] via-[#215FBC] 50% to-[#10b981]" />
 
-                <div className="space-y-6 sm:space-y-7 text-base sm:text-[18px] lg:text-[19px] leading-[1.7] sm:leading-[1.75]">
-                  <p className="font-medium sm:font-semibold text-[#1e293b]">
+                <div className="space-y-6 sm:space-y-7 text-base sm:text-[18px] lg:text-[19px] leading-[1.65]">
+                  <p className="font-medium text-[#091936]">
                     ОСНОВА Реабілітація — сучасна медична компанія, що
                     спеціалізується на лікуванні та комплексній реабілітації пацієнтів у
                     сферах кардіології, ортопедії, травматології, ревматології,
                     вертебрології та психології.
                   </p>
 
-                  <p className="font-normal text-[#475569]">
+                  <p className="font-normal text-[#5F6A7B]">
                     Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики
                     ще до появи симптомів — завдяки сучасній діагностиці, точним
                     обстеженням і персоналізованим профілактичним програмам.
                   </p>
 
-                  <p className="py-1 font-bold text-[#1b5bc9]">
+                  <p className="py-1 font-semibold text-[#215FBC]">
                     Наше завдання — допомогти вам відновити здоров'я, рухливість і якість
                     життя.
                   </p>
 
-                  <p className="font-normal text-[#475569]">
+                  <p className="font-normal text-[#5F6A7B]">
                     ОСНОВА Реабілітація також є науково-освітньою платформою, що
                     розробляє та вдосконалює протоколи лікування, співпрацює з провідними
                     медичними університетами світу, впроваджує інноваційні технології та
@@ -224,7 +224,7 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                   <button
                     type="button"
                     onClick={() => openModal("Записатися на консультацію")}
-                    className="inline-flex items-center gap-3.5 rounded-full bg-[#0b192c] px-9 py-4 sm:px-10 sm:py-4.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-[0_12px_28px_rgba(11,25,44,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1b5bc9] hover:shadow-[0_14px_32px_rgba(27,91,201,0.35)]"
+                    className="inline-flex items-center gap-3.5 rounded-full bg-[#091936] px-9 py-4 sm:px-10 sm:py-4.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-[0_12px_28px_rgba(9,25,54,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#215FBC] hover:shadow-[0_14px_32px_rgba(33,95,188,0.35)]"
                   >
                     ДЕТАЛЬНІШЕ <ArrowRight className="h-4.5 w-4.5 stroke-[2.5]" />
                   </button>
@@ -233,42 +233,42 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
 
               {/* RIGHT 2X2 GRID */}
               <div className="w-full">
-                <div className="grid grid-cols-2 gap-5 lg:gap-6">
+                <div className="grid grid-cols-2 gap-[28px] lg:gap-[30px]">
                   {/* Top-Left: Image 1 */}
-                  <div className="overflow-hidden rounded-[22px] lg:rounded-[24px] bg-white shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100/90 aspect-[4/3.1] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[265px]">
+                  <div className="w-full min-w-0 max-w-full box-border overflow-hidden rounded-[24px] bg-white shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100/90 aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px]">
                     <img
                       src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80"
                       alt="Реабілітаційний процес з фахівцем у світлому залі"
-                      className="size-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="size-full block object-cover transition-transform duration-700 hover:scale-105"
                     />
                   </div>
 
                   {/* Top-Right: Stat Card 8+ */}
-                  <div className="flex flex-col justify-center rounded-[22px] lg:rounded-[24px] bg-[#edf4ff] p-6 sm:p-7 lg:p-8 xl:p-9 text-left border border-[#e2edfd] shadow-[0_10px_25px_rgba(0,0,0,0.03)] aspect-[4/3.1] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[265px] transition-all duration-300 hover:shadow-[0_14px_30px_rgba(27,91,201,0.08)]">
-                    <div className="mb-2 text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-black tracking-tight text-[#1b5bc9] leading-none">
+                  <div className="w-full min-w-0 max-w-full box-border flex flex-col justify-center rounded-[24px] bg-[#E9EEF8] p-6 sm:p-7 lg:p-8 xl:p-9 text-left shadow-[0_10px_25px_rgba(0,0,0,0.02)] aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px] transition-all duration-300 hover:shadow-[0_14px_30px_rgba(33,95,188,0.08)]">
+                    <div className="mb-2 text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-black font-extrabold tracking-tight text-[#215FBC] leading-none">
                       8+
                     </div>
-                    <p className="text-xs sm:text-sm lg:text-[15px] font-bold text-[#334155] leading-snug">
+                    <p className="text-xs sm:text-sm lg:text-[15px] font-medium text-[#5F6A7B] leading-snug">
                       Напрямків реабілітації
                     </p>
                   </div>
 
                   {/* Bottom-Left: Stat Card 30+ */}
-                  <div className="flex flex-col justify-center rounded-[22px] lg:rounded-[24px] bg-[#dcebfe] p-6 sm:p-7 lg:p-8 xl:p-9 text-left border border-[#cbe0fd] shadow-[0_10px_25px_rgba(0,0,0,0.03)] aspect-[4/3.1] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[265px] transition-all duration-300 hover:shadow-[0_14px_30px_rgba(11,25,44,0.08)]">
-                    <div className="mb-2 text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-black tracking-tight text-[#0b192c] leading-none">
+                  <div className="w-full min-w-0 max-w-full box-border flex flex-col justify-center rounded-[24px] bg-[#D9EBFC] p-6 sm:p-7 lg:p-8 xl:p-9 text-left shadow-[0_10px_25px_rgba(0,0,0,0.02)] aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px] transition-all duration-300 hover:shadow-[0_14px_30px_rgba(9,25,54,0.08)]">
+                    <div className="mb-2 text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-black font-extrabold tracking-tight text-[#091936] leading-none">
                       30+
                     </div>
-                    <p className="text-xs sm:text-sm lg:text-[15px] font-bold text-[#334155] leading-snug">
+                    <p className="text-xs sm:text-sm lg:text-[15px] font-medium text-[#5F6A7B] leading-snug">
                       Методів реабілітації
                     </p>
                   </div>
 
                   {/* Bottom-Right: Image 2 */}
-                  <div className="overflow-hidden rounded-[22px] lg:rounded-[24px] bg-white shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100/90 aspect-[4/3.1] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[265px]">
+                  <div className="w-full min-w-0 max-w-full box-border overflow-hidden rounded-[24px] bg-white shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100/90 aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px]">
                     <img
                       src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80"
                       alt="Медичний персонал за обладнанням"
-                      className="size-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="size-full block object-cover transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                 </div>
