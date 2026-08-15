@@ -1,3 +1,4 @@
+import serviceRehab from "@/assets/service-rehab.jpg";
 import { AppLink } from "@/components/app-link";
 import { ConsultationForm } from "@/components/consultation-form";
 import { Breadcrumbs, FAQAccordion, PageContainer, SectionHeader } from "@/components/blocks";
@@ -500,37 +501,44 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/30 to-transparent pointer-events-none" />
 
                   {/* Location Pin & Hours Overlay Card */}
-                  <div className="relative z-10 text-center max-w-md w-full p-6 rounded-2xl bg-white/95 backdrop-blur-md shadow-2xl border border-white/50">
-                    <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/30 mb-3">
-                      <MapPin className="size-7" />
-                    </div>
-                    <span className="inline-block rounded-full bg-emerald-100 px-3 py-0.5 text-[11px] font-bold text-emerald-800 uppercase tracking-wider mb-1">
-                      📍 ДЕ МИ ЗНАХОДИМОСЬ
-                    </span>
-                    <h4 className="text-lg font-extrabold text-navy">Центр «ŎSNOVA» у Буковелі</h4>
-                    <p className="mt-1 text-xs text-muted-foreground font-medium">
-                      {CONTACTS.addressFull}
-                    </p>
-                    
-                    <div className="mt-4 grid grid-cols-2 gap-2 text-left pt-3 border-t border-border/60">
-                      <div className="bg-slate-50 p-2.5 rounded-xl border border-border/40">
-                        <p className="text-[10px] font-bold text-muted-foreground uppercase">Тренажерний зал</p>
-                        <p className="text-xs font-extrabold text-navy mt-0.5">{CONTACTS.gymHours}</p>
-                      </div>
-                      <div className="bg-slate-50 p-2.5 rounded-xl border border-border/40">
-                        <p className="text-[10px] font-bold text-muted-foreground uppercase">Реабілітація</p>
-                        <p className="text-xs font-extrabold text-navy mt-0.5">{CONTACTS.rehabHours}</p>
-                      </div>
+                  <div className="relative z-10 max-w-md w-full rounded-2xl bg-white/95 p-4 shadow-2xl border border-white/50 backdrop-blur-md">
+                    <div className="overflow-hidden rounded-xl border border-border/60 bg-slate-100">
+                      <img
+                        src={serviceRehab}
+                        alt="Центр «ŎSNOVA» у Буковелі"
+                        className="h-36 w-full object-cover"
+                      />
                     </div>
 
-                    <a
-                      href="https://maps.google.com/?q=Bukovel"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 flex items-center justify-center gap-2 w-full rounded-xl bg-navy py-2.5 text-xs font-bold text-white hover:bg-navy-deep transition-colors shadow-sm"
-                    >
-                      <Navigation className="size-3.5" /> Побудувати маршрут
-                    </a>
+                    <div className="mt-4 text-center">
+                      <span className="inline-block rounded-full bg-emerald-100 px-3 py-0.5 text-[11px] font-bold text-emerald-800 uppercase tracking-wider">
+                        📍 ДЕ МИ ЗНАХОДИМОСЬ
+                      </span>
+                      <h4 className="mt-2 text-lg font-extrabold text-navy">Центр «ŎSNOVA» у Буковелі</h4>
+                      <p className="mt-1 text-xs text-muted-foreground font-medium">
+                        {CONTACTS.addressFull}
+                      </p>
+
+                      <div className="mt-4 grid grid-cols-2 gap-2 text-left pt-3 border-t border-border/60">
+                        <div className="bg-slate-50 p-2.5 rounded-xl border border-border/40">
+                          <p className="text-[10px] font-bold text-muted-foreground uppercase">Тренажерний зал</p>
+                          <p className="text-xs font-extrabold text-navy mt-0.5">{CONTACTS.gymHours}</p>
+                        </div>
+                        <div className="bg-slate-50 p-2.5 rounded-xl border border-border/40">
+                          <p className="text-[10px] font-bold text-muted-foreground uppercase">Реабілітація</p>
+                          <p className="text-xs font-extrabold text-navy mt-0.5">{CONTACTS.rehabHours}</p>
+                        </div>
+                      </div>
+
+                      <a
+                        href="https://maps.google.com/?q=Bukovel"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 flex items-center justify-center gap-2 w-full rounded-xl bg-navy py-2.5 text-xs font-bold text-white hover:bg-navy-deep transition-colors shadow-sm"
+                      >
+                        <Navigation className="size-3.5" /> Побудувати маршрут
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
