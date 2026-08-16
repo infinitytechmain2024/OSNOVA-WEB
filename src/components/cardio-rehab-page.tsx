@@ -40,7 +40,7 @@ import ecgImg from "@/assets/ecg-review.jpg";
 import rehabImg from "@/assets/service-rehab.jpg";
 import sportsImg from "@/assets/service-sports.jpg";
 import cardioHeart3dImg from "@/assets/cardio-heart-3d.jpg";
-import consultationImg from "@/assets/about/consultation.jpg";
+import cardioRehabCtaImg from "@/assets/about/cardio-rehab-cta-photo-v2.png";
 import medicalAssessmentImg from "@/assets/about/medical-assessment.jpg";
 import { getNodeById } from "@/lib/tree";
 
@@ -1344,13 +1344,13 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
               </div>
             </div>
 
-            <div className="relative min-h-[220px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)] sm:min-h-[260px] lg:min-h-[300px] lg:max-w-[420px] lg:justify-self-end">
+            <div className="relative w-full min-h-[220px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)] sm:min-h-[260px] lg:min-h-[300px] lg:max-w-[420px] lg:justify-self-end">
               <img
-                src={consultationImg}
-                alt="Лікар консультує пацієнта та формує план відновлення"
+                src={cardioRehabCtaImg}
+                alt="Лікар обговорює з пацієнтом програму кардіореабілітації"
                 loading="lazy"
-                width={2560}
-                height={1440}
+                width={1536}
+                height={1024}
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
               <div
