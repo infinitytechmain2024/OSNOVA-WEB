@@ -317,6 +317,15 @@ const EDUCATION_CARDS = [
   },
 ];
 
+const HOME_INTEREST_LINKS = [
+  { label: "Про компанію", href: "#about" },
+  { label: "Напрями", href: "#directions" },
+  { label: "Методи", href: "#methods" },
+  { label: "Переваги", href: "#advantages" },
+  { label: "Партнерство", href: "#partnership" },
+  { label: "Питання", href: "#faq" },
+];
+
 // FAQ
 const FAQ_VISIBLE_COUNT = 3;
 
@@ -650,6 +659,27 @@ function BlogCarousel() {
   );
 }
 
+function HomeInterestNav() {
+  return (
+    <div className="border-b border-border bg-white">
+      <div className="mx-auto flex max-w-[1600px] items-center gap-4 overflow-x-auto px-4 py-3 sm:px-6 lg:px-10">
+        <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить:</p>
+        <nav aria-label="Розділи головної сторінки" className="flex min-w-max gap-2 sm:gap-3">
+          {HOME_INTEREST_LINKS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy/78 transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const { openModal } = useConsultationModal();
   const [faqExpanded, setFaqExpanded] = React.useState(false);
@@ -816,8 +846,13 @@ function Index() {
           </div>
         </div>
 
+        <HomeInterestNav />
+
         {/* 2. ПРО КОМПАНІЮ */}
-        <section className="bg-white pt-8 sm:pt-12 lg:pt-14 pb-16 md:pb-24 lg:pb-28">
+        <section
+          id="about"
+          className="scroll-mt-24 bg-white pt-8 sm:pt-12 lg:pt-14 pb-16 md:pb-24 lg:pb-28"
+        >
           <div className="mx-auto max-w-[1480px] px-6 sm:px-8 lg:px-10 xl:px-12">
             <div className="grid items-center gap-10 lg:gap-14 xl:gap-16 lg:grid-cols-[1.08fr_1fr]">
               <div className="w-full max-w-[720px] lg:max-w-none">
@@ -833,29 +868,26 @@ function Index() {
 
                 <div className="space-y-6 sm:space-y-7 text-base sm:text-[18px] lg:text-[19px] leading-[1.65]">
                   <p className="font-medium text-[#091936]">
-                    ОСНОВА Реабілітація — сучасна медична компанія, що
-                    спеціалізується на лікуванні та комплексній реабілітації пацієнтів у
-                    сферах кардіології, ортопедії, травматології, ревматології,
-                    вертебрології та психології.
+                    ОСНОВА Реабілітація — сучасна медична компанія, що спеціалізується на лікуванні
+                    та комплексній реабілітації пацієнтів у сферах кардіології, ортопедії,
+                    травматології, ревматології, вертебрології та психології.
                   </p>
 
                   <p className="font-normal text-[#5F6A7B]">
-                    Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики
-                    ще до появи симптомів — завдяки сучасній діагностиці, точним
-                    обстеженням і персоналізованим профілактичним програмам.
+                    Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики ще до
+                    появи симптомів — завдяки сучасній діагностиці, точним обстеженням і
+                    персоналізованим профілактичним програмам.
                   </p>
 
                   <p className="py-1 font-semibold text-[#215FBC]">
-                    Наше завдання — допомогти вам відновити здоров'я, рухливість і якість
-                    життя.
+                    Наше завдання — допомогти вам відновити здоров'я, рухливість і якість життя.
                   </p>
 
                   <p className="font-normal text-[#5F6A7B]">
-                    ОСНОВА Реабілітація також є науково-освітньою платформою, що
-                    розробляє та вдосконалює протоколи лікування, співпрацює з провідними
-                    медичними університетами світу, впроваджує інноваційні технології та
-                    розвиває виїзні формати реабілітаційної допомоги для пацієнтів поза
-                    центром.
+                    ОСНОВА Реабілітація також є науково-освітньою платформою, що розробляє та
+                    вдосконалює протоколи лікування, співпрацює з провідними медичними
+                    університетами світу, впроваджує інноваційні технології та розвиває виїзні
+                    формати реабілітаційної допомоги для пацієнтів поза центром.
                   </p>
                 </div>
 
@@ -916,7 +948,10 @@ function Index() {
         </section>
 
         {/* 4. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
-        <section className="bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60">
+        <section
+          id="directions"
+          className="scroll-mt-24 bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60"
+        >
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader centered subtitle="НАПРЯМИ" title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ" />
 
@@ -1005,10 +1040,15 @@ function Index() {
         </section>
 
         {/* 4. МЕТОДИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ (Слайдером в 1 строчку) */}
-        <RehabilitationMethodsSlider />
+        <section id="methods" className="scroll-mt-24">
+          <RehabilitationMethodsSlider />
+        </section>
 
         {/* 5. ЧОМУ ОБИРАЮТЬ ОСНОВА РЕАБІЛІТАЦІЯ */}
-        <section className="relative pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden bg-background">
+        <section
+          id="advantages"
+          className="relative scroll-mt-24 pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden bg-background"
+        >
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <div className="text-center mb-16">
               <span className="inline-block rounded-full border border-primary/30 bg-primary/5 px-5 py-1.5 text-xs font-bold tracking-widest text-primary uppercase mb-6">
@@ -1146,7 +1186,7 @@ function Index() {
         </section>
 
         {/* 8. СПІВПРАЦЯ */}
-        <section className="bg-[#FCFDFE] py-16 md:py-20 lg:py-24">
+        <section id="partnership" className="scroll-mt-24 bg-[#FCFDFE] py-16 md:py-20 lg:py-24">
           <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
             <div className="text-center">
               <span className="inline-block rounded-full bg-[#EEF5FF] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#2467D8]">
@@ -1176,7 +1216,10 @@ function Index() {
         </section>
 
         {/* 10. ПИТАННЯ ТА ВІДПОВІДІ (FAQ) */}
-        <section className="bg-slate-50/70 py-24 md:py-32 border-t border-slate-200/60">
+        <section
+          id="faq"
+          className="scroll-mt-24 bg-slate-50/70 py-24 md:py-32 border-t border-slate-200/60"
+        >
           <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
             <div className="text-center">
               <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">
