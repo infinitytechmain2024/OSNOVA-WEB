@@ -2,8 +2,6 @@ import * as React from "react";
 import {
   Ambulance,
   ArrowRight,
-  ClipboardCheck,
-  ClipboardPlus,
   CalendarDays,
   ChevronDown,
   ChevronLeft,
@@ -15,7 +13,6 @@ import {
   CheckCircle2,
   HandHeart,
   Heart,
-  HeartPulse,
   AlertTriangle,
   ShieldCheck,
 } from "lucide-react";
@@ -51,7 +48,7 @@ const ANCHORS = [
 
 const TIMING_COLUMNS = [
   {
-    title: "Коли рекомендовано",
+    title: "Показання",
     icon: Heart,
     iconColor: "text-primary",
     iconBg: "bg-primary/10",
@@ -65,7 +62,7 @@ const TIMING_COLUMNS = [
     ],
   },
   {
-    title: "Яких результатів очікувати",
+    title: "Результати реабілітації",
     icon: CheckCircle2,
     iconColor: "text-emerald-500",
     iconBg: "bg-emerald-50",
@@ -79,7 +76,7 @@ const TIMING_COLUMNS = [
     ],
   },
   {
-    title: "Коли варто відкласти",
+    title: "Протипоказання",
     icon: AlertTriangle,
     iconColor: "text-amber-500",
     iconBg: "bg-amber-50",
@@ -98,29 +95,24 @@ const EMERGENCY_CALL_ITEMS = [
   "виражена задишка або утруднене дихання",
   "втрата або порушення свідомості",
   "раптове порушення мовлення, зору або слабкість у кінцівках",
-  "інші ознаки різкого погіршення стану",
 ];
 
 const PROCESS_STEPS = [
   {
     title: "Оцінка стану та документів",
     text: "Ми комплексно оцінюємо ваш стан здоров’я, аналізуємо медичні документи та визначаємо ключові потреби для ефективної реабілітації.",
-    icon: ClipboardPlus,
   },
   {
     title: "Індивідуальний план реабілітації",
     text: "Створюємо персональний план з урахуванням ваших цілей, потреб, стану здоров’я, можливостей та етапів відновлення.",
-    icon: ClipboardCheck,
   },
   {
     title: "Заняття та процедури під контролем",
     text: "Проводимо індивідуальні та групові заняття, процедури й тренування під наглядом досвідчених фахівців для вашої безпеки та результативності.",
-    icon: HeartPulse,
   },
   {
     title: "Контроль прогресу та корекція",
     text: "Регулярно відстежуємо ваш прогрес, оцінюємо результати та коригуємо план реабілітації для досягнення максимального ефекту відновлення.",
-    icon: ShieldCheck,
   },
 ];
 
@@ -400,8 +392,6 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
 
             <div className="relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:gap-6">
               {PROCESS_STEPS.map((step, index) => {
-                const Icon = step.icon;
-
                 return (
                   <article
                     key={step.title}
@@ -414,8 +404,8 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                       />
                     )}
 
-                    <span className="flex size-[74px] items-center justify-center rounded-full bg-[linear-gradient(180deg,rgba(233,242,255,0.98),rgba(248,251,255,0.95))] text-primary shadow-inner ring-1 ring-primary/10">
-                      <Icon className="size-9" strokeWidth={2.1} />
+                    <span className="flex size-[74px] items-center justify-center rounded-[24px] bg-[linear-gradient(135deg,#35c88a_0%,#67d8a4_100%)] text-[2rem] font-black text-white shadow-[0_18px_34px_rgba(53,200,138,0.28)] ring-1 ring-emerald-200/80">
+                      {index + 1}
                     </span>
                     <h3 className="mt-5 max-w-[16ch] text-[1.55rem] font-extrabold leading-[1.1] text-navy sm:text-[1.75rem]">
                       {step.title}
@@ -768,7 +758,7 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
                 </span>
                 <div className="max-w-2xl">
                   <h3 className="text-2xl font-extrabold leading-tight text-navy sm:text-3xl">
-                    Коли варто розпочати програму
+                    Початок програми
                   </h3>
                   <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
                   <p className="mt-5 text-base leading-relaxed text-navy/82 sm:text-lg">
@@ -777,7 +767,7 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
                   </p>
                   <p className="mt-3 text-base leading-relaxed text-navy/72 sm:text-lg">
                     Рішення щодо початку приймається індивідуально після оцінки стану та наданих
-                    результатів обстежень.
+                    результатів обстежень і тестів.
                   </p>
                 </div>
               </div>
@@ -805,7 +795,7 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
                 </span>
                 <div className="max-w-2xl">
                   <h3 className="text-2xl font-extrabold leading-tight text-red-600 sm:text-3xl">
-                    Коли потрібно терміново телефонувати 103
+                    Ознаки невідкладного стану
                   </h3>
                   <div className="mt-4 h-1 w-16 rounded-full bg-red-500" />
                   <p className="mt-5 text-base leading-relaxed text-navy/78 sm:text-lg">
@@ -1073,7 +1063,7 @@ function MilitaryInfoCard() {
   const Icon = activeHighlight.icon;
   const isAnchorLink = activeHighlight.ctaHref.startsWith("#");
   const buttonClassName =
-    "mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90";
+    "inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90";
 
   return (
     <aside
@@ -1114,27 +1104,52 @@ function MilitaryInfoCard() {
             {activeHighlight.description}
           </p>
 
-          {activeHighlight.ctaLabel &&
-            (isAnchorLink ? (
-              <a
-                href={activeHighlight.ctaHref}
-                onClick={(event) => {
-                  event.preventDefault();
-                  document
-                    .getElementById(activeHighlight.ctaHref.slice(1))
-                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
-                className={buttonClassName}
-              >
-                {activeHighlight.ctaLabel}
-                <ArrowRight className="size-4" />
-              </a>
-            ) : (
-              <AppLink to={activeHighlight.ctaHref} className={buttonClassName}>
-                {activeHighlight.ctaLabel}
-                <ArrowRight className="size-4" />
-              </AppLink>
-            ))}
+          <div className="mt-auto pt-8">
+            {activeHighlight.ctaLabel &&
+              (isAnchorLink ? (
+                <a
+                  href={activeHighlight.ctaHref}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    document
+                      .getElementById(activeHighlight.ctaHref.slice(1))
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
+                  className={buttonClassName}
+                >
+                  {activeHighlight.ctaLabel}
+                  <ArrowRight className="size-4" />
+                </a>
+              ) : (
+                <AppLink to={activeHighlight.ctaHref} className={buttonClassName}>
+                  {activeHighlight.ctaLabel}
+                  <ArrowRight className="size-4" />
+                </AppLink>
+              ))}
+
+            <div
+              className="mt-5 flex items-center gap-2"
+              role="tablist"
+              aria-label="Акції та спеціальні умови"
+            >
+              {SUPPORT_HIGHLIGHTS.map((highlight, index) => (
+                <button
+                  key={highlight.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeIndex === index}
+                  aria-label={highlight.title}
+                  onClick={() => setActiveIndex(index)}
+                  className={cn(
+                    "h-2.5 flex-1 rounded-full transition-all duration-300",
+                    activeIndex === index
+                      ? "bg-[linear-gradient(90deg,#0f62fe_0%,#22c55e_100%)] shadow-[0_0_0_1px_rgba(15,98,254,0.18),0_8px_18px_rgba(34,197,94,0.28)]"
+                      : "bg-white/80 ring-1 ring-primary/18 hover:bg-primary/20",
+                  )}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </aside>

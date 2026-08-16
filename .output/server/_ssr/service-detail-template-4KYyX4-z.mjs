@@ -1,7 +1,7 @@
 import { n as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { Et as ArrowRight, M as MapPin, P as LoaderCircle, Z as FilePen, b as Phone, dt as CircleAlert, f as Stethoscope, g as Send, gt as Check, ht as ChevronDown, k as MessageCircle, lt as CircleQuestionMark, m as ShieldCheck, mt as ChevronLeft, nt as CloudUpload, o as User, pt as ChevronRight, q as FolderUp, r as X, ut as CircleCheck, yt as CalendarCheck, z as Info } from "../_libs/lucide-react.mjs";
+import { M as MapPin, P as LoaderCircle, Tt as ArrowRight, Z as FilePen, b as Phone, ct as CircleQuestionMark, f as Stethoscope, ft as ChevronRight, g as Send, ht as Check, k as MessageCircle, lt as CircleCheck, m as ShieldCheck, mt as ChevronDown, nt as CloudUpload, o as User, pt as ChevronLeft, q as FolderUp, r as X, ut as CircleAlert, vt as CalendarCheck, z as Info } from "../_libs/lucide-react.mjs";
 import { S as service_sports_default, b as service_checkup_default, d as SiteFooter, f as SiteHeader, h as ecg_review_default, p as cn, s as FAQAccordion, t as AppLink, w as useConsultationModal, x as service_rehab_default } from "./blocks-qYXwqIeb.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/service-detail-template-4KYyX4-z.js
 var import_react = /* @__PURE__ */ __toESM(require_react());

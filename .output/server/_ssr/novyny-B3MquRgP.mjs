@@ -1,7 +1,7 @@
 import { n as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { C as Newspaper, Et as ArrowRight, b as Phone, it as Clock3, vt as CalendarDays } from "../_libs/lucide-react.mjs";
+import { C as Newspaper, Tt as ArrowRight, _t as CalendarDays, b as Phone, it as Clock3 } from "../_libs/lucide-react.mjs";
 import { d as SiteFooter, f as SiteHeader, l as PageContainer, n as Breadcrumbs, p as cn, t as AppLink } from "./blocks-qYXwqIeb.mjs";
 import { t as NEWS_ARTICLES } from "./news-Did3hVRt.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/novyny-B3MquRgP.js
