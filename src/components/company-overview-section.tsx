@@ -102,7 +102,7 @@ export function CompanyOverviewSection({
               <div className="mt-10 sm:mt-12">{cta}</div>
             </div>
 
-            <div className="w-full lg:pt-[80px]">
+            <div className="w-full lg:pt-[108px] xl:pt-[116px]">
               <div className="grid grid-cols-2 gap-4 sm:gap-5 xl:gap-6">
                 {COMPANY_MEDIA_CARDS.map((card, index) =>
                   card.type === "image" ? (
