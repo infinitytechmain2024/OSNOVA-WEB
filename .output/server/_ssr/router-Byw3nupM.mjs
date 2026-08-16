@@ -4,14 +4,14 @@ import { _ as useRouter, c as HeadContent, d as createRouter, f as Outlet, h as 
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
 import { B as House, Et as ArrowRight, H as HeartPulse, M as MapPin, U as Headphones, b as Phone, et as Dumbbell, f as Stethoscope, g as Send, kt as Activity, pt as ChevronRight } from "../_libs/lucide-react.mjs";
 import { d as SiteFooter, f as SiteHeader, g as ergometer_default, i as CONTACTS, l as PageContainer, o as ConsultationModalProvider, t as AppLink, v as getNodeById } from "./blocks-qYXwqIeb.mjs";
-import { t as Route } from "../_-Bymu7i4O.mjs";
+import { t as Route } from "../_-CbPK8u5c.mjs";
 import { t as Route$10 } from "./konferentsii-B4w6PFfB.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
 import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BMYDBWow.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-Byw3nupM.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-COGtwUR-.css";
+var styles_default = "/assets/styles-nnl-TGQw.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {

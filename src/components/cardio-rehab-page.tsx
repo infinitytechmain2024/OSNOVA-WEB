@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  Ambulance,
   ArrowRight,
   ClipboardCheck,
   ClipboardPlus,
@@ -169,47 +170,29 @@ const CARDIO_PROGRAMS = CARDIO_REHAB_PROGRAMS.map((program) => ({
 const SUPPORT_HIGHLIGHTS = [
   {
     id: "military",
-    eyebrow: "Для військових",
-    title: "Спеціальні умови для військових і ветеранів",
-    description:
-      "Діють спеціальні умови на програму відновлення для військових і ветеранів, а також допомагаємо швидше узгодити старт після попереднього розгляду документів.",
-    detail:
-      "Пріоритетний розгляд заявки, гнучкий графік занять і адаптація програми під поточний стан.",
-    badge: "Підтримка",
+    title: "Для військових і ветеранів",
+    description: "Спеціальні умови на програму відновлення та швидший старт після розгляду документів.",
     ctaLabel: "Детальніше",
+    ctaHref: "#documents",
     icon: Heart,
-    accentClass: "from-brand-green/25 via-white to-brand-green/10",
-    badgeClass: "bg-brand-green/15 text-emerald-700",
     iconClass: "bg-brand-green/15 text-brand-green ring-brand-green/15",
   },
   {
     id: "social",
-    eyebrow: "Соціальні проєкти",
-    title: "Партнерські формати для громад і благодійних ініціатив",
-    description:
-      "Відкриваємо окремі умови для соціальних проєктів, коли потрібна програма відновлення для груп або адресної підтримки.",
-    detail:
-      "Можемо погодити спецумови для фондів, партнерські дні консультацій і стартові пакети під запит.",
-    badge: "Партнерство",
-    ctaLabel: null,
+    title: "Соціальні проєкти",
+    description: "Окремі умови для групових програм відновлення та адресної підтримки під запит.",
+    ctaLabel: "Детальніше",
+    ctaHref: "/sotsialni-proiekty",
     icon: CheckCircle2,
-    accentClass: "from-sky-200/50 via-white to-primary/10",
-    badgeClass: "bg-primary/10 text-primary",
     iconClass: "bg-primary/10 text-primary ring-primary/10",
   },
   {
     id: "senior",
-    eyebrow: "Акція 60+",
-    title: "Знижка 10% для пацієнтів віком 60+",
-    description:
-      "Діє на стартову консультацію та супровід первинного етапу програми, щоб розпочати відновлення було простіше.",
-    detail:
-      "Добрий варіант, якщо потрібен м’якший старт, планування навантаження та комфортний темп занять.",
-    badge: "10% знижка",
-    ctaLabel: null,
+    title: "Акція 60+",
+    description: "Знижка 10% на стартову консультацію та супровід первинного етапу програми.",
+    ctaLabel: "Детальніше",
+    ctaHref: "#documents",
     icon: CalendarDays,
-    accentClass: "from-amber-100 via-white to-orange-50",
-    badgeClass: "bg-amber-100 text-amber-700",
     iconClass: "bg-amber-100 text-amber-600 ring-amber-200/70",
   },
 ] as const;
@@ -346,7 +329,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           />
         </PageSection>
 
-        <section id="for-whom" className="scroll-mt-24 bg-soft-blue py-12 sm:py-20">
+        <section id="for-whom" className="scroll-mt-24 bg-white py-12 sm:py-20">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
             <div className="text-center">
               <h2 className="mx-auto max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-4xl">
@@ -849,12 +832,11 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
                   ))}
                 </ul>
 
-                <div
-                  className="pointer-events-none absolute -bottom-5 right-3 hidden text-[6rem] font-black leading-none text-red-100 lg:block"
+                <Ambulance
+                  className="pointer-events-none absolute bottom-2 right-3 hidden h-36 w-36 text-red-100 lg:block xl:h-44 xl:w-44"
+                  strokeWidth={1.35}
                   aria-hidden
-                >
-                  103
-                </div>
+                />
               </div>
             </div>
           </div>
@@ -981,7 +963,8 @@ function ProgramCard({
 }) {
   const duration = program.duration === "За програмою" ? "Індивідуально" : program.duration;
   const isPopular = Boolean(program.isPopular);
-  const priceLabel = program.id === "indyvidualna" ? "Уточнюйте" : program.priceLabel || "Уточнюйте";
+  const priceLabel =
+    program.id === "indyvidualna" ? "Уточнюйте" : program.priceLabel || "Уточнюйте";
 
   return (
     <article
@@ -1085,10 +1068,13 @@ function MilitaryInfoCard() {
 
   const activeHighlight = SUPPORT_HIGHLIGHTS[activeIndex];
   const Icon = activeHighlight.icon;
+  const isAnchorLink = activeHighlight.ctaHref.startsWith("#");
+  const buttonClassName =
+    "mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90";
 
   return (
     <aside
-      className="relative isolate flex min-h-[320px] overflow-hidden rounded-2xl border border-blue-100 bg-[linear-gradient(160deg,rgba(255,255,255,1)_0%,rgba(239,246,255,0.94)_52%,rgba(236,253,245,0.92)_100%)] p-6 shadow-sm"
+      className="relative isolate flex min-h-[320px] overflow-hidden rounded-2xl border border-blue-100 bg-[linear-gradient(160deg,rgba(255,255,255,1)_0%,rgba(239,246,255,0.94)_52%,rgba(236,253,245,0.92)_100%)] p-5 shadow-sm"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -1102,16 +1088,12 @@ function MilitaryInfoCard() {
       />
 
       <div className="relative flex w-full flex-col">
-        <div className="inline-flex w-fit rounded-full border border-primary/12 bg-white/78 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-navy/55 shadow-sm backdrop-blur-sm">
-          <span>{activeHighlight.eyebrow}</span>
-        </div>
-
         <div
           key={activeHighlight.id}
-          className="mt-4 flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500"
+          className="flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500"
           aria-live="polite"
         >
-          <div className="flex items-start justify-between gap-4">
+          <div className="flex items-center gap-4">
             <span
               className={cn(
                 "flex size-14 shrink-0 items-center justify-center rounded-2xl ring-1",
@@ -1120,49 +1102,37 @@ function MilitaryInfoCard() {
             >
               <Icon className="size-7" strokeWidth={2} />
             </span>
-            <span
-              className={cn(
-                "inline-flex rounded-full px-3 py-1 text-xs font-semibold",
-                activeHighlight.badgeClass,
-              )}
-            >
-              {activeHighlight.badge}
-            </span>
           </div>
 
-          <h3 className="mt-5 text-xl font-extrabold leading-snug text-navy">
+          <h3 className="mt-5 max-w-[12ch] text-xl font-extrabold leading-snug text-navy">
             {activeHighlight.title}
           </h3>
-          <p className="mt-3 text-sm leading-relaxed text-navy/72">{activeHighlight.description}</p>
-
-          <div
-            className={cn(
-              "mt-5 rounded-2xl border border-white/70 bg-gradient-to-br p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)]",
-              activeHighlight.accentClass,
-            )}
-          >
-            <p className="text-sm leading-relaxed text-navy/80">{activeHighlight.detail}</p>
-          </div>
+          <p className="mt-3 max-w-[24ch] text-sm leading-relaxed text-navy/72">
+            {activeHighlight.description}
+          </p>
 
           {activeHighlight.ctaLabel && (
-            <a
-              href="#documents"
-              onClick={(event) => {
-                event.preventDefault();
-                document
-                  .getElementById("documents")
-                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-              className="mt-5 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              {activeHighlight.ctaLabel}
-              <ArrowRight className="size-4" />
-            </a>
+            isAnchorLink ? (
+              <a
+                href={activeHighlight.ctaHref}
+                onClick={(event) => {
+                  event.preventDefault();
+                  document
+                    .getElementById(activeHighlight.ctaHref.slice(1))
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className={buttonClassName}
+              >
+                {activeHighlight.ctaLabel}
+                <ArrowRight className="size-4" />
+              </a>
+            ) : (
+              <AppLink to={activeHighlight.ctaHref} className={buttonClassName}>
+                {activeHighlight.ctaLabel}
+                <ArrowRight className="size-4" />
+              </AppLink>
+            )
           )}
-
-          <p className="mt-auto pt-5 text-xs leading-relaxed text-navy/55">
-            Умови участі та актуальність акцій уточнюйте в адміністратора.
-          </p>
         </div>
       </div>
     </aside>

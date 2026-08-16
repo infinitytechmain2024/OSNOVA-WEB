@@ -3,11 +3,11 @@ import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
 import { $ as ExternalLink, B as House, Ct as BadgeCheck, D as Microscope, Et as ArrowRight, G as HandHeart, H as HeartPulse, I as Layers, J as FlaskConical, K as GraduationCap, M as MapPin, N as Mail, O as MessageSquare, Ot as Ambulance, S as Package, St as BookOpen, T as Navigation, V as Heart, W as Handshake, X as FileText, _ as Search, a as Users, at as ClipboardPlus, b as Phone, bt as Building2, d as TriangleAlert, et as Dumbbell, f as Stethoscope, ft as ChevronUp, g as Send, gt as Check, h as Share2, ht as ChevronDown, i as Wrench, j as MapPinned, k as MessageCircle, kt as Activity, m as ShieldCheck, mt as ChevronLeft, nt as CloudUpload, ot as ClipboardList, p as Sparkles, pt as ChevronRight, rt as Clock, s as UserRoundCheck, st as ClipboardCheck, tt as Compass, u as Truck, ut as CircleCheck, v as Route, vt as CalendarDays, x as PhoneCall, y as Presentation } from "./_libs/lucide-react.mjs";
 import { C as siteTree, S as service_sports_default, _ as getBreadcrumbs, a as ConsultationForm, b as service_checkup_default, c as IMAGES, d as SiteFooter, f as SiteHeader, g as ergometer_default, h as ecg_review_default, i as CONTACTS, l as PageContainer, m as cpet_test_default, n as Breadcrumbs, p as cn, r as CARDIO_REHAB_PROGRAMS, s as FAQAccordion, t as AppLink, u as SectionHeader$1, v as getNodeById, w as useConsultationModal, x as service_rehab_default, y as getNodeByRoute } from "./_ssr/blocks-qYXwqIeb.mjs";
-import { t as Route$1 } from "./_-Bymu7i4O.mjs";
+import { t as Route$1 } from "./_-CbPK8u5c.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-4KYyX4-z.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as medical_assessment_default, c as partner_heart_default, d as partner_sytenko_default, i as companyOverviewCtaClassName, l as partner_ifnmu_default, n as FAQConsultationCTA, o as partner_asmu_default, r as balance_reference_card_default, s as partner_chnu_default, t as CompanyOverviewSection, u as partner_karpatska_akademiia_default } from "./_ssr/company-overview-section-B5K0sQX0.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-2jsCruvG.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-lUeCHXdA.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -1479,41 +1479,29 @@ var CARDIO_PROGRAMS = CARDIO_REHAB_PROGRAMS.map((program) => ({
 var SUPPORT_HIGHLIGHTS = [
 	{
 		id: "military",
-		eyebrow: "Для військових",
-		title: "Спеціальні умови для військових і ветеранів",
-		description: "Діють спеціальні умови на програму відновлення для військових і ветеранів, а також допомагаємо швидше узгодити старт після попереднього розгляду документів.",
-		detail: "Пріоритетний розгляд заявки, гнучкий графік занять і адаптація програми під поточний стан.",
-		badge: "Підтримка",
+		title: "Для військових і ветеранів",
+		description: "Спеціальні умови на програму відновлення та швидший старт після розгляду документів.",
 		ctaLabel: "Детальніше",
+		ctaHref: "#documents",
 		icon: Heart,
-		accentClass: "from-brand-green/25 via-white to-brand-green/10",
-		badgeClass: "bg-brand-green/15 text-emerald-700",
 		iconClass: "bg-brand-green/15 text-brand-green ring-brand-green/15"
 	},
 	{
 		id: "social",
-		eyebrow: "Соціальні проєкти",
-		title: "Партнерські формати для громад і благодійних ініціатив",
-		description: "Відкриваємо окремі умови для соціальних проєктів, коли потрібна програма відновлення для груп або адресної підтримки.",
-		detail: "Можемо погодити спецумови для фондів, партнерські дні консультацій і стартові пакети під запит.",
-		badge: "Партнерство",
-		ctaLabel: null,
+		title: "Соціальні проєкти",
+		description: "Окремі умови для групових програм відновлення та адресної підтримки під запит.",
+		ctaLabel: "Детальніше",
+		ctaHref: "/sotsialni-proiekty",
 		icon: CircleCheck,
-		accentClass: "from-sky-200/50 via-white to-primary/10",
-		badgeClass: "bg-primary/10 text-primary",
 		iconClass: "bg-primary/10 text-primary ring-primary/10"
 	},
 	{
 		id: "senior",
-		eyebrow: "Акція 60+",
-		title: "Знижка 10% для пацієнтів віком 60+",
-		description: "Діє на стартову консультацію та супровід первинного етапу програми, щоб розпочати відновлення було простіше.",
-		detail: "Добрий варіант, якщо потрібен м’якший старт, планування навантаження та комфортний темп занять.",
-		badge: "10% знижка",
-		ctaLabel: null,
+		title: "Акція 60+",
+		description: "Знижка 10% на стартову консультацію та супровід первинного етапу програми.",
+		ctaLabel: "Детальніше",
+		ctaHref: "#documents",
 		icon: CalendarDays,
-		accentClass: "from-amber-100 via-white to-orange-50",
-		badgeClass: "bg-amber-100 text-amber-700",
 		iconClass: "bg-amber-100 text-amber-600 ring-amber-200/70"
 	}
 ];
@@ -2110,10 +2098,10 @@ function TimingSection({ emergencyBody }) {
 											className: "flex gap-3 text-sm leading-relaxed text-navy/80 sm:text-base",
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "mt-2.5 size-2 shrink-0 rounded-full bg-red-500" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: item })]
 										}, item))
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "pointer-events-none absolute -bottom-5 right-3 hidden text-[6rem] font-black leading-none text-red-100 lg:block",
-										"aria-hidden": true,
-										children: "103"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Ambulance, {
+										className: "pointer-events-none absolute bottom-2 right-3 hidden h-36 w-36 text-red-100 lg:block xl:h-44 xl:w-44",
+										strokeWidth: 1.35,
+										"aria-hidden": true
 									})]
 								})
 							})]
@@ -2223,8 +2211,10 @@ function MilitaryInfoCard() {
 	}, [isPaused]);
 	const activeHighlight = SUPPORT_HIGHLIGHTS[activeIndex];
 	const Icon = activeHighlight.icon;
+	const isAnchorLink = activeHighlight.ctaHref.startsWith("#");
+	const buttonClassName = "mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90";
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
-		className: "relative isolate flex min-h-[320px] overflow-hidden rounded-2xl border border-blue-100 bg-[linear-gradient(160deg,rgba(255,255,255,1)_0%,rgba(239,246,255,0.94)_52%,rgba(236,253,245,0.92)_100%)] p-6 shadow-sm",
+		className: "relative isolate flex min-h-[320px] overflow-hidden rounded-2xl border border-blue-100 bg-[linear-gradient(160deg,rgba(255,255,255,1)_0%,rgba(239,246,255,0.94)_52%,rgba(236,253,245,0.92)_100%)] p-5 shadow-sm",
 		onMouseEnter: () => setIsPaused(true),
 		onMouseLeave: () => setIsPaused(false),
 		children: [
@@ -2236,61 +2226,48 @@ function MilitaryInfoCard() {
 				className: "absolute -bottom-12 -right-10 h-36 w-36 rounded-full bg-primary/10 blur-3xl",
 				"aria-hidden": true
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "relative flex w-full flex-col",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "inline-flex w-fit rounded-full border border-primary/12 bg-white/78 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-navy/55 shadow-sm backdrop-blur-sm",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: activeHighlight.eyebrow })
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mt-4 flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500",
 					"aria-live": "polite",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-start justify-between gap-4",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex items-center gap-4",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: cn("flex size-14 shrink-0 items-center justify-center rounded-2xl ring-1", activeHighlight.iconClass),
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
 									className: "size-7",
 									strokeWidth: 2
 								})
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: cn("inline-flex rounded-full px-3 py-1 text-xs font-semibold", activeHighlight.badgeClass),
-								children: activeHighlight.badge
-							})]
+							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-							className: "mt-5 text-xl font-extrabold leading-snug text-navy",
+							className: "mt-5 max-w-[12ch] text-xl font-extrabold leading-snug text-navy",
 							children: activeHighlight.title
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-3 text-sm leading-relaxed text-navy/72",
+							className: "mt-3 max-w-[24ch] text-sm leading-relaxed text-navy/72",
 							children: activeHighlight.description
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: cn("mt-5 rounded-2xl border border-white/70 bg-gradient-to-br p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)]", activeHighlight.accentClass),
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-sm leading-relaxed text-navy/80",
-								children: activeHighlight.detail
-							})
-						}),
-						activeHighlight.ctaLabel && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-							href: "#documents",
+						activeHighlight.ctaLabel && (isAnchorLink ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+							href: activeHighlight.ctaHref,
 							onClick: (event) => {
 								event.preventDefault();
-								document.getElementById("documents")?.scrollIntoView({
+								document.getElementById(activeHighlight.ctaHref.slice(1))?.scrollIntoView({
 									behavior: "smooth",
 									block: "start"
 								});
 							},
-							className: "mt-5 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90",
+							className: buttonClassName,
 							children: [activeHighlight.ctaLabel, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4" })]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-auto pt-5 text-xs leading-relaxed text-navy/55",
-							children: "Умови участі та актуальність акцій уточнюйте в адміністратора."
-						})
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppLink, {
+							to: activeHighlight.ctaHref,
+							className: buttonClassName,
+							children: [activeHighlight.ctaLabel, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4" })]
+						}))
 					]
-				}, activeHighlight.id)]
+				}, activeHighlight.id)
 			})
 		]
 	});
