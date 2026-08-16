@@ -1303,24 +1303,25 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
             aria-hidden
           />
 
-          <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="relative grid gap-8 lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
             <div className="max-w-2xl lg:py-6">
               <span className="inline-flex rounded-full border border-primary/12 bg-white/75 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary shadow-[0_10px_25px_rgba(31,61,120,0.06)] backdrop-blur-sm sm:px-5">
-                Персональна оцінка перед стартом
+                Індивідуальна програма відновлення
               </span>
 
               <h2 className="mt-6 max-w-[13ch] text-3xl font-extrabold leading-[1.08] text-navy sm:text-4xl lg:text-[3.4rem]">
-                Зробіть перший крок до безпечного відновлення
+                Розпочніть кардіореабілітацію під наглядом фахівців
               </h2>
 
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-navy/72 sm:text-lg">
-                Надішліть виписку, висновки лікаря або результати обстежень, щоб команда могла
-                попередньо оцінити ваш стан і підготувати наступні кроки ще до першого контакту.
+                Ми підберемо програму кардіологічної реабілітації з урахуванням вашого діагнозу,
+                перенесеного втручання, поточного стану та цілей відновлення.
               </p>
 
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-navy/60 sm:text-base">
-                Після розгляду адміністратор зв&apos;яжеться з вами, пояснить, з чого краще почати,
-                та підкаже, чи потрібна консультація або додаткові обстеження.
+                Якщо у вас уже є виписка або результати обстежень, надішліть їх заздалегідь. Це
+                допоможе команді швидше зорієнтуватися у вашому випадку та запропонувати оптимальний
+                формат старту програми.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -1343,7 +1344,7 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
               </div>
             </div>
 
-            <div className="relative min-h-[280px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)] sm:min-h-[340px] lg:min-h-[420px] lg:max-w-[540px] lg:justify-self-end">
+            <div className="relative min-h-[220px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)] sm:min-h-[260px] lg:min-h-[300px] lg:max-w-[420px] lg:justify-self-end">
               <img
                 src={consultationImg}
                 alt="Лікар консультує пацієнта та формує план відновлення"
