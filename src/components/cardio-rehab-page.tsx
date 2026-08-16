@@ -27,6 +27,13 @@ import type { FAQItem, ServiceMethodCard, SiteNode } from "@/data/types";
 import { cn } from "@/lib/utils";
 import { CARDIO_REHAB_PROGRAMS } from "@/data/cardio-rehab-pricing";
 import { CONTACTS } from "@/data/site-tree";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import checkupImg from "@/assets/service-checkup.jpg";
 import cpetImg from "@/assets/cpet-test.jpg";
 import ecgImg from "@/assets/ecg-review.jpg";
@@ -232,6 +239,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
   const [introExpanded, setIntroExpanded] = React.useState(false);
   const [showAllConditions, setShowAllConditions] = React.useState(false);
   const [faqExpanded, setFaqExpanded] = React.useState(false);
+  const [documentsModalOpen, setDocumentsModalOpen] = React.useState(false);
 
   const allConditionCards = CARDIO_CONDITIONS;
   const visibleConditionCards = showAllConditions
@@ -473,7 +481,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
         <OtherServicesSlider />
 
         <DocumentsReviewSection
-          onConsultationClick={() => openModal("Записатися на консультацію")}
+          onOpenDocumentsModal={() => setDocumentsModalOpen(true)}
         />
 
         {faqItems.length > 0 && (
@@ -524,6 +532,10 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
         </PageSection>
       </main>
 
+      <MedicalDocumentsModal
+        open={documentsModalOpen}
+        onOpenChange={setDocumentsModalOpen}
+      />
       <SiteFooter />
     </div>
   );
@@ -1282,7 +1294,108 @@ function OtherServicesSlider() {
   );
 }
 
-function DocumentsReviewSection({ onConsultationClick }: { onConsultationClick: () => void }) {
+function DocumentsReviewSection({
+  onOpenDocumentsModal,
+}: {
+  onOpenDocumentsModal: () => void;
+}) {
+  return (
+    <section id="documents" className="scroll-mt-24 py-12 sm:py-20">
+      <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+        <div className="relative overflow-hidden rounded-[32px] border border-blue-100/90 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.98)_0%,rgba(238,245,255,0.96)_50%,rgba(227,238,255,0.94)_100%)] p-5 shadow-[0_22px_60px_rgba(31,61,120,0.08)] sm:p-8 lg:p-10">
+          <div
+            className="pointer-events-none absolute -left-16 top-10 h-48 w-48 rounded-full bg-white/80 blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute right-0 top-0 h-56 w-56 rounded-full bg-primary/10 blur-3xl"
+            aria-hidden
+          />
+
+          <div className="relative grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-stretch">
+            <div className="max-w-2xl lg:py-6">
+              <span className="inline-flex rounded-full border border-primary/12 bg-white/75 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary shadow-[0_10px_25px_rgba(31,61,120,0.06)] backdrop-blur-sm sm:px-5">
+                Перший крок до відновлення
+              </span>
+
+              <h2 className="mt-6 max-w-[13ch] text-3xl font-extrabold leading-[1.08] text-navy sm:text-4xl lg:text-[3.4rem]">
+                Надішліть медичні документи для попереднього розгляду
+              </h2>
+
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-navy/72 sm:text-lg">
+                Надішліть виписку, висновки лікаря або результати обстежень, і команда зможе
+                заздалегідь ознайомитися з вашим випадком перед першим контактом.
+              </p>
+
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-navy/60 sm:text-base">
+                Після попереднього розгляду адміністратор зв&apos;яжеться з вами, пояснить наступні
+                кроки та підкаже, чи потрібна додаткова консультація.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <button
+                  type="button"
+                  onClick={onOpenDocumentsModal}
+                  className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-[18px] bg-[linear-gradient(135deg,#2563eb_0%,#1d4ed8_100%)] px-6 py-4 text-sm font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.24)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(37,99,235,0.3)] sm:px-7"
+                >
+                  <UploadCloud className="size-5" />
+                  Надіслати медичні документи
+                </button>
+
+                <a
+                  href={CONTACTS.phoneHref}
+                  className="inline-flex min-h-14 items-center justify-center gap-3 rounded-[18px] border border-blue-100 bg-white/86 px-6 py-4 text-sm font-bold text-navy shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm transition-colors hover:border-primary/35 hover:bg-white sm:px-7"
+                >
+                  <Phone className="size-5 text-primary" />
+                  {CONTACTS.phone}
+                </a>
+              </div>
+            </div>
+
+            <div className="relative min-h-[360px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)] sm:min-h-[420px] lg:min-h-[520px]">
+              <img
+                src={consultationImg}
+                alt="Лікар консультує пацієнта та формує план відновлення"
+                loading="lazy"
+                width={2560}
+                height={1440}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+              <div
+                className="absolute inset-0 bg-[linear-gradient(180deg,rgba(233,241,255,0.14)_0%,rgba(233,241,255,0.03)_42%,rgba(255,255,255,0.1)_100%)]"
+                aria-hidden
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MedicalDocumentsModal({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="overflow-hidden border-none bg-white p-0 shadow-[0_32px_90px_rgba(15,23,42,0.32)] sm:max-w-3xl sm:rounded-[32px]">
+        <DialogHeader className="sr-only">
+          <DialogTitle>Надіслати медичні документи</DialogTitle>
+          <DialogDescription>
+            Форма для надсилання медичних документів на попередній розгляд.
+          </DialogDescription>
+        </DialogHeader>
+        <MedicalDocumentsForm className="rounded-none border-0 shadow-none" />
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function MedicalDocumentsForm({ className }: { className?: string }) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [files, setFiles] = React.useState<File[]>([]);
   const [name, setName] = React.useState("");
@@ -1348,292 +1461,204 @@ function DocumentsReviewSection({ onConsultationClick }: { onConsultationClick: 
   };
 
   return (
-    <section id="documents" className="scroll-mt-24 py-12 sm:py-20">
-      <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-        <div className="space-y-6 sm:space-y-8">
-          <div className="relative overflow-hidden rounded-[32px] border border-blue-100/90 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.98)_0%,rgba(238,245,255,0.96)_50%,rgba(227,238,255,0.94)_100%)] p-5 shadow-[0_22px_60px_rgba(31,61,120,0.08)] sm:p-8 lg:p-10">
-            <div
-              className="pointer-events-none absolute -left-16 top-10 h-48 w-48 rounded-full bg-white/80 blur-3xl"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute right-0 top-0 h-56 w-56 rounded-full bg-primary/10 blur-3xl"
-              aria-hidden
-            />
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-[32px] border border-blue-100/90 bg-white p-5 shadow-[0_22px_60px_rgba(31,61,120,0.08)] sm:p-8 lg:p-10",
+        className,
+      )}
+    >
+      <div
+        className="pointer-events-none absolute -right-14 top-0 h-52 w-52 rounded-full bg-primary/8 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 left-8 h-40 w-40 rounded-full bg-sky-100/70 blur-3xl"
+        aria-hidden
+      />
 
-            <div className="relative grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-              <div className="max-w-2xl">
-                <span className="inline-flex rounded-full border border-primary/12 bg-white/75 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary shadow-[0_10px_25px_rgba(31,61,120,0.06)] backdrop-blur-sm sm:px-5">
-                  Перший крок до відновлення
-                </span>
+      <div className="relative">
+        <h3 className="max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-[2.2rem]">
+          Надішліть медичні документи для попереднього розгляду
+        </h3>
+        <p className="mt-3 max-w-3xl text-base leading-relaxed text-navy/68 sm:text-lg">
+          Це допоможе лікарю ознайомитися з вашим станом і підготувати персональні рекомендації
+          ще до першого контакту.
+        </p>
 
-                <h2 className="mt-6 max-w-[14ch] text-3xl font-extrabold leading-[1.08] text-navy sm:text-4xl lg:text-[3.4rem]">
-                  Замовте програму кардіологічної реабілітації
-                </h2>
+        <form
+          className="mt-8"
+          noValidate
+          onSubmit={(event) => {
+            event.preventDefault();
 
-                <p className="mt-5 max-w-2xl text-base leading-relaxed text-navy/72 sm:text-lg">
-                  Наші лікарі розроблять персональний план відновлення з урахуванням вашого стану,
-                  анамнезу та цілей. Ми підготуємо все необхідне, щоб ви почувалися впевнено на
-                  кожному етапі.
-                </p>
+            if (!files.length) {
+              setSubmitState({
+                type: "error",
+                message: "Додайте хоча б один медичний документ для попереднього розгляду.",
+              });
+              return;
+            }
 
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <button
-                    type="button"
-                    onClick={onConsultationClick}
-                    className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-[18px] bg-[linear-gradient(135deg,#2563eb_0%,#1d4ed8_100%)] px-6 py-4 text-sm font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.24)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(37,99,235,0.3)] sm:px-7"
-                  >
-                    <CalendarDays className="size-5" />
-                    Замовити консультацію
-                  </button>
+            if (!name.trim()) {
+              setSubmitState({
+                type: "error",
+                message: "Вкажіть ваше ім’я, щоб ми знали, як до вас звертатися.",
+              });
+              return;
+            }
 
-                  <a
-                    href={CONTACTS.phoneHref}
-                    className="inline-flex min-h-14 items-center justify-center gap-3 rounded-[18px] border border-blue-100 bg-white/86 px-6 py-4 text-sm font-bold text-navy shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm transition-colors hover:border-primary/35 hover:bg-white sm:px-7"
-                  >
-                    <Phone className="size-5 text-primary" />
-                    {CONTACTS.phone}
-                  </a>
-                </div>
-              </div>
+            if (!phone.trim()) {
+              setSubmitState({
+                type: "error",
+                message: "Вкажіть номер телефону для зв’язку з адміністратором.",
+              });
+              return;
+            }
 
-              <div className="relative min-h-[300px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)]">
-                <img
-                  src={consultationImg}
-                  alt="Лікар консультує пацієнта та формує план відновлення"
-                  loading="lazy"
-                  width={2560}
-                  height={1440}
-                  className="absolute inset-0 h-full w-full object-cover object-center"
-                />
+            if (!validatePhone(phone)) {
+              setSubmitState({
+                type: "error",
+                message: "Введіть коректний номер телефону у форматі +380 XX XXX XX XX.",
+              });
+              return;
+            }
+
+            setSubmitState({
+              type: "success",
+              message:
+                "Документи надіслано. Після попереднього розгляду адміністратор зв’яжеться з вами.",
+            });
+            setFiles([]);
+            setName("");
+            setPhone("");
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => inputRef.current?.click()}
+            onDragOver={(event) => {
+              event.preventDefault();
+              setDragActive(true);
+            }}
+            onDragLeave={(event) => {
+              event.preventDefault();
+              setDragActive(false);
+            }}
+            onDrop={(event) => {
+              event.preventDefault();
+              setDragActive(false);
+              applyFiles(Array.from(event.dataTransfer.files || []));
+            }}
+            className={cn(
+              "group flex w-full flex-col items-center justify-center rounded-[24px] border border-dashed px-6 py-10 text-center transition-all sm:px-8 sm:py-12",
+              dragActive
+                ? "border-primary bg-soft-blue/80 shadow-[0_18px_40px_rgba(37,99,235,0.12)]"
+                : "border-primary/20 bg-[linear-gradient(180deg,rgba(248,251,255,0.9)_0%,rgba(255,255,255,0.96)_100%)] hover:border-primary/35 hover:bg-soft-blue/40",
+            )}
+          >
+            <span className="flex size-[72px] items-center justify-center rounded-full bg-primary/10 text-primary sm:size-20">
+              <UploadCloud className="size-9 sm:size-10" strokeWidth={1.85} />
+            </span>
+            <span className="mt-5 text-xl font-bold leading-tight text-navy">Додайте файли</span>
+            <span className="mt-2 text-sm leading-relaxed text-navy/58 sm:text-base">
+              PDF, JPG, PNG (до 10 МБ на файл)
+            </span>
+            <span className="mt-1 text-xs leading-relaxed text-navy/48 sm:text-sm">
+              Перетягніть файли сюди або натисніть, щоб вибрати
+            </span>
+          </button>
+
+          <input
+            ref={inputRef}
+            type="file"
+            accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+            multiple
+            className="hidden"
+            onChange={onFileChange}
+          />
+
+          {files.length > 0 && (
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
+              {files.map((file) => (
                 <div
-                  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(233,241,255,0.18)_0%,rgba(233,241,255,0.06)_38%,rgba(255,255,255,0.2)_100%)]"
-                  aria-hidden
-                />
-                <div
-                  className="absolute inset-y-0 left-0 w-full bg-[linear-gradient(90deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_32%,rgba(255,255,255,0)_100%)]"
-                  aria-hidden
-                />
-
-                <div className="absolute right-5 top-5 rounded-[20px] border border-white/85 bg-white/90 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.12)] backdrop-blur-sm sm:right-6 sm:top-6 sm:px-5">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
-                    Формуємо план
-                  </p>
-                  <p className="mt-1 text-sm font-semibold leading-snug text-navy">
-                    після аналізу документів
-                  </p>
-                </div>
-
-                <div className="absolute inset-x-5 bottom-5 rounded-[20px] border border-white/85 bg-white/92 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.12)] backdrop-blur-sm sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-[280px] sm:px-5">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
-                    Індивідуальний підхід
-                  </p>
-                  <p className="mt-1 text-sm font-semibold leading-snug text-navy">
-                    з урахуванням вашого стану, анамнезу та цілей
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-[32px] border border-blue-100/90 bg-white p-5 shadow-[0_22px_60px_rgba(31,61,120,0.08)] sm:p-8 lg:p-10">
-            <div
-              className="pointer-events-none absolute -right-14 top-0 h-52 w-52 rounded-full bg-primary/8 blur-3xl"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute bottom-0 left-8 h-40 w-40 rounded-full bg-sky-100/70 blur-3xl"
-              aria-hidden
-            />
-
-            <div className="relative">
-              <h3 className="max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-[2.2rem]">
-                Надішліть медичні документи для попереднього розгляду
-              </h3>
-              <p className="mt-3 max-w-3xl text-base leading-relaxed text-navy/68 sm:text-lg">
-                Це допоможе лікарю ознайомитися з вашим станом і підготувати персональні
-                рекомендації ще до першого контакту.
-              </p>
-
-              <form
-                className="mt-8"
-                noValidate
-                onSubmit={(event) => {
-                  event.preventDefault();
-
-                  if (!files.length) {
-                    setSubmitState({
-                      type: "error",
-                      message: "Додайте хоча б один медичний документ для попереднього розгляду.",
-                    });
-                    return;
-                  }
-
-                  if (!name.trim()) {
-                    setSubmitState({
-                      type: "error",
-                      message: "Вкажіть ваше ім’я, щоб ми знали, як до вас звертатися.",
-                    });
-                    return;
-                  }
-
-                  if (!phone.trim()) {
-                    setSubmitState({
-                      type: "error",
-                      message: "Вкажіть номер телефону для зв’язку з адміністратором.",
-                    });
-                    return;
-                  }
-
-                  if (!validatePhone(phone)) {
-                    setSubmitState({
-                      type: "error",
-                      message: "Введіть коректний номер телефону у форматі +380 XX XXX XX XX.",
-                    });
-                    return;
-                  }
-
-                  setSubmitState({
-                    type: "success",
-                    message:
-                      "Документи надіслано. Після попереднього розгляду адміністратор зв’яжеться з вами.",
-                  });
-                  setFiles([]);
-                  setName("");
-                  setPhone("");
-                }}
-              >
-                <button
-                  type="button"
-                  onClick={() => inputRef.current?.click()}
-                  onDragOver={(event) => {
-                    event.preventDefault();
-                    setDragActive(true);
-                  }}
-                  onDragLeave={(event) => {
-                    event.preventDefault();
-                    setDragActive(false);
-                  }}
-                  onDrop={(event) => {
-                    event.preventDefault();
-                    setDragActive(false);
-                    applyFiles(Array.from(event.dataTransfer.files || []));
-                  }}
-                  className={cn(
-                    "group flex w-full flex-col items-center justify-center rounded-[24px] border border-dashed px-6 py-10 text-center transition-all sm:px-8 sm:py-12",
-                    dragActive
-                      ? "border-primary bg-soft-blue/80 shadow-[0_18px_40px_rgba(37,99,235,0.12)]"
-                      : "border-primary/20 bg-[linear-gradient(180deg,rgba(248,251,255,0.9)_0%,rgba(255,255,255,0.96)_100%)] hover:border-primary/35 hover:bg-soft-blue/40",
-                  )}
+                  key={`${file.name}-${file.size}`}
+                  className="flex items-center gap-3 rounded-[18px] border border-blue-100/90 bg-white/92 px-4 py-3 shadow-[0_10px_25px_rgba(31,61,120,0.04)]"
                 >
-                  <span className="flex size-[72px] items-center justify-center rounded-full bg-primary/10 text-primary sm:size-20">
-                    <UploadCloud className="size-9 sm:size-10" strokeWidth={1.85} />
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <FileText className="size-5" />
                   </span>
-                  <span className="mt-5 text-xl font-bold leading-tight text-navy">
-                    Додайте файли
-                  </span>
-                  <span className="mt-2 text-sm leading-relaxed text-navy/58 sm:text-base">
-                    PDF, JPG, PNG (до 10 МБ на файл)
-                  </span>
-                  <span className="mt-1 text-xs leading-relaxed text-navy/48 sm:text-sm">
-                    Перетягніть файли сюди або натисніть, щоб вибрати
-                  </span>
-                </button>
-
-                <input
-                  ref={inputRef}
-                  type="file"
-                  accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
-                  multiple
-                  className="hidden"
-                  onChange={onFileChange}
-                />
-
-                {files.length > 0 && (
-                  <div className="mt-5 grid gap-3 md:grid-cols-2">
-                    {files.map((file) => (
-                      <div
-                        key={`${file.name}-${file.size}`}
-                        className="flex items-center gap-3 rounded-[18px] border border-blue-100/90 bg-white/92 px-4 py-3 shadow-[0_10px_25px_rgba(31,61,120,0.04)]"
-                      >
-                        <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                          <FileText className="size-5" />
-                        </span>
-                        <div className="min-w-0">
-                          <p className="truncate text-sm font-semibold text-navy">{file.name}</p>
-                          <p className="mt-0.5 text-xs text-navy/55">{formatFileSize(file.size)}</p>
-                        </div>
-                      </div>
-                    ))}
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-semibold text-navy">{file.name}</p>
+                    <p className="mt-0.5 text-xs text-navy/55">{formatFileSize(file.size)}</p>
                   </div>
-                )}
-
-                <div className="mt-5 grid gap-3 lg:grid-cols-2">
-                  <label className="relative block">
-                    <span className="sr-only">Ваше ім’я</span>
-                    <input
-                      type="text"
-                      placeholder="Ваше ім’я"
-                      value={name}
-                      onChange={(event) => {
-                        setName(event.target.value);
-                        if (submitState.type !== "idle") {
-                          setSubmitState({ type: "idle", message: "" });
-                        }
-                      }}
-                      className="min-h-14 w-full rounded-[18px] border border-blue-100 bg-white px-5 text-sm font-medium text-navy outline-none transition-all placeholder:text-navy/36 focus:border-primary focus:shadow-[0_0_0_4px_rgba(37,99,235,0.08)]"
-                    />
-                  </label>
-
-                  <label className="relative block">
-                    <span className="sr-only">Номер телефону</span>
-                    <input
-                      type="tel"
-                      placeholder="Номер телефону"
-                      value={phone}
-                      onChange={(event) => {
-                        setPhone(event.target.value);
-                        if (submitState.type !== "idle") {
-                          setSubmitState({ type: "idle", message: "" });
-                        }
-                      }}
-                      className="min-h-14 w-full rounded-[18px] border border-blue-100 bg-white px-5 text-sm font-medium text-navy outline-none transition-all placeholder:text-navy/36 focus:border-primary focus:shadow-[0_0_0_4px_rgba(37,99,235,0.08)]"
-                    />
-                  </label>
                 </div>
-
-                <button
-                  type="submit"
-                  className="mt-5 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-[linear-gradient(90deg,rgba(37,99,235,0.46)_0%,#1d4ed8_100%)] px-6 py-4 text-sm font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.18)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(37,99,235,0.24)] sm:text-base"
-                >
-                  Надіслати документи
-                  <Send className="size-4 sm:size-5" />
-                </button>
-
-                {submitState.type !== "idle" && (
-                  <p
-                    className={cn(
-                      "mt-4 rounded-[18px] px-4 py-3 text-sm font-semibold leading-relaxed",
-                      submitState.type === "success"
-                        ? "border border-brand-green/25 bg-brand-green/10 text-navy"
-                        : "border border-red-200 bg-red-50 text-red-700",
-                    )}
-                    role={submitState.type === "success" ? "status" : "alert"}
-                  >
-                    {submitState.message}
-                  </p>
-                )}
-
-                <div className="mt-4 flex items-center justify-center gap-2 text-center text-xs font-medium text-navy/56 sm:text-sm">
-                  <ShieldCheck className="size-4 shrink-0 text-primary/70" />
-                  <span>Ваші дані захищені та не передаються третім особам</span>
-                </div>
-              </form>
+              ))}
             </div>
+          )}
+
+          <div className="mt-5 grid gap-3 lg:grid-cols-2">
+            <label className="relative block">
+              <span className="sr-only">Ваше ім’я</span>
+              <input
+                type="text"
+                placeholder="Ваше ім’я"
+                value={name}
+                onChange={(event) => {
+                  setName(event.target.value);
+                  if (submitState.type !== "idle") {
+                    setSubmitState({ type: "idle", message: "" });
+                  }
+                }}
+                className="min-h-14 w-full rounded-[18px] border border-blue-100 bg-white px-5 text-sm font-medium text-navy outline-none transition-all placeholder:text-navy/36 focus:border-primary focus:shadow-[0_0_0_4px_rgba(37,99,235,0.08)]"
+              />
+            </label>
+
+            <label className="relative block">
+              <span className="sr-only">Номер телефону</span>
+              <input
+                type="tel"
+                placeholder="Номер телефону"
+                value={phone}
+                onChange={(event) => {
+                  setPhone(event.target.value);
+                  if (submitState.type !== "idle") {
+                    setSubmitState({ type: "idle", message: "" });
+                  }
+                }}
+                className="min-h-14 w-full rounded-[18px] border border-blue-100 bg-white px-5 text-sm font-medium text-navy outline-none transition-all placeholder:text-navy/36 focus:border-primary focus:shadow-[0_0_0_4px_rgba(37,99,235,0.08)]"
+              />
+            </label>
           </div>
-        </div>
+
+          <button
+            type="submit"
+            className="mt-5 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-[linear-gradient(90deg,rgba(37,99,235,0.46)_0%,#1d4ed8_100%)] px-6 py-4 text-sm font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.18)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(37,99,235,0.24)] sm:text-base"
+          >
+            Надіслати документи
+            <Send className="size-4 sm:size-5" />
+          </button>
+
+          {submitState.type !== "idle" && (
+            <p
+              className={cn(
+                "mt-4 rounded-[18px] px-4 py-3 text-sm font-semibold leading-relaxed",
+                submitState.type === "success"
+                  ? "border border-brand-green/25 bg-brand-green/10 text-navy"
+                  : "border border-red-200 bg-red-50 text-red-700",
+              )}
+              role={submitState.type === "success" ? "status" : "alert"}
+            >
+              {submitState.message}
+            </p>
+          )}
+
+          <div className="mt-4 flex items-center justify-center gap-2 text-center text-xs font-medium text-navy/56 sm:text-sm">
+            <ShieldCheck className="size-4 shrink-0 text-primary/70" />
+            <span>Ваші дані захищені та не передаються третім особам</span>
+          </div>
+        </form>
       </div>
-    </section>
+    </div>
   );
 }
 
