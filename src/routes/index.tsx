@@ -11,7 +11,6 @@ import {
   Heart,
   Dumbbell,
   Phone,
-  Home,
   Users,
   ChevronRight,
   ChevronLeft,
@@ -30,12 +29,11 @@ import {
   Stethoscope,
   ClipboardList,
   Calendar,
-  MessageCircle,
-  ArrowUpRight,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { NewsCard } from "@/components/news-card";
+import { FAQConsultationCTA } from "@/components/faq-consultation-cta";
 import {
   Accordion,
   AccordionContent,
@@ -54,6 +52,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { NEWS_ARTICLES } from "@/data/news";
 import { useConsultationModal } from "@/components/consultation-form";
 import { RehabilitationMethodsSlider } from "@/components/rehabilitation-methods-slider";
+import { Breadcrumbs } from "@/components/blocks";
 import { CarouselNavigation } from "@/components/carousel-navigation";
 import { cn } from "@/lib/utils";
 
@@ -69,7 +68,6 @@ import educationConferenceImg from "@/assets/education-conference.png";
 import educationPracticalTrainingImg from "@/assets/education-practical-training-v2.jpg";
 import educationScienceEventImg from "@/assets/education-science-event-v2.jpg";
 import balanceReferenceCardImg from "@/assets/home/balance-reference-card.png";
-import medicalAssessmentImg from "@/assets/about/medical-assessment.jpg";
 import partnerAsmuLogo from "@/assets/partners/partner-asmu.png";
 import partnerChnuLogo from "@/assets/partners/partner-chnu.png";
 import partnerHeartLogo from "@/assets/partners/partner-heart.svg";
@@ -720,26 +718,25 @@ function BlogCarousel() {
 function HomePageAnchorNav() {
   return (
     <div className="border-b border-border/70 bg-white">
-      <div className="mx-auto flex max-w-[1600px] items-center gap-4 overflow-x-auto px-4 py-3 scrollbar-none sm:px-6 lg:px-10">
-        <a
-          href="#home"
-          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
-        >
-          <Home className="size-4 shrink-0" />
-          <span>Головна</span>
-        </a>
-        <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить:</p>
-        <nav aria-label="Розділи головної сторінки" className="flex min-w-max gap-2 sm:gap-3">
-          {HOME_PAGE_SECTION_LINKS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy/78 transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+      <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+        <Breadcrumbs items={[{ title: "Головна", route: "/" }]} className="pb-3 pt-4 sm:pt-4" />
+
+        <div className="overflow-x-auto pb-4 scrollbar-none">
+          <div className="flex min-w-max items-center gap-4 sm:gap-5">
+            <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить:</p>
+            <nav aria-label="Розділи головної сторінки" className="flex min-w-max gap-2 sm:gap-3">
+              {HOME_PAGE_SECTION_LINKS.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy/78 transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -1214,56 +1211,7 @@ function Index() {
             )}
           </div>
 
-          <div className="mx-auto mt-16 max-w-[1480px] px-6 lg:px-10">
-            <div className="overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white shadow-[0_32px_90px_-52px_rgba(15,23,42,0.3)]">
-              <div className="grid items-stretch gap-0 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1.08fr)]">
-                <div className="relative z-10 flex flex-col justify-center gap-6 px-8 py-9 sm:px-10 md:px-12 md:py-12 lg:px-16 lg:py-16">
-                  <span className="inline-flex w-fit items-center gap-3 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
-                    <MessageCircle className="size-4" />
-                    Індивідуальна консультація
-                  </span>
-
-                  <div className="max-w-[35rem]">
-                    <h3 className="text-2xl font-bold leading-[1.05] text-navy sm:text-3xl md:text-[2.4rem]">
-                      Не знайшли відповіді
-                      <br className="hidden sm:block" /> на своє питання?
-                    </h3>
-                    <p className="mt-5 text-sm leading-relaxed text-slate-600 md:text-base lg:text-[1.05rem]">
-                      Наша команда завжди готова допомогти. Зв'яжіться з нами — ми надамо
-                      індивідуальну консультацію та підберемо найкраще рішення для вашої ситуації.
-                    </p>
-                  </div>
-
-                  <div>
-                    <button
-                      type="button"
-                      onClick={() => openModal("Зв'язатися з нами")}
-                      className="inline-flex items-center gap-3 rounded-2xl bg-primary px-7 py-4 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.02] hover:bg-navy md:text-base"
-                    >
-                      Зв'язатися з нами <ArrowUpRight className="size-5" />
-                    </button>
-                  </div>
-                </div>
-
-                <div className="relative min-h-[320px] overflow-hidden lg:min-h-[460px]">
-                  <img
-                    src={medicalAssessmentImg}
-                    alt="Спеціаліст центру консультує пацієнтку перед відновленням"
-                    loading="lazy"
-                    className="absolute inset-0 size-full object-cover object-[62%_center] lg:scale-[1.02]"
-                    style={{
-                      WebkitMaskImage:
-                        "linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.16) 12%, rgba(0, 0, 0, 0.7) 30%, #000 44%)",
-                      maskImage:
-                        "linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.16) 12%, rgba(0, 0, 0, 0.7) 30%, #000 44%)",
-                    }}
-                  />
-                  <div className="pointer-events-none absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-white via-white/85 to-transparent blur-2xl sm:w-36 lg:w-44" />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/8 via-transparent to-white/10" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <FAQConsultationCTA className="mt-16" />
         </section>
 
         {/* 10.5. ПРО МЕТОДИКИ РЕАБІЛІТАЦІЇ */}
@@ -1276,12 +1224,12 @@ function Index() {
 
           <div className="relative mx-auto max-w-[1600px] px-6 lg:px-10">
             <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(460px,525px)] lg:gap-14 xl:gap-20">
-              <div className="max-w-[38rem] pt-2 lg:pt-0">
+              <div className="max-w-[41rem] pt-2 lg:pt-0">
                 <span className="inline-flex rounded-full border border-[#C9D8F1] bg-[#F4F8FF] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-primary shadow-[0_8px_18px_rgba(33,95,188,0.08)] sm:px-5 sm:text-xs">
                   Корисна інформація
                 </span>
 
-                <h2 className="mt-7 text-[2.55rem] font-extrabold leading-[0.98] tracking-[-0.04em] text-navy sm:text-[3rem] md:text-[3.45rem] lg:text-[4.15rem]">
+                <h2 className="mt-7 text-[2.55rem] font-extrabold leading-[0.98] tracking-[-0.04em] text-navy sm:text-[3rem] md:text-[3.25rem] lg:text-[3.45rem] xl:text-[3.72rem]">
                   <span className="block">Баланс — основа</span>
                   <span className="mt-2 block text-primary">здоров&apos;я та відновлення</span>
                 </h2>

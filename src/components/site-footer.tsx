@@ -50,7 +50,7 @@ function LinkColumn({
         {title}
       </h3>
       <div className="mt-3 h-px w-full bg-background/15" />
-      <ul className="mt-5 space-y-3">
+      <ul className="mt-5 flex-1 space-y-3">
         {items.map((i) => (
           <li key={i.route}>
             <AppLink
@@ -65,7 +65,7 @@ function LinkColumn({
       </ul>
       <AppLink
         to={allRoute}
-        className="inline-flex items-center gap-2 pt-6 text-sm font-semibold text-background transition-colors hover:text-brand-green"
+        className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold text-background transition-colors hover:text-brand-green"
       >
         {allLabel}
         <ArrowRight className="size-4" />
@@ -181,9 +181,9 @@ export function SiteFooter() {
               <div className="mt-6 h-px w-full bg-background/15" />
               <AppLink
                 to="/kontakty"
-                className="mt-auto inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 pt-3 text-xs font-bold uppercase tracking-[0.08em] text-primary-foreground transition-colors hover:bg-primary/90"
+                className="mt-auto inline-flex items-center justify-center rounded-lg bg-brand-green px-5 py-3 pt-3 text-xs font-bold uppercase tracking-[0.08em] text-brand-green-foreground transition-colors hover:bg-brand-green/90"
               >
-                Записатися на прийом
+                Записаться
               </AppLink>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import serviceRehab from "@/assets/service-rehab.jpg";
 import { ConsultationForm } from "@/components/consultation-form";
 import { Breadcrumbs, FAQAccordion, PageContainer, SectionHeader } from "@/components/blocks";
+import { FAQConsultationCTA } from "@/components/faq-consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { CONTACTS } from "@/data/site-tree";
@@ -142,133 +143,165 @@ function ParkingBadgeIcon({ className = "size-5 text-slate-600" }: { className?:
   );
 }
 
+function ContactAnchorNav() {
+  return (
+    <div className="sticky top-0 z-30 border-y border-border/70 bg-background/95 backdrop-blur-md shadow-[0_12px_32px_-28px_rgba(15,23,42,0.85)]">
+      <PageContainer className="py-3">
+        <div className="-mx-4 flex items-center gap-3 overflow-x-auto px-4 scrollbar-none sm:mx-0 sm:px-0">
+          <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить:</p>
+          <nav aria-label="Розділи сторінки контактів" className="flex min-w-max gap-2 sm:gap-3">
+            {CONTACT_PAGE_ANCHORS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="whitespace-nowrap rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy/78 transition-colors hover:border-primary/35 hover:bg-soft-blue hover:text-primary"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </PageContainer>
+    </div>
+  );
+}
+
 export function ContactsPage({ node }: { node: SiteNode }) {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
       {/* Breadcrumb Header */}
-      <PageContainer className="py-6 sm:py-8">
-        <Breadcrumbs items={getBreadcrumbs(node)} />
+      <PageContainer className="pt-6 pb-4 sm:pt-8 sm:pb-5">
+        <Breadcrumbs items={getBreadcrumbs(node)} className="pt-0" />
       </PageContainer>
+
+      <ContactAnchorNav />
 
       <main>
         {/* Top Hero Section */}
-        <PageContainer className="pb-12">
-          <SectionHeader
-            eyebrow="Контактна інформація"
-            eyebrowClassName="inline-flex items-center rounded-full border border-[#D5E1F4] bg-[#F5F8FE] px-4 py-2 text-[10px] font-bold tracking-[0.18em] text-[#215FBC] sm:text-[11px]"
-            title="Як з нами зв'язатися"
-            text="Оберіть найзручніший спосіб зв'язку — зателефонуйте, напишіть у месенджер або заповніть форму зворотного зв'язку. Ми завжди раді надати підтримку."
-          />
+        <section id="quick-contacts" className="scroll-mt-32">
+          <PageContainer className="pb-12">
+            <SectionHeader
+              eyebrow="Контактна інформація"
+              eyebrowClassName="inline-flex items-center rounded-full border border-[#D5E1F4] bg-[#F5F8FE] px-4 py-2 text-[10px] font-bold tracking-[0.18em] text-[#215FBC] sm:text-[11px]"
+              title="Як з нами зв'язатися"
+              text="Оберіть найзручніший спосіб зв'язку — зателефонуйте, напишіть у месенджер або заповніть форму зворотного зв'язку. Ми завжди раді надати підтримку."
+            />
 
-          {/* Quick Contact Cards Grid */}
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {/* Phone Card */}
-            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40 hover:shadow-md">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
-                <Phone className="size-6" />
-              </div>
-              <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
-                Телефон Центру
-              </p>
-              <a
-                href={CONTACTS.phoneHref}
-                className="mt-2 block text-base font-bold text-navy hover:text-primary transition-colors truncate"
-              >
-                {CONTACTS.phone}
-              </a>
-              <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-                <span className="inline-block size-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Дзвінки безкоштовні</span>
-              </div>
-            </div>
-
-            {/* Working Hours Card */}
-            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-amber-500/40 hover:shadow-md">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 transition-transform group-hover:scale-110">
-                <Clock className="size-6" />
-              </div>
-              <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
-                Графік роботи
-              </p>
-              <div className="mt-3 space-y-2 text-xs font-bold text-navy">
-                <div className="flex items-center justify-between border-b border-border/50 pb-1.5">
-                  <span className="text-muted-foreground font-semibold">Тренажерний зал:</span>
-                  <span className="text-primary font-extrabold">{CONTACTS.gymHours}</span>
+            {/* Quick Contact Cards Grid */}
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+              {/* Phone Card */}
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40 hover:shadow-md">
+                <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                  <Phone className="size-6" />
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground font-semibold">Реабілітація:</span>
-                  <span className="text-emerald-600 font-extrabold">{CONTACTS.rehabHours}</span>
+                <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
+                  Телефон Центру
+                </p>
+                <a
+                  href={CONTACTS.phoneHref}
+                  className="mt-2 block text-base font-bold text-navy hover:text-primary transition-colors truncate"
+                >
+                  {CONTACTS.phone}
+                </a>
+                <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="inline-block size-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Дзвінки безкоштовні</span>
                 </div>
               </div>
-              <p className="mt-3 text-[11px] text-muted-foreground">Прийом за попереднім записом</p>
-            </div>
 
-            {/* Address Card */}
-            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-emerald-500/40 hover:shadow-md">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 transition-transform group-hover:scale-110">
-                <MapPin className="size-6" />
+              {/* Working Hours Card */}
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-amber-500/40 hover:shadow-md">
+                <div className="flex size-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 transition-transform group-hover:scale-110">
+                  <Clock className="size-6" />
+                </div>
+                <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
+                  Графік роботи
+                </p>
+                <div className="mt-3 space-y-2 text-xs font-bold text-navy">
+                  <div className="flex items-center justify-between border-b border-border/50 pb-1.5">
+                    <span className="text-muted-foreground font-semibold">Тренажерний зал:</span>
+                    <span className="text-primary font-extrabold">{CONTACTS.gymHours}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted-foreground font-semibold">Реабілітація:</span>
+                    <span className="text-emerald-600 font-extrabold">{CONTACTS.rehabHours}</span>
+                  </div>
+                </div>
+                <p className="mt-3 text-[11px] text-muted-foreground">
+                  Прийом за попереднім записом
+                </p>
               </div>
-              <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
-                Де ми знаходимось
-              </p>
-              <p className="mt-2 text-sm font-bold text-navy">{CONTACTS.address}</p>
-              <p className="mt-2 text-xs text-muted-foreground line-clamp-2">
-                {CONTACTS.addressFull}
-              </p>
-            </div>
 
-            {/* Messengers Card */}
-            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-sky-500/40 hover:shadow-md">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-sky-500/10 text-sky-600 transition-transform group-hover:scale-110">
-                <MessageCircle className="size-6" />
+              {/* Address Card */}
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-emerald-500/40 hover:shadow-md">
+                <div className="flex size-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 transition-transform group-hover:scale-110">
+                  <MapPin className="size-6" />
+                </div>
+                <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
+                  Де ми знаходимось
+                </p>
+                <p className="mt-2 text-sm font-bold text-navy">{CONTACTS.address}</p>
+                <p className="mt-2 text-xs text-muted-foreground line-clamp-2">
+                  {CONTACTS.addressFull}
+                </p>
               </div>
-              <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
-                Швидкі Месенджери
-              </p>
-              <p className="mt-2 text-xs font-semibold text-navy">Telegram, WhatsApp, Viber</p>
-              <div className="mt-3 flex items-center gap-2">
+
+              {/* Messengers Card */}
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-sky-500/40 hover:shadow-md">
+                <div className="flex size-12 items-center justify-center rounded-xl bg-sky-500/10 text-sky-600 transition-transform group-hover:scale-110">
+                  <MessageCircle className="size-6" />
+                </div>
+                <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
+                  Швидкі Месенджери
+                </p>
+                <p className="mt-2 text-xs font-semibold text-navy">Telegram, WhatsApp, Viber</p>
+                <div className="mt-3 flex items-center gap-2">
+                  <a
+                    href={CONTACTS.messengers.telegram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 rounded-lg bg-[#229ED9]/10 px-2 py-1 text-[11px] font-medium text-[#229ED9] hover:bg-[#229ED9] hover:text-white transition-colors"
+                  >
+                    <TelegramIcon className="size-3" /> Telegram
+                  </a>
+                  <a
+                    href={CONTACTS.messengers.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 rounded-lg bg-[#25D366]/10 px-2 py-1 text-[11px] font-medium text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors"
+                  >
+                    <WhatsAppIcon className="size-3" /> WhatsApp
+                  </a>
+                </div>
+              </div>
+
+              {/* Email Card */}
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-indigo-500/40 hover:shadow-md">
+                <div className="flex size-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-600 transition-transform group-hover:scale-110">
+                  <Mail className="size-6" />
+                </div>
+                <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
+                  Електронна пошта
+                </p>
                 <a
-                  href={CONTACTS.messengers.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-lg bg-[#229ED9]/10 px-2 py-1 text-[11px] font-medium text-[#229ED9] hover:bg-[#229ED9] hover:text-white transition-colors"
+                  href={CONTACTS.emailHref}
+                  className="mt-2 block text-xs font-bold text-navy hover:text-primary transition-colors truncate"
                 >
-                  <TelegramIcon className="size-3" /> Telegram
+                  {CONTACTS.email}
                 </a>
-                <a
-                  href={CONTACTS.messengers.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-lg bg-[#25D366]/10 px-2 py-1 text-[11px] font-medium text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors"
-                >
-                  <WhatsAppIcon className="size-3" /> WhatsApp
-                </a>
+                <p className="mt-4 text-xs text-muted-foreground">Для офіційних звернень</p>
               </div>
             </div>
-
-            {/* Email Card */}
-            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-indigo-500/40 hover:shadow-md">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-600 transition-transform group-hover:scale-110">
-                <Mail className="size-6" />
-              </div>
-              <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
-                Електронна пошта
-              </p>
-              <a
-                href={CONTACTS.emailHref}
-                className="mt-2 block text-xs font-bold text-navy hover:text-primary transition-colors truncate"
-              >
-                {CONTACTS.email}
-              </a>
-              <p className="mt-4 text-xs text-muted-foreground">Для офіційних звернень</p>
-            </div>
-          </div>
-        </PageContainer>
+          </PageContainer>
+        </section>
 
         {/* Dedicated Block: Contact Form, Messengers & Social Networks */}
-        <section className="bg-slate-50/80 py-16 border-y border-border/60">
+        <section
+          id="contact-form"
+          className="scroll-mt-32 border-y border-border/60 bg-slate-50/80 py-16"
+        >
           <PageContainer>
             <div className="max-w-3xl text-left">
               <div className="inline-flex items-center rounded-full border border-[#D5E1F4] bg-[#F5F8FE] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#215FBC] sm:text-[11px]">
@@ -300,7 +333,10 @@ export function ContactsPage({ node }: { node: SiteNode }) {
               {/* Right Column: Messengers & Social Networks (5 cols) */}
               <div className="lg:col-span-5 space-y-6">
                 {/* Direct Messengers Block */}
-                <div className="rounded-3xl border border-border bg-white p-6 sm:p-8 shadow-sm">
+                <div
+                  id="messengers"
+                  className="scroll-mt-32 rounded-3xl border border-border bg-white p-6 sm:p-8 shadow-sm"
+                >
                   <div className="flex items-center gap-3">
                     <div className="flex size-10 items-center justify-center rounded-xl bg-sky-500/10 text-sky-600">
                       <MessageCircle className="size-5" />
@@ -380,7 +416,10 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                 </div>
 
                 {/* Social Networks Block */}
-                <div className="rounded-3xl border border-border bg-white p-6 sm:p-8 shadow-sm">
+                <div
+                  id="socials"
+                  className="scroll-mt-32 rounded-3xl border border-border bg-white p-6 sm:p-8 shadow-sm"
+                >
                   <div className="flex items-center gap-3">
                     <div className="flex size-10 items-center justify-center rounded-xl bg-purple-500/10 text-purple-600">
                       <Share2 className="size-5" />
@@ -464,7 +503,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
         </section>
 
         {/* Location & Map Block - "Де ми знаходимось" */}
-        <section id="de-my-znakhodymos" className="py-16">
+        <section id="location" className="scroll-mt-32 py-16">
           <PageContainer>
             <div className="rounded-3xl border border-border bg-card overflow-hidden shadow-sm">
               <div className="grid lg:grid-cols-12">
@@ -673,45 +712,51 @@ export function ContactsPage({ node }: { node: SiteNode }) {
         </section>
 
         {/* FAQ Section */}
-        <PageContainer className="pb-20">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-navy sm:text-3xl md:text-4xl">
-              Питання та відповіді
-            </h2>
-            <div className="mx-auto mt-4 sm:mt-6 h-1 w-16 rounded-full bg-primary" />
-            <p className="mx-auto mt-6 max-w-[640px] text-sm leading-relaxed text-slate-600 md:text-base">
-              Зібрали найпоширеніші запитання про запис, підготовку до прийому та звернення до
-              центру. Якщо не знайшли відповідь — зв’яжіться з нами, ми допоможемо.
-            </p>
-          </div>
-          <div className="mx-auto max-w-[1000px]">
-            <FAQAccordion
-              variant="home"
-              items={[
-                {
-                  question: "Як підготуватися до першого прийому?",
-                  answer:
-                    "Рекомендуємо мати при собі наявні медичні виписки, результати попередніх обстежень (МРТ, КТ, ЕКГ, лабораторні аналізи), а також зручний спортивний або вільний одяг для огляду фізичного терапевта.",
-                },
-                {
-                  question: "Чи потрібне попереднє направлення від лікаря?",
-                  answer:
-                    "Ні, попереднє направлення не є обов'язковим. Наші фахівці проведуть первинну діагностику та консультацію безпосередньо в центрі та складуть індивідуальний план.",
-                },
-                {
-                  question: "Як можна записатися на конкретний день?",
-                  answer:
-                    "Ви можете зателефонувати за номером +380 674 702 788, написати у Telegram/WhatsApp чи залишити заявку у формі зворотного зв'язку на цій сторінці.",
-                },
-                {
-                  question: "Чи є умови для осіб з обмеженою мобільністю?",
-                  answer:
-                    "Так, наш центр повністю обладнаний безбар'єрним доступом, пандусами та ширшими дверними отворами для комфортного пересування на кріслі-колясці або з милицями.",
-                },
-              ]}
-            />
-          </div>
-        </PageContainer>
+        <section id="faq" className="scroll-mt-32">
+          <PageContainer className="pb-20">
+            <div className="text-center">
+              <h2 className="text-2xl font-bold text-navy sm:text-3xl md:text-4xl">
+                Питання та відповіді
+              </h2>
+              <div className="mx-auto mt-4 sm:mt-6 h-1 w-16 rounded-full bg-primary" />
+              <p className="mx-auto mt-6 max-w-[640px] text-sm leading-relaxed text-slate-600 md:text-base">
+                Зібрали найпоширеніші запитання про запис, підготовку до прийому та звернення до
+                центру. Якщо не знайшли відповідь — зв’яжіться з нами, ми допоможемо.
+              </p>
+            </div>
+            <div className="mx-auto max-w-[1000px]">
+              <FAQAccordion
+                variant="home"
+                items={[
+                  {
+                    question: "Як підготуватися до першого прийому?",
+                    answer:
+                      "Рекомендуємо мати при собі наявні медичні виписки, результати попередніх обстежень (МРТ, КТ, ЕКГ, лабораторні аналізи), а також зручний спортивний або вільний одяг для огляду фізичного терапевта.",
+                  },
+                  {
+                    question: "Чи потрібне попереднє направлення від лікаря?",
+                    answer:
+                      "Ні, попереднє направлення не є обов'язковим. Наші фахівці проведуть первинну діагностику та консультацію безпосередньо в центрі та складуть індивідуальний план.",
+                  },
+                  {
+                    question: "Як можна записатися на конкретний день?",
+                    answer:
+                      "Ви можете зателефонувати за номером +380 674 702 788, написати у Telegram/WhatsApp чи залишити заявку у формі зворотного зв'язку на цій сторінці.",
+                  },
+                  {
+                    question: "Чи є умови для осіб з обмеженою мобільністю?",
+                    answer:
+                      "Так, наш центр повністю обладнаний безбар'єрним доступом, пандусами та ширшими дверними отворами для комфортного пересування на кріслі-колясці або з милицями.",
+                  },
+                ]}
+              />
+            </div>
+          </PageContainer>
+        </section>
+
+        <section className="pb-24">
+          <FAQConsultationCTA />
+        </section>
       </main>
 
       <SiteFooter />
