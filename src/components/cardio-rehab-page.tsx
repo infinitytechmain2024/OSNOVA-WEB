@@ -480,9 +480,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
 
         <OtherServicesSlider />
 
-        <DocumentsReviewSection
-          onOpenDocumentsModal={() => setDocumentsModalOpen(true)}
-        />
+        <DocumentsReviewSection onOpenDocumentsModal={() => setDocumentsModalOpen(true)} />
 
         {faqItems.length > 0 && (
           <section
@@ -532,10 +530,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
         </PageSection>
       </main>
 
-      <MedicalDocumentsModal
-        open={documentsModalOpen}
-        onOpenChange={setDocumentsModalOpen}
-      />
+      <MedicalDocumentsModal open={documentsModalOpen} onOpenChange={setDocumentsModalOpen} />
       <SiteFooter />
     </div>
   );
@@ -1294,11 +1289,7 @@ function OtherServicesSlider() {
   );
 }
 
-function DocumentsReviewSection({
-  onOpenDocumentsModal,
-}: {
-  onOpenDocumentsModal: () => void;
-}) {
+function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal: () => void }) {
   return (
     <section id="documents" className="scroll-mt-24 py-12 sm:py-20">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
@@ -1481,8 +1472,8 @@ function MedicalDocumentsForm({ className }: { className?: string }) {
           Надішліть медичні документи для попереднього розгляду
         </h3>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-navy/68 sm:text-lg">
-          Це допоможе лікарю ознайомитися з вашим станом і підготувати персональні рекомендації
-          ще до першого контакту.
+          Це допоможе лікарю ознайомитися з вашим станом і підготувати персональні рекомендації ще
+          до першого контакту.
         </p>
 
         <form
