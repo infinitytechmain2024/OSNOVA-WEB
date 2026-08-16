@@ -23,6 +23,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { Breadcrumbs, FAQAccordion } from "@/components/blocks";
 import { getServicePageData } from "@/data/service-content-generator";
 import { useConsultationModal } from "@/components/consultation-form";
+import { FAQConsultationCTA } from "@/components/faq-consultation-cta";
 import type { FAQItem, ServiceMethodCard, SiteNode } from "@/data/types";
 import { cn } from "@/lib/utils";
 import { CARDIO_REHAB_PROGRAMS } from "@/data/cardio-rehab-pricing";
@@ -123,6 +124,7 @@ const CARE_FORMATS = [
 const DOCUMENT_STEPS = ["Заявка", "Документи", "Попередній розгляд", "Зв’язок адміністратора"];
 
 const CONDITION_IMAGES = [cpetImg, rehabImg, ecgImg, checkupImg, sportsImg];
+const FAQ_VISIBLE_COUNT = 3;
 
 const CARDIO_CONDITIONS = [
   {
@@ -155,6 +157,51 @@ const CARDIO_PROGRAMS = CARDIO_REHAB_PROGRAMS.map((program) => ({
   route: program.detailsUrl,
   isPopular: program.id === "standartna",
 }));
+
+const SUPPORT_HIGHLIGHTS = [
+  {
+    id: "military",
+    eyebrow: "Для військових",
+    title: "Спеціальні умови для військових і ветеранів",
+    description:
+      "Передбачаємо пільгові умови на програми відновлення та допомагаємо швидше узгодити старт після попереднього розгляду документів.",
+    detail:
+      "Пріоритетний розгляд заявки, гнучкий графік занять і адаптація програми під поточний стан.",
+    badge: "Підтримка",
+    icon: Heart,
+    accentClass: "from-brand-green/25 via-white to-brand-green/10",
+    badgeClass: "bg-brand-green/15 text-emerald-700",
+    iconClass: "bg-brand-green/15 text-brand-green ring-brand-green/15",
+  },
+  {
+    id: "social",
+    eyebrow: "Соціальні проєкти",
+    title: "Партнерські формати для громад і благодійних ініціатив",
+    description:
+      "Відкриваємо окремі умови для соціальних проєктів, коли потрібна програма відновлення для груп або адресної підтримки.",
+    detail:
+      "Можемо погодити спецумови для фондів, партнерські дні консультацій і стартові пакети під запит.",
+    badge: "Партнерство",
+    icon: CheckCircle2,
+    accentClass: "from-sky-200/50 via-white to-primary/10",
+    badgeClass: "bg-primary/10 text-primary",
+    iconClass: "bg-primary/10 text-primary ring-primary/10",
+  },
+  {
+    id: "senior",
+    eyebrow: "Акція 60+",
+    title: "Знижка 10% для пацієнтів віком 60+",
+    description:
+      "Діє на стартову консультацію та супровід первинного етапу програми, щоб розпочати відновлення було простіше.",
+    detail:
+      "Добрий варіант, якщо потрібен м’якший старт, планування навантаження та комфортний темп занять.",
+    badge: "10% знижка",
+    icon: CalendarDays,
+    accentClass: "from-amber-100 via-white to-orange-50",
+    badgeClass: "bg-amber-100 text-amber-700",
+    iconClass: "bg-amber-100 text-amber-600 ring-amber-200/70",
+  },
+] as const;
 
 const OTHER_SERVICES = [
   {
@@ -197,6 +244,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
   const { openModal } = useConsultationModal();
   const [introExpanded, setIntroExpanded] = React.useState(false);
   const [showAllConditions, setShowAllConditions] = React.useState(false);
+  const [faqExpanded, setFaqExpanded] = React.useState(false);
 
   const allConditionCards = CARDIO_CONDITIONS;
   const visibleConditionCards = showAllConditions
@@ -208,6 +256,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
     ...program,
   }));
   const faqItems = pickFaqItems(node.faq || []);
+  const visibleFaqItems = faqExpanded ? faqItems : faqItems.slice(0, FAQ_VISIBLE_COUNT);
 
   const scrollToId = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -321,9 +370,18 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           id="process"
           className="relative scroll-mt-24 overflow-hidden bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.98)_0%,rgba(237,244,255,0.95)_48%,rgba(225,236,255,0.95)_100%)] py-14 sm:py-20"
         >
-          <div className="absolute -right-28 -top-44 h-[420px] w-[420px] rounded-full border border-white/60" aria-hidden />
-          <div className="absolute right-[7%] top-[-110px] h-[310px] w-[310px] rounded-full border border-white/45" aria-hidden />
-          <div className="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-white/45 blur-3xl" aria-hidden />
+          <div
+            className="absolute -right-28 -top-44 h-[420px] w-[420px] rounded-full border border-white/60"
+            aria-hidden
+          />
+          <div
+            className="absolute right-[7%] top-[-110px] h-[310px] w-[310px] rounded-full border border-white/45"
+            aria-hidden
+          />
+          <div
+            className="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-white/45 blur-3xl"
+            aria-hidden
+          />
 
           <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <div className="max-w-5xl">
@@ -428,13 +486,46 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
         <DocumentsReviewSection />
 
         {faqItems.length > 0 && (
-          <PageSection id="faq" className="py-12 sm:py-20">
-            <SectionHeading
-              title="Питання та відповіді"
-              text="Короткі відповіді на запитання, які найчастіше виникають перед стартом програми."
-            />
-            <FAQAccordion items={faqItems} />
-          </PageSection>
+          <section
+            id="faq"
+            className="scroll-mt-24 border-t border-slate-200/60 bg-slate-50/70 py-20 md:py-28"
+          >
+            <div className="mx-auto max-w-[1000px] px-4 sm:px-6 lg:px-10">
+              <div className="text-center">
+                <h2 className="text-2xl font-bold leading-tight text-navy sm:text-3xl md:text-4xl">
+                  Питання та відповіді
+                </h2>
+                <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-primary sm:mt-6" />
+                <p className="mx-auto mt-6 max-w-[640px] text-sm leading-relaxed text-slate-600 md:text-base">
+                  Зібрали найпоширеніші запитання про кардіологічну реабілітацію. Якщо не знайшли
+                  відповідь, зверніться до нас і ми допоможемо підібрати наступний крок.
+                </p>
+              </div>
+
+              <FAQAccordion items={visibleFaqItems} variant="home" />
+
+              {faqItems.length > FAQ_VISIBLE_COUNT && (
+                <div className="mt-10 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setFaqExpanded((value) => !value)}
+                    aria-expanded={faqExpanded}
+                    className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-white px-7 py-3 text-sm font-semibold text-primary shadow-sm transition-all hover:border-primary hover:bg-primary hover:text-white md:text-base"
+                  >
+                    {faqExpanded ? "Показати менше питань" : "Показати більше питань"}
+                    <ChevronDown
+                      className={cn(
+                        "size-5 transition-transform duration-300",
+                        faqExpanded && "rotate-180",
+                      )}
+                    />
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <FAQConsultationCTA className="mt-16" />
+          </section>
         )}
 
         <PageSection className="pb-14 sm:pb-20">
@@ -910,12 +1001,102 @@ function ProgramCard({
 }
 
 function MilitaryInfoCard() {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [isPaused, setIsPaused] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isPaused || typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const intervalId = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % SUPPORT_HIGHLIGHTS.length);
+    }, 4800);
+
+    return () => window.clearInterval(intervalId);
+  }, [isPaused]);
+
+  const activeHighlight = SUPPORT_HIGHLIGHTS[activeIndex];
+  const Icon = activeHighlight.icon;
+
   return (
-    <aside className="flex min-h-[320px] flex-col justify-center rounded-2xl border border-brand-green/25 bg-brand-green/10 p-6 shadow-sm">
-      <h3 className="text-lg font-extrabold text-navy">Для військових</h3>
-      <p className="mt-3 text-sm leading-relaxed text-navy/72">
-        Діють спеціальні умови та знижки на програми відновлення.
-      </p>
+    <aside
+      className="relative isolate flex min-h-[320px] overflow-hidden rounded-2xl border border-blue-100 bg-[linear-gradient(160deg,rgba(255,255,255,1)_0%,rgba(239,246,255,0.94)_52%,rgba(236,253,245,0.92)_100%)] p-6 shadow-sm"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.14),transparent_38%)]"
+        aria-hidden
+      />
+      <div
+        className="absolute -bottom-12 -right-10 h-36 w-36 rounded-full bg-primary/10 blur-3xl"
+        aria-hidden
+      />
+
+      <div className="relative flex w-full flex-col">
+        <div className="flex gap-2" aria-hidden>
+          {SUPPORT_HIGHLIGHTS.map((item, index) => (
+            <span
+              key={item.id}
+              className={cn(
+                "h-1 flex-1 rounded-full transition-colors duration-300",
+                index === activeIndex ? "bg-primary" : "bg-primary/10",
+              )}
+            />
+          ))}
+        </div>
+
+        <div className="mt-5 flex items-center justify-between gap-3 text-[11px] font-bold uppercase tracking-[0.16em] text-navy/55">
+          <span>{activeHighlight.eyebrow}</span>
+          <span>
+            {String(activeIndex + 1).padStart(2, "0")} /{" "}
+            {String(SUPPORT_HIGHLIGHTS.length).padStart(2, "0")}
+          </span>
+        </div>
+
+        <div
+          key={activeHighlight.id}
+          className="mt-4 flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500"
+          aria-live="polite"
+        >
+          <div className="flex items-start justify-between gap-4">
+            <span
+              className={cn(
+                "flex size-14 shrink-0 items-center justify-center rounded-2xl ring-1",
+                activeHighlight.iconClass,
+              )}
+            >
+              <Icon className="size-7" strokeWidth={2} />
+            </span>
+            <span
+              className={cn(
+                "inline-flex rounded-full px-3 py-1 text-xs font-semibold",
+                activeHighlight.badgeClass,
+              )}
+            >
+              {activeHighlight.badge}
+            </span>
+          </div>
+
+          <h3 className="mt-5 text-xl font-extrabold leading-snug text-navy">
+            {activeHighlight.title}
+          </h3>
+          <p className="mt-3 text-sm leading-relaxed text-navy/72">{activeHighlight.description}</p>
+
+          <div
+            className={cn(
+              "mt-5 rounded-2xl border border-white/70 bg-gradient-to-br p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)]",
+              activeHighlight.accentClass,
+            )}
+          >
+            <p className="text-sm leading-relaxed text-navy/80">{activeHighlight.detail}</p>
+          </div>
+
+          <p className="mt-auto pt-5 text-xs leading-relaxed text-navy/55">
+            Умови участі та актуальність акцій уточнюйте в адміністратора.
+          </p>
+        </div>
+      </div>
     </aside>
   );
 }
