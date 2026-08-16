@@ -1,4 +1,6 @@
 import serviceRehab from "@/assets/service-rehab.jpg";
+import balanceReferenceCardImg from "@/assets/home/balance-reference-card.png";
+import { AppLink } from "@/components/app-link";
 import { ConsultationForm } from "@/components/consultation-form";
 import { Breadcrumbs, FAQAccordion, PageContainer, SectionHeader } from "@/components/blocks";
 import { FAQConsultationCTA } from "@/components/faq-consultation-cta";
@@ -17,6 +19,7 @@ import {
   Share2,
   Navigation,
   Compass,
+  ArrowRight,
 } from "lucide-react";
 
 const CONTACT_PAGE_ANCHORS = [
@@ -756,6 +759,69 @@ export function ContactsPage({ node }: { node: SiteNode }) {
 
         <section className="pb-24">
           <FAQConsultationCTA />
+        </section>
+
+        <section
+          id="about-methods"
+          className="relative overflow-hidden bg-background pt-20 pb-16 md:pt-24 md:pb-20 lg:pt-28 lg:pb-24"
+        >
+          <div className="absolute -left-20 top-10 size-72 rounded-full bg-primary/[0.05] blur-3xl" />
+          <div className="absolute right-0 top-24 size-80 rounded-full bg-primary/[0.04] blur-[140px]" />
+
+          <div className="relative mx-auto max-w-[1600px] px-6 lg:px-10">
+            <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(460px,525px)] lg:gap-14 xl:gap-20">
+              <div className="max-w-[41rem] pt-2 lg:pt-0">
+                <span className="inline-flex rounded-full border border-[#C9D8F1] bg-[#F4F8FF] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-primary shadow-[0_8px_18px_rgba(33,95,188,0.08)] sm:px-5 sm:text-xs">
+                  Корисна інформація
+                </span>
+
+                <h2 className="mt-7 text-[2.55rem] font-extrabold leading-[0.98] tracking-[-0.04em] text-navy sm:text-[3rem] md:text-[3.25rem] lg:text-[3.45rem] xl:text-[3.72rem]">
+                  <span className="block">Баланс — основа</span>
+                  <span className="mt-2 block text-primary">здоров&apos;я та відновлення</span>
+                </h2>
+
+                <div className="mt-9 flex items-center gap-1.5" aria-hidden="true">
+                  <span className="h-1.5 w-13 rounded-full bg-primary" />
+                  <span className="h-1.5 w-8 rounded-full bg-brand-green" />
+                </div>
+
+                <div className="mt-11 space-y-7">
+                  <p className="max-w-[34rem] text-lg font-semibold leading-[1.55] text-navy md:text-[1.1rem]">
+                    В ОСНОВА Реабілітація ми поєднуємо турботу, доказовий підхід і сучасні
+                    методики, щоб допомогти людині відновити здоров&apos;я, рух і внутрішню
+                    рівновагу.
+                  </p>
+                  <p className="max-w-[35rem] text-[1.05rem] leading-[1.7] text-slate-500 md:text-[1.12rem]">
+                    Індивідуальні програми, фізична терапія, гідрокінезіотерапія, фізіотерапевтичні
+                    методи та командний супровід формують цілісну систему відновлення для кращої
+                    якості життя.
+                  </p>
+                </div>
+
+                <div className="mt-10 md:mt-12">
+                  <AppLink
+                    to="/pro-osnovu"
+                    className="inline-flex items-center gap-3 rounded-[1.15rem] bg-navy px-8 py-4 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-[0_16px_34px_rgba(9,25,54,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:shadow-[0_20px_38px_rgba(33,95,188,0.28)] md:px-9 md:text-[0.95rem]"
+                  >
+                    Детальніше <ArrowRight className="size-5" />
+                  </AppLink>
+                </div>
+              </div>
+
+              <div className="flex w-full items-center justify-center pb-14 lg:justify-end lg:pb-16">
+                <figure className="w-full max-w-[525px]">
+                  <img
+                    src={balanceReferenceCardImg}
+                    alt="Баланс, що підтримує відновлення"
+                    loading="lazy"
+                    width={525}
+                    height={657}
+                    className="block h-auto w-full"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
 
