@@ -612,6 +612,35 @@ var ClipboardList = createLucideIcon("clipboard-list", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var ClipboardPlus = createLucideIcon("clipboard-plus", [
+	["rect", {
+		width: "8",
+		height: "4",
+		x: "8",
+		y: "2",
+		rx: "1",
+		ry: "1",
+		key: "tgr4d6"
+	}],
+	["path", {
+		d: "M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2",
+		key: "116196"
+	}],
+	["path", {
+		d: "M9 14h6",
+		key: "159ibu"
+	}],
+	["path", {
+		d: "M12 17v-6",
+		key: "1y8rbf"
+	}]
+]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Clock3 = createLucideIcon("clock-3", [["circle", {
 	cx: "12",
 	cy: "12",
@@ -845,6 +874,30 @@ var GraduationCap = createLucideIcon("graduation-cap", [
 	["path", {
 		d: "M6 12.5V16a6 3 0 0 0 12 0v-3.5",
 		key: "1r8lef"
+	}]
+]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var HandHeart = createLucideIcon("hand-heart", [
+	["path", {
+		d: "M11 14h2a2 2 0 0 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16",
+		key: "1v1a37"
+	}],
+	["path", {
+		d: "m14.45 13.39 5.05-4.694C20.196 8 21 6.85 21 5.75a2.75 2.75 0 0 0-4.797-1.837.276.276 0 0 1-.406 0A2.75 2.75 0 0 0 11 5.75c0 1.2.802 2.248 1.5 2.946L16 11.95",
+		key: "fhfbnt"
+	}],
+	["path", {
+		d: "m2 15 6 6",
+		key: "10dquu"
+	}],
+	["path", {
+		d: "m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a1 1 0 0 0-2.75-2.91",
+		key: "1x6kdw"
 	}]
 ]);
 /**
@@ -1743,4 +1796,4 @@ var Zap = createLucideIcon("zap", [["path", {
 	key: "1xq2db"
 }]]);
 //#endregion
-export { Dumbbell as $, Menu as A, House as B, Newspaper as C, ArrowUpRight as Ct, Microscope as D, Activity as Dt, Music2 as E, Ambulance as Et, LayoutGrid as F, GraduationCap as G, HeartPulse as H, Layers as I, Flame as J, FolderUp as K, Languages as L, MapPin as M, Mail as N, MessageSquare as O, LoaderCircle as P, ExternalLink as Q, Instagram as R, Package as S, ArrowUp as St, Navigation as T, ArrowLeft as Tt, Headphones as U, Heart as V, Handshake as W, FilePen as X, FileText as Y, Facebook as Z, Search as _, CalendarCheck as _t, Users as a, ClipboardCheck as at, Phone as b, BookOpen as bt, UserCheck as c, CircleCheck as ct, TriangleAlert as d, ChevronRight as dt, Compass as et, Stethoscope as f, ChevronLeft as ft, Send as g, CalendarDays as gt, Share2 as h, Calendar as ht, Wrench as i, ClipboardList as it, MapPinned as j, MessageCircle as k, Trophy as l, CircleAlert as lt, ShieldCheck as m, Check as mt, Youtube as n, Clock as nt, User as o, Circle as ot, Sparkles as p, ChevronDown as pt, FlaskConical as q, X as r, Clock3 as rt, UserRoundCheck as s, CircleQuestionMark as st, Zap as t, CloudUpload as tt, Truck as u, ChevronUp as ut, Route as v, Building2 as vt, Network as w, ArrowRight as wt, PhoneCall as x, BadgeCheck as xt, Presentation as y, Brain as yt, Info as z };
+export { ExternalLink as $, Menu as A, House as B, Newspaper as C, BadgeCheck as Ct, Microscope as D, ArrowLeft as Dt, Music2 as E, ArrowRight as Et, LayoutGrid as F, HandHeart as G, HeartPulse as H, Layers as I, FlaskConical as J, GraduationCap as K, Languages as L, MapPin as M, Mail as N, MessageSquare as O, Ambulance as Ot, LoaderCircle as P, Facebook as Q, Instagram as R, Package as S, BookOpen as St, Navigation as T, ArrowUpRight as Tt, Headphones as U, Heart as V, Handshake as W, FileText as X, Flame as Y, FilePen as Z, Search as _, Calendar as _t, Users as a, ClipboardPlus as at, Phone as b, Building2 as bt, UserCheck as c, Circle as ct, TriangleAlert as d, CircleAlert as dt, Dumbbell as et, Stethoscope as f, ChevronUp as ft, Send as g, Check as gt, Share2 as h, ChevronDown as ht, Wrench as i, Clock3 as it, MapPinned as j, MessageCircle as k, Activity as kt, Trophy as l, CircleQuestionMark as lt, ShieldCheck as m, ChevronLeft as mt, Youtube as n, CloudUpload as nt, User as o, ClipboardList as ot, Sparkles as p, ChevronRight as pt, FolderUp as q, X as r, Clock as rt, UserRoundCheck as s, ClipboardCheck as st, Zap as t, Compass as tt, Truck as u, CircleCheck as ut, Route as v, CalendarDays as vt, Network as w, ArrowUp as wt, PhoneCall as x, Brain as xt, Presentation as y, CalendarCheck as yt, Info as z };

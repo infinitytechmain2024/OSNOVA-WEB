@@ -1,4 +1,4 @@
-//#region \0tanstack-start-manifest:v
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-TTMsJKu7.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/__root.tsx",
@@ -15,23 +15,23 @@ var tsrStartManifest = () => ({ routes: {
 			"/statti/pershi-symptomy-problem-iz-sertsem"
 		],
 		preloads: [
-			"/assets/index-aXjYhIQd.js",
+			"/assets/index-SOx2Tn6w.js",
 			"/assets/blocks-DXFppMO8.js",
-			"/assets/_-C5xvV7u8.js",
+			"/assets/_-51z0BCsA.js",
 			"/assets/preload-helper-mvXOIEWY.js"
 		],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-aXjYhIQd.js"
+			src: "/assets/index-SOx2Tn6w.js"
 		} }]
 	},
 	"/": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-CKadWXd2.js",
-			"/assets/company-overview-section-Bu2uyegU.js",
+			"/assets/routes-CxnrmUu0.js",
+			"/assets/company-overview-section-D27GhD2u.js",
 			"/assets/calendar-days-DsKCp-eW.js",
 			"/assets/users-7KyNCif7.js",
 			"/assets/education-training-VQUtcCqH.js",
@@ -42,10 +42,10 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/$.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_-AfLW6hYQ.js",
-			"/assets/company-overview-section-Bu2uyegU.js",
+			"/assets/_-DwMlLLRg.js",
+			"/assets/company-overview-section-D27GhD2u.js",
 			"/assets/building-2-CFqxZtWm.js",
-			"/assets/service-detail-template-HNFDbzKW.js",
+			"/assets/service-detail-template-COgQaPZK.js",
 			"/assets/calendar-days-DsKCp-eW.js",
 			"/assets/chevron-left-D4m7IZbv.js",
 			"/assets/users-7KyNCif7.js",
@@ -58,7 +58,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/iventy.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/iventy-BQ4VCNpW.js",
+			"/assets/iventy-DnjmyoZM.js",
 			"/assets/building-2-CFqxZtWm.js",
 			"/assets/calendar-days-DsKCp-eW.js",
 			"/assets/clock-3-B2_3ksYh.js",
@@ -69,13 +69,13 @@ var tsrStartManifest = () => ({ routes: {
 	"/kardiolohichna-diahnostyka": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/kardiolohichna-diahnostyka.tsx",
 		children: void 0,
-		preloads: ["/assets/kardiolohichna-diahnostyka-HslIoOnh.js", "/assets/service-detail-template-HNFDbzKW.js"]
+		preloads: ["/assets/kardiolohichna-diahnostyka-D5nwt-oQ.js", "/assets/service-detail-template-COgQaPZK.js"]
 	},
 	"/konferentsii": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/konferentsii.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/konferentsii-DaDnqnaS.js",
+			"/assets/konferentsii-CNpJjZzh.js",
 			"/assets/calendar-days-DsKCp-eW.js",
 			"/assets/chevron-left-D4m7IZbv.js",
 			"/assets/clock-3-B2_3ksYh.js",
@@ -85,12 +85,12 @@ var tsrStartManifest = () => ({ routes: {
 	"/kursy": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/kursy.tsx",
 		children: void 0,
-		preloads: ["/assets/kursy-vl0gdaBk.js", "/assets/education-courses-page-DQUxbvj7.js"]
+		preloads: ["/assets/kursy-CLUMOOZd.js", "/assets/education-courses-page-BdVk43vB.js"]
 	},
 	"/navchannia": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/navchannia.tsx",
 		children: void 0,
-		preloads: ["/assets/navchannia-D8e6araZ.js", "/assets/education-courses-page-DQUxbvj7.js"]
+		preloads: ["/assets/navchannia-Cvd-230d.js", "/assets/education-courses-page-BdVk43vB.js"]
 	},
 	"/novyny": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/novyny.tsx",
@@ -106,7 +106,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/statti/pershi-symptomy-problem-iz-sertsem.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/pershi-symptomy-problem-iz-sertsem-CYNgLmXR.js",
+			"/assets/pershi-symptomy-problem-iz-sertsem-LbFd9nt5.js",
 			"/assets/calendar-days-DsKCp-eW.js",
 			"/assets/triangle-alert-BiIQcfvh.js"
 		]

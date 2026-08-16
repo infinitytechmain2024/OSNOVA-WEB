@@ -148,7 +148,7 @@ function ParkingBadgeIcon({ className = "size-5 text-slate-600" }: { className?:
 
 function ContactAnchorNav() {
   return (
-    <div className="sticky top-0 z-30 border-y border-border/70 bg-background/95 backdrop-blur-md shadow-[0_12px_32px_-28px_rgba(15,23,42,0.85)]">
+    <div className="sticky top-0 z-30 border-b border-border/70 bg-background">
       <PageContainer className="py-3">
         <div className="-mx-4 flex items-center gap-3 overflow-x-auto px-4 scrollbar-none sm:mx-0 sm:px-0">
           <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить:</p>
@@ -175,9 +175,11 @@ export function ContactsPage({ node }: { node: SiteNode }) {
       <SiteHeader />
 
       {/* Breadcrumb Header */}
-      <PageContainer className="pt-6 pb-4 sm:pt-8 sm:pb-5">
-        <Breadcrumbs items={getBreadcrumbs(node)} className="pt-0" />
-      </PageContainer>
+      <div className="border-b border-border/70">
+        <PageContainer className="pt-6 pb-4 sm:pt-8 sm:pb-5">
+          <Breadcrumbs items={getBreadcrumbs(node)} className="pt-0" />
+        </PageContainer>
+      </div>
 
       <ContactAnchorNav />
 
