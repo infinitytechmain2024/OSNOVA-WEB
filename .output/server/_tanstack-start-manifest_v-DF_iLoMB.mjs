@@ -1,4 +1,4 @@
-//#region \0tanstack-start-manifest:v
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DF_iLoMB.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/__root.tsx",
@@ -15,25 +15,24 @@ var tsrStartManifest = () => ({ routes: {
 			"/statti/pershi-symptomy-problem-iz-sertsem"
 		],
 		preloads: [
-			"/assets/index-DyoO0rV4.js",
+			"/assets/index-aXjYhIQd.js",
 			"/assets/blocks-DXFppMO8.js",
-			"/assets/_-CtZxEhCL.js",
+			"/assets/_-C5xvV7u8.js",
 			"/assets/preload-helper-mvXOIEWY.js"
 		],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-DyoO0rV4.js"
+			src: "/assets/index-aXjYhIQd.js"
 		} }]
 	},
 	"/": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-D9rZVwxr.js",
+			"/assets/routes-CKadWXd2.js",
 			"/assets/company-overview-section-Bu2uyegU.js",
 			"/assets/calendar-days-DsKCp-eW.js",
-			"/assets/chevron-left-D4m7IZbv.js",
 			"/assets/users-7KyNCif7.js",
 			"/assets/education-training-VQUtcCqH.js",
 			"/assets/news-BVtDm-l8.js"
@@ -43,10 +42,10 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/$.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_-BudbL2a_.js",
+			"/assets/_-AfLW6hYQ.js",
 			"/assets/company-overview-section-Bu2uyegU.js",
 			"/assets/building-2-CFqxZtWm.js",
-			"/assets/service-detail-template-DXlVFJyz.js",
+			"/assets/service-detail-template-HNFDbzKW.js",
 			"/assets/calendar-days-DsKCp-eW.js",
 			"/assets/chevron-left-D4m7IZbv.js",
 			"/assets/users-7KyNCif7.js",
@@ -59,7 +58,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/iventy.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/iventy-DnOjXAHT.js",
+			"/assets/iventy-BQ4VCNpW.js",
 			"/assets/building-2-CFqxZtWm.js",
 			"/assets/calendar-days-DsKCp-eW.js",
 			"/assets/clock-3-B2_3ksYh.js",
@@ -70,13 +69,13 @@ var tsrStartManifest = () => ({ routes: {
 	"/kardiolohichna-diahnostyka": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/kardiolohichna-diahnostyka.tsx",
 		children: void 0,
-		preloads: ["/assets/kardiolohichna-diahnostyka-CEBURf91.js", "/assets/service-detail-template-DXlVFJyz.js"]
+		preloads: ["/assets/kardiolohichna-diahnostyka-HslIoOnh.js", "/assets/service-detail-template-HNFDbzKW.js"]
 	},
 	"/konferentsii": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/konferentsii.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/konferentsii-Dz2rZwXB.js",
+			"/assets/konferentsii-DaDnqnaS.js",
 			"/assets/calendar-days-DsKCp-eW.js",
 			"/assets/chevron-left-D4m7IZbv.js",
 			"/assets/clock-3-B2_3ksYh.js",
@@ -86,12 +85,12 @@ var tsrStartManifest = () => ({ routes: {
 	"/kursy": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/kursy.tsx",
 		children: void 0,
-		preloads: ["/assets/kursy-CG7qEiZE.js", "/assets/education-courses-page-DtDST3uh.js"]
+		preloads: ["/assets/kursy-vl0gdaBk.js", "/assets/education-courses-page-DQUxbvj7.js"]
 	},
 	"/navchannia": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/navchannia.tsx",
 		children: void 0,
-		preloads: ["/assets/navchannia-C9lnjG0v.js", "/assets/education-courses-page-DtDST3uh.js"]
+		preloads: ["/assets/navchannia-D8e6araZ.js", "/assets/education-courses-page-DQUxbvj7.js"]
 	},
 	"/novyny": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/novyny.tsx",
@@ -107,7 +106,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/statti/pershi-symptomy-problem-iz-sertsem.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/pershi-symptomy-problem-iz-sertsem-mFz7q-Vi.js",
+			"/assets/pershi-symptomy-problem-iz-sertsem-CYNgLmXR.js",
 			"/assets/calendar-days-DsKCp-eW.js",
 			"/assets/triangle-alert-BiIQcfvh.js"
 		]

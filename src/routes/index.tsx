@@ -13,7 +13,6 @@ import {
   Phone,
   Users,
   ChevronRight,
-  ChevronLeft,
   ChevronUp,
   ChevronDown,
   Brain,
@@ -673,44 +672,17 @@ function BlogCarousel() {
         })}
       </div>
 
-      {/* Pagination controls */}
-      <div className="mt-10 flex items-center justify-center">
-        <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white p-2 shadow-sm">
-          <button
-            type="button"
-            onClick={goToPrevious}
-            disabled={totalPages <= 1}
-            aria-label="Попередня сторінка блогу"
-            className="inline-flex size-9 items-center justify-center rounded-full text-slate-700 transition-all hover:bg-slate-100 hover:text-[#1E64B4] disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <ChevronLeft className="size-4" />
-          </button>
-
-          <div className="flex items-center justify-center gap-2.5 px-1">
-            {Array.from({ length: totalPages }).map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setCurrent(i)}
-                className={`size-2.5 rounded-full transition-all duration-300 ${
-                  i === current ? "bg-[#1E64B4] scale-110" : "bg-slate-300 hover:bg-slate-400"
-                }`}
-                aria-label={`Сторінка ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            type="button"
-            onClick={goToNext}
-            disabled={totalPages <= 1}
-            aria-label="Наступна сторінка блогу"
-            className="inline-flex size-9 items-center justify-center rounded-full text-slate-700 transition-all hover:bg-slate-100 hover:text-[#1E64B4] disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <ChevronRight className="size-4" />
-          </button>
-        </div>
-      </div>
+      <CarouselNavigation
+        total={totalPages}
+        activeIndex={current}
+        onSelect={setCurrent}
+        onPrevious={goToPrevious}
+        onNext={goToNext}
+        previousLabel="Попередня сторінка блогу"
+        nextLabel="Наступна сторінка блогу"
+        getSlideLabel={(index) => `Сторінка блогу ${index + 1}`}
+        className="mt-10"
+      />
     </div>
   );
 }
@@ -1217,7 +1189,7 @@ function Index() {
         {/* 10.5. ПРО МЕТОДИКИ РЕАБІЛІТАЦІЇ */}
         <section
           id="about-methods"
-          className="relative scroll-mt-24 overflow-hidden bg-background pt-20 pb-0 md:pt-24 lg:pt-28"
+          className="relative scroll-mt-24 overflow-hidden bg-background pt-20 pb-16 md:pt-24 md:pb-20 lg:pt-28 lg:pb-24"
         >
           <div className="absolute -left-20 top-10 size-72 rounded-full bg-primary/[0.05] blur-3xl" />
           <div className="absolute right-0 top-24 size-80 rounded-full bg-primary/[0.04] blur-[140px]" />

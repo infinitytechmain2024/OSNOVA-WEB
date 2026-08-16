@@ -181,10 +181,10 @@ export function ContactsPage({ node }: { node: SiteNode }) {
       <main>
         {/* Top Hero Section */}
         <section id="quick-contacts" className="scroll-mt-32">
-          <PageContainer className="pb-12">
+          <PageContainer className="pt-8 pb-12 sm:pt-10">
             <SectionHeader
               eyebrow="Контактна інформація"
-              eyebrowClassName="inline-flex items-center rounded-full border border-[#D5E1F4] bg-[#F5F8FE] px-4 py-2 text-[10px] font-bold tracking-[0.18em] text-[#215FBC] sm:text-[11px]"
+              eyebrowClassName="inline-flex items-center rounded-full border border-[#D5E1F4] bg-[#F5F8FE] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#215FBC] sm:text-[11px]"
               title="Як з нами зв'язатися"
               text="Оберіть найзручніший спосіб зв'язку — зателефонуйте, напишіть у месенджер або заповніть форму зворотного зв'язку. Ми завжди раді надати підтримку."
             />

@@ -3,11 +3,11 @@ import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
 import { $ as Dumbbell, B as House, D as Microscope, Dt as Activity, Et as Ambulance, G as GraduationCap, H as HeartPulse, I as Layers, M as MapPin, N as Mail, O as MessageSquare, Q as ExternalLink, S as Package, T as Navigation, V as Heart, W as Handshake, Y as FileText, _ as Search, a as Users, at as ClipboardCheck, b as Phone, bt as BookOpen, ct as CircleCheck, d as TriangleAlert, dt as ChevronRight, et as Compass, f as Stethoscope, ft as ChevronLeft, g as Send, gt as CalendarDays, h as Share2, i as Wrench, it as ClipboardList, j as MapPinned, k as MessageCircle, m as ShieldCheck, mt as Check, nt as Clock, p as Sparkles, pt as ChevronDown, q as FlaskConical, s as UserRoundCheck, tt as CloudUpload, u as Truck, ut as ChevronUp, v as Route, vt as Building2, wt as ArrowRight, x as PhoneCall, xt as BadgeCheck, y as Presentation } from "./_libs/lucide-react.mjs";
 import { C as siteTree, S as service_sports_default, _ as getBreadcrumbs, a as ConsultationForm, b as service_checkup_default, c as IMAGES, d as SiteFooter, f as SiteHeader, g as ergometer_default, h as ecg_review_default, i as CONTACTS, l as PageContainer, m as cpet_test_default, n as Breadcrumbs, p as cn, r as CARDIO_REHAB_PROGRAMS, s as FAQAccordion, t as AppLink, u as SectionHeader$1, w as useConsultationModal, x as service_rehab_default, y as getNodeByRoute } from "./_ssr/blocks-B5MexCwB.mjs";
-import { t as Route$1 } from "./_-DSnODEFk.mjs";
+import { t as Route$1 } from "./_-MhTmgPa-.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-HV8Aj3E6.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as partner_chnu_default, c as partner_karpatska_akademiia_default, i as partner_asmu_default, l as partner_sytenko_default, n as FAQConsultationCTA, o as partner_heart_default, r as companyOverviewCtaClassName, s as partner_ifnmu_default, t as CompanyOverviewSection } from "./_ssr/company-overview-section-RdPzcOCa.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-CK2mRDqA.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-CAKtE3x4.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -3785,10 +3785,10 @@ function ContactsPage({ node }) {
 					id: "quick-contacts",
 					className: "scroll-mt-32",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(PageContainer, {
-						className: "pb-12",
+						className: "pt-8 pb-12 sm:pt-10",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader$1, {
 							eyebrow: "Контактна інформація",
-							eyebrowClassName: "inline-flex items-center rounded-full border border-[#D5E1F4] bg-[#F5F8FE] px-4 py-2 text-[10px] font-bold tracking-[0.18em] text-[#215FBC] sm:text-[11px]",
+							eyebrowClassName: "inline-flex items-center rounded-full border border-[#D5E1F4] bg-[#F5F8FE] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#215FBC] sm:text-[11px]",
 							title: "Як з нами зв'язатися",
 							text: "Оберіть найзручніший спосіб зв'язку — зателефонуйте, напишіть у месенджер або заповніть форму зворотного зв'язку. Ми завжди раді надати підтримку."
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
