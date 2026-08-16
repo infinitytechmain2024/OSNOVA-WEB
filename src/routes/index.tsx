@@ -396,6 +396,40 @@ const FAQS = [
   },
 ];
 
+const HOME_ANCHORS = [
+  { href: "#pro-kompaniyu", label: "Про компанію" },
+  { href: "#napryamy", label: "Напрями" },
+  { href: "#methods", label: "Методи відновлення" },
+  { href: "#perevagy", label: "Переваги" },
+  { href: "#partnerstvo", label: "Партнерство" },
+  { href: "#osvita", label: "Освіта та наука" },
+  { href: "#spivpratsia", label: "Партнерська платформа" },
+  { href: "#blog", label: "Новини та статті" },
+  { href: "#faq", label: "Питання та відповіді" },
+  { href: "#nashi-napryamy", label: "Наші напрями" },
+];
+
+function AnchorNav() {
+  return (
+    <div className="border-b border-border bg-white">
+      <div className="mx-auto flex max-w-[1600px] items-center gap-4 overflow-x-auto px-4 py-3 sm:px-6 lg:px-10">
+        <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить:</p>
+        <nav aria-label="Розділи сторінки" className="flex min-w-max gap-2 sm:gap-3">
+          {HOME_ANCHORS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy/78 transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+  );
+}
+
 function SectionHeader({
   subtitle,
   title,
@@ -1022,14 +1056,19 @@ function Index() {
           <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <Breadcrumbs
               items={[{ title: "Головна", route: "/" }]}
-              align="center"
+              align="left"
               className="pb-4 pt-4 sm:pt-4"
             />
           </div>
         </div>
 
+        <AnchorNav />
+
         {/* 2. ПРО КОМПАНІЮ */}
-        <section className="bg-white pt-8 sm:pt-12 lg:pt-14 pb-16 md:pb-24 lg:pb-28">
+        <section
+          id="pro-kompaniyu"
+          className="scroll-mt-24 bg-white pt-8 sm:pt-12 lg:pt-14 pb-16 md:pb-24 lg:pb-28"
+        >
           <div className="mx-auto max-w-[1480px] px-6 sm:px-8 lg:px-10 xl:px-12">
             <div className="grid items-center gap-10 lg:gap-14 xl:gap-16 lg:grid-cols-[1.08fr_1fr]">
               <div className="w-full max-w-[720px] lg:max-w-none">
@@ -1128,7 +1167,10 @@ function Index() {
         </section>
 
         {/* 4. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
-        <section className="bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60">
+        <section
+          id="napryamy"
+          className="scroll-mt-24 bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60"
+        >
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader centered subtitle="НАПРЯМИ" title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ" />
 
@@ -1220,7 +1262,10 @@ function Index() {
         <RehabilitationMethodsSlider />
 
         {/* 5. ЧОМУ ОБИРАЮТЬ ОСНОВА РЕАБІЛІТАЦІЯ */}
-        <section className="relative pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden bg-background">
+        <section
+          id="perevagy"
+          className="relative scroll-mt-24 pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden bg-background"
+        >
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <div className="text-center mb-16">
               <span className="inline-block rounded-full border border-primary/30 bg-primary/5 px-5 py-1.5 text-xs font-bold tracking-widest text-primary uppercase mb-6">
@@ -1291,7 +1336,10 @@ function Index() {
         </section>
 
         {/* 6. НАШІ ПАРТНЕРИ */}
-        <section className="overflow-hidden bg-secondary/40 py-20 md:py-24">
+        <section
+          id="partnerstvo"
+          className="scroll-mt-24 overflow-hidden bg-secondary/40 py-20 md:py-24"
+        >
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader centered subtitle="ПАРТНЕРСТВО" title="НАШІ ПАРТНЕРИ" />
 
@@ -1341,7 +1389,7 @@ function Index() {
         </section>
 
         {/* 7. ОСВІТА ТА НАУКА */}
-        <section className="bg-white py-24 md:py-32">
+        <section id="osvita" className="scroll-mt-24 bg-white py-24 md:py-32">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader
               centered
@@ -1358,7 +1406,7 @@ function Index() {
         </section>
 
         {/* 8. СПІВПРАЦЯ */}
-        <section className="bg-white py-16 md:py-20 lg:py-16">
+        <section id="spivpratsia" className="scroll-mt-24 bg-white py-16 md:py-20 lg:py-16">
           <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <SectionHeader
               centered
@@ -1460,14 +1508,17 @@ function Index() {
         </section>
 
         {/* 9. БЛОГ */}
-        <section className="py-20 md:py-28 bg-background">
+        <section id="blog" className="scroll-mt-24 py-20 md:py-28 bg-background">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <BlogCarousel />
           </div>
         </section>
 
         {/* 10. ПИТАННЯ ТА ВІДПОВІДІ (FAQ) */}
-        <section className="bg-slate-50/70 py-24 md:py-32 border-t border-slate-200/60">
+        <section
+          id="faq"
+          className="scroll-mt-24 bg-slate-50/70 py-24 md:py-32 border-t border-slate-200/60"
+        >
           <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
             <div className="text-center">
               <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">
@@ -1496,7 +1547,10 @@ function Index() {
         </section>
 
         {/* 10.5. ПРО МЕТОДИКИ РЕАБІЛІТАЦІЇ */}
-        <section className="relative overflow-hidden bg-background py-24 md:py-32">
+        <section
+          id="nashi-napryamy"
+          className="relative scroll-mt-24 overflow-hidden bg-background py-24 md:py-32"
+        >
           <div className="absolute -right-[10%] top-[30%] size-[500px] rounded-full bg-primary/5 blur-[120px]" />
 
           <div className="relative mx-auto max-w-[1600px] px-6 lg:px-10">
