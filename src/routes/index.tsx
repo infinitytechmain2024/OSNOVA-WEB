@@ -2,13 +2,13 @@ import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { AppLink } from "@/components/app-link";
 import {
+  ArrowLeft,
   ArrowRight,
   Heart,
   Dumbbell,
   Phone,
   Users,
   ChevronRight,
-  ChevronLeft,
   ChevronUp,
   ChevronDown,
   Brain,
@@ -629,6 +629,59 @@ function CooperationCard({
   );
 }
 
+type SliderNavProps = {
+  count: number;
+  current: number;
+  onSelect: (index: number) => void;
+  onPrevious: () => void;
+  onNext: () => void;
+  label: string;
+};
+
+function SliderNav({ count, current, onSelect, onPrevious, onNext, label }: SliderNavProps) {
+  const buttonClass =
+    "inline-flex size-14 shrink-0 items-center justify-center rounded-full bg-[#EEF2F8] text-[#07152D] transition-all hover:bg-[#DCE5F1] disabled:cursor-not-allowed disabled:opacity-40";
+
+  return (
+    <div className="flex items-center justify-center gap-5 sm:gap-7">
+      <button
+        type="button"
+        onClick={onPrevious}
+        disabled={count <= 1}
+        aria-label={`Попередній слайд: ${label}`}
+        className={buttonClass}
+      >
+        <ArrowLeft className="size-5" strokeWidth={2.5} />
+      </button>
+
+      <div className="flex items-center justify-center gap-2.5">
+        {Array.from({ length: count }).map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => onSelect(index)}
+            aria-label={`${label}: слайд ${index + 1}`}
+            aria-current={current === index}
+            className={`h-2.5 rounded-full transition-all duration-300 ${
+              current === index ? "w-10 bg-[#1E64B4]" : "w-2.5 bg-[#C9D3E2] hover:bg-[#A9B7CC]"
+            }`}
+          />
+        ))}
+      </div>
+
+      <button
+        type="button"
+        onClick={onNext}
+        disabled={count <= 1}
+        aria-label={`Наступний слайд: ${label}`}
+        className={buttonClass}
+      >
+        <ArrowRight className="size-5" strokeWidth={2.5} />
+      </button>
+    </div>
+  );
+}
+
 function BlogCarousel() {
   const articles = NEWS_ARTICLES;
   const [current, setCurrent] = React.useState(0);
@@ -738,42 +791,15 @@ function BlogCarousel() {
       </div>
 
       {/* Pagination controls */}
-      <div className="mt-10 flex items-center justify-center">
-        <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white p-2 shadow-sm">
-          <button
-            type="button"
-            onClick={goToPrevious}
-            disabled={totalPages <= 1}
-            aria-label="Попередня сторінка блогу"
-            className="inline-flex size-9 items-center justify-center rounded-full text-slate-700 transition-all hover:bg-slate-100 hover:text-[#1E64B4] disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <ChevronLeft className="size-4" />
-          </button>
-
-          <div className="flex items-center justify-center gap-2.5 px-1">
-            {Array.from({ length: totalPages }).map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setCurrent(i)}
-                className={`size-2.5 rounded-full transition-all duration-300 ${
-                  i === current ? "bg-[#1E64B4] scale-110" : "bg-slate-300 hover:bg-slate-400"
-                }`}
-                aria-label={`Сторінка ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            type="button"
-            onClick={goToNext}
-            disabled={totalPages <= 1}
-            aria-label="Наступна сторінка блогу"
-            className="inline-flex size-9 items-center justify-center rounded-full text-slate-700 transition-all hover:bg-slate-100 hover:text-[#1E64B4] disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <ChevronRight className="size-4" />
-          </button>
-        </div>
+      <div className="mt-10">
+        <SliderNav
+          count={totalPages}
+          current={current}
+          onSelect={setCurrent}
+          onPrevious={goToPrevious}
+          onNext={goToNext}
+          label="блог"
+        />
       </div>
     </div>
   );
@@ -1313,28 +1339,15 @@ function Index() {
                 ))}
               </CarouselContent>
 
-              <div className="mt-10 flex flex-col items-center gap-6">
-                {partnersSlideCount > 0 && (
-                  <div className="flex items-center justify-center gap-2.5">
-                    {Array.from({ length: partnersSlideCount }).map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => partnersApi?.scrollTo(index)}
-                        className={`h-2.5 rounded-full transition-all duration-300 ${
-                          currentPartnersSlide === index
-                            ? "w-8 bg-primary shadow-sm"
-                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
-                        }`}
-                        aria-label={`Перейти до блоку партнерів ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                <div className="flex items-center justify-center gap-3">
-                  <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-white text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
-                  <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-white text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
-                </div>
+              <div className="mt-10">
+                <SliderNav
+                  count={partnersSlideCount}
+                  current={currentPartnersSlide}
+                  onSelect={(index) => partnersApi?.scrollTo(index)}
+                  onPrevious={() => partnersApi?.scrollPrev()}
+                  onNext={() => partnersApi?.scrollNext()}
+                  label="партнери"
+                />
               </div>
             </Carousel>
           </div>
