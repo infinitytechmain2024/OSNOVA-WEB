@@ -3,11 +3,11 @@ import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
 import { $ as ExternalLink, B as House, Ct as BadgeCheck, D as Microscope, Et as ArrowRight, G as HandHeart, H as HeartPulse, I as Layers, J as FlaskConical, K as GraduationCap, M as MapPin, N as Mail, O as MessageSquare, Ot as Ambulance, S as Package, St as BookOpen, T as Navigation, V as Heart, W as Handshake, X as FileText, _ as Search, a as Users, at as ClipboardPlus, b as Phone, bt as Building2, d as TriangleAlert, et as Dumbbell, f as Stethoscope, ft as ChevronUp, g as Send, gt as Check, h as Share2, ht as ChevronDown, i as Wrench, j as MapPinned, k as MessageCircle, kt as Activity, m as ShieldCheck, mt as ChevronLeft, nt as CloudUpload, ot as ClipboardList, p as Sparkles, pt as ChevronRight, rt as Clock, s as UserRoundCheck, st as ClipboardCheck, tt as Compass, u as Truck, ut as CircleCheck, v as Route, vt as CalendarDays, x as PhoneCall, y as Presentation } from "./_libs/lucide-react.mjs";
 import { C as siteTree, S as service_sports_default, _ as getBreadcrumbs, a as ConsultationForm, b as service_checkup_default, c as IMAGES, d as SiteFooter, f as SiteHeader, g as ergometer_default, h as ecg_review_default, i as CONTACTS, l as PageContainer, m as cpet_test_default, n as Breadcrumbs, p as cn, r as CARDIO_REHAB_PROGRAMS, s as FAQAccordion, t as AppLink, u as SectionHeader$1, v as getNodeById, w as useConsultationModal, x as service_rehab_default, y as getNodeByRoute } from "./_ssr/blocks-qYXwqIeb.mjs";
-import { t as Route$1 } from "./_-CbPK8u5c.mjs";
+import { t as Route$1 } from "./_-B7YsbbYK.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-4KYyX4-z.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as medical_assessment_default, c as partner_heart_default, d as partner_sytenko_default, i as companyOverviewCtaClassName, l as partner_ifnmu_default, n as FAQConsultationCTA, o as partner_asmu_default, r as balance_reference_card_default, s as partner_chnu_default, t as CompanyOverviewSection, u as partner_karpatska_akademiia_default } from "./_ssr/company-overview-section-B5K0sQX0.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-lUeCHXdA.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-D5bcBJ7E.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -1327,6 +1327,7 @@ function InstitutePartnershipPage({ node }) {
 	});
 }
 var cardio_heart_3d_default = "/assets/cardio-heart-3d-DLgiMZPh.jpg";
+var osnova_logo_3d_default = "/assets/osnova-logo-3d-DLHYYvgx.jpg";
 var ANCHORS = [
 	{
 		href: "#about",
@@ -1431,12 +1432,6 @@ var CARE_FORMATS = [
 	"денна",
 	"домашня",
 	"дистанційна (телереабілітація)"
-];
-var DOCUMENT_STEPS = [
-	"Заявка",
-	"Документи",
-	"Попередній розгляд",
-	"Зв’язок адміністратора"
 ];
 var CONDITION_IMAGES = [
 	cpet_test_default,
@@ -1644,7 +1639,7 @@ function CardioRehabPage({ node }) {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 					id: "for-whom",
-					className: "scroll-mt-24 bg-soft-blue py-12 sm:py-20",
+					className: "scroll-mt-24 bg-white py-12 sm:py-20",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10",
 						children: [
@@ -1807,7 +1802,7 @@ function CardioRehabPage({ node }) {
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(OtherServicesSlider, {}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DocumentsReviewSection, {}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DocumentsReviewSection, { onConsultationClick: () => openModal("Записатися на консультацію") }),
 				faqItems.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 					id: "faq",
 					className: "scroll-mt-24 border-t border-slate-200/60 bg-slate-50/70 py-20 md:py-28",
@@ -2384,14 +2379,58 @@ function OtherServicesSlider() {
 		})
 	});
 }
-function DocumentsReviewSection() {
+function DocumentsReviewSection({ onConsultationClick }) {
 	const inputRef = import_react.useRef(null);
 	const [files, setFiles] = import_react.useState([]);
-	const [submitted, setSubmitted] = import_react.useState(false);
-	const onFileChange = (event) => {
-		const nextFiles = Array.from(event.target.files || []).map((file) => file.name);
+	const [name, setName] = import_react.useState("");
+	const [phone, setPhone] = import_react.useState("");
+	const [dragActive, setDragActive] = import_react.useState(false);
+	const [submitState, setSubmitState] = import_react.useState({
+		type: "idle",
+		message: ""
+	});
+	const validatePhone = (value) => {
+		const cleaned = value.replace(/[\s()+-]/g, "");
+		return /^\d{10,13}$/.test(cleaned);
+	};
+	const validateFiles = (nextFiles) => {
+		const invalidFormat = nextFiles.find((file) => {
+			const extension = file.name.split(".").pop()?.toLowerCase();
+			return !extension || ![
+				"pdf",
+				"jpg",
+				"jpeg",
+				"png"
+			].includes(extension);
+		});
+		if (invalidFormat) return `Файл "${invalidFormat.name}" має недопустимий формат. Доступні PDF, JPG і PNG.`;
+		const tooLarge = nextFiles.find((file) => file.size > 10 * 1024 * 1024);
+		if (tooLarge) return `Файл "${tooLarge.name}" перевищує 10 МБ.`;
+		return null;
+	};
+	const applyFiles = (nextFiles) => {
+		if (nextFiles.length === 0) return;
+		const validationError = validateFiles(nextFiles);
+		if (validationError) {
+			setSubmitState({
+				type: "error",
+				message: validationError
+			});
+			return;
+		}
 		setFiles(nextFiles);
-		setSubmitted(false);
+		setSubmitState({
+			type: "idle",
+			message: ""
+		});
+	};
+	const onFileChange = (event) => {
+		applyFiles(Array.from(event.target.files || []));
+		event.target.value = "";
+	};
+	const formatFileSize = (size) => {
+		if (size < 1024 * 1024) return `${Math.max(1, Math.round(size / 1024))} КБ`;
+		return `${(size / (1024 * 1024)).toFixed(1)} МБ`;
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		id: "documents",
@@ -2399,107 +2438,293 @@ function DocumentsReviewSection() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "rounded-2xl border border-blue-100 bg-white p-5 shadow-sm sm:p-8 lg:p-10",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeading$1, {
-						title: "Надішліть документи для попереднього розгляду",
-						text: "Перед стартом команді важливо побачити виписки, результати обстежень і рекомендації лікаря. Це не замінює консультацію, але допомагає підготувати наступний крок."
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "mt-8 grid gap-4 md:grid-cols-4",
-						children: DOCUMENT_STEPS.map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-xl border border-blue-100 bg-soft p-5",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "flex size-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground",
-									children: index + 1
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-									className: "mt-4 font-bold text-navy",
-									children: step
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "mt-2 text-sm leading-relaxed text-navy/68",
-									children: getDocumentStepText(index)
-								})
-							]
-						}, step))
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						className: "mt-8 rounded-xl border border-border bg-soft p-5 sm:p-6",
-						onSubmit: (event) => {
-							event.preventDefault();
-							setSubmitted(true);
-						},
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "text-xl font-bold text-navy",
-								children: "Попередній розгляд"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-2 text-sm leading-relaxed text-navy/70",
-								children: "Додайте наявні документи та контактні дані. Адміністратор зв’яжеться з вами після попереднього розгляду."
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								type: "button",
-								onClick: () => inputRef.current?.click(),
-								className: "mt-5 flex w-full flex-col items-center justify-center rounded-xl border border-dashed border-primary/35 bg-white px-4 py-7 text-center transition-colors hover:border-primary hover:bg-soft-blue/50",
+				className: "space-y-6 sm:space-y-8",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "relative overflow-hidden rounded-[32px] border border-blue-100/90 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.98)_0%,rgba(238,245,255,0.96)_50%,rgba(227,238,255,0.94)_100%)] p-5 shadow-[0_22px_60px_rgba(31,61,120,0.08)] sm:p-8 lg:p-10",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "pointer-events-none absolute -left-16 top-10 h-48 w-48 rounded-full bg-white/80 blur-3xl",
+							"aria-hidden": true
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "pointer-events-none absolute right-0 top-0 h-56 w-56 rounded-full bg-primary/10 blur-3xl",
+							"aria-hidden": true
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "relative grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "max-w-2xl",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CloudUpload, { className: "size-9 text-primary" }),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "mt-3 text-sm font-bold text-navy",
-										children: "Обрати PDF, JPG або PNG"
+										className: "inline-flex rounded-full border border-primary/12 bg-white/75 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary shadow-[0_10px_25px_rgba(31,61,120,0.06)] backdrop-blur-sm sm:px-5",
+										children: "Перший крок до відновлення"
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "mt-1 text-xs text-navy/58",
-										children: "до 10 МБ кожен файл"
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+										className: "mt-6 max-w-[14ch] text-3xl font-extrabold leading-[1.08] text-navy sm:text-4xl lg:text-[3.4rem]",
+										children: "Замовте програму кардіологічної реабілітації"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "mt-5 max-w-2xl text-base leading-relaxed text-navy/72 sm:text-lg",
+										children: "Наші лікарі розроблять персональний план відновлення з урахуванням вашого стану, анамнезу та цілей. Ми підготуємо все необхідне, щоб ви почувалися впевнено на кожному етапі."
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											type: "button",
+											onClick: onConsultationClick,
+											className: "inline-flex min-h-14 items-center justify-center gap-2.5 rounded-[18px] bg-[linear-gradient(135deg,#2563eb_0%,#1d4ed8_100%)] px-6 py-4 text-sm font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.24)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(37,99,235,0.3)] sm:px-7",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, { className: "size-5" }), "Замовити консультацію"]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+											href: CONTACTS.phoneHref,
+											className: "inline-flex min-h-14 items-center justify-center gap-3 rounded-[18px] border border-blue-100 bg-white/86 px-6 py-4 text-sm font-bold text-navy shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm transition-colors hover:border-primary/35 hover:bg-white sm:px-7",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "size-5 text-primary" }), CONTACTS.phone]
+										})]
 									})
 								]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-								ref: inputRef,
-								type: "file",
-								accept: ".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png",
-								multiple: true,
-								className: "hidden",
-								onChange: onFileChange
-							}),
-							files.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
-								className: "mt-4 space-y-2",
-								children: files.map((file) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
-									className: "flex items-center gap-2 rounded-lg border border-border bg-white px-3 py-2 text-sm text-navy/78",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "size-4 shrink-0 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "truncate",
-										children: file
-									})]
-								}, file))
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "mt-4 grid gap-3 sm:grid-cols-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-									type: "text",
-									required: true,
-									placeholder: "Ваше ім’я",
-									className: "min-h-12 rounded-lg border border-border bg-white px-4 text-sm font-medium text-navy outline-none transition-colors focus:border-primary"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-									type: "tel",
-									required: true,
-									placeholder: "Номер телефону",
-									className: "min-h-12 rounded-lg border border-border bg-white px-4 text-sm font-medium text-navy outline-none transition-colors focus:border-primary"
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								type: "submit",
-								className: "mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90",
-								children: ["Надіслати документи", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4" })]
-							}),
-							submitted && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-4 rounded-lg border border-brand-green/25 bg-brand-green/10 px-4 py-3 text-sm font-semibold text-navy",
-								children: "Дякуємо. Адміністратор зв’яжеться з вами після попереднього розгляду."
-							})
-						]
-					})
-				]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "relative min-h-[300px] overflow-hidden rounded-[30px] border border-white/70 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.98),rgba(241,247,255,0.92)_58%,rgba(226,237,255,0.9)_100%)] shadow-[0_24px_55px_rgba(31,61,120,0.08)]",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "pointer-events-none absolute inset-y-8 left-8 hidden w-28 rounded-[24px] border border-white/70 bg-white/82 p-4 shadow-[0_16px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm xl:flex xl:flex-col xl:items-center xl:justify-center",
+										"aria-hidden": true,
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+												src: osnova_logo_3d_default,
+												alt: "",
+												loading: "lazy",
+												width: 220,
+												height: 320,
+												className: "h-24 w-full object-contain"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mt-3 h-px w-full bg-slate-200/80" }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "mt-3 text-center text-[11px] font-semibold leading-relaxed text-navy/60",
+												children: "Маршрут відновлення формується після розгляду документів"
+											})
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "absolute right-5 top-5 rounded-[20px] border border-white/80 bg-white/82 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:right-6 sm:top-6 sm:px-5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-[11px] font-bold uppercase tracking-[0.14em] text-primary",
+											children: "Формуємо план"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "mt-1 text-sm font-semibold leading-snug text-navy",
+											children: "після аналізу документів"
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "absolute inset-x-5 bottom-5 rounded-[20px] border border-white/80 bg-white/82 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-[250px] sm:px-5",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "text-[11px] font-bold uppercase tracking-[0.14em] text-primary",
+											children: "Індивідуальний підхід"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "mt-1 text-sm font-semibold leading-snug text-navy",
+											children: "з урахуванням вашого стану, анамнезу та цілей"
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+										src: cardio_heart_3d_default,
+										alt: "Стилізована 3D-модель серця для секції кардіореабілітації",
+										loading: "lazy",
+										width: 1024,
+										height: 1536,
+										className: "absolute inset-0 h-full w-full object-contain object-center p-6 sm:p-8 lg:pl-24 xl:pl-32"
+									})
+								]
+							})]
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "relative overflow-hidden rounded-[32px] border border-blue-100/90 bg-white p-5 shadow-[0_22px_60px_rgba(31,61,120,0.08)] sm:p-8 lg:p-10",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "pointer-events-none absolute -right-14 top-0 h-52 w-52 rounded-full bg-primary/8 blur-3xl",
+							"aria-hidden": true
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "pointer-events-none absolute bottom-0 left-8 h-40 w-40 rounded-full bg-sky-100/70 blur-3xl",
+							"aria-hidden": true
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "relative",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+									className: "max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-[2.2rem]",
+									children: "Надішліть медичні документи для попереднього розгляду"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-3 max-w-3xl text-base leading-relaxed text-navy/68 sm:text-lg",
+									children: "Це допоможе лікарю ознайомитися з вашим станом і підготувати персональні рекомендації ще до першого контакту."
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+									className: "mt-8",
+									noValidate: true,
+									onSubmit: (event) => {
+										event.preventDefault();
+										if (!files.length) {
+											setSubmitState({
+												type: "error",
+												message: "Додайте хоча б один медичний документ для попереднього розгляду."
+											});
+											return;
+										}
+										if (!name.trim()) {
+											setSubmitState({
+												type: "error",
+												message: "Вкажіть ваше ім’я, щоб ми знали, як до вас звертатися."
+											});
+											return;
+										}
+										if (!phone.trim()) {
+											setSubmitState({
+												type: "error",
+												message: "Вкажіть номер телефону для зв’язку з адміністратором."
+											});
+											return;
+										}
+										if (!validatePhone(phone)) {
+											setSubmitState({
+												type: "error",
+												message: "Введіть коректний номер телефону у форматі +380 XX XXX XX XX."
+											});
+											return;
+										}
+										setSubmitState({
+											type: "success",
+											message: "Документи надіслано. Після попереднього розгляду адміністратор зв’яжеться з вами."
+										});
+										setFiles([]);
+										setName("");
+										setPhone("");
+									},
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											type: "button",
+											onClick: () => inputRef.current?.click(),
+											onDragOver: (event) => {
+												event.preventDefault();
+												setDragActive(true);
+											},
+											onDragLeave: (event) => {
+												event.preventDefault();
+												setDragActive(false);
+											},
+											onDrop: (event) => {
+												event.preventDefault();
+												setDragActive(false);
+												applyFiles(Array.from(event.dataTransfer.files || []));
+											},
+											className: cn("group flex w-full flex-col items-center justify-center rounded-[24px] border border-dashed px-6 py-10 text-center transition-all sm:px-8 sm:py-12", dragActive ? "border-primary bg-soft-blue/80 shadow-[0_18px_40px_rgba(37,99,235,0.12)]" : "border-primary/20 bg-[linear-gradient(180deg,rgba(248,251,255,0.9)_0%,rgba(255,255,255,0.96)_100%)] hover:border-primary/35 hover:bg-soft-blue/40"),
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "flex size-[72px] items-center justify-center rounded-full bg-primary/10 text-primary sm:size-20",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CloudUpload, {
+														className: "size-9 sm:size-10",
+														strokeWidth: 1.85
+													})
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "mt-5 text-xl font-bold leading-tight text-navy",
+													children: "Додайте файли"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "mt-2 text-sm leading-relaxed text-navy/58 sm:text-base",
+													children: "PDF, JPG, PNG (до 10 МБ на файл)"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "mt-1 text-xs leading-relaxed text-navy/48 sm:text-sm",
+													children: "Перетягніть файли сюди або натисніть, щоб вибрати"
+												})
+											]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+											ref: inputRef,
+											type: "file",
+											accept: ".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png",
+											multiple: true,
+											className: "hidden",
+											onChange: onFileChange
+										}),
+										files.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "mt-5 grid gap-3 md:grid-cols-2",
+											children: files.map((file) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center gap-3 rounded-[18px] border border-blue-100/90 bg-white/92 px-4 py-3 shadow-[0_10px_25px_rgba(31,61,120,0.04)]",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, { className: "size-5" })
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "min-w-0",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+														className: "truncate text-sm font-semibold text-navy",
+														children: file.name
+													}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+														className: "mt-0.5 text-xs text-navy/55",
+														children: formatFileSize(file.size)
+													})]
+												})]
+											}, `${file.name}-${file.size}`))
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "mt-5 grid gap-3 lg:grid-cols-2",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+												className: "relative block",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "sr-only",
+													children: "Ваше ім’я"
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+													type: "text",
+													placeholder: "Ваше ім’я",
+													value: name,
+													onChange: (event) => {
+														setName(event.target.value);
+														if (submitState.type !== "idle") setSubmitState({
+															type: "idle",
+															message: ""
+														});
+													},
+													className: "min-h-14 w-full rounded-[18px] border border-blue-100 bg-white px-5 text-sm font-medium text-navy outline-none transition-all placeholder:text-navy/36 focus:border-primary focus:shadow-[0_0_0_4px_rgba(37,99,235,0.08)]"
+												})]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+												className: "relative block",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "sr-only",
+													children: "Номер телефону"
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+													type: "tel",
+													placeholder: "Номер телефону",
+													value: phone,
+													onChange: (event) => {
+														setPhone(event.target.value);
+														if (submitState.type !== "idle") setSubmitState({
+															type: "idle",
+															message: ""
+														});
+													},
+													className: "min-h-14 w-full rounded-[18px] border border-blue-100 bg-white px-5 text-sm font-medium text-navy outline-none transition-all placeholder:text-navy/36 focus:border-primary focus:shadow-[0_0_0_4px_rgba(37,99,235,0.08)]"
+												})]
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											type: "submit",
+											className: "mt-5 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-[linear-gradient(90deg,rgba(37,99,235,0.46)_0%,#1d4ed8_100%)] px-6 py-4 text-sm font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.18)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(37,99,235,0.24)] sm:text-base",
+											children: ["Надіслати документи", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4 sm:size-5" })]
+										}),
+										submitState.type !== "idle" && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: cn("mt-4 rounded-[18px] px-4 py-3 text-sm font-semibold leading-relaxed", submitState.type === "success" ? "border border-brand-green/25 bg-brand-green/10 text-navy" : "border border-red-200 bg-red-50 text-red-700"),
+											role: submitState.type === "success" ? "status" : "alert",
+											children: submitState.message
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "mt-4 flex items-center justify-center gap-2 text-center text-xs font-medium text-navy/56 sm:text-sm",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-4 shrink-0 text-primary/70" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Ваші дані захищені та не передаються третім особам" })]
+										})
+									]
+								})
+							]
+						})
+					]
+				})]
 			})
 		})
 	});
@@ -2701,14 +2926,6 @@ function pickFaqItems(items) {
 		"Як записатися?"
 	].map((question) => items.find((item) => item.question === question)).filter(Boolean);
 	return picked.length > 0 ? picked : items.slice(0, 6);
-}
-function getDocumentStepText(index) {
-	switch (index) {
-		case 0: return "Залиште заявку на сайті або зателефонуйте. Це займає лише кілька хвилин і не зобов’язує до подальших дій.";
-		case 1: return "Підготуйте виписки з лікарень, результати останніх обстежень і рекомендації кардіолога. Чим повніша інформація, тим точніше ми зможемо оцінити, яка програма вам підходить.";
-		case 2: return "Лікарі центру вивчають надані матеріали і визначають, чи можна розпочинати реабілітацію, а також які додаткові обстеження можуть знадобитися.";
-		default: return "Після розгляду з вами зв’яжеться адміністратор. Він відповість на всі запитання, запропонує зручний час і допоможе з організацією приїзду.";
-	}
 }
 var QUICK_FACTS = [
 	{

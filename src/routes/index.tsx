@@ -936,13 +936,14 @@ function Index() {
           <div className="absolute -right-16 bottom-6 size-72 rounded-full bg-emerald-300/20 blur-3xl" />
 
           <div className="relative mx-auto max-w-[1100px] px-6 text-center lg:px-10">
-            <div className="mx-auto max-w-4xl rounded-[2rem] border border-white/70 bg-white/60 p-8 shadow-[0_22px_60px_-35px_rgba(17,55,110,0.45)] backdrop-blur-sm md:p-12">
-              <h2 className="mb-6 text-3xl font-extrabold text-navy md:text-5xl lg:text-6xl">
+            <div className="mx-auto max-w-4xl rounded-[2rem] border border-white/75 bg-white/80 p-8 shadow-[0_22px_60px_-35px_rgba(17,55,110,0.45)] backdrop-blur-md md:p-12">
+              <h2 className="text-3xl font-extrabold text-navy md:text-5xl lg:text-6xl">
                 Зробіть перший крок
                 <br />
                 до <span className="text-primary">відновлення</span>
               </h2>
-              <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-navy/70 md:text-xl">
+              <div className="mx-auto mt-6 mb-8 h-1.5 w-40 rounded-full bg-gradient-to-r from-primary via-sky-400 to-brand-green" />
+              <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-slate-500 md:text-xl">
                 Розкажіть про свою ситуацію — спеціаліст допоможе визначити відповідну програму та
                 подальші дії.
               </p>
@@ -950,14 +951,14 @@ function Index() {
                 <button
                   type="button"
                   onClick={() => openModal("Отримати консультацію")}
-                  className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-primary px-10 py-4 text-base font-bold tracking-wide text-primary-foreground shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.3)] transition-all hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(var(--color-primary-rgb),0.5)] sm:w-auto md:py-5 md:text-lg cursor-pointer"
+                  className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-brand-green px-10 py-4 text-base font-bold tracking-wide text-brand-green-foreground shadow-[0_18px_36px_rgba(49,191,126,0.28)] transition-all hover:scale-[1.02] hover:bg-brand-green/90 hover:shadow-[0_22px_42px_rgba(49,191,126,0.36)] sm:w-auto md:py-5 md:text-lg cursor-pointer"
                 >
                   <span className="relative z-10">ОТРИМАТИ КОНСУЛЬТАЦІЮ</span>
                   <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
                 </button>
                 <a
                   href="tel:+380674702788"
-                  className="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-navy bg-transparent px-10 py-4 text-base font-bold text-navy transition-all hover:bg-navy hover:text-white sm:w-auto md:py-5 md:text-lg"
+                  className="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-[#7B8499] bg-white/70 px-10 py-4 text-base font-bold text-[#586279] shadow-[0_10px_24px_rgba(88,98,121,0.08)] transition-all hover:border-[#586279] hover:bg-[#586279] hover:text-white sm:w-auto md:py-5 md:text-lg"
                 >
                   <Phone className="size-5" />
                   +380 674 702 788
