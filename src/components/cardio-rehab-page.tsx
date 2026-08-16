@@ -541,7 +541,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
               )}
             </div>
 
-            <FAQConsultationCTA className="mt-16" />
+            <FAQConsultationCTA className="mt-16" cardClassName="lg:min-h-[630px]" />
           </section>
         )}
 
