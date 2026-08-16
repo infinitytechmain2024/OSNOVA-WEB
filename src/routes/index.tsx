@@ -1,6 +1,7 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { AppLink } from "@/components/app-link";
+import { CooperationCascade } from "@/components/cooperation-cascade";
 import {
   ArrowRight,
   Heart,
@@ -59,9 +60,6 @@ import educationTrainingImg from "@/assets/education-training.png";
 import educationConferenceImg from "@/assets/education-conference.png";
 import educationPracticalTrainingImg from "@/assets/education-practical-training-v2.jpg";
 import educationScienceEventImg from "@/assets/education-science-event-v2.jpg";
-import cooperationEventsImg from "@/assets/cooperation/events.jpg";
-import cooperationSocialImg from "@/assets/cooperation/social-projects.jpg";
-import cooperationMobileRehabImg from "@/assets/cooperation/mobile-rehab.jpg";
 import osnovaLogo3dImg from "@/assets/osnova-logo-3d.jpg";
 import partnerAsmuLogo from "@/assets/partners/partner-asmu.png";
 import partnerChnuLogo from "@/assets/partners/partner-chnu.png";
@@ -293,64 +291,6 @@ const PARTNER_GROUPS = Array.from(
     PARTNERS.slice(index * PARTNERS_PER_SLIDE, index * PARTNERS_PER_SLIDE + PARTNERS_PER_SLIDE),
 );
 
-// Співпраця
-const COOPERATION_ITEMS = [
-  {
-    number: "01",
-    title: "ВИЇЗНА РЕАБІЛІТАЦІЯ",
-    text: "Команда ОСНОВА приїжджає до пацієнта додому, у готель або за місцем перебування з програмою відновлення.",
-    tags: ["Для пацієнтів", "На дому та в готелі"],
-    href: "/vyizna-reabilitatsiia",
-    image: cooperationMobileRehabImg,
-  },
-  {
-    number: "02",
-    title: "ІВЕНТИ",
-    text: "Організація медичних форумів, конференцій, виставок та професійних заходів.",
-    tags: ["Для спеціалістів", "Конференції та виставки"],
-    href: "/iventy",
-    image: cooperationEventsImg,
-  },
-  {
-    number: "03",
-    title: "СОЦІАЛЬНІ ПРОЄКТИ",
-    text: "Благодійні та реабілітаційні ініціативи, допомога громаді та соціальні програми.",
-    tags: ["Для громади", "Благодійні ініціативи"],
-    href: "/sotsialni-proiekty",
-    image: cooperationSocialImg,
-  },
-  {
-    number: "04",
-    title: "КОНСУЛЬТАЦІЇ СПЕЦІАЛІСТІВ",
-    text: "Фахові консультації лікарів-спеціалістів, діагностика та планування індивідуальної програми лікування.",
-    tags: ["Для пацієнтів", "Онлайн та офлайн"],
-    href: "/pro-osnovu",
-    image: cooperationEventsImg,
-  },
-  {
-    number: "05",
-    title: "ОСВІТНІ ПРОГРАМИ",
-    text: "Навчальні курси та майстер-класи для медичних спеціалістів, обмін досвідом та професійний розвиток.",
-    tags: ["Для лікарів", "Сертифікація та навички"],
-    href: "/kursy",
-    image: cooperationMobileRehabImg,
-  },
-  {
-    number: "06",
-    title: "ДОСЛІДЖЕННЯ І РОЗРОБКИ",
-    text: "Наукові проекти, клінічні дослідження та інновації у сфері реабілітаційної медицини та оздоровлення.",
-    tags: ["Для науковців", "Науковий обмін"],
-    href: "/konferentsii",
-    image: cooperationSocialImg,
-  },
-];
-
-const EXTENDED_COOPERATION_ITEMS = [
-  { ...COOPERATION_ITEMS[COOPERATION_ITEMS.length - 1], virtualKey: "clone-last" },
-  ...COOPERATION_ITEMS.map((item, i) => ({ ...item, virtualKey: `real-${i}` })),
-  { ...COOPERATION_ITEMS[0], virtualKey: "clone-first" },
-];
-
 const EDUCATION_CARDS = [
   {
     title: "КУРСИ ТА МАЙСТЕР-КЛАСИ",
@@ -545,90 +485,6 @@ function EducationCard({ item }: { item: (typeof EDUCATION_CARDS)[number] }) {
   );
 }
 
-function CooperationCard({ 
-  item, 
-  domIndex,
-  activeDomIndex,
-  onClick
-}: { 
-  item: (typeof COOPERATION_ITEMS)[number]; 
-  domIndex: number;
-  activeDomIndex: number;
-  onClick?: () => void;
-}) {
-  const isActive = domIndex === activeDomIndex;
-  const isAdjacent = Math.abs(domIndex - activeDomIndex) === 1;
-
-  const cardContent = (
-    <>
-      <div className="cooperation-marker" aria-hidden="true">
-        <span className="cooperation-number">{item.number}</span>
-      </div>
-
-      <div className="cooperation-copy">
-        <h3>{item.title}</h3>
-        <p>{item.text}</p>
-        <div className="cooperation-tags" aria-label="Категорії напрямку">
-          <span>{item.tags[0]}</span>
-          <span>{item.tags[1]}</span>
-        </div>
-        <span className="cooperation-details">Детальніше</span>
-      </div>
-
-      <div className="cooperation-media">
-        <img src={item.image} alt={item.title} loading="lazy" />
-      </div>
-    </>
-  );
-
-  const baseClassName = `cooperation-card group ${
-    isActive
-      ? "cooperation-card--active"
-      : isAdjacent
-      ? "cooperation-card--adjacent cooperation-card--inactive"
-      : "cooperation-card--inactive"
-  }`;
-
-  // Active card: zIndex 30 (overlaps previous card above and next card below)
-  // Cards above active (domIndex < activeDomIndex): 10 + domIndex (positioned behind active card, bottom edge peeks out)
-  // Cards below active (domIndex > activeDomIndex): 20 - (domIndex - activeDomIndex) (positioned behind active card, top edge peeks out)
-  let zIndex = 10;
-  if (isActive) {
-    zIndex = 30;
-  } else if (domIndex < activeDomIndex) {
-    zIndex = 10 + domIndex;
-  } else {
-    zIndex = 20 - (domIndex - activeDomIndex);
-  }
-
-  const baseStyle = { zIndex };
-
-  if (!isActive) {
-    return (
-      <button
-        onClick={onClick}
-        type="button"
-        className={baseClassName}
-        style={baseStyle}
-        aria-label={`Перейти до розділу «${item.title}»`}
-      >
-        {cardContent}
-      </button>
-    );
-  }
-
-  return (
-    <AppLink
-      to={item.href}
-      aria-label={`Перейти до розділу «${item.title}»`}
-      className={baseClassName}
-      style={baseStyle}
-    >
-      {cardContent}
-    </AppLink>
-  );
-}
-
 function BlogCarousel() {
   const articles = NEWS_ARTICLES;
   const [current, setCurrent] = React.useState(0);
@@ -790,90 +646,6 @@ function Index() {
   const [partnersApi, setPartnersApi] = React.useState<CarouselApi>();
   const [currentPartnersSlide, setCurrentPartnersSlide] = React.useState(0);
   const [partnersSlideCount, setPartnersSlideCount] = React.useState(0);
-  const [cooperationCurrentSlide, setCooperationCurrentSlide] = React.useState(0);
-  const [cooperationDomIndex, setCooperationDomIndex] = React.useState(1);
-  const [cooperationDisableTransition, setCooperationDisableTransition] = React.useState(false);
-  const [cooperationIsAnimating, setCooperationIsAnimating] = React.useState(false);
-  const [cooperationStepHeight, setCooperationStepHeight] = React.useState<number>(0);
-  const cooperationStackRef = React.useRef<HTMLDivElement>(null);
-  const cooperationIsAnimatingRef = React.useRef(false);
-
-  React.useEffect(() => {
-    const stackEl = cooperationStackRef.current;
-    if (!stackEl) return;
-
-    const updateStepHeight = () => {
-      const cards = stackEl.querySelectorAll(".cooperation-card");
-      if (cards.length >= 2) {
-        const card0 = cards[0] as HTMLElement;
-        const card1 = cards[1] as HTMLElement;
-        const dist = card1.offsetTop - card0.offsetTop;
-        if (dist > 0) {
-          setCooperationStepHeight(dist);
-        }
-      }
-    };
-
-    updateStepHeight();
-
-    const observer = new ResizeObserver(() => {
-      updateStepHeight();
-    });
-    observer.observe(stackEl);
-    window.addEventListener("resize", updateStepHeight);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", updateStepHeight);
-    };
-  }, []);
-
-  const goToCooperationStep = React.useCallback(
-    (direction: -1 | 1) => {
-      if (cooperationIsAnimatingRef.current) return;
-      cooperationIsAnimatingRef.current = true;
-      setCooperationIsAnimating(true);
-
-      setCooperationDomIndex((prevDom) => prevDom + direction);
-      setCooperationCurrentSlide(
-        (prevSlide) => (prevSlide + direction + COOPERATION_ITEMS.length) % COOPERATION_ITEMS.length
-      );
-    },
-    []
-  );
-
-  const handleCooperationTransitionEnd = React.useCallback(
-    (e: React.TransitionEvent<HTMLDivElement>) => {
-      if (e.target !== e.currentTarget) return;
-
-      if (cooperationDomIndex === 0) {
-        setCooperationDisableTransition(true);
-        setCooperationDomIndex(COOPERATION_ITEMS.length);
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            setCooperationDisableTransition(false);
-            cooperationIsAnimatingRef.current = false;
-            setCooperationIsAnimating(false);
-          });
-        });
-      } else if (cooperationDomIndex === COOPERATION_ITEMS.length + 1) {
-        setCooperationDisableTransition(true);
-        setCooperationDomIndex(1);
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            setCooperationDisableTransition(false);
-            cooperationIsAnimatingRef.current = false;
-            setCooperationIsAnimating(false);
-          });
-        });
-      } else {
-        cooperationIsAnimatingRef.current = false;
-        setCooperationIsAnimating(false);
-      }
-    },
-    [cooperationDomIndex]
-  );
-
   React.useEffect(() => {
     if (!heroApi) return;
 
@@ -1358,103 +1130,24 @@ function Index() {
         </section>
 
         {/* 8. СПІВПРАЦЯ */}
-        <section className="bg-white py-16 md:py-20 lg:py-16">
-          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-            <SectionHeader
-              centered
-              subtitle="ПАРТНЕРСЬКА ПЛАТФОРМА"
-              title="СПІВПРАЦЯ"
-              className="!mb-4 md:!mb-5"
-            />
+        <section className="bg-[#FCFDFE] py-16 md:py-20 lg:py-24">
+          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
+            <div className="text-center">
+              <span className="inline-block rounded-full bg-[#EEF5FF] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#2467D8]">
+                ПАРТНЕРСЬКА ПЛАТФОРМА
+              </span>
+              <h2 className="mt-5 text-3xl font-extrabold leading-[1.1] text-navy md:text-5xl">
+                СПІВПРАЦЯ
+              </h2>
+              <div className="mx-auto mt-5 h-1 w-[62px] rounded-full bg-gradient-to-r from-[#2467D8] to-[#42B883]" />
+              <p className="mx-auto mt-6 max-w-[620px] text-sm leading-relaxed text-[#68758A] md:text-base">
+                Об'єднуємо зусилля з партнерами для розвитку інноваційних рішень, які змінюють
+                якість відновлення та життя людей.
+              </p>
+            </div>
 
-            <div className="flex flex-col lg:flex-row items-start justify-between gap-6 max-w-[1540px] mx-auto">
-              {/* Main card stack with viewport */}
-              <div className="cooperation-viewport w-full lg:flex-1">
-                <div
-                  ref={cooperationStackRef}
-                  onTransitionEnd={handleCooperationTransitionEnd}
-                  className="cooperation-stack"
-                  style={{
-                    transform: cooperationStepHeight
-                      ? `translateY(-${cooperationDomIndex * cooperationStepHeight}px)`
-                      : `translateY(calc(-${cooperationDomIndex} * (var(--card-height) - 1.15rem)))`,
-                    transition: cooperationDisableTransition ? "none" : "transform 520ms cubic-bezier(0.22, 1, 0.36, 1)",
-                  }}
-                >
-                  {EXTENDED_COOPERATION_ITEMS.map((item, domIndex) => {
-                    return (
-                      <CooperationCard
-                        key={`${item.virtualKey}-${domIndex}`}
-                        item={item}
-                        domIndex={domIndex}
-                        activeDomIndex={cooperationDomIndex}
-                        onClick={() => {
-                          if (cooperationIsAnimatingRef.current || domIndex === cooperationDomIndex) return;
-                          cooperationIsAnimatingRef.current = true;
-                          setCooperationIsAnimating(true);
-                          setCooperationDomIndex(domIndex);
-
-                          let realIndex = 0;
-                          if (domIndex === 0) {
-                            realIndex = COOPERATION_ITEMS.length - 1;
-                          } else if (domIndex === COOPERATION_ITEMS.length + 1) {
-                            realIndex = 0;
-                          } else {
-                            realIndex = domIndex - 1;
-                          }
-                          setCooperationCurrentSlide(realIndex);
-                        }}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Navigation: Vertical arrows and bullet points */}
-              <div className="flex flex-row lg:flex-col items-center justify-between lg:justify-center gap-4 w-full lg:w-auto">
-                {/* Up arrow */}
-                <button
-                  onClick={() => goToCooperationStep(-1)}
-                  disabled={cooperationIsAnimating}
-                  className="flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 disabled:hover:scale-100 disabled:hover:bg-slate-100 disabled:hover:text-slate-400"
-                  aria-label="Попередня карта"
-                >
-                  <ChevronUp className="size-6" />
-                </button>
-
-                {/* Bullet points */}
-                <div className="flex flex-row lg:flex-col gap-2.5">
-                  {COOPERATION_ITEMS.map((_, index) => (
-                    <button
-                      key={index}
-                      disabled={cooperationIsAnimating}
-                      onClick={() => {
-                        if (cooperationIsAnimatingRef.current || index === cooperationCurrentSlide) return;
-                        cooperationIsAnimatingRef.current = true;
-                        setCooperationIsAnimating(true);
-                        setCooperationCurrentSlide(index);
-                        setCooperationDomIndex(index + 1);
-                      }}
-                      className={`h-2.5 rounded-full transition-all duration-300 ${
-                        cooperationCurrentSlide === index
-                          ? "w-2.5 bg-primary shadow-sm"
-                          : "w-2.5 bg-slate-300 hover:bg-slate-400"
-                      }`}
-                      aria-label={`Перейти до карти ${index + 1}`}
-                    />
-                  ))}
-                </div>
-
-                {/* Down arrow */}
-                <button
-                  onClick={() => goToCooperationStep(1)}
-                  disabled={cooperationIsAnimating}
-                  className="flex items-center justify-center size-12 rounded-full border border-primary/30 bg-primary/5 text-primary transition-all hover:bg-primary hover:text-white hover:scale-110 active:scale-95 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400 disabled:hover:scale-100 disabled:hover:bg-slate-100 disabled:hover:text-slate-400"
-                  aria-label="Наступна карта"
-                >
-                  <ChevronDown className="size-6" />
-                </button>
-              </div>
+            <div className="mt-11 md:mt-14">
+              <CooperationCascade />
             </div>
           </div>
         </section>
@@ -1553,7 +1246,6 @@ function Index() {
             </div>
           </div>
         </section>
-
       </main>
 
       <SiteFooter />
