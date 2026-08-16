@@ -1082,8 +1082,31 @@ function MilitaryInfoCard() {
 
       <div className="relative flex w-full flex-col">
         <div
+          className="flex items-center gap-2"
+          role="tablist"
+          aria-label="Акції та спеціальні умови"
+        >
+          {SUPPORT_HIGHLIGHTS.map((highlight, index) => (
+            <button
+              key={highlight.id}
+              type="button"
+              role="tab"
+              aria-selected={activeIndex === index}
+              aria-label={highlight.title}
+              onClick={() => setActiveIndex(index)}
+              className={cn(
+                "h-2.5 flex-1 rounded-full transition-all duration-300",
+                activeIndex === index
+                  ? "bg-[linear-gradient(90deg,#0f62fe_0%,#22c55e_100%)] shadow-[0_0_0_1px_rgba(15,98,254,0.18),0_8px_18px_rgba(34,197,94,0.28)]"
+                  : "bg-white/80 ring-1 ring-primary/18 hover:bg-primary/20",
+              )}
+            />
+          ))}
+        </div>
+
+        <div
           key={activeHighlight.id}
-          className="flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500"
+          className="mt-7 flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500"
           aria-live="polite"
         >
           <div className="flex items-center gap-4">
@@ -1126,29 +1149,6 @@ function MilitaryInfoCard() {
                   <ArrowRight className="size-4" />
                 </AppLink>
               ))}
-
-            <div
-              className="mt-5 flex items-center gap-2"
-              role="tablist"
-              aria-label="Акції та спеціальні умови"
-            >
-              {SUPPORT_HIGHLIGHTS.map((highlight, index) => (
-                <button
-                  key={highlight.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeIndex === index}
-                  aria-label={highlight.title}
-                  onClick={() => setActiveIndex(index)}
-                  className={cn(
-                    "h-2.5 flex-1 rounded-full transition-all duration-300",
-                    activeIndex === index
-                      ? "bg-[linear-gradient(90deg,#0f62fe_0%,#22c55e_100%)] shadow-[0_0_0_1px_rgba(15,98,254,0.18),0_8px_18px_rgba(34,197,94,0.28)]"
-                      : "bg-white/80 ring-1 ring-primary/18 hover:bg-primary/20",
-                  )}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </div>
