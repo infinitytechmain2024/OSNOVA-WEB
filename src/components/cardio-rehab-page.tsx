@@ -172,10 +172,11 @@ const SUPPORT_HIGHLIGHTS = [
     eyebrow: "Для військових",
     title: "Спеціальні умови для військових і ветеранів",
     description:
-      "Передбачаємо пільгові умови на програми відновлення та допомагаємо швидше узгодити старт після попереднього розгляду документів.",
+      "Діють спеціальні умови на програму відновлення для військових і ветеранів, а також допомагаємо швидше узгодити старт після попереднього розгляду документів.",
     detail:
       "Пріоритетний розгляд заявки, гнучкий графік занять і адаптація програми під поточний стан.",
     badge: "Підтримка",
+    ctaLabel: "Детальніше",
     icon: Heart,
     accentClass: "from-brand-green/25 via-white to-brand-green/10",
     badgeClass: "bg-brand-green/15 text-emerald-700",
@@ -190,6 +191,7 @@ const SUPPORT_HIGHLIGHTS = [
     detail:
       "Можемо погодити спецумови для фондів, партнерські дні консультацій і стартові пакети під запит.",
     badge: "Партнерство",
+    ctaLabel: null,
     icon: CheckCircle2,
     accentClass: "from-sky-200/50 via-white to-primary/10",
     badgeClass: "bg-primary/10 text-primary",
@@ -204,6 +206,7 @@ const SUPPORT_HIGHLIGHTS = [
     detail:
       "Добрий варіант, якщо потрібен м’якший старт, планування навантаження та комфортний темп занять.",
     badge: "10% знижка",
+    ctaLabel: null,
     icon: CalendarDays,
     accentClass: "from-amber-100 via-white to-orange-50",
     badgeClass: "bg-amber-100 text-amber-700",
@@ -978,6 +981,7 @@ function ProgramCard({
 }) {
   const duration = program.duration === "За програмою" ? "Індивідуально" : program.duration;
   const isPopular = Boolean(program.isPopular);
+  const priceLabel = program.id === "indyvidualna" ? "Уточнюйте" : program.priceLabel || "Уточнюйте";
 
   return (
     <article
@@ -1042,7 +1046,7 @@ function ProgramCard({
           <dd
             className={cn("mt-1 text-lg font-extrabold", isPopular ? "text-white" : "text-primary")}
           >
-            {program.priceLabel || "Уточнюється"}
+            {priceLabel}
           </dd>
         </div>
       </dl>
@@ -1074,7 +1078,7 @@ function MilitaryInfoCard() {
 
     const intervalId = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % SUPPORT_HIGHLIGHTS.length);
-    }, 4800);
+    }, 5000);
 
     return () => window.clearInterval(intervalId);
   }, [isPaused]);
@@ -1098,24 +1102,8 @@ function MilitaryInfoCard() {
       />
 
       <div className="relative flex w-full flex-col">
-        <div className="flex gap-2" aria-hidden>
-          {SUPPORT_HIGHLIGHTS.map((item, index) => (
-            <span
-              key={item.id}
-              className={cn(
-                "h-1 flex-1 rounded-full transition-colors duration-300",
-                index === activeIndex ? "bg-primary" : "bg-primary/10",
-              )}
-            />
-          ))}
-        </div>
-
-        <div className="mt-5 flex items-center justify-between gap-3 text-[11px] font-bold uppercase tracking-[0.16em] text-navy/55">
+        <div className="inline-flex w-fit rounded-full border border-primary/12 bg-white/78 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-navy/55 shadow-sm backdrop-blur-sm">
           <span>{activeHighlight.eyebrow}</span>
-          <span>
-            {String(activeIndex + 1).padStart(2, "0")} /{" "}
-            {String(SUPPORT_HIGHLIGHTS.length).padStart(2, "0")}
-          </span>
         </div>
 
         <div
@@ -1155,6 +1143,22 @@ function MilitaryInfoCard() {
           >
             <p className="text-sm leading-relaxed text-navy/80">{activeHighlight.detail}</p>
           </div>
+
+          {activeHighlight.ctaLabel && (
+            <a
+              href="#documents"
+              onClick={(event) => {
+                event.preventDefault();
+                document
+                  .getElementById("documents")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              className="mt-5 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              {activeHighlight.ctaLabel}
+              <ArrowRight className="size-4" />
+            </a>
+          )}
 
           <p className="mt-auto pt-5 text-xs leading-relaxed text-navy/55">
             Умови участі та актуальність акцій уточнюйте в адміністратора.

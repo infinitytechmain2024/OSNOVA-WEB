@@ -40,7 +40,7 @@ export const CARDIO_REHAB_PROGRAMS = [
       "Індивідуальний маршрут реабілітації з адаптацією до особливостей пацієнта і темпу відновлення.",
     duration: "за індивідуальним планом",
     format: "амбулаторно / виїзно",
-    price: "Уточнюється",
+    price: "Уточнюйте",
     detailsUrl: `${CARDIO_REHAB_ROUTE}/indyvidualna`,
     orderAction: "Замовити послугу",
   },
