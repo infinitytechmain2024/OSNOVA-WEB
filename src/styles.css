@@ -124,365 +124,435 @@
 }
 
 @layer components {
-  .cooperation-viewport {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    /* Mobile: smaller preview sizes */
-    --card-height: auto;
-    --preview-top: 1.75rem;
-    --preview-bottom: 1.75rem;
-    --gap-between-cards: -1.15rem;
-    padding: var(--preview-top) 0 var(--preview-bottom) 0;
+  /* ── Співпраця: каскад накладених шарів ─────────────────────────── */
+  .cascade {
+    --step: 42px;
+    --compact-h: 62px;
+    --active-h: 320px;
+    --left-step: 26px;
+    --right-step: 13px;
+    --radius-layer: 22px;
+    --navy-layer: #0b1f43;
+    --blue-layer: #2467d8;
+    --muted-layer: #68758a;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
   }
 
-  .cooperation-stack {
-    position: relative;
+  .cascade-nav {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    will-change: transform;
-  }
-
-  .cooperation-card {
-    display: grid;
-    grid-template-areas:
-      "media"
-      "marker"
-      "copy";
-    position: relative;
-    overflow: hidden;
-    border: 1px solid oklch(0.91 0.018 247);
-    border-radius: 1.5rem;
-    background: white;
-    box-shadow: 0 14px 38px -28px oklch(0.26 0.06 255 / 30%);
-    transition:
-      transform 230ms ease,
-      border-color 230ms ease,
-      box-shadow 230ms ease,
-      opacity 520ms ease,
-      filter 520ms ease;
+    align-items: center;
+    gap: 18px;
     flex-shrink: 0;
   }
 
-  /* Inactive / Adjacent cards styling */
-  .cooperation-card--adjacent,
-  .cooperation-card--inactive {
-    opacity: 0.5;
-    cursor: pointer;
-    padding: 0;
-    border: 1px solid oklch(0.91 0.018 247);
-    background: inherit;
-    filter: saturate(0.45) brightness(0.85);
-    transition:
-      transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
-      filter 520ms cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 230ms ease,
-      box-shadow 230ms ease;
-  }
-
-  .cooperation-card--adjacent:hover,
-  .cooperation-card--inactive:hover {
-    opacity: 0.6;
-    filter: saturate(0.6) brightness(0.9);
-    transform: none;
-  }
-
-  .cooperation-card--adjacent .cooperation-number,
-  .cooperation-card--inactive .cooperation-number {
-    opacity: 0.5;
-  }
-
-  .cooperation-card--adjacent .cooperation-copy h3,
-  .cooperation-card--adjacent .cooperation-copy p,
-  .cooperation-card--adjacent .cooperation-tags span,
-  .cooperation-card--adjacent .cooperation-details,
-  .cooperation-card--inactive .cooperation-copy h3,
-  .cooperation-card--inactive .cooperation-copy p,
-  .cooperation-card--inactive .cooperation-tags span,
-  .cooperation-card--inactive .cooperation-details {
-    opacity: 0.65;
-  }
-
-  .cooperation-card--adjacent .cooperation-copy h3,
-  .cooperation-card--inactive .cooperation-copy h3 {
-    color: oklch(0.55 0.025 257);
-  }
-
-  .cooperation-card--adjacent .cooperation-copy p,
-  .cooperation-card--inactive .cooperation-copy p {
-    color: oklch(0.58 0.02 257);
-  }
-
-  .cooperation-card--adjacent .cooperation-tags span,
-  .cooperation-card--inactive .cooperation-tags span {
-    border-color: oklch(0.92 0.01 250);
-    color: oklch(0.55 0.03 250);
-    background: oklch(0.98 0.005 250);
-  }
-
-  .cooperation-card--adjacent .cooperation-details,
-  .cooperation-card--inactive .cooperation-details {
-    background: oklch(0.65 0.06 250);
-    color: rgba(255, 255, 255, 0.75);
-    box-shadow: none;
-  }
-
-  .cooperation-card--adjacent .cooperation-media img,
-  .cooperation-card--inactive .cooperation-media img {
-    filter: saturate(0.4) brightness(0.82) contrast(0.9);
-  }
-
-  .cooperation-card--adjacent button,
-  .cooperation-card--inactive button {
-    width: 100%;
-  }
-
-  /* Active card styling */
-  .cooperation-card--active {
-    opacity: 1;
-    filter: none;
-  }
-
-  .cooperation-card + .cooperation-card {
-    margin-top: -1.15rem;
-  }
-
-  .cooperation-card:nth-child(2) {
-    box-shadow: 0 18px 36px -30px oklch(0.26 0.06 255 / 34%);
-  }
-
-  .cooperation-card:nth-child(3) {
-    box-shadow: 0 20px 38px -32px oklch(0.26 0.06 255 / 28%);
-  }
-
-  .cooperation-card:not(.cooperation-card--adjacent):not(.cooperation-card--inactive):hover {
-    transform: translateY(-4px);
-    border-color: oklch(0.69 0.1 250 / 70%);
-    box-shadow: 0 22px 48px -30px oklch(0.26 0.08 255 / 38%);
-  }
-
-  .cooperation-card:focus-visible {
-    outline: 3px solid oklch(0.65 0.15 252 / 45%);
-    outline-offset: 4px;
-  }
-
-  .cooperation-marker {
-    grid-area: marker;
-    display: flex;
+  .cascade-nav-button {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.9rem 1.25rem;
-    background: oklch(0.975 0.014 250);
-    border-bottom: 1px solid oklch(0.94 0.012 250);
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(20, 50, 90, 0.1);
+    background: #fff;
+    color: var(--navy-layer);
+    box-shadow: 0 6px 18px rgba(15, 35, 65, 0.07);
+    transition:
+      color 220ms ease,
+      border-color 220ms ease,
+      background-color 220ms ease;
+    cursor: pointer;
   }
 
-  .cooperation-number {
-    color: oklch(0.87 0.055 250);
-    font-size: 2.75rem;
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.06em;
+  .cascade-nav-button:hover {
+    color: var(--blue-layer);
+    border-color: rgba(36, 103, 216, 0.35);
+    background: #eef5ff;
   }
 
-  .cooperation-copy {
-    grid-area: copy;
+  .cascade-nav-button:focus-visible {
+    outline: 3px solid rgba(36, 103, 216, 0.35);
+    outline-offset: 3px;
+  }
+
+  .cascade-dots {
     display: flex;
-    min-width: 0;
     flex-direction: column;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .cascade-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #d3ddea;
+    transition:
+      background-color 260ms ease,
+      width 260ms ease,
+      height 260ms ease;
+    cursor: pointer;
+  }
+
+  .cascade-dot:hover {
+    background: #a9bdd6;
+  }
+
+  .cascade-dot--active {
+    width: 11px;
+    height: 11px;
+    background: var(--blue-layer);
+  }
+
+  .cascade-stack {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: calc((var(--count) - 1) * var(--step) + var(--active-h));
+  }
+
+  .cascade-layer {
+    position: absolute;
+    top: calc(var(--layer) * var(--step));
+    left: calc(var(--depth) * var(--left-step));
+    right: calc(var(--depth) * var(--right-step));
+    height: var(--compact-h);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(20, 50, 90, 0.05);
+    border-radius: var(--radius-layer);
+    background: #fff;
+    box-shadow: 0 8px 30px rgba(15, 35, 65, 0.06);
+    text-align: left;
+    transition:
+      top 620ms cubic-bezier(0.22, 1, 0.36, 1),
+      left 620ms cubic-bezier(0.22, 1, 0.36, 1),
+      right 620ms cubic-bezier(0.22, 1, 0.36, 1),
+      height 620ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 300ms ease;
+  }
+
+  .cascade-layer--compact {
+    cursor: pointer;
+  }
+
+  .cascade-layer--compact:hover {
+    transform: translateX(-7px);
+    box-shadow: 0 12px 34px rgba(15, 35, 65, 0.09);
+  }
+
+  .cascade-layer--compact:hover .cascade-layer-title {
+    color: var(--blue-layer);
+  }
+
+  .cascade-layer--compact:hover .cascade-layer-media img {
+    transform: scale(1.03);
+  }
+
+  .cascade-layer--compact:focus-visible {
+    outline: 3px solid rgba(36, 103, 216, 0.35);
+    outline-offset: 3px;
+  }
+
+  .cascade-layer--active {
+    height: var(--active-h);
+    box-shadow: 0 14px 44px rgba(15, 35, 65, 0.1);
+  }
+
+  .cascade-layer-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 70%;
+    height: 100%;
+    padding: 0 20px;
+  }
+
+  .cascade-layer--active .cascade-layer-copy {
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
-    padding: 1.5rem 1.25rem 1.75rem;
-    background: white;
+    gap: 0;
+    width: 45%;
+    padding: 32px clamp(24px, 3vw, 44px);
   }
 
-  .cooperation-copy h3 {
-    color: var(--color-navy);
-    font-size: 1.35rem;
-    font-weight: 800;
-    line-height: 1.18;
+  .cascade-layer-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background: #eef5ff;
+    color: var(--blue-layer);
+    transition:
+      width 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      height 520ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .cooperation-copy p {
-    max-width: 37rem;
-    margin-top: 0.7rem;
-    color: oklch(0.43 0.035 257);
-    font-size: 0.875rem;
-    line-height: 1.65;
+  .cascade-layer--active .cascade-layer-icon {
+    width: 50px;
+    height: 50px;
+    background: #ecf8f2;
+    color: #2f9e6d;
   }
 
-  .cooperation-tags {
+  .cascade-layer-glyph {
+    width: 18px;
+    height: 18px;
+  }
+
+  .cascade-layer--active .cascade-layer-glyph {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cascade-layer-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--navy-layer);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    transition: color 260ms ease;
+  }
+
+  .cascade-layer--active .cascade-layer-title {
+    overflow: visible;
+    white-space: normal;
+    margin-top: 16px;
+    font-size: clamp(22px, 2vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .cascade-layer-details {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .cascade-layer--active .cascade-layer-details {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    max-width: 24rem;
+    animation: cascade-rise 520ms cubic-bezier(0.22, 1, 0.36, 1) 140ms both;
+  }
+
+  .cascade-layer-details p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    margin-top: 12px;
+    color: var(--muted-layer);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .cascade-layer-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.55rem;
-    margin-top: 1.1rem;
+    gap: 8px;
+    margin-top: 16px;
   }
 
-  .cooperation-tags span {
+  .cascade-layer-tags span {
     display: inline-flex;
-    min-height: 1.875rem;
     align-items: center;
-    border: 1px solid oklch(0.88 0.07 250);
+    min-height: 30px;
     border-radius: 999px;
-    padding: 0.3rem 0.75rem;
-    color: var(--color-primary);
-    font-size: 0.7rem;
+    padding: 0 14px;
+    background: #eef5ff;
+    color: var(--blue-layer);
+    font-size: 12px;
     font-weight: 600;
-    line-height: 1.2;
   }
 
-  .cooperation-tags span:nth-child(2) {
-    border-color: oklch(0.87 0.08 150);
-    color: oklch(0.47 0.13 150);
+  .cascade-layer-tags span:nth-child(2) {
+    background: #ecf8f2;
+    color: #2f9e6d;
   }
 
-  .cooperation-details {
+  .cascade-layer-cta {
     display: inline-flex;
-    width: fit-content;
-    min-height: 2.75rem;
     align-items: center;
-    justify-content: center;
-    margin-top: 1.2rem;
+    gap: 8px;
+    height: 44px;
+    margin-top: 18px;
     border-radius: 999px;
-    padding: 0.5rem 1.5rem;
-    background: var(--color-primary);
-    color: white;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1;
-    transition:
-      background-color 230ms ease,
-      box-shadow 230ms ease;
+    padding: 0 24px;
+    background: var(--blue-layer);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 220ms ease;
   }
 
-  .cooperation-card:hover .cooperation-details {
-    background: oklch(0.45 0.17 256);
-    box-shadow: 0 8px 18px -12px oklch(0.25 0.08 255 / 55%);
+  .cascade-layer-cta:hover {
+    background: #1b52b0;
   }
 
-  .cooperation-media {
-    position: relative;
-    grid-area: media;
-    aspect-ratio: 16 / 9;
+  .cascade-layer-cta svg {
+    transition: transform 220ms ease;
+  }
+
+  .cascade-layer-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  .cascade-layer-media {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 30%;
     overflow: hidden;
-    background: oklch(0.96 0.012 250);
+    background: #f1f5fa;
+    transition: width 620ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .cooperation-media img {
+  .cascade-layer--active .cascade-layer-media {
+    width: 55%;
+  }
+
+  .cascade-layer-media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 230ms ease;
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .cooperation-card:hover .cooperation-media img {
-    transform: scale(1.035);
+  @keyframes cascade-rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  @media (min-width: 48rem) {
-    /* Tablet+: update viewport heights and card size */
-    .cooperation-viewport {
-      --card-height: clamp(13rem, 16.95vw, 16.25rem);
-      --preview-top: 3rem;
-      --preview-bottom: 3rem;
-      --gap-between-cards: -1.15rem;
-      height: calc(var(--card-height) + var(--preview-top) + var(--preview-bottom));
-      padding: var(--preview-top) 0 var(--preview-bottom) 0;
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .cascade {
+      --left-step: 16px;
+      --right-step: 8px;
+      --active-h: 280px;
+      gap: 18px;
     }
 
-    .cooperation-card {
-      --cooperation-card-size: clamp(13rem, 16.95vw, 16.25rem);
-      grid-template-areas: "marker copy media";
-      grid-template-columns:
-        clamp(5.625rem, 9vw, 10rem)
-        minmax(16.25rem, 1.15fr)
-        minmax(11.25rem, 1fr);
-      height: var(--cooperation-card-size);
+    .cascade-layer--active .cascade-layer-copy {
+      width: 48%;
     }
 
-    .cooperation-marker {
+    .cascade-layer--active .cascade-layer-media {
+      width: 52%;
+    }
+
+    .cascade-layer-details p {
+      font-size: 14px;
+    }
+  }
+
+  /* Mobile: спрощений каскад — видно 3 компактні смуги над активною карткою */
+  @media (max-width: 767px) {
+    .cascade {
+      --step: 34px;
+      --compact-h: 54px;
+      --active-h: 430px;
+      --left-step: 9px;
+      --right-step: 5px;
+      --radius-layer: 18px;
+      flex-direction: column-reverse;
+      gap: 20px;
+    }
+
+    .cascade-nav {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    .cascade-dots {
+      flex-direction: row;
+    }
+
+    .cascade-stack {
+      height: calc(3 * var(--step) + var(--active-h));
+    }
+
+    /* Компактні шари шикуються за близькістю до активного, а не за порядком */
+    .cascade-layer--compact {
+      top: calc((2 - var(--depth)) * var(--step));
+    }
+
+    .cascade-layer--compact[data-depth="3"],
+    .cascade-layer--compact[data-depth="4"],
+    .cascade-layer--compact[data-depth="5"],
+    .cascade-layer--compact[data-depth="6"] {
+      display: none;
+    }
+
+    .cascade-layer--active {
+      top: calc(3 * var(--step));
       flex-direction: column;
-      justify-content: center;
-      padding: 1.45rem 0.75rem;
-      border-right: 1px solid oklch(0.94 0.012 250);
-      border-bottom: 0;
+      align-items: stretch;
     }
 
-    .cooperation-number {
-      font-size: clamp(2.7rem, 4.2vw, 4rem);
+    .cascade-layer-title {
+      font-size: 13px;
     }
 
-    .cooperation-copy {
-      padding: 1.3rem clamp(1.25rem, 2.8vw, 3rem);
+    .cascade-layer--compact .cascade-layer-media {
+      width: 26%;
     }
 
-    .cooperation-copy h3 {
-      font-size: clamp(1.05rem, 1.55vw, 1.8rem);
+    .cascade-layer--active .cascade-layer-copy {
+      width: 100%;
+      height: auto;
+      padding: 20px 22px 24px;
     }
 
-    .cooperation-copy p {
-      margin-top: 0.65rem;
-      font-size: clamp(0.7rem, 0.95vw, 1rem);
-      line-height: 1.55;
+    .cascade-layer--active .cascade-layer-media {
+      position: static;
+      width: 100%;
+      height: 170px;
+      order: -1;
     }
 
-    .cooperation-tags {
-      gap: 0.45rem;
-      margin-top: clamp(0.75rem, 1.4vw, 1.15rem);
-    }
-
-    .cooperation-tags span {
-      min-height: 1.75rem;
-      padding: 0.25rem clamp(0.55rem, 0.8vw, 0.75rem);
-      font-size: clamp(0.57rem, 0.72vw, 0.75rem);
-    }
-
-    .cooperation-details {
-      min-height: 2.5rem;
-      margin-top: clamp(0.85rem, 1.2vw, 1.2rem);
-      padding: 0.45rem clamp(1rem, 1.5vw, 1.5rem);
-      font-size: clamp(0.85rem, 0.9vw, 1rem);
-    }
-
-    .cooperation-media {
-      height: 100%;
-      aspect-ratio: auto;
-      border-radius: 1.125rem 0 0 1.125rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    /* Desktop: larger preview sizes */
-    .cooperation-viewport {
-      --card-height: clamp(13rem, 16.95vw, 16.25rem);
-      --preview-top: 5.625rem;
-      --preview-bottom: 5.625rem;
-      --gap-between-cards: -1.15rem;
-      height: calc(var(--card-height) + var(--preview-top) + var(--preview-bottom));
-      padding: var(--preview-top) 0 var(--preview-bottom) 0;
-    }
-  }
-
-  @media (max-width: 47.99rem) {
-    /* Mobile: smaller preview sizes */
-    .cooperation-viewport {
-      --card-height: clamp(21rem, 105vw, 25rem);
-      --preview-top: 1.75rem;
-      --preview-bottom: 1.75rem;
-      height: calc(var(--card-height) + var(--preview-top) + var(--preview-bottom));
-      padding: var(--preview-top) 0 var(--preview-bottom) 0;
+    .cascade-layer--active .cascade-layer-title {
+      margin-top: 12px;
+      font-size: 22px;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .cooperation-card,
-    .cooperation-media img,
-    .cooperation-details {
+    .cascade-layer,
+    .cascade-layer-media,
+    .cascade-layer-media img,
+    .cascade-layer-icon {
       transition-duration: 0.01ms;
     }
 
-    .cooperation-card:hover,
-    .cooperation-card:hover .cooperation-media img {
+    .cascade-layer--active .cascade-layer-details {
+      animation: none;
+    }
+
+    .cascade-layer--compact:hover {
       transform: none;
     }
   }
