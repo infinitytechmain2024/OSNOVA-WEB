@@ -1,0 +1,102 @@
+import { _ as service_rehab_default, d as ecg_review_default, f as ergometer_default, g as service_checkup_default, u as cpet_test_default, v as service_sports_default } from "./site-footer-CIMyUY7e.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/news-CC6aDEk-.js
+var NEWS_ARTICLES = [
+	{
+		id: "heart-symptoms",
+		title: "Перші симптоми проблем із серцем: коли звертатися до кардіолога",
+		date: "11.07.2026",
+		dateIso: "2026-07-11",
+		category: "Кардіологія",
+		readTime: "7 хв читання",
+		excerpt: "Біль у серці часто викликає тривогу та непокоїть багато людей. Розбираємо, які сигнали потребують консультації лікаря та профілактичної діагностики.",
+		href: "/statti/pershi-symptomy-problem-iz-sertsem",
+		image: ecg_review_default,
+		imageAlt: "Кардіологічне обстеження серця"
+	},
+	{
+		id: "arthritis-rehab",
+		title: "Артрит: причини, симптоми та найефективніші методи лікування",
+		date: "11.07.2026",
+		dateIso: "2026-07-11",
+		category: "Реабілітація",
+		readTime: "6 хв читання",
+		excerpt: "Артрит може суттєво знижувати якість життя через біль, обмеження рухливості та дегенеративні зміни. Пояснюємо, чому своєчасна реабілітація важлива.",
+		href: "/reabilitatsiia/ortopedychna",
+		image: service_rehab_default,
+		imageAlt: "Фізичний терапевт проводить ортопедичну реабілітацію"
+	},
+	{
+		id: "cpet-test",
+		title: "Кардіопульмональне тестування: кому потрібен CPET",
+		date: "08.07.2026",
+		dateIso: "2026-07-08",
+		category: "Діагностика",
+		readTime: "4 хв читання",
+		excerpt: "CPET допомагає оцінити роботу серця, легень і витривалість під навантаженням. Це корисно для спортсменів, пацієнтів після хвороб і перед стартом реабілітації.",
+		href: "/diagnostyka/kardiodiahnostyka/cpet",
+		image: cpet_test_default,
+		imageAlt: "Кардіопульмональне тестування на обладнанні"
+	},
+	{
+		id: "prepare-for-rehab",
+		title: "Як підготуватися до реабілітаційної програми",
+		date: "04.07.2026",
+		dateIso: "2026-07-04",
+		category: "Реабілітація",
+		readTime: "5 хв читання",
+		excerpt: "Перед початком курсу варто зібрати медичні документи, визначити цілі відновлення та пройти первинну оцінку стану разом із командою центру.",
+		href: "/reabilitatsiia",
+		image: service_rehab_default,
+		imageAlt: "Реабілітаційний зал медичного центру"
+	},
+	{
+		id: "sports-checkup",
+		title: "Спортивний чек-ап: що перевірити перед навантаженнями",
+		date: "28.06.2026",
+		dateIso: "2026-06-28",
+		category: "Спортивна медицина",
+		readTime: "4 хв читання",
+		excerpt: "Безпечне повернення до активності починається з оцінки серця, дихання, опорно-рухового апарату та переносимості навантажень.",
+		href: "/check-up/sportyvnyi",
+		image: service_sports_default,
+		imageAlt: "Спортивна медицина та тренувальне обладнання"
+	},
+	{
+		id: "ergometry-vs-treadmill",
+		title: "Велоергометрія та тредміл-тест: у чому різниця",
+		date: "21.06.2026",
+		dateIso: "2026-06-21",
+		category: "Кардіологія",
+		readTime: "5 хв читання",
+		excerpt: "Обидва тести оцінюють реакцію серцево-судинної системи на навантаження, але відрізняються форматом руху, показаннями та комфортом для пацієнта.",
+		href: "/diagnostyka/kardiodiahnostyka/veloerhometriia",
+		image: ergometer_default,
+		imageAlt: "Велоергометр для навантажувального тестування"
+	},
+	{
+		id: "checkup-55-plus",
+		title: "Чек-ап 55+: які показники важливо контролювати",
+		date: "14.06.2026",
+		dateIso: "2026-06-14",
+		category: "Чек-апи",
+		readTime: "4 хв читання",
+		excerpt: "Після 55 років профілактичні обстеження допомагають вчасно помічати зміни з боку серця, суглобів, кісткової тканини та обміну речовин.",
+		href: "/check-up/55-plus",
+		image: service_checkup_default,
+		imageAlt: "Профілактичний медичний чек-ап"
+	},
+	{
+		id: "orthopedic-surgery-recovery",
+		title: "Відновлення після ортопедичних операцій: основні етапи",
+		date: "07.06.2026",
+		dateIso: "2026-06-07",
+		category: "Реабілітація",
+		readTime: "6 хв читання",
+		excerpt: "Поступове повернення руху, сили та опори потребує індивідуального плану, контролю болю й корекції навантаження на кожному етапі.",
+		href: "/reabilitatsiia/ortopedychna/pislia-ortopedychnykh-operatsii",
+		image: service_rehab_default,
+		imageAlt: "Відновлення після ортопедичної операції"
+	}
+];
+//#endregion
+export { NEWS_ARTICLES as t };

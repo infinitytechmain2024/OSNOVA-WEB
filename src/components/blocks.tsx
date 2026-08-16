@@ -14,14 +14,18 @@ export function PageContainer({
   className?: string;
 }) {
   return (
-    <section className={cn("mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10", className)}>{children}</section>
+    <section className={cn("mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10", className)}>
+      {children}
+    </section>
   );
 }
 
 export function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">{children}</h2>
+      <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">
+        {children}
+      </h2>
       <div className="mt-4 sm:mt-6 h-1 w-16 rounded-full bg-primary" />
     </>
   );
@@ -29,19 +33,30 @@ export function SectionTitle({ children }: { children: React.ReactNode }) {
 
 export function SectionHeader({
   eyebrow,
+  eyebrowClassName,
   title,
   text,
 }: {
   eyebrow?: string;
+  eyebrowClassName?: string;
   title: string;
   text?: string;
 }) {
   return (
     <div>
       {eyebrow && (
-        <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.28em] text-primary">{eyebrow}</p>
+        <p
+          className={cn(
+            "text-xs font-semibold tracking-[0.2em] text-primary sm:text-sm sm:tracking-[0.28em]",
+            eyebrowClassName,
+          )}
+        >
+          {eyebrow}
+        </p>
       )}
-      <h2 className="mt-2 sm:mt-4 text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">{title}</h2>
+      <h2 className="mt-2 sm:mt-4 text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">
+        {title}
+      </h2>
       <div className="mt-4 sm:mt-6 h-1 w-16 rounded-full bg-primary" />
       {text && <p className="mt-4 sm:mt-6 max-w-3xl text-base sm:text-lg text-navy/85">{text}</p>}
     </div>
@@ -58,8 +73,16 @@ export function Breadcrumbs({
   align?: "left" | "center";
 }) {
   return (
-    <nav aria-label="Навігаційний ланцюжок" className={cn("pt-4 sm:pt-8 overflow-x-auto scrollbar-none", className)}>
-      <ol className={cn("flex items-center gap-2 text-xs sm:text-sm text-navy/60 whitespace-nowrap", align === "center" && "justify-center")}>
+    <nav
+      aria-label="Навігаційний ланцюжок"
+      className={cn("pt-4 sm:pt-8 overflow-x-auto scrollbar-none", className)}
+    >
+      <ol
+        className={cn(
+          "flex items-center gap-2 text-xs sm:text-sm text-navy/60 whitespace-nowrap",
+          align === "center" && "justify-center",
+        )}
+      >
         {items.map((item, i) => (
           <li key={item.route + i} className="flex items-center gap-2">
             {i > 0 && <span aria-hidden>/</span>}
@@ -135,13 +158,19 @@ export function PageHero({
         <h1 className="mt-4 sm:mt-6 max-w-3xl text-3xl leading-[1.1] font-extrabold text-background sm:text-5xl md:text-6xl lg:text-7xl">
           {title}
         </h1>
-        {text && <p className="mt-4 sm:mt-8 max-w-xl text-base sm:text-lg leading-relaxed text-background/85">{text}</p>}
+        {text && (
+          <p className="mt-4 sm:mt-8 max-w-xl text-base sm:text-lg leading-relaxed text-background/85">
+            {text}
+          </p>
+        )}
 
         {facts && facts.length > 0 && (
           <dl className="mt-6 sm:mt-8 flex flex-wrap gap-x-6 sm:gap-x-10 gap-y-4">
             {facts.map((f) => (
               <div key={f.label}>
-                <dt className="text-[10px] sm:text-xs tracking-[0.16em] text-background/60 uppercase">{f.label}</dt>
+                <dt className="text-[10px] sm:text-xs tracking-[0.16em] text-background/60 uppercase">
+                  {f.label}
+                </dt>
                 <dd className="mt-1 text-sm sm:text-base font-bold text-background">{f.value}</dd>
               </div>
             ))}
@@ -212,7 +241,13 @@ export function BulletList({ items }: { items: string[] }) {
   );
 }
 
-export function FAQAccordion({ items }: { items: FAQItem[] }) {
+export function FAQAccordion({
+  items,
+  variant = "default",
+}: {
+  items: FAQItem[];
+  variant?: "default" | "home";
+}) {
   const [open, setOpen] = React.useState<string[]>([]);
   if (!items.length) return null;
 
@@ -235,23 +270,40 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
           }),
         }}
       />
-      <ul className="mt-10 space-y-3">
+      <ul className={cn(variant === "home" ? "mt-12 space-y-5" : "mt-10 space-y-3")}>
         {items.map((item, i) => {
           const isOpen = open.includes(item.question);
           const panelId = `faq-panel-${i}`;
           return (
-            <li key={item.question} className="rounded-xl border border-border bg-card">
+            <li
+              key={item.question}
+              className={cn(
+                variant === "home"
+                  ? "rounded-2xl border border-slate-200 bg-white px-6 py-2 shadow-sm transition-all hover:border-primary/30 hover:shadow-md md:px-8"
+                  : "rounded-xl border border-border bg-card",
+              )}
+            >
               <button
                 type="button"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => toggle(item.question)}
-                className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left text-navy"
+                className={cn(
+                  "flex w-full items-center justify-between gap-6 text-left transition-colors",
+                  variant === "home"
+                    ? "py-4 text-base font-bold text-navy hover:text-primary md:text-lg"
+                    : "px-6 py-5 text-navy",
+                  isOpen && variant === "home" && "text-primary",
+                )}
               >
-                <span className="font-semibold">{item.question}</span>
+                <span className={cn(variant === "home" ? "" : "font-semibold")}>
+                  {item.question}
+                </span>
                 <ChevronDown
                   className={cn(
-                    "size-5 shrink-0 text-primary transition-transform duration-200",
+                    variant === "home"
+                      ? "size-5 shrink-0 text-muted-foreground transition-transform duration-300"
+                      : "size-5 shrink-0 text-primary transition-transform duration-200",
                     isOpen && "rotate-180",
                   )}
                 />
@@ -259,7 +311,12 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
               <div
                 id={panelId}
                 hidden={!isOpen}
-                className="px-6 pb-5 text-navy/85 transition-all duration-200"
+                className={cn(
+                  "transition-all duration-200",
+                  variant === "home"
+                    ? "pb-6 text-sm leading-relaxed text-slate-600 md:text-base"
+                    : "px-6 pb-5 text-navy/85",
+                )}
               >
                 {item.answer}
               </div>
@@ -435,4 +492,3 @@ export function WhenToPassCardioRehabBlock({
     </div>
   );
 }
-

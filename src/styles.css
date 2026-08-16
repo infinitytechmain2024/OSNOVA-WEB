@@ -126,11 +126,11 @@
 @layer components {
   /* ── Співпраця: каскад накладених шарів ─────────────────────────── */
   .cascade {
-    --step: 42px;
-    --compact-h: 62px;
-    --active-h: 320px;
-    --left-step: 26px;
-    --right-step: 13px;
+    --step: 46px;
+    --compact-h: 70px;
+    --active-h: 360px;
+    --left-step: 34px;
+    --right-step: 20px;
     --radius-layer: 22px;
     --navy-layer: #0b1f43;
     --blue-layer: #2467d8;
@@ -138,8 +138,9 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 28px;
+    justify-content: flex-start;
+    width: 100%;
+    gap: clamp(18px, 2vw, 30px);
   }
 
   .cascade-nav {
@@ -210,8 +211,9 @@
 
   .cascade-stack {
     position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
     width: 100%;
-    max-width: 1000px;
     height: calc((var(--count) - 1) * var(--step) + var(--active-h));
   }
 
@@ -234,8 +236,9 @@
       left 620ms cubic-bezier(0.22, 1, 0.36, 1),
       right 620ms cubic-bezier(0.22, 1, 0.36, 1),
       height 620ms cubic-bezier(0.22, 1, 0.36, 1),
-      transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 300ms ease;
+      transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 360ms ease,
+      border-color 260ms ease;
   }
 
   .cascade-layer--compact {
@@ -245,6 +248,19 @@
   .cascade-layer--compact:hover {
     transform: translateX(-7px);
     box-shadow: 0 12px 34px rgba(15, 35, 65, 0.09);
+  }
+
+  .cascade-stack[data-transitioning="true"] .cascade-layer[data-motion="queued"] {
+    border-color: rgba(36, 103, 216, 0.18);
+    box-shadow: 0 16px 40px rgba(36, 103, 216, 0.12);
+  }
+
+  .cascade-stack[data-direction="forward"] .cascade-layer[data-motion="queued"] {
+    transform: translateX(-16px);
+  }
+
+  .cascade-stack[data-direction="backward"] .cascade-layer[data-motion="queued"] {
+    transform: translateX(-16px);
   }
 
   .cascade-layer--compact:hover .cascade-layer-title {
@@ -272,8 +288,9 @@
     align-items: center;
     gap: 16px;
     width: 70%;
+    min-width: 0;
     height: 100%;
-    padding: 0 20px;
+    padding: 0 clamp(18px, 2vw, 28px);
   }
 
   .cascade-layer--active .cascade-layer-copy {
@@ -281,7 +298,7 @@
     align-items: flex-start;
     justify-content: center;
     gap: 0;
-    width: 45%;
+    width: min(46%, 38rem);
     padding: 32px clamp(24px, 3vw, 44px);
   }
 
@@ -348,7 +365,7 @@
     position: static;
     opacity: 1;
     pointer-events: auto;
-    max-width: 24rem;
+    max-width: 29rem;
     animation: cascade-rise 520ms cubic-bezier(0.22, 1, 0.36, 1) 140ms both;
   }
 
@@ -419,14 +436,14 @@
     top: 0;
     right: 0;
     bottom: 0;
-    width: 30%;
+    width: clamp(240px, 29%, 420px);
     overflow: hidden;
     background: #f1f5fa;
     transition: width 620ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .cascade-layer--active .cascade-layer-media {
-    width: 55%;
+    width: clamp(360px, 55%, 860px);
   }
 
   .cascade-layer-media img {
@@ -450,18 +467,18 @@
   /* Tablet */
   @media (max-width: 1024px) {
     .cascade {
-      --left-step: 16px;
-      --right-step: 8px;
-      --active-h: 280px;
+      --left-step: 18px;
+      --right-step: 10px;
+      --active-h: 300px;
       gap: 18px;
     }
 
     .cascade-layer--active .cascade-layer-copy {
-      width: 48%;
+      width: min(48%, 34rem);
     }
 
     .cascade-layer--active .cascade-layer-media {
-      width: 52%;
+      width: clamp(320px, 52%, 640px);
     }
 
     .cascade-layer-details p {
@@ -546,6 +563,10 @@
     .cascade-layer-media img,
     .cascade-layer-icon {
       transition-duration: 0.01ms;
+    }
+
+    .cascade-stack[data-transitioning="true"] .cascade-layer[data-motion="queued"] {
+      transform: none;
     }
 
     .cascade-layer--active .cascade-layer-details {

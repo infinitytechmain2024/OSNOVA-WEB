@@ -87,6 +87,13 @@ function layerStyle(layer: number, depth: number, zIndex: number): LayerStyle {
   } as LayerStyle;
 }
 
+function resolveDirection(currentIndex: number, nextIndex: number, total: number): -1 | 1 {
+  const forwardDistance = (nextIndex - currentIndex + total) % total;
+  const backwardDistance = (currentIndex - nextIndex + total) % total;
+
+  return forwardDistance <= backwardDistance ? 1 : -1;
+}
+
 export function CooperationCascade({
   items = COOPERATION_ITEMS,
   initialIndex = 1,
@@ -97,13 +104,55 @@ export function CooperationCascade({
   const [activeIndex, setActiveIndex] = React.useState(
     Math.min(Math.max(initialIndex, 0), items.length - 1),
   );
+  const [pendingIndex, setPendingIndex] = React.useState<number | null>(null);
+  const [motionDirection, setMotionDirection] = React.useState<-1 | 1>(1);
   const wheelLockRef = React.useRef(false);
+  const prepareTimeoutRef = React.useRef<number | null>(null);
+  const releaseTimeoutRef = React.useRef<number | null>(null);
+
+  const clearMotionTimers = React.useCallback(() => {
+    if (prepareTimeoutRef.current !== null) {
+      window.clearTimeout(prepareTimeoutRef.current);
+      prepareTimeoutRef.current = null;
+    }
+
+    if (releaseTimeoutRef.current !== null) {
+      window.clearTimeout(releaseTimeoutRef.current);
+      releaseTimeoutRef.current = null;
+    }
+  }, []);
+
+  React.useEffect(() => clearMotionTimers, [clearMotionTimers]);
+
+  const moveToIndex = React.useCallback(
+    (nextIndex: number) => {
+      if (nextIndex === activeIndex || wheelLockRef.current) return;
+
+      const direction = resolveDirection(activeIndex, nextIndex, items.length);
+
+      wheelLockRef.current = true;
+      clearMotionTimers();
+      setMotionDirection(direction);
+      setPendingIndex(nextIndex);
+
+      // First bring the next item to the front of the compact stack, then expand it.
+      prepareTimeoutRef.current = window.setTimeout(() => {
+        setActiveIndex(nextIndex);
+        setPendingIndex(null);
+      }, 130);
+
+      releaseTimeoutRef.current = window.setTimeout(() => {
+        wheelLockRef.current = false;
+      }, 780);
+    },
+    [activeIndex, clearMotionTimers, items.length],
+  );
 
   const step = React.useCallback(
     (direction: -1 | 1) => {
-      setActiveIndex((prev) => (prev + direction + items.length) % items.length);
+      moveToIndex((activeIndex + direction + items.length) % items.length);
     },
-    [items.length],
+    [activeIndex, items.length, moveToIndex],
   );
 
   const handleWheel = React.useCallback(
@@ -114,27 +163,32 @@ export function CooperationCascade({
       if (next < 0 || next > items.length - 1) return;
 
       event.preventDefault();
-      wheelLockRef.current = true;
-      setActiveIndex(next);
-      window.setTimeout(() => {
-        wheelLockRef.current = false;
-      }, 700);
+      moveToIndex(next);
     },
-    [activeIndex, items.length],
+    [activeIndex, items.length, moveToIndex],
   );
 
-  // Compact layers keep their natural order; the active one always drops to the bottom.
+  // Compact layers stay in sequence, while the requested card briefly moves to the front
+  // before becoming the active layer.
   const lastLayer = items.length - 1;
-  const layerOf = new Map<number, number>();
-  let compactLayer = 0;
-  items.forEach((_, index) => {
-    if (index === activeIndex) {
-      layerOf.set(index, lastLayer);
-    } else {
-      layerOf.set(index, compactLayer);
-      compactLayer += 1;
+  const compactOrder = React.useMemo(() => {
+    const beforeActive = items.map((_, index) => index).filter((index) => index < activeIndex);
+    const afterActive = items.map((_, index) => index).filter((index) => index > activeIndex);
+    const ordered =
+      motionDirection === 1 ? [...beforeActive, ...afterActive] : [...afterActive, ...beforeActive];
+
+    if (pendingIndex === null || pendingIndex === activeIndex) {
+      return ordered;
     }
+
+    return [...ordered.filter((index) => index !== pendingIndex), pendingIndex];
+  }, [activeIndex, items, motionDirection, pendingIndex]);
+
+  const layerOf = new Map<number, number>();
+  compactOrder.forEach((index, compactLayer) => {
+    layerOf.set(index, compactLayer);
   });
+  layerOf.set(activeIndex, lastLayer);
 
   return (
     <div className="cascade">
@@ -153,7 +207,7 @@ export function CooperationCascade({
             <button
               key={item.title}
               type="button"
-              onClick={() => setActiveIndex(index)}
+              onClick={() => moveToIndex(index)}
               className={`cascade-dot ${index === activeIndex ? "cascade-dot--active" : ""}`}
               aria-label={`Перейти до розділу «${item.title}»`}
               aria-current={index === activeIndex}
@@ -175,10 +229,13 @@ export function CooperationCascade({
         className="cascade-stack"
         onWheel={handleWheel}
         style={{ "--count": String(items.length) } as React.CSSProperties}
+        data-direction={motionDirection === 1 ? "forward" : "backward"}
+        data-transitioning={pendingIndex !== null}
       >
         {items.map((item, index) => {
           const Icon = item.icon;
           const isActive = index === activeIndex;
+          const isPendingTarget = index === pendingIndex;
           const layer = layerOf.get(index) ?? 0;
           // Narrow layers sit on top of the stack, each next one a little wider.
           const depth = isActive ? 0 : lastLayer - 1 - layer;
@@ -189,17 +246,20 @@ export function CooperationCascade({
               className={`cascade-layer ${isActive ? "cascade-layer--active" : "cascade-layer--compact"}`}
               style={layerStyle(layer, depth, isActive ? 30 : 10 + layer)}
               data-depth={depth}
+              data-motion={
+                isActive ? "active" : isPendingTarget ? "queued" : "resting"
+              }
               role={isActive ? undefined : "button"}
               tabIndex={isActive ? undefined : 0}
               aria-label={isActive ? undefined : `Розгорнути розділ «${item.title}»`}
-              onClick={isActive ? undefined : () => setActiveIndex(index)}
+              onClick={isActive ? undefined : () => moveToIndex(index)}
               onKeyDown={
                 isActive
                   ? undefined
                   : (event) => {
                       if (event.key === "Enter" || event.key === " ") {
                         event.preventDefault();
-                        setActiveIndex(index);
+                        moveToIndex(index);
                       }
                     }
               }

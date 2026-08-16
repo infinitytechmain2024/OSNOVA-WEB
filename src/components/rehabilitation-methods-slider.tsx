@@ -7,7 +7,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { cn } from "@/lib/utils";
+import { CarouselNavigation } from "@/components/carousel-navigation";
 
 import rehabImg from "@/assets/service-rehab.jpg";
 import sportsImg from "@/assets/service-sports.jpg";
@@ -81,24 +81,6 @@ function ArrowRightIcon({ className }: { className?: string }) {
     >
       <path d="M5 12h14" />
       <path d="m12 5 7 7-7 7" />
-    </svg>
-  );
-}
-
-function ArrowLeftIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M19 12H5" />
-      <path d="m12 19-7-7 7-7" />
     </svg>
   );
 }
@@ -207,7 +189,10 @@ export function RehabilitationMethodsSlider() {
   }, [methodsApi]);
 
   return (
-    <section id="methods" className="overflow-hidden bg-white pt-24 pb-12 md:pt-32 md:pb-16">
+    <section
+      id="methods"
+      className="scroll-mt-24 overflow-hidden bg-white pt-24 pb-12 md:pt-32 md:pb-16"
+    >
       <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
         <SectionHeader />
 
@@ -235,45 +220,17 @@ export function RehabilitationMethodsSlider() {
           </div>
         </div>
 
-        <div className="mt-10 flex items-center justify-center">
-          <div className="relative flex w-full max-w-[240px] items-center justify-center">
-            <button
-              type="button"
-              onClick={() => methodsApi?.scrollPrev()}
-              aria-label="Попередній слайд"
-              className="absolute left-0 flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              <ArrowLeftIcon className="size-5" />
-            </button>
-
-            <div className="flex items-center justify-center gap-2.5">
-              {REHABILITATION_METHODS.map((card, index) => (
-                <button
-                  key={card.id}
-                  type="button"
-                  onClick={() => methodsApi?.scrollTo(index)}
-                  aria-label={`Перейти до методу ${card.title}`}
-                  aria-current={currentIndex === index ? "true" : undefined}
-                  className={cn(
-                    "h-2.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-                    currentIndex === index
-                      ? "w-8 bg-primary shadow-sm"
-                      : "w-2.5 bg-slate-300 hover:bg-slate-400",
-                  )}
-                />
-              ))}
-            </div>
-
-            <button
-              type="button"
-              onClick={() => methodsApi?.scrollNext()}
-              aria-label="Наступний слайд"
-              className="absolute right-0 flex size-11 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-navy shadow-sm transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              <ArrowRightIcon className="size-5" />
-            </button>
-          </div>
-        </div>
+        <CarouselNavigation
+          total={REHABILITATION_METHODS.length}
+          activeIndex={currentIndex}
+          onSelect={(index) => methodsApi?.scrollTo(index)}
+          onPrevious={() => methodsApi?.scrollPrev()}
+          onNext={() => methodsApi?.scrollNext()}
+          previousLabel="Попередній слайд"
+          nextLabel="Наступний слайд"
+          getSlideLabel={(index) => `Перейти до методу ${REHABILITATION_METHODS[index]?.title}`}
+          className="mt-10"
+        />
       </div>
     </section>
   );

@@ -1,5 +1,4 @@
 import serviceRehab from "@/assets/service-rehab.jpg";
-import { AppLink } from "@/components/app-link";
 import { ConsultationForm } from "@/components/consultation-form";
 import { Breadcrumbs, FAQAccordion, PageContainer, SectionHeader } from "@/components/blocks";
 import { SiteFooter } from "@/components/site-footer";
@@ -12,14 +11,21 @@ import {
   Mail,
   MapPin,
   Clock,
-  Send,
-  CheckCircle2,
   ExternalLink,
   MessageCircle,
   Share2,
   Navigation,
   Compass,
 } from "lucide-react";
+
+const CONTACT_PAGE_ANCHORS = [
+  { href: "#quick-contacts", label: "Швидкий зв'язок" },
+  { href: "#contact-form", label: "Форма" },
+  { href: "#messengers", label: "Месенджери" },
+  { href: "#socials", label: "Соцмережі" },
+  { href: "#location", label: "Локація" },
+  { href: "#faq", label: "FAQ" },
+];
 
 // Brand icons or custom SVGs for Telegram, WhatsApp, Viber, Instagram, Facebook, YouTube, TikTok
 function TelegramIcon({ className = "size-5" }: { className?: string }) {
@@ -80,7 +86,15 @@ function TikTokIcon({ className = "size-5" }: { className?: string }) {
 
 function MallBuildingIcon({ className = "size-5 text-slate-600" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M3 21h18" />
       <path d="M5 21V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14" />
       <path d="M9 21v-4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4" />
@@ -92,7 +106,15 @@ function MallBuildingIcon({ className = "size-5 text-slate-600" }: { className?:
 
 function CableCarIcon({ className = "size-5 text-slate-600" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M2 4.5l20-2" />
       <path d="M12 3.5v4" />
       <rect x="6.5" y="9" width="11" height="8.5" rx="2.5" />
@@ -105,7 +127,15 @@ function CableCarIcon({ className = "size-5 text-slate-600" }: { className?: str
 
 function ParkingBadgeIcon({ className = "size-5 text-slate-600" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3.5" y="3.5" width="17" height="17" rx="4" />
       <path d="M9.5 16V8h4a2.5 2.5 0 0 1 0 5H9.5" strokeWidth="1.8" />
     </svg>
@@ -113,7 +143,6 @@ function ParkingBadgeIcon({ className = "size-5 text-slate-600" }: { className?:
 }
 
 export function ContactsPage({ node }: { node: SiteNode }) {
-
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -127,7 +156,8 @@ export function ContactsPage({ node }: { node: SiteNode }) {
         {/* Top Hero Section */}
         <PageContainer className="pb-12">
           <SectionHeader
-            eyebrow="КОНТАКТИ ТА ЗВ'ЯЗОК"
+            eyebrow="Контактна інформація"
+            eyebrowClassName="inline-flex items-center rounded-full border border-[#D5E1F4] bg-[#F5F8FE] px-4 py-2 text-[10px] font-bold tracking-[0.18em] text-[#215FBC] sm:text-[11px]"
             title="Як з нами зв'язатися"
             text="Оберіть найзручніший спосіб зв'язку — зателефонуйте, напишіть у месенджер або заповніть форму зворотного зв'язку. Ми завжди раді надати підтримку."
           />
@@ -172,9 +202,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                   <span className="text-emerald-600 font-extrabold">{CONTACTS.rehabHours}</span>
                 </div>
               </div>
-              <p className="mt-3 text-[11px] text-muted-foreground">
-                Прийом за попереднім записом
-              </p>
+              <p className="mt-3 text-[11px] text-muted-foreground">Прийом за попереднім записом</p>
             </div>
 
             {/* Address Card */}
@@ -185,9 +213,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
               <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
                 Де ми знаходимось
               </p>
-              <p className="mt-2 text-sm font-bold text-navy">
-                {CONTACTS.address}
-              </p>
+              <p className="mt-2 text-sm font-bold text-navy">{CONTACTS.address}</p>
               <p className="mt-2 text-xs text-muted-foreground line-clamp-2">
                 {CONTACTS.addressFull}
               </p>
@@ -201,9 +227,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
               <p className="mt-4 text-xs font-bold tracking-[0.16em] text-muted-foreground uppercase">
                 Швидкі Месенджери
               </p>
-              <p className="mt-2 text-xs font-semibold text-navy">
-                Telegram, WhatsApp, Viber
-              </p>
+              <p className="mt-2 text-xs font-semibold text-navy">Telegram, WhatsApp, Viber</p>
               <div className="mt-3 flex items-center gap-2">
                 <a
                   href={CONTACTS.messengers.telegram}
@@ -238,9 +262,7 @@ export function ContactsPage({ node }: { node: SiteNode }) {
               >
                 {CONTACTS.email}
               </a>
-              <p className="mt-4 text-xs text-muted-foreground">
-                Для офіційних звернень
-              </p>
+              <p className="mt-4 text-xs text-muted-foreground">Для офіційних звернень</p>
             </div>
           </div>
         </PageContainer>
@@ -249,7 +271,10 @@ export function ContactsPage({ node }: { node: SiteNode }) {
         <section className="bg-slate-50/80 py-16 border-y border-border/60">
           <PageContainer>
             <div className="max-w-3xl text-left">
-              <h2 className="text-2xl font-extrabold sm:text-3xl lg:text-4xl text-navy tracking-tight">
+              <div className="inline-flex items-center rounded-full border border-[#D5E1F4] bg-[#F5F8FE] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#215FBC] sm:text-[11px]">
+                ОНЛАЙН-КАНАЛИ ЗВ'ЯЗКУ
+              </div>
+              <h2 className="mt-5 text-2xl font-extrabold sm:text-3xl lg:text-4xl text-navy tracking-tight">
                 Оберіть зручний спосіб зв'язку
               </h2>
               <div className="mt-5 h-1 w-16 rounded-full bg-primary" />
@@ -282,7 +307,9 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                     </div>
                     <div>
                       <h3 className="text-base font-bold text-navy">Прямі месенджери</h3>
-                      <p className="text-xs text-muted-foreground">Миттєвий чат з адміністратором</p>
+                      <p className="text-xs text-muted-foreground">
+                        Миттєвий чат з адміністратором
+                      </p>
                     </div>
                   </div>
 
@@ -302,7 +329,9 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                           <p className="text-sm font-bold text-navy group-hover:text-[#229ED9] transition-colors">
                             Telegram
                           </p>
-                          <p className="text-xs text-muted-foreground">{CONTACTS.messengers.telegramHandle}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {CONTACTS.messengers.telegramHandle}
+                          </p>
                         </div>
                       </div>
                       <ExternalLink className="size-4 text-muted-foreground group-hover:text-[#229ED9] transition-colors" />
@@ -357,7 +386,9 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                       <Share2 className="size-5" />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-navy">Стежити за основою в соціальних мережах</h3>
+                      <h3 className="text-base font-bold text-navy">
+                        Стежити за основою в соціальних мережах
+                      </h3>
                     </div>
                   </div>
 
@@ -447,7 +478,9 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                       Де ми знаходимося
                     </h3>
                     <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                      Наш єдиний медичний та реабілітаційний центр розташований у серці курорту Буковель. Для вашої зручності у центрі функціонують два відділення з власними графіками прийому.
+                      Наш єдиний медичний та реабілітаційний центр розташований у серці курорту
+                      Буковель. Для вашої зручності у центрі функціонують два відділення з власними
+                      графіками прийому.
                     </p>
 
                     <div className="mt-8 space-y-5 text-sm">
@@ -457,9 +490,15 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                           <MapPin className="size-5" />
                         </div>
                         <div>
-                          <strong className="block text-navy font-bold text-xs uppercase tracking-wider text-muted-foreground">Точна адреса:</strong>
-                          <span className="text-navy font-bold text-sm block mt-0.5">{CONTACTS.addressFull}</span>
-                          <span className="text-xs text-muted-foreground block mt-0.5">Курортний комплекс ТРК Буковель</span>
+                          <strong className="block text-navy font-bold text-xs uppercase tracking-wider text-muted-foreground">
+                            Точна адреса:
+                          </strong>
+                          <span className="text-navy font-bold text-sm block mt-0.5">
+                            {CONTACTS.addressFull}
+                          </span>
+                          <span className="text-xs text-muted-foreground block mt-0.5">
+                            Курортний комплекс ТРК Буковель
+                          </span>
                         </div>
                       </div>
 
@@ -504,15 +543,19 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                           <Clock className="size-4 text-amber-600" />
                           <span>Графік роботи (2 відділення):</span>
                         </div>
-                        
+
                         <div className="space-y-2 pt-1 text-xs">
                           {/* Gym schedule */}
                           <div className="flex items-center justify-between rounded-xl bg-white p-3 border border-border/50 shadow-2xs">
                             <div className="flex items-center gap-2.5">
                               <span className="inline-block size-2.5 rounded-full bg-amber-500 animate-pulse" />
                               <div>
-                                <span className="font-bold text-navy block leading-tight">Тренажерний зал</span>
-                                <span className="text-[10px] text-muted-foreground">Щодня (Пн – Нд)</span>
+                                <span className="font-bold text-navy block leading-tight">
+                                  Тренажерний зал
+                                </span>
+                                <span className="text-[10px] text-muted-foreground">
+                                  Щодня (Пн – Нд)
+                                </span>
                               </div>
                             </div>
                             <span className="font-extrabold text-primary bg-primary/10 px-3 py-1 rounded-lg text-xs">
@@ -525,8 +568,12 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                             <div className="flex items-center gap-2.5">
                               <span className="inline-block size-2.5 rounded-full bg-emerald-500 animate-pulse" />
                               <div>
-                                <span className="font-bold text-navy block leading-tight">Реабілітаційне відділення</span>
-                                <span className="text-[10px] text-muted-foreground">Щодня (Пн – Нд)</span>
+                                <span className="font-bold text-navy block leading-tight">
+                                  Реабілітаційне відділення
+                                </span>
+                                <span className="text-[10px] text-muted-foreground">
+                                  Щодня (Пн – Нд)
+                                </span>
                               </div>
                             </div>
                             <span className="font-extrabold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-lg text-xs">
@@ -583,19 +630,29 @@ export function ContactsPage({ node }: { node: SiteNode }) {
                       <span className="inline-block rounded-full bg-emerald-100 px-3 py-0.5 text-[11px] font-bold text-emerald-800 uppercase tracking-wider">
                         📍 ДЕ МИ ЗНАХОДИМОСЬ
                       </span>
-                      <h4 className="mt-2 text-lg font-extrabold text-navy">Центр «ŎSNOVA» у Буковелі</h4>
+                      <h4 className="mt-2 text-lg font-extrabold text-navy">
+                        Центр «ŎSNOVA» у Буковелі
+                      </h4>
                       <p className="mt-1 text-xs text-muted-foreground font-medium">
                         {CONTACTS.addressFull}
                       </p>
 
                       <div className="mt-4 grid grid-cols-2 gap-2 text-left pt-3 border-t border-border/60">
                         <div className="bg-slate-50 p-2.5 rounded-xl border border-border/40">
-                          <p className="text-[10px] font-bold text-muted-foreground uppercase">Тренажерний зал</p>
-                          <p className="text-xs font-extrabold text-navy mt-0.5">{CONTACTS.gymHours}</p>
+                          <p className="text-[10px] font-bold text-muted-foreground uppercase">
+                            Тренажерний зал
+                          </p>
+                          <p className="text-xs font-extrabold text-navy mt-0.5">
+                            {CONTACTS.gymHours}
+                          </p>
                         </div>
                         <div className="bg-slate-50 p-2.5 rounded-xl border border-border/40">
-                          <p className="text-[10px] font-bold text-muted-foreground uppercase">Реабілітація</p>
-                          <p className="text-xs font-extrabold text-navy mt-0.5">{CONTACTS.rehabHours}</p>
+                          <p className="text-[10px] font-bold text-muted-foreground uppercase">
+                            Реабілітація
+                          </p>
+                          <p className="text-xs font-extrabold text-navy mt-0.5">
+                            {CONTACTS.rehabHours}
+                          </p>
                         </div>
                       </div>
 
@@ -618,11 +675,18 @@ export function ContactsPage({ node }: { node: SiteNode }) {
         {/* FAQ Section */}
         <PageContainer className="pb-20">
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-navy sm:text-3xl md:text-4xl">Питання та відповіді</h2>
+            <h2 className="text-2xl font-bold text-navy sm:text-3xl md:text-4xl">
+              Питання та відповіді
+            </h2>
             <div className="mx-auto mt-4 sm:mt-6 h-1 w-16 rounded-full bg-primary" />
+            <p className="mx-auto mt-6 max-w-[640px] text-sm leading-relaxed text-slate-600 md:text-base">
+              Зібрали найпоширеніші запитання про запис, підготовку до прийому та звернення до
+              центру. Якщо не знайшли відповідь — зв’яжіться з нами, ми допоможемо.
+            </p>
           </div>
-          <div className="mt-8 max-w-3xl mx-auto">
+          <div className="mx-auto max-w-[1000px]">
             <FAQAccordion
+              variant="home"
               items={[
                 {
                   question: "Як підготуватися до першого прийому?",

@@ -1,8 +1,12 @@
-import { ArrowRight, Phone, Send, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ChevronRight, Phone, Send, CheckCircle2 } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { AppLink } from "@/components/app-link";
 import { FAQAccordion } from "@/components/blocks";
+import {
+  CompanyOverviewSection,
+  companyOverviewCtaClassName,
+} from "@/components/company-overview-section";
 import { useConsultationModal } from "@/components/consultation-form";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -63,7 +67,7 @@ const METHODS = [
     title: "Додаткові підтримуючі методи",
     text: "Капельниці (інфузійна терапія), ін’єкційні методики та інші призначення лікаря за показаннями. Вони використовуються для корекції дефіцитів, зменшення запалення та підтримки загального стану організму.",
     image: diagnosticsSessionImg,
-  }
+  },
 ];
 
 const EQUIPMENT = [
@@ -178,104 +182,18 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
 
       <main>
         {/* 1. КОМПАНІЯ - ПРО НАС */}
-        <section className="bg-white pt-8 sm:pt-12 lg:pt-14 pb-16 md:pb-24 lg:pb-28">
-          <Container className="max-w-[1480px] px-6 sm:px-8 lg:px-10 xl:px-12">
-            <div className="grid items-center gap-10 lg:gap-14 xl:gap-16 lg:grid-cols-[1.08fr_1fr]">
-              <div className="w-full max-w-[720px] lg:max-w-none">
-                <div className="mb-4 sm:mb-5 inline-flex items-center rounded-full bg-[#E9EEF8] border border-[#D0DCF2] px-4.5 py-1.5 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.15em] text-[#215FBC]">
-                  ПРО КОМПАНІЮ
-                </div>
-
-                <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black font-extrabold tracking-tight leading-[1.06] text-[#091936]">
-                  ОСНОВА <span className="text-[#215FBC]">Реабілітація</span>
-                </h1>
-
-                <div className="mb-8 h-[4px] w-20 rounded-full bg-gradient-to-r from-[#215FBC] via-[#215FBC] 50% to-[#10b981]" />
-
-                <div className="space-y-6 sm:space-y-7 text-base sm:text-[18px] lg:text-[19px] leading-[1.65]">
-                  <p className="font-medium text-[#091936]">
-                    ОСНОВА Реабілітація — сучасна медична компанія, що
-                    спеціалізується на лікуванні та комплексній реабілітації пацієнтів у
-                    сферах кардіології, ортопедії, травматології, ревматології,
-                    вертебрології та психології.
-                  </p>
-
-                  <p className="font-normal text-[#5F6A7B]">
-                    Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики
-                    ще до появи симптомів — завдяки сучасній діагностиці, точним
-                    обстеженням і персоналізованим профілактичним програмам.
-                  </p>
-
-                  <p className="py-1 font-semibold text-[#215FBC]">
-                    Наше завдання — допомогти вам відновити здоров'я, рухливість і якість
-                    життя.
-                  </p>
-
-                  <p className="font-normal text-[#5F6A7B]">
-                    ОСНОВА Реабілітація також є науково-освітньою платформою, що
-                    розробляє та вдосконалює протоколи лікування, співпрацює з провідними
-                    медичними університетами світу, впроваджує інноваційні технології та
-                    розвиває виїзні формати реабілітаційної допомоги для пацієнтів поза
-                    центром.
-                  </p>
-                </div>
-
-                <div className="mt-10 lg:mt-12">
-                  <button
-                    type="button"
-                    onClick={() => openModal("Записатися на консультацію")}
-                    className="inline-flex items-center gap-3.5 rounded-full bg-[#091936] px-9 py-4 sm:px-10 sm:py-4.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-[0_12px_28px_rgba(9,25,54,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#215FBC] hover:shadow-[0_14px_32px_rgba(33,95,188,0.35)]"
-                  >
-                    ДЕТАЛЬНІШЕ <ArrowRight className="h-4.5 w-4.5 stroke-[2.5]" />
-                  </button>
-                </div>
-              </div>
-
-              {/* RIGHT 2X2 GRID */}
-              <div className="w-full">
-                <div className="grid grid-cols-2 gap-[28px] lg:gap-[30px]">
-                  {/* Top-Left: Image 1 */}
-                  <div className="w-full min-w-0 max-w-full box-border overflow-hidden rounded-[24px] bg-white shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100/90 aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px]">
-                    <img
-                      src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80"
-                      alt="Реабілітаційний процес з фахівцем у світлому залі"
-                      className="size-full block object-cover transition-transform duration-700 hover:scale-105"
-                    />
-                  </div>
-
-                  {/* Top-Right: Stat Card 8+ */}
-                  <div className="w-full min-w-0 max-w-full box-border flex flex-col justify-center rounded-[24px] bg-[#E9EEF8] p-6 sm:p-7 lg:p-8 xl:p-9 text-left shadow-[0_10px_25px_rgba(0,0,0,0.02)] aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px] transition-all duration-300 hover:shadow-[0_14px_30px_rgba(33,95,188,0.08)]">
-                    <div className="mb-2 text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-black font-extrabold tracking-tight text-[#215FBC] leading-none">
-                      8+
-                    </div>
-                    <p className="text-xs sm:text-sm lg:text-[15px] font-medium text-[#5F6A7B] leading-snug">
-                      Напрямків реабілітації
-                    </p>
-                  </div>
-
-                  {/* Bottom-Left: Stat Card 30+ */}
-                  <div className="w-full min-w-0 max-w-full box-border flex flex-col justify-center rounded-[24px] bg-[#D9EBFC] p-6 sm:p-7 lg:p-8 xl:p-9 text-left shadow-[0_10px_25px_rgba(0,0,0,0.02)] aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px] transition-all duration-300 hover:shadow-[0_14px_30px_rgba(9,25,54,0.08)]">
-                    <div className="mb-2 text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-black font-extrabold tracking-tight text-[#091936] leading-none">
-                      30+
-                    </div>
-                    <p className="text-xs sm:text-sm lg:text-[15px] font-medium text-[#5F6A7B] leading-snug">
-                      Методів реабілітації
-                    </p>
-                  </div>
-
-                  {/* Bottom-Right: Image 2 */}
-                  <div className="w-full min-w-0 max-w-full box-border overflow-hidden rounded-[24px] bg-white shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100/90 aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px]">
-                    <img
-                      src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80"
-                      alt="Медичний персонал за обладнанням"
-                      className="size-full block object-cover transition-transform duration-700 hover:scale-105"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </section>
+        <CompanyOverviewSection
+          titleAs="h1"
+          cta={
+            <button
+              type="button"
+              onClick={() => openModal("Записатися на консультацію")}
+              className={companyOverviewCtaClassName}
+            >
+              ДЕТАЛЬНІШЕ <ChevronRight className="size-4 stroke-[2.4]" />
+            </button>
+          }
+        />
 
         {/* СТРОКА ДОВІРИ */}
         <div className="border-y border-slate-200/80 bg-white">
@@ -302,7 +220,11 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                   Головний підхід — персональна програма
                 </h2>
                 <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
-                  ОСНОВА не пропонує випадковий набір процедур, а формує персональну програму, яка починається з медичної та функціональної оцінки. Команда визначає стан пацієнта, його обмеження й цілі, формує послідовний план і контролює динаміку на кожному етапі. Усе необхідне — консультації, діагностика, фізична терапія та відновлювальні методи — зібрано в одному процесі.
+                  ОСНОВА не пропонує випадковий набір процедур, а формує персональну програму, яка
+                  починається з медичної та функціональної оцінки. Команда визначає стан пацієнта,
+                  його обмеження й цілі, формує послідовний план і контролює динаміку на кожному
+                  етапі. Усе необхідне — консультації, діагностика, фізична терапія та
+                  відновлювальні методи — зібрано в одному процесі.
                 </p>
                 <div className="mt-8">
                   <button
@@ -423,7 +345,7 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                 <p className="mt-5 text-base leading-relaxed text-slate-600">
                   Результати дають об’єктивну картину і стають основою для персонального плану.
                 </p>
-                
+
                 <div className="mt-10 overflow-hidden rounded-[24px] shadow-lg">
                   <img
                     src={diagnosticsSessionImg}
@@ -448,10 +370,16 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                   Профілактична медицина
                 </h2>
                 <p className="mt-6 text-base leading-relaxed text-white/90 sm:text-lg">
-                  Окремий важливий напрямок центру — профілактика. ОСНОВА пропонує чек-апи та профілактичні програми, спрямовані на раннє виявлення ризиків і підтримку здоров’я.
+                  Окремий важливий напрямок центру — профілактика. ОСНОВА пропонує чек-апи та
+                  профілактичні програми, спрямовані на раннє виявлення ризиків і підтримку
+                  здоров’я.
                 </p>
                 <p className="mt-4 text-base leading-relaxed text-white/90 sm:text-lg">
-                  Це особливо актуально для людей із підвищеним ризиком серцево-судинних захворювань, проблемами опорно-рухового апарату, а також для тих, хто хоче безпечно повертатися до фізичних навантажень або підтримувати активний спосіб життя. Профілактичні програми включають функціональну діагностику, оцінку витривалості, рекомендації щодо навантажень і спостереження динаміки.
+                  Це особливо актуально для людей із підвищеним ризиком серцево-судинних
+                  захворювань, проблемами опорно-рухового апарату, а також для тих, хто хоче
+                  безпечно повертатися до фізичних навантажень або підтримувати активний спосіб
+                  життя. Профілактичні програми включають функціональну діагностику, оцінку
+                  витривалості, рекомендації щодо навантажень і спостереження динаміки.
                 </p>
                 <AppLink
                   to="/poslugy/check-up"
@@ -535,10 +463,12 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                   Переваги розташування
                 </h2>
                 <p className="mt-6 text-base leading-relaxed text-white/80 sm:text-lg">
-                  Карпати та Буковель створюють унікальне середовище для відновлення: свіже повітря, спокійний ритм і можливість поєднати лікування з відпочинком. 
+                  Карпати та Буковель створюють унікальне середовище для відновлення: свіже повітря,
+                  спокійний ритм і можливість поєднати лікування з відпочинком.
                 </p>
                 <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
-                  Усі кабінети діагностики, зали терапії, басейн і зони проживання розташовані в одному комплексі — пацієнту не потрібно переміщатися між різними установами.
+                  Усі кабінети діагностики, зали терапії, басейн і зони проживання розташовані в
+                  одному комплексі — пацієнту не потрібно переміщатися між різними установами.
                 </p>
               </div>
             </div>
@@ -570,7 +500,9 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                   ОСНОВА Реабілітація
                 </h2>
                 <p className="mt-5 max-w-3xl text-base leading-relaxed text-white/75 sm:text-lg">
-                  ОСНОВА Реабілітація поєднує сучасні методи, точну діагностику, професійну команду та природне середовище Карпат, щоб допомогти пацієнту не просто пройти курс процедур, а повернути рух, витривалість і якість життя.
+                  ОСНОВА Реабілітація поєднує сучасні методи, точну діагностику, професійну команду
+                  та природне середовище Карпат, щоб допомогти пацієнту не просто пройти курс
+                  процедур, а повернути рух, витривалість і якість життя.
                 </p>
               </div>
 
@@ -595,7 +527,8 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
 
             <div className="mt-10 flex flex-col gap-4 border-t border-white/15 pt-7 text-sm text-white/75 md:flex-row md:items-center md:flex-wrap md:gap-8">
               <span className="font-semibold text-white/90">
-                Адреса: Івано-Франківська область, Надвірнянський р-н, с. Поляниця, участок Вишня 354/А, ТРК Буковель
+                Адреса: Івано-Франківська область, Надвірнянський р-н, с. Поляниця, участок Вишня
+                354/А, ТРК Буковель
               </span>
               <a
                 href="tel:+380675101575"
@@ -622,12 +555,27 @@ export function AboutOsnovaPage({ node }: { node: SiteNode }) {
                 info@osnova-rehab.com.ua
               </a>
             </div>
-            
+
             <div className="mt-4 text-sm text-white/75 font-semibold flex flex-wrap gap-4">
-               Соцмережі: 
-               <a href="https://instagram.com/osnova.rehab.bukovel" target="_blank" rel="noreferrer" className="text-white hover:text-brand-green transition">Instagram @osnova.rehab.bukovel</a>,
-               <a href="https://facebook.com/OsnovaRehab" target="_blank" rel="noreferrer" className="text-white hover:text-brand-green transition">Facebook @Osnova Rehab</a>,
-               <span className="text-white">TikTok і YouTube @osnova_rehabilitation</span>
+              Соцмережі:
+              <a
+                href="https://instagram.com/osnova.rehab.bukovel"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white hover:text-brand-green transition"
+              >
+                Instagram @osnova.rehab.bukovel
+              </a>
+              ,
+              <a
+                href="https://facebook.com/OsnovaRehab"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white hover:text-brand-green transition"
+              >
+                Facebook @Osnova Rehab
+              </a>
+              ,<span className="text-white">TikTok і YouTube @osnova_rehabilitation</span>
             </div>
           </Container>
         </section>

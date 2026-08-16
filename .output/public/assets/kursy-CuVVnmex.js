@@ -1,0 +1,1 @@
+import{ot as e}from"./site-footer-CfRwejeh.js";import{t}from"./education-courses-page-CkidRvuW.js";var n=e();function r(){return(0,n.jsx)(t,{title:`Курси`})}export{r as component};

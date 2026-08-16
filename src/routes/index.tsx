@@ -1,12 +1,17 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { AppLink } from "@/components/app-link";
+import {
+  CompanyOverviewSection,
+  companyOverviewCtaClassName,
+} from "@/components/company-overview-section";
 import { CooperationCascade } from "@/components/cooperation-cascade";
 import {
   ArrowRight,
   Heart,
   Dumbbell,
   Phone,
+  Home,
   Users,
   ChevronRight,
   ChevronLeft,
@@ -49,7 +54,8 @@ import Autoplay from "embla-carousel-autoplay";
 import { NEWS_ARTICLES } from "@/data/news";
 import { useConsultationModal } from "@/components/consultation-form";
 import { RehabilitationMethodsSlider } from "@/components/rehabilitation-methods-slider";
-import { Breadcrumbs } from "@/components/blocks";
+import { CarouselNavigation } from "@/components/carousel-navigation";
+import { cn } from "@/lib/utils";
 
 // Images
 import rehabImg from "@/assets/service-rehab.jpg";
@@ -62,8 +68,8 @@ import educationTrainingImg from "@/assets/education-training.png";
 import educationConferenceImg from "@/assets/education-conference.png";
 import educationPracticalTrainingImg from "@/assets/education-practical-training-v2.jpg";
 import educationScienceEventImg from "@/assets/education-science-event-v2.jpg";
-import osnovaLogo3dImg from "@/assets/osnova-logo-3d.jpg";
-import consultationImg from "@/assets/about/consultation.jpg";
+import balanceReferenceCardImg from "@/assets/home/balance-reference-card.png";
+import medicalAssessmentImg from "@/assets/about/medical-assessment.jpg";
 import partnerAsmuLogo from "@/assets/partners/partner-asmu.png";
 import partnerChnuLogo from "@/assets/partners/partner-chnu.png";
 import partnerHeartLogo from "@/assets/partners/partner-heart.svg";
@@ -129,6 +135,8 @@ const DIRECTIONS = [
     icon: Heart,
     title: "КАРДІОЛОГІЯ",
     text: "Лікування захворювань серця, відновлення після інфаркту та операцій, ЕКГ та CPET-діагностика.",
+    expandedText:
+      "Працюємо з пацієнтами після інфаркту, стентування, шунтування та інших кардіологічних втручань. Програма може включати кардіологічний контроль, оцінку переносимості навантажень, безпечні тренування та поетапне повернення до щоденної активності.",
     image: ecgImg,
     href: "/poslugy/reabilitatsiia/kardioreabilitatsiia",
     badge: "Серцево-судинна система",
@@ -137,6 +145,8 @@ const DIRECTIONS = [
     icon: Dumbbell,
     title: "ОРТОПЕДІЯ ТА ТРАВМАТОЛОГІЯ",
     text: "Відновлення після травм, переломів, хірургічних втручань на суглобах та ендопротезування.",
+    expandedText:
+      "Допомагаємо відновити рухливість після переломів, операцій, ушкоджень зв'язок і заміни суглобів. У фокусі програми - зменшення болю, повернення опори, корекція рухових стереотипів і поступове повернення до звичного рівня активності.",
     image: rehabImg,
     href: "/poslugy/reabilitatsiia/ortopedichna-reabilitatsiia",
     badge: "Суглоби та зв'язки",
@@ -145,6 +155,8 @@ const DIRECTIONS = [
     icon: Flame,
     title: "ВЕРТЕБРОЛОГІЯ (ЗАХВОРЮВАННЯ ХРЕБТА)",
     text: "Лікування та реабілітація захворювань хребта, гриж, остеохондрозу та відновлення біомеханіки спини.",
+    expandedText:
+      "Напрямок підходить при болю в шиї та спині, міжхребцевих грижах, порушеннях постави та перевантаженні хребта. Програма спрямована на зниження больового синдрому, відновлення стабільності корпусу, рухливості та правильної біомеханіки.",
     image: ergoImg,
     href: "/poslugy/reabilitatsiia/vertebrolohichna-reabilitatsiia",
     badge: "Здоров'я хребта",
@@ -153,6 +165,8 @@ const DIRECTIONS = [
     icon: Stethoscope,
     title: "РЕВМАТОЛОГІЯ",
     text: "Комплексна терапія артриту, артрозу, системних захворювань сполучної тканини зі збереженням рухливості.",
+    expandedText:
+      "Підтримуємо пацієнтів із хронічними та системними захворюваннями суглобів і сполучної тканини. Основні завдання - контролювати біль і запалення, зберегти рухливість суглобів та адаптувати навантаження до поточного стану.",
     image: checkupImg,
     href: "/poslugy/reabilitatsiia/revmatolohichna-reabilitatsiia",
     badge: "Суглоби та сполучна тканина",
@@ -161,6 +175,8 @@ const DIRECTIONS = [
     icon: Brain,
     title: "НЕВРОЛОГІЯ",
     text: "Відновлення після інсультів, нейропатій, уражень центральної та периферичної нервової системи.",
+    expandedText:
+      "Реабілітація допомагає при наслідках інсульту, травм нервової системи, порушеннях координації та чутливості. Ми працюємо над відновленням руху, рівноваги, побутової самостійності та якості життя пацієнта.",
     image: cpetImg,
     href: "/poslugy/reabilitatsiia/nevrolohichna-reabilitatsiia",
     badge: "Нервова система",
@@ -169,6 +185,8 @@ const DIRECTIONS = [
     icon: Users,
     title: "ПСИХОЛОГІЯ ТА ПСИХІЧНЕ (МЕНТАЛЬНЕ) ЗДОРОВ'Я",
     text: "Психологічна підтримка, зняття стресу, відновлення ментального здоров'я та адаптація після навантажень.",
+    expandedText:
+      "Підтримуємо людей у стані хронічного стресу, тривоги, емоційного виснаження або після складних медичних подій. Робота може включати стабілізацію емоційного стану, адаптацію до змін у житті та відновлення внутрішнього ресурсу.",
     image: educationTrainingImg,
     href: "/poslugy/reabilitatsiia/psykholohichna-pidtrymka",
     badge: "Психологія",
@@ -176,7 +194,9 @@ const DIRECTIONS = [
   {
     icon: Trophy,
     title: "СПОРТИВНА МЕДИЦИНА",
-    text: "Підвищення фізичних показників, спортивна адаптація та швидке реабілітаційне відновлення фізичної...",
+    text: "Підвищення фізичних показників, спортивна адаптація та контрольоване відновлення після навантажень.",
+    expandedText:
+      "Напрямок поєднує функціональну оцінку, супровід спортсменів і безпечне повернення до тренувань після травм або перерви. Ми допомагаємо коригувати навантаження, запобігати перевантаженню та покращувати фізичну готовність.",
     image: sportsImg,
     href: "/poslugy/vidnovlennia",
     badge: "Спорт & Адаптація",
@@ -184,7 +204,9 @@ const DIRECTIONS = [
   {
     icon: Zap,
     title: "ПРОФІЛАКТИЧНА РЕАБІЛІТАЦІЯ (ПРЕВЕНТИВНА)",
-    text: "Виявлення прихованих медичних ризиків до появи симптомів, превентивні програми здоров'я та...",
+    text: "Виявлення прихованих медичних ризиків до появи симптомів і формування превентивної програми здоров'я.",
+    expandedText:
+      "Цей напрямок орієнтований на людей, які хочуть вчасно побачити ризики та скоригувати спосіб життя ще до розвитку захворювання. У програмі можуть поєднуватися діагностика, оцінка факторів ризику, рекомендації щодо активності, відновлення та профілактики.",
     image: educationConferenceImg,
     href: "/poslugy/check-up",
     badge: "Раннє виявлення ризиків",
@@ -351,6 +373,20 @@ const FAQS = [
   },
 ];
 
+const HOME_PAGE_SECTION_LINKS = [
+  { href: "#about-company", label: "Про компанію" },
+  { href: "#directions", label: "Напрями реабілітації" },
+  { href: "#consultation", label: "Консультація" },
+  { href: "#methods", label: "Методи відновлення" },
+  { href: "#advantages", label: "Переваги" },
+  { href: "#partners", label: "Наші партнери" },
+  { href: "#education", label: "Освіта та наука" },
+  { href: "#cooperation", label: "Співпраця" },
+  { href: "#blog", label: "Блог" },
+  { href: "#faq", label: "Питання та відповіді" },
+  { href: "#about-methods", label: "Сучасні методики" },
+] as const;
+
 function SectionHeader({
   subtitle,
   title,
@@ -380,8 +416,11 @@ function SectionHeader({
 }
 
 function DirectionCard({ direction }: { direction: (typeof DIRECTIONS)[number] }) {
+  const [expanded, setExpanded] = React.useState(false);
+  const expandedContentId = React.useId();
+
   return (
-    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
       <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
         <img
           src={direction.image}
@@ -390,20 +429,48 @@ function DirectionCard({ direction }: { direction: (typeof DIRECTIONS)[number] }
         />
       </div>
 
-      <div className="flex flex-1 flex-col justify-between bg-white p-6 md:p-7">
+      <div className="flex flex-1 flex-col bg-white p-6 md:p-7">
         <div>
+          <span className="mb-4 inline-flex rounded-full border border-primary/15 bg-primary/[0.06] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
+            {direction.badge}
+          </span>
           <h3 className="mb-3 text-xl font-bold leading-snug text-navy">{direction.title}</h3>
-          <p className="mb-6 line-clamp-3 text-sm font-normal leading-relaxed text-slate-600">
-            {direction.text}
-          </p>
+          <p className="text-sm font-normal leading-relaxed text-slate-600">{direction.text}</p>
+
+          <div
+            id={expandedContentId}
+            className={cn(
+              "grid overflow-hidden transition-all duration-300 ease-out",
+              expanded ? "mt-5 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+            )}
+          >
+            <div className="overflow-hidden">
+              <div className="border-t border-slate-200 pt-5 text-sm leading-relaxed text-slate-600">
+                {direction.expandedText}
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div>
+        <div className="mt-6 flex flex-col items-start gap-3">
+          <button
+            type="button"
+            onClick={() => setExpanded((value) => !value)}
+            aria-expanded={expanded}
+            aria-controls={expandedContentId}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+          >
+            <span>{expanded ? "Згорнути" : "Детальніше"}</span>
+            <ChevronDown
+              className={cn("size-4 transition-transform duration-200", expanded && "rotate-180")}
+            />
+          </button>
+
           <AppLink
             to={direction.href}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-md"
           >
-            Детальніше{" "}
+            Перейти до напряму{" "}
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </AppLink>
         </div>
@@ -650,6 +717,34 @@ function BlogCarousel() {
   );
 }
 
+function HomePageAnchorNav() {
+  return (
+    <div className="border-b border-border/70 bg-white">
+      <div className="mx-auto flex max-w-[1600px] items-center gap-4 overflow-x-auto px-4 py-3 scrollbar-none sm:px-6 lg:px-10">
+        <a
+          href="#home"
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
+        >
+          <Home className="size-4 shrink-0" />
+          <span>Головна</span>
+        </a>
+        <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить:</p>
+        <nav aria-label="Розділи головної сторінки" className="flex min-w-max gap-2 sm:gap-3">
+          {HOME_PAGE_SECTION_LINKS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy/78 transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const { openModal } = useConsultationModal();
   const [faqExpanded, setFaqExpanded] = React.useState(false);
@@ -722,7 +817,10 @@ function Index() {
 
       <main>
         {/* 1. HERO CAROUSEL */}
-        <section className="relative h-[500px] w-screen max-w-none overflow-hidden bg-navy-deep md:h-[560px] lg:h-[600px]">
+        <section
+          id="home"
+          className="relative h-[500px] w-screen max-w-none scroll-mt-24 overflow-hidden bg-navy-deep md:h-[560px] lg:h-[600px]"
+        >
           <Carousel
             setApi={setHeroApi}
             plugins={[Autoplay({ delay: 6000, stopOnInteraction: true })]}
@@ -805,118 +903,24 @@ function Index() {
           </Carousel>
         </section>
 
-        {/* BREADCRUMBS NAVIGATION */}
-        <div className="border-b border-border/70 bg-white">
-          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-            <Breadcrumbs
-              items={[{ title: "Головна", route: "/" }]}
-              align="center"
-              className="pb-4 pt-4 sm:pt-4"
-            />
-          </div>
-        </div>
+        <HomePageAnchorNav />
 
         {/* 2. ПРО КОМПАНІЮ */}
-        <section className="bg-white pt-8 sm:pt-12 lg:pt-14 pb-16 md:pb-24 lg:pb-28">
-          <div className="mx-auto max-w-[1480px] px-6 sm:px-8 lg:px-10 xl:px-12">
-            <div className="grid items-center gap-10 lg:gap-14 xl:gap-16 lg:grid-cols-[1.08fr_1fr]">
-              <div className="w-full max-w-[720px] lg:max-w-none">
-                <div className="mb-4 sm:mb-5 inline-flex items-center rounded-full bg-[#E9EEF8] border border-[#D0DCF2] px-4.5 py-1.5 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.15em] text-[#215FBC]">
-                  ПРО КОМПАНІЮ
-                </div>
-
-                <h2 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black font-extrabold tracking-tight leading-[1.06] text-[#091936]">
-                  ОСНОВА <span className="text-[#215FBC]">Реабілітація</span>
-                </h2>
-
-                <div className="mb-8 h-[4px] w-20 rounded-full bg-gradient-to-r from-[#215FBC] via-[#215FBC] 50% to-[#10b981]" />
-
-                <div className="space-y-6 sm:space-y-7 text-base sm:text-[18px] lg:text-[19px] leading-[1.65]">
-                  <p className="font-medium text-[#091936]">
-                    ОСНОВА Реабілітація — сучасна медична компанія, що
-                    спеціалізується на лікуванні та комплексній реабілітації пацієнтів у
-                    сферах кардіології, ортопедії, травматології, ревматології,
-                    вертебрології та психології.
-                  </p>
-
-                  <p className="font-normal text-[#5F6A7B]">
-                    Ми працюємо не лише з наслідками хвороб і травм, а й виявляємо ризики
-                    ще до появи симптомів — завдяки сучасній діагностиці, точним
-                    обстеженням і персоналізованим профілактичним програмам.
-                  </p>
-
-                  <p className="py-1 font-semibold text-[#215FBC]">
-                    Наше завдання — допомогти вам відновити здоров'я, рухливість і якість
-                    життя.
-                  </p>
-
-                  <p className="font-normal text-[#5F6A7B]">
-                    ОСНОВА Реабілітація також є науково-освітньою платформою, що
-                    розробляє та вдосконалює протоколи лікування, співпрацює з провідними
-                    медичними університетами світу, впроваджує інноваційні технології та
-                    розвиває виїзні формати реабілітаційної допомоги для пацієнтів поза
-                    центром.
-                  </p>
-                </div>
-
-                <div className="mt-10 lg:mt-12">
-                  <AppLink
-                    to="/pro-osnovu"
-                    className="inline-flex items-center gap-3.5 rounded-full bg-[#091936] px-9 py-4 sm:px-10 sm:py-4.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-[0_12px_28px_rgba(9,25,54,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#215FBC] hover:shadow-[0_14px_32px_rgba(33,95,188,0.35)]"
-                  >
-                    ДЕТАЛЬНІШЕ <ChevronRight className="h-4.5 w-4.5 stroke-[2.5]" />
-                  </AppLink>
-                </div>
-              </div>
-
-              {/* RIGHT 2X2 GRID */}
-              <div className="w-full">
-                <div className="grid grid-cols-2 gap-[28px] lg:gap-[30px]">
-                  {/* Top-Left: Image 1 */}
-                  <div className="w-full min-w-0 max-w-full box-border overflow-hidden rounded-[24px] bg-white shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100/90 aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px]">
-                    <img
-                      src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80"
-                      alt="Реабілітаційний процес з фахівцем у світлому залі"
-                      className="size-full block object-cover transition-transform duration-700 hover:scale-105"
-                    />
-                  </div>
-
-                  {/* Top-Right: Stat Card 8+ */}
-                  <div className="w-full min-w-0 max-w-full box-border flex flex-col justify-center rounded-[24px] bg-[#E9EEF8] p-6 sm:p-7 lg:p-8 xl:p-9 text-left shadow-[0_10px_25px_rgba(0,0,0,0.02)] aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px] transition-all duration-300 hover:shadow-[0_14px_30px_rgba(33,95,188,0.08)]">
-                    <div className="mb-2 text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-black font-extrabold tracking-tight text-[#215FBC] leading-none">
-                      8+
-                    </div>
-                    <p className="text-xs sm:text-sm lg:text-[15px] font-medium text-[#5F6A7B] leading-snug">
-                      Напрямків реабілітації
-                    </p>
-                  </div>
-
-                  {/* Bottom-Left: Stat Card 30+ */}
-                  <div className="w-full min-w-0 max-w-full box-border flex flex-col justify-center rounded-[24px] bg-[#D9EBFC] p-6 sm:p-7 lg:p-8 xl:p-9 text-left shadow-[0_10px_25px_rgba(0,0,0,0.02)] aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px] transition-all duration-300 hover:shadow-[0_14px_30px_rgba(9,25,54,0.08)]">
-                    <div className="mb-2 text-4xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-black font-extrabold tracking-tight text-[#091936] leading-none">
-                      30+
-                    </div>
-                    <p className="text-xs sm:text-sm lg:text-[15px] font-medium text-[#5F6A7B] leading-snug">
-                      Методів реабілітації
-                    </p>
-                  </div>
-
-                  {/* Bottom-Right: Image 2 */}
-                  <div className="w-full min-w-0 max-w-full box-border overflow-hidden rounded-[24px] bg-white shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100/90 aspect-[4/3.15] min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] xl:min-h-[270px]">
-                    <img
-                      src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80"
-                      alt="Медичний персонал за обладнанням"
-                      className="size-full block object-cover transition-transform duration-700 hover:scale-105"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <CompanyOverviewSection
+          id="about-company"
+          className="scroll-mt-24"
+          cta={
+            <AppLink to="/pro-osnovu" className={companyOverviewCtaClassName}>
+              ДЕТАЛЬНІШЕ <ChevronRight className="size-4 stroke-[2.4]" />
+            </AppLink>
+          }
+        />
 
         {/* 4. НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ */}
-        <section className="bg-slate-50/80 py-24 md:py-32 border-y border-slate-200/60">
+        <section
+          id="directions"
+          className="scroll-mt-24 border-y border-slate-200/60 bg-slate-50/80 py-24 md:py-32"
+        >
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader centered subtitle="НАПРЯМИ" title="НАПРЯМИ РЕАБІЛІТАЦІЇ ТА ЛІКУВАННЯ" />
 
@@ -940,35 +944,25 @@ function Index() {
                 ))}
               </CarouselContent>
 
-              <div className="mt-10 flex flex-col items-center gap-6 sm:hidden">
-                {directionsSlideCount > 0 && (
-                  <div className="flex items-center justify-center gap-2.5">
-                    {Array.from({ length: directionsSlideCount }).map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => directionsApi?.scrollTo(index)}
-                        className={`h-2.5 rounded-full transition-all duration-300 ${
-                          currentDirectionsSlide === index
-                            ? "w-8 bg-primary shadow-sm"
-                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
-                        }`}
-                        aria-label={`Перейти до слайду ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                <div className="flex items-center justify-center gap-3">
-                  <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
-                  <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-slate-100 text-navy shadow-sm hover:bg-primary hover:text-white hover:border-primary" />
-                </div>
-              </div>
+              <CarouselNavigation
+                total={directionsSlideCount}
+                activeIndex={currentDirectionsSlide}
+                onSelect={(index) => directionsApi?.scrollTo(index)}
+                onPrevious={() => directionsApi?.scrollPrev()}
+                onNext={() => directionsApi?.scrollNext()}
+                previousLabel="Попередній слайд"
+                nextLabel="Наступний слайд"
+                className="mt-10 sm:hidden"
+              />
             </Carousel>
           </div>
         </section>
 
         {/* CTA BANNER */}
-        <section className="relative overflow-hidden border-y border-sky-200/80 bg-[radial-gradient(circle_at_top_left,_rgba(14,101,241,0.18),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(45,212,191,0.16),_transparent_38%),linear-gradient(135deg,#eef8ff_0%,#f5fbff_35%,#ecfaf7_100%)] py-20 md:py-28">
+        <section
+          id="consultation"
+          className="relative scroll-mt-24 overflow-hidden border-y border-sky-200/80 bg-[radial-gradient(circle_at_top_left,_rgba(14,101,241,0.18),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(45,212,191,0.16),_transparent_38%),linear-gradient(135deg,#eef8ff_0%,#f5fbff_35%,#ecfaf7_100%)] py-20 md:py-28"
+        >
           <div className="absolute -left-20 top-8 size-56 rounded-full bg-primary/10 blur-3xl" />
           <div className="absolute -right-16 bottom-6 size-72 rounded-full bg-emerald-300/20 blur-3xl" />
 
@@ -1008,7 +1002,10 @@ function Index() {
         <RehabilitationMethodsSlider />
 
         {/* 5. ЧОМУ ОБИРАЮТЬ ОСНОВА РЕАБІЛІТАЦІЯ */}
-        <section className="relative pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden bg-background">
+        <section
+          id="advantages"
+          className="relative scroll-mt-24 overflow-hidden bg-background pt-12 pb-24 md:pt-16 md:pb-32"
+        >
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <div className="text-center mb-16">
               <span className="inline-block rounded-full border border-primary/30 bg-primary/5 px-5 py-1.5 text-xs font-bold tracking-widest text-primary uppercase mb-6">
@@ -1079,7 +1076,10 @@ function Index() {
         </section>
 
         {/* 6. НАШІ ПАРТНЕРИ */}
-        <section className="overflow-hidden bg-secondary/40 py-20 md:py-24">
+        <section
+          id="partners"
+          className="scroll-mt-24 overflow-hidden bg-secondary/40 py-20 md:py-24"
+        >
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader centered subtitle="ПАРТНЕРСТВО" title="НАШІ ПАРТНЕРИ" />
 
@@ -1101,35 +1101,23 @@ function Index() {
                 ))}
               </CarouselContent>
 
-              <div className="mt-10 flex flex-col items-center gap-6">
-                {partnersSlideCount > 0 && (
-                  <div className="flex items-center justify-center gap-2.5">
-                    {Array.from({ length: partnersSlideCount }).map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => partnersApi?.scrollTo(index)}
-                        className={`h-2.5 rounded-full transition-all duration-300 ${
-                          currentPartnersSlide === index
-                            ? "w-8 bg-primary shadow-sm"
-                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
-                        }`}
-                        aria-label={`Перейти до блоку партнерів ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                <div className="flex items-center justify-center gap-3">
-                  <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-white text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
-                  <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-white text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
-                </div>
-              </div>
+              <CarouselNavigation
+                total={partnersSlideCount}
+                activeIndex={currentPartnersSlide}
+                onSelect={(index) => partnersApi?.scrollTo(index)}
+                onPrevious={() => partnersApi?.scrollPrev()}
+                onNext={() => partnersApi?.scrollNext()}
+                previousLabel="Попередній блок партнерів"
+                nextLabel="Наступний блок партнерів"
+                getSlideLabel={(index) => `Перейти до блоку партнерів ${index + 1}`}
+                className="mt-10"
+              />
             </Carousel>
           </div>
         </section>
 
         {/* 7. ОСВІТА ТА НАУКА */}
-        <section className="bg-white py-24 md:py-32">
+        <section id="education" className="scroll-mt-24 bg-white py-24 md:py-32">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <SectionHeader
               centered
@@ -1146,8 +1134,8 @@ function Index() {
         </section>
 
         {/* 8. СПІВПРАЦЯ */}
-        <section className="bg-[#FCFDFE] py-16 md:py-20 lg:py-24">
-          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-10">
+        <section id="cooperation" className="scroll-mt-24 bg-[#FCFDFE] py-16 md:py-20 lg:py-24">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <div className="text-center">
               <span className="inline-block rounded-full bg-[#EEF5FF] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#2467D8]">
                 ПАРТНЕРСЬКА ПЛАТФОРМА
@@ -1169,14 +1157,17 @@ function Index() {
         </section>
 
         {/* 9. БЛОГ */}
-        <section className="py-20 md:py-28 bg-background">
+        <section id="blog" className="scroll-mt-24 bg-background py-20 md:py-28">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-10">
             <BlogCarousel />
           </div>
         </section>
 
         {/* 10. ПИТАННЯ ТА ВІДПОВІДІ (FAQ) */}
-        <section className="bg-slate-50/70 py-24 md:py-32 border-t border-slate-200/60">
+        <section
+          id="faq"
+          className="scroll-mt-24 border-t border-slate-200/60 bg-slate-50/70 py-24 md:py-32"
+        >
           <div className="mx-auto max-w-[1000px] px-6 lg:px-10">
             <div className="text-center">
               <h2 className="text-2xl leading-tight font-bold text-navy sm:text-3xl md:text-4xl">
@@ -1221,22 +1212,25 @@ function Index() {
                 </button>
               </div>
             )}
+          </div>
 
-            <div className="mt-14 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-              <div className="grid items-stretch gap-0 md:grid-cols-2">
-                <div className="flex flex-col justify-center gap-6 p-8 md:p-12">
-                  <span className="flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                    <MessageCircle className="size-7" />
+          <div className="mx-auto mt-16 max-w-[1480px] px-6 lg:px-10">
+            <div className="overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white shadow-[0_32px_90px_-52px_rgba(15,23,42,0.3)]">
+              <div className="grid items-stretch gap-0 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1.08fr)]">
+                <div className="relative z-10 flex flex-col justify-center gap-6 px-8 py-9 sm:px-10 md:px-12 md:py-12 lg:px-16 lg:py-16">
+                  <span className="inline-flex w-fit items-center gap-3 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+                    <MessageCircle className="size-4" />
+                    Індивідуальна консультація
                   </span>
 
-                  <div>
-                    <h3 className="text-xl font-bold leading-tight text-navy md:text-2xl">
+                  <div className="max-w-[35rem]">
+                    <h3 className="text-2xl font-bold leading-[1.05] text-navy sm:text-3xl md:text-[2.4rem]">
                       Не знайшли відповіді
                       <br className="hidden sm:block" /> на своє питання?
                     </h3>
-                    <p className="mt-4 text-sm leading-relaxed text-slate-600 md:text-base">
+                    <p className="mt-5 text-sm leading-relaxed text-slate-600 md:text-base lg:text-[1.05rem]">
                       Наша команда завжди готова допомогти. Зв'яжіться з нами — ми надамо
-                      індивідуальну консультацію та підберемо найкраще рішення для вас.
+                      індивідуальну консультацію та підберемо найкраще рішення для вашої ситуації.
                     </p>
                   </div>
 
@@ -1244,20 +1238,28 @@ function Index() {
                     <button
                       type="button"
                       onClick={() => openModal("Зв'язатися з нами")}
-                      className="inline-flex items-center gap-3 rounded-xl bg-primary px-7 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-navy hover:scale-[1.02] md:text-base"
+                      className="inline-flex items-center gap-3 rounded-2xl bg-primary px-7 py-4 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.02] hover:bg-navy md:text-base"
                     >
                       Зв'язатися з нами <ArrowUpRight className="size-5" />
                     </button>
                   </div>
                 </div>
 
-                <div className="relative min-h-[260px] md:min-h-full">
+                <div className="relative min-h-[320px] overflow-hidden lg:min-h-[460px]">
                   <img
-                    src={consultationImg}
-                    alt="Спеціаліст центру на зв'язку з пацієнтами"
+                    src={medicalAssessmentImg}
+                    alt="Спеціаліст центру консультує пацієнтку перед відновленням"
                     loading="lazy"
-                    className="absolute inset-0 size-full object-cover"
+                    className="absolute inset-0 size-full object-cover object-[62%_center] lg:scale-[1.02]"
+                    style={{
+                      WebkitMaskImage:
+                        "linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.16) 12%, rgba(0, 0, 0, 0.7) 30%, #000 44%)",
+                      maskImage:
+                        "linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.16) 12%, rgba(0, 0, 0, 0.7) 30%, #000 44%)",
+                    }}
                   />
+                  <div className="pointer-events-none absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-white via-white/85 to-transparent blur-2xl sm:w-36 lg:w-44" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/8 via-transparent to-white/10" />
                 </div>
               </div>
             </div>
@@ -1265,58 +1267,63 @@ function Index() {
         </section>
 
         {/* 10.5. ПРО МЕТОДИКИ РЕАБІЛІТАЦІЇ */}
-        <section className="relative overflow-hidden bg-background py-24 md:py-32">
-          <div className="absolute -right-[10%] top-[30%] size-[500px] rounded-full bg-primary/5 blur-[120px]" />
+        <section
+          id="about-methods"
+          className="relative scroll-mt-24 overflow-hidden bg-background pt-20 pb-0 md:pt-24 lg:pt-28"
+        >
+          <div className="absolute -left-20 top-10 size-72 rounded-full bg-primary/[0.05] blur-3xl" />
+          <div className="absolute right-0 top-24 size-80 rounded-full bg-primary/[0.04] blur-[140px]" />
 
           <div className="relative mx-auto max-w-[1600px] px-6 lg:px-10">
-            <div className="grid items-center gap-16 lg:grid-cols-2">
-              <div>
-                <SectionHeader
-                  subtitle="НАШІ НАПРЯМИ"
-                  title={
-                    <>
-                      Сучасні методи <span className="text-primary">відновлення</span>
-                    </>
-                  }
-                />
+            <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(460px,525px)] lg:gap-14 xl:gap-20">
+              <div className="max-w-[38rem] pt-2 lg:pt-0">
+                <span className="inline-flex rounded-full border border-[#C9D8F1] bg-[#F4F8FF] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-primary shadow-[0_8px_18px_rgba(33,95,188,0.08)] sm:px-5 sm:text-xs">
+                  Корисна інформація
+                </span>
 
-                <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
-                  <p className="font-medium text-navy text-xl leading-relaxed">
-                    Ми використовуємо комплексний підхід, поєднуючи різноманітні методи під завдання
-                    пацієнта.
+                <h2 className="mt-7 text-[2.55rem] font-extrabold leading-[0.98] tracking-[-0.04em] text-navy sm:text-[3rem] md:text-[3.45rem] lg:text-[4.15rem]">
+                  <span className="block">Баланс — основа</span>
+                  <span className="mt-2 block text-primary">здоров&apos;я та відновлення</span>
+                </h2>
+
+                <div className="mt-9 flex items-center gap-1.5" aria-hidden="true">
+                  <span className="h-1.5 w-13 rounded-full bg-primary" />
+                  <span className="h-1.5 w-8 rounded-full bg-brand-green" />
+                </div>
+
+                <div className="mt-11 space-y-7">
+                  <p className="max-w-[34rem] text-lg font-semibold leading-[1.55] text-navy md:text-[1.1rem]">
+                    В ОСНОВА Реабілітація ми поєднуємо турботу, доказовий підхід і сучасні
+                    методики, щоб допомогти людині відновити здоров&apos;я, рух і внутрішню
+                    рівновагу.
                   </p>
-                  <p>
-                    Індивідуальна програма, фізична терапія, гідрокінезіотерапія, фізіотерапія та
-                    лікувальний масаж — кожен метод підбирається з урахуванням стану здоров'я та
-                    цілей відновлення.
+                  <p className="max-w-[35rem] text-[1.05rem] leading-[1.7] text-slate-500 md:text-[1.12rem]">
+                    Індивідуальні програми, фізична терапія, гідрокінезіотерапія, фізіотерапевтичні
+                    методи та командний супровід формують цілісну систему відновлення для кращої
+                    якості життя.
                   </p>
                 </div>
 
-                <div className="mt-10">
+                <div className="mt-10 md:mt-12">
                   <AppLink
                     to="/pro-osnovu"
-                    className="inline-flex items-center gap-3 rounded-xl bg-navy px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:bg-primary hover:scale-105"
+                    className="inline-flex items-center gap-3 rounded-[1.15rem] bg-navy px-8 py-4 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-[0_16px_34px_rgba(9,25,54,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:shadow-[0_20px_38px_rgba(33,95,188,0.28)] md:px-9 md:text-[0.95rem]"
                   >
-                    ДЕТАЛЬНІШЕ <ChevronRight className="size-5" />
+                    Детальніше <ArrowRight className="size-5" />
                   </AppLink>
                 </div>
               </div>
 
-              <div className="flex w-full items-center justify-center lg:justify-end">
-                <figure className="group relative w-full max-w-[560px] aspect-square overflow-hidden rounded-[2rem] border border-sky-100 bg-[#eaf5ff] shadow-[0_22px_55px_-30px_rgba(30,64,175,0.55)]">
+              <div className="flex w-full items-center justify-center pb-14 lg:justify-end lg:pb-16">
+                <figure className="w-full max-w-[525px]">
                   <img
-                    src={osnovaLogo3dImg}
-                    alt="3D-модель логотипа ОСНОВА"
+                    src={balanceReferenceCardImg}
+                    alt="Баланс, що підтримує відновлення"
                     loading="lazy"
-                    width={1024}
-                    height={1536}
-                    className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                    width={525}
+                    height={657}
+                    className="block h-auto w-full"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-white/80 px-6 py-5 backdrop-blur-sm">
-                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                      Методики, об'єднані в систему
-                    </p>
-                  </div>
                 </figure>
               </div>
             </div>
