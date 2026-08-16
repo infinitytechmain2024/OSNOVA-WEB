@@ -294,6 +294,17 @@ const PARTNER_GROUPS = Array.from(
     PARTNERS.slice(index * PARTNERS_PER_SLIDE, index * PARTNERS_PER_SLIDE + PARTNERS_PER_SLIDE),
 );
 
+const sliderControlsRowClass =
+  "mt-10 flex items-center justify-center gap-4 sm:gap-6 md:gap-10";
+const sliderArrowButtonClass =
+  "static size-16 shrink-0 translate-y-0 rounded-full border border-[#D7E1EE] bg-[#F3F7FC] text-[#102547] shadow-[0_4px_16px_rgba(15,23,42,0.08)] transition-all duration-300 hover:border-[#C5D4E7] hover:bg-white hover:text-primary disabled:opacity-40 disabled:pointer-events-none md:size-20 [&_svg]:size-6 md:[&_svg]:size-8";
+const sliderDotsClass = "flex items-center justify-center gap-3 sm:gap-4";
+const sliderDotBaseClass =
+  "rounded-full bg-[#C5D2E1] transition-all duration-300 hover:bg-[#B4C4D6]";
+const sliderDotInactiveClass = "size-4 md:size-5";
+const sliderDotActiveClass =
+  "h-4 w-10 bg-[#2E67C4] shadow-[0_4px_10px_rgba(46,103,196,0.22)] md:h-5 md:w-14";
+
 const EDUCATION_CARDS = [
   {
     title: "КУРСИ ТА МАЙСТЕР-КЛАСИ",
@@ -609,42 +620,40 @@ function BlogCarousel() {
       </div>
 
       {/* Pagination controls */}
-      <div className="mt-10 flex items-center justify-center">
-        <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white p-2 shadow-sm">
-          <button
-            type="button"
-            onClick={goToPrevious}
-            disabled={totalPages <= 1}
-            aria-label="Попередня сторінка блогу"
-            className="inline-flex size-9 items-center justify-center rounded-full text-slate-700 transition-all hover:bg-slate-100 hover:text-[#1E64B4] disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <ChevronLeft className="size-4" />
-          </button>
+      <div className={sliderControlsRowClass}>
+        <button
+          type="button"
+          onClick={goToPrevious}
+          disabled={totalPages <= 1}
+          aria-label="Попередня сторінка блогу"
+          className={sliderArrowButtonClass}
+        >
+          <ChevronLeft />
+        </button>
 
-          <div className="flex items-center justify-center gap-2.5 px-1">
-            {Array.from({ length: totalPages }).map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setCurrent(i)}
-                className={`size-2.5 rounded-full transition-all duration-300 ${
-                  i === current ? "bg-[#1E64B4] scale-110" : "bg-slate-300 hover:bg-slate-400"
-                }`}
-                aria-label={`Сторінка ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            type="button"
-            onClick={goToNext}
-            disabled={totalPages <= 1}
-            aria-label="Наступна сторінка блогу"
-            className="inline-flex size-9 items-center justify-center rounded-full text-slate-700 transition-all hover:bg-slate-100 hover:text-[#1E64B4] disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <ChevronRight className="size-4" />
-          </button>
+        <div className={sliderDotsClass}>
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setCurrent(i)}
+              className={`${sliderDotBaseClass} ${
+                i === current ? sliderDotActiveClass : sliderDotInactiveClass
+              }`}
+              aria-label={`Сторінка ${i + 1}`}
+            />
+          ))}
         </div>
+
+        <button
+          type="button"
+          onClick={goToNext}
+          disabled={totalPages <= 1}
+          aria-label="Наступна сторінка блогу"
+          className={sliderArrowButtonClass}
+        >
+          <ChevronRight />
+        </button>
       </div>
     </div>
   );
@@ -1101,17 +1110,20 @@ function Index() {
                 ))}
               </CarouselContent>
 
-              <div className="mt-10 flex flex-col items-center gap-6">
+              <div className={sliderControlsRowClass}>
+                <CarouselPrevious className={sliderArrowButtonClass} />
+
                 {partnersSlideCount > 0 && (
-                  <div className="flex items-center justify-center gap-2.5">
+                  <div className={sliderDotsClass}>
                     {Array.from({ length: partnersSlideCount }).map((_, index) => (
                       <button
                         key={index}
+                        type="button"
                         onClick={() => partnersApi?.scrollTo(index)}
-                        className={`h-2.5 rounded-full transition-all duration-300 ${
+                        className={`${sliderDotBaseClass} ${
                           currentPartnersSlide === index
-                            ? "w-8 bg-primary shadow-sm"
-                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                            ? sliderDotActiveClass
+                            : sliderDotInactiveClass
                         }`}
                         aria-label={`Перейти до блоку партнерів ${index + 1}`}
                       />
@@ -1119,10 +1131,7 @@ function Index() {
                   </div>
                 )}
 
-                <div className="flex items-center justify-center gap-3">
-                  <CarouselPrevious className="static size-11 translate-y-0 border-slate-200 bg-white text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
-                  <CarouselNext className="static size-11 translate-y-0 border-slate-200 bg-white text-navy shadow-sm hover:border-primary hover:bg-primary hover:text-white" />
-                </div>
+                <CarouselNext className={sliderArrowButtonClass} />
               </div>
             </Carousel>
           </div>
