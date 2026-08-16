@@ -3,11 +3,11 @@ import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
 import { $ as ExternalLink, B as House, D as Microscope, Dt as Ambulance, G as HandHeart, H as HeartPulse, I as Layers, J as FlaskConical, K as GraduationCap, M as MapPin, N as Mail, O as MessageSquare, Ot as Activity, S as Package, St as BadgeCheck, T as Navigation, Tt as ArrowRight, V as Heart, W as Handshake, X as FileText, _ as Search, _t as CalendarDays, a as Users, at as ClipboardList, b as Phone, d as TriangleAlert, dt as ChevronUp, et as Dumbbell, f as Stethoscope, ft as ChevronRight, g as Send, h as Share2, ht as Check, i as Wrench, j as MapPinned, k as MessageCircle, lt as CircleCheck, m as ShieldCheck, mt as ChevronDown, nt as CloudUpload, ot as ClipboardCheck, p as Sparkles, pt as ChevronLeft, rt as Clock, s as UserRoundCheck, tt as Compass, u as Truck, v as Route, x as PhoneCall, xt as BookOpen, y as Presentation, yt as Building2 } from "./_libs/lucide-react.mjs";
 import { C as getNodeById, D as service_sports_default, E as service_rehab_default, O as siteTree, S as getBreadcrumbs, T as service_checkup_default, _ as SiteHeader, a as ConsultationForm, b as ecg_review_default, c as DialogContent, d as DialogTitle, f as FAQAccordion, g as SiteFooter, h as SectionHeader$1, i as CONTACTS, k as useConsultationModal, l as DialogDescription, m as PageContainer, n as Breadcrumbs, p as IMAGES, r as CARDIO_REHAB_PROGRAMS, s as Dialog, t as AppLink, u as DialogHeader, v as cn, w as getNodeByRoute, x as ergometer_default, y as cpet_test_default } from "./_ssr/blocks-DZvZoSan.mjs";
-import { t as Route$1 } from "./_-C865fwaa.mjs";
+import { t as Route$1 } from "./_-D7JYBLwA.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-B3Yh4-LJ.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as medical_assessment_default, c as partner_heart_default, d as partner_sytenko_default, i as companyOverviewCtaClassName, l as partner_ifnmu_default, n as FAQConsultationCTA, o as partner_asmu_default, r as balance_reference_card_default, s as partner_chnu_default, t as CompanyOverviewSection, u as partner_karpatska_akademiia_default } from "./_ssr/company-overview-section-Cvt5vQ-k.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-xWLLDNiO.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-CzrWuyAY.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -2408,25 +2408,25 @@ function DocumentsReviewSection({ onOpenDocumentsModal }) {
 						"aria-hidden": true
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "relative grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-stretch",
+						className: "relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "max-w-2xl lg:py-6",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "inline-flex rounded-full border border-primary/12 bg-white/75 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary shadow-[0_10px_25px_rgba(31,61,120,0.06)] backdrop-blur-sm sm:px-5",
-									children: "Перший крок до відновлення"
+									children: "Персональна оцінка перед стартом"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 									className: "mt-6 max-w-[13ch] text-3xl font-extrabold leading-[1.08] text-navy sm:text-4xl lg:text-[3.4rem]",
-									children: "Надішліть медичні документи для попереднього розгляду"
+									children: "Зробіть перший крок до безпечного відновлення"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mt-5 max-w-2xl text-base leading-relaxed text-navy/72 sm:text-lg",
-									children: "Надішліть виписку, висновки лікаря або результати обстежень, і команда зможе заздалегідь ознайомитися з вашим випадком перед першим контактом."
+									children: "Надішліть виписку, висновки лікаря або результати обстежень, щоб команда могла попередньо оцінити ваш стан і підготувати наступні кроки ще до першого контакту."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mt-4 max-w-2xl text-sm leading-relaxed text-navy/60 sm:text-base",
-									children: "Після попереднього розгляду адміністратор зв'яжеться з вами, пояснить наступні кроки та підкаже, чи потрібна додаткова консультація."
+									children: "Після розгляду адміністратор зв'яжеться з вами, пояснить, з чого краще почати, та підкаже, чи потрібна консультація або додаткові обстеження."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap",
@@ -2437,13 +2437,13 @@ function DocumentsReviewSection({ onOpenDocumentsModal }) {
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CloudUpload, { className: "size-5" }), "Надіслати медичні документи"]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 										href: CONTACTS.phoneHref,
-										className: "inline-flex min-h-14 items-center justify-center gap-3 rounded-[18px] border border-blue-100 bg-white/86 px-6 py-4 text-sm font-bold text-navy shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm transition-colors hover:border-primary/35 hover:bg-white sm:px-7",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "size-5 text-primary" }), CONTACTS.phone]
+										className: "inline-flex min-h-16 items-center justify-center gap-3 rounded-[18px] border border-blue-100 bg-white/86 px-7 py-4 text-base font-bold text-navy shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm transition-colors hover:border-primary/35 hover:bg-white sm:min-h-[4.5rem] sm:px-8",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "size-6 text-primary" }), CONTACTS.phone]
 									})]
 								})
 							]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "relative min-h-[360px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)] sm:min-h-[420px] lg:min-h-[520px]",
+							className: "relative min-h-[280px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)] sm:min-h-[340px] lg:min-h-[420px] lg:max-w-[540px] lg:justify-self-end",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 								src: consultation_default,
 								alt: "Лікар консультує пацієнта та формує план відновлення",
