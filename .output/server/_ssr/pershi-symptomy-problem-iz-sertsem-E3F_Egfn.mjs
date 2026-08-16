@@ -1,7 +1,7 @@
 import "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { H as HeartPulse, Tt as ArrowRight, _t as CalendarDays, b as Phone, d as TriangleAlert, f as Stethoscope, ht as Check, rt as Clock } from "../_libs/lucide-react.mjs";
+import { Dt as ArrowRight, S as Phone, W as HeartPulse, _t as Check, at as Clock, m as Stethoscope, p as TriangleAlert, yt as CalendarDays } from "../_libs/lucide-react.mjs";
 import { _ as SiteHeader, b as ecg_review_default, g as SiteFooter, i as CONTACTS, m as PageContainer, n as Breadcrumbs, t as AppLink, x as ergometer_default, y as cpet_test_default } from "./blocks-DZvZoSan.mjs";
 require_react();
 var import_jsx_runtime = require_jsx_runtime();

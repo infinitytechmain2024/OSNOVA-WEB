@@ -15,6 +15,8 @@ import {
   Heart,
   AlertTriangle,
   ShieldCheck,
+  UserRound,
+  UsersRound,
 } from "lucide-react";
 import { AppLink } from "@/components/app-link";
 import { SiteHeader } from "@/components/site-header";
@@ -40,7 +42,7 @@ import ecgImg from "@/assets/ecg-review.jpg";
 import rehabImg from "@/assets/service-rehab.jpg";
 import sportsImg from "@/assets/service-sports.jpg";
 import cardioHeart3dImg from "@/assets/cardio-heart-3d.jpg";
-import cardioRehabCtaImg from "@/assets/about/cardio-rehab-cta-photo-v2.png";
+import cardioRehabCtaImg from "@/assets/about/cardio-rehab-cta-photo-v3.jpg";
 import medicalAssessmentImg from "@/assets/about/medical-assessment.jpg";
 import { getNodeById } from "@/lib/tree";
 
@@ -229,6 +231,21 @@ const OTHER_SERVICES = [
     image: cpetImg,
   },
 ];
+
+const CTA_HIGHLIGHTS = [
+  {
+    title: "Індивідуальний підхід",
+    text: "Програму підбираємо з урахуванням вашого стану та цілей відновлення.",
+    icon: UserRound,
+    iconClass: "bg-primary/10 text-primary ring-primary/10",
+  },
+  {
+    title: "Супровід фахівців",
+    text: "Допомагаємо визначити оптимальний формат старту програми.",
+    icon: UsersRound,
+    iconClass: "bg-brand-green/12 text-brand-green ring-brand-green/14",
+  },
+] as const;
 
 const ALL_SERVICES_ROUTE = getNodeById("services")?.route ?? "/poslugy";
 
@@ -1293,42 +1310,46 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
   return (
     <section id="documents" className="scroll-mt-24 py-12 sm:py-20">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-        <div className="relative overflow-hidden rounded-[32px] border border-blue-100/90 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.98)_0%,rgba(238,245,255,0.96)_50%,rgba(227,238,255,0.94)_100%)] p-5 shadow-[0_22px_60px_rgba(31,61,120,0.08)] sm:p-8 lg:p-10">
+        <div className="relative overflow-hidden rounded-[38px] border border-blue-100/70 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.99)_0%,rgba(246,250,255,0.98)_32%,rgba(234,242,255,0.97)_100%)] px-5 py-6 shadow-[0_30px_90px_rgba(31,61,120,0.12)] sm:px-8 sm:py-8 lg:px-12 lg:py-12">
           <div
-            className="pointer-events-none absolute -left-16 top-10 h-48 w-48 rounded-full bg-white/80 blur-3xl"
+            className="pointer-events-none absolute -left-20 top-8 h-56 w-56 rounded-full bg-white/95 blur-3xl"
             aria-hidden
           />
           <div
-            className="pointer-events-none absolute right-0 top-0 h-56 w-56 rounded-full bg-primary/10 blur-3xl"
+            className="pointer-events-none absolute -right-10 top-0 h-64 w-64 rounded-full bg-primary/10 blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute bottom-0 left-1/3 h-40 w-40 rounded-full bg-brand-green/10 blur-3xl"
             aria-hidden
           />
 
-          <div className="relative grid gap-8 lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
-            <div className="max-w-2xl lg:py-6">
-              <span className="inline-flex rounded-full border border-primary/12 bg-white/75 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary shadow-[0_10px_25px_rgba(31,61,120,0.06)] backdrop-blur-sm sm:px-5">
-                Індивідуальна програма відновлення
+          <div className="relative grid gap-10 xl:grid-cols-[minmax(0,1.04fr)_minmax(460px,0.88fr)] xl:items-center xl:gap-14">
+            <div className="max-w-3xl xl:py-4">
+              <span className="inline-flex rounded-full border border-primary/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(239,246,255,0.96)_100%)] px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_12px_28px_rgba(31,61,120,0.08)] sm:px-6 sm:text-sm">
+                Ваш шлях до відновлення
               </span>
 
-              <h2 className="mt-6 max-w-[13ch] text-3xl font-extrabold leading-[1.08] text-navy sm:text-4xl lg:text-[3.4rem]">
-                Розпочніть кардіореабілітацію під наглядом фахівців
+              <h2 className="mt-8 max-w-[13ch] text-[2.65rem] font-black leading-[0.94] tracking-[-0.045em] text-navy sm:text-[4rem] lg:text-[4.55rem]">
+                <span className="block">Почніть відновлення</span>
+                <span className="block">разом з</span>
+                <span className="block bg-[linear-gradient(90deg,#2563eb_0%,#1f73ff_48%,#2f63be_100%)] bg-clip-text text-transparent">
+                  ОСНОВА Реабілітація
+                </span>
               </h2>
 
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-navy/72 sm:text-lg">
-                Ми підберемо програму кардіологічної реабілітації з урахуванням вашого діагнозу,
-                перенесеного втручання, поточного стану та цілей відновлення.
+              <div className="mt-8 h-1.5 w-22 rounded-full bg-[linear-gradient(90deg,#2563eb_0%,#1f73ff_58%,#2ad38b_100%)] shadow-[0_10px_22px_rgba(47,99,190,0.18)] sm:w-24" />
+
+              <p className="mt-8 max-w-[34rem] text-base leading-relaxed text-navy/72 sm:text-[1.15rem] sm:leading-[1.7]">
+                Ми допомагаємо повернутися до активного життя з турботою, досвідом і сучасним
+                підходом.
               </p>
 
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-navy/60 sm:text-base">
-                Якщо у вас уже є виписка або результати обстежень, надішліть їх заздалегідь. Це
-                допоможе команді швидше зорієнтуватися у вашому випадку та запропонувати оптимальний
-                формат старту програми.
-              </p>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch">
                 <button
                   type="button"
                   onClick={onOpenDocumentsModal}
-                  className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-[18px] bg-[linear-gradient(135deg,#2563eb_0%,#1d4ed8_100%)] px-6 py-4 text-sm font-bold text-white shadow-[0_18px_40px_rgba(37,99,235,0.24)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(37,99,235,0.3)] sm:px-7"
+                  className="inline-flex min-h-[4.5rem] items-center justify-center gap-2.5 rounded-[20px] bg-[linear-gradient(135deg,#102457_0%,#0a1b48_100%)] px-7 py-4 text-sm font-bold text-white shadow-[0_22px_48px_rgba(10,27,72,0.28)] transition-all hover:-translate-y-0.5 hover:shadow-[0_28px_58px_rgba(10,27,72,0.34)] sm:min-w-[23rem] sm:px-8 sm:text-base"
                 >
                   <UploadCloud className="size-5" />
                   Надіслати медичні документи
@@ -1336,7 +1357,7 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
 
                 <a
                   href={CONTACTS.phoneHref}
-                  className="inline-flex min-h-16 items-center justify-center gap-3 rounded-[18px] border border-blue-100 bg-white/86 px-7 py-4 text-base font-bold text-navy shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm transition-colors hover:border-primary/35 hover:bg-white sm:min-h-[4.5rem] sm:px-8"
+                  className="inline-flex min-h-[4.5rem] items-center justify-center gap-3 rounded-[20px] border border-blue-100/80 bg-white/96 px-7 py-4 text-base font-bold text-navy shadow-[0_18px_40px_rgba(31,61,120,0.1)] transition-colors hover:border-primary/30 hover:bg-white sm:min-w-[16rem] sm:px-8"
                 >
                   <Phone className="size-6 text-primary" />
                   {CONTACTS.phone}
@@ -1344,19 +1365,48 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
               </div>
             </div>
 
-            <div className="relative w-full min-h-[220px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)] sm:min-h-[260px] lg:min-h-[300px] lg:max-w-[420px] lg:justify-self-end">
-              <img
-                src={cardioRehabCtaImg}
-                alt="Лікар обговорює з пацієнтом програму кардіореабілітації"
-                loading="lazy"
-                width={1536}
-                height={1024}
-                className="absolute inset-0 h-full w-full object-cover object-center"
-              />
-              <div
-                className="absolute inset-0 bg-[linear-gradient(180deg,rgba(233,241,255,0.14)_0%,rgba(233,241,255,0.03)_42%,rgba(255,255,255,0.1)_100%)]"
-                aria-hidden
-              />
+            <div className="space-y-4 sm:space-y-5">
+              <div className="relative overflow-hidden rounded-[30px] border border-white/75 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.12)]">
+                <img
+                  src={cardioRehabCtaImg}
+                  alt="Фахівець допомагає пацієнтці виконувати вправу під час реабілітації"
+                  loading="lazy"
+                  width={1536}
+                  height={1024}
+                  className="aspect-[1.48/1] w-full object-cover object-center"
+                />
+                <div
+                  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.08)_100%)]"
+                  aria-hidden
+                />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {CTA_HIGHLIGHTS.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <article
+                      key={item.title}
+                      className="rounded-[28px] border border-white/80 bg-white/96 p-6 shadow-[0_18px_44px_rgba(31,61,120,0.1)]"
+                    >
+                      <span
+                        className={cn(
+                          "flex size-14 items-center justify-center rounded-full ring-1",
+                          item.iconClass,
+                        )}
+                      >
+                        <Icon className="size-7" strokeWidth={2} />
+                      </span>
+
+                      <h3 className="mt-5 text-[1.45rem] font-extrabold leading-[1.1] text-navy">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 text-base leading-relaxed text-navy/68">{item.text}</p>
+                    </article>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

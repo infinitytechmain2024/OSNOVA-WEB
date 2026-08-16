@@ -1,5 +1,5 @@
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { k as MessageCircle, wt as ArrowUpRight } from "../_libs/lucide-react.mjs";
+import { Et as ArrowUpRight, j as MessageCircle } from "../_libs/lucide-react.mjs";
 import { k as useConsultationModal, v as cn } from "./blocks-DZvZoSan.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/company-overview-section-Cvt5vQ-k.js
 var import_jsx_runtime = require_jsx_runtime();

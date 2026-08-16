@@ -1,7 +1,7 @@
 import { n as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { K as GraduationCap, M as MapPin, Tt as ArrowRight, _t as CalendarDays, a as Users, f as Stethoscope, ft as ChevronRight, it as Clock3, pt as ChevronLeft } from "../_libs/lucide-react.mjs";
+import { Dt as ArrowRight, J as GraduationCap, P as MapPin, a as Users, ht as ChevronLeft, m as Stethoscope, mt as ChevronRight, ot as Clock3, yt as CalendarDays } from "../_libs/lucide-react.mjs";
 import { D as service_sports_default, E as service_rehab_default, T as service_checkup_default, _ as SiteHeader, b as ecg_review_default, g as SiteFooter, m as PageContainer, n as Breadcrumbs, t as AppLink, x as ergometer_default, y as cpet_test_default } from "./blocks-DZvZoSan.mjs";
 import { n as education_training_default, t as education_conference_default } from "./education-training-D0E3Ecw7.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/education-courses-page-tDAiAweS.js
