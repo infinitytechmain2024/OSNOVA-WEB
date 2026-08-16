@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BkcjP1KL.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-Dd470xis.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/__root.tsx",
@@ -15,23 +15,23 @@ var tsrStartManifest = () => ({ routes: {
 			"/statti/pershi-symptomy-problem-iz-sertsem"
 		],
 		preloads: [
-			"/assets/index-BpT8fZqC.js",
+			"/assets/index-QqSrMzIr.js",
 			"/assets/blocks-hMs4m9QZ.js",
-			"/assets/_-C0ngSkza.js",
+			"/assets/_-tFufv__4.js",
 			"/assets/preload-helper-s4OgYKS_.js"
 		],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-BpT8fZqC.js"
+			src: "/assets/index-QqSrMzIr.js"
 		} }]
 	},
 	"/": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-BQQBWT8F.js",
-			"/assets/company-overview-section-BQKRv9fR.js",
+			"/assets/routes-CY7VfxIv.js",
+			"/assets/company-overview-section-DL_MAxcy.js",
 			"/assets/calendar-days-ZnuSRGJs.js",
 			"/assets/users-Dj4zmbVK.js",
 			"/assets/education-training-VQUtcCqH.js",
@@ -42,10 +42,10 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/$.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_-DLqDOtor.js",
-			"/assets/company-overview-section-BQKRv9fR.js",
+			"/assets/_-DPD8aJSY.js",
+			"/assets/company-overview-section-DL_MAxcy.js",
 			"/assets/building-2-Dd-cMTAi.js",
-			"/assets/service-detail-template-Dsxv5PfC.js",
+			"/assets/service-detail-template-BH2aKtpV.js",
 			"/assets/calendar-days-ZnuSRGJs.js",
 			"/assets/chevron-left-A8gXiO-N.js",
 			"/assets/users-Dj4zmbVK.js",
@@ -58,7 +58,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/iventy.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/iventy-DfBXruRI.js",
+			"/assets/iventy-BZ9U2cdS.js",
 			"/assets/building-2-Dd-cMTAi.js",
 			"/assets/calendar-days-ZnuSRGJs.js",
 			"/assets/clock-3-ZWoQRFdz.js",
@@ -69,13 +69,13 @@ var tsrStartManifest = () => ({ routes: {
 	"/kardiolohichna-diahnostyka": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/kardiolohichna-diahnostyka.tsx",
 		children: void 0,
-		preloads: ["/assets/kardiolohichna-diahnostyka-BQVZ9px_.js", "/assets/service-detail-template-Dsxv5PfC.js"]
+		preloads: ["/assets/kardiolohichna-diahnostyka-DlhqY_ee.js", "/assets/service-detail-template-BH2aKtpV.js"]
 	},
 	"/konferentsii": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/konferentsii.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/konferentsii-cO4CKGfF.js",
+			"/assets/konferentsii-Kt74-KLi.js",
 			"/assets/calendar-days-ZnuSRGJs.js",
 			"/assets/chevron-left-A8gXiO-N.js",
 			"/assets/clock-3-ZWoQRFdz.js",
@@ -85,12 +85,12 @@ var tsrStartManifest = () => ({ routes: {
 	"/kursy": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/kursy.tsx",
 		children: void 0,
-		preloads: ["/assets/kursy-CyCI7Y48.js", "/assets/education-courses-page-pxH3Ed4S.js"]
+		preloads: ["/assets/kursy-DLSpQDf9.js", "/assets/education-courses-page-BB8Zp9DB.js"]
 	},
 	"/navchannia": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/navchannia.tsx",
 		children: void 0,
-		preloads: ["/assets/navchannia-DNPrVamv.js", "/assets/education-courses-page-pxH3Ed4S.js"]
+		preloads: ["/assets/navchannia-D8Yg5aiY.js", "/assets/education-courses-page-BB8Zp9DB.js"]
 	},
 	"/novyny": {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/novyny.tsx",
@@ -106,7 +106,7 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/statti/pershi-symptomy-problem-iz-sertsem.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/pershi-symptomy-problem-iz-sertsem-DiNYN9xs.js",
+			"/assets/pershi-symptomy-problem-iz-sertsem-Bdw5fnON.js",
 			"/assets/calendar-days-ZnuSRGJs.js",
 			"/assets/triangle-alert-DphmHgVC.js"
 		]

@@ -3,11 +3,11 @@ import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
 import { $ as ExternalLink, B as House, Ct as BadgeCheck, D as Microscope, Et as ArrowRight, G as HandHeart, H as HeartPulse, I as Layers, J as FlaskConical, K as GraduationCap, M as MapPin, N as Mail, O as MessageSquare, Ot as Ambulance, S as Package, St as BookOpen, T as Navigation, V as Heart, W as Handshake, X as FileText, _ as Search, a as Users, at as ClipboardPlus, b as Phone, bt as Building2, d as TriangleAlert, et as Dumbbell, f as Stethoscope, ft as ChevronUp, g as Send, gt as Check, h as Share2, ht as ChevronDown, i as Wrench, j as MapPinned, k as MessageCircle, kt as Activity, m as ShieldCheck, mt as ChevronLeft, nt as CloudUpload, ot as ClipboardList, p as Sparkles, pt as ChevronRight, rt as Clock, s as UserRoundCheck, st as ClipboardCheck, tt as Compass, u as Truck, ut as CircleCheck, v as Route, vt as CalendarDays, x as PhoneCall, y as Presentation } from "./_libs/lucide-react.mjs";
 import { C as siteTree, S as service_sports_default, _ as getBreadcrumbs, a as ConsultationForm, b as service_checkup_default, c as IMAGES, d as SiteFooter, f as SiteHeader, g as ergometer_default, h as ecg_review_default, i as CONTACTS, l as PageContainer, m as cpet_test_default, n as Breadcrumbs, p as cn, r as CARDIO_REHAB_PROGRAMS, s as FAQAccordion, t as AppLink, u as SectionHeader$1, v as getNodeById, w as useConsultationModal, x as service_rehab_default, y as getNodeByRoute } from "./_ssr/blocks-YQtB1Ncn.mjs";
-import { t as Route$1 } from "./_-BUwDPzbE.mjs";
+import { t as Route$1 } from "./_-Cj-saKl_.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-DynFR6wY.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
-import { a as partner_asmu_default, c as partner_ifnmu_default, i as companyOverviewCtaClassName, l as partner_karpatska_akademiia_default, n as FAQConsultationCTA, o as partner_chnu_default, r as balance_reference_card_default, s as partner_heart_default, t as CompanyOverviewSection, u as partner_sytenko_default } from "./_ssr/company-overview-section-C9lSmmN9.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-DJBTvHIH.js
+import { a as medical_assessment_default, c as partner_heart_default, d as partner_sytenko_default, i as companyOverviewCtaClassName, l as partner_ifnmu_default, n as FAQConsultationCTA, o as partner_asmu_default, r as balance_reference_card_default, s as partner_chnu_default, t as CompanyOverviewSection, u as partner_karpatska_akademiia_default } from "./_ssr/company-overview-section-DbZg1Ib9.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_-BXD2rjFi.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -1327,7 +1327,6 @@ function InstitutePartnershipPage({ node }) {
 	});
 }
 var cardio_heart_3d_default = "/assets/cardio-heart-3d-DLgiMZPh.jpg";
-var consultation_default = "/assets/consultation-BtlF2SeR.jpg";
 var ANCHORS = [
 	{
 		href: "#about",
@@ -1396,6 +1395,13 @@ var TIMING_COLUMNS = [
 			"Старт програми визначає лікар після оцінки стану"
 		]
 	}
+];
+var EMERGENCY_CALL_ITEMS = [
+	"раптовий або інтенсивний біль у грудях",
+	"виражена задишка або утруднене дихання",
+	"втрата або порушення свідомості",
+	"раптове порушення мовлення, зору або слабкість у кінцівках",
+	"інші ознаки різкого погіршення стану"
 ];
 var PROCESS_STEPS$1 = [
 	{
@@ -1543,7 +1549,7 @@ var OTHER_SERVICES = [
 var ALL_SERVICES_ROUTE = getNodeById("services")?.route ?? "/poslugy";
 function CardioRehabPage({ node }) {
 	const data = getServicePageData(node);
-	node.pageContent;
+	const custom = node.pageContent || {};
 	const { openModal } = useConsultationModal();
 	const [introExpanded, setIntroExpanded] = import_react.useState(false);
 	const [showAllConditions, setShowAllConditions] = import_react.useState(false);
@@ -1643,7 +1649,7 @@ function CardioRehabPage({ node }) {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageSection, {
 					className: "pb-10 sm:pb-16 mt-6 sm:mt-10 lg:mt-12",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TimingSection, {})
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TimingSection, { emergencyBody: typeof custom.emergencyBody === "string" ? custom.emergencyBody : void 0 })
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 					id: "for-whom",
@@ -1704,47 +1710,47 @@ function CardioRehabPage({ node }) {
 							className: "relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "max-w-5xl",
+									className: "max-w-[1180px]",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "inline-flex rounded-full border border-primary/22 bg-white/48 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_12px_30px_rgba(47,99,190,0.08)] backdrop-blur-sm sm:px-8 sm:py-3 sm:text-sm",
 											children: "Етапи відновлення"
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-											className: "mt-6 max-w-4xl text-3xl font-extrabold leading-[1.02] text-navy sm:text-5xl xl:text-[4rem]",
+											className: "mt-6 max-w-4xl text-3xl font-extrabold leading-[1.02] text-navy sm:text-4xl xl:text-[3.4rem]",
 											children: "Як проходить відновлення?"
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mt-5 h-2 w-28 rounded-full bg-[linear-gradient(90deg,#2f63be_0%,#2f63be_68%,#35c88a_100%)] shadow-[0_8px_20px_rgba(53,200,138,0.18)] sm:w-32" }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "mt-5 max-w-4xl text-base leading-relaxed text-navy/82 sm:text-xl",
+											className: "mt-5 max-w-4xl text-base leading-relaxed text-navy/82 sm:text-lg",
 											children: "Відновлення — це поступовий процес, який базується на оцінці стану, індивідуальному плані та постійному контролі. Ми поруч на кожному етапі вашого повернення до активного життя."
 										})
 									]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:gap-8",
+									className: "relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:gap-6",
 									children: PROCESS_STEPS$1.map((step, index) => {
 										const Icon = step.icon;
 										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-											className: "relative flex min-h-[290px] flex-col rounded-[28px] border border-primary/16 bg-white/88 p-6 shadow-[0_24px_50px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:min-h-[320px] sm:p-8",
+											className: "relative flex min-h-[270px] flex-col rounded-[28px] border border-primary/16 bg-white/88 p-6 shadow-[0_24px_50px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:min-h-[300px] sm:p-7",
 											children: [
 												index < PROCESS_STEPS$1.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "absolute left-[calc(100%-10px)] top-20 hidden h-[2px] w-10 bg-primary/55 xl:block",
+													className: "absolute left-[calc(100%-8px)] top-18 hidden h-[2px] w-6 bg-primary/55 xl:block",
 													"aria-hidden": true
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "flex size-20 items-center justify-center rounded-full bg-[linear-gradient(180deg,rgba(233,242,255,0.98),rgba(248,251,255,0.95))] text-primary shadow-inner ring-1 ring-primary/10",
+													className: "flex size-[74px] items-center justify-center rounded-full bg-[linear-gradient(180deg,rgba(233,242,255,0.98),rgba(248,251,255,0.95))] text-primary shadow-inner ring-1 ring-primary/10",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
-														className: "size-10",
+														className: "size-9",
 														strokeWidth: 2.1
 													})
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-													className: "mt-6 max-w-[16ch] text-2xl font-extrabold leading-[1.08] text-navy",
+													className: "mt-5 max-w-[16ch] text-[1.55rem] font-extrabold leading-[1.1] text-navy sm:text-[1.75rem]",
 													children: step.title
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "mt-4 text-sm leading-relaxed text-navy/76 sm:text-base",
+													className: "mt-3 text-sm leading-relaxed text-navy/76 sm:text-[0.95rem]",
 													children: step.text
 												})
 											]
@@ -1754,18 +1760,18 @@ function CardioRehabPage({ node }) {
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "mt-7 overflow-hidden rounded-[30px] border border-primary/16 bg-white/68 shadow-[0_18px_40px_rgba(31,61,120,0.06)] backdrop-blur-sm",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex flex-col gap-5 px-5 py-5 sm:px-7 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:px-8",
+										className: "flex flex-col gap-4 px-5 py-5 sm:px-7 sm:py-6 lg:flex-row lg:flex-nowrap lg:items-center lg:gap-6 lg:px-7",
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center gap-4 lg:min-w-[360px]",
+												className: "flex items-center gap-3 lg:min-w-[280px]",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "flex size-16 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(180deg,rgba(235,244,255,0.95),rgba(255,255,255,0.98))] text-primary shadow-inner ring-1 ring-primary/10",
+													className: "flex size-14 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(180deg,rgba(235,244,255,0.95),rgba(255,255,255,0.98))] text-primary shadow-inner ring-1 ring-primary/10",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HandHeart, {
-														className: "size-8",
+														className: "size-7",
 														strokeWidth: 2.05
 													})
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "text-xl font-extrabold leading-tight text-navy sm:text-[2rem]",
+													className: "text-lg font-extrabold leading-tight text-navy sm:text-[1.6rem]",
 													children: "Формати надання допомоги"
 												})]
 											}),
@@ -1774,7 +1780,7 @@ function CardioRehabPage({ node }) {
 												"aria-hidden": true
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-												className: "flex flex-wrap items-center gap-x-3 gap-y-3 text-base font-medium text-primary sm:gap-x-4 sm:text-[1.15rem]",
+												className: "flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-primary sm:text-[0.95rem] lg:min-w-0 lg:flex-1 lg:flex-nowrap lg:gap-x-3 lg:whitespace-nowrap xl:text-base",
 												children: CARE_FORMATS.map((format, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_react.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: format }), index < CARE_FORMATS.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 													className: "text-primary/55",
 													"aria-hidden": true,
@@ -1958,7 +1964,8 @@ function ExpandableIntroSection({ title, shortDescription, expandedContent, imag
 		})]
 	});
 }
-function TimingSection() {
+function TimingSection({ emergencyBody }) {
+	const emergencyNote = emergencyBody?.split("\n\n")[1];
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "relative overflow-hidden rounded-[28px] border border-blue-100/90 bg-[linear-gradient(180deg,#f8fbff_0%,#eef5ff_100%)] p-5 shadow-[0_20px_60px_rgba(37,99,235,0.08)] sm:p-8 lg:p-10",
 		children: [
@@ -1996,7 +2003,7 @@ function TimingSection() {
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 											className: "min-w-0",
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-												className: "text-xl font-extrabold leading-snug text-navy sm:text-[1.95rem] sm:leading-tight",
+												className: "text-lg font-extrabold leading-snug text-navy sm:text-[1.45rem] lg:text-[1.6rem]",
 												children: column.title
 											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
 												className: "mt-5 space-y-3.5 sm:mt-6 sm:space-y-4",
@@ -2047,12 +2054,64 @@ function TimingSection() {
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 								className: "relative min-h-[240px] overflow-hidden border-t border-blue-100/90 lg:min-h-[320px] lg:border-l lg:border-t-0",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-									src: consultation_default,
+									src: medical_assessment_default,
 									alt: "Лікар консультує пацієнта перед початком програми",
 									width: 1800,
 									height: 1200,
 									loading: "lazy",
 									className: "h-full w-full object-cover object-center"
+								})
+							})]
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "mt-6 overflow-hidden rounded-[28px] border border-red-100/90 bg-[linear-gradient(135deg,rgba(255,244,244,0.98),rgba(255,250,250,0.96))] shadow-[0_18px_40px_rgba(239,68,68,0.08)]",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid gap-0 lg:grid-cols-[0.92fr_1.08fr]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "p-5 sm:p-7 lg:p-10",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex flex-col gap-5 sm:flex-row sm:items-start",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "flex size-16 shrink-0 items-center justify-center rounded-full bg-white/90 shadow-inner ring-1 ring-red-100 sm:size-20",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, {
+											className: "size-8 text-red-500 sm:size-10",
+											strokeWidth: 2.05
+										})
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "max-w-2xl",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+												className: "text-2xl font-extrabold leading-tight text-red-600 sm:text-3xl",
+												children: "Коли потрібно терміново телефонувати 103"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mt-4 h-1 w-16 rounded-full bg-red-500" }),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "mt-5 text-base leading-relaxed text-navy/78 sm:text-lg",
+												children: "Не розпочинайте та не продовжуйте програму, якщо стан раптово погіршився та потребує екстреної медичної допомоги."
+											}),
+											emergencyNote && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "mt-3 text-sm leading-relaxed text-navy/62 sm:text-base",
+												children: emergencyNote
+											})
+										]
+									})]
+								})
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "relative overflow-hidden border-t border-red-100/90 lg:border-l lg:border-t-0",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "relative h-full p-5 sm:p-7 lg:p-10",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+										className: "space-y-3.5",
+										children: EMERGENCY_CALL_ITEMS.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+											className: "flex gap-3 text-sm leading-relaxed text-navy/80 sm:text-base",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "mt-2.5 size-2 shrink-0 rounded-full bg-red-500" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: item })]
+										}, item))
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "pointer-events-none absolute -bottom-5 right-3 hidden text-[6rem] font-black leading-none text-red-100 lg:block",
+										"aria-hidden": true,
+										children: "103"
+									})]
 								})
 							})]
 						})
@@ -4793,6 +4852,7 @@ function ContactsPage({ node }) {
 	});
 }
 var carpathians_location_default = "/assets/carpathians-location-B-Ld24ho.jpg";
+var consultation_default = "/assets/consultation-BtlF2SeR.jpg";
 var diagnostics_session_default = "/assets/diagnostics-session-C_IAYVuL.jpg";
 var functional_training_default = "/assets/functional-training-DdTLWrlH.jpg";
 var hur_equipment_default = "/assets/hur-equipment-CoFDjXe2.jpg";

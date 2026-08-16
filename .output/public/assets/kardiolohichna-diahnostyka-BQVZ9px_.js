@@ -1,1 +1,0 @@
-import{c as e,ut as t}from"./blocks-hMs4m9QZ.js";import{t as n}from"./service-detail-template-Dsxv5PfC.js";var r=t();function i(){let t=e(`/diagnostyka/kardiodiahnostyka`);return t?(0,r.jsx)(n,{node:t}):null}export{i as component};

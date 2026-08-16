@@ -4,14 +4,14 @@ import { _ as useRouter, c as HeadContent, d as createRouter, f as Outlet, h as 
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
 import { B as House, Et as ArrowRight, H as HeartPulse, M as MapPin, U as Headphones, b as Phone, et as Dumbbell, f as Stethoscope, g as Send, kt as Activity, pt as ChevronRight } from "../_libs/lucide-react.mjs";
 import { d as SiteFooter, f as SiteHeader, g as ergometer_default, i as CONTACTS, l as PageContainer, o as ConsultationModalProvider, t as AppLink, v as getNodeById } from "./blocks-YQtB1Ncn.mjs";
-import { t as Route } from "../_-BUwDPzbE.mjs";
+import { t as Route } from "../_-Cj-saKl_.mjs";
 import { t as Route$10 } from "./konferentsii-_SYU4Sdu.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
 import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-C_kmZwQg.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-_VyhteK5.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-Cn1BuGS0.css";
+var styles_default = "/assets/styles-D7WGfSAE.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -342,7 +342,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ConsultationModalProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {}) })
 	});
 }
-var $$splitComponentImporter$6 = () => import("./routes-DpTtChqt.mjs");
+var $$splitComponentImporter$6 = () => import("./routes-DgYnZ-bj.mjs");
 var Route$8 = createFileRoute("/")({
 	head: () => ({ meta: [{ title: "Снова Реабілітація — Медичний центр діагностики та відновлення" }, {
 		name: "description",

@@ -1,7 +1,7 @@
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
 import { Tt as ArrowUpRight, k as MessageCircle } from "../_libs/lucide-react.mjs";
 import { p as cn, w as useConsultationModal } from "./blocks-YQtB1Ncn.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/company-overview-section-C9lSmmN9.js
+//#region node_modules/.nitro/vite/services/ssr/assets/company-overview-section-DbZg1Ib9.js
 var import_jsx_runtime = require_jsx_runtime();
 var partner_asmu_default = "/assets/partner-asmu-CECUVYz9.png";
 var partner_chnu_default = "/assets/partner-chnu-BjBJePtC.png";
@@ -183,4 +183,4 @@ function CompanyOverviewSection({ cta, id, titleAs: TitleTag = "h2", className, 
 	});
 }
 //#endregion
-export { partner_asmu_default as a, partner_ifnmu_default as c, companyOverviewCtaClassName as i, partner_karpatska_akademiia_default as l, FAQConsultationCTA as n, partner_chnu_default as o, balance_reference_card_default as r, partner_heart_default as s, CompanyOverviewSection as t, partner_sytenko_default as u };
+export { medical_assessment_default as a, partner_heart_default as c, partner_sytenko_default as d, companyOverviewCtaClassName as i, partner_ifnmu_default as l, FAQConsultationCTA as n, partner_asmu_default as o, balance_reference_card_default as r, partner_chnu_default as s, CompanyOverviewSection as t, partner_karpatska_akademiia_default as u };

@@ -34,7 +34,7 @@ import rehabImg from "@/assets/service-rehab.jpg";
 import sportsImg from "@/assets/service-sports.jpg";
 import cardioHeart3dImg from "@/assets/cardio-heart-3d.jpg";
 import osnovaLogo3dImg from "@/assets/osnova-logo-3d.jpg";
-import consultationImg from "@/assets/about/consultation.jpg";
+import medicalAssessmentImg from "@/assets/about/medical-assessment.jpg";
 import { getNodeById } from "@/lib/tree";
 
 const ANCHORS = [
@@ -88,6 +88,14 @@ const TIMING_COLUMNS = [
       "Старт програми визначає лікар після оцінки стану",
     ],
   },
+];
+
+const EMERGENCY_CALL_ITEMS = [
+  "раптовий або інтенсивний біль у грудях",
+  "виражена задишка або утруднене дихання",
+  "втрата або порушення свідомості",
+  "раптове порушення мовлення, зору або слабкість у кінцівках",
+  "інші ознаки різкого погіршення стану",
 ];
 
 const PROCESS_STEPS = [
@@ -328,7 +336,11 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
         </PageSection>
 
         <PageSection className="pb-10 sm:pb-16 mt-6 sm:mt-10 lg:mt-12">
-          <TimingSection />
+          <TimingSection
+            emergencyBody={
+              typeof custom.emergencyBody === "string" ? custom.emergencyBody : undefined
+            }
+          />
         </PageSection>
 
         <section id="for-whom" className="scroll-mt-24 bg-soft-blue py-12 sm:py-20">
@@ -384,44 +396,44 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           />
 
           <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-            <div className="max-w-5xl">
+            <div className="max-w-[1180px]">
               <span className="inline-flex rounded-full border border-primary/22 bg-white/48 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_12px_30px_rgba(47,99,190,0.08)] backdrop-blur-sm sm:px-8 sm:py-3 sm:text-sm">
                 Етапи відновлення
               </span>
-              <h2 className="mt-6 max-w-4xl text-3xl font-extrabold leading-[1.02] text-navy sm:text-5xl xl:text-[4rem]">
+              <h2 className="mt-6 max-w-4xl text-3xl font-extrabold leading-[1.02] text-navy sm:text-4xl xl:text-[3.4rem]">
                 Як проходить відновлення?
               </h2>
               <div className="mt-5 h-2 w-28 rounded-full bg-[linear-gradient(90deg,#2f63be_0%,#2f63be_68%,#35c88a_100%)] shadow-[0_8px_20px_rgba(53,200,138,0.18)] sm:w-32" />
-              <p className="mt-5 max-w-4xl text-base leading-relaxed text-navy/82 sm:text-xl">
+              <p className="mt-5 max-w-4xl text-base leading-relaxed text-navy/82 sm:text-lg">
                 Відновлення — це поступовий процес, який базується на оцінці стану, індивідуальному
                 плані та постійному контролі. Ми поруч на кожному етапі вашого повернення до
                 активного життя.
               </p>
             </div>
 
-            <div className="relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:gap-8">
+            <div className="relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:gap-6">
               {PROCESS_STEPS.map((step, index) => {
                 const Icon = step.icon;
 
                 return (
                   <article
                     key={step.title}
-                    className="relative flex min-h-[290px] flex-col rounded-[28px] border border-primary/16 bg-white/88 p-6 shadow-[0_24px_50px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:min-h-[320px] sm:p-8"
+                    className="relative flex min-h-[270px] flex-col rounded-[28px] border border-primary/16 bg-white/88 p-6 shadow-[0_24px_50px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:min-h-[300px] sm:p-7"
                   >
                     {index < PROCESS_STEPS.length - 1 && (
                       <span
-                        className="absolute left-[calc(100%-10px)] top-20 hidden h-[2px] w-10 bg-primary/55 xl:block"
+                        className="absolute left-[calc(100%-8px)] top-18 hidden h-[2px] w-6 bg-primary/55 xl:block"
                         aria-hidden
                       />
                     )}
 
-                    <span className="flex size-20 items-center justify-center rounded-full bg-[linear-gradient(180deg,rgba(233,242,255,0.98),rgba(248,251,255,0.95))] text-primary shadow-inner ring-1 ring-primary/10">
-                      <Icon className="size-10" strokeWidth={2.1} />
+                    <span className="flex size-[74px] items-center justify-center rounded-full bg-[linear-gradient(180deg,rgba(233,242,255,0.98),rgba(248,251,255,0.95))] text-primary shadow-inner ring-1 ring-primary/10">
+                      <Icon className="size-9" strokeWidth={2.1} />
                     </span>
-                    <h3 className="mt-6 max-w-[16ch] text-2xl font-extrabold leading-[1.08] text-navy">
+                    <h3 className="mt-5 max-w-[16ch] text-[1.55rem] font-extrabold leading-[1.1] text-navy sm:text-[1.75rem]">
                       {step.title}
                     </h3>
-                    <p className="mt-4 text-sm leading-relaxed text-navy/76 sm:text-base">
+                    <p className="mt-3 text-sm leading-relaxed text-navy/76 sm:text-[0.95rem]">
                       {step.text}
                     </p>
                   </article>
@@ -430,19 +442,19 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
             </div>
 
             <div className="mt-7 overflow-hidden rounded-[30px] border border-primary/16 bg-white/68 shadow-[0_18px_40px_rgba(31,61,120,0.06)] backdrop-blur-sm">
-              <div className="flex flex-col gap-5 px-5 py-5 sm:px-7 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:px-8">
-                <div className="flex items-center gap-4 lg:min-w-[360px]">
-                  <span className="flex size-16 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(180deg,rgba(235,244,255,0.95),rgba(255,255,255,0.98))] text-primary shadow-inner ring-1 ring-primary/10">
-                    <HandHeart className="size-8" strokeWidth={2.05} />
+              <div className="flex flex-col gap-4 px-5 py-5 sm:px-7 sm:py-6 lg:flex-row lg:flex-nowrap lg:items-center lg:gap-6 lg:px-7">
+                <div className="flex items-center gap-3 lg:min-w-[280px]">
+                  <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(180deg,rgba(235,244,255,0.95),rgba(255,255,255,0.98))] text-primary shadow-inner ring-1 ring-primary/10">
+                    <HandHeart className="size-7" strokeWidth={2.05} />
                   </span>
-                  <p className="text-xl font-extrabold leading-tight text-navy sm:text-[2rem]">
+                  <p className="text-lg font-extrabold leading-tight text-navy sm:text-[1.6rem]">
                     Формати надання допомоги
                   </p>
                 </div>
 
                 <div className="hidden h-12 w-px bg-primary/18 lg:block" aria-hidden />
 
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-3 text-base font-medium text-primary sm:gap-x-4 sm:text-[1.15rem]">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-primary sm:text-[0.95rem] lg:min-w-0 lg:flex-1 lg:flex-nowrap lg:gap-x-3 lg:whitespace-nowrap xl:text-base">
                   {CARE_FORMATS.map((format, index) => (
                     <React.Fragment key={format}>
                       <span>{format}</span>
@@ -689,7 +701,9 @@ function ExpandableIntroSection({
   );
 }
 
-function TimingSection() {
+function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
+  const emergencyNote = emergencyBody?.split("\n\n")[1];
+
   return (
     <div className="relative overflow-hidden rounded-[28px] border border-blue-100/90 bg-[linear-gradient(180deg,#f8fbff_0%,#eef5ff_100%)] p-5 shadow-[0_20px_60px_rgba(37,99,235,0.08)] sm:p-8 lg:p-10">
       <div
@@ -729,7 +743,7 @@ function TimingSection() {
                       />
                     </span>
                     <div className="min-w-0">
-                      <h3 className="text-xl font-extrabold leading-snug text-navy sm:text-[1.95rem] sm:leading-tight">
+                      <h3 className="text-lg font-extrabold leading-snug text-navy sm:text-[1.45rem] lg:text-[1.6rem]">
                         {column.title}
                       </h3>
                       <ul className="mt-5 space-y-3.5 sm:mt-6 sm:space-y-4">
@@ -782,13 +796,63 @@ function TimingSection() {
 
             <div className="relative min-h-[240px] overflow-hidden border-t border-blue-100/90 lg:min-h-[320px] lg:border-l lg:border-t-0">
               <img
-                src={consultationImg}
+                src={medicalAssessmentImg}
                 alt="Лікар консультує пацієнта перед початком програми"
                 width={1800}
                 height={1200}
                 loading="lazy"
                 className="h-full w-full object-cover object-center"
               />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 overflow-hidden rounded-[28px] border border-red-100/90 bg-[linear-gradient(135deg,rgba(255,244,244,0.98),rgba(255,250,250,0.96))] shadow-[0_18px_40px_rgba(239,68,68,0.08)]">
+          <div className="grid gap-0 lg:grid-cols-[0.92fr_1.08fr]">
+            <div className="p-5 sm:p-7 lg:p-10">
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                <span className="flex size-16 shrink-0 items-center justify-center rounded-full bg-white/90 shadow-inner ring-1 ring-red-100 sm:size-20">
+                  <AlertTriangle className="size-8 text-red-500 sm:size-10" strokeWidth={2.05} />
+                </span>
+                <div className="max-w-2xl">
+                  <h3 className="text-2xl font-extrabold leading-tight text-red-600 sm:text-3xl">
+                    Коли потрібно терміново телефонувати 103
+                  </h3>
+                  <div className="mt-4 h-1 w-16 rounded-full bg-red-500" />
+                  <p className="mt-5 text-base leading-relaxed text-navy/78 sm:text-lg">
+                    Не розпочинайте та не продовжуйте програму, якщо стан раптово погіршився та
+                    потребує екстреної медичної допомоги.
+                  </p>
+                  {emergencyNote && (
+                    <p className="mt-3 text-sm leading-relaxed text-navy/62 sm:text-base">
+                      {emergencyNote}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden border-t border-red-100/90 lg:border-l lg:border-t-0">
+              <div className="relative h-full p-5 sm:p-7 lg:p-10">
+                <ul className="space-y-3.5">
+                  {EMERGENCY_CALL_ITEMS.map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-3 text-sm leading-relaxed text-navy/80 sm:text-base"
+                    >
+                      <span className="mt-2.5 size-2 shrink-0 rounded-full bg-red-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div
+                  className="pointer-events-none absolute -bottom-5 right-3 hidden text-[6rem] font-black leading-none text-red-100 lg:block"
+                  aria-hidden
+                >
+                  103
+                </div>
+              </div>
             </div>
           </div>
         </div>
