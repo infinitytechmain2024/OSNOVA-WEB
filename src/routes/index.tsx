@@ -24,6 +24,8 @@ import {
   Stethoscope,
   ClipboardList,
   Calendar,
+  MessageCircle,
+  ArrowUpRight,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -63,6 +65,7 @@ import cooperationEventsImg from "@/assets/cooperation/events.jpg";
 import cooperationSocialImg from "@/assets/cooperation/social-projects.jpg";
 import cooperationMobileRehabImg from "@/assets/cooperation/mobile-rehab.jpg";
 import osnovaLogo3dImg from "@/assets/osnova-logo-3d.jpg";
+import consultationImg from "@/assets/about/consultation.jpg";
 import partnerAsmuLogo from "@/assets/partners/partner-asmu.png";
 import partnerChnuLogo from "@/assets/partners/partner-chnu.png";
 import partnerHeartLogo from "@/assets/partners/partner-heart.svg";
@@ -375,11 +378,13 @@ const EDUCATION_CARDS = [
 ];
 
 // FAQ
+const FAQ_VISIBLE_COUNT = 3;
+
 const FAQS = [
   {
     question: "З чого почати реабілітацію?",
     answer:
-      "Почніть з консультації спеціаліста. Ми оцінимо стан та підкажемо оптимальну програму відновлення.",
+      "Перший крок — консультація з нашим спеціалістом. Ми оцінюємо стан, визначаємо потреби та розробляємо індивідуальний план відновлення. Залиште заявку або зателефонуйте нам — і ми допоможемо почати шлях до відновлення правильно.",
   },
   {
     question: "Чи потрібне направлення лікаря?",
@@ -393,6 +398,16 @@ const FAQS = [
   {
     question: "Чи можна пройти лише діагностику?",
     answer: "Так. Ви можете пройти окреме обстеження та отримати рекомендації спеціалістів.",
+  },
+  {
+    question: "Як проходить перша консультація?",
+    answer:
+      "Спеціаліст збирає анамнез, проводить огляд і функціональне тестування, після чого пояснює можливі варіанти відновлення та орієнтовний план.",
+  },
+  {
+    question: "Чи можна пройти реабілітацію після операції?",
+    answer:
+      "Так. Програму підбираємо з урахуванням типу операції, рекомендацій лікаря та поточного стану пацієнта.",
   },
 ];
 
@@ -781,6 +796,7 @@ function BlogCarousel() {
 
 function Index() {
   const { openModal } = useConsultationModal();
+  const [faqExpanded, setFaqExpanded] = React.useState(false);
   const [heroApi, setHeroApi] = React.useState<CarouselApi>();
   const [currentHeroSlide, setCurrentHeroSlide] = React.useState(0);
   const [heroSlideCount, setHeroSlideCount] = React.useState(0);
@@ -1474,10 +1490,14 @@ function Index() {
                 Питання та відповіді
               </h2>
               <div className="mx-auto mt-4 sm:mt-6 h-1 w-16 rounded-full bg-primary" />
+              <p className="mx-auto mt-6 max-w-[640px] text-sm leading-relaxed text-slate-600 md:text-base">
+                Зібрали найпоширеніші запитання про реабілітацію, лікування та відновлення. Якщо не
+                знайшли відповідь — зверніться до нас, ми допоможемо.
+              </p>
             </div>
 
             <Accordion type="single" collapsible className="w-full space-y-5 mt-12">
-              {FAQS.map((faq, i) => (
+              {(faqExpanded ? FAQS : FAQS.slice(0, FAQ_VISIBLE_COUNT)).map((faq, i) => (
                 <AccordionItem
                   key={i}
                   value={`item-${i}`}
@@ -1492,6 +1512,62 @@ function Index() {
                 </AccordionItem>
               ))}
             </Accordion>
+
+            {FAQS.length > FAQ_VISIBLE_COUNT && (
+              <div className="mt-10 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => setFaqExpanded((prev) => !prev)}
+                  aria-expanded={faqExpanded}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-white px-7 py-3 text-sm font-semibold text-primary shadow-sm transition-all hover:border-primary hover:bg-primary hover:text-white md:text-base"
+                >
+                  {faqExpanded ? "Показати менше питань" : "Показати більше питань"}
+                  <ChevronDown
+                    className={`size-5 transition-transform duration-300 ${faqExpanded ? "rotate-180" : ""}`}
+                  />
+                </button>
+              </div>
+            )}
+
+            <div className="mt-14 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+              <div className="grid items-stretch gap-0 md:grid-cols-2">
+                <div className="flex flex-col justify-center gap-6 p-8 md:p-12">
+                  <span className="flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <MessageCircle className="size-7" />
+                  </span>
+
+                  <div>
+                    <h3 className="text-xl font-bold leading-tight text-navy md:text-2xl">
+                      Не знайшли відповіді
+                      <br className="hidden sm:block" /> на своє питання?
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-slate-600 md:text-base">
+                      Наша команда завжди готова допомогти. Зв'яжіться з нами — ми надамо
+                      індивідуальну консультацію та підберемо найкраще рішення для вас.
+                    </p>
+                  </div>
+
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => openModal("Зв'язатися з нами")}
+                      className="inline-flex items-center gap-3 rounded-xl bg-primary px-7 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-navy hover:scale-[1.02] md:text-base"
+                    >
+                      Зв'язатися з нами <ArrowUpRight className="size-5" />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="relative min-h-[260px] md:min-h-full">
+                  <img
+                    src={consultationImg}
+                    alt="Спеціаліст центру на зв'язку з пацієнтами"
+                    loading="lazy"
+                    className="absolute inset-0 size-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
