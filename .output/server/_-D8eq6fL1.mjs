@@ -3,11 +3,11 @@ import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
 import { $ as ExternalLink, B as House, Ct as BadgeCheck, D as Microscope, Et as ArrowRight, G as HandHeart, H as HeartPulse, I as Layers, J as FlaskConical, K as GraduationCap, M as MapPin, N as Mail, O as MessageSquare, Ot as Ambulance, S as Package, St as BookOpen, T as Navigation, V as Heart, W as Handshake, X as FileText, _ as Search, a as Users, at as ClipboardPlus, b as Phone, bt as Building2, d as TriangleAlert, et as Dumbbell, f as Stethoscope, ft as ChevronUp, g as Send, gt as Check, h as Share2, ht as ChevronDown, i as Wrench, j as MapPinned, k as MessageCircle, kt as Activity, m as ShieldCheck, mt as ChevronLeft, nt as CloudUpload, ot as ClipboardList, p as Sparkles, pt as ChevronRight, rt as Clock, s as UserRoundCheck, st as ClipboardCheck, tt as Compass, u as Truck, ut as CircleCheck, v as Route, vt as CalendarDays, x as PhoneCall, y as Presentation } from "./_libs/lucide-react.mjs";
 import { C as siteTree, S as service_sports_default, _ as getBreadcrumbs, a as ConsultationForm, b as service_checkup_default, c as IMAGES, d as SiteFooter, f as SiteHeader, g as ergometer_default, h as ecg_review_default, i as CONTACTS, l as PageContainer, m as cpet_test_default, n as Breadcrumbs, p as cn, r as CARDIO_REHAB_PROGRAMS, s as FAQAccordion, t as AppLink, u as SectionHeader$1, v as getNodeById, w as useConsultationModal, x as service_rehab_default, y as getNodeByRoute } from "./_ssr/blocks-qYXwqIeb.mjs";
-import { t as Route$1 } from "./_-B7YsbbYK.mjs";
+import { t as Route$1 } from "./_-CkyWWgny.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-4KYyX4-z.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as medical_assessment_default, c as partner_heart_default, d as partner_sytenko_default, i as companyOverviewCtaClassName, l as partner_ifnmu_default, n as FAQConsultationCTA, o as partner_asmu_default, r as balance_reference_card_default, s as partner_chnu_default, t as CompanyOverviewSection, u as partner_karpatska_akademiia_default } from "./_ssr/company-overview-section-B5K0sQX0.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-D5bcBJ7E.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-D8eq6fL1.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -1327,7 +1327,7 @@ function InstitutePartnershipPage({ node }) {
 	});
 }
 var cardio_heart_3d_default = "/assets/cardio-heart-3d-DLgiMZPh.jpg";
-var osnova_logo_3d_default = "/assets/osnova-logo-3d-DLHYYvgx.jpg";
+var consultation_default = "/assets/consultation-BtlF2SeR.jpg";
 var ANCHORS = [
 	{
 		href: "#about",
@@ -2482,29 +2482,26 @@ function DocumentsReviewSection({ onConsultationClick }) {
 									})
 								]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "relative min-h-[300px] overflow-hidden rounded-[30px] border border-white/70 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.98),rgba(241,247,255,0.92)_58%,rgba(226,237,255,0.9)_100%)] shadow-[0_24px_55px_rgba(31,61,120,0.08)]",
+								className: "relative min-h-[300px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)]",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "pointer-events-none absolute inset-y-8 left-8 hidden w-28 rounded-[24px] border border-white/70 bg-white/82 p-4 shadow-[0_16px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm xl:flex xl:flex-col xl:items-center xl:justify-center",
-										"aria-hidden": true,
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-												src: osnova_logo_3d_default,
-												alt: "",
-												loading: "lazy",
-												width: 220,
-												height: 320,
-												className: "h-24 w-full object-contain"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mt-3 h-px w-full bg-slate-200/80" }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "mt-3 text-center text-[11px] font-semibold leading-relaxed text-navy/60",
-												children: "Маршрут відновлення формується після розгляду документів"
-											})
-										]
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+										src: consultation_default,
+										alt: "Лікар консультує пацієнта та формує план відновлення",
+										loading: "lazy",
+										width: 2560,
+										height: 1440,
+										className: "absolute inset-0 h-full w-full object-cover object-center"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "absolute inset-0 bg-[linear-gradient(180deg,rgba(233,241,255,0.18)_0%,rgba(233,241,255,0.06)_38%,rgba(255,255,255,0.2)_100%)]",
+										"aria-hidden": true
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "absolute inset-y-0 left-0 w-full bg-[linear-gradient(90deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_32%,rgba(255,255,255,0)_100%)]",
+										"aria-hidden": true
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "absolute right-5 top-5 rounded-[20px] border border-white/80 bg-white/82 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:right-6 sm:top-6 sm:px-5",
+										className: "absolute right-5 top-5 rounded-[20px] border border-white/85 bg-white/90 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.12)] backdrop-blur-sm sm:right-6 sm:top-6 sm:px-5",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 											className: "text-[11px] font-bold uppercase tracking-[0.14em] text-primary",
 											children: "Формуємо план"
@@ -2514,7 +2511,7 @@ function DocumentsReviewSection({ onConsultationClick }) {
 										})]
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "absolute inset-x-5 bottom-5 rounded-[20px] border border-white/80 bg-white/82 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-[250px] sm:px-5",
+										className: "absolute inset-x-5 bottom-5 rounded-[20px] border border-white/85 bg-white/92 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.12)] backdrop-blur-sm sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-[280px] sm:px-5",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 											className: "text-[11px] font-bold uppercase tracking-[0.14em] text-primary",
 											children: "Індивідуальний підхід"
@@ -2522,14 +2519,6 @@ function DocumentsReviewSection({ onConsultationClick }) {
 											className: "mt-1 text-sm font-semibold leading-snug text-navy",
 											children: "з урахуванням вашого стану, анамнезу та цілей"
 										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-										src: cardio_heart_3d_default,
-										alt: "Стилізована 3D-модель серця для секції кардіореабілітації",
-										loading: "lazy",
-										width: 1024,
-										height: 1536,
-										className: "absolute inset-0 h-full w-full object-contain object-center p-6 sm:p-8 lg:pl-24 xl:pl-32"
 									})
 								]
 							})]
@@ -5049,7 +5038,6 @@ function ContactsPage({ node }) {
 	});
 }
 var carpathians_location_default = "/assets/carpathians-location-B-Ld24ho.jpg";
-var consultation_default = "/assets/consultation-BtlF2SeR.jpg";
 var diagnostics_session_default = "/assets/diagnostics-session-C_IAYVuL.jpg";
 var functional_training_default = "/assets/functional-training-DdTLWrlH.jpg";
 var hur_equipment_default = "/assets/hur-equipment-CoFDjXe2.jpg";

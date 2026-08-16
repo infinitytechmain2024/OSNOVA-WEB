@@ -36,7 +36,7 @@ import ecgImg from "@/assets/ecg-review.jpg";
 import rehabImg from "@/assets/service-rehab.jpg";
 import sportsImg from "@/assets/service-sports.jpg";
 import cardioHeart3dImg from "@/assets/cardio-heart-3d.jpg";
-import osnovaLogo3dImg from "@/assets/osnova-logo-3d.jpg";
+import consultationImg from "@/assets/about/consultation.jpg";
 import medicalAssessmentImg from "@/assets/about/medical-assessment.jpg";
 import { getNodeById } from "@/lib/tree";
 
@@ -1382,26 +1382,25 @@ function DocumentsReviewSection({ onConsultationClick }: { onConsultationClick: 
                 </div>
               </div>
 
-              <div className="relative min-h-[300px] overflow-hidden rounded-[30px] border border-white/70 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.98),rgba(241,247,255,0.92)_58%,rgba(226,237,255,0.9)_100%)] shadow-[0_24px_55px_rgba(31,61,120,0.08)]">
+              <div className="relative min-h-[300px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.08)]">
+                <img
+                  src={consultationImg}
+                  alt="Лікар консультує пацієнта та формує план відновлення"
+                  loading="lazy"
+                  width={2560}
+                  height={1440}
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                />
                 <div
-                  className="pointer-events-none absolute inset-y-8 left-8 hidden w-28 rounded-[24px] border border-white/70 bg-white/82 p-4 shadow-[0_16px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm xl:flex xl:flex-col xl:items-center xl:justify-center"
+                  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(233,241,255,0.18)_0%,rgba(233,241,255,0.06)_38%,rgba(255,255,255,0.2)_100%)]"
                   aria-hidden
-                >
-                  <img
-                    src={osnovaLogo3dImg}
-                    alt=""
-                    loading="lazy"
-                    width={220}
-                    height={320}
-                    className="h-24 w-full object-contain"
-                  />
-                  <div className="mt-3 h-px w-full bg-slate-200/80" />
-                  <p className="mt-3 text-center text-[11px] font-semibold leading-relaxed text-navy/60">
-                    Маршрут відновлення формується після розгляду документів
-                  </p>
-                </div>
+                />
+                <div
+                  className="absolute inset-y-0 left-0 w-full bg-[linear-gradient(90deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_32%,rgba(255,255,255,0)_100%)]"
+                  aria-hidden
+                />
 
-                <div className="absolute right-5 top-5 rounded-[20px] border border-white/80 bg-white/82 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:right-6 sm:top-6 sm:px-5">
+                <div className="absolute right-5 top-5 rounded-[20px] border border-white/85 bg-white/90 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.12)] backdrop-blur-sm sm:right-6 sm:top-6 sm:px-5">
                   <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
                     Формуємо план
                   </p>
@@ -1410,7 +1409,7 @@ function DocumentsReviewSection({ onConsultationClick }: { onConsultationClick: 
                   </p>
                 </div>
 
-                <div className="absolute inset-x-5 bottom-5 rounded-[20px] border border-white/80 bg-white/82 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-[250px] sm:px-5">
+                <div className="absolute inset-x-5 bottom-5 rounded-[20px] border border-white/85 bg-white/92 px-4 py-3 shadow-[0_14px_35px_rgba(31,61,120,0.12)] backdrop-blur-sm sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-[280px] sm:px-5">
                   <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
                     Індивідуальний підхід
                   </p>
@@ -1418,15 +1417,6 @@ function DocumentsReviewSection({ onConsultationClick }: { onConsultationClick: 
                     з урахуванням вашого стану, анамнезу та цілей
                   </p>
                 </div>
-
-                <img
-                  src={cardioHeart3dImg}
-                  alt="Стилізована 3D-модель серця для секції кардіореабілітації"
-                  loading="lazy"
-                  width={1024}
-                  height={1536}
-                  className="absolute inset-0 h-full w-full object-contain object-center p-6 sm:p-8 lg:pl-24 xl:pl-32"
-                />
               </div>
             </div>
           </div>
