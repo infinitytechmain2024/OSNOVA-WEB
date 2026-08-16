@@ -176,8 +176,9 @@ const SUPPORT_HIGHLIGHTS = [
       "Спеціальні умови на програму відновлення та швидший старт після розгляду документів.",
     ctaLabel: "Детальніше",
     ctaHref: "#documents",
-    icon: Heart,
-    iconClass: "bg-brand-green/15 text-brand-green ring-brand-green/15",
+    icon: ShieldCheck,
+    iconClass:
+      "bg-emerald-100/92 text-emerald-700 ring-emerald-200/90 shadow-[0_14px_28px_rgba(52,211,153,0.18)]",
   },
   {
     id: "social",
@@ -185,8 +186,9 @@ const SUPPORT_HIGHLIGHTS = [
     description: "Окремі умови для групових програм відновлення та адресної підтримки під запит.",
     ctaLabel: "Детальніше",
     ctaHref: "/sotsialni-proiekty",
-    icon: CheckCircle2,
-    iconClass: "bg-primary/10 text-primary ring-primary/10",
+    icon: HandHeart,
+    iconClass:
+      "bg-teal-100/92 text-teal-700 ring-teal-200/90 shadow-[0_14px_28px_rgba(45,212,191,0.16)]",
   },
   {
     id: "senior",
@@ -195,7 +197,8 @@ const SUPPORT_HIGHLIGHTS = [
     ctaLabel: "Детальніше",
     ctaHref: "#documents",
     icon: CalendarDays,
-    iconClass: "bg-amber-100 text-amber-600 ring-amber-200/70",
+    iconClass:
+      "bg-lime-100/95 text-lime-700 ring-lime-200/90 shadow-[0_14px_28px_rgba(132,204,22,0.14)]",
   },
 ] as const;
 
@@ -486,7 +489,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
               </p>
             </div>
 
-            <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-[repeat(4,minmax(0,1fr))_0.82fr]">
+            <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-[repeat(4,minmax(0,1fr))_0.94fr]">
               {programCards.map((program) => (
                 <ProgramCard key={program.id} program={program} />
               ))}
@@ -1087,26 +1090,33 @@ function MilitaryInfoCard() {
   const Icon = activeHighlight.icon;
   const isAnchorLink = activeHighlight.ctaHref.startsWith("#");
   const buttonClassName =
-    "inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90";
+    "inline-flex w-fit items-center gap-2 rounded-lg bg-[linear-gradient(135deg,#1f9d68_0%,#35c88a_100%)] px-5 py-3 text-sm font-bold text-white shadow-[0_16px_30px_rgba(53,200,138,0.22)] transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_36px_rgba(53,200,138,0.28)]";
 
   return (
     <aside
-      className="relative isolate flex min-h-[320px] overflow-hidden rounded-2xl border border-blue-100 bg-[linear-gradient(160deg,rgba(255,255,255,1)_0%,rgba(239,246,255,0.94)_52%,rgba(236,253,245,0.92)_100%)] p-5 shadow-sm"
+      className="relative isolate flex min-h-[320px] overflow-hidden rounded-2xl border border-emerald-200/95 bg-[linear-gradient(160deg,rgba(251,255,252,0.99)_0%,rgba(234,251,241,0.99)_44%,rgba(214,245,228,0.99)_100%)] p-5 shadow-[0_28px_58px_rgba(53,200,138,0.18)] xl:-translate-y-2"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       <div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.14),transparent_38%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(53,200,138,0.24),transparent_38%)]"
         aria-hidden
       />
       <div
-        className="absolute -bottom-12 -right-10 h-36 w-36 rounded-full bg-primary/10 blur-3xl"
+        className="absolute left-[-28px] top-16 h-28 w-28 rounded-full bg-white/55 blur-2xl"
+        aria-hidden
+      />
+      <div
+        className="absolute -bottom-12 -right-10 h-40 w-40 rounded-full bg-brand-green/16 blur-3xl"
         aria-hidden
       />
 
       <div className="relative flex w-full flex-col">
+        <span className="inline-flex w-fit items-center rounded-full border border-emerald-200/90 bg-white/86 px-3.5 py-1 text-[0.65rem] font-extrabold uppercase tracking-[0.18em] text-emerald-700 shadow-[0_10px_24px_rgba(53,200,138,0.14)]">
+          Акції та спецумови
+        </span>
         <div
-          className="flex items-center gap-2"
+          className="mt-4 flex items-center gap-2"
           role="tablist"
           aria-label="Акції та спеціальні умови"
         >
@@ -1121,8 +1131,8 @@ function MilitaryInfoCard() {
               className={cn(
                 "h-2.5 flex-1 rounded-full transition-all duration-300",
                 activeIndex === index
-                  ? "bg-[linear-gradient(90deg,#0f62fe_0%,#22c55e_100%)] shadow-[0_0_0_1px_rgba(15,98,254,0.18),0_8px_18px_rgba(34,197,94,0.28)]"
-                  : "bg-white/80 ring-1 ring-primary/18 hover:bg-primary/20",
+                  ? "bg-[linear-gradient(90deg,#1f9d68_0%,#35c88a_55%,#6ee7a8_100%)] shadow-[0_0_0_1px_rgba(31,157,104,0.18),0_8px_18px_rgba(53,200,138,0.24)]"
+                  : "bg-white/82 ring-1 ring-emerald-200/90 hover:bg-emerald-50",
               )}
             />
           ))}
