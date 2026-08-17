@@ -1427,11 +1427,11 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
                 Кардіологічна реабілітація
               </span>
 
-              <h2 className="mt-7 max-w-[13.2ch] font-black leading-[0.9] tracking-[-0.045em] text-navy lg:max-w-[12.2ch]">
+              <h2 className="mt-7 max-w-[13.9ch] font-black leading-[0.9] tracking-[-0.045em] text-navy lg:max-w-[12.8ch]">
                 <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.75rem] lg:text-[4.3rem]">
                   Зробіть свій
                 </span>
-                <span className="block whitespace-nowrap text-[2.95rem] text-primary sm:text-[4.45rem] lg:text-[5.05rem]">
+                <span className="block whitespace-nowrap text-[3.2rem] text-primary sm:text-[4.8rem] lg:text-[5.45rem]">
                   перший крок
                 </span>
                 <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.75rem] lg:text-[4.3rem]">
