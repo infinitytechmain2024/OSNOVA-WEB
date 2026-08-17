@@ -904,6 +904,9 @@ function ConditionCard({
   card: { title: string; text: string; expandedText?: string };
   image: string;
 }) {
+  const infarctionRoute = "/reabilitatsiia/kardiolohichna/pislia-infarktu-miokarda";
+  const isPostInfarctionCard = card.title === "Реабілітація після інфаркту міокарда";
+
   return (
     <article className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
       <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
@@ -924,19 +927,29 @@ function ConditionCard({
           </p>
         </div>
         <div>
-          <a
-            href="#documents"
-            onClick={(e) => {
-              e.preventDefault();
-              document
-                .getElementById("documents")
-                ?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
-          >
-            Детальніше{" "}
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-          </a>
+          {isPostInfarctionCard ? (
+            <AppLink
+              to={infarctionRoute}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+            >
+              Детальніше
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </AppLink>
+          ) : (
+            <a
+              href="#documents"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("documents")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+            >
+              Детальніше
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          )}
         </div>
       </div>
     </article>
