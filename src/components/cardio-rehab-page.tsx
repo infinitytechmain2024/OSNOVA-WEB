@@ -1426,8 +1426,8 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
               </span>
 
               <h2 className="mt-8 max-w-[15ch] text-[2.65rem] font-black leading-[0.94] tracking-[-0.045em] text-navy sm:text-[4rem] lg:text-[4.55rem]">
-                <span className="block">Почніть шлях</span>
-                <span className="block">до відновлення</span>
+                <span className="block">Повернення</span>
+                <span className="block">до активного життя</span>
                 <span className="block bg-[linear-gradient(90deg,#2563eb_0%,#1f73ff_48%,#2f63be_100%)] bg-clip-text text-transparent">
                   з ОСНОВА Реабілітація
                 </span>
@@ -1468,7 +1468,7 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
                   loading="lazy"
                   width={1536}
                   height={1024}
-                  className="aspect-[1.48/1] w-full object-cover object-center md:object-[center_58%]"
+                  className="aspect-[1.32/1] w-full object-cover object-center md:object-[center_58%]"
                 />
                 <div
                   className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.08)_100%)]"
