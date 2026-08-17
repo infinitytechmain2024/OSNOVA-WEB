@@ -1,7 +1,7 @@
 import { n as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { a as AccordionTrigger$1, d as Slot, i as AccordionItem$1, n as AccordionContent$1, r as AccordionHeader, t as Accordion$1, v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { A as Microscope, Ct as Brain, D as Network, F as MapPin, Ot as ArrowRight, Q as Flame, S as Phone, W as Heart, Y as GraduationCap, Z as FlaskConical, _t as ChevronDown, a as Users, bt as CalendarDays, ct as ClipboardList, d as Trophy, g as ShieldCheck, ht as ChevronRight, kt as ArrowLeft, m as Stethoscope, mt as ChevronUp, rt as Dumbbell, t as Zap, u as UserCheck, wt as BookOpen, yt as Calendar } from "../_libs/lucide-react.mjs";
+import { A as Microscope, Ct as CalendarDays, D as Network, Dt as BookOpen, Et as Brain, F as MapPin, Mt as ArrowLeft, Q as Flame, S as Phone, St as Calendar, W as Heart, Y as GraduationCap, Z as FlaskConical, _t as ChevronRight, a as Users, d as Trophy, g as ShieldCheck, gt as ChevronUp, it as Dumbbell, jt as ArrowRight, m as Stethoscope, t as Zap, u as UserCheck, ut as ClipboardList, yt as ChevronDown } from "../_libs/lucide-react.mjs";
 import { t as cva } from "../_libs/class-variance-authority+clsx.mjs";
 import { D as service_sports_default, E as service_rehab_default, T as service_checkup_default, _ as SiteHeader, b as ecg_review_default, g as SiteFooter, i as CONTACTS, k as useConsultationModal, n as Breadcrumbs, t as AppLink, v as cn, x as ergometer_default, y as cpet_test_default } from "./blocks-DZvZoSan.mjs";
 import { n as education_training_default, t as education_conference_default } from "./education-training-D0E3Ecw7.mjs";

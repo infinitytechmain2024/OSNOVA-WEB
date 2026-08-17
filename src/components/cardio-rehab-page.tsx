@@ -4,11 +4,13 @@ import {
   Ambulance,
   ArrowRight,
   CalendarDays,
+  ChartLine,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  ClipboardList,
+  ClipboardPenLine,
   FileText,
+  FileSearch,
   Phone,
   Send,
   UploadCloud,
@@ -22,6 +24,7 @@ import {
   Sparkles,
   UserRound,
   UsersRound,
+  Dumbbell,
 } from "lucide-react";
 import { AppLink } from "@/components/app-link";
 import { SiteHeader } from "@/components/site-header";
@@ -113,22 +116,22 @@ const EMERGENCY_CALL_ITEMS = [
 
 const PROCESS_STEPS = [
   {
-    icon: FileText,
+    icon: FileSearch,
     title: "Оцінка стану та документів",
     text: "Ми комплексно оцінюємо ваш стан здоров’я, аналізуємо медичні документи та визначаємо ключові потреби для ефективної реабілітації.",
   },
   {
-    icon: ClipboardList,
+    icon: ClipboardPenLine,
     title: "Індивідуальний план реабілітації",
     text: "Створюємо персональний план з урахуванням ваших цілей, потреб, стану здоров’я, можливостей та етапів відновлення.",
   },
   {
-    icon: HeartPulse,
+    icon: Dumbbell,
     title: "Заняття та процедури під контролем",
     text: "Проводимо індивідуальні та групові заняття, процедури й тренування під наглядом досвідчених фахівців для вашої безпеки та результативності.",
   },
   {
-    icon: Activity,
+    icon: ChartLine,
     title: "Контроль прогресу та корекція",
     text: "Регулярно відстежуємо ваш прогрес, оцінюємо результати та коригуємо план реабілітації для досягнення максимального ефекту відновлення.",
   },

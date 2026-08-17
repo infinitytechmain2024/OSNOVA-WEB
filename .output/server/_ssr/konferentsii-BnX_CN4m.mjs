@@ -1,7 +1,7 @@
 import { n as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { Ot as ArrowRight, R as LayoutGrid, bt as CalendarDays, ft as CircleCheck, gt as ChevronLeft, ht as ChevronRight, st as Clock3 } from "../_libs/lucide-react.mjs";
+import { Ct as CalendarDays, R as LayoutGrid, _t as ChevronRight, ct as Clock3, jt as ArrowRight, mt as CircleCheck, vt as ChevronLeft } from "../_libs/lucide-react.mjs";
 import { D as service_sports_default, E as service_rehab_default, T as service_checkup_default, _ as SiteHeader, b as ecg_review_default, g as SiteFooter, m as PageContainer, n as Breadcrumbs, t as AppLink, v as cn, x as ergometer_default, y as cpet_test_default } from "./blocks-DZvZoSan.mjs";
 import { n as education_training_default, t as education_conference_default } from "./education-training-D0E3Ecw7.mjs";
 import { t as Route } from "./konferentsii-ZY1LsOjc.mjs";
