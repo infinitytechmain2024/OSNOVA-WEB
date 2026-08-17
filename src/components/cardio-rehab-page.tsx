@@ -1427,7 +1427,7 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
                 Кардіологічна реабілітація
               </span>
 
-              <h2 className="mt-7 max-w-[11ch] text-[2.7rem] font-black leading-[0.92] tracking-[-0.05em] text-navy sm:text-[4.1rem] lg:max-w-[9.8ch] lg:text-[4.9rem]">
+              <h2 className="mt-7 max-w-[11.5ch] text-[2.7rem] font-black leading-[0.92] tracking-[-0.05em] text-navy sm:text-[4.1rem] lg:max-w-[10.4ch] lg:text-[4.9rem]">
                 <span className="block whitespace-nowrap">Зробіть свій</span>
                 <span className="block whitespace-nowrap bg-[linear-gradient(90deg,#6FA539_0%,#78B042_35%,#5E9832_100%)] bg-clip-text text-transparent">
                   перший крок
