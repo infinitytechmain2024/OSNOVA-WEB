@@ -1423,26 +1423,32 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
 
           <div className="relative grid gap-8 xl:grid-cols-[minmax(0,0.96fr)_minmax(460px,1.04fr)] xl:items-center xl:gap-12">
             <div className="max-w-3xl xl:py-4">
-              <span className="inline-flex items-center rounded-full border border-brand-green/25 bg-white/92 px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-brand-green shadow-[0_12px_28px_rgba(53,114,56,0.1)] sm:px-6 sm:text-sm">
+              <span className="inline-flex items-center rounded-full border border-brand-green/25 bg-white/92 px-5 py-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-brand-green shadow-[0_12px_28px_rgba(53,114,56,0.1)] sm:px-6 sm:text-[0.92rem]">
                 Кардіологічна реабілітація
               </span>
 
-              <h2 className="mt-7 max-w-[11.5ch] text-[2.7rem] font-black leading-[0.92] tracking-[-0.05em] text-navy sm:text-[4.1rem] lg:max-w-[10.4ch] lg:text-[4.9rem]">
-                <span className="block whitespace-nowrap">Зробіть свій</span>
-                <span className="block whitespace-nowrap bg-[linear-gradient(90deg,#6FA539_0%,#78B042_35%,#5E9832_100%)] bg-clip-text text-transparent">
+              <h2 className="mt-7 max-w-[12ch] font-black leading-[0.9] tracking-[-0.05em] text-navy lg:max-w-[10.8ch]">
+                <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.8rem] lg:text-[4.45rem]">
+                  Зробіть свій
+                </span>
+                <span className="block whitespace-nowrap bg-[linear-gradient(90deg,#6FA539_0%,#78B042_35%,#5E9832_100%)] bg-clip-text text-[2.95rem] text-transparent sm:text-[4.55rem] lg:text-[5.3rem]">
                   перший крок
                 </span>
-                <span className="block whitespace-nowrap">до відновлення</span>
+                <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.8rem] lg:text-[4.45rem]">
+                  до відновлення
+                </span>
               </h2>
 
-              <p className="mt-7 max-w-[34rem] text-base leading-relaxed text-navy/72 sm:text-[1.15rem] sm:leading-[1.7]">
-                Допоможемо безпечно розпочати відновлення, оцінити ваш стан і підібрати програму
-                кардіологічної реабілітації під наглядом фахівців.
-              </p>
-
-              <p className="mt-5 max-w-[31rem] text-sm font-medium leading-relaxed text-navy/62 sm:text-[1rem]">
-                Первинна консультація допоможе зрозуміти, з чого починати програму відновлення.
-              </p>
+              <div className="mt-7 max-w-[34rem] space-y-4 text-navy/72">
+                <p className="text-base leading-relaxed sm:text-[1.15rem] sm:leading-[1.7]">
+                  Допоможемо безпечно розпочати відновлення, оцінити ваш стан і підібрати
+                  програму кардіологічної реабілітації під наглядом фахівців.
+                </p>
+                <p className="text-sm font-medium leading-relaxed text-navy/62 sm:text-[1rem]">
+                  Первинна консультація допоможе зрозуміти, з чого починати програму
+                  відновлення.
+                </p>
+              </div>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch">
                 <button
