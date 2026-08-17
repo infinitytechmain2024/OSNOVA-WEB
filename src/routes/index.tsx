@@ -950,8 +950,8 @@ function Index() {
                     Ваш шлях до відновлення
                   </span>
 
-                  <h2 className="mt-7 max-w-[11ch] text-[2.6rem] font-black leading-[0.95] tracking-[-0.05em] text-navy sm:text-[3.35rem] lg:text-[4.35rem]">
-                    Зробіть перший крок до активного життя
+                  <h2 className="mt-7 max-w-[14ch] text-[2.6rem] font-black leading-[0.95] tracking-[-0.05em] text-navy sm:text-[3.35rem] lg:text-[4.35rem]">
+                    Як почати реабілітацію в основах
                   </h2>
 
                   <div className="mt-7 h-1.5 w-24 rounded-full bg-[linear-gradient(90deg,#2563eb_0%,#2f7cff_55%,#34d399_100%)] shadow-[0_10px_22px_rgba(47,99,190,0.16)]" />
