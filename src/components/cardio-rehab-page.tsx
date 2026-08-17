@@ -248,21 +248,6 @@ const OTHER_SERVICES = [
   },
 ];
 
-const CTA_HIGHLIGHTS = [
-  {
-    title: "Індивідуальний підхід",
-    text: "Програму підбираємо з урахуванням вашого стану та цілей відновлення.",
-    icon: UserRound,
-    iconClass: "bg-primary/10 text-primary ring-primary/10",
-  },
-  {
-    title: "Супровід фахівців",
-    text: "Допомагаємо визначити оптимальний формат старту програми.",
-    icon: UsersRound,
-    iconClass: "bg-brand-green/12 text-brand-green ring-brand-green/14",
-  },
-] as const;
-
 const ALL_SERVICES_ROUTE = getNodeById("services")?.route ?? "/poslugy";
 
 export function CardioRehabPage({ node }: { node: SiteNode }) {
@@ -1106,11 +1091,11 @@ function SupportHighlightsCard() {
   const totalSlidesLabel = String(SUPPORT_HIGHLIGHTS.length).padStart(2, "0");
   const isAnchorLink = activeHighlight.ctaHref.startsWith("#");
   const buttonClassName =
-    "inline-flex w-full items-center justify-center gap-2 rounded-[18px] border border-emerald-400/80 bg-white/92 px-5 py-3.5 text-base font-bold text-emerald-700 shadow-[0_16px_32px_rgba(21,128,61,0.12)] transition-all hover:-translate-y-0.5 hover:border-emerald-500 hover:bg-white";
+    "inline-flex min-h-[58px] w-full items-center justify-center gap-2 rounded-[18px] border border-emerald-400/80 bg-white/92 px-5 py-3.5 text-base font-bold text-emerald-700 shadow-[0_16px_32px_rgba(21,128,61,0.12)] transition-all hover:-translate-y-0.5 hover:border-emerald-500 hover:bg-white";
 
   return (
     <aside
-      className="relative isolate flex min-h-[320px] overflow-hidden rounded-[30px] border border-emerald-300/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99)_0%,rgba(247,255,250,0.99)_62%,rgba(239,252,245,0.99)_100%)] p-5 shadow-[0_26px_56px_rgba(53,200,138,0.16)] xl:-translate-y-2"
+      className="relative isolate flex h-full min-h-[478px] overflow-hidden rounded-[30px] border border-emerald-300/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99)_0%,rgba(247,255,250,0.99)_62%,rgba(239,252,245,0.99)_100%)] p-5 shadow-[0_26px_56px_rgba(53,200,138,0.16)] sm:min-h-[500px] xl:min-h-[528px] xl:-translate-y-2"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -1127,7 +1112,7 @@ function SupportHighlightsCard() {
         aria-hidden
       />
 
-      <div className="relative flex w-full flex-col">
+      <div className="relative flex h-full w-full flex-col">
         <span className="max-w-[8.6ch] text-[1.6rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-emerald-800">
           Акції та спецумови
         </span>
@@ -1167,14 +1152,18 @@ function SupportHighlightsCard() {
         >
           <SupportHighlightVisual highlight={activeHighlight} />
 
-          <h3 className="mt-6 max-w-[12ch] text-[2rem] font-black leading-[0.98] tracking-[-0.04em] text-emerald-700">
-            {activeHighlight.title}
-          </h3>
-          <p className="mt-4 max-w-[25ch] text-[0.95rem] leading-[1.75] text-navy/72">
-            {activeHighlight.description}
-          </p>
+          <div className="mt-6 flex h-[86px] items-start sm:h-[92px]">
+            <h3 className="max-w-[12ch] text-[1.78rem] font-black leading-[1.02] tracking-[-0.04em] text-emerald-700 sm:text-[1.95rem]">
+              {activeHighlight.title}
+            </h3>
+          </div>
+          <div className="mt-3 flex h-[108px] items-start sm:h-[114px]">
+            <p className="max-w-[25ch] text-[0.92rem] leading-[1.68] text-navy/72 sm:text-[0.95rem] sm:leading-[1.72]">
+              {activeHighlight.description}
+            </p>
+          </div>
 
-          <div className="mt-auto pt-7">
+          <div className="mt-auto pt-6">
             {activeHighlight.ctaLabel &&
               (isAnchorLink ? (
                 <a
@@ -1206,7 +1195,7 @@ function SupportHighlightsCard() {
 function SupportHighlightVisual({ highlight }: { highlight: SupportHighlight }) {
   if (highlight.id === "senior") {
     return (
-      <div className="relative min-h-[178px]">
+      <div className="relative h-[186px]">
         <div
           className="absolute left-1/2 top-6 h-[138px] w-[138px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(93,215,146,0.28)_0%,rgba(93,215,146,0.14)_46%,rgba(93,215,146,0.04)_74%,transparent_76%)]"
           aria-hidden
@@ -1251,7 +1240,7 @@ function SupportHighlightVisual({ highlight }: { highlight: SupportHighlight }) 
   const secondaryLabel = highlight.id === "military" ? "Підтримка" : "Разом";
 
   return (
-    <div className="relative flex min-h-[178px] items-center justify-center">
+    <div className="relative flex h-[186px] items-center justify-center">
       <div
         className="absolute left-1/2 top-6 h-[142px] w-[142px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(93,215,146,0.2)_0%,rgba(93,215,146,0.08)_50%,transparent_76%)]"
         aria-hidden
@@ -1436,11 +1425,11 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
                 Ваш шлях до відновлення
               </span>
 
-              <h2 className="mt-8 max-w-[13ch] text-[2.65rem] font-black leading-[0.94] tracking-[-0.045em] text-navy sm:text-[4rem] lg:text-[4.55rem]">
-                <span className="block">Почніть відновлення</span>
-                <span className="block">разом з</span>
+              <h2 className="mt-8 max-w-[15ch] text-[2.65rem] font-black leading-[0.94] tracking-[-0.045em] text-navy sm:text-[4rem] lg:text-[4.55rem]">
+                <span className="block">Почніть шлях</span>
+                <span className="block">до відновлення</span>
                 <span className="block bg-[linear-gradient(90deg,#2563eb_0%,#1f73ff_48%,#2f63be_100%)] bg-clip-text text-transparent">
-                  ОСНОВА Реабілітація
+                  з ОСНОВА Реабілітація
                 </span>
               </h2>
 
@@ -1455,17 +1444,17 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
                 <button
                   type="button"
                   onClick={onOpenDocumentsModal}
-                  className="inline-flex min-h-[4.5rem] items-center justify-center gap-2.5 rounded-[20px] bg-[linear-gradient(135deg,#102457_0%,#0a1b48_100%)] px-7 py-4 text-sm font-bold text-white shadow-[0_22px_48px_rgba(10,27,72,0.28)] transition-all hover:-translate-y-0.5 hover:shadow-[0_28px_58px_rgba(10,27,72,0.34)] sm:min-w-[23rem] sm:px-8 sm:text-base"
+                  className="inline-flex min-h-[4.5rem] items-center justify-center gap-2.5 rounded-[20px] bg-brand-green px-7 py-4 text-sm font-bold text-brand-green-foreground shadow-[0_22px_48px_rgba(52,211,153,0.28)] transition-all hover:-translate-y-0.5 hover:bg-brand-green/92 hover:shadow-[0_28px_58px_rgba(52,211,153,0.34)] sm:min-w-[23rem] sm:px-8 sm:text-base"
                 >
                   <UploadCloud className="size-5" />
-                  Надіслати медичні документи
+                  Записатися на консультацію
                 </button>
 
                 <a
                   href={CONTACTS.phoneHref}
-                  className="inline-flex min-h-[4.5rem] items-center justify-center gap-3 rounded-[20px] border border-blue-100/80 bg-white/96 px-7 py-4 text-base font-bold text-navy shadow-[0_18px_40px_rgba(31,61,120,0.1)] transition-colors hover:border-primary/30 hover:bg-white sm:min-w-[16rem] sm:px-8"
+                  className="inline-flex min-h-[4.5rem] items-center justify-center gap-3 rounded-[20px] border border-[#7A8397] bg-white/96 px-7 py-4 text-base font-bold text-[#586279] shadow-[0_18px_40px_rgba(88,98,121,0.1)] transition-colors hover:border-[#586279] hover:bg-white hover:text-[#3F4758] sm:min-w-[16rem] sm:px-8"
                 >
-                  <Phone className="size-6 text-primary" />
+                  <Phone className="size-6 text-[#586279]" />
                   {CONTACTS.phone}
                 </a>
               </div>
@@ -1479,39 +1468,12 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
                   loading="lazy"
                   width={1536}
                   height={1024}
-                  className="aspect-[1.48/1] w-full object-cover object-center"
+                  className="aspect-[1.48/1] w-full object-cover object-center md:object-[center_58%]"
                 />
                 <div
                   className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.08)_100%)]"
                   aria-hidden
                 />
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                {CTA_HIGHLIGHTS.map((item) => {
-                  const Icon = item.icon;
-
-                  return (
-                    <article
-                      key={item.title}
-                      className="rounded-[28px] border border-white/80 bg-white/96 p-6 shadow-[0_18px_44px_rgba(31,61,120,0.1)]"
-                    >
-                      <span
-                        className={cn(
-                          "flex size-14 items-center justify-center rounded-full ring-1",
-                          item.iconClass,
-                        )}
-                      >
-                        <Icon className="size-7" strokeWidth={2} />
-                      </span>
-
-                      <h3 className="mt-5 text-[1.45rem] font-extrabold leading-[1.1] text-navy">
-                        {item.title}
-                      </h3>
-                      <p className="mt-3 text-base leading-relaxed text-navy/68">{item.text}</p>
-                    </article>
-                  );
-                })}
               </div>
             </div>
           </div>

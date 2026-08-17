@@ -1,13 +1,13 @@
 import { n as __toESM } from "./_runtime.mjs";
 import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
-import { $ as FileText, A as Microscope, C as PhoneCall, Ct as CalendarDays, Dt as BookOpen, F as MapPin, G as HeartPulse, I as Mail, J as HandHeart, M as MessageCircle, Nt as Ambulance, O as Navigation, Ot as BadgeCheck, P as MapPinned, Pt as Activity, S as Phone, T as Package, Tt as Building2, U as House, W as Heart, Y as GraduationCap, Z as FlaskConical, _ as Share2, _t as ChevronRight, a as Users, at as Compass, b as Route, bt as Check, c as UserRound, dt as ClipboardCheck, et as FileSearch, f as Truck, g as ShieldCheck, gt as ChevronUp, h as Sparkles, i as Wrench, it as Dumbbell, j as MessageSquare, jt as ArrowRight, l as UserRoundCheck, lt as ClipboardPenLine, m as Stethoscope, mt as CircleCheck, o as UsersRound, ot as CloudUpload, p as TriangleAlert, q as Handshake, rt as ExternalLink, st as Clock, ut as ClipboardList, v as Send, vt as ChevronLeft, w as Percent, x as Presentation, xt as ChartLine, y as Search, yt as ChevronDown, z as Layers } from "./_libs/lucide-react.mjs";
+import { A as MessageCircle, C as Package, Ct as Building2, E as Navigation, Et as BadgeCheck, G as Handshake, H as Heart, K as HandHeart, L as Layers, M as MapPinned, Mt as Activity, N as MapPin, O as Microscope, P as Mail, Q as FileSearch, S as Percent, Tt as BookOpen, U as HeartPulse, V as House, Y as FlaskConical, Z as FileText, _ as Search, _t as ChevronDown, a as Users, at as Clock, b as Phone, ct as ClipboardList, d as TriangleAlert, f as Stethoscope, ft as CircleCheck, g as Send, gt as ChevronLeft, h as Share2, ht as ChevronRight, i as Wrench, it as CloudUpload, jt as Ambulance, k as MessageSquare, kt as ArrowRight, lt as ClipboardCheck, m as ShieldCheck, mt as ChevronUp, nt as Dumbbell, p as Sparkles, q as GraduationCap, rt as Compass, s as UserRoundCheck, st as ClipboardPenLine, tt as ExternalLink, u as Truck, v as Route, vt as Check, x as PhoneCall, xt as CalendarDays, y as Presentation, yt as ChartLine } from "./_libs/lucide-react.mjs";
 import { C as getNodeById, D as service_sports_default, E as service_rehab_default, O as siteTree, S as getBreadcrumbs, T as service_checkup_default, _ as SiteHeader, a as ConsultationForm, b as ecg_review_default, c as DialogContent, d as DialogTitle, f as FAQAccordion, g as SiteFooter, h as SectionHeader$1, i as CONTACTS, k as useConsultationModal, l as DialogDescription, m as PageContainer, n as Breadcrumbs, p as IMAGES, r as CARDIO_REHAB_PROGRAMS, s as Dialog, t as AppLink, u as DialogHeader, v as cn, w as getNodeByRoute, x as ergometer_default, y as cpet_test_default } from "./_ssr/blocks-DZvZoSan.mjs";
-import { t as Route$1 } from "./_-BTPSenLQ.mjs";
+import { t as Route$1 } from "./_-CFd3e0XG.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-B3Yh4-LJ.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as companyOverviewCtaClassName, c as partner_chnu_default, d as partner_karpatska_akademiia_default, f as partner_sytenko_default, i as cardio_rehab_cta_photo_v3_default, l as partner_heart_default, n as FAQConsultationCTA, o as medical_assessment_default, r as balance_reference_card_default, s as partner_asmu_default, t as CompanyOverviewSection, u as partner_ifnmu_default } from "./_ssr/company-overview-section-BwqmkKT_.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-glAJQ1dZ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-CWFWtsgC.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -1530,17 +1530,6 @@ var OTHER_SERVICES = [
 		image: cpet_test_default
 	}
 ];
-var CTA_HIGHLIGHTS = [{
-	title: "Індивідуальний підхід",
-	text: "Програму підбираємо з урахуванням вашого стану та цілей відновлення.",
-	icon: UserRound,
-	iconClass: "bg-primary/10 text-primary ring-primary/10"
-}, {
-	title: "Супровід фахівців",
-	text: "Допомагаємо визначити оптимальний формат старту програми.",
-	icon: UsersRound,
-	iconClass: "bg-brand-green/12 text-brand-green ring-brand-green/14"
-}];
 var ALL_SERVICES_ROUTE = getNodeById("services")?.route ?? "/poslugy";
 function CardioRehabPage({ node }) {
 	const data = getServicePageData(node);
@@ -2225,9 +2214,9 @@ function SupportHighlightsCard() {
 	const currentSlideLabel = String(activeIndex + 1).padStart(2, "0");
 	const totalSlidesLabel = String(SUPPORT_HIGHLIGHTS.length).padStart(2, "0");
 	const isAnchorLink = activeHighlight.ctaHref.startsWith("#");
-	const buttonClassName = "inline-flex w-full items-center justify-center gap-2 rounded-[18px] border border-emerald-400/80 bg-white/92 px-5 py-3.5 text-base font-bold text-emerald-700 shadow-[0_16px_32px_rgba(21,128,61,0.12)] transition-all hover:-translate-y-0.5 hover:border-emerald-500 hover:bg-white";
+	const buttonClassName = "inline-flex min-h-[58px] w-full items-center justify-center gap-2 rounded-[18px] border border-emerald-400/80 bg-white/92 px-5 py-3.5 text-base font-bold text-emerald-700 shadow-[0_16px_32px_rgba(21,128,61,0.12)] transition-all hover:-translate-y-0.5 hover:border-emerald-500 hover:bg-white";
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
-		className: "relative isolate flex min-h-[320px] overflow-hidden rounded-[30px] border border-emerald-300/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99)_0%,rgba(247,255,250,0.99)_62%,rgba(239,252,245,0.99)_100%)] p-5 shadow-[0_26px_56px_rgba(53,200,138,0.16)] xl:-translate-y-2",
+		className: "relative isolate flex h-full min-h-[478px] overflow-hidden rounded-[30px] border border-emerald-300/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99)_0%,rgba(247,255,250,0.99)_62%,rgba(239,252,245,0.99)_100%)] p-5 shadow-[0_26px_56px_rgba(53,200,138,0.16)] sm:min-h-[500px] xl:min-h-[528px] xl:-translate-y-2",
 		onMouseEnter: () => setIsPaused(true),
 		onMouseLeave: () => setIsPaused(false),
 		children: [
@@ -2244,7 +2233,7 @@ function SupportHighlightsCard() {
 				"aria-hidden": true
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "relative flex w-full flex-col",
+				className: "relative flex h-full w-full flex-col",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "max-w-[8.6ch] text-[1.6rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-emerald-800",
@@ -2281,16 +2270,22 @@ function SupportHighlightsCard() {
 						"aria-live": "polite",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SupportHighlightVisual, { highlight: activeHighlight }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "mt-6 max-w-[12ch] text-[2rem] font-black leading-[0.98] tracking-[-0.04em] text-emerald-700",
-								children: activeHighlight.title
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-4 max-w-[25ch] text-[0.95rem] leading-[1.75] text-navy/72",
-								children: activeHighlight.description
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "mt-6 flex h-[86px] items-start sm:h-[92px]",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+									className: "max-w-[12ch] text-[1.78rem] font-black leading-[1.02] tracking-[-0.04em] text-emerald-700 sm:text-[1.95rem]",
+									children: activeHighlight.title
+								})
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "mt-auto pt-7",
+								className: "mt-3 flex h-[108px] items-start sm:h-[114px]",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "max-w-[25ch] text-[0.92rem] leading-[1.68] text-navy/72 sm:text-[0.95rem] sm:leading-[1.72]",
+									children: activeHighlight.description
+								})
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "mt-auto pt-6",
 								children: activeHighlight.ctaLabel && (isAnchorLink ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 									href: activeHighlight.ctaHref,
 									onClick: (event) => {
@@ -2317,7 +2312,7 @@ function SupportHighlightsCard() {
 }
 function SupportHighlightVisual({ highlight }) {
 	if (highlight.id === "senior") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "relative min-h-[178px]",
+		className: "relative h-[186px]",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "absolute left-1/2 top-6 h-[138px] w-[138px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(93,215,146,0.28)_0%,rgba(93,215,146,0.14)_46%,rgba(93,215,146,0.04)_74%,transparent_76%)]",
@@ -2364,7 +2359,7 @@ function SupportHighlightVisual({ highlight }) {
 	const SecondaryIcon = highlight.id === "military" ? ShieldCheck : HandHeart;
 	const secondaryLabel = highlight.id === "military" ? "Підтримка" : "Разом";
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "relative flex min-h-[178px] items-center justify-center",
+		className: "relative flex h-[186px] items-center justify-center",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "absolute left-1/2 top-6 h-[142px] w-[142px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(93,215,146,0.2)_0%,rgba(93,215,146,0.08)_50%,transparent_76%)]",
@@ -2548,19 +2543,19 @@ function DocumentsReviewSection({ onOpenDocumentsModal }) {
 									children: "Ваш шлях до відновлення"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
-									className: "mt-8 max-w-[13ch] text-[2.65rem] font-black leading-[0.94] tracking-[-0.045em] text-navy sm:text-[4rem] lg:text-[4.55rem]",
+									className: "mt-8 max-w-[15ch] text-[2.65rem] font-black leading-[0.94] tracking-[-0.045em] text-navy sm:text-[4rem] lg:text-[4.55rem]",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "block",
-											children: "Почніть відновлення"
+											children: "Почніть шлях"
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "block",
-											children: "разом з"
+											children: "до відновлення"
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "block bg-[linear-gradient(90deg,#2563eb_0%,#1f73ff_48%,#2f63be_100%)] bg-clip-text text-transparent",
-											children: "ОСНОВА Реабілітація"
+											children: "з ОСНОВА Реабілітація"
 										})
 									]
 								}),
@@ -2574,18 +2569,18 @@ function DocumentsReviewSection({ onOpenDocumentsModal }) {
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 										type: "button",
 										onClick: onOpenDocumentsModal,
-										className: "inline-flex min-h-[4.5rem] items-center justify-center gap-2.5 rounded-[20px] bg-[linear-gradient(135deg,#102457_0%,#0a1b48_100%)] px-7 py-4 text-sm font-bold text-white shadow-[0_22px_48px_rgba(10,27,72,0.28)] transition-all hover:-translate-y-0.5 hover:shadow-[0_28px_58px_rgba(10,27,72,0.34)] sm:min-w-[23rem] sm:px-8 sm:text-base",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CloudUpload, { className: "size-5" }), "Надіслати медичні документи"]
+										className: "inline-flex min-h-[4.5rem] items-center justify-center gap-2.5 rounded-[20px] bg-brand-green px-7 py-4 text-sm font-bold text-brand-green-foreground shadow-[0_22px_48px_rgba(52,211,153,0.28)] transition-all hover:-translate-y-0.5 hover:bg-brand-green/92 hover:shadow-[0_28px_58px_rgba(52,211,153,0.34)] sm:min-w-[23rem] sm:px-8 sm:text-base",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CloudUpload, { className: "size-5" }), "Записатися на консультацію"]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 										href: CONTACTS.phoneHref,
-										className: "inline-flex min-h-[4.5rem] items-center justify-center gap-3 rounded-[20px] border border-blue-100/80 bg-white/96 px-7 py-4 text-base font-bold text-navy shadow-[0_18px_40px_rgba(31,61,120,0.1)] transition-colors hover:border-primary/30 hover:bg-white sm:min-w-[16rem] sm:px-8",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "size-6 text-primary" }), CONTACTS.phone]
+										className: "inline-flex min-h-[4.5rem] items-center justify-center gap-3 rounded-[20px] border border-[#7A8397] bg-white/96 px-7 py-4 text-base font-bold text-[#586279] shadow-[0_18px_40px_rgba(88,98,121,0.1)] transition-colors hover:border-[#586279] hover:bg-white hover:text-[#3F4758] sm:min-w-[16rem] sm:px-8",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "size-6 text-[#586279]" }), CONTACTS.phone]
 									})]
 								})
 							]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "space-y-4 sm:space-y-5",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "relative overflow-hidden rounded-[30px] border border-white/75 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.12)]",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 									src: cardio_rehab_cta_photo_v3_default,
@@ -2593,37 +2588,12 @@ function DocumentsReviewSection({ onOpenDocumentsModal }) {
 									loading: "lazy",
 									width: 1536,
 									height: 1024,
-									className: "aspect-[1.48/1] w-full object-cover object-center"
+									className: "aspect-[1.48/1] w-full object-cover object-center md:object-[center_58%]"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.08)_100%)]",
 									"aria-hidden": true
 								})]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "grid gap-4 sm:grid-cols-2",
-								children: CTA_HIGHLIGHTS.map((item) => {
-									const Icon = item.icon;
-									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-										className: "rounded-[28px] border border-white/80 bg-white/96 p-6 shadow-[0_18px_44px_rgba(31,61,120,0.1)]",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: cn("flex size-14 items-center justify-center rounded-full ring-1", item.iconClass),
-												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, {
-													className: "size-7",
-													strokeWidth: 2
-												})
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-												className: "mt-5 text-[1.45rem] font-extrabold leading-[1.1] text-navy",
-												children: item.title
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "mt-3 text-base leading-relaxed text-navy/68",
-												children: item.text
-											})
-										]
-									}, item.title);
-								})
-							})]
+							})
 						})]
 					})
 				]

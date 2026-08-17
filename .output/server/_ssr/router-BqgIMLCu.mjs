@@ -2,16 +2,16 @@ import { n as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { _ as useRouter, c as HeadContent, d as createRouter, f as Outlet, h as createRootRouteWithContext, m as createFileRoute, p as lazyRouteComponent, s as Scripts } from "../_libs/@tanstack/react-router+[...].mjs";
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { F as MapPin, G as HeartPulse, K as Headphones, Pt as Activity, S as Phone, U as House, _t as ChevronRight, it as Dumbbell, jt as ArrowRight, m as Stethoscope, v as Send } from "../_libs/lucide-react.mjs";
+import { Mt as Activity, N as MapPin, U as HeartPulse, V as House, W as Headphones, b as Phone, f as Stethoscope, g as Send, ht as ChevronRight, kt as ArrowRight, nt as Dumbbell } from "../_libs/lucide-react.mjs";
 import { C as getNodeById, _ as SiteHeader, g as SiteFooter, i as CONTACTS, m as PageContainer, o as ConsultationModalProvider, t as AppLink, x as ergometer_default } from "./blocks-DZvZoSan.mjs";
-import { t as Route } from "../_-BTPSenLQ.mjs";
+import { t as Route } from "../_-CFd3e0XG.mjs";
 import { t as Route$10 } from "./konferentsii-ZY1LsOjc.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
 import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BtFapTI2.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BqgIMLCu.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-DRoFRw7o.css";
+var styles_default = "/assets/styles-C3KFaw_Q.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -342,7 +342,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ConsultationModalProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {}) })
 	});
 }
-var $$splitComponentImporter$6 = () => import("./routes-DKUjVgQB.mjs");
+var $$splitComponentImporter$6 = () => import("./routes-Bhl8Kqlx.mjs");
 var Route$8 = createFileRoute("/")({
 	head: () => ({ meta: [{ title: "Снова Реабілітація — Медичний центр діагностики та відновлення" }, {
 		name: "description",
