@@ -540,7 +540,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
               )}
             </div>
 
-            <FAQConsultationCTA className="mt-16" cardClassName="lg:min-h-[630px]" />
+            <FAQConsultationCTA className="mt-16" />
           </section>
         )}
 
