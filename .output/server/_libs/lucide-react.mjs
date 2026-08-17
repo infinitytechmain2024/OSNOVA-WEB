@@ -1346,6 +1346,33 @@ var Package = createLucideIcon("package", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Percent = createLucideIcon("percent", [
+	["line", {
+		x1: "19",
+		x2: "5",
+		y1: "5",
+		y2: "19",
+		key: "1x9vlm"
+	}],
+	["circle", {
+		cx: "6.5",
+		cy: "6.5",
+		r: "2.5",
+		key: "4mh3h7"
+	}],
+	["circle", {
+		cx: "17.5",
+		cy: "17.5",
+		r: "2.5",
+		key: "1mdrzq"
+	}]
+]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var PhoneCall = createLucideIcon("phone-call", [
 	["path", {
 		d: "M13 2a9 9 0 0 1 9 9",
@@ -1804,4 +1831,4 @@ var Zap = createLucideIcon("zap", [["path", {
 	key: "1xq2db"
 }]]);
 //#endregion
-export { FilePen as $, MessageSquare as A, Activity as At, Instagram as B, PhoneCall as C, BookOpen as Ct, Navigation as D, ArrowRight as Dt, Network as E, ArrowUpRight as Et, Mail as F, Headphones as G, House as H, LoaderCircle as I, GraduationCap as J, Handshake as K, LayoutGrid as L, Menu as M, MapPinned as N, Music2 as O, ArrowLeft as Ot, MapPin as P, FileText as Q, Layers as R, Phone as S, Brain as St, Newspaper as T, ArrowUp as Tt, Heart as U, Info as V, HeartPulse as W, FlaskConical as X, FolderUp as Y, Flame as Z, Share2 as _, Check as _t, Users as a, Clock as at, Route as b, CalendarCheck as bt, UserRound as c, ClipboardCheck as ct, Trophy as d, CircleCheck as dt, Facebook as et, Truck as f, CircleAlert as ft, ShieldCheck as g, ChevronDown as gt, Sparkles as h, ChevronLeft as ht, Wrench as i, CloudUpload as it, MessageCircle as j, Microscope as k, Ambulance as kt, UserRoundCheck as l, Circle as lt, Stethoscope as m, ChevronRight as mt, Youtube as n, Dumbbell as nt, UsersRound as o, Clock3 as ot, TriangleAlert as p, ChevronUp as pt, HandHeart as q, X as r, Compass as rt, User as s, ClipboardList as st, Zap as t, ExternalLink as tt, UserCheck as u, CircleQuestionMark as ut, Send as v, Calendar as vt, Package as w, BadgeCheck as wt, Presentation as x, Building2 as xt, Search as y, CalendarDays as yt, Languages as z };
+export { FileText as $, Microscope as A, Ambulance as At, Languages as B, PhoneCall as C, Brain as Ct, Network as D, ArrowUpRight as Dt, Newspaper as E, ArrowUp as Et, MapPin as F, HeartPulse as G, Info as H, Mail as I, HandHeart as J, Headphones as K, LoaderCircle as L, MessageCircle as M, Menu as N, Navigation as O, ArrowRight as Ot, MapPinned as P, Flame as Q, LayoutGrid as R, Phone as S, Building2 as St, Package as T, BadgeCheck as Tt, House as U, Instagram as V, Heart as W, FolderUp as X, GraduationCap as Y, FlaskConical as Z, Share2 as _, ChevronDown as _t, Users as a, CloudUpload as at, Route as b, CalendarDays as bt, UserRound as c, ClipboardList as ct, Trophy as d, CircleQuestionMark as dt, FilePen as et, Truck as f, CircleCheck as ft, ShieldCheck as g, ChevronLeft as gt, Sparkles as h, ChevronRight as ht, Wrench as i, Compass as it, MessageSquare as j, Activity as jt, Music2 as k, ArrowLeft as kt, UserRoundCheck as l, ClipboardCheck as lt, Stethoscope as m, ChevronUp as mt, Youtube as n, ExternalLink as nt, UsersRound as o, Clock as ot, TriangleAlert as p, CircleAlert as pt, Handshake as q, X as r, Dumbbell as rt, User as s, Clock3 as st, Zap as t, Facebook as tt, UserCheck as u, Circle as ut, Send as v, Check as vt, Percent as w, BookOpen as wt, Presentation as x, CalendarCheck as xt, Search as y, Calendar as yt, Layers as z };

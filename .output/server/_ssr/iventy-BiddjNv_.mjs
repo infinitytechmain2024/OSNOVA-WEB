@@ -1,5 +1,5 @@
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { At as Activity, Dt as ArrowRight, J as GraduationCap, P as MapPin, W as HeartPulse, a as Users, dt as CircleCheck, j as MessageCircle, nt as Dumbbell, ot as Clock3, xt as Building2, yt as CalendarDays } from "../_libs/lucide-react.mjs";
+import { F as MapPin, G as HeartPulse, M as MessageCircle, Ot as ArrowRight, St as Building2, Y as GraduationCap, a as Users, bt as CalendarDays, ft as CircleCheck, jt as Activity, rt as Dumbbell, st as Clock3 } from "../_libs/lucide-react.mjs";
 import { D as service_sports_default, E as service_rehab_default, S as getBreadcrumbs, _ as SiteHeader, g as SiteFooter, h as SectionHeader, i as CONTACTS, m as PageContainer, n as Breadcrumbs, t as AppLink, w as getNodeByRoute, y as cpet_test_default } from "./blocks-DZvZoSan.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/iventy-BiddjNv_.js
 var import_jsx_runtime = require_jsx_runtime();

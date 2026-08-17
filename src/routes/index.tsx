@@ -49,6 +49,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { NEWS_ARTICLES } from "@/data/news";
+import { CONTACTS } from "@/data/site-tree";
 import { useConsultationModal } from "@/components/consultation-form";
 import { RehabilitationMethodsSlider } from "@/components/rehabilitation-methods-slider";
 import { Breadcrumbs } from "@/components/blocks";
@@ -66,6 +67,7 @@ import educationTrainingImg from "@/assets/education-training.png";
 import educationConferenceImg from "@/assets/education-conference.png";
 import educationPracticalTrainingImg from "@/assets/education-practical-training-v2.jpg";
 import educationScienceEventImg from "@/assets/education-science-event-v2.jpg";
+import cardioRehabCtaImg from "@/assets/about/cardio-rehab-cta-photo-v3.jpg";
 import balanceReferenceCardImg from "@/assets/home/balance-reference-card.png";
 import partnerAsmuLogo from "@/assets/partners/partner-asmu.png";
 import partnerChnuLogo from "@/assets/partners/partner-chnu.png";
@@ -930,39 +932,66 @@ function Index() {
         {/* CTA BANNER */}
         <section
           id="consultation"
-          className="relative scroll-mt-24 overflow-hidden border-y border-sky-200/80 bg-[radial-gradient(circle_at_top_left,_rgba(14,101,241,0.18),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(45,212,191,0.16),_transparent_38%),linear-gradient(135deg,#eef8ff_0%,#f5fbff_35%,#ecfaf7_100%)] py-20 md:py-28"
+          className="relative scroll-mt-24 overflow-hidden border-y border-sky-100/80 bg-[radial-gradient(circle_at_14%_18%,rgba(59,130,246,0.12),transparent_27%),radial-gradient(circle_at_88%_78%,rgba(52,211,153,0.12),transparent_30%),linear-gradient(180deg,#f7fbff_0%,#edf5ff_100%)] py-16 sm:py-20 lg:py-24"
         >
           <div className="absolute -left-20 top-8 size-56 rounded-full bg-primary/10 blur-3xl" />
-          <div className="absolute -right-16 bottom-6 size-72 rounded-full bg-emerald-300/20 blur-3xl" />
+          <div className="absolute right-0 top-12 size-72 rounded-full bg-white/70 blur-3xl" />
+          <div className="absolute -right-12 bottom-6 size-72 rounded-full bg-emerald-300/20 blur-3xl" />
 
-          <div className="relative mx-auto max-w-[1100px] px-6 text-center lg:px-10">
-            <div className="mx-auto max-w-4xl rounded-[2rem] border border-white/75 bg-white/80 p-8 shadow-[0_22px_60px_-35px_rgba(17,55,110,0.45)] backdrop-blur-md md:p-12">
-              <h2 className="text-3xl font-extrabold text-navy md:text-5xl lg:text-6xl">
-                Зробіть перший крок
-                <br />
-                до <span className="text-primary">відновлення</span>
-              </h2>
-              <div className="mx-auto mt-6 mb-8 h-1.5 w-40 rounded-full bg-gradient-to-r from-primary via-sky-400 to-brand-green" />
-              <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-slate-500 md:text-xl">
-                Розкажіть про свою ситуацію — спеціаліст допоможе визначити відповідну програму та
-                подальші дії.
-              </p>
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={() => openModal("Отримати консультацію")}
-                  className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-brand-green px-10 py-4 text-base font-bold tracking-wide text-brand-green-foreground shadow-[0_18px_36px_rgba(49,191,126,0.28)] transition-all hover:scale-[1.02] hover:bg-brand-green/90 hover:shadow-[0_22px_42px_rgba(49,191,126,0.36)] sm:w-auto md:py-5 md:text-lg cursor-pointer"
-                >
-                  <span className="relative z-10">ОТРИМАТИ КОНСУЛЬТАЦІЮ</span>
-                  <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
-                </button>
-                <a
-                  href="tel:+380674702788"
-                  className="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-[#7B8499] bg-white/70 px-10 py-4 text-base font-bold text-[#586279] shadow-[0_10px_24px_rgba(88,98,121,0.08)] transition-all hover:border-[#586279] hover:bg-[#586279] hover:text-white sm:w-auto md:py-5 md:text-lg"
-                >
-                  <Phone className="size-5" />
-                  +380 674 702 788
-                </a>
+          <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div className="relative overflow-hidden rounded-[2.4rem] border border-white/80 bg-white/74 px-6 py-8 shadow-[0_32px_90px_rgba(31,61,120,0.14)] backdrop-blur-[10px] sm:px-8 sm:py-10 lg:px-12 lg:py-12 xl:px-14 xl:py-14">
+              <div className="pointer-events-none absolute -left-16 top-12 h-44 w-44 rounded-full bg-white/85 blur-3xl" />
+              <div className="pointer-events-none absolute right-[18%] top-0 h-56 w-56 rounded-full bg-primary/10 blur-3xl" />
+              <div className="pointer-events-none absolute bottom-0 left-[38%] h-40 w-40 rounded-full bg-brand-green/10 blur-3xl" />
+
+              <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,0.96fr)_minmax(420px,0.92fr)] lg:gap-12 xl:gap-16">
+                <div className="max-w-[40rem] lg:pl-2">
+                  <span className="inline-flex rounded-full border border-primary/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(239,246,255,0.96)_100%)] px-5 py-2 text-[0.72rem] font-extrabold uppercase tracking-[0.22em] text-primary shadow-[0_10px_24px_rgba(31,61,120,0.08)] sm:px-6 sm:text-xs">
+                    Ваш шлях до відновлення
+                  </span>
+
+                  <h2 className="mt-7 max-w-[11ch] text-[2.6rem] font-black leading-[0.95] tracking-[-0.05em] text-navy sm:text-[3.35rem] lg:text-[4.35rem]">
+                    Зробіть перший крок до активного життя
+                  </h2>
+
+                  <div className="mt-7 h-1.5 w-24 rounded-full bg-[linear-gradient(90deg,#2563eb_0%,#2f7cff_55%,#34d399_100%)] shadow-[0_10px_22px_rgba(47,99,190,0.16)]" />
+
+                  <p className="mt-7 max-w-[31rem] text-base leading-relaxed text-navy/70 sm:text-[1.1rem] sm:leading-[1.75]">
+                    Ми допомагаємо повернутися до активного життя з турботою, досвідом і сучасним
+                    підходом.
+                  </p>
+
+                  <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch">
+                    <button
+                      type="button"
+                      onClick={() => openModal("Записатися на консультацію")}
+                      className="inline-flex min-h-[4.25rem] items-center justify-center rounded-[1.2rem] bg-brand-green px-7 py-4 text-center text-sm font-bold text-brand-green-foreground shadow-[0_22px_46px_rgba(52,211,153,0.26)] transition-all hover:-translate-y-0.5 hover:bg-brand-green/92 hover:shadow-[0_28px_58px_rgba(52,211,153,0.32)] sm:min-w-[22rem] sm:px-8 sm:text-base"
+                    >
+                      Записатися на консультацію
+                    </button>
+
+                    <a
+                      href={CONTACTS.phoneHref}
+                      className="inline-flex min-h-[4.25rem] items-center justify-center gap-3 rounded-[1.2rem] border border-[#7A8397] bg-white px-7 py-4 text-base font-bold text-[#586279] shadow-[0_16px_36px_rgba(88,98,121,0.1)] transition-all hover:-translate-y-0.5 hover:border-[#586279] hover:shadow-[0_20px_42px_rgba(88,98,121,0.14)] sm:min-w-[16rem] sm:px-8"
+                    >
+                      <Phone className="size-5" />
+                      {CONTACTS.phone}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="relative mx-auto w-full max-w-[46rem] lg:max-w-none">
+                  <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-white shadow-[0_26px_64px_rgba(31,61,120,0.14)]">
+                    <img
+                      src={cardioRehabCtaImg}
+                      alt="Фахівець допомагає пацієнтці виконувати вправу під час реабілітації"
+                      loading="lazy"
+                      width={1536}
+                      height={1024}
+                      className="aspect-[1.62/1] w-full object-cover object-center"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

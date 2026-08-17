@@ -1,11 +1,13 @@
 import * as React from "react";
 import {
+  Activity,
   Ambulance,
   ArrowRight,
   CalendarDays,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  ClipboardList,
   FileText,
   Phone,
   Send,
@@ -13,8 +15,11 @@ import {
   CheckCircle2,
   HandHeart,
   Heart,
+  HeartPulse,
+  Percent,
   AlertTriangle,
   ShieldCheck,
+  Sparkles,
   UserRound,
   UsersRound,
 } from "lucide-react";
@@ -108,18 +113,22 @@ const EMERGENCY_CALL_ITEMS = [
 
 const PROCESS_STEPS = [
   {
+    icon: FileText,
     title: "Оцінка стану та документів",
     text: "Ми комплексно оцінюємо ваш стан здоров’я, аналізуємо медичні документи та визначаємо ключові потреби для ефективної реабілітації.",
   },
   {
+    icon: ClipboardList,
     title: "Індивідуальний план реабілітації",
     text: "Створюємо персональний план з урахуванням ваших цілей, потреб, стану здоров’я, можливостей та етапів відновлення.",
   },
   {
+    icon: HeartPulse,
     title: "Заняття та процедури під контролем",
     text: "Проводимо індивідуальні та групові заняття, процедури й тренування під наглядом досвідчених фахівців для вашої безпеки та результативності.",
   },
   {
+    icon: Activity,
     title: "Контроль прогресу та корекція",
     text: "Регулярно відстежуємо ваш прогрес, оцінюємо результати та коригуємо план реабілітації для досягнення максимального ефекту відновлення.",
   },
@@ -170,6 +179,16 @@ const CARDIO_PROGRAMS = CARDIO_REHAB_PROGRAMS.map((program) => ({
 
 const SUPPORT_HIGHLIGHTS = [
   {
+    id: "senior",
+    title: "Акція 60+",
+    description: "Знижка 10% на стартову консультацію та супровід первинного етапу програми.",
+    ctaLabel: "Детальніше",
+    ctaHref: "#documents",
+    icon: CalendarDays,
+    iconClass:
+      "bg-lime-100/95 text-lime-700 ring-lime-200/90 shadow-[0_14px_28px_rgba(132,204,22,0.14)]",
+  },
+  {
     id: "military",
     title: "Для військових і ветеранів",
     description:
@@ -190,17 +209,8 @@ const SUPPORT_HIGHLIGHTS = [
     iconClass:
       "bg-teal-100/92 text-teal-700 ring-teal-200/90 shadow-[0_14px_28px_rgba(45,212,191,0.16)]",
   },
-  {
-    id: "senior",
-    title: "Акція 60+",
-    description: "Знижка 10% на стартову консультацію та супровід первинного етапу програми.",
-    ctaLabel: "Детальніше",
-    ctaHref: "#documents",
-    icon: CalendarDays,
-    iconClass:
-      "bg-lime-100/95 text-lime-700 ring-lime-200/90 shadow-[0_14px_28px_rgba(132,204,22,0.14)]",
-  },
 ] as const;
+type SupportHighlight = (typeof SUPPORT_HIGHLIGHTS)[number];
 
 const OTHER_SERVICES = [
   {
@@ -420,6 +430,8 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
 
             <div className="relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:gap-6">
               {PROCESS_STEPS.map((step, index) => {
+                const Icon = step.icon;
+
                 return (
                   <article
                     key={step.title}
@@ -432,8 +444,8 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                       />
                     )}
 
-                    <span className="flex size-[74px] items-center justify-center rounded-[24px] bg-[linear-gradient(135deg,#35c88a_0%,#67d8a4_100%)] text-[2rem] font-black text-white shadow-[0_18px_34px_rgba(53,200,138,0.28)] ring-1 ring-emerald-200/80">
-                      {index + 1}
+                    <span className="flex size-[74px] items-center justify-center rounded-[24px] bg-[linear-gradient(135deg,#35c88a_0%,#67d8a4_100%)] text-white shadow-[0_18px_34px_rgba(53,200,138,0.28)] ring-1 ring-emerald-200/80">
+                      <Icon className="size-9" strokeWidth={2.15} />
                     </span>
                     <h3 className="mt-5 max-w-[16ch] text-[1.55rem] font-extrabold leading-[1.1] text-navy sm:text-[1.75rem]">
                       {step.title}
@@ -493,7 +505,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
               {programCards.map((program) => (
                 <ProgramCard key={program.id} program={program} />
               ))}
-              <MilitaryInfoCard />
+              <SupportHighlightsCard />
             </div>
           </div>
         </section>
@@ -1071,7 +1083,7 @@ function ProgramCard({
   );
 }
 
-function MilitaryInfoCard() {
+function SupportHighlightsCard() {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [isPaused, setIsPaused] = React.useState(false);
 
@@ -1087,39 +1099,46 @@ function MilitaryInfoCard() {
   }, [isPaused]);
 
   const activeHighlight = SUPPORT_HIGHLIGHTS[activeIndex];
-  const Icon = activeHighlight.icon;
+  const currentSlideLabel = String(activeIndex + 1).padStart(2, "0");
+  const totalSlidesLabel = String(SUPPORT_HIGHLIGHTS.length).padStart(2, "0");
   const isAnchorLink = activeHighlight.ctaHref.startsWith("#");
   const buttonClassName =
-    "inline-flex w-fit items-center gap-2 rounded-lg bg-[linear-gradient(135deg,#1f9d68_0%,#35c88a_100%)] px-5 py-3 text-sm font-bold text-white shadow-[0_16px_30px_rgba(53,200,138,0.22)] transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_36px_rgba(53,200,138,0.28)]";
+    "inline-flex w-full items-center justify-center gap-2 rounded-[18px] border border-emerald-400/80 bg-white/92 px-5 py-3.5 text-base font-bold text-emerald-700 shadow-[0_16px_32px_rgba(21,128,61,0.12)] transition-all hover:-translate-y-0.5 hover:border-emerald-500 hover:bg-white";
 
   return (
     <aside
-      className="relative isolate flex min-h-[320px] overflow-hidden rounded-2xl border border-emerald-200/95 bg-[linear-gradient(160deg,rgba(251,255,252,0.99)_0%,rgba(234,251,241,0.99)_44%,rgba(214,245,228,0.99)_100%)] p-5 shadow-[0_28px_58px_rgba(53,200,138,0.18)] xl:-translate-y-2"
+      className="relative isolate flex min-h-[320px] overflow-hidden rounded-[30px] border border-emerald-300/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99)_0%,rgba(247,255,250,0.99)_62%,rgba(239,252,245,0.99)_100%)] p-5 shadow-[0_26px_56px_rgba(53,200,138,0.16)] xl:-translate-y-2"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       <div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(53,200,138,0.24),transparent_38%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(53,200,138,0.16),transparent_36%)]"
         aria-hidden
       />
       <div
-        className="absolute left-[-28px] top-16 h-28 w-28 rounded-full bg-white/55 blur-2xl"
+        className="absolute left-[-28px] top-10 h-28 w-28 rounded-full bg-white/75 blur-2xl"
         aria-hidden
       />
       <div
-        className="absolute -bottom-12 -right-10 h-40 w-40 rounded-full bg-brand-green/16 blur-3xl"
+        className="absolute -bottom-12 -right-10 h-40 w-40 rounded-full bg-brand-green/12 blur-3xl"
         aria-hidden
       />
 
       <div className="relative flex w-full flex-col">
-        <span className="inline-flex w-fit items-center rounded-full border border-emerald-200/90 bg-white/86 px-3.5 py-1 text-[0.65rem] font-extrabold uppercase tracking-[0.18em] text-emerald-700 shadow-[0_10px_24px_rgba(53,200,138,0.14)]">
+        <span className="max-w-[8.6ch] text-[1.6rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-emerald-800">
           Акції та спецумови
         </span>
         <div
-          className="mt-4 flex items-center gap-2"
+          className="mt-5 flex items-center gap-3"
           role="tablist"
           aria-label="Акції та спеціальні умови"
         >
+          <span className="min-w-[62px] text-[1.1rem] font-extrabold tracking-[-0.03em] text-emerald-800">
+            {currentSlideLabel}
+            <span className="px-1.5 text-emerald-800/38">/</span>
+            <span className="text-emerald-800/62">{totalSlidesLabel}</span>
+          </span>
+
           {SUPPORT_HIGHLIGHTS.map((highlight, index) => (
             <button
               key={highlight.id}
@@ -1129,10 +1148,10 @@ function MilitaryInfoCard() {
               aria-label={highlight.title}
               onClick={() => setActiveIndex(index)}
               className={cn(
-                "h-2.5 flex-1 rounded-full transition-all duration-300",
+                "h-1.5 rounded-full transition-all duration-300",
                 activeIndex === index
-                  ? "bg-[linear-gradient(90deg,#1f9d68_0%,#35c88a_55%,#6ee7a8_100%)] shadow-[0_0_0_1px_rgba(31,157,104,0.18),0_8px_18px_rgba(53,200,138,0.24)]"
-                  : "bg-white/82 ring-1 ring-emerald-200/90 hover:bg-emerald-50",
+                  ? "w-9 bg-[linear-gradient(90deg,#1f9d68_0%,#35c88a_55%,#6ee7a8_100%)] shadow-[0_6px_16px_rgba(53,200,138,0.24)]"
+                  : "w-7 bg-emerald-100 hover:bg-emerald-200",
               )}
             />
           ))}
@@ -1140,28 +1159,19 @@ function MilitaryInfoCard() {
 
         <div
           key={activeHighlight.id}
-          className="mt-7 flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500"
+          className="mt-6 flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500"
           aria-live="polite"
         >
-          <div className="flex items-center gap-4">
-            <span
-              className={cn(
-                "flex size-14 shrink-0 items-center justify-center rounded-2xl ring-1",
-                activeHighlight.iconClass,
-              )}
-            >
-              <Icon className="size-7" strokeWidth={2} />
-            </span>
-          </div>
+          <SupportHighlightVisual highlight={activeHighlight} />
 
-          <h3 className="mt-5 max-w-[12ch] text-xl font-extrabold leading-snug text-navy">
+          <h3 className="mt-6 max-w-[12ch] text-[2rem] font-black leading-[0.98] tracking-[-0.04em] text-emerald-700">
             {activeHighlight.title}
           </h3>
-          <p className="mt-3 max-w-[24ch] text-sm leading-relaxed text-navy/72">
+          <p className="mt-4 max-w-[25ch] text-[0.95rem] leading-[1.75] text-navy/72">
             {activeHighlight.description}
           </p>
 
-          <div className="mt-auto pt-8">
+          <div className="mt-auto pt-7">
             {activeHighlight.ctaLabel &&
               (isAnchorLink ? (
                 <a
@@ -1187,6 +1197,89 @@ function MilitaryInfoCard() {
         </div>
       </div>
     </aside>
+  );
+}
+
+function SupportHighlightVisual({ highlight }: { highlight: SupportHighlight }) {
+  if (highlight.id === "senior") {
+    return (
+      <div className="relative min-h-[178px]">
+        <div
+          className="absolute left-1/2 top-6 h-[138px] w-[138px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(93,215,146,0.28)_0%,rgba(93,215,146,0.14)_46%,rgba(93,215,146,0.04)_74%,transparent_76%)]"
+          aria-hidden
+        />
+        <Sparkles
+          className="absolute left-2 top-12 size-4 text-emerald-200"
+          strokeWidth={2.2}
+          aria-hidden
+        />
+        <Sparkles
+          className="absolute right-4 top-4 size-5 text-emerald-500"
+          strokeWidth={2.1}
+          aria-hidden
+        />
+        <Sparkles
+          className="absolute bottom-7 right-5 size-5 text-emerald-600"
+          strokeWidth={2.1}
+          aria-hidden
+        />
+
+        <div className="absolute left-1/2 top-8 flex h-[122px] w-[92px] -translate-x-1/2 rotate-[18deg] items-center justify-center rounded-[28px] bg-[linear-gradient(180deg,#34d67b_0%,#10a44e_100%)] shadow-[0_24px_40px_rgba(16,164,78,0.26)]">
+          <span
+            className="absolute right-3 top-3 size-4 rounded-full bg-emerald-900/45 ring-4 ring-white/14"
+            aria-hidden
+          />
+          <Percent className="size-10 text-white" strokeWidth={2.7} />
+        </div>
+
+        <div className="absolute bottom-1 left-3 flex items-center gap-2 rounded-[18px] border border-emerald-100 bg-white/96 px-3 py-2 shadow-[0_16px_28px_rgba(21,128,61,0.12)]">
+          <CalendarDays className="size-5 text-emerald-600" strokeWidth={2.1} />
+          <span className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-emerald-700">
+            60+
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  const Icon = highlight.icon;
+  const secondaryIcon = highlight.id === "military" ? ShieldCheck : HandHeart;
+  const SecondaryIcon = secondaryIcon;
+  const secondaryLabel = highlight.id === "military" ? "Підтримка" : "Разом";
+
+  return (
+    <div className="relative flex min-h-[178px] items-center justify-center">
+      <div
+        className="absolute left-1/2 top-6 h-[142px] w-[142px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(93,215,146,0.2)_0%,rgba(93,215,146,0.08)_50%,transparent_76%)]"
+        aria-hidden
+      />
+      <Sparkles
+        className="absolute left-3 top-9 size-4 text-emerald-200"
+        strokeWidth={2.2}
+        aria-hidden
+      />
+      <Sparkles
+        className="absolute right-6 top-5 size-5 text-emerald-400"
+        strokeWidth={2.1}
+        aria-hidden
+      />
+      <Sparkles
+        className="absolute bottom-8 right-4 size-5 text-emerald-600"
+        strokeWidth={2.1}
+        aria-hidden
+      />
+
+      <div className="relative flex size-[118px] items-center justify-center rounded-[34px] bg-[linear-gradient(165deg,#35c88a_0%,#149b56_100%)] shadow-[0_24px_40px_rgba(16,164,78,0.24)]">
+        <Icon className="size-12 text-white" strokeWidth={2.15} />
+      </div>
+
+      <div className="absolute bottom-1 left-3 flex items-center gap-2 rounded-[18px] border border-emerald-100 bg-white/96 px-3 py-2 shadow-[0_16px_28px_rgba(21,128,61,0.12)]">
+        <SecondaryIcon className="size-5 text-emerald-600" strokeWidth={2.1} />
+        <span className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-emerald-700">
+          {secondaryLabel}
+        </span>
+      </div>
+    </div>
   );
 }
 

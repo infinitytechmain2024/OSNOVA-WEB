@@ -1,15 +1,15 @@
 import { n as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { a as AccordionTrigger$1, d as Slot, i as AccordionItem$1, n as AccordionContent$1, r as AccordionHeader, t as Accordion$1, v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { Ct as BookOpen, Dt as ArrowRight, E as Network, J as GraduationCap, Ot as ArrowLeft, P as MapPin, S as Phone, St as Brain, U as Heart, X as FlaskConical, Z as Flame, a as Users, d as Trophy, g as ShieldCheck, gt as ChevronDown, k as Microscope, m as Stethoscope, mt as ChevronRight, nt as Dumbbell, pt as ChevronUp, st as ClipboardList, t as Zap, u as UserCheck, vt as Calendar, yt as CalendarDays } from "../_libs/lucide-react.mjs";
+import { A as Microscope, Ct as Brain, D as Network, F as MapPin, Ot as ArrowRight, Q as Flame, S as Phone, W as Heart, Y as GraduationCap, Z as FlaskConical, _t as ChevronDown, a as Users, bt as CalendarDays, ct as ClipboardList, d as Trophy, g as ShieldCheck, ht as ChevronRight, kt as ArrowLeft, m as Stethoscope, mt as ChevronUp, rt as Dumbbell, t as Zap, u as UserCheck, wt as BookOpen, yt as Calendar } from "../_libs/lucide-react.mjs";
 import { t as cva } from "../_libs/class-variance-authority+clsx.mjs";
-import { D as service_sports_default, E as service_rehab_default, T as service_checkup_default, _ as SiteHeader, b as ecg_review_default, g as SiteFooter, k as useConsultationModal, n as Breadcrumbs, t as AppLink, v as cn, x as ergometer_default, y as cpet_test_default } from "./blocks-DZvZoSan.mjs";
+import { D as service_sports_default, E as service_rehab_default, T as service_checkup_default, _ as SiteHeader, b as ecg_review_default, g as SiteFooter, i as CONTACTS, k as useConsultationModal, n as Breadcrumbs, t as AppLink, v as cn, x as ergometer_default, y as cpet_test_default } from "./blocks-DZvZoSan.mjs";
 import { n as education_training_default, t as education_conference_default } from "./education-training-D0E3Ecw7.mjs";
-import { c as partner_heart_default, d as partner_sytenko_default, i as companyOverviewCtaClassName, l as partner_ifnmu_default, n as FAQConsultationCTA, o as partner_asmu_default, r as balance_reference_card_default, s as partner_chnu_default, t as CompanyOverviewSection, u as partner_karpatska_akademiia_default } from "./company-overview-section-CfTj3Gtf.mjs";
+import { a as companyOverviewCtaClassName, c as partner_chnu_default, d as partner_karpatska_akademiia_default, f as partner_sytenko_default, i as cardio_rehab_cta_photo_v3_default, l as partner_heart_default, n as FAQConsultationCTA, r as balance_reference_card_default, s as partner_asmu_default, t as CompanyOverviewSection, u as partner_ifnmu_default } from "./company-overview-section-BwqmkKT_.mjs";
 import { t as NEWS_ARTICLES } from "./news-DZkop1nY.mjs";
 import { t as useEmblaCarousel } from "../_libs/embla-carousel-react+[...].mjs";
 import { t as Autoplay } from "../_libs/embla-carousel-autoplay.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BFeuvbc6.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DKUjVgQB.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var events_default = "/assets/events-6TDR9Fq1.jpg";
@@ -1514,46 +1514,64 @@ function Index() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 					id: "consultation",
-					className: "relative scroll-mt-24 overflow-hidden border-y border-sky-200/80 bg-[radial-gradient(circle_at_top_left,_rgba(14,101,241,0.18),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(45,212,191,0.16),_transparent_38%),linear-gradient(135deg,#eef8ff_0%,#f5fbff_35%,#ecfaf7_100%)] py-20 md:py-28",
+					className: "relative scroll-mt-24 overflow-hidden border-y border-sky-100/80 bg-[radial-gradient(circle_at_14%_18%,rgba(59,130,246,0.12),transparent_27%),radial-gradient(circle_at_88%_78%,rgba(52,211,153,0.12),transparent_30%),linear-gradient(180deg,#f7fbff_0%,#edf5ff_100%)] py-16 sm:py-20 lg:py-24",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute -left-20 top-8 size-56 rounded-full bg-primary/10 blur-3xl" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute -right-16 bottom-6 size-72 rounded-full bg-emerald-300/20 blur-3xl" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute right-0 top-12 size-72 rounded-full bg-white/70 blur-3xl" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute -right-12 bottom-6 size-72 rounded-full bg-emerald-300/20 blur-3xl" }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "relative mx-auto max-w-[1100px] px-6 text-center lg:px-10",
+							className: "relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "mx-auto max-w-4xl rounded-[2rem] border border-white/75 bg-white/80 p-8 shadow-[0_22px_60px_-35px_rgba(17,55,110,0.45)] backdrop-blur-md md:p-12",
+								className: "relative overflow-hidden rounded-[2.4rem] border border-white/80 bg-white/74 px-6 py-8 shadow-[0_32px_90px_rgba(31,61,120,0.14)] backdrop-blur-[10px] sm:px-8 sm:py-10 lg:px-12 lg:py-12 xl:px-14 xl:py-14",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
-										className: "text-3xl font-extrabold text-navy md:text-5xl lg:text-6xl",
-										children: [
-											"Зробіть перший крок",
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-											"до ",
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "text-primary",
-												children: "відновлення"
-											})
-										]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mx-auto mt-6 mb-8 h-1.5 w-40 rounded-full bg-gradient-to-r from-primary via-sky-400 to-brand-green" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-slate-500 md:text-xl",
-										children: "Розкажіть про свою ситуацію — спеціаліст допоможе визначити відповідну програму та подальші дії."
-									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute -left-16 top-12 h-44 w-44 rounded-full bg-white/85 blur-3xl" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute right-[18%] top-0 h-56 w-56 rounded-full bg-primary/10 blur-3xl" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute bottom-0 left-[38%] h-40 w-40 rounded-full bg-brand-green/10 blur-3xl" }),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex flex-col items-center justify-center gap-4 sm:flex-row",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-											type: "button",
-											onClick: () => openModal("Отримати консультацію"),
-											className: "group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-brand-green px-10 py-4 text-base font-bold tracking-wide text-brand-green-foreground shadow-[0_18px_36px_rgba(49,191,126,0.28)] transition-all hover:scale-[1.02] hover:bg-brand-green/90 hover:shadow-[0_22px_42px_rgba(49,191,126,0.36)] sm:w-auto md:py-5 md:text-lg cursor-pointer",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "relative z-10",
-												children: "ОТРИМАТИ КОНСУЛЬТАЦІЮ"
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" })]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-											href: "tel:+380674702788",
-											className: "flex w-full items-center justify-center gap-3 rounded-xl border-2 border-[#7B8499] bg-white/70 px-10 py-4 text-base font-bold text-[#586279] shadow-[0_10px_24px_rgba(88,98,121,0.08)] transition-all hover:border-[#586279] hover:bg-[#586279] hover:text-white sm:w-auto md:py-5 md:text-lg",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "size-5" }), "+380 674 702 788"]
+										className: "relative grid items-center gap-10 lg:grid-cols-[minmax(0,0.96fr)_minmax(420px,0.92fr)] lg:gap-12 xl:gap-16",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "max-w-[40rem] lg:pl-2",
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "inline-flex rounded-full border border-primary/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(239,246,255,0.96)_100%)] px-5 py-2 text-[0.72rem] font-extrabold uppercase tracking-[0.22em] text-primary shadow-[0_10px_24px_rgba(31,61,120,0.08)] sm:px-6 sm:text-xs",
+													children: "Ваш шлях до відновлення"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+													className: "mt-7 max-w-[11ch] text-[2.6rem] font-black leading-[0.95] tracking-[-0.05em] text-navy sm:text-[3.35rem] lg:text-[4.35rem]",
+													children: "Зробіть перший крок до активного життя"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mt-7 h-1.5 w-24 rounded-full bg-[linear-gradient(90deg,#2563eb_0%,#2f7cff_55%,#34d399_100%)] shadow-[0_10px_22px_rgba(47,99,190,0.16)]" }),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+													className: "mt-7 max-w-[31rem] text-base leading-relaxed text-navy/70 sm:text-[1.1rem] sm:leading-[1.75]",
+													children: "Ми допомагаємо повернутися до активного життя з турботою, досвідом і сучасним підходом."
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+													className: "mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+														type: "button",
+														onClick: () => openModal("Записатися на консультацію"),
+														className: "inline-flex min-h-[4.25rem] items-center justify-center rounded-[1.2rem] bg-brand-green px-7 py-4 text-center text-sm font-bold text-brand-green-foreground shadow-[0_22px_46px_rgba(52,211,153,0.26)] transition-all hover:-translate-y-0.5 hover:bg-brand-green/92 hover:shadow-[0_28px_58px_rgba(52,211,153,0.32)] sm:min-w-[22rem] sm:px-8 sm:text-base",
+														children: "Записатися на консультацію"
+													}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+														href: CONTACTS.phoneHref,
+														className: "inline-flex min-h-[4.25rem] items-center justify-center gap-3 rounded-[1.2rem] border border-[#7A8397] bg-white px-7 py-4 text-base font-bold text-[#586279] shadow-[0_16px_36px_rgba(88,98,121,0.1)] transition-all hover:-translate-y-0.5 hover:border-[#586279] hover:shadow-[0_20px_42px_rgba(88,98,121,0.14)] sm:min-w-[16rem] sm:px-8",
+														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "size-5" }), CONTACTS.phone]
+													})]
+												})
+											]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "relative mx-auto w-full max-w-[46rem] lg:max-w-none",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+												className: "overflow-hidden rounded-[2rem] border border-white/80 bg-white shadow-[0_26px_64px_rgba(31,61,120,0.14)]",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+													src: cardio_rehab_cta_photo_v3_default,
+													alt: "Фахівець допомагає пацієнтці виконувати вправу під час реабілітації",
+													loading: "lazy",
+													width: 1536,
+													height: 1024,
+													className: "aspect-[1.62/1] w-full object-cover object-center"
+												})
+											})
 										})]
 									})
 								]
