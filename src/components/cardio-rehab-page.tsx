@@ -13,7 +13,6 @@ import {
   FileSearch,
   Phone,
   Send,
-  UploadCloud,
   CheckCircle2,
   HandHeart,
   Heart,
@@ -1445,7 +1444,6 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
                   onClick={onOpenDocumentsModal}
                   className="inline-flex min-h-[4.5rem] items-center justify-center gap-2.5 rounded-[20px] bg-brand-green px-7 py-4 text-sm font-bold text-brand-green-foreground shadow-[0_22px_48px_rgba(52,211,153,0.28)] transition-all hover:-translate-y-0.5 hover:bg-brand-green/92 hover:shadow-[0_28px_58px_rgba(52,211,153,0.34)] sm:min-w-[23rem] sm:px-8 sm:text-base"
                 >
-                  <UploadCloud className="size-5" />
                   Записатися на консультацію
                 </button>
 
