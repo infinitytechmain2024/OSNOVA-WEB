@@ -989,20 +989,20 @@ function ProgramCard({
   return (
     <article
       className={cn(
-        "relative flex min-h-[320px] flex-col rounded-2xl border p-6 shadow-sm",
+        "relative flex min-h-[286px] flex-col rounded-2xl border p-5 shadow-sm sm:min-h-[300px] sm:p-6",
         isPopular
           ? "border-primary bg-primary text-white shadow-primary/20"
           : "border-blue-100 bg-white",
       )}
     >
       {isPopular && (
-        <span className="absolute right-5 top-5 rounded-full bg-white px-3 py-1 text-xs font-bold text-primary shadow-sm">
+        <span className="absolute right-4 top-4 rounded-full bg-white px-2.5 py-1 text-[0.7rem] font-bold text-primary shadow-sm sm:right-5 sm:top-5">
           Популярна
         </span>
       )}
       <h3
         className={cn(
-          "text-xl font-bold leading-snug",
+          "text-[1.45rem] font-bold leading-[1.12] sm:text-xl",
           isPopular ? "pr-24 text-white" : "text-navy",
         )}
       >
@@ -1011,7 +1011,7 @@ function ProgramCard({
       {program.shortDescription && (
         <p
           className={cn(
-            "mt-3 text-sm leading-relaxed",
+            "mt-2.5 text-[0.92rem] leading-[1.65] sm:mt-3 sm:text-sm",
             isPopular ? "text-white/82" : "text-navy/72",
           )}
         >
@@ -1020,7 +1020,7 @@ function ProgramCard({
       )}
       <dl
         className={cn(
-          "mt-6 space-y-4 border-t pt-5 text-sm",
+          "mt-5 space-y-3 border-t pt-4 text-sm sm:mt-6 sm:space-y-4 sm:pt-5",
           isPopular ? "border-white/22" : "border-border",
         )}
       >
@@ -1047,17 +1047,20 @@ function ProgramCard({
             Ціна
           </dt>
           <dd
-            className={cn("mt-1 text-lg font-extrabold", isPopular ? "text-white" : "text-primary")}
+            className={cn(
+              "mt-1 text-[1.35rem] font-extrabold sm:text-lg",
+              isPopular ? "text-white" : "text-primary",
+            )}
           >
             {priceLabel}
           </dd>
         </div>
       </dl>
-      <div className="mt-auto pt-8">
+      <div className="mt-auto pt-6 sm:pt-8">
         <AppLink
           to={program.route}
           className={cn(
-            "inline-flex w-fit items-center gap-2 rounded-lg px-5 py-3 text-sm font-bold transition-colors",
+            "inline-flex w-fit items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-bold transition-colors sm:px-5 sm:py-3",
             isPopular
               ? "bg-white text-primary hover:bg-white/90"
               : "bg-primary text-primary-foreground hover:bg-primary/90",
@@ -1091,11 +1094,11 @@ function SupportHighlightsCard() {
   const totalSlidesLabel = String(SUPPORT_HIGHLIGHTS.length).padStart(2, "0");
   const isAnchorLink = activeHighlight.ctaHref.startsWith("#");
   const buttonClassName =
-    "inline-flex min-h-[58px] w-full items-center justify-center gap-2 rounded-[18px] border border-emerald-400/80 bg-white/92 px-5 py-3.5 text-base font-bold text-emerald-700 shadow-[0_16px_32px_rgba(21,128,61,0.12)] transition-all hover:-translate-y-0.5 hover:border-emerald-500 hover:bg-white";
+    "inline-flex min-h-[50px] w-full items-center justify-center gap-2 rounded-[16px] border border-emerald-400/80 bg-white/92 px-4 py-3 text-[0.95rem] font-bold text-emerald-700 shadow-[0_14px_28px_rgba(21,128,61,0.12)] transition-all hover:-translate-y-0.5 hover:border-emerald-500 hover:bg-white sm:min-h-[52px] sm:px-5 sm:py-3.5 sm:text-base";
 
   return (
     <aside
-      className="relative isolate flex h-full min-h-[478px] overflow-hidden rounded-[30px] border border-emerald-300/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99)_0%,rgba(247,255,250,0.99)_62%,rgba(239,252,245,0.99)_100%)] p-5 shadow-[0_26px_56px_rgba(53,200,138,0.16)] sm:min-h-[500px] xl:min-h-[528px] xl:-translate-y-2"
+      className="relative isolate flex h-full min-h-[414px] overflow-hidden rounded-[28px] border border-emerald-300/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.99)_0%,rgba(247,255,250,0.99)_62%,rgba(239,252,245,0.99)_100%)] p-4 shadow-[0_24px_46px_rgba(53,200,138,0.14)] sm:min-h-[426px] sm:p-5 xl:min-h-[438px] xl:-translate-y-1"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -1113,15 +1116,15 @@ function SupportHighlightsCard() {
       />
 
       <div className="relative flex h-full w-full flex-col">
-        <span className="max-w-[8.6ch] text-[1.6rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-emerald-800">
+        <span className="text-[1.28rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-emerald-800 sm:text-[1.4rem]">
           Акції та спецумови
         </span>
         <div
-          className="mt-5 flex items-center gap-3"
+          className="mt-3 flex items-center gap-2.5 sm:mt-4 sm:gap-3"
           role="tablist"
           aria-label="Акції та спеціальні умови"
         >
-          <span className="min-w-[62px] text-[1.1rem] font-extrabold tracking-[-0.03em] text-emerald-800">
+          <span className="min-w-[54px] text-[0.98rem] font-extrabold tracking-[-0.03em] text-emerald-800 sm:min-w-[58px] sm:text-[1.05rem]">
             {currentSlideLabel}
             <span className="px-1.5 text-emerald-800/38">/</span>
             <span className="text-emerald-800/62">{totalSlidesLabel}</span>
@@ -1138,8 +1141,8 @@ function SupportHighlightsCard() {
               className={cn(
                 "h-1.5 rounded-full transition-all duration-300",
                 activeIndex === index
-                  ? "w-9 bg-[linear-gradient(90deg,#1f9d68_0%,#35c88a_55%,#6ee7a8_100%)] shadow-[0_6px_16px_rgba(53,200,138,0.24)]"
-                  : "w-7 bg-emerald-100 hover:bg-emerald-200",
+                  ? "w-8 bg-[linear-gradient(90deg,#1f9d68_0%,#35c88a_55%,#6ee7a8_100%)] shadow-[0_6px_14px_rgba(53,200,138,0.22)]"
+                  : "w-6 bg-emerald-100 hover:bg-emerald-200",
               )}
             />
           ))}
@@ -1147,23 +1150,23 @@ function SupportHighlightsCard() {
 
         <div
           key={activeHighlight.id}
-          className="mt-6 flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500"
+          className="mt-4 flex flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500 sm:mt-5"
           aria-live="polite"
         >
           <SupportHighlightVisual highlight={activeHighlight} />
 
-          <div className="mt-6 flex h-[86px] items-start sm:h-[92px]">
-            <h3 className="max-w-[12ch] text-[1.78rem] font-black leading-[1.02] tracking-[-0.04em] text-emerald-700 sm:text-[1.95rem]">
+          <div className="mt-4 flex h-[58px] items-start sm:mt-5 sm:h-[66px]">
+            <h3 className="max-w-[12ch] text-[1.5rem] font-black leading-[1.02] tracking-[-0.04em] text-emerald-700 sm:text-[1.7rem]">
               {activeHighlight.title}
             </h3>
           </div>
-          <div className="mt-3 flex h-[108px] items-start sm:h-[114px]">
-            <p className="max-w-[25ch] text-[0.92rem] leading-[1.68] text-navy/72 sm:text-[0.95rem] sm:leading-[1.72]">
+          <div className="mt-2 flex h-[82px] items-start sm:h-[88px]">
+            <p className="max-w-[25ch] text-[0.86rem] leading-[1.58] text-navy/72 sm:text-[0.9rem] sm:leading-[1.62]">
               {activeHighlight.description}
             </p>
           </div>
 
-          <div className="mt-auto pt-6">
+          <div className="mt-auto pt-4">
             {activeHighlight.ctaLabel &&
               (isAnchorLink ? (
                 <a
@@ -1195,38 +1198,38 @@ function SupportHighlightsCard() {
 function SupportHighlightVisual({ highlight }: { highlight: SupportHighlight }) {
   if (highlight.id === "senior") {
     return (
-      <div className="relative h-[186px]">
+      <div className="relative h-[144px] sm:h-[150px]">
         <div
-          className="absolute left-1/2 top-6 h-[138px] w-[138px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(93,215,146,0.28)_0%,rgba(93,215,146,0.14)_46%,rgba(93,215,146,0.04)_74%,transparent_76%)]"
+          className="absolute left-1/2 top-4 h-[110px] w-[110px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(93,215,146,0.28)_0%,rgba(93,215,146,0.14)_46%,rgba(93,215,146,0.04)_74%,transparent_76%)] sm:top-5 sm:h-[118px] sm:w-[118px]"
           aria-hidden
         />
         <Sparkles
-          className="absolute left-2 top-12 size-4 text-emerald-200"
+          className="absolute left-2 top-10 size-3.5 text-emerald-200 sm:top-11 sm:size-4"
           strokeWidth={2.2}
           aria-hidden
         />
         <Sparkles
-          className="absolute right-4 top-4 size-5 text-emerald-500"
+          className="absolute right-4 top-3 size-4 text-emerald-500 sm:top-4 sm:size-4.5"
           strokeWidth={2.1}
           aria-hidden
         />
         <Sparkles
-          className="absolute bottom-7 right-5 size-5 text-emerald-600"
+          className="absolute bottom-6 right-5 size-4 text-emerald-600 sm:bottom-7 sm:size-4.5"
           strokeWidth={2.1}
           aria-hidden
         />
 
-        <div className="absolute left-1/2 top-8 flex h-[122px] w-[92px] -translate-x-1/2 rotate-[18deg] items-center justify-center rounded-[28px] bg-[linear-gradient(180deg,#34d67b_0%,#10a44e_100%)] shadow-[0_24px_40px_rgba(16,164,78,0.26)]">
+        <div className="absolute left-1/2 top-5 flex h-[96px] w-[72px] -translate-x-1/2 rotate-[18deg] items-center justify-center rounded-[22px] bg-[linear-gradient(180deg,#34d67b_0%,#10a44e_100%)] shadow-[0_18px_32px_rgba(16,164,78,0.24)] sm:top-6 sm:h-[104px] sm:w-[78px] sm:rounded-[24px]">
           <span
-            className="absolute right-3 top-3 size-4 rounded-full bg-emerald-900/45 ring-4 ring-white/14"
+            className="absolute right-2.5 top-2.5 size-3 rounded-full bg-emerald-900/45 ring-3 ring-white/14 sm:right-3 sm:top-3 sm:size-3.5"
             aria-hidden
           />
-          <Percent className="size-10 text-white" strokeWidth={2.7} />
+          <Percent className="size-8 text-white sm:size-9" strokeWidth={2.7} />
         </div>
 
-        <div className="absolute bottom-1 left-3 flex items-center gap-2 rounded-[18px] border border-emerald-100 bg-white/96 px-3 py-2 shadow-[0_16px_28px_rgba(21,128,61,0.12)]">
-          <CalendarDays className="size-5 text-emerald-600" strokeWidth={2.1} />
-          <span className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-emerald-700">
+        <div className="absolute bottom-0 left-2.5 flex items-center gap-1.5 rounded-[16px] border border-emerald-100 bg-white/96 px-2.5 py-1.5 shadow-[0_12px_22px_rgba(21,128,61,0.12)] sm:left-3 sm:gap-2 sm:px-3 sm:py-2">
+          <CalendarDays className="size-4 text-emerald-600 sm:size-4.5" strokeWidth={2.1} />
+          <span className="text-[0.66rem] font-bold uppercase tracking-[0.14em] text-emerald-700 sm:text-[0.7rem]">
             60+
           </span>
         </div>
@@ -1240,34 +1243,34 @@ function SupportHighlightVisual({ highlight }: { highlight: SupportHighlight }) 
   const secondaryLabel = highlight.id === "military" ? "Підтримка" : "Разом";
 
   return (
-    <div className="relative flex h-[186px] items-center justify-center">
+    <div className="relative flex h-[144px] items-center justify-center sm:h-[150px]">
       <div
-        className="absolute left-1/2 top-6 h-[142px] w-[142px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(93,215,146,0.2)_0%,rgba(93,215,146,0.08)_50%,transparent_76%)]"
+        className="absolute left-1/2 top-4 h-[114px] w-[114px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(93,215,146,0.2)_0%,rgba(93,215,146,0.08)_50%,transparent_76%)] sm:top-5 sm:h-[122px] sm:w-[122px]"
         aria-hidden
       />
       <Sparkles
-        className="absolute left-3 top-9 size-4 text-emerald-200"
+        className="absolute left-3 top-8 size-3.5 text-emerald-200 sm:top-9 sm:size-4"
         strokeWidth={2.2}
         aria-hidden
       />
       <Sparkles
-        className="absolute right-6 top-5 size-5 text-emerald-400"
+        className="absolute right-6 top-4 size-4 text-emerald-400 sm:top-5 sm:size-4.5"
         strokeWidth={2.1}
         aria-hidden
       />
       <Sparkles
-        className="absolute bottom-8 right-4 size-5 text-emerald-600"
+        className="absolute bottom-7 right-4 size-4 text-emerald-600 sm:bottom-8 sm:size-4.5"
         strokeWidth={2.1}
         aria-hidden
       />
 
-      <div className="relative flex size-[118px] items-center justify-center rounded-[34px] bg-[linear-gradient(165deg,#35c88a_0%,#149b56_100%)] shadow-[0_24px_40px_rgba(16,164,78,0.24)]">
-        <Icon className="size-12 text-white" strokeWidth={2.15} />
+      <div className="relative flex size-[92px] items-center justify-center rounded-[28px] bg-[linear-gradient(165deg,#35c88a_0%,#149b56_100%)] shadow-[0_18px_32px_rgba(16,164,78,0.22)] sm:size-[98px] sm:rounded-[30px]">
+        <Icon className="size-9 text-white sm:size-10" strokeWidth={2.15} />
       </div>
 
-      <div className="absolute bottom-1 left-3 flex items-center gap-2 rounded-[18px] border border-emerald-100 bg-white/96 px-3 py-2 shadow-[0_16px_28px_rgba(21,128,61,0.12)]">
-        <SecondaryIcon className="size-5 text-emerald-600" strokeWidth={2.1} />
-        <span className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-emerald-700">
+      <div className="absolute bottom-0 left-2.5 flex items-center gap-1.5 rounded-[16px] border border-emerald-100 bg-white/96 px-2.5 py-1.5 shadow-[0_12px_22px_rgba(21,128,61,0.12)] sm:left-3 sm:gap-2 sm:px-3 sm:py-2">
+        <SecondaryIcon className="size-4 text-emerald-600 sm:size-4.5" strokeWidth={2.1} />
+        <span className="text-[0.66rem] font-bold uppercase tracking-[0.14em] text-emerald-700 sm:text-[0.7rem]">
           {secondaryLabel}
         </span>
       </div>

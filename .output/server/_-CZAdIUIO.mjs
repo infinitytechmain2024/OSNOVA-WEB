@@ -1,7 +1,7 @@
 import { j as notFound, m as createFileRoute, p as lazyRouteComponent } from "./_libs/@tanstack/react-router+[...].mjs";
 import { w as getNodeByRoute } from "./_ssr/blocks-DZvZoSan.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-D_at4GBF.js
-var $$splitComponentImporter = () => import("./_-6ItYWUcn.mjs");
+//#region node_modules/.nitro/vite/services/ssr/assets/_-CZAdIUIO.js
+var $$splitComponentImporter = () => import("./_-Bet7PSSA.mjs");
 var Route = createFileRoute("/$")({
 	loader: ({ params }) => {
 		const route = `/${(params._splat ?? "").replace(/\/+$/, "")}`;
