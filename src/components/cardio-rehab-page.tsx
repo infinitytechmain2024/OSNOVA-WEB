@@ -1421,30 +1421,36 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
             aria-hidden
           />
 
-          <div className="relative grid gap-10 xl:grid-cols-[minmax(0,1.04fr)_minmax(460px,0.88fr)] xl:items-center xl:gap-14">
+          <div className="relative grid gap-8 xl:grid-cols-[minmax(0,0.96fr)_minmax(460px,1.04fr)] xl:items-center xl:gap-12">
             <div className="max-w-3xl xl:py-4">
-              <span className="inline-flex rounded-full border border-primary/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(239,246,255,0.96)_100%)] px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_12px_28px_rgba(31,61,120,0.08)] sm:px-6 sm:text-sm">
-                Ваш шлях до відновлення
+              <span className="inline-flex items-center rounded-full border border-brand-green/25 bg-white/92 px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-brand-green shadow-[0_12px_28px_rgba(53,114,56,0.1)] sm:px-6 sm:text-sm">
+                Кардіологічна реабілітація
               </span>
 
-              <h2 className="mt-8 max-w-[12ch] text-[2.65rem] font-black leading-[0.94] tracking-[-0.045em] text-navy sm:text-[4rem] lg:text-[4.55rem]">
-                Як почати кардіологічну реабілітацію?
+              <h2 className="mt-7 max-w-[10ch] text-[2.7rem] font-black leading-[0.92] tracking-[-0.05em] text-navy sm:text-[4.1rem] lg:text-[4.9rem]">
+                <span className="block">Зробіть свій</span>
+                <span className="block bg-[linear-gradient(90deg,#6FA539_0%,#78B042_35%,#5E9832_100%)] bg-clip-text text-transparent">
+                  перший крок
+                </span>
+                <span className="block">до відновлення</span>
               </h2>
 
-              <div className="mt-8 h-1.5 w-22 rounded-full bg-[linear-gradient(90deg,#2563eb_0%,#1f73ff_58%,#2ad38b_100%)] shadow-[0_10px_22px_rgba(47,99,190,0.18)] sm:w-24" />
-
-              <p className="mt-8 max-w-[34rem] text-base leading-relaxed text-navy/72 sm:text-[1.15rem] sm:leading-[1.7]">
-                Ми допомагаємо повернутися до активного життя з турботою, досвідом і сучасним
-                підходом.
+              <p className="mt-7 max-w-[34rem] text-base leading-relaxed text-navy/72 sm:text-[1.15rem] sm:leading-[1.7]">
+                Допоможемо безпечно розпочати відновлення, оцінити ваш стан і підібрати програму
+                кардіологічної реабілітації під наглядом фахівців.
               </p>
 
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch">
+              <p className="mt-5 max-w-[31rem] text-sm font-medium leading-relaxed text-navy/62 sm:text-[1rem]">
+                Первинна консультація допоможе зрозуміти, з чого починати програму відновлення.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch">
                 <button
                   type="button"
                   onClick={onOpenDocumentsModal}
                   className="inline-flex min-h-[4.5rem] items-center justify-center gap-2.5 rounded-[20px] bg-brand-green px-7 py-4 text-sm font-bold text-brand-green-foreground shadow-[0_22px_48px_rgba(52,211,153,0.28)] transition-all hover:-translate-y-0.5 hover:bg-brand-green/92 hover:shadow-[0_28px_58px_rgba(52,211,153,0.34)] sm:min-w-[23rem] sm:px-8 sm:text-base"
                 >
-                  Записатися на консультацію
+                  Замовити консультацію
                 </button>
 
                 <a
@@ -1458,14 +1464,14 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
             </div>
 
             <div className="space-y-4 sm:space-y-5">
-              <div className="relative overflow-hidden rounded-[30px] border border-white/75 bg-white shadow-[0_24px_55px_rgba(31,61,120,0.12)]">
+              <div className="relative overflow-hidden rounded-[34px] border border-white/80 bg-white/95 shadow-[0_28px_65px_rgba(31,61,120,0.14)]">
                 <img
                   src={cardioRehabCtaImg}
                   alt="Фахівець допомагає пацієнтці виконувати вправу під час реабілітації"
                   loading="lazy"
                   width={1536}
                   height={1024}
-                  className="aspect-[1.32/1] w-full object-cover object-center md:object-[center_58%]"
+                  className="aspect-[1.22/1] w-full object-cover object-center md:object-[center_58%]"
                 />
                 <div
                   className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.08)_100%)]"
