@@ -1423,18 +1423,18 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
 
           <div className="relative grid gap-8 xl:grid-cols-[minmax(0,0.96fr)_minmax(460px,1.04fr)] xl:items-center xl:gap-12">
             <div className="max-w-3xl xl:py-4">
-              <span className="inline-flex items-center rounded-full border border-brand-green/25 bg-white/92 px-5 py-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-brand-green shadow-[0_12px_28px_rgba(53,114,56,0.1)] sm:px-6 sm:text-[0.92rem]">
+              <span className="inline-flex items-center rounded-full border border-primary/20 bg-white/92 px-5 py-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-primary shadow-[0_12px_28px_rgba(31,61,120,0.1)] sm:px-6 sm:text-[0.92rem]">
                 Кардіологічна реабілітація
               </span>
 
-              <h2 className="mt-7 max-w-[12ch] font-black leading-[0.9] tracking-[-0.05em] text-navy lg:max-w-[10.8ch]">
-                <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.8rem] lg:text-[4.45rem]">
+              <h2 className="mt-7 max-w-[13.2ch] font-black leading-[0.9] tracking-[-0.045em] text-navy lg:max-w-[12.2ch]">
+                <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.75rem] lg:text-[4.3rem]">
                   Зробіть свій
                 </span>
-                <span className="block whitespace-nowrap bg-[linear-gradient(90deg,#6FA539_0%,#78B042_35%,#5E9832_100%)] bg-clip-text text-[2.95rem] text-transparent sm:text-[4.55rem] lg:text-[5.3rem]">
+                <span className="block whitespace-nowrap text-[2.95rem] text-primary sm:text-[4.45rem] lg:text-[5.05rem]">
                   перший крок
                 </span>
-                <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.8rem] lg:text-[4.45rem]">
+                <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.75rem] lg:text-[4.3rem]">
                   до відновлення
                 </span>
               </h2>
