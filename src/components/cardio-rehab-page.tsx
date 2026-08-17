@@ -1439,16 +1439,11 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
                 </span>
               </h2>
 
-              <div className="mt-7 max-w-[34rem] space-y-4 text-navy/72">
-                <p className="text-base leading-relaxed sm:text-[1.15rem] sm:leading-[1.7]">
-                  Допоможемо безпечно розпочати відновлення, оцінити ваш стан і підібрати
-                  програму кардіологічної реабілітації під наглядом фахівців.
-                </p>
-                <p className="text-sm font-medium leading-relaxed text-navy/62 sm:text-[1rem]">
-                  Первинна консультація допоможе зрозуміти, з чого починати програму
-                  відновлення.
-                </p>
-              </div>
+              <p className="mt-7 max-w-[34rem] text-base leading-relaxed text-navy/72 sm:text-[1.15rem] sm:leading-[1.7]">
+                Допоможемо безпечно розпочати відновлення, оцінити ваш стан і підібрати програму
+                кардіологічної реабілітації під наглядом фахівців. Первинна консультація допоможе
+                зрозуміти, з чого починати програму відновлення.
+              </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch">
                 <button

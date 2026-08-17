@@ -374,25 +374,77 @@ const cardioRehab: SiteNode = {
         "Залиште заявку на сайті або зателефонуйте до центру. Адміністратор уточнить ваш запит, повідомить, які документи потрібно надати, та пояснить наступні кроки.",
     },
   ],
-  children: cardiologyPrograms.map((programData) => ({
-    ...program(
-      "rehab-cardio",
-      CARDIO_REHAB_ROUTE,
-      programData.id,
-      programData.title,
-      programData.description,
-      `${programData.duration} / ${programData.format}`,
-      programData.price,
-      rehabImg,
-    ),
-    route: programData.detailsUrl,
-    duration: programData.duration,
-    priceLabel: programData.price,
-    shortDescription: programData.description,
-    formats: [programData.format],
-    detailsUrl: programData.detailsUrl,
-    orderAction: programData.orderAction,
-  })),
+  children: [
+    {
+      id: "rehab-cardio--pislia-infarktu-miokarda",
+      slug: "pislia-infarktu-miokarda",
+      parentId: "rehab-cardio",
+      type: "service",
+      title: "Реабілітація після інфаркту міокарда",
+      shortDescription:
+        "Індивідуальна програма кардіологічного відновлення для безпечного повернення до активності після інфаркту міокарда.",
+      route: `${CARDIO_REHAB_ROUTE}/pislia-infarktu-miokarda`,
+      duration: "Індивідуально",
+      priceLabel: "від 3 000 грн",
+      image: cpetImg,
+      published: true,
+      customPage: "post-infarction-rehab",
+      seoTitle: "Реабілітація після інфаркту міокарда — ОСНОВА Реабілітація",
+      seoDescription:
+        "Програма кардіологічної реабілітації після інфаркту міокарда в ОСНОВА: оцінка стану, контрольовані навантаження, формати участі та актуальна вартість програм.",
+      faq: [
+        {
+          question: "Коли можна розпочинати реабілітацію після інфаркту?",
+          answer:
+            "Початок програми визначають індивідуально після стабілізації стану, аналізу виписки, результатів обстежень і рекомендацій кардіолога.",
+        },
+        {
+          question: "Які документи потрібні перед першою консультацією?",
+          answer:
+            "Бажано підготувати виписку зі стаціонару, результати обстежень, висновок кардіолога та перелік препаратів, які ви приймаєте.",
+        },
+        {
+          question: "Чи можна проходити програму амбулаторно?",
+          answer:
+            "Так, якщо стан дозволяє. Формат участі визначається після первинної оцінки та залежить від потрібного рівня контролю.",
+        },
+        {
+          question: "Скільки триває програма?",
+          answer:
+            "Тривалість залежить від вихідного стану, реакції на навантаження та цілей відновлення. План коригується в динаміці.",
+        },
+        {
+          question: "Чи потрібен дозвіл кардіолога?",
+          answer:
+            "Якщо у вас є рекомендації кардіолога, їх обов’язково враховують. Остаточне рішення про старт програми приймається після оцінки документів і стану пацієнта.",
+        },
+        {
+          question: "Як контролюється фізичне навантаження?",
+          answer:
+            "Фахівці орієнтуються на самопочуття, пульс, артеріальний тиск, переносимість вправ і темп відновлення після навантаження.",
+        },
+      ],
+    },
+    ...cardiologyPrograms.map((programData) => ({
+      ...program(
+        "rehab-cardio",
+        CARDIO_REHAB_ROUTE,
+        programData.id,
+        programData.title,
+        programData.description,
+        `${programData.duration} / ${programData.format}`,
+        programData.price,
+        rehabImg,
+      ),
+      route: programData.detailsUrl,
+      duration: programData.duration,
+      priceLabel: programData.price,
+      shortDescription: programData.description,
+      formats: [programData.format],
+      detailsUrl: programData.detailsUrl,
+      orderAction: programData.orderAction,
+    })),
+  ],
 };
 
 const ORTHO_ROUTE = "/reabilitatsiia/ortopedychna";

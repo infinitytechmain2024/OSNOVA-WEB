@@ -14,6 +14,7 @@ import { RentalEquipmentPage } from "@/components/rental-equipment-page";
 import { SocialProjectsPage } from "@/components/social-projects-page";
 import { ContactsPage } from "@/components/contacts-page";
 import { AboutOsnovaPage } from "@/components/about-osnova-page";
+import { PostInfarctionRehabPage } from "@/components/post-infarction-rehab-page";
 
 export const Route = createFileRoute("/$")({
   loader: ({ params }) => {
@@ -57,6 +58,10 @@ function NodePage() {
 
   if (node.customPage === "cardio-rehab" || node.route === "/reabilitatsiia/kardiolohichna") {
     return <CardioRehabPage node={node} />;
+  }
+
+  if (node.customPage === "post-infarction-rehab") {
+    return <PostInfarctionRehabPage node={node} />;
   }
 
   if (node.customPage === "all-services" || node.id === "services") {
