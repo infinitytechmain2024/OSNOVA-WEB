@@ -19,14 +19,14 @@ export function FAQConsultationCTA({
   const { openModal } = useConsultationModal();
 
   return (
-    <div className={cn("mx-auto max-w-[1480px] px-6 lg:px-10", className)}>
+    <div className={cn("mx-auto max-w-[1320px] px-6 lg:px-10", className)}>
       <div
         className={cn(
           "overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white shadow-[0_32px_90px_-52px_rgba(15,23,42,0.3)]",
           cardClassName,
         )}
       >
-        <div className="grid items-stretch gap-0 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1.08fr)]">
+        <div className="grid items-stretch gap-0 lg:grid-cols-[minmax(0,1fr)_minmax(380px,640px)]">
           <div className="relative z-10 flex flex-col justify-center gap-6 px-8 py-9 sm:px-10 md:px-12 md:py-12 lg:px-16 lg:py-16">
             <span className="inline-flex w-fit items-center gap-3 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
               <MessageCircle className="size-4" />

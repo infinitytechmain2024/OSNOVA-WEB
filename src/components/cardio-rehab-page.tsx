@@ -1429,7 +1429,7 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
               </span>
 
               <h2 className="mt-8 max-w-[12ch] text-[2.65rem] font-black leading-[0.94] tracking-[-0.045em] text-navy sm:text-[4rem] lg:text-[4.55rem]">
-                Як проходить реабілітація?
+                Як почати кардіологічну реабілітацію?
               </h2>
 
               <div className="mt-8 h-1.5 w-22 rounded-full bg-[linear-gradient(90deg,#2563eb_0%,#1f73ff_58%,#2ad38b_100%)] shadow-[0_10px_22px_rgba(47,99,190,0.18)] sm:w-24" />
