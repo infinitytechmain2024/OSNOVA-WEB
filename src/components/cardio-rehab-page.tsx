@@ -312,8 +312,6 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           </div>
         </section>
 
-        <AnchorNav />
-
         <PageSection id="about" className="pt-10 sm:pt-16">
           <ExpandableIntroSection
             title="Що таке кардіологічна реабілітація"
@@ -346,6 +344,8 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
             />
           </div>
         </div>
+
+        <AnchorNav />
 
         <section id="for-whom" className="scroll-mt-24 bg-white py-12 sm:py-20">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
