@@ -119,7 +119,8 @@ const METHODS = [
 
 const METHOD_TEXT: Record<(typeof METHODS)[number], string> = {
   "Лікувальна фізкультура": "Вправи під контролем фахівця з поступовим збільшенням навантаження.",
-  "Аеробні тренування": "Ходьба, велотренажер або інше кардіообладнання відповідно до стану пацієнта.",
+  "Аеробні тренування":
+    "Ходьба, велотренажер або інше кардіообладнання відповідно до стану пацієнта.",
   "Контрольоване фізичне навантаження": "Індивідуальний вибір інтенсивності та тривалості занять.",
   "Моніторинг тиску, пульсу та самопочуття":
     "Контроль основних показників під час і після фізичної активності.",
@@ -156,80 +157,72 @@ const RESULTS = [
 export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
   const { openModal } = useConsultationModal();
   const [faqExpanded, setFaqExpanded] = React.useState(false);
-  const faqItems = faqExpanded ? node.faq ?? [] : (node.faq ?? []).slice(0, 3);
+  const faqItems = faqExpanded ? (node.faq ?? []) : (node.faq ?? []).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-white">
       <SiteHeader />
       <main>
-        <section className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#f1f7ff_100%)]">
-          <div className="absolute inset-y-0 right-0 hidden w-[48%] bg-[radial-gradient(circle_at_top_left,rgba(47,99,190,0.14),transparent_55%)] lg:block" />
-          <div className="mx-auto grid max-w-[1600px] gap-10 px-4 py-10 sm:px-6 sm:py-14 lg:grid-cols-[0.92fr_1.08fr] lg:px-10 lg:py-16">
-            <div className="flex flex-col justify-center">
-              <Breadcrumbs
-                items={[
-                  { title: "Головна", route: "/" },
-                  { title: "Реабілітація", route: "/reabilitatsiia" },
-                  { title: "Кардіологічна реабілітація", route: "/reabilitatsiia/kardiolohichna" },
-                  { title: node.title, route: node.route },
-                ]}
-                className="pb-5"
-              />
-              <span className="inline-flex w-fit rounded-full border border-primary/15 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary shadow-sm">
-                Кардіологічна реабілітація
-              </span>
-              <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.02] text-navy sm:text-5xl lg:text-6xl">
-                Реабілітація після інфаркту міокарда
-              </h1>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-navy/80">
-                Допомагаємо безпечно повернутися до активності, відновити витривалість і
-                сформувати зрозумілий план подальшого відновлення.
-              </p>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-navy/68">
-                Програма формується індивідуально після оцінки стану, рекомендацій лікаря та
-                результатів обстежень.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <button
-                  type="button"
-                  onClick={() => openModal("Замовити консультацію")}
-                  className="inline-flex min-h-14 items-center justify-center rounded-xl bg-primary px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-primary/90"
-                >
-                  Замовити консультацію
-                </button>
-                <a
-                  href={CONTACTS.phoneHref}
-                  className="inline-flex min-h-14 items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white px-7 py-4 text-sm font-bold text-navy transition-colors hover:border-primary/35 hover:text-primary"
-                >
-                  <Phone className="size-4" />
-                  {CONTACTS.phone}
-                </a>
-              </div>
-            </div>
+        <section className="bg-white px-4 pt-4 sm:px-6 sm:pt-6 lg:px-8">
+          <div className="relative mx-auto max-w-[1800px] overflow-hidden rounded-[42px] bg-navy-deep">
+            <img
+              src={heroImg}
+              alt="Пацієнт проходить контрольоване тренування разом із фахівцем"
+              className="absolute inset-0 h-full w-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,23,58,0.94)_0%,rgba(8,23,58,0.88)_34%,rgba(8,23,58,0.52)_58%,rgba(8,23,58,0.14)_100%)]" />
 
-            <div className="relative overflow-hidden rounded-[32px] border border-sky-100 bg-white shadow-[0_30px_70px_rgba(31,61,120,0.12)]">
-              <img
-                src={heroImg}
-                alt="Пацієнт проходить контрольоване тренування разом із фахівцем"
-                className="h-full min-h-[320px] w-full object-cover object-center"
-              />
+            <div className="relative mx-auto grid min-h-[540px] max-w-[1800px] items-center px-6 py-14 sm:px-10 sm:py-16 lg:min-h-[620px] lg:px-16 lg:py-20 xl:px-20">
+              <div className="max-w-[640px]">
+                <span className="inline-flex w-fit rounded-full border border-white/25 bg-white px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary shadow-[0_10px_30px_rgba(6,18,46,0.18)]">
+                  Кардіологічна реабілітація
+                </span>
+                <h1 className="mt-6 max-w-[12ch] text-4xl font-extrabold leading-[0.98] text-white sm:text-5xl lg:text-6xl xl:text-[5.25rem]">
+                  Реабілітація після інфаркту міокарда
+                </h1>
+                <p className="mt-6 max-w-[24ch] text-lg leading-relaxed text-white/88 sm:text-[1.35rem]">
+                  Індивідуальна програма відновлення для безпечного повернення до активного життя
+                  під контролем фахівців.
+                </p>
+                <div className="mt-10">
+                  <button
+                    type="button"
+                    onClick={() => openModal("Замовити консультацію")}
+                    className="inline-flex min-h-16 items-center justify-center rounded-2xl bg-brand-green px-8 py-4 text-base font-bold text-brand-green-foreground shadow-[0_18px_40px_rgba(53,200,138,0.28)] transition-colors hover:bg-brand-green/90"
+                  >
+                    Замовити консультацію
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="border-y border-slate-200/70 bg-white">
-          <div className="mx-auto max-w-[1600px] overflow-x-auto px-4 py-4 sm:px-6 lg:px-10">
-            <nav aria-label="Навігація по сторінці" className="flex min-w-max gap-2">
-              {ANCHORS.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-navy/80 transition-colors hover:border-primary/35 hover:bg-sky-50 hover:text-primary"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
+        <section className="border-b border-slate-200/70 bg-white">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <Breadcrumbs
+              items={[
+                { title: "Головна", route: "/" },
+                { title: "Реабілітація", route: "/reabilitatsiia" },
+                { title: "Кардіологічна реабілітація", route: "/reabilitatsiia/kardiolohichna" },
+                { title: node.title, route: node.route },
+              ]}
+              className="pb-3 pt-4 sm:pt-4"
+            />
+
+            <div className="overflow-x-auto pb-4 scrollbar-none">
+              <nav aria-label="Навігація по сторінці" className="flex min-w-max gap-2 sm:gap-3">
+                {ANCHORS.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-navy/80 transition-colors hover:border-primary/35 hover:bg-sky-50 hover:text-primary"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
           </div>
         </section>
 
@@ -556,7 +549,9 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                   className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-white px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
                 >
                   {faqExpanded ? "Показати менше питань" : "Показати більше питань"}
-                  <ChevronDown className={cn("size-4 transition-transform", faqExpanded && "rotate-180")} />
+                  <ChevronDown
+                    className={cn("size-4 transition-transform", faqExpanded && "rotate-180")}
+                  />
                 </button>
               </div>
             )}
@@ -606,14 +601,10 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
   );
 }
 
-function Container({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return <div className={cn("mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10", className)}>{children}</div>;
+function Container({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={cn("mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10", className)}>{children}</div>
+  );
 }
 
 function SectionHeading({
@@ -639,7 +630,13 @@ function SectionHeading({
       </h2>
       <div className={cn("mt-4 h-1 w-16 rounded-full bg-primary", centered && "mx-auto")} />
       {text && (
-        <p className={cn("mt-4 max-w-3xl text-base leading-relaxed", inverse ? "text-white/74" : "text-navy/72", centered && "mx-auto")}>
+        <p
+          className={cn(
+            "mt-4 max-w-3xl text-base leading-relaxed",
+            inverse ? "text-white/74" : "text-navy/72",
+            centered && "mx-auto",
+          )}
+        >
           {text}
         </p>
       )}
