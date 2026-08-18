@@ -311,6 +311,34 @@ var Building2 = createLucideIcon("building-2", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var CalendarCheck2 = createLucideIcon("calendar-check-2", [
+	["path", {
+		d: "M8 2v4",
+		key: "1cmpym"
+	}],
+	["path", {
+		d: "M16 2v4",
+		key: "4m81vk"
+	}],
+	["path", {
+		d: "M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8",
+		key: "bce9hv"
+	}],
+	["path", {
+		d: "M3 10h18",
+		key: "8toen8"
+	}],
+	["path", {
+		d: "m16 20 2 2 4-4",
+		key: "13tcca"
+	}]
+]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var CalendarCheck = createLucideIcon("calendar-check", [
 	["path", {
 		d: "M8 2v4",
@@ -1586,6 +1614,26 @@ var Share2 = createLucideIcon("share-2", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var ShieldAlert = createLucideIcon("shield-alert", [
+	["path", {
+		d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+		key: "oel41y"
+	}],
+	["path", {
+		d: "M12 8v4",
+		key: "1got3b"
+	}],
+	["path", {
+		d: "M12 16h.01",
+		key: "1drbdi"
+	}]
+]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var ShieldCheck = createLucideIcon("shield-check", [["path", {
 	d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
 	key: "oel41y"
@@ -1647,30 +1695,6 @@ var Stethoscope = createLucideIcon("stethoscope", [
 		cy: "10",
 		r: "2",
 		key: "ts1r5v"
-	}]
-]);
-/**
-* @license lucide-react v0.575.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var TimerReset = createLucideIcon("timer-reset", [
-	["path", {
-		d: "M10 2h4",
-		key: "n1abiw"
-	}],
-	["path", {
-		d: "M12 14v-4",
-		key: "1evpnu"
-	}],
-	["path", {
-		d: "M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6",
-		key: "1ts96g"
-	}],
-	["path", {
-		d: "M9 17H4v5",
-		key: "8t5av"
 	}]
 ]);
 /**
@@ -1889,4 +1913,4 @@ var Zap = createLucideIcon("zap", [["path", {
 	key: "1xq2db"
 }]]);
 //#endregion
-export { FileSearch as $, MessageSquare as A, ArrowRight as At, Instagram as B, Percent as C, CalendarCheck as Ct, Navigation as D, BadgeCheck as Dt, Network as E, BookOpen as Et, Mail as F, Headphones as G, House as H, LoaderCircle as I, GraduationCap as J, Handshake as K, LayoutGrid as L, Menu as M, Ambulance as Mt, MapPinned as N, Activity as Nt, Music2 as O, ArrowUp as Ot, MapPin as P, FileText as Q, Layers as R, PhoneCall as S, CalendarDays as St, Newspaper as T, Brain as Tt, Heart as U, Info as V, HeartPulse as W, FlaskConical as X, FolderUp as Y, Flame as Z, Send as _, ChevronLeft as _t, Users as a, CloudUpload as at, Presentation as b, ChartLine as bt, UserCheck as c, ClipboardPenLine as ct, TriangleAlert as d, Circle as dt, FilePen as et, TimerReset as f, CircleQuestionMark as ft, Share2 as g, ChevronRight as gt, ShieldCheck as h, ChevronUp as ht, Wrench as i, Compass as it, MessageCircle as j, ArrowLeft as jt, Microscope as k, ArrowUpRight as kt, Trophy as l, ClipboardList as lt, Sparkles as m, CircleAlert as mt, Youtube as n, ExternalLink as nt, User as o, Clock as ot, Stethoscope as p, CircleCheck as pt, HandHeart as q, X as r, Dumbbell as rt, UserRoundCheck as s, Clock3 as st, Zap as t, Facebook as tt, Truck as u, ClipboardCheck as ut, Search as v, ChevronDown as vt, Package as w, Building2 as wt, Phone as x, Calendar as xt, Route as y, Check as yt, Languages as z };
+export { FileSearch as $, MessageSquare as A, ArrowUpRight as At, Instagram as B, Percent as C, CalendarCheck as Ct, Navigation as D, BookOpen as Dt, Network as E, Brain as Et, Mail as F, Headphones as G, House as H, LoaderCircle as I, GraduationCap as J, Handshake as K, LayoutGrid as L, Menu as M, ArrowLeft as Mt, MapPinned as N, Ambulance as Nt, Music2 as O, BadgeCheck as Ot, MapPin as P, Activity as Pt, FileText as Q, Layers as R, PhoneCall as S, CalendarDays as St, Newspaper as T, Building2 as Tt, Heart as U, Info as V, HeartPulse as W, FlaskConical as X, FolderUp as Y, Flame as Z, Send as _, ChevronLeft as _t, Users as a, CloudUpload as at, Presentation as b, ChartLine as bt, UserCheck as c, ClipboardPenLine as ct, TriangleAlert as d, Circle as dt, FilePen as et, Stethoscope as f, CircleQuestionMark as ft, Share2 as g, ChevronRight as gt, ShieldAlert as h, ChevronUp as ht, Wrench as i, Compass as it, MessageCircle as j, ArrowRight as jt, Microscope as k, ArrowUp as kt, Trophy as l, ClipboardList as lt, ShieldCheck as m, CircleAlert as mt, Youtube as n, ExternalLink as nt, User as o, Clock as ot, Sparkles as p, CircleCheck as pt, HandHeart as q, X as r, Dumbbell as rt, UserRoundCheck as s, Clock3 as st, Zap as t, Facebook as tt, Truck as u, ClipboardCheck as ut, Search as v, ChevronDown as vt, Package as w, CalendarCheck2 as wt, Phone as x, Calendar as xt, Route as y, Check as yt, Languages as z };

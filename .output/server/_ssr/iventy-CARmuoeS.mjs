@@ -1,5 +1,5 @@
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { At as ArrowRight, J as GraduationCap, Nt as Activity, P as MapPin, St as CalendarDays, W as HeartPulse, a as Users, j as MessageCircle, pt as CircleCheck, rt as Dumbbell, st as Clock3, wt as Building2 } from "../_libs/lucide-react.mjs";
+import { J as GraduationCap, P as MapPin, Pt as Activity, St as CalendarDays, Tt as Building2, W as HeartPulse, a as Users, j as MessageCircle, jt as ArrowRight, pt as CircleCheck, rt as Dumbbell, st as Clock3 } from "../_libs/lucide-react.mjs";
 import { D as service_sports_default, E as service_rehab_default, S as getBreadcrumbs, _ as SiteHeader, g as SiteFooter, h as SectionHeader, i as CONTACTS, m as PageContainer, n as Breadcrumbs, t as AppLink, w as getNodeByRoute, y as cpet_test_default } from "./blocks-BPLbqWhS.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/iventy-CARmuoeS.js
 var import_jsx_runtime = require_jsx_runtime();

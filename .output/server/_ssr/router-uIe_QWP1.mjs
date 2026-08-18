@@ -2,16 +2,16 @@ import { n as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { _ as useRouter, c as HeadContent, d as createRouter, f as Outlet, h as createRootRouteWithContext, m as createFileRoute, p as lazyRouteComponent, s as Scripts } from "../_libs/@tanstack/react-router+[...].mjs";
 import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
-import { At as ArrowRight, G as Headphones, H as House, Nt as Activity, P as MapPin, W as HeartPulse, _ as Send, gt as ChevronRight, p as Stethoscope, rt as Dumbbell, x as Phone } from "../_libs/lucide-react.mjs";
+import { G as Headphones, H as House, P as MapPin, Pt as Activity, W as HeartPulse, _ as Send, f as Stethoscope, gt as ChevronRight, jt as ArrowRight, rt as Dumbbell, x as Phone } from "../_libs/lucide-react.mjs";
 import { C as getNodeById, _ as SiteHeader, g as SiteFooter, i as CONTACTS, m as PageContainer, o as ConsultationModalProvider, t as AppLink, x as ergometer_default } from "./blocks-BPLbqWhS.mjs";
-import { t as Route } from "../_-CkDVgPxC.mjs";
+import { t as Route } from "../_-Oe5gCtXi.mjs";
 import { t as Route$10 } from "./konferentsii-CPwKIgJV.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
 import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-C8T803hV.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-uIe_QWP1.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-B4jPKcQ5.css";
+var styles_default = "/assets/styles-XD8OlzcD.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
