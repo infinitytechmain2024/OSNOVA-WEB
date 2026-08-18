@@ -312,19 +312,6 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           </div>
         </section>
 
-        <div className="border-b border-border/70 bg-white">
-          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-            <Breadcrumbs
-              items={[
-                { title: "Головна", route: "/" },
-                { title: "Реабілітація", route: "/reabilitatsiia" },
-                { title: "Кардіологічна реабілітація", route: node.route },
-              ]}
-              className="pb-4"
-            />
-          </div>
-        </div>
-
         <AnchorNav />
 
         <PageSection id="about" className="pt-10 sm:pt-16">
@@ -346,6 +333,19 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
             }
           />
         </PageSection>
+
+        <div className="border-b border-border/70 bg-white">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <Breadcrumbs
+              items={[
+                { title: "Головна", route: "/" },
+                { title: "Реабілітація", route: "/reabilitatsiia" },
+                { title: "Кардіологічна реабілітація", route: node.route },
+              ]}
+              className="pb-4"
+            />
+          </div>
+        </div>
 
         <section id="for-whom" className="scroll-mt-24 bg-white py-12 sm:py-20">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
@@ -561,15 +561,23 @@ function AnchorNav() {
       <div className="mx-auto flex max-w-[1600px] items-center gap-4 overflow-x-auto px-4 py-3 sm:px-6 lg:px-10">
         <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить:</p>
         <nav aria-label="Розділи сторінки" className="flex min-w-max gap-2 sm:gap-3">
-          {ANCHORS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy/78 transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
-            >
-              {item.label}
-            </a>
-          ))}
+          {ANCHORS.map((item, index) => {
+            const isPrimaryTextLink = index === 0;
+
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={
+                  isPrimaryTextLink
+                    ? "py-2 text-sm font-semibold text-primary underline-offset-4 transition-colors hover:text-primary/80 hover:underline"
+                    : "rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy/78 transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
+                }
+              >
+                {isPrimaryTextLink ? `${item.label}:` : item.label}
+              </a>
+            );
+          })}
         </nav>
       </div>
     </div>
