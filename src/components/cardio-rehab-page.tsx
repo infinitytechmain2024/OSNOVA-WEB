@@ -51,7 +51,7 @@ import sportsImg from "@/assets/service-sports.jpg";
 import cardioHeart3dImg from "@/assets/cardio-heart-3d.jpg";
 import cardioRehabCtaImg from "@/assets/about/cardio-rehab-cta-photo-v3.jpg";
 import medicalAssessmentImg from "@/assets/about/medical-assessment.jpg";
-import { getNodeById } from "@/lib/tree";
+import { getBreadcrumbs, getNodeById } from "@/lib/tree";
 
 const ANCHORS = [
   { href: "#about", label: "Про програму" },
@@ -332,13 +332,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           />
         </PageSection>
 
-        <AnchorNav
-          breadcrumbItems={[
-            { title: "Головна", route: "/" },
-            { title: "Реабілітація", route: "/reabilitatsiia" },
-            { title: "Кардіологічна реабілітація", route: node.route },
-          ]}
-        />
+        <AnchorNav breadcrumbItems={getBreadcrumbs(node)} />
 
         <section id="for-whom" className="scroll-mt-24 bg-white py-12 sm:py-20">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
@@ -563,13 +557,13 @@ function AnchorNav({
             <p className="shrink-0 text-sm font-bold text-navy/70">Що вас цікавить:</p>
             <nav aria-label="Розділи сторінки" className="flex min-w-max gap-2 sm:gap-3">
               {ANCHORS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy/78 transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
-              >
-                {item.label}
-              </a>
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-full border border-border bg-soft px-4 py-2 text-sm font-semibold text-navy/78 transition-colors hover:border-primary/40 hover:bg-soft-blue hover:text-primary"
+                >
+                  {item.label}
+                </a>
               ))}
             </nav>
           </div>
