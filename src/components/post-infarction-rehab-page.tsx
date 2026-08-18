@@ -3,7 +3,6 @@ import {
   Activity,
   AlertTriangle,
   ArrowRight,
-  CalendarCheck2,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
@@ -119,46 +118,6 @@ const PROCESS_STEPS = [
     icon: HeartPulse,
     title: "Моніторинг прогресу та корекція",
     text: "Регулярно оцінюємо самопочуття, динаміку відновлення і коригуємо темп програми.",
-  },
-  {
-    icon: CalendarCheck2,
-    title: "Повернення до активного життя",
-    text: "Допомагаємо закріпити безпечні звички, режим навантаження й упевненість у щоденній активності.",
-  },
-] as const;
-
-const METHODS = [
-  {
-    title: "Лікувальна фізкультура",
-    text: "Спеціально підібрані вправи для зниження втоми та підвищення витривалості.",
-  },
-  {
-    title: "Аеробні тренування",
-    text: "Дозовані кардіонавантаження для покращення роботи серцево-судинної системи.",
-  },
-  {
-    title: "Контрольоване фізичне навантаження",
-    text: "Поступове збільшення інтенсивності під контролем показників.",
-  },
-  {
-    title: "Моніторинг стану",
-    text: "Контроль ЕКГ, пульсу та тиску під час занять або за планом лікаря.",
-  },
-  {
-    title: "Дихальні вправи",
-    text: "Техніки для покращення функції легень та переносимості навантаження.",
-  },
-  {
-    title: "Освітня підтримка",
-    text: "Пояснення щодо фізичної активності, самоконтролю, стресу та способу життя.",
-  },
-  {
-    title: "Консультація кардіолога",
-    text: "Регулярний супровід лікаря на етапах старту і корекції програми.",
-  },
-  {
-    title: "Рекомендації щодо способу життя",
-    text: "Індивідуальні поради щодо руху, сну, харчування й подальшої профілактики.",
   },
 ] as const;
 
@@ -359,10 +318,7 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
             <div className="mt-6 overflow-hidden rounded-[28px] border border-sky-100 bg-[linear-gradient(90deg,#f5f9ff_0%,#ffffff_56%)]">
               <div className="grid gap-6 lg:grid-cols-[1.02fr_0.98fr]">
                 <div className="p-6 sm:p-8">
-                  <div className="flex items-center gap-3 text-primary">
-                    <CalendarCheck2 className="size-6" />
-                    <h3 className="text-2xl font-extrabold text-navy">Початок програми</h3>
-                  </div>
+                  <h3 className="text-2xl font-extrabold text-navy">Початок програми</h3>
                   <p className="mt-4 text-sm leading-relaxed text-navy/74 sm:text-base">
                     Реабілітацію можна розпочинати після стабілізації стану та за рекомендацією
                     лікаря. Зазвичай це відбувається від кількох днів до кількох тижнів після події
@@ -459,7 +415,7 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                       key={step.title}
                       className="relative rounded-[22px] border border-slate-200 bg-white p-5 shadow-sm"
                     >
-                      {index < 3 && (
+                      {index < PROCESS_STEPS.length - 1 && (
                         <span className="absolute right-[-14px] top-1/2 hidden -translate-y-1/2 text-primary/40 xl:block">
                           <ArrowRight className="size-6" />
                         </span>
@@ -575,7 +531,7 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
           </Container>
         </section>
 
-        <section className="bg-white py-6 sm:py-10">
+        <section className="bg-[#f6faff] py-8 sm:py-12">
           <Container>
             <div className="grid gap-8 overflow-hidden rounded-[30px] border border-sky-100 bg-[linear-gradient(180deg,#f5f9ff_0%,#ffffff_100%)] p-6 shadow-[0_18px_44px_rgba(31,61,120,0.06)] lg:grid-cols-[0.9fr_1.1fr] lg:p-8">
               <div className="overflow-hidden rounded-[24px]">
@@ -615,33 +571,17 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
           </Container>
         </section>
 
-        <section className="bg-white py-6 sm:py-10">
+        <section className="bg-[#f6faff] py-6 sm:py-10">
           <Container>
             <div className="rounded-[30px] bg-[linear-gradient(180deg,#f5f9ff_0%,#edf5ff_100%)] p-6 sm:p-8">
               <div className="flex items-center justify-between gap-4">
                 <h2 className="text-3xl font-extrabold text-navy sm:text-4xl">Інші послуги</h2>
-                <div className="hidden gap-3 md:flex">
-                  <button
-                    type="button"
-                    aria-label="Попередній слайд"
-                    onClick={() => scrollOtherServicesToIndex(Math.max(0, activeOtherService - 1))}
-                    className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-white text-navy transition-colors hover:border-primary/30 hover:text-primary"
-                  >
-                    <ChevronLeft className="size-5" />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Наступний слайд"
-                    onClick={() =>
-                      scrollOtherServicesToIndex(
-                        Math.min(OTHER_SERVICES.length - 1, activeOtherService + 1),
-                      )
-                    }
-                    className="flex size-11 items-center justify-center rounded-full border border-slate-200 bg-white text-navy transition-colors hover:border-primary/30 hover:text-primary"
-                  >
-                    <ChevronRight className="size-5" />
-                  </button>
-                </div>
+                <AppLink
+                  to="/tsiny-ta-posluhy"
+                  className="hidden items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-primary/30 hover:bg-sky-50 md:inline-flex"
+                >
+                  Всі послуги
+                </AppLink>
               </div>
               <div
                 ref={otherServicesTrackRef}
@@ -682,34 +622,6 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                   />
                 ))}
               </div>
-            </div>
-          </Container>
-        </section>
-
-        <section className="bg-white pb-10 pt-4 sm:pb-14">
-          <Container>
-            <div className="flex flex-col items-center justify-between gap-6 rounded-[28px] bg-[linear-gradient(90deg,#f4fbff_0%,#f8fdff_100%)] px-6 py-6 text-center shadow-[0_14px_34px_rgba(31,61,120,0.06)] lg:flex-row lg:text-left">
-              <div className="flex items-center gap-4">
-                <div className="flex size-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <HeartPulse className="size-8" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-extrabold text-primary sm:text-3xl">
-                    Відновлюйте серце разом з ОСНОВА
-                  </h2>
-                  <p className="mt-2 text-sm leading-relaxed text-navy/72 sm:text-base">
-                    Професійна підтримка на кожному етапі вашого відновлення.
-                  </p>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => openModal("Записатися на консультацію")}
-                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-brand-green px-7 py-4 text-sm font-bold text-brand-green-foreground transition-colors hover:bg-brand-green/90"
-              >
-                Записатися на консультацію
-                <ArrowRight className="size-4" />
-              </button>
             </div>
           </Container>
         </section>
