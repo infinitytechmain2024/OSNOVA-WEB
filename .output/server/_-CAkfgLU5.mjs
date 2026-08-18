@@ -1,13 +1,13 @@
 import { n as __toESM } from "./_runtime.mjs";
 import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
-import { $ as FileSearch, A as MessageSquare, C as Percent, D as Navigation, Dt as BookOpen, F as Mail, H as House, J as GraduationCap, K as Handshake, N as MapPinned, Nt as Ambulance, Ot as BadgeCheck, P as MapPin, Pt as Activity, Q as FileText, R as Layers, S as PhoneCall, St as CalendarDays, Tt as Building2, U as Heart, V as Info, W as HeartPulse, X as FlaskConical, _ as Send, _t as ChevronLeft, a as Users, b as Presentation, bt as ChartLine, ct as ClipboardPenLine, d as TriangleAlert, f as Stethoscope, g as Share2, gt as ChevronRight, h as ShieldAlert, ht as ChevronUp, i as Wrench, it as Compass, j as MessageCircle, jt as ArrowRight, k as Microscope, lt as ClipboardList, m as ShieldCheck, nt as ExternalLink, ot as Clock, p as Sparkles, pt as CircleCheck, q as HandHeart, rt as Dumbbell, s as UserRoundCheck, u as Truck, ut as ClipboardCheck, v as Search, vt as ChevronDown, w as Package, wt as CalendarCheck2, x as Phone, y as Route, yt as Check } from "./_libs/lucide-react.mjs";
+import { $ as FileSearch, A as MessageSquare, C as Percent, D as Navigation, Dt as BookOpen, F as Mail, H as House, J as GraduationCap, K as Handshake, N as MapPinned, Nt as Ambulance, Ot as BadgeCheck, P as MapPin, Pt as Activity, Q as FileText, R as Layers, S as PhoneCall, St as CalendarDays, Tt as Building2, U as Heart, W as HeartPulse, X as FlaskConical, _ as Send, _t as ChevronLeft, a as Users, b as Presentation, bt as ChartLine, ct as ClipboardPenLine, d as TriangleAlert, f as Stethoscope, g as Share2, gt as ChevronRight, h as ShieldAlert, ht as ChevronUp, i as Wrench, it as Compass, j as MessageCircle, jt as ArrowRight, k as Microscope, lt as ClipboardList, m as ShieldCheck, nt as ExternalLink, ot as Clock, p as Sparkles, pt as CircleCheck, q as HandHeart, rt as Dumbbell, s as UserRoundCheck, u as Truck, ut as ClipboardCheck, v as Search, vt as ChevronDown, w as Package, wt as CalendarCheck2, x as Phone, y as Route, yt as Check } from "./_libs/lucide-react.mjs";
 import { C as getNodeById, D as service_sports_default, E as service_rehab_default, O as siteTree, S as getBreadcrumbs, T as service_checkup_default, _ as SiteHeader, a as ConsultationForm, b as ecg_review_default, c as DialogContent, d as DialogTitle, f as FAQAccordion, g as SiteFooter, h as SectionHeader$1, i as CONTACTS, k as useConsultationModal, l as DialogDescription, m as PageContainer, n as Breadcrumbs, p as IMAGES, r as CARDIO_REHAB_PROGRAMS, s as Dialog, t as AppLink, u as DialogHeader, v as cn, w as getNodeByRoute, x as ergometer_default, y as cpet_test_default } from "./_ssr/blocks-BPLbqWhS.mjs";
-import { t as Route$1 } from "./_-Oe5gCtXi.mjs";
+import { t as Route$1 } from "./_-D4Lf8s0P.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-BDFTBUiz.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as companyOverviewCtaClassName, c as partner_chnu_default, d as partner_karpatska_akademiia_default, f as partner_sytenko_default, i as cardio_rehab_cta_photo_v3_default, l as partner_heart_default, n as FAQConsultationCTA, o as medical_assessment_default, r as balance_reference_card_default, s as partner_asmu_default, t as CompanyOverviewSection, u as partner_ifnmu_default } from "./_ssr/company-overview-section-vfTlHBRv.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-DxolraaY.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-CAkfgLU5.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -5178,7 +5178,7 @@ var PROFILES = [
 	"Спортивна медицина",
 	"Психологія ментального здоров’я"
 ];
-var METHODS$1 = [
+var METHODS = [
 	{
 		title: "Фізіотерапія та апаратні методи",
 		text: "Магнітотерапія, ударно-хвильова терапія, високопотужний лазер, електростимуляція, пресотерапія та лімфодренаж. Ці методи зменшують біль, знімають набряк, покращують мікроциркуляцію та прискорюють процеси загоєння.",
@@ -5398,7 +5398,7 @@ function AboutOsnovaPage({ node }) {
 						titleId: "methods-title"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-						children: METHODS$1.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+						children: METHODS.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 							className: "group flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md shadow-slate-900/5 transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 								className: "aspect-[16/10] overflow-hidden bg-slate-100",
@@ -5682,24 +5682,12 @@ var ANCHORS = [
 		label: "Показання"
 	},
 	{
-		href: "#timing",
-		label: "Протипоказання"
-	},
-	{
-		href: "#methods",
-		label: "Методи"
-	},
-	{
 		href: "#process",
 		label: "Як проходить"
 	},
 	{
 		href: "#pricing",
 		label: "Вартість"
-	},
-	{
-		href: "#faq",
-		label: "FAQ"
 	}
 ];
 var ABOUT_POINTS = [
@@ -5723,6 +5711,13 @@ var CONTRAINDICATIONS = [
 	"декомпенсація серцевої недостатності",
 	"гострі запальні або інфекційні захворювання",
 	"інші стани, за яких лікар рекомендує відкласти фізичну реабілітацію"
+];
+var REHAB_RESULTS = [
+	"підвищення витривалості та сили",
+	"зменшення задишки та втоми",
+	"стабілізація артеріального тиску",
+	"покращення якості життя та настрою",
+	"безпечне повернення до активного способу життя"
 ];
 var EMERGENCY_SIGNS = [
 	"раптовий або інтенсивний біль у грудях",
@@ -5777,40 +5772,6 @@ var PROCESS_STEPS = [
 		text: "Допомагаємо закріпити безпечні звички, режим навантаження й упевненість у щоденній активності."
 	}
 ];
-var METHODS = [
-	{
-		title: "Лікувальна фізкультура",
-		text: "Спеціально підібрані вправи для зниження втоми та підвищення витривалості."
-	},
-	{
-		title: "Аеробні тренування",
-		text: "Дозовані кардіонавантаження для покращення роботи серцево-судинної системи."
-	},
-	{
-		title: "Контрольоване фізичне навантаження",
-		text: "Поступове збільшення інтенсивності під контролем показників."
-	},
-	{
-		title: "Моніторинг стану",
-		text: "Контроль ЕКГ, пульсу та тиску під час занять або за планом лікаря."
-	},
-	{
-		title: "Дихальні вправи",
-		text: "Техніки для покращення функції легень та переносимості навантаження."
-	},
-	{
-		title: "Освітня підтримка",
-		text: "Пояснення щодо фізичної активності, самоконтролю, стресу та способу життя."
-	},
-	{
-		title: "Консультація кардіолога",
-		text: "Регулярний супровід лікаря на етапах старту і корекції програми."
-	},
-	{
-		title: "Рекомендації щодо способу життя",
-		text: "Індивідуальні поради щодо руху, сну, харчування й подальшої профілактики."
-	}
-];
 var OTHER_SERVICES = [
 	{
 		title: "Кардіологічна діагностика",
@@ -5839,10 +5800,8 @@ var OTHER_SERVICES = [
 ];
 function PostInfarctionRehabPage({ node }) {
 	const { openModal } = useConsultationModal();
-	const [faqExpanded, setFaqExpanded] = import_react.useState(false);
 	const [activeOtherService, setActiveOtherService] = import_react.useState(0);
 	const otherServicesTrackRef = import_react.useRef(null);
-	const faqItems = faqExpanded ? node.faq ?? [] : (node.faq ?? []).slice(0, 3);
 	const scrollOtherServicesToIndex = (index) => {
 		const track = otherServicesTrackRef.current;
 		if (!track) return;
@@ -5953,18 +5912,11 @@ function PostInfarctionRehabPage({ node }) {
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 						id: "about",
 						className: "bg-white pb-6 pt-2 sm:pb-8",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Container, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Container, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "rounded-[30px] border border-sky-100 bg-[linear-gradient(180deg,#f7fbff_0%,#f3f8ff_100%)] p-6 shadow-[0_18px_55px_rgba(31,61,120,0.06)] sm:p-8 lg:p-10",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid items-center gap-8 lg:grid-cols-[320px_1fr] xl:grid-cols-[360px_1fr]",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "mx-auto max-w-[320px]",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-										src: cardio_heart_3d_default,
-										alt: "Серце",
-										className: "w-full object-contain"
-									})
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 										className: "text-3xl font-extrabold text-navy sm:text-4xl",
 										children: "Що таке інфаркт міокарда"
@@ -5979,12 +5931,22 @@ function PostInfarctionRehabPage({ node }) {
 											className: "flex items-start gap-3 text-sm text-navy/78",
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "mt-0.5 size-5 shrink-0 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: item })]
 										}, item))
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										onClick: () => openModal("Детальніше про реабілітацію"),
+										className: "mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary/90",
+										children: "Детальніше"
 									})
-								] })]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "mt-8 flex items-start gap-3 rounded-[22px] border border-primary/10 bg-white/80 px-5 py-4 text-sm font-semibold text-primary",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Info, { className: "mt-0.5 size-5 shrink-0" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Реабілітація допомагає поступово відновлювати активність та формувати безпечний маршрут повернення до повсякденного життя." })]
-							})]
+								] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "overflow-hidden rounded-[24px] bg-white",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+										src: medical_assessment_default,
+										alt: "Оцінка стану пацієнта",
+										className: "h-full min-h-[280px] w-full object-cover"
+									})
+								})]
+							})
 						}) })
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
@@ -5995,24 +5957,34 @@ function PostInfarctionRehabPage({ node }) {
 								className: "text-3xl font-extrabold text-navy sm:text-4xl",
 								children: "Що варто знати перед початком програми"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "mt-8 grid gap-5 lg:grid-cols-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InfoCard, {
-									title: "Показання",
-									icon: HeartPulse,
-									iconClassName: "bg-primary/10 text-primary",
-									items: INDICATIONS
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InfoCard, {
-									title: "Протипоказання",
-									icon: TriangleAlert,
-									iconClassName: "bg-amber-100 text-amber-500",
-									items: CONTRAINDICATIONS,
-									bulletClassName: "bg-amber-400"
-								})]
-							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-4 rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-navy/62",
-								children: "Показання та можливі обмеження оцінюються лікарем індивідуально перед початком програми."
+								className: "mt-3 max-w-4xl text-sm leading-relaxed text-navy/68 sm:text-base",
+								children: "Це допомагає зрозуміти, коли відновлення може бути безпечним і яких результатів можна очікувати від програми."
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "mt-8 grid gap-5 xl:grid-cols-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InfoCard, {
+										title: "Показання",
+										icon: HeartPulse,
+										iconClassName: "bg-primary/10 text-primary",
+										items: INDICATIONS
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InfoCard, {
+										title: "Результати реабілітації",
+										icon: CircleCheck,
+										iconClassName: "bg-emerald-100 text-emerald-500",
+										items: REHAB_RESULTS,
+										bulletClassName: "bg-emerald-400"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InfoCard, {
+										title: "Протипоказання",
+										icon: TriangleAlert,
+										iconClassName: "bg-amber-100 text-amber-500",
+										items: CONTRAINDICATIONS,
+										bulletClassName: "bg-amber-400"
+									})
+								]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 								className: "mt-6 overflow-hidden rounded-[28px] border border-sky-100 bg-[linear-gradient(90deg,#f5f9ff_0%,#ffffff_56%)]",
@@ -6075,6 +6047,10 @@ function PostInfarctionRehabPage({ node }) {
 								title: "Коли може бути потрібна реабілітація після інфаркту",
 								centered: true
 							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mx-auto mt-3 max-w-3xl text-center text-sm leading-relaxed text-navy/66 sm:text-base",
+								children: "Дізнайтеся, хто та в яких ситуаціях може пройти програму відновлення в ОСНОВА."
+							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 								className: "mt-8 grid gap-5 xl:grid-cols-3",
 								children: SITUATIONS.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
@@ -6121,17 +6097,16 @@ function PostInfarctionRehabPage({ node }) {
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionTitle, {
 									title: "Як проходить відновлення?",
-									text: "Покроковий підхід і послідовний контроль забезпечують безпечне та ефективне відновлення.",
-									centered: true
+									text: "Поетапний підхід і послідовний контроль забезпечують безпечне та ефективне відновлення."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "mt-8 grid gap-4 xl:grid-cols-5",
+									className: "mt-8 grid gap-4 xl:grid-cols-4",
 									children: PROCESS_STEPS.map((step, index) => {
 										const Icon = step.icon;
 										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 											className: "relative rounded-[22px] border border-slate-200 bg-white p-5 shadow-sm",
 											children: [
-												index < PROCESS_STEPS.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												index < 3 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 													className: "absolute right-[-14px] top-1/2 hidden -translate-y-1/2 text-primary/40 xl:block",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-6" })
 												}),
@@ -6176,67 +6151,15 @@ function PostInfarctionRehabPage({ node }) {
 						}) })
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-						id: "methods",
-						className: "bg-white py-6 sm:py-10",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Container, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionTitle, {
-							title: "Методи, які можуть входити до програми",
-							centered: true
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mt-8 grid gap-4 lg:grid-cols-2 xl:grid-cols-4",
-							children: [METHODS.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-								className: "rounded-[22px] border border-slate-200 bg-white p-5 shadow-[0_12px_28px_rgba(31,61,120,0.04)]",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-										className: "text-lg font-extrabold text-navy",
-										children: item.title
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-3 text-sm leading-relaxed text-navy/72",
-										children: item.text
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary",
-										children: ["Перейти далі", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4" })]
-									})
-								]
-							}, item.title)), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-								className: "rounded-[24px] bg-[linear-gradient(180deg,#dffbe9_0%,#b8f1cc_100%)] p-6 text-navy shadow-[0_16px_40px_rgba(53,200,138,0.16)] xl:col-span-1",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-center gap-3 text-brand-green",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-6" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-sm font-bold uppercase tracking-[0.14em]",
-											children: "Акції та спецумови"
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-4 text-4xl font-extrabold text-brand-green",
-										children: "до -15 %"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-3 text-sm leading-relaxed text-navy/74",
-										children: "Дізнайтеся про актуальні акції та спеціальні умови на програми реабілітації."
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-										type: "button",
-										onClick: () => openModal("Детальніше про акції"),
-										className: "mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-bold text-brand-green transition-colors hover:bg-white/90",
-										children: "Детальніше"
-									})
-								]
-							})]
-						})] })
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 						id: "pricing",
 						className: "bg-white py-6 sm:py-10",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Container, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionTitle, {
 							title: "Програми та вартість",
 							text: "Тривалість і склад послуг підбираються індивідуально після оцінки стану.",
 							centered: true
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "mt-8 grid gap-5 xl:grid-cols-4",
-							children: CARDIO_REHAB_PROGRAMS.map((program) => {
+							children: [CARDIO_REHAB_PROGRAMS.map((program) => {
 								const isFeatured = program.id === "standartna";
 								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 									className: cn("flex min-h-[320px] flex-col rounded-[24px] border p-6 shadow-[0_16px_36px_rgba(31,61,120,0.05)]", isFeatured ? "border-primary bg-primary text-white" : "border-slate-200 bg-white text-navy"),
@@ -6278,7 +6201,32 @@ function PostInfarctionRehabPage({ node }) {
 										})
 									]
 								}, program.id);
-							})
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+								className: "rounded-[24px] bg-[linear-gradient(180deg,#dffbe9_0%,#b8f1cc_100%)] p-6 text-navy shadow-[0_16px_40px_rgba(53,200,138,0.16)]",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex items-center gap-3 text-brand-green",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-6" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "text-sm font-bold uppercase tracking-[0.14em]",
+											children: "Акції та спецумови"
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "mt-4 text-4xl font-extrabold text-brand-green",
+										children: "до -15 %"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "mt-3 text-sm leading-relaxed text-navy/74",
+										children: "Дізнайтеся про актуальні акції та спеціальні умови на програми реабілітації."
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										onClick: () => openModal("Детальніше про акції"),
+										className: "mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-bold text-brand-green transition-colors hover:bg-white/90",
+										children: "Детальніше"
+									})
+								]
+							})]
 						})] })
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
@@ -6319,35 +6267,6 @@ function PostInfarctionRehabPage({ node }) {
 								]
 							})]
 						}) })
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-						id: "faq",
-						className: "bg-white py-6 sm:py-10",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Container, {
-							className: "max-w-[1120px]",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionTitle, {
-									title: "Поширені запитання",
-									centered: true
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "mt-8",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FAQAccordion, {
-										items: faqItems,
-										variant: "home"
-									})
-								}),
-								(node.faq?.length ?? 0) > 3 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "mt-6 flex justify-center",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-										type: "button",
-										onClick: () => setFaqExpanded((value) => !value),
-										className: "inline-flex items-center gap-2 rounded-full border border-primary/30 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white",
-										children: [faqExpanded ? "Показати менше питань" : "Показати більше питань", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { className: cn("size-4 transition-transform", faqExpanded && "rotate-180") })]
-									})
-								})
-							]
-						})
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 						className: "bg-white py-6 sm:py-10",

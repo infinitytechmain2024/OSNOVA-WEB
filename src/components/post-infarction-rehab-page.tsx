@@ -5,12 +5,10 @@ import {
   ArrowRight,
   CalendarCheck2,
   CheckCircle2,
-  ChevronDown,
   ChevronLeft,
   ChevronRight,
   ClipboardList,
   HeartPulse,
-  Info,
   Phone,
   ShieldAlert,
   Sparkles,
@@ -19,7 +17,7 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AppLink } from "@/components/app-link";
-import { Breadcrumbs, FAQAccordion } from "@/components/blocks";
+import { Breadcrumbs } from "@/components/blocks";
 import { useConsultationModal } from "@/components/consultation-form";
 import { CARDIO_REHAB_PROGRAMS } from "@/data/cardio-rehab-pricing";
 import { CONTACTS } from "@/data/site-tree";
@@ -28,7 +26,6 @@ import { cn } from "@/lib/utils";
 import heroImg from "@/assets/about/cardio-rehab-cta-photo-v3.jpg";
 import assessmentImg from "@/assets/about/medical-assessment.jpg";
 import consultationImg from "@/assets/about/consultation.jpg";
-import heartImg from "@/assets/cardio-heart-3d.jpg";
 import cpetImg from "@/assets/cpet-test.jpg";
 import ecgImg from "@/assets/ecg-review.jpg";
 import rehabImg from "@/assets/service-rehab.jpg";
@@ -37,11 +34,8 @@ import sportsImg from "@/assets/service-sports.jpg";
 const ANCHORS = [
   { href: "#about", label: "Про інфаркт" },
   { href: "#timing", label: "Показання" },
-  { href: "#timing", label: "Протипоказання" },
-  { href: "#methods", label: "Методи" },
   { href: "#process", label: "Як проходить" },
   { href: "#pricing", label: "Вартість" },
-  { href: "#faq", label: "FAQ" },
 ] as const;
 
 const ABOUT_POINTS = [
@@ -67,6 +61,14 @@ const CONTRAINDICATIONS = [
   "декомпенсація серцевої недостатності",
   "гострі запальні або інфекційні захворювання",
   "інші стани, за яких лікар рекомендує відкласти фізичну реабілітацію",
+] as const;
+
+const REHAB_RESULTS = [
+  "підвищення витривалості та сили",
+  "зменшення задишки та втоми",
+  "стабілізація артеріального тиску",
+  "покращення якості життя та настрою",
+  "безпечне повернення до активного способу життя",
 ] as const;
 
 const EMERGENCY_SIGNS = [
@@ -189,10 +191,8 @@ const OTHER_SERVICES = [
 
 export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
   const { openModal } = useConsultationModal();
-  const [faqExpanded, setFaqExpanded] = React.useState(false);
   const [activeOtherService, setActiveOtherService] = React.useState(0);
   const otherServicesTrackRef = React.useRef<HTMLDivElement>(null);
-  const faqItems = faqExpanded ? (node.faq ?? []) : (node.faq ?? []).slice(0, 3);
 
   const scrollOtherServicesToIndex = (index: number) => {
     const track = otherServicesTrackRef.current;
@@ -285,10 +285,7 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
         <section id="about" className="bg-white pb-6 pt-2 sm:pb-8">
           <Container>
             <div className="rounded-[30px] border border-sky-100 bg-[linear-gradient(180deg,#f7fbff_0%,#f3f8ff_100%)] p-6 shadow-[0_18px_55px_rgba(31,61,120,0.06)] sm:p-8 lg:p-10">
-              <div className="grid items-center gap-8 lg:grid-cols-[320px_1fr] xl:grid-cols-[360px_1fr]">
-                <div className="mx-auto max-w-[320px]">
-                  <img src={heartImg} alt="Серце" className="w-full object-contain" />
-                </div>
+              <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
                 <div>
                   <h2 className="text-3xl font-extrabold text-navy sm:text-4xl">
                     Що таке інфаркт міокарда
@@ -307,14 +304,21 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                       </li>
                     ))}
                   </ul>
+                  <button
+                    type="button"
+                    onClick={() => openModal("Детальніше про реабілітацію")}
+                    className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary/90"
+                  >
+                    Детальніше
+                  </button>
                 </div>
-              </div>
-              <div className="mt-8 flex items-start gap-3 rounded-[22px] border border-primary/10 bg-white/80 px-5 py-4 text-sm font-semibold text-primary">
-                <Info className="mt-0.5 size-5 shrink-0" />
-                <p>
-                  Реабілітація допомагає поступово відновлювати активність та формувати безпечний
-                  маршрут повернення до повсякденного життя.
-                </p>
+                <div className="overflow-hidden rounded-[24px] bg-white">
+                  <img
+                    src={assessmentImg}
+                    alt="Оцінка стану пацієнта"
+                    className="h-full min-h-[280px] w-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           </Container>
@@ -325,12 +329,23 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
             <h2 className="text-3xl font-extrabold text-navy sm:text-4xl">
               Що варто знати перед початком програми
             </h2>
-            <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            <p className="mt-3 max-w-4xl text-sm leading-relaxed text-navy/68 sm:text-base">
+              Це допомагає зрозуміти, коли відновлення може бути безпечним і яких результатів можна
+              очікувати від програми.
+            </p>
+            <div className="mt-8 grid gap-5 xl:grid-cols-3">
               <InfoCard
                 title="Показання"
                 icon={HeartPulse}
                 iconClassName="bg-primary/10 text-primary"
                 items={INDICATIONS}
+              />
+              <InfoCard
+                title="Результати реабілітації"
+                icon={CheckCircle2}
+                iconClassName="bg-emerald-100 text-emerald-500"
+                items={REHAB_RESULTS}
+                bulletClassName="bg-emerald-400"
               />
               <InfoCard
                 title="Протипоказання"
@@ -340,10 +355,6 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                 bulletClassName="bg-amber-400"
               />
             </div>
-            <p className="mt-4 rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-navy/62">
-              Показання та можливі обмеження оцінюються лікарем індивідуально перед початком
-              програми.
-            </p>
 
             <div className="mt-6 overflow-hidden rounded-[28px] border border-sky-100 bg-[linear-gradient(90deg,#f5f9ff_0%,#ffffff_56%)]">
               <div className="grid gap-6 lg:grid-cols-[1.02fr_0.98fr]">
@@ -398,6 +409,9 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
         <section className="bg-white py-6 sm:py-10">
           <Container>
             <SectionTitle title="Коли може бути потрібна реабілітація після інфаркту" centered />
+            <p className="mx-auto mt-3 max-w-3xl text-center text-sm leading-relaxed text-navy/66 sm:text-base">
+              Дізнайтеся, хто та в яких ситуаціях може пройти програму відновлення в ОСНОВА.
+            </p>
             <div className="mt-8 grid gap-5 xl:grid-cols-3">
               {SITUATIONS.map((item) => (
                 <article
@@ -435,10 +449,9 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
             <div className="rounded-[30px] border border-sky-100 bg-[linear-gradient(180deg,#f6fbff_0%,#f4f8ff_100%)] p-6 sm:p-8 lg:p-10">
               <SectionTitle
                 title="Як проходить відновлення?"
-                text="Покроковий підхід і послідовний контроль забезпечують безпечне та ефективне відновлення."
-                centered
+                text="Поетапний підхід і послідовний контроль забезпечують безпечне та ефективне відновлення."
               />
-              <div className="mt-8 grid gap-4 xl:grid-cols-5">
+              <div className="mt-8 grid gap-4 xl:grid-cols-4">
                 {PROCESS_STEPS.map((step, index) => {
                   const Icon = step.icon;
                   return (
@@ -446,7 +459,7 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                       key={step.title}
                       className="relative rounded-[22px] border border-slate-200 bg-white p-5 shadow-sm"
                     >
-                      {index < PROCESS_STEPS.length - 1 && (
+                      {index < 3 && (
                         <span className="absolute right-[-14px] top-1/2 hidden -translate-y-1/2 text-primary/40 xl:block">
                           <ArrowRight className="size-6" />
                         </span>
@@ -466,46 +479,6 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                 <span className="font-semibold text-primary">амбулаторно</span>
                 <span className="font-semibold text-primary">онлайн</span>
               </div>
-            </div>
-          </Container>
-        </section>
-
-        <section id="methods" className="bg-white py-6 sm:py-10">
-          <Container>
-            <SectionTitle title="Методи, які можуть входити до програми" centered />
-            <div className="mt-8 grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
-              {METHODS.map((item) => (
-                <article
-                  key={item.title}
-                  className="rounded-[22px] border border-slate-200 bg-white p-5 shadow-[0_12px_28px_rgba(31,61,120,0.04)]"
-                >
-                  <h3 className="text-lg font-extrabold text-navy">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-navy/72">{item.text}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary">
-                    Перейти далі
-                    <ArrowRight className="size-4" />
-                  </span>
-                </article>
-              ))}
-              <article className="rounded-[24px] bg-[linear-gradient(180deg,#dffbe9_0%,#b8f1cc_100%)] p-6 text-navy shadow-[0_16px_40px_rgba(53,200,138,0.16)] xl:col-span-1">
-                <div className="flex items-center gap-3 text-brand-green">
-                  <Sparkles className="size-6" />
-                  <span className="text-sm font-bold uppercase tracking-[0.14em]">
-                    Акції та спецумови
-                  </span>
-                </div>
-                <p className="mt-4 text-4xl font-extrabold text-brand-green">до -15 %</p>
-                <p className="mt-3 text-sm leading-relaxed text-navy/74">
-                  Дізнайтеся про актуальні акції та спеціальні умови на програми реабілітації.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => openModal("Детальніше про акції")}
-                  className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-bold text-brand-green transition-colors hover:bg-white/90"
-                >
-                  Детальніше
-                </button>
-              </article>
             </div>
           </Container>
         </section>
@@ -579,6 +552,25 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                   </article>
                 );
               })}
+              <article className="rounded-[24px] bg-[linear-gradient(180deg,#dffbe9_0%,#b8f1cc_100%)] p-6 text-navy shadow-[0_16px_40px_rgba(53,200,138,0.16)]">
+                <div className="flex items-center gap-3 text-brand-green">
+                  <Sparkles className="size-6" />
+                  <span className="text-sm font-bold uppercase tracking-[0.14em]">
+                    Акції та спецумови
+                  </span>
+                </div>
+                <p className="mt-4 text-4xl font-extrabold text-brand-green">до -15 %</p>
+                <p className="mt-3 text-sm leading-relaxed text-navy/74">
+                  Дізнайтеся про актуальні акції та спеціальні умови на програми реабілітації.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => openModal("Детальніше про акції")}
+                  className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-bold text-brand-green transition-colors hover:bg-white/90"
+                >
+                  Детальніше
+                </button>
+              </article>
             </div>
           </Container>
         </section>
@@ -620,29 +612,6 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                 </div>
               </div>
             </div>
-          </Container>
-        </section>
-
-        <section id="faq" className="bg-white py-6 sm:py-10">
-          <Container className="max-w-[1120px]">
-            <SectionTitle title="Поширені запитання" centered />
-            <div className="mt-8">
-              <FAQAccordion items={faqItems} variant="home" />
-            </div>
-            {(node.faq?.length ?? 0) > 3 && (
-              <div className="mt-6 flex justify-center">
-                <button
-                  type="button"
-                  onClick={() => setFaqExpanded((value) => !value)}
-                  className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
-                >
-                  {faqExpanded ? "Показати менше питань" : "Показати більше питань"}
-                  <ChevronDown
-                    className={cn("size-4 transition-transform", faqExpanded && "rotate-180")}
-                  />
-                </button>
-              </div>
-            )}
           </Container>
         </section>
 
