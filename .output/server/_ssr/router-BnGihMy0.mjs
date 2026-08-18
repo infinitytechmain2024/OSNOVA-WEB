@@ -1,15 +1,17 @@
-import { a as SiteFooter, k as AppLink, l as SiteHeader, m as ergometer_default, r as PageContainer, s as getNodeById, u as CONTACTS, x as ConsultationModalProvider } from "./blocks-BPLbqWhS.js";
-import { t as Route$10 } from "./_-DPA8t3zv.js";
-import { t as Route$11 } from "./konferentsii-CPwKIgJV.js";
-import { useEffect } from "react";
-import { HeadContent, Outlet, Scripts, createFileRoute, createRootRouteWithContext, createRouter, lazyRouteComponent, useRouter } from "@tanstack/react-router";
-import { jsx, jsxs } from "react/jsx-runtime";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Activity, ArrowRight, ChevronRight, Dumbbell, Headphones, HeartPulse, Home, MapPin, Phone, Send, Stethoscope } from "lucide-react";
-//#region src/styles.css?url
-var styles_default = "/assets/styles-eTUbpShl.css";
-//#endregion
-//#region src/lib/lovable-error-reporting.ts
+import { n as __toESM } from "../_runtime.mjs";
+import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
+import { _ as useRouter, c as HeadContent, d as createRouter, f as Outlet, h as createRootRouteWithContext, m as createFileRoute, p as lazyRouteComponent, s as Scripts } from "../_libs/@tanstack/react-router+[...].mjs";
+import { v as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
+import { At as ArrowRight, G as Headphones, H as House, Nt as Activity, P as MapPin, W as HeartPulse, _ as Send, f as Stethoscope, gt as ChevronRight, rt as Dumbbell, x as Phone } from "../_libs/lucide-react.mjs";
+import { C as getNodeById, _ as SiteHeader, g as SiteFooter, i as CONTACTS, m as PageContainer, o as ConsultationModalProvider, t as AppLink, x as ergometer_default } from "./blocks-BPLbqWhS.mjs";
+import { t as Route } from "../_-zb5DNac_.mjs";
+import { t as Route$10 } from "./konferentsii-CPwKIgJV.mjs";
+import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
+import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BnGihMy0.js
+var import_react = /* @__PURE__ */ __toESM(require_react());
+var import_jsx_runtime = require_jsx_runtime();
+var styles_default = "/assets/styles-6SnCkoIX.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -28,8 +30,6 @@ function reportLovableError(error, context = {}) {
 		filename: window.location.pathname
 	});
 }
-//#endregion
-//#region src/components/not-found-page.tsx
 var rehab = getNodeById("rehab");
 var diag = getNodeById("diag");
 var recovery = getNodeById("recovery");
@@ -57,47 +57,47 @@ var CARDS = [
 	}
 ];
 function NotFoundPage() {
-	return /* @__PURE__ */ jsxs("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "min-h-screen bg-background",
 		children: [
-			/* @__PURE__ */ jsx(SiteHeader, {}),
-			/* @__PURE__ */ jsxs("main", { children: [/* @__PURE__ */ jsxs("section", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SiteHeader, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 				className: "relative overflow-hidden bg-navy-deep",
 				children: [
-					/* @__PURE__ */ jsx("img", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 						src: ergometer_default,
 						alt: "",
 						"aria-hidden": true,
 						className: "absolute inset-0 size-full object-cover object-right opacity-45"
 					}),
-					/* @__PURE__ */ jsx("div", { className: "absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/95 to-navy-deep/40" }),
-					/* @__PURE__ */ jsx(PageContainer, {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/95 to-navy-deep/40" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageContainer, {
 						className: "relative py-16 sm:py-24",
-						children: /* @__PURE__ */ jsxs("div", {
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "grid items-center gap-10 lg:grid-cols-[1.25fr_0.75fr]",
-							children: [/* @__PURE__ */ jsxs("div", { children: [
-								/* @__PURE__ */ jsx("h1", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 									className: "text-[5rem] font-extrabold leading-none tracking-tight text-primary-foreground/90 sm:text-[8rem]",
 									children: "404"
 								}),
-								/* @__PURE__ */ jsx("p", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mt-2 text-2xl font-bold text-background sm:text-4xl",
 									children: "Сторінку не знайдено"
 								}),
-								/* @__PURE__ */ jsx("p", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mt-4 max-w-xl text-sm leading-relaxed text-background/75 sm:text-base",
 									children: "На жаль, сторінка, яку ви шукаєте, була видалена, переміщена або посилання введено неправильно."
 								}),
-								/* @__PURE__ */ jsxs(AppLink, {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppLink, {
 									to: "/",
 									className: "mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-4 text-xs font-bold uppercase tracking-[0.08em] text-primary-foreground transition-colors hover:bg-primary/90",
-									children: [/* @__PURE__ */ jsx(Home, { className: "size-4" }), " Повернутися на головну"]
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(House, { className: "size-4" }), " Повернутися на головну"]
 								})
-							] }), /* @__PURE__ */ jsx("div", {
+							] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 								className: "hidden justify-center lg:flex",
-								children: /* @__PURE__ */ jsxs("div", {
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex size-56 flex-col items-center justify-center rounded-full border border-dashed border-background/35 px-8 text-center",
-									children: [/* @__PURE__ */ jsx(Activity, { className: "size-8 text-primary-foreground" }), /* @__PURE__ */ jsx("p", {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Activity, { className: "size-8 text-primary-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 										className: "mt-4 text-sm leading-relaxed text-background/80",
 										children: "Ми допомагаємо повернути рух до повноцінного життя"
 									})]
@@ -106,99 +106,99 @@ function NotFoundPage() {
 						})
 					})
 				]
-			}), /* @__PURE__ */ jsx("section", {
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 				className: "py-14 sm:py-20",
-				children: /* @__PURE__ */ jsxs(PageContainer, { children: [
-					/* @__PURE__ */ jsxs("div", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(PageContainer, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-center gap-4",
 						children: [
-							/* @__PURE__ */ jsx("span", { className: "hidden h-px flex-1 bg-border sm:block" }),
-							/* @__PURE__ */ jsx("h2", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "hidden h-px flex-1 bg-border sm:block" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 								className: "text-center text-2xl font-extrabold text-navy sm:text-3xl",
 								children: "Куди перейти далі?"
 							}),
-							/* @__PURE__ */ jsx("span", { className: "hidden h-px flex-1 bg-border sm:block" })
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "hidden h-px flex-1 bg-border sm:block" })
 						]
 					}),
-					/* @__PURE__ */ jsx("div", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "mt-10 grid gap-6 lg:grid-cols-3",
-						children: CARDS.map((card) => /* @__PURE__ */ jsxs("div", {
+						children: CARDS.map((card) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md",
 							children: [
-								/* @__PURE__ */ jsxs("div", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex items-center gap-3",
-									children: [/* @__PURE__ */ jsx("span", {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "flex size-11 shrink-0 items-center justify-center rounded-xl bg-soft-blue text-primary",
-										children: /* @__PURE__ */ jsx(card.icon, { className: "size-5" })
-									}), /* @__PURE__ */ jsx("h3", {
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(card.icon, { className: "size-5" })
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 										className: "text-sm font-bold uppercase tracking-[0.06em] text-navy",
 										children: card.title
 									})]
 								}),
-								/* @__PURE__ */ jsx("ul", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
 									className: "mt-5 space-y-2",
-									children: card.items.map((item) => /* @__PURE__ */ jsxs("li", {
+									children: card.items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
 										className: "flex items-start gap-2 text-sm text-navy/75",
-										children: [/* @__PURE__ */ jsx(ChevronRight, { className: "mt-0.5 size-4 shrink-0 text-primary" }), /* @__PURE__ */ jsx("span", { children: item })]
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { className: "mt-0.5 size-4 shrink-0 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: item })]
 									}, item))
 								}),
-								/* @__PURE__ */ jsxs(AppLink, {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppLink, {
 									to: card.route,
 									className: "mt-auto inline-flex items-center gap-2 pt-8 text-sm font-bold uppercase tracking-[0.06em] text-primary hover:underline",
 									children: [
 										card.cta,
 										" ",
-										/* @__PURE__ */ jsx(ArrowRight, { className: "size-4" })
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4" })
 									]
 								})
 							]
 						}, card.title))
 					}),
-					/* @__PURE__ */ jsxs("div", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mt-8 grid items-center gap-8 rounded-2xl border border-border bg-soft-blue/60 p-6 sm:p-8 lg:grid-cols-[1.4fr_auto_1fr]",
 						children: [
-							/* @__PURE__ */ jsxs("div", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "flex items-start gap-4",
-								children: [/* @__PURE__ */ jsx("span", {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "hidden size-14 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary sm:flex",
-									children: /* @__PURE__ */ jsx(Headphones, { className: "size-6" })
-								}), /* @__PURE__ */ jsxs("div", {
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Headphones, { className: "size-6" })
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "min-w-0",
-									children: [/* @__PURE__ */ jsx("h3", {
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 										className: "text-lg font-bold text-navy",
 										children: "Не знайшли потрібну сторінку?"
-									}), /* @__PURE__ */ jsx("p", {
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 										className: "mt-2 text-sm leading-relaxed text-navy/75",
 										children: "Залиште заявку, і ми допоможемо знайти потрібну інформацію або підібрати оптимальне рішення для вашого здоров’я."
 									})]
 								})]
 							}),
-							/* @__PURE__ */ jsxs("div", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "flex flex-col gap-3",
-								children: [/* @__PURE__ */ jsx(AppLink, {
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppLink, {
 									to: "/kontakty",
 									className: "inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-xs font-bold uppercase tracking-[0.08em] text-primary-foreground transition-colors hover:bg-primary/90",
 									children: "Залишити заявку"
-								}), /* @__PURE__ */ jsx("a", {
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 									href: CONTACTS.phoneHref,
 									className: "inline-flex items-center justify-center rounded-lg border border-primary/40 bg-card px-6 py-3 text-xs font-bold uppercase tracking-[0.08em] text-navy transition-colors hover:bg-card/70",
 									children: "Замовити дзвінок"
 								})]
 							}),
-							/* @__PURE__ */ jsxs("ul", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ul", {
 								className: "space-y-3 text-sm text-navy/80 lg:border-l lg:border-border lg:pl-8",
 								children: [
-									/* @__PURE__ */ jsxs("li", {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
 										className: "flex items-center gap-3",
-										children: [/* @__PURE__ */ jsx(Phone, { className: "size-4 shrink-0 text-primary" }), /* @__PURE__ */ jsx("a", {
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "size-4 shrink-0 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 											href: CONTACTS.phoneHref,
 											className: "font-semibold text-navy hover:underline",
 											children: CONTACTS.phone
 										})]
 									}),
-									/* @__PURE__ */ jsxs("li", {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
 										className: "flex items-center gap-3",
-										children: [/* @__PURE__ */ jsx(Send, { className: "size-4 shrink-0 text-primary" }), /* @__PURE__ */ jsx("a", {
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, { className: "size-4 shrink-0 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 											href: CONTACTS.messengers.telegram,
 											target: "_blank",
 											rel: "noreferrer",
@@ -206,9 +206,9 @@ function NotFoundPage() {
 											children: "Написати в Telegram"
 										})]
 									}),
-									/* @__PURE__ */ jsxs("li", {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
 										className: "flex items-start gap-3",
-										children: [/* @__PURE__ */ jsx(MapPin, { className: "mt-0.5 size-4 shrink-0 text-primary" }), /* @__PURE__ */ jsx("span", { children: CONTACTS.addressFull })]
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapPin, { className: "mt-0.5 size-4 shrink-0 text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: CONTACTS.addressFull })]
 									})
 								]
 							})
@@ -216,44 +216,42 @@ function NotFoundPage() {
 					})
 				] })
 			})] }),
-			/* @__PURE__ */ jsx(SiteFooter, {})
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SiteFooter, {})
 		]
 	});
 }
-//#endregion
-//#region src/routes/__root.tsx
 function NotFoundComponent() {
-	return /* @__PURE__ */ jsx(NotFoundPage, {});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotFoundPage, {});
 }
 function ErrorComponent({ error, reset }) {
 	console.error(error);
 	const router = useRouter();
-	useEffect(() => {
+	(0, import_react.useEffect)(() => {
 		reportLovableError(error, { boundary: "tanstack_root_error_component" });
 	}, [error]);
-	return /* @__PURE__ */ jsx("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "flex min-h-screen items-center justify-center bg-background px-4",
-		children: /* @__PURE__ */ jsxs("div", {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "max-w-md text-center",
 			children: [
-				/* @__PURE__ */ jsx("h1", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 					className: "text-xl font-semibold tracking-tight text-foreground",
 					children: "This page didn't load"
 				}),
-				/* @__PURE__ */ jsx("p", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "mt-2 text-sm text-muted-foreground",
 					children: "Something went wrong on our end. You can try refreshing or head back home."
 				}),
-				/* @__PURE__ */ jsxs("div", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mt-6 flex flex-wrap justify-center gap-2",
-					children: [/* @__PURE__ */ jsx("button", {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						onClick: () => {
 							router.invalidate();
 							reset();
 						},
 						className: "inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90",
 						children: "Try again"
-					}), /* @__PURE__ */ jsx("a", {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 						href: "/",
 						className: "inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent",
 						children: "Go home"
@@ -332,21 +330,19 @@ var Route$9 = createRootRouteWithContext()({
 	errorComponent: ErrorComponent
 });
 function RootShell({ children }) {
-	return /* @__PURE__ */ jsxs("html", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("html", {
 		lang: "uk",
-		children: [/* @__PURE__ */ jsx("head", { children: /* @__PURE__ */ jsx(HeadContent, {}) }), /* @__PURE__ */ jsxs("body", { children: [children, /* @__PURE__ */ jsx(Scripts, {})] })]
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("head", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", { children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})] })]
 	});
 }
 function RootComponent() {
 	const { queryClient } = Route$9.useRouteContext();
-	return /* @__PURE__ */ jsx(QueryClientProvider, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryClientProvider, {
 		client: queryClient,
-		children: /* @__PURE__ */ jsx(ConsultationModalProvider, { children: /* @__PURE__ */ jsx(Outlet, {}) })
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ConsultationModalProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {}) })
 	});
 }
-//#endregion
-//#region src/routes/index.tsx
-var $$splitComponentImporter$6 = () => import("./routes-CMOhgvr8.js");
+var $$splitComponentImporter$6 = () => import("./routes-CMOhgvr8.mjs");
 var Route$8 = createFileRoute("/")({
 	head: () => ({ meta: [{ title: "Снова Реабілітація — Медичний центр діагностики та відновлення" }, {
 		name: "description",
@@ -354,9 +350,7 @@ var Route$8 = createFileRoute("/")({
 	}] }),
 	component: lazyRouteComponent($$splitComponentImporter$6, "component")
 });
-//#endregion
-//#region src/routes/iventy.tsx
-var $$splitComponentImporter$5 = () => import("./iventy-CARmuoeS.js");
+var $$splitComponentImporter$5 = () => import("./iventy-CARmuoeS.mjs");
 var Route$7 = createFileRoute("/iventy")({
 	head: () => ({ meta: [
 		{ title: "Івенти — ОСНОВА Реабілітація, Буковель" },
@@ -383,9 +377,7 @@ var Route$7 = createFileRoute("/iventy")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
-//#endregion
-//#region src/routes/kardiolohichna-diahnostyka.tsx
-var $$splitComponentImporter$4 = () => import("./kardiolohichna-diahnostyka-CuuMutsr.js");
+var $$splitComponentImporter$4 = () => import("./kardiolohichna-diahnostyka-CuuMutsr.mjs");
 var Route$6 = createFileRoute("/kardiolohichna-diahnostyka")({
 	head: () => ({ meta: [
 		{ title: "Кардіологічна діагностика — OSNOVA Реабілітація, Буковель" },
@@ -412,9 +404,7 @@ var Route$6 = createFileRoute("/kardiolohichna-diahnostyka")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-//#endregion
-//#region src/routes/kursy.tsx
-var $$splitComponentImporter$3 = () => import("./kursy-BiQM9kPb.js");
+var $$splitComponentImporter$3 = () => import("./kursy-BiQM9kPb.mjs");
 var Route$5 = createFileRoute("/kursy")({
 	head: () => ({
 		meta: [
@@ -447,9 +437,7 @@ var Route$5 = createFileRoute("/kursy")({
 	}),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-//#endregion
-//#region src/routes/navchannia.tsx
-var $$splitComponentImporter$2 = () => import("./navchannia-C_Qez2Rx.js");
+var $$splitComponentImporter$2 = () => import("./navchannia-C_Qez2Rx.mjs");
 var Route$4 = createFileRoute("/navchannia")({
 	head: () => ({
 		meta: [
@@ -482,9 +470,7 @@ var Route$4 = createFileRoute("/navchannia")({
 	}),
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-//#endregion
-//#region src/routes/novyny.tsx
-var $$splitComponentImporter$1 = () => import("./novyny-DFkIwhhu.js");
+var $$splitComponentImporter$1 = () => import("./novyny-DFkIwhhu.mjs");
 var Route$3 = createFileRoute("/novyny")({
 	head: () => ({
 		meta: [
@@ -517,8 +503,6 @@ var Route$3 = createFileRoute("/novyny")({
 	}),
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-//#endregion
-//#region src/routes/sitemap[.]xml.ts
 var BASE_URL = "";
 var Route$2 = createFileRoute("/sitemap.xml")({ server: { handlers: { GET: async () => {
 	const xml = [
@@ -556,9 +540,7 @@ var Route$2 = createFileRoute("/sitemap.xml")({ server: { handlers: { GET: async
 		"Cache-Control": "public, max-age=3600"
 	} });
 } } } });
-//#endregion
-//#region src/routes/statti/pershi-symptomy-problem-iz-sertsem.tsx
-var $$splitComponentImporter = () => import("./pershi-symptomy-problem-iz-sertsem-DEqBEQ8W.js");
+var $$splitComponentImporter = () => import("./pershi-symptomy-problem-iz-sertsem-DEqBEQ8W.mjs");
 var Route$1 = createFileRoute("/statti/pershi-symptomy-problem-iz-sertsem")({
 	head: () => ({
 		meta: [
@@ -599,15 +581,13 @@ var Route$1 = createFileRoute("/statti/pershi-symptomy-problem-iz-sertsem")({
 	}),
 	component: lazyRouteComponent($$splitComponentImporter, "component")
 });
-//#endregion
-//#region src/routeTree.gen.ts
 var rootRouteChildren = {
 	IndexRoute: Route$8.update({
 		id: "/",
 		path: "/",
 		getParentRoute: () => Route$9
 	}),
-	SplatRoute: Route$10.update({
+	SplatRoute: Route.update({
 		id: "/$",
 		path: "/$",
 		getParentRoute: () => Route$9
@@ -622,7 +602,7 @@ var rootRouteChildren = {
 		path: "/kardiolohichna-diahnostyka",
 		getParentRoute: () => Route$9
 	}),
-	KonferentsiiRoute: Route$11.update({
+	KonferentsiiRoute: Route$10.update({
 		id: "/konferentsii",
 		path: "/konferentsii",
 		getParentRoute: () => Route$9
@@ -654,8 +634,6 @@ var rootRouteChildren = {
 	})
 };
 var routeTree = Route$9._addFileChildren(rootRouteChildren)._addFileTypes();
-//#endregion
-//#region src/router.tsx
 var getRouter = () => {
 	return createRouter({
 		routeTree,

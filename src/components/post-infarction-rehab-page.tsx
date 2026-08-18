@@ -180,34 +180,34 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
   return (
     <div className="min-h-screen bg-white">
       <SiteHeader />
-      <main className="overflow-x-clip">
-        <section className="bg-white px-4 pt-4 sm:px-6 sm:pt-6 lg:px-8">
-          <div className="relative mx-auto max-w-[1800px] overflow-hidden rounded-[40px] bg-navy-deep">
+      <main className="overflow-x-clip bg-white">
+        <section className="bg-white">
+          <div className="relative overflow-hidden bg-navy-deep">
             <img
               src={heroImg}
               alt="Реабілітація після інфаркту міокарда"
-              className="absolute inset-0 h-full w-full object-cover object-[72%_center]"
+              className="absolute inset-0 h-full w-full object-cover object-[68%_center]"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,23,58,0.96)_0%,rgba(8,23,58,0.88)_34%,rgba(8,23,58,0.54)_62%,rgba(8,23,58,0.1)_100%)]" />
-            <div className="relative mx-auto flex min-h-[500px] max-w-[1800px] items-center px-6 py-14 sm:px-10 lg:min-h-[560px] lg:px-16 lg:py-20">
-              <div className="max-w-[620px]">
-                <span className="inline-flex rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary shadow-[0_14px_38px_rgba(10,25,60,0.18)]">
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,15,44,0.96)_0%,rgba(4,15,44,0.92)_30%,rgba(16,33,78,0.76)_56%,rgba(22,39,82,0.58)_72%,rgba(36,51,93,0.34)_100%)]" />
+            <div className="relative mx-auto flex min-h-[720px] max-w-[1440px] items-center px-12 py-20 sm:px-16 lg:min-h-[820px] lg:px-20 lg:py-24 xl:px-24">
+              <div className="max-w-[660px]">
+                <span className="inline-flex rounded-full border border-[#b7c9e6]/60 bg-[#eef6ff] px-7 py-3 text-[0.95rem] font-extrabold uppercase tracking-[0.16em] text-[#173e8f] shadow-[0_10px_24px_rgba(10,25,60,0.16)]">
                   Кардіологічна реабілітація
                 </span>
-                <h1 className="mt-6 max-w-[10ch] text-4xl font-extrabold leading-[0.95] text-white sm:text-5xl lg:text-[4.6rem]">
+                <h1 className="mt-10 max-w-[8ch] text-[4rem] font-extrabold leading-[0.9] text-white sm:text-[4.6rem] lg:text-[5.8rem] xl:text-[6.25rem]">
                   Реабілітація після інфаркту міокарда
                 </h1>
-                <p className="mt-5 max-w-[30rem] text-base leading-relaxed text-white/84 sm:text-lg">
+                <p className="mt-10 max-w-[33rem] text-[1.05rem] leading-[1.8] text-white/80 sm:text-[1.15rem] lg:text-[1.2rem]">
                   Індивідуальна програма відновлення для безпечного повернення до активного життя
                   під контролем фахівців.
                 </p>
                 <button
                   type="button"
                   onClick={() => openModal("Замовити консультацію")}
-                  className="mt-8 inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-brand-green px-7 py-4 text-sm font-bold text-brand-green-foreground shadow-[0_18px_44px_rgba(53,200,138,0.32)] transition-colors hover:bg-brand-green/90"
+                  className="mt-12 inline-flex min-h-[84px] items-center justify-center gap-3 rounded-[22px] bg-brand-green px-14 py-5 text-[1.05rem] font-extrabold text-brand-green-foreground shadow-[0_28px_60px_rgba(53,200,138,0.26)] transition-colors hover:bg-brand-green/90"
                 >
                   Замовити консультацію
-                  <ArrowRight className="size-4" />
+                  <ArrowRight className="size-5" />
                 </button>
               </div>
             </div>
@@ -223,15 +223,15 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                 { title: "Кардіологічна реабілітація", route: "/reabilitatsiia/kardiolohichna" },
                 { title: node.title, route: node.route },
               ]}
-              className="pb-3 pt-4"
+              className="pb-5 pt-8"
             />
-            <div className="overflow-x-auto pb-5 scrollbar-none">
-              <nav aria-label="Навігація по сторінці" className="flex min-w-max gap-2">
+            <div className="overflow-x-auto pb-7 scrollbar-none">
+              <nav aria-label="Навігація по сторінці" className="flex min-w-max gap-4">
                 {ANCHORS.map((item, index) => (
                   <a
                     key={`${item.href}-${index}`}
                     href={item.href}
-                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-navy/75 transition-colors hover:border-primary/30 hover:bg-sky-50 hover:text-primary"
+                    className="rounded-full border border-slate-200 bg-white px-8 py-4 text-[1.05rem] font-bold text-navy/78 transition-colors hover:border-primary/30 hover:bg-sky-50 hover:text-primary"
                   >
                     {item.label}
                   </a>

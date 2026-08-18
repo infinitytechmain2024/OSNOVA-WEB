@@ -1,1 +1,0 @@
-import{ht as e}from"./blocks-COjDkNtw.js";import{t}from"./education-courses-page-BJsJQQH0.js";var n=e();function r(){return(0,n.jsx)(t,{})}export{r as component};

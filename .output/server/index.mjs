@@ -18,413 +18,413 @@ var public_assets_data_default = {
 	"/favicon.ico": {
 		"type": "image/vnd.microsoft.icon",
 		"etag": "\"4f95-3RXc3p2mhEAs1WBwaIvE0Y0uu0Y\"",
-		"mtime": "2026-08-18T12:53:04.542Z",
+		"mtime": "2026-08-18T13:11:12.316Z",
 		"size": 20373,
 		"path": "../public/favicon.ico"
 	},
-	"/robots.txt": {
-		"type": "text/plain; charset=utf-8",
-		"etag": "\"17-ZZkCVrbr4BSdjt/K43J0tq8+Qq4\"",
-		"mtime": "2026-08-18T12:53:04.540Z",
-		"size": 23,
-		"path": "../public/robots.txt"
-	},
-	"/assets/_-CM-m5w_K.js": {
+	"/assets/_-DlPP0K5m.js": {
 		"type": "text/javascript; charset=utf-8",
-		"etag": "\"676-8epvAXaleneoarvJ3za77Xv9MMA\"",
-		"mtime": "2026-08-18T12:53:04.091Z",
+		"etag": "\"676-MZmUVK/EevgbqSt2x5rmnj/ctAQ\"",
+		"mtime": "2026-08-18T13:11:11.612Z",
 		"size": 1654,
-		"path": "../public/assets/_-CM-m5w_K.js"
+		"path": "../public/assets/_-DlPP0K5m.js"
 	},
 	"/assets/building-2--WCufry-.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"176-apwYSkGKJXKP966Kp27xwoUZn9I\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
+		"mtime": "2026-08-18T13:11:11.612Z",
 		"size": 374,
 		"path": "../public/assets/building-2--WCufry-.js"
-	},
-	"/assets/_-BpIiSUbw.js": {
-		"type": "text/javascript; charset=utf-8",
-		"etag": "\"41464-C6t30rMQZHyk4O7oGaJJZHp3b6k\"",
-		"mtime": "2026-08-18T12:53:04.091Z",
-		"size": 267364,
-		"path": "../public/assets/_-BpIiSUbw.js"
 	},
 	"/assets/calendar-days-CsX73kHa.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"1e5-z1PIadhL0XtRONaO8P+T+9tV5pA\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
+		"mtime": "2026-08-18T13:11:11.612Z",
 		"size": 485,
 		"path": "../public/assets/calendar-days-CsX73kHa.js"
+	},
+	"/assets/_-DCK3Miv0.js": {
+		"type": "text/javascript; charset=utf-8",
+		"etag": "\"414ad-qZhtY81NIbCENzQt7znaXkKzp0o\"",
+		"mtime": "2026-08-18T13:11:11.612Z",
+		"size": 267437,
+		"path": "../public/assets/_-DCK3Miv0.js"
+	},
+	"/assets/cardio-heart-3d-DLgiMZPh.jpg": {
+		"type": "image/jpeg",
+		"etag": "\"2d6fb-GrMeqQffxM4w2zde38SrCjRVNf8\"",
+		"mtime": "2026-08-18T13:11:11.618Z",
+		"size": 186107,
+		"path": "../public/assets/cardio-heart-3d-DLgiMZPh.jpg"
 	},
 	"/assets/balance-reference-card-BIQa2b6b.png": {
 		"type": "image/png",
 		"etag": "\"37d19-P91qTx1AZTr5638cjDwRGA7JHMI\"",
-		"mtime": "2026-08-18T12:53:04.094Z",
+		"mtime": "2026-08-18T13:11:11.618Z",
 		"size": 228633,
 		"path": "../public/assets/balance-reference-card-BIQa2b6b.png"
-	},
-	"/assets/blocks-COjDkNtw.js": {
-		"type": "text/javascript; charset=utf-8",
-		"etag": "\"440ba-TxuwYu2r3Tmx9YpLZf9dkPZ6D/Y\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
-		"size": 278714,
-		"path": "../public/assets/blocks-COjDkNtw.js"
 	},
 	"/assets/chevron-left-BxYCDMPS.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"79-OaXbd+CpOaEVSshKpkNxQDGdiO8\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
+		"mtime": "2026-08-18T13:11:11.613Z",
 		"size": 121,
 		"path": "../public/assets/chevron-left-BxYCDMPS.js"
 	},
 	"/assets/clock-3-C3BW-ETr.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"a0-/806VmYI8lH8JT1hp3jnM8ukKWk\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
+		"mtime": "2026-08-18T13:11:11.613Z",
 		"size": 160,
 		"path": "../public/assets/clock-3-C3BW-ETr.js"
 	},
 	"/assets/company-overview-section-CG5HMhyU.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"2812-W4Lh9NCprhZ67Z7cPo3HRnHMV4s\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
+		"mtime": "2026-08-18T13:11:11.613Z",
 		"size": 10258,
 		"path": "../public/assets/company-overview-section-CG5HMhyU.js"
+	},
+	"/assets/blocks-COjDkNtw.js": {
+		"type": "text/javascript; charset=utf-8",
+		"etag": "\"440ba-TxuwYu2r3Tmx9YpLZf9dkPZ6D/Y\"",
+		"mtime": "2026-08-18T13:11:11.612Z",
+		"size": 278714,
+		"path": "../public/assets/blocks-COjDkNtw.js"
 	},
 	"/assets/cardio-rehab-cta-photo-v3-W-8JXIQW.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"2f386-BsuowJM9dqaYvIlcyhJPrSj3kb0\"",
-		"mtime": "2026-08-18T12:53:04.094Z",
+		"mtime": "2026-08-18T13:11:11.618Z",
 		"size": 193414,
 		"path": "../public/assets/cardio-rehab-cta-photo-v3-W-8JXIQW.jpg"
-	},
-	"/assets/cardio-heart-3d-DLgiMZPh.jpg": {
-		"type": "image/jpeg",
-		"etag": "\"2d6fb-GrMeqQffxM4w2zde38SrCjRVNf8\"",
-		"mtime": "2026-08-18T12:53:04.094Z",
-		"size": 186107,
-		"path": "../public/assets/cardio-heart-3d-DLgiMZPh.jpg"
-	},
-	"/assets/carpathians-location-B-Ld24ho.jpg": {
-		"type": "image/jpeg",
-		"etag": "\"35615-NFpG9VSqJWZkWrzfykAqwU5WH/0\"",
-		"mtime": "2026-08-18T12:53:04.094Z",
-		"size": 218645,
-		"path": "../public/assets/carpathians-location-B-Ld24ho.jpg"
 	},
 	"/assets/cpet-test-DiF2T5we.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"16f26-ir2IG12Yf6SIRDSEb4656TLpa70\"",
-		"mtime": "2026-08-18T12:53:04.095Z",
+		"mtime": "2026-08-18T13:11:11.618Z",
 		"size": 93990,
 		"path": "../public/assets/cpet-test-DiF2T5we.jpg"
-	},
-	"/assets/consultation-BtlF2SeR.jpg": {
-		"type": "image/jpeg",
-		"etag": "\"434ae-ikSgXfD9Gxu75AUVNpLfXW9F9kc\"",
-		"mtime": "2026-08-18T12:53:04.094Z",
-		"size": 275630,
-		"path": "../public/assets/consultation-BtlF2SeR.jpg"
 	},
 	"/assets/ecg-review-43jYg4Hw.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"f0f2-VjphOzoEGB3VumtfESmfjY8cXPc\"",
-		"mtime": "2026-08-18T12:53:04.095Z",
+		"mtime": "2026-08-18T13:11:11.619Z",
 		"size": 61682,
 		"path": "../public/assets/ecg-review-43jYg4Hw.jpg"
 	},
-	"/assets/education-courses-page-BJsJQQH0.js": {
+	"/assets/carpathians-location-B-Ld24ho.jpg": {
+		"type": "image/jpeg",
+		"etag": "\"35615-NFpG9VSqJWZkWrzfykAqwU5WH/0\"",
+		"mtime": "2026-08-18T13:11:11.618Z",
+		"size": 218645,
+		"path": "../public/assets/carpathians-location-B-Ld24ho.jpg"
+	},
+	"/assets/education-courses-page-DovwfP3w.js": {
 		"type": "text/javascript; charset=utf-8",
-		"etag": "\"5ff3-FQZrQiciodw67W+A0/WIFVeqNdw\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
+		"etag": "\"5ff3-bMzR3+TBcKe/+ytiGBn+gOdLNz8\"",
+		"mtime": "2026-08-18T13:11:11.614Z",
 		"size": 24563,
-		"path": "../public/assets/education-courses-page-BJsJQQH0.js"
+		"path": "../public/assets/education-courses-page-DovwfP3w.js"
+	},
+	"/assets/consultation-BtlF2SeR.jpg": {
+		"type": "image/jpeg",
+		"etag": "\"434ae-ikSgXfD9Gxu75AUVNpLfXW9F9kc\"",
+		"mtime": "2026-08-18T13:11:11.618Z",
+		"size": 275630,
+		"path": "../public/assets/consultation-BtlF2SeR.jpg"
 	},
 	"/assets/diagnostics-session-C_IAYVuL.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"5b953-eFCcOZJlDGHCMOWsq/7PVK55VzM\"",
-		"mtime": "2026-08-18T12:53:04.095Z",
+		"mtime": "2026-08-18T13:11:11.618Z",
 		"size": 375123,
 		"path": "../public/assets/diagnostics-session-C_IAYVuL.jpg"
 	},
 	"/assets/education-practical-training-v2-DI2QYiwB.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"5f9db-FKvAe6Jf0nSGxhFSeR/Z7t3k0sI\"",
-		"mtime": "2026-08-18T12:53:04.095Z",
+		"mtime": "2026-08-18T13:11:11.620Z",
 		"size": 391643,
 		"path": "../public/assets/education-practical-training-v2-DI2QYiwB.jpg"
-	},
-	"/assets/education-science-event-v2-BEvHgsJt.jpg": {
-		"type": "image/jpeg",
-		"etag": "\"5af63-4dPd6470FJgq6RYI9v/JdAqNhc8\"",
-		"mtime": "2026-08-18T12:53:04.095Z",
-		"size": 372579,
-		"path": "../public/assets/education-science-event-v2-BEvHgsJt.jpg"
 	},
 	"/assets/education-training-VQUtcCqH.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"6f-V/Kc6eO1Swid1ejAV3mWOsLnnDY\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
+		"mtime": "2026-08-18T13:11:11.614Z",
 		"size": 111,
 		"path": "../public/assets/education-training-VQUtcCqH.js"
 	},
 	"/assets/ergometer-DFcNxK8-.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"ce34-vKCXke11/WYZZb2PEH9pEb9DtbQ\"",
-		"mtime": "2026-08-18T12:53:04.096Z",
+		"mtime": "2026-08-18T13:11:11.626Z",
 		"size": 52788,
 		"path": "../public/assets/ergometer-DFcNxK8-.jpg"
+	},
+	"/assets/education-science-event-v2-BEvHgsJt.jpg": {
+		"type": "image/jpeg",
+		"etag": "\"5af63-4dPd6470FJgq6RYI9v/JdAqNhc8\"",
+		"mtime": "2026-08-18T13:11:11.623Z",
+		"size": 372579,
+		"path": "../public/assets/education-science-event-v2-BEvHgsJt.jpg"
+	},
+	"/robots.txt": {
+		"type": "text/plain; charset=utf-8",
+		"etag": "\"17-ZZkCVrbr4BSdjt/K43J0tq8+Qq4\"",
+		"mtime": "2026-08-18T13:11:12.316Z",
+		"size": 23,
+		"path": "../public/robots.txt"
 	},
 	"/assets/education-conference-CO2NSB9R.png": {
 		"type": "image/png",
 		"etag": "\"fd1e9-ICa9uAYVvPpUrhBmK8jMngFY+9A\"",
-		"mtime": "2026-08-18T12:53:04.095Z",
+		"mtime": "2026-08-18T13:11:11.619Z",
 		"size": 1036777,
 		"path": "../public/assets/education-conference-CO2NSB9R.png"
 	},
 	"/assets/education-training-Cwv52uGB.png": {
 		"type": "image/png",
 		"etag": "\"eefbc-kyToe0HpjzhoMOx9hp0TL1Jkegc\"",
-		"mtime": "2026-08-18T12:53:04.096Z",
+		"mtime": "2026-08-18T13:11:11.626Z",
 		"size": 978876,
 		"path": "../public/assets/education-training-Cwv52uGB.png"
 	},
 	"/assets/events-6TDR9Fq1.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"42d41-UBbfzAnrgiXDN16JKY6UOx7e9aw\"",
-		"mtime": "2026-08-18T12:53:04.096Z",
+		"mtime": "2026-08-18T13:11:11.626Z",
 		"size": 273729,
 		"path": "../public/assets/events-6TDR9Fq1.jpg"
+	},
+	"/assets/iventy-DS9uKwiZ.js": {
+		"type": "text/javascript; charset=utf-8",
+		"etag": "\"2f6b-Xs8DoRtPrT4zfE/i3wDw0/50ECk\"",
+		"mtime": "2026-08-18T13:11:11.614Z",
+		"size": 12139,
+		"path": "../public/assets/iventy-DS9uKwiZ.js"
 	},
 	"/assets/functional-training-DdTLWrlH.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"2ffaa-YAO5tr/5R1jcEmJ4oRdXz+8tGVI\"",
-		"mtime": "2026-08-18T12:53:04.096Z",
+		"mtime": "2026-08-18T13:11:11.627Z",
 		"size": 196522,
 		"path": "../public/assets/functional-training-DdTLWrlH.jpg"
 	},
-	"/assets/iventy-sFx_523T.js": {
+	"/assets/kardiolohichna-diahnostyka-dD4QAQbs.js": {
 		"type": "text/javascript; charset=utf-8",
-		"etag": "\"2f6b-uN5VZ3ajTDt1R+VbnK4A9rdM0Kk\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
-		"size": 12139,
-		"path": "../public/assets/iventy-sFx_523T.js"
-	},
-	"/assets/konferentsii-BxLnSZSX.js": {
-		"type": "text/javascript; charset=utf-8",
-		"etag": "\"3122-8SMKNtu9zNLXA4ACUly552Jcbj0\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
-		"size": 12578,
-		"path": "../public/assets/konferentsii-BxLnSZSX.js"
-	},
-	"/assets/kardiolohichna-diahnostyka-ZLWv56lz.js": {
-		"type": "text/javascript; charset=utf-8",
-		"etag": "\"e7-kTl6vgASeakupo27v9+PfGPj8Tk\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
+		"etag": "\"e7-Yya4/D6rFOfn5CZp8ubIIL4AP88\"",
+		"mtime": "2026-08-18T13:11:11.614Z",
 		"size": 231,
-		"path": "../public/assets/kardiolohichna-diahnostyka-ZLWv56lz.js"
+		"path": "../public/assets/kardiolohichna-diahnostyka-dD4QAQbs.js"
 	},
-	"/assets/kursy-YwRAHudd.js": {
+	"/assets/konferentsii-D_tiCLcR.js": {
 		"type": "text/javascript; charset=utf-8",
-		"etag": "\"b4-6SkDnfDKp01GppkSYbHSUtGvhww\"",
-		"mtime": "2026-08-18T12:53:04.092Z",
+		"etag": "\"3122-8tnJ+rXIAVWAVYEP7DgzFlsQ2vA\"",
+		"mtime": "2026-08-18T13:11:11.614Z",
+		"size": 12578,
+		"path": "../public/assets/konferentsii-D_tiCLcR.js"
+	},
+	"/assets/kursy-BA7AL6dB.js": {
+		"type": "text/javascript; charset=utf-8",
+		"etag": "\"b4-iwFOr+WAqAq/LSwihBWkh+aMI7s\"",
+		"mtime": "2026-08-18T13:11:11.615Z",
 		"size": 180,
-		"path": "../public/assets/kursy-YwRAHudd.js"
-	},
-	"/assets/index-BVmLiB7s.js": {
-		"type": "text/javascript; charset=utf-8",
-		"etag": "\"4e2d9-QOcv1nzxhxmW7YqqyHwVw2ZGI9k\"",
-		"mtime": "2026-08-18T12:53:04.091Z",
-		"size": 320217,
-		"path": "../public/assets/index-BVmLiB7s.js"
-	},
-	"/assets/hur-equipment-CoFDjXe2.jpg": {
-		"type": "image/jpeg",
-		"etag": "\"56c37-NSTl0adMpE2qxc8S+8UxcaTchGk\"",
-		"mtime": "2026-08-18T12:53:04.096Z",
-		"size": 355383,
-		"path": "../public/assets/hur-equipment-CoFDjXe2.jpg"
-	},
-	"/assets/mobile-rehab-EL7cyU9n.jpg": {
-		"type": "image/jpeg",
-		"etag": "\"43b0c-1vTcodHBTZvArXEQ7gqVa/SnnZc\"",
-		"mtime": "2026-08-18T12:53:04.097Z",
-		"size": 277260,
-		"path": "../public/assets/mobile-rehab-EL7cyU9n.jpg"
-	},
-	"/assets/navchannia-CHkxgqx3.js": {
-		"type": "text/javascript; charset=utf-8",
-		"etag": "\"a2-5oqEAF1AGgn7L78FpZRLRwsmKbw\"",
-		"mtime": "2026-08-18T12:53:04.093Z",
-		"size": 162,
-		"path": "../public/assets/navchannia-CHkxgqx3.js"
-	},
-	"/assets/news-C3F2ox8L.js": {
-		"type": "text/javascript; charset=utf-8",
-		"etag": "\"1488-dBio9zymv7S0cNt9dYe6CVPYi+Y\"",
-		"mtime": "2026-08-18T12:53:04.093Z",
-		"size": 5256,
-		"path": "../public/assets/news-C3F2ox8L.js"
-	},
-	"/assets/partner-heart-vj3RZsap.svg": {
-		"type": "image/svg+xml",
-		"etag": "\"2b76-yBC6jlpbrreOITanKI8V9NpSERc\"",
-		"mtime": "2026-08-18T12:53:04.097Z",
-		"size": 11126,
-		"path": "../public/assets/partner-heart-vj3RZsap.svg"
+		"path": "../public/assets/kursy-BA7AL6dB.js"
 	},
 	"/assets/message-circle-BQfnJSPm.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"e8-nNoFwZRBJiZVaNXkf9By8cWgfrQ\"",
-		"mtime": "2026-08-18T12:53:04.093Z",
+		"mtime": "2026-08-18T13:11:11.616Z",
 		"size": 232,
 		"path": "../public/assets/message-circle-BQfnJSPm.js"
+	},
+	"/assets/index-FIGTxX3W.js": {
+		"type": "text/javascript; charset=utf-8",
+		"etag": "\"4e2d9-mtM247xzVzz57PeF5HMV1PZeFHg\"",
+		"mtime": "2026-08-18T13:11:11.612Z",
+		"size": 320217,
+		"path": "../public/assets/index-FIGTxX3W.js"
+	},
+	"/assets/news-C3F2ox8L.js": {
+		"type": "text/javascript; charset=utf-8",
+		"etag": "\"1488-dBio9zymv7S0cNt9dYe6CVPYi+Y\"",
+		"mtime": "2026-08-18T13:11:11.617Z",
+		"size": 5256,
+		"path": "../public/assets/news-C3F2ox8L.js"
+	},
+	"/assets/navchannia-BH4AwwWs.js": {
+		"type": "text/javascript; charset=utf-8",
+		"etag": "\"a2-YsO75HUu7OFIPS4sMvlnT9R0+W4\"",
+		"mtime": "2026-08-18T13:11:11.616Z",
+		"size": 162,
+		"path": "../public/assets/navchannia-BH4AwwWs.js"
+	},
+	"/assets/hur-equipment-CoFDjXe2.jpg": {
+		"type": "image/jpeg",
+		"etag": "\"56c37-NSTl0adMpE2qxc8S+8UxcaTchGk\"",
+		"mtime": "2026-08-18T13:11:11.627Z",
+		"size": 355383,
+		"path": "../public/assets/hur-equipment-CoFDjXe2.jpg"
 	},
 	"/assets/partner-chnu-BjBJePtC.png": {
 		"type": "image/png",
 		"etag": "\"666a-AvMdqcUTkQJ//xATl3PR2U53HAU\"",
-		"mtime": "2026-08-18T12:53:04.097Z",
+		"mtime": "2026-08-18T13:11:11.627Z",
 		"size": 26218,
 		"path": "../public/assets/partner-chnu-BjBJePtC.png"
 	},
 	"/assets/partner-asmu-CECUVYz9.png": {
 		"type": "image/png",
 		"etag": "\"9a41-gU3di1fr8hrLF+L+F/zrS6xpYYQ\"",
-		"mtime": "2026-08-18T12:53:04.097Z",
+		"mtime": "2026-08-18T13:11:11.627Z",
 		"size": 39489,
 		"path": "../public/assets/partner-asmu-CECUVYz9.png"
 	},
-	"/assets/novyny-DbcvQpaG.js": {
-		"type": "text/javascript; charset=utf-8",
-		"etag": "\"1c59-WXig30rA2rgfb0CM9rOgZp/1Kyo\"",
-		"mtime": "2026-08-18T12:53:04.093Z",
-		"size": 7257,
-		"path": "../public/assets/novyny-DbcvQpaG.js"
+	"/assets/partner-heart-vj3RZsap.svg": {
+		"type": "image/svg+xml",
+		"etag": "\"2b76-yBC6jlpbrreOITanKI8V9NpSERc\"",
+		"mtime": "2026-08-18T13:11:11.628Z",
+		"size": 11126,
+		"path": "../public/assets/partner-heart-vj3RZsap.svg"
 	},
 	"/assets/partner-ifnmu-SGLPBvZe.png": {
 		"type": "image/png",
 		"etag": "\"7874-n+1+2iW78snmtkiVR53l73G3+dA\"",
-		"mtime": "2026-08-18T12:53:04.097Z",
+		"mtime": "2026-08-18T13:11:11.628Z",
 		"size": 30836,
 		"path": "../public/assets/partner-ifnmu-SGLPBvZe.png"
+	},
+	"/assets/novyny-DbcvQpaG.js": {
+		"type": "text/javascript; charset=utf-8",
+		"etag": "\"1c59-WXig30rA2rgfb0CM9rOgZp/1Kyo\"",
+		"mtime": "2026-08-18T13:11:11.617Z",
+		"size": 7257,
+		"path": "../public/assets/novyny-DbcvQpaG.js"
 	},
 	"/assets/partner-sytenko-DtFTHkNv.svg": {
 		"type": "image/svg+xml",
 		"etag": "\"22ee-S7hA/2pKakztjnpe5GubYaX5538\"",
-		"mtime": "2026-08-18T12:53:04.097Z",
+		"mtime": "2026-08-18T13:11:11.628Z",
 		"size": 8942,
 		"path": "../public/assets/partner-sytenko-DtFTHkNv.svg"
 	},
-	"/assets/pershi-symptomy-problem-iz-sertsem-ChgVEQDS.js": {
+	"/assets/mobile-rehab-EL7cyU9n.jpg": {
+		"type": "image/jpeg",
+		"etag": "\"43b0c-1vTcodHBTZvArXEQ7gqVa/SnnZc\"",
+		"mtime": "2026-08-18T13:11:11.627Z",
+		"size": 277260,
+		"path": "../public/assets/mobile-rehab-EL7cyU9n.jpg"
+	},
+	"/assets/pershi-symptomy-problem-iz-sertsem-ukD9ZWtJ.js": {
 		"type": "text/javascript; charset=utf-8",
-		"etag": "\"42d6-x7SdPIfs8r814N9zexSvQt6Ouq8\"",
-		"mtime": "2026-08-18T12:53:04.093Z",
+		"etag": "\"42d6-SpHT/IY/aUXpnzYQ2XGPMpe0VYM\"",
+		"mtime": "2026-08-18T13:11:11.617Z",
 		"size": 17110,
-		"path": "../public/assets/pershi-symptomy-problem-iz-sertsem-ChgVEQDS.js"
-	},
-	"/assets/medical-assessment-BG46-P41.jpg": {
-		"type": "image/jpeg",
-		"etag": "\"6a636-Pzg7TApWkEaRisaCJgHqc48XI00\"",
-		"mtime": "2026-08-18T12:53:04.096Z",
-		"size": 435766,
-		"path": "../public/assets/medical-assessment-BG46-P41.jpg"
-	},
-	"/assets/pool-DjxJpGDq.jpg": {
-		"type": "image/jpeg",
-		"etag": "\"448fa-6Gn+iY5CvoKtzRT7SzTGLH3qeIQ\"",
-		"mtime": "2026-08-18T12:53:04.097Z",
-		"size": 280826,
-		"path": "../public/assets/pool-DjxJpGDq.jpg"
+		"path": "../public/assets/pershi-symptomy-problem-iz-sertsem-ukD9ZWtJ.js"
 	},
 	"/assets/partner-karpatska-akademiia-C4xKTOZ1.png": {
 		"type": "image/png",
 		"etag": "\"1a066-+EsvVE9i81Jx1h8mdFLgUBoMh7s\"",
-		"mtime": "2026-08-18T12:53:04.097Z",
+		"mtime": "2026-08-18T13:11:11.628Z",
 		"size": 106598,
 		"path": "../public/assets/partner-karpatska-akademiia-C4xKTOZ1.png"
 	},
 	"/assets/preload-helper-BODadkrP.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"166a-h1NM13x0GJuFHPsZsSrdBKOjkMo\"",
-		"mtime": "2026-08-18T12:53:04.093Z",
+		"mtime": "2026-08-18T13:11:11.617Z",
 		"size": 5738,
 		"path": "../public/assets/preload-helper-BODadkrP.js"
 	},
-	"/assets/routes-DaGxizOg.js": {
+	"/assets/medical-assessment-BG46-P41.jpg": {
+		"type": "image/jpeg",
+		"etag": "\"6a636-Pzg7TApWkEaRisaCJgHqc48XI00\"",
+		"mtime": "2026-08-18T13:11:11.627Z",
+		"size": 435766,
+		"path": "../public/assets/medical-assessment-BG46-P41.jpg"
+	},
+	"/assets/pool-DjxJpGDq.jpg": {
+		"type": "image/jpeg",
+		"etag": "\"448fa-6Gn+iY5CvoKtzRT7SzTGLH3qeIQ\"",
+		"mtime": "2026-08-18T13:11:11.628Z",
+		"size": 280826,
+		"path": "../public/assets/pool-DjxJpGDq.jpg"
+	},
+	"/assets/routes-Bmx3bMh_.js": {
 		"type": "text/javascript; charset=utf-8",
-		"etag": "\"17676-qE36fnyGdPoYCMN5LAqHHx7QU28\"",
-		"mtime": "2026-08-18T12:53:04.093Z",
+		"etag": "\"17676-c8YzkAWqnN6SIy/ZjYbsHoksOXM\"",
+		"mtime": "2026-08-18T13:11:11.617Z",
 		"size": 95862,
-		"path": "../public/assets/routes-DaGxizOg.js"
+		"path": "../public/assets/routes-Bmx3bMh_.js"
 	},
 	"/assets/service-checkup-avzHL_rS.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"127b5-TqtZ25jME/YgtikiQ08jbxoMAAs\"",
-		"mtime": "2026-08-18T12:53:04.097Z",
+		"mtime": "2026-08-18T13:11:11.628Z",
 		"size": 75701,
 		"path": "../public/assets/service-checkup-avzHL_rS.jpg"
 	},
-	"/assets/service-detail-template-CUKqH3rP.js": {
+	"/assets/service-detail-template-C_paf-Zo.js": {
 		"type": "text/javascript; charset=utf-8",
-		"etag": "\"d196-VtRu+2+R41p8KsOTtt5YPAEh90w\"",
-		"mtime": "2026-08-18T12:53:04.093Z",
+		"etag": "\"d196-J+lx75DyK+aK3nZA5wlvIEvsuME\"",
+		"mtime": "2026-08-18T13:11:11.617Z",
 		"size": 53654,
-		"path": "../public/assets/service-detail-template-CUKqH3rP.js"
+		"path": "../public/assets/service-detail-template-C_paf-Zo.js"
 	},
 	"/assets/service-rehab-CVHPKjlr.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"efc6-dQjEX6sOXYif408f2qvvIfb1yXA\"",
-		"mtime": "2026-08-18T12:53:04.098Z",
+		"mtime": "2026-08-18T13:11:11.628Z",
 		"size": 61382,
 		"path": "../public/assets/service-rehab-CVHPKjlr.jpg"
 	},
 	"/assets/service-sports-DGsoGTzw.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"12458-K+sjWXyMSJDCQ58EhaNtprXqUHk\"",
-		"mtime": "2026-08-18T12:53:04.098Z",
+		"mtime": "2026-08-18T13:11:11.628Z",
 		"size": 74840,
 		"path": "../public/assets/service-sports-DGsoGTzw.jpg"
 	},
-	"/assets/styles-CJ3xNVUr.css": {
+	"/assets/styles-Dh00R_rO.css": {
 		"type": "text/css; charset=utf-8",
-		"etag": "\"3cec1-WD4aL7nRP8D3SvNC6T8tRBTxGFI\"",
-		"mtime": "2026-08-18T12:53:04.098Z",
-		"size": 249537,
-		"path": "../public/assets/styles-CJ3xNVUr.css"
+		"etag": "\"3d06a-fUoKxV7yu8zC4fqqUARTAV9NRk8\"",
+		"mtime": "2026-08-18T13:11:11.631Z",
+		"size": 249962,
+		"path": "../public/assets/styles-Dh00R_rO.css"
 	},
 	"/assets/triangle-alert-B4_yJucF.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"100-auLCREvhc3EO61UO3rY4vsv4Zeo\"",
-		"mtime": "2026-08-18T12:53:04.094Z",
+		"mtime": "2026-08-18T13:11:11.617Z",
 		"size": 256,
 		"path": "../public/assets/triangle-alert-B4_yJucF.js"
 	},
 	"/assets/users-Br4UFN-f.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"240-JbtGrlmMfZCVB+LqHzrOZDuVjUQ\"",
-		"mtime": "2026-08-18T12:53:04.094Z",
+		"mtime": "2026-08-18T13:11:11.617Z",
 		"size": 576,
 		"path": "../public/assets/users-Br4UFN-f.js"
 	},
 	"/assets/social-projects-_t_CGf7u.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"419bf-CjcsHgqw+5sNdNo00ziQXkR7nkE\"",
-		"mtime": "2026-08-18T12:53:04.098Z",
+		"mtime": "2026-08-18T13:11:11.628Z",
 		"size": 268735,
 		"path": "../public/assets/social-projects-_t_CGf7u.jpg"
 	},
 	"/assets/therapy-hall-l4sXoJ4m.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"788fc-QSgN6FRNU7XzCdAZLlGZRfWdNq8\"",
-		"mtime": "2026-08-18T12:53:04.098Z",
+		"mtime": "2026-08-18T13:11:11.633Z",
 		"size": 493820,
 		"path": "../public/assets/therapy-hall-l4sXoJ4m.jpg"
 	},
 	"/assets/therapy-session-COxtdhNK.jpg": {
 		"type": "image/jpeg",
 		"etag": "\"99044-pBFN6Fi31cOr7yR+0MJgXc5B6dE\"",
-		"mtime": "2026-08-18T12:53:04.098Z",
+		"mtime": "2026-08-18T13:11:11.633Z",
 		"size": 626756,
 		"path": "../public/assets/therapy-session-COxtdhNK.jpg"
 	}
