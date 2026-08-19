@@ -145,7 +145,6 @@ export type SiteNode = {
   customPage?:
     | "cardio-diagnostics"
     | "cardio-rehab"
-    | "post-infarction-rehab"
     | "all-services"
     | "institute-partnership"
     | "mobile-rehab"

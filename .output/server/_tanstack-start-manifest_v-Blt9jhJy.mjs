@@ -1,0 +1,116 @@
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-Blt9jhJy.js
+var tsrStartManifest = () => ({ routes: {
+	__root__: {
+		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/__root.tsx",
+		children: [
+			"/",
+			"/$",
+			"/iventy",
+			"/kardiolohichna-diahnostyka",
+			"/konferentsii",
+			"/kursy",
+			"/navchannia",
+			"/novyny",
+			"/sitemap.xml",
+			"/statti/pershi-symptomy-problem-iz-sertsem"
+		],
+		preloads: [
+			"/assets/index-De9FKHT7.js",
+			"/assets/blocks-CMBqvQhR.js",
+			"/assets/_-V_GxTX91.js",
+			"/assets/preload-helper-YXat4Aaj.js"
+		],
+		scripts: [{ attrs: {
+			type: "module",
+			async: !0,
+			src: "/assets/index-De9FKHT7.js"
+		} }]
+	},
+	"/": {
+		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/index.tsx",
+		children: void 0,
+		preloads: [
+			"/assets/routes-fahw5hH0.js",
+			"/assets/company-overview-section-CR221s38.js",
+			"/assets/calendar-days-fSGTkNAm.js",
+			"/assets/users-CLknBVrn.js",
+			"/assets/education-training-VQUtcCqH.js",
+			"/assets/news-wp--OMA0.js"
+		]
+	},
+	"/$": {
+		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/$.tsx",
+		children: void 0,
+		preloads: [
+			"/assets/_-Dnq6v4wy.js",
+			"/assets/company-overview-section-CR221s38.js",
+			"/assets/building-2-Bt15OjQr.js",
+			"/assets/service-detail-template-lGVYUdYX.js",
+			"/assets/calendar-days-fSGTkNAm.js",
+			"/assets/chevron-left-Br50WLrH.js",
+			"/assets/users-CLknBVrn.js",
+			"/assets/message-circle-vnTxu97t.js",
+			"/assets/triangle-alert-CcTv-Wq_.js",
+			"/assets/education-training-VQUtcCqH.js"
+		]
+	},
+	"/iventy": {
+		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/iventy.tsx",
+		children: void 0,
+		preloads: [
+			"/assets/iventy-DXPGZBgl.js",
+			"/assets/building-2-Bt15OjQr.js",
+			"/assets/calendar-days-fSGTkNAm.js",
+			"/assets/clock-3-DWHPqtcz.js",
+			"/assets/users-CLknBVrn.js",
+			"/assets/message-circle-vnTxu97t.js"
+		]
+	},
+	"/kardiolohichna-diahnostyka": {
+		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/kardiolohichna-diahnostyka.tsx",
+		children: void 0,
+		preloads: ["/assets/kardiolohichna-diahnostyka-Dm35qz-6.js", "/assets/service-detail-template-lGVYUdYX.js"]
+	},
+	"/konferentsii": {
+		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/konferentsii.tsx",
+		children: void 0,
+		preloads: [
+			"/assets/konferentsii-D004bPsB.js",
+			"/assets/calendar-days-fSGTkNAm.js",
+			"/assets/chevron-left-Br50WLrH.js",
+			"/assets/clock-3-DWHPqtcz.js",
+			"/assets/education-training-VQUtcCqH.js"
+		]
+	},
+	"/kursy": {
+		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/kursy.tsx",
+		children: void 0,
+		preloads: ["/assets/kursy-CUliLsE4.js", "/assets/education-courses-page-CmA7ne3X.js"]
+	},
+	"/navchannia": {
+		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/navchannia.tsx",
+		children: void 0,
+		preloads: ["/assets/navchannia-C-xDxVS7.js", "/assets/education-courses-page-CmA7ne3X.js"]
+	},
+	"/novyny": {
+		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/novyny.tsx",
+		children: void 0,
+		preloads: [
+			"/assets/novyny-DvuC4mPL.js",
+			"/assets/calendar-days-fSGTkNAm.js",
+			"/assets/clock-3-DWHPqtcz.js",
+			"/assets/news-wp--OMA0.js"
+		]
+	},
+	"/statti/pershi-symptomy-problem-iz-sertsem": {
+		filePath: "/Users/dmytrolishchyna/Desktop/OSNOVA-WEB/src/routes/statti/pershi-symptomy-problem-iz-sertsem.tsx",
+		children: void 0,
+		preloads: [
+			"/assets/pershi-symptomy-problem-iz-sertsem-Sci4mKhz.js",
+			"/assets/calendar-days-fSGTkNAm.js",
+			"/assets/triangle-alert-CcTv-Wq_.js"
+		]
+	}
+} });
+//#endregion
+export { tsrStartManifest };
