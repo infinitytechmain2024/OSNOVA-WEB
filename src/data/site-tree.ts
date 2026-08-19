@@ -397,6 +397,56 @@ const cardioRehab: SiteNode = {
   ],
 };
 
+const POST_INFARCTION_REHAB_ROUTE = "/reabilitatsiia/pislia-infarktu-miokarda";
+const postInfarctionPrograms = CARDIO_REHAB_PROGRAMS.map((program) => ({
+  ...program,
+  detailsUrl: `${POST_INFARCTION_REHAB_ROUTE}/${program.id}`,
+  price: program.price,
+}));
+
+const postInfarctionRehab: SiteNode = {
+  id: "rehab-post-infarction",
+  slug: "pislia-infarktu-miokarda",
+  parentId: "rehab",
+  type: "direction",
+  customPage: "post-infarction-rehab",
+  title: "Реабілітація після інфаркту міокарда",
+  eyebrow: "РЕАБІЛІТАЦІЯ",
+  route: POST_INFARCTION_REHAB_ROUTE,
+  shortDescription:
+    "Поетапне відновлення після інфаркту міокарда з медичним контролем, дозованими навантаженнями та персональним підбором методів реабілітації.",
+  fullDescription:
+    "Програма реабілітації після інфаркту міокарда формується індивідуально з урахуванням перебігу гострого періоду, функціонального стану серця, переносимості навантаження та супутніх факторів ризику.",
+  duration: "1–21 день",
+  priceLabel: "3 000 грн",
+  image: cpetImg,
+  published: true,
+  featured: true,
+  ...rehabDefaults,
+  faq: cardioRehab.faq,
+  children: [
+    ...postInfarctionPrograms.map((programData) => ({
+      ...program(
+        "rehab-post-infarction",
+        POST_INFARCTION_REHAB_ROUTE,
+        programData.id,
+        programData.title,
+        programData.description,
+        `${programData.duration} / ${programData.format}`,
+        programData.price,
+        rehabImg,
+      ),
+      route: programData.detailsUrl,
+      duration: programData.duration,
+      priceLabel: programData.price,
+      shortDescription: programData.description,
+      formats: [programData.format],
+      detailsUrl: programData.detailsUrl,
+      orderAction: programData.orderAction,
+    })),
+  ],
+};
+
 const ORTHO_ROUTE = "/reabilitatsiia/ortopedychna";
 const orthoRehab: SiteNode = {
   id: "rehab-ortho",
@@ -565,6 +615,7 @@ const rehab: SiteNode = {
   faq: REHAB_FAQ,
   children: [
     cardioRehab,
+    postInfarctionRehab,
     orthoRehab,
     vertRehab,
     simpleRehabDirection(

@@ -9,6 +9,7 @@ import { AllServicesPricePage } from "@/components/all-services-price-page";
 import { DoctorPartnershipPage } from "@/components/doctor-partnership-page";
 import { InstitutePartnershipPage } from "@/components/institute-partnership-page";
 import { CardioRehabPage } from "@/components/cardio-rehab-page";
+import { PostInfarctionRehabPage } from "@/components/post-infarction-rehab-page";
 import { MobileRehabPage } from "@/components/mobile-rehab-page";
 import { RentalEquipmentPage } from "@/components/rental-equipment-page";
 import { SocialProjectsPage } from "@/components/social-projects-page";
@@ -57,6 +58,10 @@ function NodePage() {
 
   if (node.customPage === "cardio-rehab" || node.route === "/reabilitatsiia/kardiolohichna") {
     return <CardioRehabPage node={node} />;
+  }
+
+  if (node.customPage === "post-infarction-rehab") {
+    return <PostInfarctionRehabPage node={node} />;
   }
 
   if (node.customPage === "all-services" || node.id === "services") {
