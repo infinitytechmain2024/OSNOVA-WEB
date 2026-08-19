@@ -153,7 +153,8 @@ export type SiteNode = {
     | "faq"
     | "contacts"
     | "legal"
-    | "success";
+    | "success"
+    | "direction-template";
   legalBody?: string[];
   pageContent?: ServicePageContent;
 

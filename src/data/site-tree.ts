@@ -456,13 +456,14 @@ const orthoRehab: SiteNode = {
   title: "Ортопедична та травматологічна реабілітація",
   eyebrow: "РЕАБІЛІТАЦІЯ",
   route: ORTHO_ROUTE,
-  shortDescription: "Відновлення рухливості та сили після травм і ортопедичних операцій.",
+  shortDescription: "Відновлення рухливості та сили після травм і ортопедічних операцій.",
   duration: "10–21 день",
   priceLabel: "Вартість уточнюється",
   image: rehabImg,
   published: true,
   featured: true,
   ...rehabDefaults,
+  customPage: "direction-template",
   children: [
     program(
       "rehab-ortho",
@@ -531,6 +532,7 @@ const vertRehab: SiteNode = {
   image: rehabImg,
   published: true,
   ...rehabDefaults,
+  customPage: "direction-template",
   children: [
     program(
       "rehab-vert",
@@ -596,6 +598,7 @@ const simpleRehabDirection = (
   image: rehabImg,
   published: true,
   ...rehabDefaults,
+  customPage: "direction-template",
   children: [],
 });
 
@@ -639,8 +642,14 @@ const rehab: SiteNode = {
     simpleRehabDirection(
       "profilaktychna",
       "Профілактична реабілітація",
-      "Програми для збереження здоров’я, рухливості та витривалості.",
+      "Програми для збереження здоров'я, рухливості та витривалості.",
       "1 400 грн / день",
+    ),
+    simpleRehabDirection(
+      "sportyvna",
+      "Спортивна медицина",
+      "Відновлення після спортивних травм, покращення результатів та профілактика.",
+      "1 800 грн / день",
     ),
   ],
 };
