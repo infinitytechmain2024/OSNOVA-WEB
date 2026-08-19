@@ -36,6 +36,7 @@ import type { FAQItem, ServiceMethodCard, SiteNode } from "@/data/types";
 import { cn } from "@/lib/utils";
 import { CARDIO_REHAB_PROGRAMS } from "@/data/cardio-rehab-pricing";
 import { CONTACTS } from "@/data/site-tree";
+import { rehabTemplateConfigs } from "@/data/rehab-template-config";
 import {
   Dialog,
   DialogContent,
@@ -43,14 +44,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import checkupImg from "@/assets/service-checkup.jpg";
 import cpetImg from "@/assets/cpet-test.jpg";
-import ecgImg from "@/assets/ecg-review.jpg";
 import rehabImg from "@/assets/service-rehab.jpg";
-import sportsImg from "@/assets/service-sports.jpg";
-import cardioHeart3dImg from "@/assets/cardio-heart-3d.jpg";
-import cardioRehabCtaImg from "@/assets/about/cardio-rehab-cta-photo-v3.jpg";
-import medicalAssessmentImg from "@/assets/about/medical-assessment.jpg";
 import { getBreadcrumbs, getNodeById } from "@/lib/tree";
 
 const ANCHORS = [
@@ -62,77 +57,39 @@ const ANCHORS = [
   { href: "#faq", label: "FAQ" },
 ];
 
-const TIMING_COLUMNS = [
+const TIMING_COLUMN_STYLES = [
   {
-    title: "Показання",
     icon: Heart,
     iconColor: "text-primary",
     iconBg: "bg-primary/10",
     bulletColor: "bg-primary",
-    items: [
-      "Після інфаркту міокарда",
-      "Після стентування коронарних артерій",
-      "Після операцій на серці (АКШ, клапани)",
-      "При хронічній серцевій недостатності",
-      "При зниженій переносимості навантажень",
-    ],
   },
   {
-    title: "Результати реабілітації",
     icon: CheckCircle2,
     iconColor: "text-emerald-500",
     iconBg: "bg-emerald-50",
     bulletColor: "bg-emerald-500",
-    items: [
-      "Підвищення витривалості та сили",
-      "Зменшення задишки та втоми",
-      "Стабілізація артеріального тиску",
-      "Покращення якості життя та настрою",
-      "Безпечне повернення до активності",
-    ],
   },
   {
-    title: "Протипоказання",
     icon: AlertTriangle,
     iconColor: "text-amber-500",
     iconBg: "bg-amber-50",
     bulletColor: "bg-amber-500",
-    items: [
-      "Гостра інфекція або підвищена температура",
-      "Нестабільний тиск чи виражена аритмія",
-      "Загострення хронічного захворювання",
-      "Старт програми визначає лікар після оцінки стану",
-    ],
   },
 ];
 
-const EMERGENCY_CALL_ITEMS = [
-  "раптовий або інтенсивний біль у грудях",
-  "виражена задишка або утруднене дихання",
-  "втрата або порушення свідомості",
-  "раптове порушення мовлення, зору або слабкість у кінцівках",
-];
-
-const PROCESS_STEPS = [
+const PROCESS_STEP_ICONS = [
   {
     icon: FileSearch,
-    title: "Оцінка стану та документів",
-    text: "Ми комплексно оцінюємо ваш стан здоров’я, аналізуємо медичні документи та визначаємо ключові потреби для ефективної реабілітації.",
   },
   {
     icon: ClipboardPenLine,
-    title: "Індивідуальний план реабілітації",
-    text: "Створюємо персональний план з урахуванням ваших цілей, потреб, стану здоров’я, можливостей та етапів відновлення.",
   },
   {
     icon: Dumbbell,
-    title: "Заняття та процедури під контролем",
-    text: "Проводимо індивідуальні та групові заняття, процедури й тренування під наглядом досвідчених фахівців для вашої безпеки та результативності.",
   },
   {
     icon: ChartLine,
-    title: "Контроль прогресу та корекція",
-    text: "Регулярно відстежуємо ваш прогрес, оцінюємо результати та коригуємо план реабілітації для досягнення максимального ефекту відновлення.",
   },
 ];
 
@@ -146,29 +103,6 @@ const CARE_FORMATS = [
 
 const CONDITION_IMAGES = [cpetImg, rehabImg, ecgImg, checkupImg, sportsImg];
 const FAQ_VISIBLE_COUNT = 3;
-
-const CARDIO_CONDITIONS = [
-  {
-    title: "Реабілітація після інфаркту міокарда",
-    text: "Після інфаркту програма допомагає серцю відновити роботу та поступово повернути людині активність без надмірного ризику.",
-  },
-  {
-    title: "Реабілітація після стентування коронарних артерій",
-    text: "Після стентування важливо закріпити звички, які підтримують судини, і знизити ризик повторного звуження артерій.",
-  },
-  {
-    title: "Реабілітація після аортокоронарного шунтування",
-    text: "Після шунтування відновлення проходить поетапно: від дихальної гімнастики до вправ на силу та витривалість.",
-  },
-  {
-    title: "Реабілітація при хронічній серцевій недостатності",
-    text: "Програма допомагає стабілізувати самопочуття, збільшити переносимість навантажень і навчити безпечному ритму життя.",
-  },
-  {
-    title: "Реабілітація після операцій на клапанах серця",
-    text: "Після клапанних втручань важливо поступово відновлювати фізичну активність і контролювати фактори ризику.",
-  },
-];
 
 const CARDIO_PROGRAMS = CARDIO_REHAB_PROGRAMS.map((program) => ({
   title: program.title,
@@ -214,43 +148,11 @@ const SUPPORT_HIGHLIGHTS = [
 ] as const;
 type SupportHighlight = (typeof SUPPORT_HIGHLIGHTS)[number];
 
-const OTHER_SERVICES = [
-  {
-    title: "Кардіологічна діагностика",
-    text: "Сучасні методи обстеження серця та судин допомагають точно оцінити стан перед початком реабілітації та відстежувати зміни в процесі програми.",
-    to: "/diagnostyka/kardiodiahnostyka",
-    image: ecgImg,
-  },
-  {
-    title: "Кардіологічний чек-ап",
-    text: "Комплексне обстеження, яке дозволяє виявити приховані ризики та вчасно скоригувати лікування і профілактику.",
-    to: "/check-up/kardiolohichnyi",
-    image: checkupImg,
-  },
-  {
-    title: "Виїзна реабілітація",
-    text: "Можливість продовжити програму вдома або в іншому зручному місці під дистанційним супроводом лікарів і реабілітологів.",
-    to: "/vyizna-reabilitatsiia",
-    image: rehabImg,
-  },
-  {
-    title: "Лікувальний басейн",
-    text: "Заняття у воді зменшують навантаження на суглоби та дозволяють безпечно тренувати серцево-судинну систему навіть при обмеженій рухливості.",
-    to: "/vidnovlennia/likuvalnyi-basein",
-    image: sportsImg,
-  },
-  {
-    title: "Функціональне тестування",
-    text: "Оцінка фізичної працездатності та реакції серця на навантаження допомагає точно підібрати інтенсивність програми і контролювати прогрес.",
-    to: "/diagnostyka/kardiodiahnostyka/cpet",
-    image: cpetImg,
-  },
-];
-
 const ALL_SERVICES_ROUTE = getNodeById("services")?.route ?? "/poslugy";
 
 export function CardioRehabPage({ node }: { node: SiteNode }) {
   const data = getServicePageData(node);
+  const pageConfig = rehabTemplateConfigs[node.id] ?? rehabTemplateConfigs["rehab-cardio"];
   const custom = node.pageContent || {};
   const { openModal } = useConsultationModal();
   const [introExpanded, setIntroExpanded] = React.useState(false);
@@ -258,7 +160,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
   const [faqExpanded, setFaqExpanded] = React.useState(false);
   const [documentsModalOpen, setDocumentsModalOpen] = React.useState(false);
 
-  const allConditionCards = CARDIO_CONDITIONS;
+  const allConditionCards = pageConfig.conditions;
   const visibleConditionCards = showAllConditions
     ? allConditionCards
     : allConditionCards.slice(0, 3);
@@ -267,7 +169,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
     route: node.children?.[index]?.route || node.route,
     ...program,
   }));
-  const faqItems = pickFaqItems(node.faq || []);
+  const faqItems = pickFaqItems((node.faq && node.faq.length > 0 ? node.faq : pageConfig.faq) || []);
   const visibleFaqItems = faqExpanded ? faqItems : faqItems.slice(0, FAQ_VISIBLE_COUNT);
 
   const scrollToId = (id: string) => {
@@ -281,8 +183,8 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
       <main>
         <section className="relative overflow-hidden bg-navy-deep">
           <img
-            src={data.heroImage}
-            alt="Медична команда контролює заняття пацієнта під час відновлення"
+            src={pageConfig.heroImage || data.heroImage}
+            alt={pageConfig.heroImageAlt}
             width={1400}
             height={900}
             className="absolute inset-0 size-full object-cover object-right opacity-50 mix-blend-luminosity lg:opacity-90"
@@ -294,10 +196,10 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                 {data.heroEyebrow}
               </span>
               <h1 className="mt-5 text-3xl font-extrabold leading-[1.08] text-background sm:text-5xl lg:text-6xl">
-                Реабілітація в кардіології
+                {pageConfig.heroTitle}
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-background/86 sm:text-lg">
-                Профілактика • діагностика • лікування • відновлення • навчання • супровід
+                {pageConfig.heroSubtitle}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <button
@@ -305,7 +207,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                   onClick={() => openModal("Записатися на консультацію")}
                   className="inline-flex min-h-12 items-center justify-center rounded-lg bg-brand-green px-6 py-3 text-sm font-bold text-brand-green-foreground shadow-md transition-colors hover:bg-brand-green/90 sm:min-h-14 sm:px-8"
                 >
-                  Записатися на консультацію
+                  {pageConfig.heroButtonLabel}
                 </button>
               </div>
             </div>
@@ -316,34 +218,29 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
 
         <PageSection id="about" className="pt-10 sm:pt-16">
           <ExpandableIntroSection
-            title="Що таке кардіологічна реабілітація"
-            shortDescription="Кардіологічна реабілітація — це структурована програма відновлення після серцевих подій і операцій. Вона поєднує контрольовані фізичні навантаження, навчання пацієнта правилам життя з хворобою серця та психологічну підтримку. Головна мета програми — знизити ризик повторних ускладнень, підвищити витривалість і допомогти людині безпечно повернутися до звичайного ритму життя."
-            expandedContent="Програму складають індивідуально. Лікар враховує діагноз, результати обстежень і поточний рівень фізичних можливостей. До програми входять дозовані тренування, робота з факторами ризику (тиск, холестерин, вага, куріння), навчання правильному харчуванню та прийому ліків, а також допомога в подоланні тривоги, пов’язаної із захворюванням."
-            image={data.introImage}
-            imageAlt="Лікар переглядає результати кардіологічного обстеження"
+            title={pageConfig.introTitle}
+            shortDescription={pageConfig.introShort}
+            expandedContent={pageConfig.introExpanded}
+            image={pageConfig.introImage || data.introImage}
+            imageAlt={pageConfig.introImageAlt}
             isExpanded={introExpanded}
             onToggle={() => setIntroExpanded((value) => !value)}
           />
         </PageSection>
 
         <PageSection className="pb-10 sm:pb-16 mt-6 sm:mt-10 lg:mt-12">
-          <TimingSection
-            emergencyBody={
-              typeof custom.emergencyBody === "string" ? custom.emergencyBody : undefined
-            }
-          />
+          <TimingSection pageConfig={pageConfig} />
         </PageSection>
 
         <section id="for-whom" className="scroll-mt-24 bg-white py-12 sm:py-20">
           <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
             <div className="text-center">
               <h2 className="mx-auto max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-4xl">
-                Коли потрібна кардіологічна реабілітація
+                {pageConfig.conditionsTitle}
               </h2>
               <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-primary" />
               <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-navy/76">
-                Діагнози, стани та оперативні втручання, після яких варто пройти програму
-                відновлення в Основа.
+                {pageConfig.conditionsText}
               </p>
             </div>
             <div className="mt-10 grid justify-center gap-7 sm:grid-cols-2 lg:grid-cols-3">
@@ -389,22 +286,20 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <div className="max-w-[1180px]">
               <span className="inline-flex rounded-full border border-primary/22 bg-white/48 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_12px_30px_rgba(47,99,190,0.08)] backdrop-blur-sm sm:px-8 sm:py-3 sm:text-sm">
-                Етапи відновлення
+                {pageConfig.processBadge}
               </span>
               <h2 className="mt-6 max-w-4xl text-3xl font-extrabold leading-[1.02] text-navy sm:text-4xl xl:text-[3.4rem]">
-                Як проходить відновлення?
+                {pageConfig.processTitle}
               </h2>
               <div className="mt-5 h-2 w-28 rounded-full bg-[linear-gradient(90deg,#2f63be_0%,#2f63be_68%,#35c88a_100%)] shadow-[0_8px_20px_rgba(53,200,138,0.18)] sm:w-32" />
               <p className="mt-5 max-w-4xl text-base leading-relaxed text-navy/82 sm:text-lg">
-                Відновлення — це поступовий процес, який базується на оцінці стану, індивідуальному
-                плані та постійному контролі. Ми поруч на кожному етапі вашого повернення до
-                активного життя.
+                {pageConfig.processText}
               </p>
             </div>
 
             <div className="relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:gap-6">
-              {PROCESS_STEPS.map((step, index) => {
-                const Icon = step.icon;
+              {pageConfig.processSteps.map((step, index) => {
+                const Icon = PROCESS_STEP_ICONS[index]?.icon ?? ChartLine;
 
                 return (
                   <article
@@ -470,8 +365,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
               </h2>
               <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
               <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/70">
-                Точну вартість і детальний склад кожного пакету повідомляє адміністратор після
-                попереднього розгляду документів і консультації лікаря.
+                {pageConfig.programsText}
               </p>
             </div>
 
@@ -484,9 +378,12 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
           </div>
         </section>
 
-        <OtherServicesSlider />
+        <OtherServicesSlider pageConfig={pageConfig} />
 
-        <DocumentsReviewSection onOpenDocumentsModal={() => setDocumentsModalOpen(true)} />
+        <DocumentsReviewSection
+          pageConfig={pageConfig}
+          onOpenDocumentsModal={() => setDocumentsModalOpen(true)}
+        />
 
         {faqItems.length > 0 && (
           <section
@@ -500,8 +397,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                 </h2>
                 <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-primary sm:mt-6" />
                 <p className="mx-auto mt-6 max-w-[640px] text-sm leading-relaxed text-slate-600 md:text-base">
-                  Зібрали найпоширеніші запитання про кардіологічну реабілітацію. Якщо не знайшли
-                  відповідь, зверніться до нас і ми допоможемо підібрати наступний крок.
+                  {pageConfig.faqText}
                 </p>
               </div>
 
@@ -532,7 +428,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
         )}
 
         <PageSection className="pb-14 sm:pb-20">
-          <SeoBlock />
+          <SeoBlock pageConfig={pageConfig} />
         </PageSection>
       </main>
 
@@ -703,9 +599,11 @@ function ExpandableIntroSection({
   );
 }
 
-function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
-  const emergencyNote = emergencyBody?.split("\n\n")[1];
-
+function TimingSection({
+  pageConfig,
+}: {
+  pageConfig: (typeof rehabTemplateConfigs)[string];
+}) {
   return (
     <div className="relative overflow-hidden rounded-[28px] border border-blue-100/90 bg-[linear-gradient(180deg,#f8fbff_0%,#eef5ff_100%)] p-5 shadow-[0_20px_60px_rgba(37,99,235,0.08)] sm:p-8 lg:p-10">
       <div
@@ -719,14 +617,15 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
 
       <div className="relative">
         <SectionHeading
-          title="Що варто знати перед початком програми"
-          text="Ця програма створена, щоб безпечно підтримати ваше відновлення після серцевої події. Ознайомтеся з ключовими орієнтирами нижче, щоб почуватися впевненіше та отримати максимальну користь від кожного етапу реабілітації."
+          title={pageConfig.timingTitle}
+          text={pageConfig.timingText}
         />
 
         <div className="mt-8 overflow-hidden rounded-[28px] border border-blue-100/90 bg-white/92 shadow-[0_18px_40px_rgba(15,23,42,0.06)] backdrop-blur-sm">
           <div className="grid gap-0 lg:grid-cols-3">
-            {TIMING_COLUMNS.map((column) => {
-              const Icon = column.icon;
+            {pageConfig.timingColumns.map((column, index) => {
+              const style = TIMING_COLUMN_STYLES[index];
+              const Icon = style.icon;
               return (
                 <div
                   key={column.title}
@@ -736,11 +635,11 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
                     <span
                       className={cn(
                         "flex size-14 shrink-0 items-center justify-center rounded-full shadow-inner ring-1 ring-black/4 sm:size-[78px]",
-                        column.iconBg,
+                        style.iconBg,
                       )}
                     >
                       <Icon
-                        className={cn("size-7 sm:size-9", column.iconColor)}
+                        className={cn("size-7 sm:size-9", style.iconColor)}
                         strokeWidth={2.1}
                       />
                     </span>
@@ -757,7 +656,7 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
                             <span
                               className={cn(
                                 "mt-2.5 size-2 shrink-0 rounded-full",
-                                column.bulletColor,
+                                style.bulletColor,
                               )}
                             />
                             <span>{item}</span>
@@ -781,16 +680,14 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
                 </span>
                 <div className="max-w-2xl">
                   <h3 className="text-2xl font-extrabold leading-tight text-navy sm:text-3xl">
-                    Початок програми
+                    {pageConfig.timingStartTitle}
                   </h3>
                   <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
                   <p className="mt-5 text-base leading-relaxed text-navy/82 sm:text-lg">
-                    Старт програми залежить від стабільності стану, медичних документів і дозволу
-                    лікаря.
+                    {pageConfig.timingStartText}
                   </p>
                   <p className="mt-3 text-base leading-relaxed text-navy/72 sm:text-lg">
-                    Рішення щодо початку приймається індивідуально після оцінки стану та наданих
-                    результатів обстежень і тестів.
+                    {pageConfig.timingStartNote}
                   </p>
                 </div>
               </div>
@@ -798,8 +695,8 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
 
             <div className="relative min-h-[240px] overflow-hidden border-t border-blue-100/90 lg:min-h-[320px] lg:border-l lg:border-t-0">
               <img
-                src={medicalAssessmentImg}
-                alt="Лікар консультує пацієнта перед початком програми"
+                src={pageConfig.timingStartImage}
+                alt={pageConfig.timingStartImageAlt}
                 width={1800}
                 height={1200}
                 loading="lazy"
@@ -818,16 +715,15 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
                 </span>
                 <div className="max-w-2xl">
                   <h3 className="text-2xl font-extrabold leading-tight text-red-600 sm:text-3xl">
-                    Ознаки невідкладного стану
+                    {pageConfig.emergencyTitle}
                   </h3>
                   <div className="mt-4 h-1 w-16 rounded-full bg-red-500" />
                   <p className="mt-5 text-base leading-relaxed text-navy/78 sm:text-lg">
-                    Не розпочинайте та не продовжуйте програму, якщо стан раптово погіршився та
-                    потребує екстреної медичної допомоги.
+                    {pageConfig.emergencyText}
                   </p>
-                  {emergencyNote && (
+                  {pageConfig.emergencyNote && (
                     <p className="mt-3 text-sm leading-relaxed text-navy/62 sm:text-base">
-                      {emergencyNote}
+                      {pageConfig.emergencyNote}
                     </p>
                   )}
                 </div>
@@ -837,7 +733,7 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
             <div className="relative overflow-hidden border-t border-red-100/90 lg:border-l lg:border-t-0">
               <div className="relative h-full p-5 sm:p-7 lg:p-10">
                 <ul className="space-y-3.5">
-                  {EMERGENCY_CALL_ITEMS.map((item) => (
+                  {pageConfig.emergencyItems.map((item) => (
                     <li
                       key={item}
                       className="flex gap-3 text-sm leading-relaxed text-navy/80 sm:text-base"
@@ -1275,11 +1171,16 @@ function SupportHighlightVisual({ highlight }: { highlight: SupportHighlight }) 
   );
 }
 
-function OtherServicesSlider() {
+function OtherServicesSlider({
+  pageConfig,
+}: {
+  pageConfig: (typeof rehabTemplateConfigs)[string];
+}) {
   const trackRef = React.useRef<HTMLDivElement>(null);
   const [active, setActive] = React.useState(0);
+  const services = pageConfig.otherServices;
   const isFirstSlide = active === 0;
-  const isLastSlide = active === OTHER_SERVICES.length - 1;
+  const isLastSlide = active === services.length - 1;
 
   const scrollToIndex = (index: number) => {
     const track = trackRef.current;
@@ -1306,10 +1207,7 @@ function OtherServicesSlider() {
     <section className="bg-soft-blue py-12 sm:py-20">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-          <SectionHeading
-            title="Інші послуги"
-            text="Суміжні напрями, які можуть знадобитися до, під час або після програми."
-          />
+          <SectionHeading title={pageConfig.otherServicesTitle} text={pageConfig.otherServicesText} />
           <AppLink
             to={ALL_SERVICES_ROUTE}
             className="inline-flex w-fit items-center gap-2 rounded-lg border border-primary/25 bg-white px-4 py-2.5 text-sm font-bold text-primary transition-colors hover:bg-primary/8"
@@ -1324,7 +1222,7 @@ function OtherServicesSlider() {
           onScroll={onScroll}
           className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {OTHER_SERVICES.map((service) => (
+          {services.map((service) => (
             <article
               key={service.title}
               className="grid w-[84%] shrink-0 snap-start overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm sm:w-[54%] lg:w-[37%] xl:w-[30%]"
@@ -1369,7 +1267,7 @@ function OtherServicesSlider() {
           </button>
 
           <div className="flex items-center justify-center gap-2.5">
-            {OTHER_SERVICES.map((service, index) => (
+            {services.map((service, index) => (
               <button
                 key={service.title}
                 type="button"
@@ -1386,7 +1284,7 @@ function OtherServicesSlider() {
           <button
             type="button"
             aria-label="Наступна послуга"
-            onClick={() => scrollToIndex(Math.min(OTHER_SERVICES.length - 1, active + 1))}
+            onClick={() => scrollToIndex(Math.min(services.length - 1, active + 1))}
             disabled={isLastSlide}
             className={cn(
               "flex size-10 items-center justify-center rounded-full border border-border bg-white text-navy transition-colors hover:bg-soft sm:size-11",
@@ -1401,7 +1299,13 @@ function OtherServicesSlider() {
   );
 }
 
-function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal: () => void }) {
+function DocumentsReviewSection({
+  pageConfig,
+  onOpenDocumentsModal,
+}: {
+  pageConfig: (typeof rehabTemplateConfigs)[string];
+  onOpenDocumentsModal: () => void;
+}) {
   return (
     <section id="documents" className="scroll-mt-24 py-12 sm:py-20">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
@@ -1422,25 +1326,23 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
           <div className="relative grid gap-8 xl:grid-cols-[minmax(0,0.96fr)_minmax(460px,1.04fr)] xl:items-center xl:gap-12">
             <div className="max-w-3xl xl:py-4">
               <span className="inline-flex items-center rounded-full border border-primary/20 bg-white/92 px-5 py-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-primary shadow-[0_12px_28px_rgba(31,61,120,0.1)] sm:px-6 sm:text-[0.92rem]">
-                Кардіологічна реабілітація
+                {pageConfig.ctaBadge}
               </span>
 
               <h2 className="mt-7 max-w-[13.9ch] font-black leading-[0.9] tracking-[-0.045em] text-navy lg:max-w-[12.8ch]">
                 <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.75rem] lg:text-[4.3rem]">
-                  Зробіть свій
+                  {pageConfig.ctaTitleLines[0]}
                 </span>
                 <span className="block whitespace-nowrap text-[3.2rem] text-primary sm:text-[4.8rem] lg:text-[5.45rem]">
-                  перший крок
+                  {pageConfig.ctaTitleLines[1]}
                 </span>
                 <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.75rem] lg:text-[4.3rem]">
-                  до відновлення
+                  {pageConfig.ctaTitleLines[2]}
                 </span>
               </h2>
 
               <p className="mt-7 max-w-[34rem] text-base leading-relaxed text-navy/72 sm:text-[1.15rem] sm:leading-[1.7]">
-                Допоможемо безпечно розпочати відновлення, оцінити ваш стан і підібрати програму
-                кардіологічної реабілітації під наглядом фахівців. Первинна консультація допоможе
-                зрозуміти, з чого починати програму відновлення.
+                {pageConfig.ctaText}
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch">
@@ -1449,7 +1351,7 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
                   onClick={onOpenDocumentsModal}
                   className="inline-flex min-h-[4.5rem] items-center justify-center gap-2.5 rounded-[20px] bg-brand-green px-7 py-4 text-sm font-bold text-brand-green-foreground shadow-[0_22px_48px_rgba(52,211,153,0.28)] transition-all hover:-translate-y-0.5 hover:bg-brand-green/92 hover:shadow-[0_28px_58px_rgba(52,211,153,0.34)] sm:min-w-[23rem] sm:px-8 sm:text-base"
                 >
-                  Замовити консультацію
+                  {pageConfig.ctaButtonLabel}
                 </button>
 
                 <a
@@ -1465,8 +1367,8 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
             <div className="space-y-4 sm:space-y-5">
               <div className="relative overflow-hidden rounded-[34px] border border-white/80 bg-white/95 shadow-[0_28px_65px_rgba(31,61,120,0.14)]">
                 <img
-                  src={cardioRehabCtaImg}
-                  alt="Фахівець допомагає пацієнтці виконувати вправу під час реабілітації"
+                  src={pageConfig.ctaImage}
+                  alt={pageConfig.ctaImageAlt}
                   loading="lazy"
                   width={1536}
                   height={1024}
@@ -1774,7 +1676,11 @@ function MedicalDocumentsForm({ className }: { className?: string }) {
   );
 }
 
-function SeoBlock() {
+function SeoBlock({
+  pageConfig,
+}: {
+  pageConfig: (typeof rehabTemplateConfigs)[string];
+}) {
   const [expanded, setExpanded] = React.useState(false);
 
   return (
@@ -1786,25 +1692,21 @@ function SeoBlock() {
         <div className="max-w-3xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-soft-blue px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-primary sm:text-xs">
             <span className="size-1.5 rounded-full bg-brand-green" />
-            ВІДНОВЛЕННЯ В БУКОВЕЛІ
+            {pageConfig.seoBadge}
           </span>
 
           <h2 className="mt-5 text-3xl font-extrabold leading-[1.08] tracking-tight text-navy sm:text-4xl lg:text-5xl">
-            Кардіологічна реабілітація
+            {pageConfig.seoTitle}
           </h2>
 
           <div className="mt-5 h-1 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green" />
 
           <div className="mt-6 text-sm leading-relaxed text-navy/72 sm:text-base sm:leading-7">
             <h3 className="font-bold text-navy mt-4 mb-2">
-              Чому відновлення після серцевих втручань потребує контролю
+              {pageConfig.seoLeadTitle}
             </h3>
             <p className="mb-4">
-              Після операцій на серці або перенесеного інфаркту міокарда організм ще певний час не
-              працює у звичному режимі. Серцево-судинна система не готова до звичного ритму життя,
-              тому будь-яка активність без контролю може створити додаткове навантаження на серце.
-              Саме тому період відновлення має проходити під наглядом фахівців із чітким розумінням
-              допустимого рівня навантаження.
+              {pageConfig.seoLeadText}
             </p>
           </div>
 
@@ -1827,140 +1729,40 @@ function SeoBlock() {
 
           {expanded && (
             <div className="mt-6 border-t border-sky-100 pt-5 text-sm leading-relaxed text-navy/72 sm:text-base sm:leading-7 animate-in fade-in slide-in-from-top-2 duration-300">
-              <p className="mb-4">
-                Ключове завдання кардіореабілітації — не просто відновити фізичну активність, а
-                зробити це безпечно. Навантаження підбирають індивідуально з урахуванням стану
-                пацієнта, показників серцевого ритму, артеріального тиску та реакції організму на
-                вправи.
-              </p>
-              <p className="mb-4">
-                Самостійні тренування після серцевих втручань можуть бути небезпечними:
-              </p>
-              <ul className="list-disc pl-5 mb-4 space-y-1">
-                <li>
-                  надмірна інтенсивність або різкі зміни активності здатні спровокувати порушення
-                  ритму чи повторні серцеві проблеми;
-                </li>
-                <li>
-                  повна відмова від руху уповільнює кровообіг і знижує функціональні можливості
-                  організму.
-                </li>
-              </ul>
-              <p className="mb-4">
-                Контрольоване відновлення дозволяє досягти балансу між безпекою і прогресом. Пацієнт
-                поступово повертається до активного життя, зменшується ризик повторних ускладнень,
-                покращується загальне самопочуття та якість життя.
-              </p>
-              <h3 className="font-bold text-navy mt-4 mb-2">
-                Де можливо пройти реабілітацію після операції на серці в Україні
-              </h3>
-              <p className="mb-4">
-                Після кардіологічних втручань пацієнти зазвичай обирають між двома форматами
-                відновлення — санаторним або спеціалізованим медичним центром. Вибір здається
-                простим, але саме тут часто виникає помилка: не кожен варіант однаково підходить для
-                відновлення серця.
-              </p>
-              <p className="mb-4">
-                Санаторії здебільшого орієнтовані на загальне зміцнення організму. Це комфортний
-                формат із базовою фізичною активністю, але без глибокої кардіологічної
-                спеціалізації. У багатьох випадках програми не враховують конкретний тип втручання,
-                стан серця після операції та індивідуальні ризики. Як результат — процес відновлення
-                проходить без чіткої медичної логіки та контролю.
-              </p>
-              <p className="mb-4">
-                Спеціалізовані центри, наприклад Центр Основа, працюють інакше. Відновлення
-                будується навколо конкретного стану серцево-судинної системи. Пацієнт не залишається
-                сам на сам зі своїми відчуттями — кожен етап проходить під наглядом, з урахуванням
-                реакції організму. Саме такий підхід дозволяє уникнути помилок і скоротити шлях до
-                стабільного результату.
-              </p>
+              {pageConfig.seoSections.map((section, index) => {
+                if (section.type === "h3") {
+                  return (
+                    <h3 key={index} className="font-bold text-navy mt-6 mb-2">
+                      {section.text}
+                    </h3>
+                  );
+                }
 
-              <h3 className="font-bold text-navy mt-6 mb-2">
-                Відмінність спеціалізованої кардіореабілітації від санаторного підходу
-              </h3>
-              <p className="mb-4">
-                Головна відмінність полягає у рівні відповідальності за стан пацієнта. У санаторному
-                форматі навантаження зазвичай мають загальний характер і не прив’язані до конкретних
-                показників роботи серця. Пацієнт рухається «за самопочуттям», але після операцій
-                цього недостатньо — організм не завжди дає чіткі сигнали про перевантаження.
-              </p>
-              <p className="mb-4">
-                У спеціалізованому центрі реабілітації кардіологічних хворих програму розробляють
-                так, що кожне навантаження має чіткі межі. Ці межі визначаються не інтуїтивно, а на
-                основі контролю стану серцево-судинної системи. Відстежуються ключові показники, і
-                саме вони вирішують, що безпечно, а що — ні. Замість підходу «спробувати і
-                подивитись» пацієнт рухається за контрольованою логікою. Постійний контроль дозволяє
-                поступово підвищувати навантаження без ризику для серця і уникати ситуацій, коли
-                відновлення може обернутися погіршенням стану.
-              </p>
+                if (section.type === "p") {
+                  return (
+                    <p key={index} className="mb-4">
+                      {section.text}
+                    </p>
+                  );
+                }
 
-              <h3 className="font-bold text-navy mt-6 mb-2">
-                Значення психологічної підтримки під час відновлення
-              </h3>
-              <p className="mb-4">
-                Психологічна реабілітація після операції на серці є невід’ємною частиною
-                повноцінного відновлення. Кардіологічні хвороби часто супроводжуються тривогою,
-                депресією та страхом рецидиву. Ці стани можуть гальмувати фізичне оздоровлення,
-                знижувати мотивацію виконувати рекомендації лікарів і впливати на якість сну та
-                загальний настрій.
-              </p>
-              <p className="mb-4">
-                У Центрі Основа психологічній підтримці приділяють значну увагу. Вона допомагає
-                пацієнтам:
-              </p>
-              <ul className="list-disc pl-5 mb-4 space-y-1">
-                <li>сформувати стійкість до стресу;</li>
-                <li>адаптуватися до нового способу життя;</li>
-                <li>зміцнити психоемоційний стан.</li>
-              </ul>
+                if (section.type === "ul") {
+                  return (
+                    <ul key={index} className="list-disc pl-5 mb-4 space-y-1">
+                      {section.items?.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  );
+                }
 
-              <h3 className="font-bold text-navy mt-6 mb-2">
-                Фактори, які впливають на якість відновлення
-              </h3>
-              <p className="mb-4">На результати кардіореабілітації значною мірою впливають:</p>
-              <ul className="list-disc pl-5 mb-4 space-y-1">
-                <li>загальний стан здоров’я пацієнта;</li>
-                <li>наявність супутніх хронічних захворювань;</li>
-                <li>рівень фізичної активності до операції.</li>
-              </ul>
-              <p className="mb-4">
-                Люди, які раніше підтримували помірну форму, як правило, швидше відновлюються і
-                легше адаптуються до реабілітаційних навантажень. Водночас навіть за низького рівня
-                підготовки фізична реабілітація під медичним контролем залишається безпечною і
-                результативною.
-              </p>
-              <p className="mb-4">
-                Важливо також враховувати особливості харчування, регулярність медичних оглядів і
-                індивідуальний підхід. Центр Основа пропонує підтримку, яка враховує всі ці фактори
-                і забезпечує не лише фізичне відновлення, а й стабілізацію тиску та серцевої
-                діяльності.
-              </p>
-
-              <h3 className="font-bold text-navy mt-6 mb-2">Відповіді на часті питання</h3>
-              <p className="mb-2">
-                <strong>Чи обов’язкова кардіореабілітація після операції?</strong>
-              </p>
-              <p className="mb-4">
-                Кардіореабілітація не є формальною вимогою, але без неї ризик ускладнень і рецидивів
-                збільшується, а якість життя знижується.
-              </p>
-              <p className="mb-2">
-                <strong>
-                  Чим відрізняється кардіологічна реабілітація від звичайного санаторного лікування?
-                </strong>
-              </p>
-              <p className="mb-4">
-                Кардіологічна реабілітація передбачає постійний медичний контроль та індивідуальний
-                підбір навантажень. Це принципово відрізняється від стандартних підходів більшості
-                санаторіїв.
-              </p>
-              <p className="mb-2">
-                <strong>Скільки часу триває реабілітація після операцій на серці?</strong>
-              </p>
-              <p className="mb-4">
-                Тривалість залежить від стану пацієнта. Зазвичай це кілька тижнів із подальшим
-                довготривалим контролем.
-              </p>
+                return (
+                  <React.Fragment key={index}>
+                    <p className="mb-2">
+                      <strong>{section.q}</strong>
+                    </p>
+                    <p className="mb-4">{section.a}</p>
+                  </React.Fragment>
+                );
+              })}
             </div>
           )}
         </div>
@@ -1968,8 +1770,8 @@ function SeoBlock() {
         <div className="flex w-full items-center justify-center lg:justify-end lg:self-start mt-6 lg:mt-0">
           <figure className="group relative w-full max-w-[520px] aspect-square overflow-hidden rounded-[1.75rem] border border-sky-100 bg-[#eaf5ff] shadow-[0_20px_50px_-30px_rgba(30,64,175,0.55)]">
             <img
-              src={cardioHeart3dImg}
-              alt="Стилізована 3D-модель серця"
+              src={pageConfig.seoImage}
+              alt={pageConfig.seoImageAlt}
               loading="lazy"
               width={1024}
               height={1536}
@@ -1977,7 +1779,7 @@ function SeoBlock() {
             />
             <div className="absolute inset-x-0 bottom-0 bg-white/80 px-5 py-4 backdrop-blur-sm">
               <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
-                Серце під контролем команди
+                {pageConfig.seoImageCaption}
               </p>
             </div>
           </figure>
