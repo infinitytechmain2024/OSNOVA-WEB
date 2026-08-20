@@ -1,13 +1,13 @@
 import { n as __toESM } from "./_runtime.mjs";
 import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
-import { A as MessageCircle, C as Package, Ct as Building2, E as Navigation, Et as BadgeCheck, G as Handshake, H as Heart, K as HandHeart, L as Layers, M as MapPinned, Mt as Activity, N as MapPin, O as Microscope, P as Mail, Q as FileSearch, S as Percent, Tt as BookOpen, U as HeartPulse, V as House, Y as FlaskConical, Z as FileText, _ as Search, _t as ChevronDown, a as Users, at as Clock, b as Phone, ct as ClipboardList, d as TriangleAlert, f as Stethoscope, ft as CircleCheck, g as Send, gt as ChevronLeft, h as Share2, ht as ChevronRight, i as Wrench, jt as Ambulance, k as MessageSquare, kt as ArrowRight, lt as ClipboardCheck, m as ShieldCheck, mt as ChevronUp, nt as Dumbbell, p as Sparkles, q as GraduationCap, rt as Compass, s as UserRoundCheck, st as ClipboardPenLine, tt as ExternalLink, u as Truck, v as Route, vt as Check, x as PhoneCall, xt as CalendarDays, y as Presentation, yt as ChartLine } from "./_libs/lucide-react.mjs";
+import { A as MessageCircle, C as Package, Ct as Building2, E as Navigation, Et as BadgeCheck, G as Handshake, H as Heart, K as HandHeart, L as Layers, M as MapPinned, Mt as Activity, N as MapPin, O as Microscope, P as Mail, Q as FileSearch, S as Percent, Tt as BookOpen, U as HeartPulse, V as House, Y as FlaskConical, Z as FileText, _ as Search, _t as ChevronDown, a as Users, at as Clock, b as Phone, ct as ClipboardList, d as TriangleAlert, f as Stethoscope, ft as CircleCheck, g as Send, gt as ChevronLeft, h as Share2, ht as ChevronRight, i as Wrench, it as CloudUpload, jt as Ambulance, k as MessageSquare, kt as ArrowRight, lt as ClipboardCheck, m as ShieldCheck, mt as ChevronUp, nt as Dumbbell, p as Sparkles, q as GraduationCap, rt as Compass, s as UserRoundCheck, st as ClipboardPenLine, tt as ExternalLink, u as Truck, v as Route, vt as Check, x as PhoneCall, xt as CalendarDays, y as Presentation, yt as ChartLine } from "./_libs/lucide-react.mjs";
 import { C as getNodeById, D as service_sports_default, E as service_rehab_default, O as siteTree, S as getBreadcrumbs, T as service_checkup_default, _ as SiteHeader, a as ConsultationForm, b as ecg_review_default, c as DialogContent, d as DialogTitle, f as FAQAccordion, g as SiteFooter, h as SectionHeader$1, i as CONTACTS, k as useConsultationModal, l as DialogDescription, m as PageContainer, n as Breadcrumbs, p as IMAGES, r as CARDIO_REHAB_PROGRAMS, s as Dialog, t as AppLink, u as DialogHeader, v as cn, w as getNodeByRoute, x as ergometer_default, y as cpet_test_default } from "./_ssr/blocks-XpksUFdt.mjs";
-import { t as Route$1 } from "./_-C5z6rXQ_.mjs";
+import { t as Route$1 } from "./_-tsKMlW5u.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-kYQ3kqOn.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as companyOverviewCtaClassName, c as partner_chnu_default, d as partner_karpatska_akademiia_default, f as partner_sytenko_default, i as cardio_rehab_cta_photo_v3_default, l as partner_heart_default, n as FAQConsultationCTA, o as medical_assessment_default, r as balance_reference_card_default, s as partner_asmu_default, t as CompanyOverviewSection, u as partner_ifnmu_default } from "./_ssr/company-overview-section-DNjm4B8n.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-CPuHzLNR.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-CJcYp8rv.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -904,7 +904,7 @@ var COOPERATION_DIRECTIONS = [
 		text: "Приймаємо групи фахівців для занурення у мультидисциплінарну модель роботи ОСНОВИ."
 	}
 ];
-var PROCESS_STEPS$3 = [
+var PROCESS_STEPS$2 = [
 	"Узгоджуємо цілі інституції, аудиторію та бажаний формат співпраці.",
 	"Формуємо програму: навчальні модулі, клінічну практику, дослідження або комбінований формат.",
 	"Погоджуємо графік, відповідальних фахівців, вимоги до документів і очікувані результати.",
@@ -1153,7 +1153,7 @@ function InstitutePartnershipPage({ node }) {
 								title: "Як запускається спільна програма"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
 								className: "mt-8 space-y-4",
-								children: PROCESS_STEPS$3.map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+								children: PROCESS_STEPS$2.map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
 									className: "flex gap-4 rounded-2xl bg-white p-4 shadow-sm",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "flex size-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-extrabold text-white",
@@ -2725,9 +2725,9 @@ var CARE_FORMATS$1 = [
 var CONDITION_IMAGES$1 = [
 	cpet_test_default,
 	service_rehab_default,
-	ecgImg,
-	checkupImg,
-	sportsImg
+	ecg_review_default,
+	service_checkup_default,
+	service_sports_default
 ];
 var FAQ_VISIBLE_COUNT$1 = 3;
 var CARDIO_PROGRAMS$1 = CARDIO_REHAB_PROGRAMS.map((program) => ({
@@ -2780,9 +2780,9 @@ function CardioRehabPage({ node }) {
 	const allConditionCards = pageConfig.conditions;
 	const visibleConditionCards = showAllConditions ? allConditionCards : allConditionCards.slice(0, 3);
 	const programCards = CARDIO_PROGRAMS$1.map((program, index) => ({
+		...program,
 		id: `cardio-program-${index}`,
-		route: node.children?.[index]?.route || node.route,
-		...program
+		route: node.children?.[index]?.route || node.route
 	}));
 	const faqItems = pickFaqItems$1((node.faq && node.faq.length > 0 ? node.faq : pageConfig.faq) || []);
 	const visibleFaqItems = faqExpanded ? faqItems : faqItems.slice(0, FAQ_VISIBLE_COUNT$1);
@@ -2934,7 +2934,7 @@ function CardioRehabPage({ node }) {
 										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 											className: "relative flex min-h-[270px] flex-col rounded-[28px] border border-primary/16 bg-white/88 p-6 shadow-[0_24px_50px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:min-h-[300px] sm:p-7",
 											children: [
-												index < PROCESS_STEPS.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												index < pageConfig.processSteps.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 													className: "absolute left-[calc(100%-8px)] top-18 hidden h-[2px] w-6 bg-primary/55 xl:block",
 													"aria-hidden": true
 												}),
@@ -3971,7 +3971,7 @@ function MedicalDocumentsForm$1({ className }) {
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "flex size-[72px] items-center justify-center rounded-full bg-primary/10 text-primary sm:size-20",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(UploadCloud, {
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CloudUpload, {
 											className: "size-9 sm:size-10",
 											strokeWidth: 1.85
 										})
@@ -4255,7 +4255,7 @@ var EMERGENCY_CALL_ITEMS = [
 	"втрата або порушення свідомості",
 	"раптове порушення мовлення, зору або слабкість у кінцівках"
 ];
-var PROCESS_STEPS$2 = [
+var PROCESS_STEPS$1 = [
 	{
 		icon: FileSearch,
 		title: "Оцінка стану та документів",
@@ -4395,9 +4395,9 @@ function PostInfarctionRehabPage({ node }) {
 	const allConditionCards = REHAB_METHODS;
 	const visibleConditionCards = showAllConditions ? allConditionCards : allConditionCards.slice(0, 3);
 	const programCards = CARDIO_PROGRAMS.map((program, index) => ({
+		...program,
 		id: `cardio-program-${index}`,
-		route: node.children?.[index]?.route || node.route,
-		...program
+		route: node.children?.[index]?.route || node.route
 	}));
 	const faqItems = pickFaqItems(node.faq || []);
 	const visibleFaqItems = faqExpanded ? faqItems : faqItems.slice(0, FAQ_VISIBLE_COUNT);
@@ -4544,12 +4544,12 @@ function PostInfarctionRehabPage({ node }) {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:gap-6",
-									children: PROCESS_STEPS$2.map((step, index) => {
+									children: PROCESS_STEPS$1.map((step, index) => {
 										const Icon = step.icon;
 										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 											className: "relative flex min-h-[270px] flex-col rounded-[28px] border border-primary/16 bg-white/88 p-6 shadow-[0_24px_50px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:min-h-[300px] sm:p-7",
 											children: [
-												index < PROCESS_STEPS$2.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												index < PROCESS_STEPS$1.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 													className: "absolute left-[calc(100%-8px)] top-18 hidden h-[2px] w-6 bg-primary/55 xl:block",
 													"aria-hidden": true
 												}),
@@ -5582,7 +5582,7 @@ function MedicalDocumentsForm({ className }) {
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "flex size-[72px] items-center justify-center rounded-full bg-primary/10 text-primary sm:size-20",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(UploadCloud, {
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CloudUpload, {
 											className: "size-9 sm:size-10",
 											strokeWidth: 1.85
 										})
@@ -6773,7 +6773,7 @@ var PARTICIPATION_FORMATS = [
 	"Партнерська програма з бізнесом, благодійним фондом чи освітньою інституцією.",
 	"Відкрита подія для громади: консультаційний день, лекція, скринінг або тренінг."
 ];
-var PROCESS_STEPS$1 = [
+var PROCESS_STEPS = [
 	"Описуємо потребу, аудиторію та очікуваний результат соціального проєкту.",
 	"Перевіряємо медичні показання, формат участі, ресурси команди та можливі обмеження.",
 	"Погоджуємо програму, відповідальних, строки, комунікацію та критерії відбору учасників.",
@@ -6964,7 +6964,7 @@ function SocialProjectsPage({ node }) {
 								title: "Як запускається соціальний проєкт"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
 								className: "mt-8 space-y-4",
-								children: PROCESS_STEPS$1.map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+								children: PROCESS_STEPS.map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
 									className: "flex gap-4 rounded-2xl bg-white p-4 shadow-sm",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "flex size-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-extrabold text-white",

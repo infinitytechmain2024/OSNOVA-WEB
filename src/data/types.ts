@@ -137,6 +137,7 @@ export type SiteNode = {
   image?: string;
   featured?: boolean;
   published?: boolean;
+  orderAction?: string;
 
   seoTitle?: string;
   seoDescription?: string;

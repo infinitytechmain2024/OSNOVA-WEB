@@ -21,6 +21,7 @@ import {
   AlertTriangle,
   ShieldCheck,
   Sparkles,
+  UploadCloud,
   UserRound,
   UsersRound,
   Dumbbell,
@@ -46,6 +47,9 @@ import {
 } from "@/components/ui/dialog";
 import cpetImg from "@/assets/cpet-test.jpg";
 import rehabImg from "@/assets/service-rehab.jpg";
+import ecgImg from "@/assets/ecg-review.jpg";
+import checkupImg from "@/assets/service-checkup.jpg";
+import sportsImg from "@/assets/service-sports.jpg";
 import { getBreadcrumbs, getNodeById } from "@/lib/tree";
 
 const ANCHORS = [
@@ -165,9 +169,9 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
     ? allConditionCards
     : allConditionCards.slice(0, 3);
   const programCards = CARDIO_PROGRAMS.map((program, index) => ({
+    ...program,
     id: `cardio-program-${index}`,
     route: node.children?.[index]?.route || node.route,
-    ...program,
   }));
   const faqItems = pickFaqItems((node.faq && node.faq.length > 0 ? node.faq : pageConfig.faq) || []);
   const visibleFaqItems = faqExpanded ? faqItems : faqItems.slice(0, FAQ_VISIBLE_COUNT);
@@ -306,7 +310,7 @@ export function CardioRehabPage({ node }: { node: SiteNode }) {
                     key={step.title}
                     className="relative flex min-h-[270px] flex-col rounded-[28px] border border-primary/16 bg-white/88 p-6 shadow-[0_24px_50px_rgba(31,61,120,0.08)] backdrop-blur-sm sm:min-h-[300px] sm:p-7"
                   >
-                    {index < PROCESS_STEPS.length - 1 && (
+                    {index < pageConfig.processSteps.length - 1 && (
                       <span
                         className="absolute left-[calc(100%-8px)] top-18 hidden h-[2px] w-6 bg-primary/55 xl:block"
                         aria-hidden

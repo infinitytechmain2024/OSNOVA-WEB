@@ -21,6 +21,7 @@ import {
   AlertTriangle,
   ShieldCheck,
   Sparkles,
+  UploadCloud,
   UserRound,
   UsersRound,
   Dumbbell,
@@ -265,9 +266,9 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
     ? allConditionCards
     : allConditionCards.slice(0, 3);
   const programCards = CARDIO_PROGRAMS.map((program, index) => ({
+    ...program,
     id: `cardio-program-${index}`,
     route: node.children?.[index]?.route || node.route,
-    ...program,
   }));
   const faqItems = pickFaqItems(node.faq || []);
   const visibleFaqItems = faqExpanded ? faqItems : faqItems.slice(0, FAQ_VISIBLE_COUNT);
