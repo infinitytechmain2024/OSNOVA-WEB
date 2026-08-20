@@ -1,9 +1,7 @@
 import * as React from "react";
 import {
   Activity,
-  Ambulance,
   ArrowRight,
-  CalendarDays,
   ChartLine,
   ChevronDown,
   ChevronLeft,
@@ -18,7 +16,6 @@ import {
   Heart,
   HeartPulse,
   Percent,
-  AlertTriangle,
   ShieldCheck,
   Sparkles,
   UploadCloud,
@@ -108,43 +105,6 @@ const TIMING_COLUMNS = [
       "інші стани, за яких фізичне навантаження може бути небезпечним.",
     ],
   },
-  {
-    title: "Початок програми",
-    icon: CalendarDays,
-    iconColor: "text-sky-500",
-    iconBg: "bg-sky-50",
-    bulletColor: "bg-sky-500",
-    items: [
-      "Терміни залежать від перебігу інфаркту, проведеного лікування, результатів обстежень та загального стану людини.",
-      "У частини пацієнтів елементи ранньої реабілітації можуть розпочинатися ще під час перебування у стаціонарі.",
-      "Після виписки програма продовжується поступовим збільшенням фізичної активності під відповідним медичним контролем.",
-      "Не варто самостійно визначати інтенсивність тренувань або повертатися до значних навантажень без попередньої оцінки.",
-    ],
-  },
-  {
-    title: "Ознаки невідкладного стану",
-    icon: Ambulance,
-    iconColor: "text-red-500",
-    iconBg: "bg-red-50",
-    bulletColor: "bg-red-500",
-    items: [
-      "сильного або тривалого болю чи стискання в грудній клітці;",
-      "різкої задишки;",
-      "втрати свідомості або переднепритомного стану;",
-      "різкого погіршення самопочуття;",
-      "вираженого порушення серцевого ритму;",
-      "інших гострих симптомів, які можуть свідчити про серцево-судинне ускладнення.",
-    ],
-  },
-];
-
-const EMERGENCY_CALL_ITEMS = [
-  "сильного або тривалого болю чи стискання в грудній клітці;",
-  "різкої задишки;",
-  "втрати свідомості або переднепритомного стану;",
-  "різкого погіршення самопочуття;",
-  "вираженого порушення серцевого ритму;",
-  "інших гострих симптомів, які можуть свідчити про серцево-судинне ускладнення.",
 ];
 
 const PROCESS_STEPS = [
@@ -395,7 +355,7 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
           />
         </PageSection>
 
-        <PageSection id="importance" className="py-12 sm:py-16">
+<PageSection id="importance" className="py-12 sm:py-16">
           <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <div className="relative overflow-hidden rounded-[28px] border border-blue-100/90 bg-[linear-gradient(180deg,#f8fbff_0%,#eef5ff_100%)] p-5 shadow-[0_20px_60px_rgba(37,99,235,0.08)] sm:p-8 lg:p-10">
               <div className="relative">
@@ -404,7 +364,7 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                 </h2>
                 <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
                 <p className="mt-6 max-w-3xl text-base leading-relaxed text-navy/82 sm:text-lg">
-                  Після завершення гострого етапу лікування важливо не лише приймати призначені препарати, а й поступово відновлювати фізичну активність та контролювати фактори ризику.
+                  После завершения гострого етапу лікування важливо не лише приймати призначені препарати, а й поступово відновлювати фізичну активність та контролювати фактори ризику.
                 </p>
                 <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/72 sm:text-lg">
                   Надто швидке повернення до звичних навантажень може бути небезпечним, а надмірне обмеження активності — призводити до втрати витривалості, м'язової слабкості та страху фізичного навантаження.
@@ -412,6 +372,47 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                 <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/72 sm:text-lg">
                   Контрольована реабілітація допомагає визначити безпечний рівень активності та поступово розширювати фізичні можливості відповідно до реакції організму.
                 </p>
+              </div>
+            </div>
+          </div>
+        </PageSection>
+
+        <PageSection id="results" className="py-12 sm:py-16">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div className="relative overflow-hidden rounded-[28px] border border-emerald-100/90 bg-[linear-gradient(180deg,#f0fdf4_0%,#dcfce7_100%)] p-5 shadow-[0_20px_60px_rgba(34,197,94,0.08)] sm:p-8 lg:p-10">
+              <div className="relative">
+                <span className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-emerald-700 shadow-[0_12px_30px_rgba(34,197,94,0.08)] backdrop-blur-sm sm:px-8 sm:py-3 sm:text-sm">
+                  Результати реабілітації
+                </span>
+                <h2 className="mt-6 max-w-4xl text-3xl font-extrabold leading-[1.02] text-navy sm:text-4xl xl:text-[3.4rem]">
+                  Чого можна досягти
+                </h2>
+                <div className="mt-5 h-2 w-28 rounded-full bg-emerald-500 shadow-[0_8px_20px_rgba(53,200,138,0.18)] sm:w-32" />
+                <p className="mt-5 max-w-4xl text-base leading-relaxed text-navy/82 sm:text-lg">
+                  Реабілітація допомагає безпечно повернутися до активного життя та зменшити ризики повторних серцево-судинних подій.
+                </p>
+                <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>підвищення витривалості;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>покращення переносимості фізичних навантажень;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>поступове повернення до повсякденної активності;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>контроль пульсу, тиску та самопочуття;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>зниження ризику повторних серцево-судинних подій.</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -1053,8 +1054,6 @@ function ExpandableIntroSection({
 }
 
 function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
-  const emergencyNote = emergencyBody?.split("\n\n")[1];
-
   return (
     <div className="relative overflow-hidden rounded-[28px] border border-blue-100/90 bg-[linear-gradient(180deg,#f8fbff_0%,#eef5ff_100%)] p-5 shadow-[0_20px_60px_rgba(37,99,235,0.08)] sm:p-8 lg:p-10">
       <div
@@ -1073,7 +1072,7 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
         />
 
         <div className="mt-8 overflow-hidden rounded-[28px] border border-blue-100/90 bg-white/92 shadow-[0_18px_40px_rgba(15,23,42,0.06)] backdrop-blur-sm">
-          <div className="grid gap-0 lg:grid-cols-3">
+          <div className="grid gap-0 lg:grid-cols-2">
             {TIMING_COLUMNS.map((column) => {
               const Icon = column.icon;
               return (
@@ -1126,20 +1125,18 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
             <div className="p-5 sm:p-7 lg:p-10">
               <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
                 <span className="flex size-16 shrink-0 items-center justify-center rounded-full bg-white/88 shadow-inner ring-1 ring-primary/8 sm:size-20">
-                  <CalendarDays className="size-8 text-primary sm:size-10" strokeWidth={2.05} />
+                  <Heart className="size-8 text-primary sm:size-10" strokeWidth={2.05} />
                 </span>
                 <div className="max-w-2xl">
                   <h3 className="text-2xl font-extrabold leading-tight text-navy sm:text-3xl">
-                    Початок програми
+                    Про протипоказання
                   </h3>
                   <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
                   <p className="mt-5 text-base leading-relaxed text-navy/82 sm:text-lg">
-                    Старт програми залежить від стабільності стану, медичних документів і дозволу
-                    лікаря.
+                    Перед початком фізичної реабілітації лікар оцінює стан людини та можливість безпечного виконання навантажень.
                   </p>
                   <p className="mt-3 text-base leading-relaxed text-navy/72 sm:text-lg">
-                    Рішення щодо початку приймається індивідуально після оцінки стану та наданих
-                    результатів обстежень і тестів.
+                    Остаточне рішення щодо початку та обсягу реабілітації приймається лікарем після оцінки стану пацієнта.
                   </p>
                 </div>
               </div>
@@ -1154,55 +1151,6 @@ function TimingSection({ emergencyBody }: { emergencyBody?: string }) {
                 loading="lazy"
                 className="h-full w-full object-cover object-center"
               />
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-6 overflow-hidden rounded-[28px] border border-red-100/90 bg-[linear-gradient(135deg,rgba(255,244,244,0.98),rgba(255,250,250,0.96))] shadow-[0_18px_40px_rgba(239,68,68,0.08)]">
-          <div className="grid gap-0 lg:grid-cols-[0.92fr_1.08fr]">
-            <div className="p-5 sm:p-7 lg:p-10">
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-                <span className="flex size-16 shrink-0 items-center justify-center rounded-full bg-white/90 shadow-inner ring-1 ring-red-100 sm:size-20">
-                  <AlertTriangle className="size-8 text-red-500 sm:size-10" strokeWidth={2.05} />
-                </span>
-                <div className="max-w-2xl">
-                  <h3 className="text-2xl font-extrabold leading-tight text-red-600 sm:text-3xl">
-                    Ознаки невідкладного стану
-                  </h3>
-                  <div className="mt-4 h-1 w-16 rounded-full bg-red-500" />
-                  <p className="mt-5 text-base leading-relaxed text-navy/78 sm:text-lg">
-                    Не розпочинайте та не продовжуйте програму, якщо стан раптово погіршився та
-                    потребує екстреної медичної допомоги.
-                  </p>
-                  {emergencyNote && (
-                    <p className="mt-3 text-sm leading-relaxed text-navy/62 sm:text-base">
-                      {emergencyNote}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden border-t border-red-100/90 lg:border-l lg:border-t-0">
-              <div className="relative h-full p-5 sm:p-7 lg:p-10">
-                <ul className="space-y-3.5">
-                  {EMERGENCY_CALL_ITEMS.map((item) => (
-                    <li
-                      key={item}
-                      className="flex gap-3 text-sm leading-relaxed text-navy/80 sm:text-base"
-                    >
-                      <span className="mt-2.5 size-2 shrink-0 rounded-full bg-red-500" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Ambulance
-                  className="pointer-events-none absolute bottom-2 right-3 hidden h-36 w-36 text-red-100 lg:block xl:h-44 xl:w-44"
-                  strokeWidth={1.35}
-                  aria-hidden
-                />
-              </div>
             </div>
           </div>
         </div>
