@@ -3,11 +3,11 @@ import { u as require_react } from "./_libs/@floating-ui/react-dom+[...].mjs";
 import { v as require_jsx_runtime } from "./_libs/@radix-ui/react-accordion+[...].mjs";
 import { A as MessageCircle, C as Package, Ct as Building2, E as Navigation, Et as BadgeCheck, G as Handshake, H as Heart, K as HandHeart, L as Layers, M as MapPinned, Mt as Activity, N as MapPin, O as Microscope, P as Mail, Q as FileSearch, S as Percent, Tt as BookOpen, U as HeartPulse, V as House, Y as FlaskConical, Z as FileText, _ as Search, _t as ChevronDown, a as Users, at as Clock, b as Phone, ct as ClipboardList, d as TriangleAlert, f as Stethoscope, ft as CircleCheck, g as Send, gt as ChevronLeft, h as Share2, ht as ChevronRight, i as Wrench, it as CloudUpload, jt as Ambulance, k as MessageSquare, kt as ArrowRight, lt as ClipboardCheck, m as ShieldCheck, mt as ChevronUp, nt as Dumbbell, p as Sparkles, q as GraduationCap, rt as Compass, s as UserRoundCheck, st as ClipboardPenLine, tt as ExternalLink, u as Truck, v as Route, vt as Check, x as PhoneCall, xt as CalendarDays, y as Presentation, yt as ChartLine } from "./_libs/lucide-react.mjs";
 import { C as getNodeById, D as service_sports_default, E as service_rehab_default, O as siteTree, S as getBreadcrumbs, T as service_checkup_default, _ as SiteHeader, a as ConsultationForm, b as ecg_review_default, c as DialogContent, d as DialogTitle, f as FAQAccordion, g as SiteFooter, h as SectionHeader$1, i as CONTACTS, k as useConsultationModal, l as DialogDescription, m as PageContainer, n as Breadcrumbs, p as IMAGES, r as CARDIO_REHAB_PROGRAMS, s as Dialog, t as AppLink, u as DialogHeader, v as cn, w as getNodeByRoute, x as ergometer_default, y as cpet_test_default } from "./_ssr/blocks-XpksUFdt.mjs";
-import { t as Route$1 } from "./_-tsKMlW5u.mjs";
+import { t as Route$1 } from "./_-GPm1Yl7N.mjs";
 import { n as ServiceDetailTemplate, r as getServicePageData, t as OtherServices } from "./_ssr/service-detail-template-kYQ3kqOn.mjs";
 import { n as education_training_default, t as education_conference_default } from "./_ssr/education-training-D0E3Ecw7.mjs";
 import { a as companyOverviewCtaClassName, c as partner_chnu_default, d as partner_karpatska_akademiia_default, f as partner_sytenko_default, i as cardio_rehab_cta_photo_v3_default, l as partner_heart_default, n as FAQConsultationCTA, o as medical_assessment_default, r as balance_reference_card_default, s as partner_asmu_default, t as CompanyOverviewSection, u as partner_ifnmu_default } from "./_ssr/company-overview-section-DNjm4B8n.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_-CJcYp8rv.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_-BkX4W8Vr.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var rootCategories = (siteTree.find((n) => n.id === "services") || siteTree[0]).children ?? [];
@@ -1395,7 +1395,8 @@ var rehabTemplateConfigs = {
 		conditions: [
 			{
 				title: "Реабілітація після інфаркту міокарда",
-				text: "Після інфаркту програма допомагає серцю відновити роботу та поступово повернути людині активність без надмірного ризику."
+				text: "Після інфаркту програма допомагає серцю відновити роботу та поступово повернути людині активність без надмірного ризику.",
+				to: "/reabilitatsiia/pislia-infarktu-miokarda"
 			},
 			{
 				title: "Реабілітація після стентування коронарних артерій",
@@ -1468,6 +1469,12 @@ var rehabTemplateConfigs = {
 				text: "Оцінка фізичної працездатності та реакції серця на навантаження допомагає точно підібрати інтенсивність програми і контролювати прогрес.",
 				to: "/diagnostyka/kardiodiahnostyka/cpet",
 				image: cpet_test_default
+			},
+			{
+				title: "Реабілітація після інфаркту міокарка",
+				text: "Спеціалізований маршрут відновлення, створений для безпечного повернення до активності після інфаркту міокарда.",
+				to: "/reabilitatsiia/pislia-infarktu-miokarda",
+				image: cardio_heart_3d_default
 			}
 		],
 		faqText: "Зібрали найпоширеніші запитання про кардіологічну реабілітацію. Якщо не знайшли відповідь, зверніться до нас і ми допоможемо підібрати наступний крок.",
@@ -3338,6 +3345,33 @@ function TimingSection$1({ pageConfig }) {
 	});
 }
 function ConditionCard$1({ card, image }) {
+	if (card.to) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+		className: "group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "relative h-[210px] w-full overflow-hidden bg-slate-100",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+				src: image,
+				alt: card.title,
+				loading: "lazy",
+				width: 900,
+				height: 620,
+				className: "size-full object-cover transition-transform duration-700 group-hover:scale-105"
+			})
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex flex-1 flex-col justify-between bg-white p-6 md:p-7",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+				className: "mb-3 text-xl font-bold leading-snug text-navy",
+				children: card.title
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mb-6 line-clamp-3 text-sm font-normal leading-relaxed text-slate-600",
+				children: card.text
+			})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppLink, {
+				to: card.to,
+				className: "inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white",
+				children: ["Детальніше", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4 transition-transform group-hover:translate-x-1" })]
+			}) })]
+		})]
+	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 		className: "group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -4428,7 +4462,7 @@ function PostInfarctionRehabPage({ node }) {
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 										className: "mt-5 text-3xl font-extrabold leading-[1.08] text-background sm:text-5xl lg:text-6xl",
-										children: "Реабілітація в кардіології"
+										children: data.heroTitle
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 										className: "mt-5 max-w-2xl text-base leading-relaxed text-background/86 sm:text-lg",
@@ -5372,7 +5406,7 @@ function DocumentsReviewSection({ onOpenDocumentsModal }) {
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "inline-flex items-center rounded-full border border-primary/20 bg-white/92 px-5 py-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-primary shadow-[0_12px_28px_rgba(31,61,120,0.1)] sm:px-6 sm:text-[0.92rem]",
-									children: "Кардіологічна реабілітація"
+									children: "Реабілітація після інфаркту міокарка"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
 									className: "mt-7 max-w-[13.9ch] font-black leading-[0.9] tracking-[-0.045em] text-navy lg:max-w-[12.8ch]",
@@ -5393,7 +5427,7 @@ function DocumentsReviewSection({ onOpenDocumentsModal }) {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mt-7 max-w-[34rem] text-base leading-relaxed text-navy/72 sm:text-[1.15rem] sm:leading-[1.7]",
-									children: "Допоможемо безпечно розпочати відновлення, оцінити ваш стан і підібрати програму кардіологічної реабілітації під наглядом фахівців. Первинна консультація допоможе зрозуміти, з чого починати програму відновлення."
+									children: "Допоможемо безпечно розпочати відновлення, оцінити ваш стан і підібрати програму реабілітації після інфаркту міокарка під наглядом фахівців. Первинна консультація допоможе зрозуміти, з чого починати програму відновлення."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch",
@@ -5707,14 +5741,14 @@ function SeoBlock() {
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 							className: "mt-5 text-3xl font-extrabold leading-[1.08] tracking-tight text-navy sm:text-4xl lg:text-5xl",
-							children: "Кардіологічна реабілітація"
+							children: "Реабілітація після інфаркту міокарка"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mt-5 h-1 w-24 rounded-full bg-gradient-to-r from-primary to-brand-green" }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "mt-6 text-sm leading-relaxed text-navy/72 sm:text-base sm:leading-7",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 								className: "font-bold text-navy mt-4 mb-2",
-								children: "Чому відновлення після серцевих втручань потребує контролю"
+								children: "Чому відновлення після інфаркту міокарка потребує контролю"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "mb-4",
 								children: "Після операцій на серці або перенесеного інфаркту міокарда організм ще певний час не працює у звичному режимі. Серцево-судинна система не готова до звичного ритму життя, тому будь-яка активність без контролю може створити додаткове навантаження на серце. Саме тому період відновлення має проходити під наглядом фахівців із чітким розумінням допустимого рівня навантаження."
@@ -5735,7 +5769,7 @@ function SeoBlock() {
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
-									children: "Ключове завдання кардіореабілітації — не просто відновити фізичну активність, а зробити це безпечно. Навантаження підбирають індивідуально з урахуванням стану пацієнта, показників серцевого ритму, артеріального тиску та реакції організму на вправи."
+									children: "Ключове завдання реабілітації після інфаркту міокарка — не просто відновити фізичну активність, а зробити це безпечно. Навантаження підбирають індивідуально з урахуванням стану пацієнта, показників серцевого ритму, артеріального тиску та реакції організму на вправи."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
@@ -5751,15 +5785,15 @@ function SeoBlock() {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 									className: "font-bold text-navy mt-4 mb-2",
-									children: "Де можливо пройти реабілітацію після операції на серці в Україні"
+									children: "Де можливо пройти реабілітацію після інфаркту міокарка в Україні"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
-									children: "Після кардіологічних втручань пацієнти зазвичай обирають між двома форматами відновлення — санаторним або спеціалізованим медичним центром. Вибір здається простим, але саме тут часто виникає помилка: не кожен варіант однаково підходить для відновлення серця."
+									children: "Після інфаркту міокарка пацієнти зазвичай обирають між двома форматами відновлення — санаторним або спеціалізованим медичним центром. Вибір здається простим, але саме тут часто виникає помилка: не кожен варіант однаково підходить для відновлення серця."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
-									children: "Санаторії здебільшого орієнтовані на загальне зміцнення організму. Це комфортний формат із базовою фізичною активністю, але без глибокої кардіологічної спеціалізації. У багатьох випадках програми не враховують конкретний тип втручання, стан серця після операції та індивідуальні ризики. Як результат — процес відновлення проходить без чіткої медичної логіки та контролю."
+									children: "Санаторії здебільшого орієнтовані на загальне зміцнення організму. Це комфортний формат із базовою фізичною активністю, але без спеціалізації з реабілітації після інфаркту міокарка. У багатьох випадках програми не враховують конкретний тип втручання, стан серця після операції та індивідуальні ризики. Як результат — процес відновлення проходить без чіткої медичної логіки та контролю."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
@@ -5767,7 +5801,7 @@ function SeoBlock() {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 									className: "font-bold text-navy mt-6 mb-2",
-									children: "Відмінність спеціалізованої кардіореабілітації від санаторного підходу"
+									children: "Відмінність спеціалізованої реабілітації після інфаркту міокарка від санаторного підходу"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
@@ -5775,7 +5809,7 @@ function SeoBlock() {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
-									children: "У спеціалізованому центрі реабілітації кардіологічних хворих програму розробляють так, що кожне навантаження має чіткі межі. Ці межі визначаються не інтуїтивно, а на основі контролю стану серцево-судинної системи. Відстежуються ключові показники, і саме вони вирішують, що безпечно, а що — ні. Замість підходу «спробувати і подивитись» пацієнт рухається за контрольованою логікою. Постійний контроль дозволяє поступово підвищувати навантаження без ризику для серця і уникати ситуацій, коли відновлення може обернутися погіршенням стану."
+									children: "У спеціалізованому центрі реабілітації після інфаркту міокарка програму розробляють так, що кожне навантаження має чіткі межі. Ці межі визначаються не інтуїтивно, а на основі контролю стану серцево-судинної системи. Відстежуються ключові показники, і саме вони вирішують, що безпечно, а що — ні. Замість підходу «спробувати і подивитись» пацієнт рухається за контрольованою логікою. Постійний контроль дозволяє поступово підвищувати навантаження без ризику для серця і уникати ситуацій, коли відновлення може обернутися погіршенням стану."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 									className: "font-bold text-navy mt-6 mb-2",
@@ -5783,7 +5817,7 @@ function SeoBlock() {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
-									children: "Психологічна реабілітація після операції на серці є невід’ємною частиною повноцінного відновлення. Кардіологічні хвороби часто супроводжуються тривогою, депресією та страхом рецидиву. Ці стани можуть гальмувати фізичне оздоровлення, знижувати мотивацію виконувати рекомендації лікарів і впливати на якість сну та загальний настрій."
+									children: "Психологічна реабілітація після операції на серці є невід’ємною частиною повноцінного відновлення. Серцево-судинні захворювання часто супроводжуються тривогою, депресією та страхом рецидиву. Ці стани можуть гальмувати фізичне оздоровлення, знижувати мотивацію виконувати рекомендації лікарів і впливати на якість сну та загальний настрій."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
@@ -5803,7 +5837,7 @@ function SeoBlock() {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
-									children: "На результати кардіореабілітації значною мірою впливають:"
+									children: "На результати реабілітації після інфаркту міокарка значною мірою впливають:"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ul", {
 									className: "list-disc pl-5 mb-4 space-y-1",
@@ -5827,23 +5861,23 @@ function SeoBlock() {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-2",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Чи обов’язкова кардіореабілітація після операції?" })
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Чи обов’язкова реабілітація після інфаркту міокарка?" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
-									children: "Кардіореабілітація не є формальною вимогою, але без неї ризик ускладнень і рецидивів збільшується, а якість життя знижується."
+									children: "Реабілітація після інфаркту міокарка не є формальною вимогою, але без неї ризик ускладнень і рецидивів збільшується, а якість життя знижується."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-2",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Чим відрізняється кардіологічна реабілітація від звичайного санаторного лікування?" })
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Чим відрізняється реабілітація після інфаркту міокарка від звичайного санаторного лікування?" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",
-									children: "Кардіологічна реабілітація передбачає постійний медичний контроль та індивідуальний підбір навантажень. Це принципово відрізняється від стандартних підходів більшості санаторіїв."
+									children: "Реабілітація після інфаркту міокарка передбачає постійний медичний контроль та індивідуальний підбір навантажень. Це принципово відрізняється від стандартних підходів більшості санаторіїв."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-2",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Скільки часу триває реабілітація після операцій на серці?" })
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Скільки часу триває реабілітація після інфаркту міокарка?" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mb-4",

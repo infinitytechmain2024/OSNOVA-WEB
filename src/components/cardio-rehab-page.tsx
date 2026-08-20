@@ -798,9 +798,43 @@ function ConditionCard({
   card,
   image,
 }: {
-  card: { title: string; text: string; expandedText?: string };
+  card: { title: string; text: string; expandedText?: string; to?: string };
   image: string;
 }) {
+  if (card.to) {
+    return (
+      <article className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+        <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
+          <img
+            src={image}
+            alt={card.title}
+            loading="lazy"
+            width={900}
+            height={620}
+            className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+        <div className="flex flex-1 flex-col justify-between bg-white p-6 md:p-7">
+          <div>
+            <h3 className="mb-3 text-xl font-bold leading-snug text-navy">{card.title}</h3>
+            <p className="mb-6 line-clamp-3 text-sm font-normal leading-relaxed text-slate-600">
+              {card.text}
+            </p>
+          </div>
+          <div>
+            <AppLink
+              to={card.to}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+            >
+              Детальніше
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </AppLink>
+          </div>
+        </div>
+      </article>
+    );
+  }
+
   return (
     <article className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
       <div className="relative h-[210px] w-full overflow-hidden bg-slate-100">
