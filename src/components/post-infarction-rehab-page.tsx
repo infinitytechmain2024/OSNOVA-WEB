@@ -56,8 +56,17 @@ import { getBreadcrumbs, getNodeById } from "@/lib/tree";
 
 const ANCHORS = [
   { href: "#about", label: "Про програму" },
-  { href: "#for-whom", label: "Методи" },
+  { href: "#indications", label: "Показання" },
+  { href: "#contraindications", label: "Протипоказання" },
+  { href: "#start", label: "Початок програми" },
+  { href: "#emergency", label: "Ознаки невідкладного стану" },
+  { href: "#methods", label: "Що входить" },
+  { href: "#safety", label: "Безпека" },
+  { href: "#rehab-methods", label: "Методи" },
   { href: "#process", label: "Як проходить" },
+  { href: "#team", label: "Хто працює" },
+  { href: "#formats", label: "Формати" },
+  { href: "#results", label: "Результати" },
   { href: "#programs", label: "Вартість" },
   { href: "#documents", label: "Документи" },
   { href: "#faq", label: "FAQ" },
@@ -73,25 +82,14 @@ const TIMING_COLUMNS = [
     iconBg: "bg-primary/10",
     bulletColor: "bg-primary",
     items: [
-      "Після інфаркту міокарда",
-      "Після стентування коронарних артерій",
-      "Після операцій на серці (АКШ, клапани)",
-      "При хронічній серцевій недостатності",
-      "При зниженій переносимості навантажень",
-    ],
-  },
-  {
-    title: "Результати реабілітації",
-    icon: CheckCircle2,
-    iconColor: "text-emerald-500",
-    iconBg: "bg-emerald-50",
-    bulletColor: "bg-emerald-500",
-    items: [
-      "Підвищення витривалості та сили",
-      "Зменшення задишки та втоми",
-      "Стабілізація артеріального тиску",
-      "Покращення якості життя та настрою",
-      "Безпечне повернення до активності",
+      "після інфаркту міокарда;",
+      "після інфаркту зі стентуванням коронарних артерій;",
+      "після інфаркту з подальшим оперативним лікуванням;",
+      "при зниженій переносимості фізичного навантаження після інфаркту;",
+      "при появі слабкості або швидкої втомлюваності під час звичної активності;",
+      "для поступового повернення до роботи та побутової активності;",
+      "для відновлення фізичної активності після тривалого обмеження навантажень;",
+      "для контролю факторів ризику повторних серцево-судинних подій.",
     ],
   },
   {
@@ -101,50 +99,82 @@ const TIMING_COLUMNS = [
     iconBg: "bg-amber-50",
     bulletColor: "bg-amber-500",
     items: [
-      "Гостра інфекція або підвищена температура",
-      "Нестабільний тиск чи виражена аритмія",
-      "Загострення хронічного захворювання",
-      "Старт програми визначає лікар після оцінки стану",
+      "нестабільний стан серцево-судинної системи;",
+      "гострий коронарний синдром;",
+      "неконтрольовані порушення серцевого ритму;",
+      "декомпенсована серцева недостатність;",
+      "значні неконтрольовані зміни артеріального тиску;",
+      "гострі запальні або інфекційні захворювання;",
+      "інші стани, за яких фізичне навантаження може бути небезпечним.",
+    ],
+  },
+  {
+    title: "Початок програми",
+    icon: CalendarDays,
+    iconColor: "text-sky-500",
+    iconBg: "bg-sky-50",
+    bulletColor: "bg-sky-500",
+    items: [
+      "Терміни залежать від перебігу інфаркту, проведеного лікування, результатів обстежень та загального стану людини.",
+      "У частини пацієнтів елементи ранньої реабілітації можуть розпочинатися ще під час перебування у стаціонарі.",
+      "Після виписки програма продовжується поступовим збільшенням фізичної активності під відповідним медичним контролем.",
+      "Не варто самостійно визначати інтенсивність тренувань або повертатися до значних навантажень без попередньої оцінки.",
+    ],
+  },
+  {
+    title: "Ознаки невідкладного стану",
+    icon: Ambulance,
+    iconColor: "text-red-500",
+    iconBg: "bg-red-50",
+    bulletColor: "bg-red-500",
+    items: [
+      "сильного або тривалого болю чи стискання в грудній клітці;",
+      "різкої задишки;",
+      "втрати свідомості або переднепритомного стану;",
+      "різкого погіршення самопочуття;",
+      "вираженого порушення серцевого ритму;",
+      "інших гострих симптомів, які можуть свідчити про серцево-судинне ускладнення.",
     ],
   },
 ];
 
 const EMERGENCY_CALL_ITEMS = [
-  "раптовий або інтенсивний біль у грудях",
-  "виражена задишка або утруднене дихання",
-  "втрата або порушення свідомості",
-  "раптове порушення мовлення, зору або слабкість у кінцівках",
+  "сильного або тривалого болю чи стискання в грудній клітці;",
+  "різкої задишки;",
+  "втрати свідомості або переднепритомного стану;",
+  "різкого погіршення самопочуття;",
+  "вираженого порушення серцевого ритму;",
+  "інших гострих симптомів, які можуть свідчити про серцево-судинне ускладнення.",
 ];
 
 const PROCESS_STEPS = [
   {
     icon: FileSearch,
-    title: "Оцінка стану та документів",
-    text: "Ми комплексно оцінюємо ваш стан здоров’я, аналізуємо медичні документи та визначаємо ключові потреби для ефективної реабілітації.",
+    title: "Первинна оцінка",
+    text: "Лікар аналізує медичну історію, перенесений інфаркт, результати лікування, поточний стан та можливі обмеження.",
   },
   {
     icon: ClipboardPenLine,
-    title: "Індивідуальний план реабілітації",
-    text: "Створюємо персональний план з урахуванням ваших цілей, потреб, стану здоров’я, можливостей та етапів відновлення.",
+    title: "Функціональна оцінка",
+    text: "За необхідності проводяться додаткові обстеження та тести для визначення фізичних можливостей і безпечного рівня навантаження.",
   },
   {
     icon: Dumbbell,
-    title: "Заняття та процедури під контролем",
-    text: "Проводимо індивідуальні та групові заняття, процедури й тренування під наглядом досвідчених фахівців для вашої безпеки та результативності.",
+    title: "Формування програми",
+    text: "Визначаються цілі, частота занять, інтенсивність навантаження та методи реабілітації.",
   },
   {
     icon: ChartLine,
-    title: "Контроль прогресу та корекція",
-    text: "Регулярно відстежуємо ваш прогрес, оцінюємо результати та коригуємо план реабілітації для досягнення максимального ефекту відновлення.",
+    title: "Реабілітаційні заняття",
+    text: "Людина проходить програму з поступовим збільшенням фізичної активності відповідно до переносимості навантаження.",
   },
 ];
 
 const CARE_FORMATS = [
-  "стаціонарна",
-  "амбулаторна",
-  "денна",
-  "домашня",
-  "дистанційна (телереабілітація)",
+  "Стаціонарна реабілітація",
+  "Амбулаторна реабілітація",
+  "Денна програма",
+  "Дистанційний супровід",
 ];
 
 const CONDITION_IMAGES = [cpetImg, rehabImg, ecgImg, checkupImg, sportsImg];
@@ -152,35 +182,61 @@ const FAQ_VISIBLE_COUNT = 3;
 
 const REHAB_METHODS = [
   {
+    title: "Кардіотренування",
+    text: "Дозовані аеробні навантаження для поступового розвитку витривалості та адаптації серцево-судинної системи.",
+  },
+  {
     title: "Функціональні тренування",
-    text: "Дозовані вправи для поступового повернення витривалості, сили та впевненості у щоденній активності після інфаркту.",
+    text: "Вправи для розвитку сили, витривалості, балансу, координації та впевненого виконання повсякденних рухів.",
   },
   {
-    title: "Активно-пасивна механотерапія",
-    text: "Допомагає м’яко відновлювати рухову активність, коли навантаження потрібно нарощувати дуже поступово та під контролем фахівця.",
+    title: "Велоергометр",
+    text: "Контрольоване фізичне навантаження на велоергометрі з можливістю поступового регулювання інтенсивності.",
   },
   {
-    title: "Кардіотренування під контролем",
-    text: "Ходьба, велоергометричні або інші аеробні навантаження з контролем пульсу, тиску та самопочуття.",
+    title: "Бігова доріжка",
+    text: "Ходьба з індивідуально визначеною швидкістю та тривалістю навантаження.",
   },
   {
-    title: "Дихальні вправи та відновлення толерантності до навантаження",
-    text: "Працюємо над зменшенням задишки, кращим контролем дихання та безпечним підвищенням побутової активності.",
+    title: "Активна та пасивна механотерапія",
+    text: "Тренування із застосуванням реабілітаційного обладнання для поступового відновлення фізичної активності.",
   },
   {
-    title: "Бювет і відновлювальні курортні фактори",
-    text: "За показаннями програма може доповнюватися питним режимом і м’якими відновлювальними факторами як частиною загального маршруту відновлення.",
+    title: "Дихальні вправи",
+    text: "Вправи, спрямовані на покращення контролю дихання та переносимості фізичного навантаження.",
+  },
+  {
+    title: "Лікувальний басейн",
+    text: "Заняття у воді можуть використовуватися як один із методів фізичної активності за відсутності протипоказань.",
   },
 ];
 
-const CARDIO_PROGRAMS = CARDIO_REHAB_PROGRAMS.map((program) => ({
-  title: program.title,
-  shortDescription: program.description,
-  duration: program.duration,
-  priceLabel: program.price,
-  route: `${POST_INFARCTION_ROUTE}/${program.id}`,
-  isPopular: program.id === "standartna",
-}));
+const CARDIO_PROGRAMS = [
+  {
+    title: "Коротка програма",
+    shortDescription: "Для первинної оцінки, визначення безпечного рівня фізичної активності та формування подальших рекомендацій.",
+    duration: "Індивідуально",
+    priceLabel: "Дізнатися вартість",
+    route: `${POST_INFARCTION_ROUTE}/short`,
+    isPopular: false,
+  },
+  {
+    title: "Програма відновлення",
+    shortDescription: "Комплекс реабілітаційних заходів із регулярними заняттями та контролем динаміки.",
+    duration: "Індивідуально",
+    priceLabel: "Дізнатися вартість",
+    route: `${POST_INFARCTION_ROUTE}/recovery`,
+    isPopular: true,
+  },
+  {
+    title: "Розширена програма",
+    shortDescription: "Триваліша програма для пацієнтів, яким необхідне поступове збільшення фізичної активності та більш тривалий реабілітаційний супровід.",
+    duration: "Індивідуально",
+    priceLabel: "Дізнатися вартість",
+    route: `${POST_INFARCTION_ROUTE}/extended`,
+    isPopular: false,
+  },
+];
 
 const SUPPORT_HIGHLIGHTS = [
   {
@@ -293,15 +349,15 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
           <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/88 to-navy-deep/25" />
           <div className="relative mx-auto grid max-w-[1600px] gap-8 px-4 py-14 sm:px-6 sm:py-20 lg:min-h-[620px] lg:px-10 lg:py-24">
             <div className="flex max-w-3xl flex-col justify-center">
-              <span className="inline-flex w-fit items-center rounded-full bg-sky-100/95 px-3.5 py-1 text-xs font-semibold tracking-[0.12em] text-navy ring-1 ring-white/50">
-                {data.heroEyebrow}
-              </span>
-              <h1 className="mt-5 text-3xl font-extrabold leading-[1.08] text-background sm:text-5xl lg:text-6xl">
-                {data.heroTitle}
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-background/86 sm:text-lg">
-                Профілактика • діагностика • лікування • відновлення • навчання • супровід
-              </p>
+<span className="inline-flex w-fit items-center rounded-full bg-sky-100/95 px-3.5 py-1 text-xs font-semibold tracking-[0.12em] text-navy ring-1 ring-white/50">
+            Серцево-судинна система
+          </span>
+          <h1 className="mt-5 text-3xl font-extrabold leading-[1.08] text-background sm:text-5xl lg:text-6xl">
+            Реабілітація після інфаркту міокарда
+          </h1>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-background/86 sm:text-lg">
+            Комплексна програма відновлення після інфаркту міокарда допомагає безпечно повертатися до фізичної активності, покращувати витривалість і контролювати фактори серцево-судинного ризику під наглядом фахівців.
+          </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <button
                   type="button"
@@ -320,8 +376,10 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
         <PageSection id="about" className="pt-10 sm:pt-16">
           <ExpandableIntroSection
             title="Що таке реабілітація після інфаркту міокарда"
-            shortDescription="Реабілітація після інфаркту міокарда — це поетапна програма відновлення, яка допомагає безпечно повернути фізичну активність, покращити переносимість навантажень і зменшити ризик повторних серцево-судинних подій."
-            expandedContent="Програму складають індивідуально після оцінки стану серця, самопочуття, медичних документів і поточного рівня побутової активності. До неї можуть входити дозовані тренування, контроль факторів ризику, дихальні вправи, навчання самоконтролю та відновлювальні методи, які допомагають повернутися до звичного ритму життя без перевантаження."
+            shortDescription="Реабілітація після інфаркту міокарда — це поетапна програма відновлення, спрямована на безпечне повернення людини до повсякденної активності та зниження ризику повторних серцево-судинних подій."
+            expandedContent="Після інфаркту організму потрібен час для адаптації до фізичних навантажень і повсякденної активності. Програма реабілітації може включати медичну оцінку, функціональну діагностику, дозовані фізичні тренування, контроль реакції серцево-судинної системи на навантаження, рекомендації щодо способу життя та навчання самоконтролю.
+
+Обсяг і тривалість програми визначаються індивідуально відповідно до стану людини, перенесеного лікування, супутніх захворювань, фізичної витривалості та результатів обстежень."
             image={data.introImage}
             imageAlt="Лікар переглядає результати обстеження пацієнта після інфаркту"
             isExpanded={introExpanded}
@@ -335,6 +393,114 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
               typeof custom.emergencyBody === "string" ? custom.emergencyBody : undefined
             }
           />
+        </PageSection>
+
+        <PageSection id="importance" className="py-12 sm:py-16">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div className="relative overflow-hidden rounded-[28px] border border-blue-100/90 bg-[linear-gradient(180deg,#f8fbff_0%,#eef5ff_100%)] p-5 shadow-[0_20px_60px_rgba(37,99,235,0.08)] sm:p-8 lg:p-10">
+              <div className="relative">
+                <h2 className="max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-4xl">
+                  Чому важливо проходити відновлення після інфаркту
+                </h2>
+                <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
+                <p className="mt-6 max-w-3xl text-base leading-relaxed text-navy/82 sm:text-lg">
+                  Після завершення гострого етапу лікування важливо не лише приймати призначені препарати, а й поступово відновлювати фізичну активність та контролювати фактори ризику.
+                </p>
+                <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/72 sm:text-lg">
+                  Надто швидке повернення до звичних навантажень може бути небезпечним, а надмірне обмеження активності — призводити до втрати витривалості, м'язової слабкості та страху фізичного навантаження.
+                </p>
+                <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/72 sm:text-lg">
+                  Контрольована реабілітація допомагає визначити безпечний рівень активності та поступово розширювати фізичні можливості відповідно до реакції організму.
+                </p>
+              </div>
+            </div>
+          </div>
+        </PageSection>
+
+        <PageSection id="what-includes" className="py-12 sm:py-16">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div className="text-center">
+              <h2 className="mx-auto max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-4xl">
+                Що може входити у програму реабілітації
+              </h2>
+              <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-primary" />
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/76">
+                Програма формується індивідуально після оцінки стану людини. Не всі елементи необхідні кожному пацієнту.
+              </p>
+            </div>
+            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <MethodCard title="Медична оцінка" text="Оцінка перенесеного інфаркту, проведеного лікування, супутніх захворювань, поточних скарг, медикаментозної терапії та можливих обмежень." />
+              <MethodCard title="Функціональна діагностика" text="За показаннями можуть використовуватися функціональні тести та інструментальні дослідження для оцінки роботи серцево-судинної і дихальної систем, витривалості та реакції організму на навантаження." />
+              <MethodCard title="Дозоване фізичне навантаження" text="Індивідуально підібрані вправи та кардіонавантаження з поступовою зміною інтенсивності відповідно до стану і реакції організму." />
+              <MethodCard title="Контроль факторів ризику" text="Оцінка факторів, які можуть впливати на ризик повторних серцево-судинних подій, та рекомендації щодо їх контролю." />
+              <MethodCard title="Навчання самоконтролю" text="Рекомендації щодо контролю пульсу, артеріального тиску, фізичної активності та симптомів, які необхідно враховувати під час повсякденного життя." />
+              <MethodCard title="Харчування та спосіб життя" text="Рекомендації щодо харчування, фізичної активності, маси тіла, режиму дня та інших факторів способу життя." />
+              <MethodCard title="Психологічна підтримка" text="За потреби програма може включати роботу зі страхом повторного інфаркту, тривогою, зниженим настроєм та труднощами повернення до звичного життя." />
+              <MethodCard title="План подальшої активності" text="Після завершення програми пацієнт отримує рекомендації щодо подальшої фізичної активності та підтримання досягнутих результатів." />
+            </div>
+          </div>
+        </PageSection>
+
+        <PageSection id="safety" className="py-12 sm:py-16">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div className="relative overflow-hidden rounded-[28px] border border-blue-100/90 bg-[linear-gradient(180deg,#f8fbff_0%,#eef5ff_100%)] p-5 shadow-[0_20px_60px_rgba(37,99,235,0.08)] sm:p-8 lg:p-10">
+              <div className="relative">
+                <span className="inline-flex rounded-full border border-primary/22 bg-white/48 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_12px_30px_rgba(47,99,190,0.08)] backdrop-blur-sm sm:px-8 sm:py-3 sm:text-sm">
+                  Контроль навантаження
+                </span>
+                <h2 className="mt-6 max-w-4xl text-3xl font-extrabold leading-[1.02] text-navy sm:text-4xl xl:text-[3.4rem]">
+                  Як контролюється безпека фізичної активності
+                </h2>
+                <div className="mt-5 h-2 w-28 rounded-full bg-[linear-gradient(90deg,#2f63be_0%,#2f63be_68%,#35c88a_100%)] shadow-[0_8px_20px_rgba(53,200,138,0.18)] sm:w-32" />
+                <p className="mt-5 max-w-4xl text-base leading-relaxed text-navy/82 sm:text-lg">
+                  Інтенсивність навантаження визначається не за універсальною програмою, а відповідно до стану людини та її реакції на фізичну активність.
+                </p>
+                <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                  <SafetyStep number="1" title="Оцінка стану" text="Перед початком програми аналізуються медичні документи, результати обстежень, скарги та фізичні можливості." />
+                  <SafetyStep number="2" title="Визначення навантаження" text="Визначається допустима інтенсивність і тип фізичної активності." />
+                  <SafetyStep number="3" title="Контроль під час занять" text="Під час реабілітації оцінюються самопочуття та реакція організму на навантаження." />
+                  <SafetyStep number="4" title="Корекція програми" text="Інтенсивність і обсяг занять можуть змінюватися відповідно до прогресу або змін у стані людини." />
+                </div>
+              </div>
+            </div>
+          </div>
+        </PageSection>
+
+        <PageSection id="rehab-methods" className="py-12 sm:py-16">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div className="text-center">
+              <h2 className="mx-auto max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-4xl">
+                Методи реабілітації
+              </h2>
+              <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-primary" />
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/76">
+                Конкретні методи підбираються відповідно до завдань реабілітації, функціонального стану та переносимості навантаження.
+              </p>
+            </div>
+            <div className="mt-10 grid justify-center gap-7 sm:grid-cols-2 lg:grid-cols-3">
+              {visibleConditionCards.map((card, index) => (
+                <ConditionCard
+                  key={card.title}
+                  card={card}
+                  image={CONDITION_IMAGES[index % CONDITION_IMAGES.length]}
+                />
+              ))}
+            </div>
+            {allConditionCards.length > 3 && (
+              <div className="mt-10 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => setShowAllConditions((value) => !value)}
+                  className="rounded-full border-2 border-primary/20 px-10 py-3.5 text-sm font-semibold text-navy transition-colors hover:border-primary hover:text-primary"
+                >
+                  {showAllConditions ? "Згорнути" : "Більше"}
+                </button>
+              </div>
+            )}
+            <p className="mt-6 text-center text-sm text-navy/60">
+              Перелік методів визначається індивідуально. Частина процедур може не входити до конкретної програми.
+            </p>
+          </div>
         </PageSection>
 
         <section id="for-whom" className="scroll-mt-24 bg-white py-12 sm:py-20">
@@ -395,17 +561,15 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
                 Етапи відновлення
               </span>
               <h2 className="mt-6 max-w-4xl text-3xl font-extrabold leading-[1.02] text-navy sm:text-4xl xl:text-[3.4rem]">
-                Як проходить відновлення?
+                Як проходить відновлення
               </h2>
               <div className="mt-5 h-2 w-28 rounded-full bg-[linear-gradient(90deg,#2f63be_0%,#2f63be_68%,#35c88a_100%)] shadow-[0_8px_20px_rgba(53,200,138,0.18)] sm:w-32" />
               <p className="mt-5 max-w-4xl text-base leading-relaxed text-navy/82 sm:text-lg">
-                Відновлення — це поступовий процес, який базується на оцінці стану, індивідуальному
-                плані та постійному контролі. Ми поруч на кожному етапі вашого повернення до
-                активного життя.
+                Реабілітація будується поетапно — від первинної оцінки до рекомендацій після завершення програми.
               </p>
             </div>
 
-            <div className="relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:gap-6">
+            <div className="relative mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:gap-6">
               {PROCESS_STEPS.map((step, index) => {
                 const Icon = step.icon;
 
@@ -465,6 +629,127 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
           </div>
         </section>
 
+        <PageSection id="team" className="py-12 sm:py-16">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div className="relative overflow-hidden rounded-[28px] border border-blue-100/90 bg-[linear-gradient(180deg,#f8fbff_0%,#eef5ff_100%)] p-5 shadow-[0_20px_60px_rgba(37,99,235,0.08)] sm:p-8 lg:p-10">
+              <div className="relative">
+                <span className="inline-flex rounded-full border border-primary/22 bg-white/48 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_12px_30px_rgba(47,99,190,0.08)] backdrop-blur-sm sm:px-8 sm:py-3 sm:text-sm">
+                  Міждисциплінарна команда
+                </span>
+                <h2 className="mt-6 max-w-4xl text-3xl font-extrabold leading-[1.02] text-navy sm:text-4xl xl:text-[3.4rem]">
+                  Відновлення під наглядом фахівців
+                </h2>
+                <div className="mt-5 h-2 w-28 rounded-full bg-[linear-gradient(90deg,#2f63be_0%,#2f63be_68%,#35c88a_100%)] shadow-[0_8px_20px_rgba(53,200,138,0.18)] sm:w-32" />
+                <p className="mt-5 max-w-4xl text-base leading-relaxed text-navy/82 sm:text-lg">
+                  До програми можуть залучатися спеціалісти різних напрямів залежно від стану людини та поставлених реабілітаційних завдань.
+                </p>
+                <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+                  <li className="flex items-center gap-3 text-base leading-relaxed text-navy/82">
+                    <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
+                    <span>лікар-кардіолог</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-base leading-relaxed text-navy/82">
+                    <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
+                    <span>лікар фізичної та реабілітаційної медицини</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-base leading-relaxed text-navy/82">
+                    <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
+                    <span>фізичний терапевт</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-base leading-relaxed text-navy/82">
+                    <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
+                    <span>психолог</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-base leading-relaxed text-navy/82">
+                    <span className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
+                    <span>інші спеціалісти за показаннями</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </PageSection>
+
+        <PageSection id="formats" className="py-12 sm:py-16">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div className="text-center">
+              <h2 className="mx-auto max-w-4xl text-2xl font-extrabold leading-tight text-navy sm:text-3xl lg:text-4xl">
+                Формати реабілітації
+              </h2>
+              <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-primary" />
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/76">
+                Формат проходження програми визначається відповідно до стану пацієнта, необхідного обсягу медичного контролю та можливості регулярно відвідувати центр.
+              </p>
+            </div>
+            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <FormatCard title="Стаціонарна реабілітація" text="Пацієнт перебуває у центрі та проходить заплановану програму відновлення протягом визначеного періоду." />
+              <FormatCard title="Амбулаторна реабілітація" text="Пацієнт відвідує центр у визначені дні та проходить заняття і консультації відповідно до індивідуального графіка." />
+              <FormatCard title="Денна програма" text="Реабілітаційні заходи проводяться протягом дня без цілодобового перебування у центрі." />
+              <FormatCard title="Дистанційний супровід" text="Окремі елементи програми та подальший контроль можуть проводитися дистанційно, якщо це дозволяє стан людини." />
+            </div>
+          </div>
+        </PageSection>
+
+        <PageSection id="results" className="py-12 sm:py-16">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div className="relative overflow-hidden rounded-[28px] border border-emerald-100/90 bg-[linear-gradient(180deg,#f0fdf4_0%,#dcfce7_100%)] p-5 shadow-[0_20px_60px_rgba(34,197,94,0.08)] sm:p-8 lg:p-10">
+              <div className="relative">
+                <span className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-emerald-700 shadow-[0_12px_30px_rgba(34,197,94,0.08)] backdrop-blur-sm sm:px-8 sm:py-3 sm:text-sm">
+                  Результати реабілітації
+                </span>
+                <h2 className="mt-6 max-w-4xl text-3xl font-extrabold leading-[1.02] text-navy sm:text-4xl xl:text-[3.4rem]">
+                  Чого можна досягти
+                </h2>
+                <div className="mt-5 h-2 w-28 rounded-full bg-emerald-500 shadow-[0_8px_20px_rgba(53,200,138,0.18)] sm:w-32" />
+                <p className="mt-5 max-w-4xl text-base leading-relaxed text-navy/82 sm:text-lg">
+                  Метою програми є не досягнення універсального показника, а покращення функціонального стану та безпечне повернення людини до активності.
+                </p>
+                <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>покращенню переносимості фізичного навантаження;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>поступовому збільшенню рівня повсякденної активності;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>зменшенню фізичної декондиції після госпіталізації;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>покращенню витривалості;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>більш впевненому поверненню до побутової активності;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>формуванню навичок самоконтролю;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>кращому розумінню безпечного рівня фізичного навантаження;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>контролю факторів серцево-судинного ризику;</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-base leading-relaxed text-navy/82">
+                    <CheckCircle2 className="mt-1 size-5 shrink-0 text-emerald-500" />
+                    <span>підготовці до подальшої самостійної фізичної активності.</span>
+                  </li>
+                </ul>
+                <p className="mt-6 text-sm text-navy/60">
+                  Результати залежать від вихідного стану, перебігу захворювання, супутніх станів, регулярності занять та інших індивідуальних факторів і не можуть бути гарантовані.
+                </p>
+              </div>
+            </div>
+          </div>
+        </PageSection>
+
         <section id="programs" className="scroll-mt-24 bg-white py-14 sm:py-20">
           <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <div>
@@ -473,8 +758,7 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
               </h2>
               <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
               <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/70">
-                Точну вартість і детальний склад кожного пакету повідомляє адміністратор після
-                попереднього розгляду документів і консультації лікаря.
+                Тривалість і наповнення програми залежать від стану пацієнта, необхідної кількості занять, консультацій, функціональної діагностики та формату проходження реабілітації.
               </p>
             </div>
 
@@ -484,12 +768,40 @@ export function PostInfarctionRehabPage({ node }: { node: SiteNode }) {
               ))}
               <SupportHighlightsCard />
             </div>
+            <p className="mt-6 text-center text-sm text-navy/60">
+              Точне наповнення та вартість програми визначаються після консультації та оцінки стану.
+            </p>
           </div>
         </section>
 
         <OtherServicesSlider />
 
         <DocumentsReviewSection onOpenDocumentsModal={() => setDocumentsModalOpen(true)} />
+
+        <PageSection id="cta" className="py-12 sm:py-16">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+            <div className="relative overflow-hidden rounded-[38px] border border-emerald-100/70 bg-[linear-gradient(135deg,rgba(236,253,245,0.95)_0%,rgba(255,255,255,0.98)_100%)] px-5 py-6 shadow-[0_30px_90px_rgba(34,197,94,0.12)] sm:px-8 sm:py-8 lg:px-12 lg:py-12 text-center">
+              <h2 className="max-w-3xl mx-auto text-3xl font-extrabold leading-[1.08] text-navy sm:text-4xl lg:text-5xl">
+                Зробіть перший крок до відновлення
+              </h2>
+              <p className="mt-5 max-w-2xl mx-auto text-base leading-relaxed text-navy/72 sm:text-lg">
+                Запишіться на консультацію, щоб оцінити ваш поточний стан, визначити можливий формат реабілітації та сформувати подальший план відновлення після інфаркту.
+              </p>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+                <button
+                  type="button"
+                  onClick={() => openModal("Записатися на консультацію")}
+                  className="inline-flex min-h-[4.5rem] items-center justify-center gap-2.5 rounded-[20px] bg-brand-green px-7 py-4 text-sm font-bold text-brand-green-foreground shadow-[0_22px_48px_rgba(52,211,153,0.28)] transition-all hover:-translate-y-0.5 hover:bg-brand-green/92 hover:shadow-[0_28px_58px_rgba(52,211,153,0.34)] sm:min-w-[23rem] sm:px-8 sm:text-base"
+                >
+                  Записатися на консультацію
+                </button>
+              </div>
+              <p className="mt-4 text-sm text-navy/60">
+                Адміністратор зв'яжеться з вами для уточнення деталей та погодження зручного часу.
+              </p>
+            </div>
+          </div>
+        </PageSection>
 
         {faqItems.length > 0 && (
           <section
@@ -604,6 +916,40 @@ function SectionHeading({ title, text }: { title: string; text?: string }) {
       <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
       {text && <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy/76">{text}</p>}
     </div>
+  );
+}
+
+function MethodCard({ title, text }: { title: string; text: string }) {
+  return (
+    <article className="relative flex flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md">
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="mb-3 text-xl font-bold leading-snug text-navy">{title}</h3>
+        <p className="mb-6 text-sm font-normal leading-relaxed text-slate-600">{text}</p>
+      </div>
+    </article>
+  );
+}
+
+function SafetyStep({ number, title, text }: { number: number; title: string; text: string }) {
+  return (
+    <article className="relative flex flex-col rounded-[24px] border border-slate-200/80 bg-white p-6">
+      <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-extrabold text-lg">
+        {number}
+      </span>
+      <h3 className="mt-4 text-lg font-bold leading-snug text-navy">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-navy/72">{text}</p>
+    </article>
+  );
+}
+
+function FormatCard({ title, text }: { title: string; text: string }) {
+  return (
+    <article className="relative flex flex-col overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md">
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="mb-3 text-xl font-bold leading-snug text-navy">{title}</h3>
+        <p className="mb-6 text-sm font-normal leading-relaxed text-slate-600">{text}</p>
+      </div>
+    </article>
   );
 }
 
@@ -974,17 +1320,17 @@ function ExpandableCardText({ expandedText }: { expandedText: string }) {
 function ProgramCard({
   program,
 }: {
-  program: Pick<
-    SiteNode,
-    "id" | "title" | "shortDescription" | "duration" | "priceLabel" | "route"
-  > & {
+  program: {
+    id: string;
+    title: string;
+    shortDescription: string;
+    duration: string;
+    priceLabel: string;
+    route: string;
     isPopular?: boolean;
   };
 }) {
-  const duration = program.duration === "За програмою" ? "Індивідуально" : program.duration;
   const isPopular = Boolean(program.isPopular);
-  const priceLabel =
-    program.id === "indyvidualna" ? "Уточнюйте" : program.priceLabel || "Уточнюйте";
 
   return (
     <article
@@ -1034,7 +1380,7 @@ function ProgramCard({
             Тривалість
           </dt>
           <dd className={cn("mt-1 font-semibold", isPopular ? "text-white" : "text-navy")}>
-            {duration || "Індивідуально"}
+            {program.duration}
           </dd>
         </div>
         <div>
@@ -1052,7 +1398,7 @@ function ProgramCard({
               isPopular ? "text-white" : "text-primary",
             )}
           >
-            {priceLabel}
+            {program.priceLabel}
           </dd>
         </div>
       </dl>
@@ -1066,7 +1412,7 @@ function ProgramCard({
               : "bg-primary text-primary-foreground hover:bg-primary/90",
           )}
         >
-          Детальніше
+          {program.priceLabel}
           <ArrowRight className="size-4" />
         </AppLink>
       </div>
@@ -1425,26 +1771,88 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
           <div className="relative grid gap-8 xl:grid-cols-[minmax(0,0.96fr)_minmax(460px,1.04fr)] xl:items-center xl:gap-12">
             <div className="max-w-3xl xl:py-4">
               <span className="inline-flex items-center rounded-full border border-primary/20 bg-white/92 px-5 py-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-primary shadow-[0_12px_28px_rgba(31,61,120,0.1)] sm:px-6 sm:text-[0.92rem]">
-                Реабілітація після інфаркту міокарка
+                Онлайн-звернення
               </span>
 
               <h2 className="mt-7 max-w-[13.9ch] font-black leading-[0.9] tracking-[-0.045em] text-navy lg:max-w-[12.8ch]">
                 <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.75rem] lg:text-[4.3rem]">
-                  Зробіть свій
+                  Попередньо надішліть
                 </span>
                 <span className="block whitespace-nowrap text-[3.2rem] text-primary sm:text-[4.8rem] lg:text-[5.45rem]">
-                  перший крок
+                  документи
                 </span>
                 <span className="block whitespace-nowrap text-[2.5rem] sm:text-[3.75rem] lg:text-[4.3rem]">
-                  до відновлення
+                  для ознайомлення
                 </span>
               </h2>
 
               <p className="mt-7 max-w-[34rem] text-base leading-relaxed text-navy/72 sm:text-[1.15rem] sm:leading-[1.7]">
-                Допоможемо безпечно розпочати відновлення, оцінити ваш стан і підібрати програму
-                реабілітації після інфаркту міокарка під наглядом фахівців. Первинна консультація допоможе
-                зрозуміти, з чого починати програму відновлення.
+                Якщо ви не впевнені, яка програма вам підходить, надішліть наявні медичні документи. Це допоможе краще підготуватися до консультації та визначити подальші кроки.
               </p>
+
+              <div className="mt-8 space-y-6">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-bold text-navy">Як це працює</h3>
+                  <ul className="space-y-2 text-base leading-relaxed text-navy/76">
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span><strong>Надішліть документи</strong> — передайте наявні медичні висновки та результати обстежень через форму або адміністратору.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span><strong>Попереднє ознайомлення</strong> — фахівець ознайомиться з наданою інформацією перед консультацією.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span><strong>Зв'язок з адміністратором</strong> — адміністратор зв'яжеться з вами для уточнення деталей і погодження консультації.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span><strong>Визначення подальших кроків</strong> — після консультації визначається необхідність додаткової діагностики та можливий формат реабілітації.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-lg font-bold text-navy">Які документи бажано надати</h3>
+                  <p className="text-base leading-relaxed text-navy/72">Якщо вони у вас є:</p>
+                  <ul className="space-y-2 text-base leading-relaxed text-navy/76">
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span>виписка зі стаціонару;</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span>висновок кардіолога;</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span>результати ЕКГ та ЕхоКГ;</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span>результати коронарографії;</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span>документи про проведене стентування або операцію;</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span>результати лабораторних та інших обстежень;</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span>перелік препаратів, які ви приймаєте;</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" />
+                      <span>інші медичні документи, що стосуються перенесеного інфаркту.</span>
+                    </li>
+                  </ul>
+                  <p className="text-sm text-navy/60">Якщо у вас немає повного комплекту документів, ви все одно можете звернутися до адміністратора.</p>
+                </div>
+              </div>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch">
                 <button
@@ -1452,7 +1860,7 @@ function DocumentsReviewSection({ onOpenDocumentsModal }: { onOpenDocumentsModal
                   onClick={onOpenDocumentsModal}
                   className="inline-flex min-h-[4.5rem] items-center justify-center gap-2.5 rounded-[20px] bg-brand-green px-7 py-4 text-sm font-bold text-brand-green-foreground shadow-[0_22px_48px_rgba(52,211,153,0.28)] transition-all hover:-translate-y-0.5 hover:bg-brand-green/92 hover:shadow-[0_28px_58px_rgba(52,211,153,0.34)] sm:min-w-[23rem] sm:px-8 sm:text-base"
                 >
-                  Замовити консультацію
+                  Надіслати документи
                 </button>
 
                 <a
@@ -1991,12 +2399,16 @@ function SeoBlock() {
 
 function pickFaqItems(items: FAQItem[]) {
   const preferred = [
-    "Скільки триває програма?",
+    "Коли можна починати реабілітацію після інфаркту?",
+    "Чи можна проходити реабілітацію після стентування?",
+    "Чи безпечні фізичні навантаження після інфаркту?",
+    "Скільки триває реабілітація?",
+    "Чи потрібно проходити обстеження перед початком реабілітації?",
     "Чи потрібне направлення лікаря?",
-    "Які документи потрібно підготувати?",
-    "Чи можна проходити програму амбулаторно?",
-    "Що входить у вартість програми?",
-    "Як записатися?",
+    "Які документи потрібно взяти на консультацію?",
+    "Чи можна проходити реабілітацію амбулаторно?",
+    "Чи можна продовжити реабілітацію вдома?",
+    "Як дізнатися вартість програми?",
   ];
 
   const picked = preferred
